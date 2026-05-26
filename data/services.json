@@ -1,0 +1,44 @@
+{
+  "services": [
+    {
+      "id": "svc-1",
+      "name": "Darlington Groom & Glow",
+      "type": "grooming",
+      "location": "darlington",
+      "description": "Full-service grooming, nail trims, and spa baths for dogs and cats.",
+      "phone": "(843) 555-0193",
+      "address": "112 Pearl St, Darlington, SC",
+      "rating": 4.8
+    },
+    {
+      "id": "svc-2",
+      "name": "Florence Paws Training Club",
+      "type": "training",
+      "location": "florence",
+      "description": "Puppy basics, obedience, and behavior coaching with certified trainers.",
+      "phone": "(843) 555-0147",
+      "address": "54 Oakview Rd, Florence, SC",
+      "rating": 4.6
+    },
+    {
+      "id": "svc-3",
+      "name": "Hartsville Happy Tails Boarding",
+      "type": "boarding",
+      "location": "hartsville",
+      "description": "Safe overnight boarding and fun daycare with indoor/outdoor play yards.",
+      "phone": "(843) 555-0118",
+      "address": "77 Meadow Lane, Hartsville, SC",
+      "rating": 4.7
+    },
+    {
+      "id": "svc-4",
+      "name": "Florence Vet & Wellness",
+      "type": "vet",
+      "location": "florence",
+      "description": "Preventive care, diagnostics, surgery consults, and emergency referrals.",
+      "phone": "(843) 555-0161",
+      "address": "820 West Evans St, Florence, SC",
+      "rating": 4.9
+    }
+  ]
+}

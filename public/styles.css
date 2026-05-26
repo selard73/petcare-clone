@@ -1,0 +1,91 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: #1f2937;
+}
+
+.floating-sticker {
+  position: fixed;
+  width: 75px;
+  height: 75px;
+  z-index: 40;
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 999px;
+  background: transparent;
+  box-shadow:
+    0 0 0 1px rgba(200, 220, 255, 0.3),
+    0 0 0 2px rgba(255, 200, 255, 0.2),
+    inset 0 0 30px rgba(255, 255, 255, 0.1),
+    0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.floating-sticker img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+  transform: scale(1.15);
+}
+
+.floating-sticker.left-col {
+  left: 32px;
+}
+
+.floating-sticker.right-col {
+  right: 32px;
+}
+
+.service-card {
+  background: #fff;
+  border: 1px solid #e9d5ff;
+  border-radius: 18px;
+  padding: 16px;
+  box-shadow: 0 10px 24px rgba(76, 29, 149, 0.08);
+}
+
+.service-card h3 {
+  margin: 0 0 6px;
+  color: #7e22ce;
+  font-size: 1.1rem;
+}
+
+.service-card p {
+  margin: 2px 0;
+}
+
+.service-chip {
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: #f5d0fe;
+  color: #6b21a8;
+}
+
+.admin-list-item {
+  border: 1px solid #e9d5ff;
+  border-radius: 12px;
+  padding: 10px;
+  background: #faf5ff;
+}
+
+.admin-list-item button {
+  border: 0;
+  padding: 6px 10px;
+  border-radius: 8px;
+  background: #fce7f3;
+  color: #9d174d;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
