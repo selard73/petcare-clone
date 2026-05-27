@@ -8238,7 +8238,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         ]
       }
     ) }) }),
-    /* @__PURE__ */ s("section", { className: "pt-0 md:py-16 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-purple-50 to-white", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto", children: [
+    /* @__PURE__ */ s("section", { className: "pt-0 md:py-16 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-green-50 to-white", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto", children: [
       /* @__PURE__ */ d(
         D.div,
         {
@@ -8255,7 +8255,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   placeholder: "Search businesses by name...",
                   value: Ke,
                   onChange: (y) => Ht(y.target.value),
-                  className: "w-full pl-10 pr-4 py-3 border-2 border-purple-200 rounded-lg focus:outline-none focus:border-purple-400 transition-colors"
+                  className: "w-full pl-10 pr-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:border-green-400 transition-colors"
                 }
               )
             ] }),
@@ -8265,7 +8265,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 {
                   value: ee,
                   onChange: (y) => G(y.target.value),
-                  className: "flex-1 px-4 py-3 bg-purple-50 border-2 border-purple-200 rounded-lg focus:outline-none focus:border-purple-400 transition-colors cursor-pointer",
+                  className: "flex-1 px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg focus:outline-none focus:border-green-400 transition-colors cursor-pointer",
                   children: [
                     /* @__PURE__ */ s("option", { value: "all", children: "All Cities" }),
                     /* @__PURE__ */ s("option", { value: "Florence", children: "Florence" }),
@@ -8274,8 +8274,8 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ]
                 }
               ),
-              /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-4 py-3 bg-purple-50 border-2 border-purple-200 rounded-lg", children: [
-                /* @__PURE__ */ s(Ys, { className: "w-5 h-5 text-purple-600" }),
+              /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg", children: [
+                /* @__PURE__ */ s(Ys, { className: "w-5 h-5 text-green-600" }),
                 /* @__PURE__ */ d(
                   "select",
                   {
@@ -8291,8 +8291,8 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 )
               ] })
             ] }),
-            /* @__PURE__ */ s("div", { className: "hidden sm:block sm:w-auto", children: /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-4 py-3 bg-purple-50 border-2 border-purple-200 rounded-lg", children: [
-              /* @__PURE__ */ s(Ys, { className: "w-5 h-5 text-purple-600" }),
+            /* @__PURE__ */ s("div", { className: "hidden sm:block sm:w-auto", children: /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg", children: [
+              /* @__PURE__ */ s(Ys, { className: "w-5 h-5 text-green-600" }),
               /* @__PURE__ */ d(
                 "select",
                 {
@@ -8311,7 +8311,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               "button",
               {
                 onClick: () => Xe(!0),
-                className: "md:hidden flex items-center justify-center gap-2 px-4 py-2.5 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors",
+                className: "md:hidden flex items-center justify-center gap-2 px-4 py-2.5 bg-green-700 text-white rounded-full hover:bg-green-800 transition-colors",
                 children: [
                   /* @__PURE__ */ s(Am, { className: "w-4 h-4" }),
                   /* @__PURE__ */ s("span", { className: "text-sm", children: "Filters" })
@@ -8327,14 +8327,14 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
           initial: { opacity: 0, y: 20 },
           animate: { opacity: 1, y: 0 },
           transition: { delay: 0.1 },
-          className: "hidden md:block bg-purple-200 rounded-xl shadow-md p-4 md:p-6 mb-8",
+          className: "hidden md:block bg-green-200 rounded-xl shadow-md p-4 md:p-6 mb-8",
           children: /* @__PURE__ */ d("div", { className: "flex flex-col md:flex-row gap-3 md:gap-4 items-stretch justify-between", children: [
             /* @__PURE__ */ s("div", { className: "w-full md:w-auto", children: /* @__PURE__ */ d(
               "select",
               {
                 value: ee,
                 onChange: (y) => G(y.target.value),
-                className: "w-full h-full px-4 py-3 bg-purple-50 border-2 border-purple-200 rounded-lg focus:outline-none focus:border-purple-400 transition-colors cursor-pointer",
+                className: "w-full h-full px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg focus:outline-none focus:border-green-400 transition-colors cursor-pointer",
                 children: [
                   /* @__PURE__ */ s("option", { value: "all", children: "All Cities" }),
                   /* @__PURE__ */ s("option", { value: "Florence", children: "Florence" }),
@@ -8346,35 +8346,35 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             /* @__PURE__ */ d(
               "div",
               {
-                className: "flex items-center justify-between md:gap-3 md:px-4 md:py-3 md:bg-purple-50 md:border-2 md:border-purple-200 md:rounded-lg cursor-pointer md:hover:bg-purple-100 transition-colors",
+                className: "flex items-center justify-between md:gap-3 md:px-4 md:py-3 md:bg-green-50 md:border-2 md:border-green-200 md:rounded-lg cursor-pointer md:hover:bg-green-100 transition-colors",
                 onClick: () => Ee(!pe),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
                     /* @__PURE__ */ s("span", { className: "text-xl", children: "🏠" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Daycare Available" })
                   ] }),
-                  /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${pe ? "bg-purple-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
+                  /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${pe ? "bg-green-700" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
                 ]
               }
             ),
             /* @__PURE__ */ d(
               "div",
               {
-                className: "flex items-center justify-between md:gap-3 md:px-4 md:py-3 md:bg-purple-50 md:border-2 md:border-purple-200 md:rounded-lg cursor-pointer md:hover:bg-purple-100 transition-colors",
+                className: "flex items-center justify-between md:gap-3 md:px-4 md:py-3 md:bg-green-50 md:border-2 md:border-green-200 md:rounded-lg cursor-pointer md:hover:bg-green-100 transition-colors",
                 onClick: () => te(!W),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
                     /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Open Weekends" })
                   ] }),
-                  /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${W ? "bg-purple-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
+                  /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${W ? "bg-green-700" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
                 ]
               }
             ),
             /* @__PURE__ */ d(
               "div",
               {
-                className: "flex items-center gap-3 px-4 py-3 bg-purple-50 border-2 border-purple-200 rounded-lg cursor-pointer hover:bg-purple-100 transition-colors",
+                className: "flex items-center gap-3 px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg cursor-pointer hover:bg-green-100 transition-colors",
                 onClick: () => ue(!ae),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
@@ -8387,13 +8387,13 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       type: "checkbox",
                       checked: ae,
                       onChange: (y) => ue(y.target.checked),
-                      className: "w-5 h-5 text-purple-600 rounded cursor-pointer ml-auto"
+                      className: "w-5 h-5 text-green-600 rounded cursor-pointer ml-auto"
                     }
                   )
                 ]
               }
             ),
-            /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-purple-50 border-2 border-purple-200 rounded-lg", children: [
+            /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg", children: [
               /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
                 /* @__PURE__ */ s(Zs, { className: "w-5 h-5 text-green-600" }),
                 /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Price Range" })
@@ -8403,7 +8403,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 {
                   value: Me,
                   onChange: (y) => qe(y.target.value),
-                  className: "px-3 py-1 bg-white border-2 border-purple-300 rounded-lg focus:outline-none focus:border-purple-400 transition-colors cursor-pointer ml-auto",
+                  className: "px-3 py-1 bg-white border-2 border-green-300 rounded-lg focus:outline-none focus:border-green-400 transition-colors cursor-pointer ml-auto",
                   children: [
                     /* @__PURE__ */ s("option", { value: "all", children: "All" }),
                     /* @__PURE__ */ s("option", { value: "$", children: "$" }),
@@ -8432,7 +8432,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             onClick: () => {
               Ht(""), Ee(!1), te(!1), ue(!1), qe("all"), G("all"), Ye("name");
             },
-            className: "md:hidden mt-6 px-6 py-3 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-xl hover:shadow-lg transition-shadow",
+            className: "md:hidden mt-6 px-6 py-3 bg-gradient-to-r from-green-600 to-emerald-600 text-white rounded-xl hover:shadow-lg transition-shadow",
             children: "Clear Filters"
           }
         )
@@ -8454,7 +8454,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 {
                   src: y.photos && y.photos.length > 0 ? y.photos[y.cardPhotoIndex || 0] : Wr,
                   alt: y.name,
-                  className: `absolute inset-0 w-full h-full rounded-t-xl ${y.photos && y.photos.length > 0 ? "object-cover" : "object-contain bg-gradient-to-br from-pink-100 to-purple-100"}`
+                  className: `absolute inset-0 w-full h-full rounded-t-xl ${y.photos && y.photos.length > 0 ? "object-cover" : "object-contain bg-gradient-to-br from-green-100 to-emerald-100"}`
                 }
               ) }) }),
               /* @__PURE__ */ d("div", { className: "flex justify-between items-start mb-3", children: [
@@ -8466,7 +8466,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       whileHover: { scale: 1.1 },
                       whileTap: { scale: 0.9 },
                       onClick: (B) => Hl(y.id, B),
-                      className: "p-2 rounded-full hover:bg-purple-100 transition-colors",
+                      className: "p-2 rounded-full hover:bg-green-100 transition-colors",
                       "aria-label": Be.includes(y.id) ? "Remove from shortlist" : "Add to shortlist",
                       children: /* @__PURE__ */ s(
                         yi,
@@ -8514,7 +8514,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: (B) => {
                     window.innerWidth < 768 && B.stopPropagation(), i(y);
                   },
-                  className: "mt-auto w-full bg-purple-600 text-white py-2 rounded-lg hover:bg-purple-700 transition-colors",
+                  className: "mt-auto w-full bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition-colors",
                   children: "View Details"
                 }
               )
@@ -8528,7 +8528,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
           {
             whileTap: { scale: 0.98 },
             onClick: Kl,
-            className: "px-8 py-3 border-2 border-purple-600 text-purple-600 rounded-xl hover:bg-purple-50 transition-colors",
+            className: "px-8 py-3 border-2 border-green-700 text-green-700 rounded-xl hover:bg-green-50 transition-colors",
             children: "Load More"
           }
         ) }),
@@ -8597,7 +8597,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     ] })
                   ] }) : (
                     // Fallback to placeholder if no photos available
-                    /* @__PURE__ */ s("div", { className: "w-full h-full bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center", children: /* @__PURE__ */ s(
+                    /* @__PURE__ */ s("div", { className: "w-full h-full bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center", children: /* @__PURE__ */ s(
                       "img",
                       {
                         src: Wr,
@@ -8606,7 +8606,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       }
                     ) })
                   );
-                })() : /* @__PURE__ */ s("div", { className: "w-full h-full bg-gradient-to-br from-pink-100 to-purple-100 flex items-center justify-center", children: /* @__PURE__ */ s(
+                })() : /* @__PURE__ */ s("div", { className: "w-full h-full bg-gradient-to-br from-green-100 to-emerald-100 flex items-center justify-center", children: /* @__PURE__ */ s(
                   "img",
                   {
                     src: Wr,
@@ -8650,8 +8650,8 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] }) }),
                 /* @__PURE__ */ d("div", { className: "grid md:grid-cols-2 gap-4 mb-6", children: [
-                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg", children: [
-                    /* @__PURE__ */ s(ar, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-green-50 rounded-lg", children: [
+                    /* @__PURE__ */ s(ar, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Address" }),
                       /* @__PURE__ */ d(
@@ -8662,7 +8662,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           )}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-purple-600 hover:underline cursor-pointer",
+                          className: "text-green-600 hover:underline cursor-pointer",
                           children: [
                             n.address,
                             ", ",
@@ -8674,18 +8674,18 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg", children: [
-                    /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-green-50 rounded-lg", children: [
+                    /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Phone" }),
-                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "text-purple-600 hover:underline", children: n.phone })
+                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "text-green-600 hover:underline", children: n.phone })
                     ] })
                   ] }),
-                  n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg md:col-span-2", children: [
-                    /* @__PURE__ */ s(im, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
+                  n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-green-50 rounded-lg md:col-span-2", children: [
+                    /* @__PURE__ */ s(im, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "flex-1", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
-                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-purple-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-4 text-sm", children: [
+                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-green-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-4 text-sm", children: [
                         /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-3", children: ["monday", "tuesday", "wednesday", "thursday"].map((y) => {
                           const F = n.hours[y], B = F?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
@@ -8703,8 +8703,8 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       ] })
                     ] })
                   ] }),
-                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg", children: [
-                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
+                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-green-50 rounded-lg", children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Website" }),
                       /* @__PURE__ */ s(
@@ -8713,21 +8713,21 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           href: n.website.startsWith("http") ? n.website : `https://${n.website}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-purple-600 hover:underline",
+                          className: "text-green-600 hover:underline",
                           children: n.website
                         }
                       )
                     ] })
                   ] }),
-                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg", children: [
-                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-green-50 rounded-lg", children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
                       /* @__PURE__ */ s(
                         "a",
                         {
                           href: `mailto:${n.email}`,
-                          className: "text-purple-600 hover:underline",
+                          className: "text-green-600 hover:underline",
                           children: n.email
                         }
                       )
@@ -8750,7 +8750,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.boardingStyles.map((y) => /* @__PURE__ */ d(
                     "span",
                     {
-                      className: "bg-purple-50 text-purple-600 px-4 py-2 rounded-lg",
+                      className: "bg-green-50 text-green-600 px-4 py-2 rounded-lg",
                       children: [
                         "🏠 ",
                         y
@@ -8771,7 +8771,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.specialFeatures.filter((y) => y.trim()).map((y) => /* @__PURE__ */ d(
                     "span",
                     {
-                      className: "bg-purple-50 text-purple-600 px-4 py-2 rounded-lg",
+                      className: "bg-green-50 text-green-600 px-4 py-2 rounded-lg",
                       children: [
                         "✨ ",
                         y
@@ -8785,7 +8785,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.servicesOffered.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
-                      className: "bg-gradient-to-r from-pink-100 to-purple-100 text-purple-700 px-4 py-2 rounded-full",
+                      className: "bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 px-4 py-2 rounded-full",
                       children: y
                     },
                     y
@@ -8797,7 +8797,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     href: `tel:${n.phone}`,
                     whileHover: { scale: 1.02 },
                     whileTap: { scale: 0.98 },
-                    className: "hidden md:block w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-4 rounded-xl hover:from-pink-600 hover:to-purple-700 transition-colors text-center",
+                    className: "hidden md:block w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-4 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-colors text-center",
                     children: [
                       "📞 Call ",
                       n.name
@@ -8849,7 +8849,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     {
                       initial: { opacity: 0, y: 10 },
                       animate: { opacity: 1, y: 0 },
-                      className: "bg-gradient-to-r from-purple-50 to-pink-50 p-5 rounded-xl border border-purple-100",
+                      className: "bg-gradient-to-r from-green-50 to-emerald-50 p-5 rounded-xl border border-green-100",
                       children: [
                         /* @__PURE__ */ d("div", { className: "flex items-start justify-between mb-3", children: [
                           /* @__PURE__ */ d("div", { children: [
@@ -9006,13 +9006,13 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         }
                       ) })
                     ] }),
-                    /* @__PURE__ */ d("div", { className: "text-center py-8 bg-purple-50 rounded-xl border-2 border-purple-200", children: [
+                    /* @__PURE__ */ d("div", { className: "text-center py-8 bg-green-50 rounded-xl border-2 border-green-200", children: [
                       /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
                       /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
                       /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" }),
                       /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mt-2", children: "Use the admin form above to add existing customer reviews" })
                     ] })
-                  ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-purple-200 rounded-xl p-5", children: [
+                  ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-green-200 rounded-xl p-5", children: [
                     /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
                     /* @__PURE__ */ d("div", { className: "mb-4", children: [
                       /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Rating" }),
@@ -9041,7 +9041,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         {
                           value: f.comment,
                           onChange: (y) => v({ ...f, comment: y.target.value }),
-                          className: "w-full p-4 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-purple-400 transition-colors",
+                          className: "w-full p-4 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-green-400 transition-colors",
                           placeholder: "Share your experience with this business...",
                           rows: 4
                         }
@@ -9053,7 +9053,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         onClick: zl,
                         whileHover: { scale: 1.02 },
                         whileTap: { scale: 0.98 },
-                        className: "w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-xl hover:from-pink-600 hover:to-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
+                        className: "w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                         disabled: g,
                         children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
                           /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
@@ -9061,7 +9061,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         ] }) : "Submit Review"
                       }
                     )
-                  ] }) : /* @__PURE__ */ d("div", { className: "text-center py-8 bg-purple-50 rounded-xl border-2 border-purple-200", children: [
+                  ] }) : /* @__PURE__ */ d("div", { className: "text-center py-8 bg-green-50 rounded-xl border-2 border-green-200", children: [
                     /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "Want to leave a review?" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Please log in to share your experience" })
                   ] })
@@ -9078,7 +9078,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     rel: "noopener noreferrer",
                     whileHover: { scale: 1.02 },
                     whileTap: { scale: 0.98 },
-                    className: "flex-1 flex items-center justify-center gap-2 bg-white border-2 border-purple-600 text-purple-600 py-3.5 rounded-xl hover:bg-purple-50 transition-colors",
+                    className: "flex-1 flex items-center justify-center gap-2 bg-white border-2 border-green-700 text-green-700 py-3.5 rounded-xl hover:bg-green-50 transition-colors",
                     children: [
                       /* @__PURE__ */ s(ar, { className: "w-5 h-5" }),
                       /* @__PURE__ */ s("span", { children: "Directions" })
@@ -9091,7 +9091,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     href: `tel:${n.phone}`,
                     whileHover: { scale: 1.02 },
                     whileTap: { scale: 0.98 },
-                    className: "flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3.5 rounded-xl hover:from-pink-600 hover:to-purple-700 transition-colors",
+                    className: "flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3.5 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-colors",
                     children: [
                       /* @__PURE__ */ s(Dn, { className: "w-5 h-5" }),
                       /* @__PURE__ */ s("span", { children: "Call" })
@@ -9104,7 +9104,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         )
       }
     ),
-    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 bg-purple-600 text-white", children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
+    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 bg-green-700 text-white", children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0 },
@@ -9126,7 +9126,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               children: [
                 /* @__PURE__ */ s("div", { className: "text-4xl mb-3", children: y.icon }),
                 /* @__PURE__ */ s("h3", { className: "mb-2", children: y.title }),
-                /* @__PURE__ */ s("p", { className: "text-purple-100", children: y.text })
+                /* @__PURE__ */ s("p", { className: "text-green-100", children: y.text })
               ]
             },
             y.title
@@ -9149,7 +9149,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             {
               whileTap: { scale: 0.98 },
               onClick: () => e?.("products"),
-              className: "w-full px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors",
+              className: "w-full px-6 py-3 bg-green-700 text-white rounded-lg hover:bg-green-800 transition-colors",
               children: "Browse Pet Products →"
             }
           )
@@ -9183,7 +9183,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: () => {
                     Ee(!1), te(!1), ue(!1), qe("all");
                   },
-                  className: "text-purple-600 hover:text-purple-700 transition-colors",
+                  className: "text-green-600 hover:text-green-700 transition-colors",
                   children: "Clear"
                 }
               ),
@@ -9208,7 +9208,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "🏠" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Daycare Available" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${pe ? "bg-purple-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${pe ? "bg-green-700" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
                   ]
                 }
               ),
@@ -9222,7 +9222,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Open Weekends" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${W ? "bg-purple-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${W ? "bg-green-700" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
                   ]
                 }
               ),
@@ -9236,13 +9236,13 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${ae ? "bg-purple-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${ae ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${ae ? "bg-green-700" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${ae ? "translate-x-6" : "translate-x-1"}` }) })
                   ]
                 }
               ),
               /* @__PURE__ */ d("div", { children: [
                 /* @__PURE__ */ s("label", { className: "text-sm text-gray-600 mb-2 block", children: "Price Range" }),
-                /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-purple-50 border-2 border-purple-200 rounded-lg", children: [
+                /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg", children: [
                   /* @__PURE__ */ s(Zs, { className: "w-5 h-5 text-green-600" }),
                   /* @__PURE__ */ d(
                     "select",
@@ -9269,7 +9269,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => {
                   Xe(!1), A(10);
                 },
-                className: "w-full bg-gradient-to-r from-purple-600 to-pink-600 text-white py-3 rounded-xl hover:shadow-lg transition-shadow",
+                className: "w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-xl hover:shadow-lg transition-shadow",
                 children: "Apply Filters"
               }
             ) })
