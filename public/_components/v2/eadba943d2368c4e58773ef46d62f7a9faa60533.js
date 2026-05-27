@@ -8211,7 +8211,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
     /* @__PURE__ */ s("div", { className: "mt-auto w-full h-10 bg-gray-200 rounded-lg" })
   ] });
   return /* @__PURE__ */ d("div", { className: "min-h-screen", children: [
-    /* @__PURE__ */ s("section", { className: "bg-gradient-to-br from-green-400 via-emerald-500 to-teal-600 text-white h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[31.25px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
+    /* @__PURE__ */ s("section", { className: "bg-gradient-to-br from-green-400 via-emerald-500 to-teal-600 text-white h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[32px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0, y: 30 },
@@ -8244,7 +8244,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         {
           initial: { opacity: 0, y: 20 },
           animate: { opacity: 1, y: 0 },
-          className: "bg-white rounded-2xl shadow-md md:shadow-sm p-3.5 md:p-4 mb-6 md:mb-4 mt-2 md:mt-0 flex flex-col sm:flex-row gap-3 md:gap-4",
+          className: "bg-white rounded-2xl shadow-md md:shadow-sm p-3.5 md:p-4 mb-6 md:mb-4 mt-0 md:mt-0 flex flex-col sm:flex-row gap-3 md:gap-4",
           children: [
             /* @__PURE__ */ d("div", { className: "flex-1 relative", children: [
               /* @__PURE__ */ s(mr, { className: "absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" }),
