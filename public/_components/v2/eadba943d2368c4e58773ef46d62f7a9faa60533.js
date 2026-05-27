@@ -8244,7 +8244,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         {
           initial: { opacity: 0, y: 20 },
           animate: { opacity: 1, y: 0 },
-          className: "bg-white rounded-2xl shadow-md md:shadow-sm p-3.5 md:p-4 mb-6 md:mb-4 -mt-[24px] md:mt-0 flex flex-col sm:flex-row gap-3 md:gap-4",
+          className: "bg-white rounded-2xl shadow-md md:shadow-sm p-3.5 md:p-4 mb-6 md:mb-4 -mt-[12px] md:mt-0 flex flex-col sm:flex-row gap-3 md:gap-4",
           children: [
             /* @__PURE__ */ d("div", { className: "flex-1 relative", children: [
               /* @__PURE__ */ s(mr, { className: "absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" }),
