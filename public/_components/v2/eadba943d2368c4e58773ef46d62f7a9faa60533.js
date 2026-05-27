@@ -8347,7 +8347,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             /* @__PURE__ */ d(
               "div",
               {
-                className: "flex items-center justify-between md:gap-3 md:px-4 md:py-3 md:bg-green-50 md:border-2 md:border-green-200 md:rounded-lg cursor-pointer md:hover:bg-green-100 transition-colors",
+                className: "flex items-center justify-between gap-3 px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg cursor-pointer hover:bg-green-100 transition-colors",
                 onClick: () => Ee(!pe),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
@@ -8361,7 +8361,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             /* @__PURE__ */ d(
               "div",
               {
-                className: "flex items-center justify-between md:gap-3 md:px-4 md:py-3 md:bg-green-50 md:border-2 md:border-green-200 md:rounded-lg cursor-pointer md:hover:bg-green-100 transition-colors",
+                className: "flex items-center justify-between gap-3 px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg cursor-pointer hover:bg-green-100 transition-colors",
                 onClick: () => te(!W),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
