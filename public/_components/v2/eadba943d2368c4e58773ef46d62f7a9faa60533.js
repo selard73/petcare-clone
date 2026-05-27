@@ -8311,7 +8311,8 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               "button",
               {
                 onClick: () => Xe(!0),
-                className: "md:hidden flex items-center justify-center gap-2 px-4 py-2.5 bg-green-700 text-white rounded-full hover:bg-green-800 transition-colors",
+                className: "md:hidden flex items-center justify-center gap-2 px-4 py-2.5 text-white rounded-full transition-colors",
+                style: { backgroundColor: "#15803d", border: "1px solid #166534" },
                 children: [
                   /* @__PURE__ */ s(Am, { className: "w-4 h-4" }),
                   /* @__PURE__ */ s("span", { className: "text-sm", children: "Filters" })
