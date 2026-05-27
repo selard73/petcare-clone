@@ -8327,7 +8327,8 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
           initial: { opacity: 0, y: 20 },
           animate: { opacity: 1, y: 0 },
           transition: { delay: 0.1 },
-          className: "hidden md:block bg-green-300 rounded-xl shadow-md p-4 md:p-6 mb-8",
+          className: "hidden md:block rounded-xl shadow-md p-4 md:p-6 mb-8",
+          style: { backgroundColor: "#86efac" },
           children: /* @__PURE__ */ d("div", { className: "flex flex-col md:flex-row gap-3 md:gap-4 items-stretch justify-between", children: [
             /* @__PURE__ */ s("div", { className: "w-full md:w-auto", children: /* @__PURE__ */ d(
               "select",
@@ -8514,7 +8515,8 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: (B) => {
                     window.innerWidth < 768 && B.stopPropagation(), i(y);
                   },
-                  className: "mt-auto w-full inline-flex items-center justify-center bg-green-700 text-white font-semibold py-2 rounded-lg hover:bg-green-800 transition-colors shadow-sm",
+                  className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm",
+                  style: { backgroundColor: "#15803d" },
                   children: "View Details"
                 }
               )
