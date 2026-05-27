@@ -5888,7 +5888,7 @@ function Qs({ onNavigate: t }) {
                             /* @__PURE__ */ s("option", { value: "grooming", children: "Grooming" }),
                             /* @__PURE__ */ s("option", { value: "training", children: "Training" }),
                             /* @__PURE__ */ s("option", { value: "boarding", children: "Boarding & Daycare" }),
-                            /* @__PURE__ */ s("option", { value: "vet", children: "Vet Services" })
+                            /* @__PURE__ */ s("option", { value: "vet", children: "Vet Care" })
                           ]
                         }
                       )
@@ -8780,7 +8780,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                     /* @__PURE__ */ s("option", { value: "grooming", children: "Grooming" }),
                     /* @__PURE__ */ s("option", { value: "training", children: "Training" }),
                     /* @__PURE__ */ s("option", { value: "boarding", children: "Boarding & Daycare" }),
-                    /* @__PURE__ */ s("option", { value: "vet", children: "Vet Services" })
+                    /* @__PURE__ */ s("option", { value: "vet", children: "Vet Care" })
                   ]
                 }
               )
@@ -9659,7 +9659,7 @@ function bf({ onNavigate: t, user: e }) {
             ),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Your Shortlist" })
           ] }),
-          /* @__PURE__ */ s("p", { className: "hidden md:block max-w-2xl mx-auto md:text-base", children: "All your shortlisted pet service providers in one place! Quick access to the grooming, training, boarding, and vet services you're interested in." })
+          /* @__PURE__ */ s("p", { className: "hidden md:block max-w-2xl mx-auto md:text-base", children: "All your shortlisted pet service providers in one place! Quick access to the grooming, training, boarding, and vet care you're interested in." })
         ]
       }
     ) }) }),
@@ -10124,7 +10124,7 @@ function Nf({
                 className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 ${r === "vet" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                 children: [
                   /* @__PURE__ */ s("span", { className: "text-xl", children: "⚕️" }),
-                  /* @__PURE__ */ s("span", { children: "Vet Services" })
+                  /* @__PURE__ */ s("span", { children: "Vet Care" })
                 ]
               }
             ),
@@ -13628,7 +13628,7 @@ function iy({ editBusiness: t, onClose: e }) {
               /* @__PURE__ */ s("option", { value: "grooming", children: "Grooming" }),
               /* @__PURE__ */ s("option", { value: "training", children: "Training" }),
               /* @__PURE__ */ s("option", { value: "boarding", children: "Boarding & Daycare" }),
-              /* @__PURE__ */ s("option", { value: "vet", children: "Vet Services" })
+              /* @__PURE__ */ s("option", { value: "vet", children: "Vet Care" })
             ]
           }
         )
@@ -15245,7 +15245,7 @@ function oy() {
             {
               onClick: () => C("vet"),
               className: `px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "vet" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-              children: "⚕️ Vet Services"
+              children: "⚕️ Vet Care"
             }
           ),
           /* @__PURE__ */ s(

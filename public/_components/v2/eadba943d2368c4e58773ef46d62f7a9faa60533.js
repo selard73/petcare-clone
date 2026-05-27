@@ -5888,7 +5888,7 @@ function Qs({ onNavigate: t }) {
                             /* @__PURE__ */ s("option", { value: "grooming", children: "Grooming" }),
                             /* @__PURE__ */ s("option", { value: "training", children: "Training" }),
                             /* @__PURE__ */ s("option", { value: "boarding", children: "Boarding & Daycare" }),
-                            /* @__PURE__ */ s("option", { value: "vet", children: "Vet Services" })
+                            /* @__PURE__ */ s("option", { value: "vet", children: "Vet Care" })
                           ]
                         }
                       )
@@ -7986,60 +7986,154 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
 function lf({ onEditBusiness: t, onNavigate: e } = {}) {
   const r = [
     {
-      name: "Overnight Boarding",
-      price: "$35-$55/night",
-      icon: Nm,
-      description: "Safe and comfortable overnight stays with 24/7 supervision",
-      features: ["Climate-controlled rooms", "Regular potty breaks", "Bedtime snacks", "Morning playtime"],
-      color: "bg-indigo-100"
-    },
-    {
-      name: "Doggy Daycare",
-      price: "$25-$40/day",
-      icon: Bm,
-      description: "Fun-filled days of play and socialization while you work",
-      features: ["Group play sessions", "Individual attention", "Rest periods", "Photo updates"],
-      color: "bg-green-100"
-    },
-    {
-      name: "Extended Stay",
-      price: "$30-$50/night",
-      icon: ul,
-      description: "Long-term boarding for vacations and extended trips",
-      features: ["Weekly discounts", "Extra playtime", "Personalized care", "Daily updates"],
-      color: "bg-purple-100"
-    },
-    {
-      name: "Luxury Suites",
-      price: "$55-$85/night",
-      icon: yi,
-      description: "Premium accommodations with webcam access and extras",
-      features: ["Private suites", "Live webcam feed", "Spa services", "Gourmet treats"],
-      color: "bg-pink-100"
-    }
-  ], n = [
-    {
+      id: "boarding-1",
       name: "Happy Tails Boarding",
-      location: "Darlington",
+      city: "Darlington",
       rating: 4.9,
-      features: ["Indoor/outdoor play areas", "Climate control", "Webcam access", "24/7 staff"],
-      capacity: "Small to large dogs"
+      priceRange: "$$",
+      daycareAvailable: !0,
+      address: "1406 Paws Lane",
+      zipCode: "29532",
+      phone: "(843) 555-0114",
+      description: "Safe and playful overnight boarding and daycare with monitored indoor/outdoor yards.",
+      paymentMethods: ["Cash", "Credit Card", "Debit Card"],
+      boardingStyles: ["Kenneled", "Cage-Free"],
+      servicesOffered: ["Overnight Boarding", "Daycare", "Grooming"],
+      specialFeatures: ["Overnight Staff", "Webcam Access", "Outdoor Play Area"],
+      photos: [Wr],
+      hours: {
+        monday: "7:00 AM - 7:00 PM",
+        tuesday: "7:00 AM - 7:00 PM",
+        wednesday: "7:00 AM - 7:00 PM",
+        thursday: "7:00 AM - 7:00 PM",
+        friday: "7:00 AM - 7:00 PM",
+        saturday: "8:00 AM - 4:00 PM",
+        sunday: "9:00 AM - 2:00 PM"
+      }
     },
     {
+      id: "boarding-2",
+      name: "Darlington Pet Lodge",
+      city: "Darlington",
+      rating: 4.6,
+      priceRange: "$",
+      daycareAvailable: !1,
+      address: "28 Country Kennel Dr",
+      zipCode: "29540",
+      phone: "(843) 555-0108",
+      description: "Affordable long-stay boarding with flexible pickup windows and daily enrichment.",
+      paymentMethods: ["Cash", "Credit Card"],
+      boardingStyles: ["Kenneled"],
+      servicesOffered: ["Overnight Boarding", "Training"],
+      specialFeatures: ["Overnight Staff", "Outdoor Play Area"],
+      photos: [Wr],
+      hours: {
+        monday: "8:00 AM - 6:00 PM",
+        tuesday: "8:00 AM - 6:00 PM",
+        wednesday: "8:00 AM - 6:00 PM",
+        thursday: "8:00 AM - 6:00 PM",
+        friday: "8:00 AM - 6:00 PM",
+        saturday: "8:00 AM - 1:00 PM",
+        sunday: "Closed"
+      }
+    },
+    {
+      id: "boarding-3",
       name: "Paws Paradise Resort",
-      location: "Florence",
+      city: "Florence",
       rating: 4.8,
-      features: ["Swimming pool", "Grooming services", "Training available", "Cat boarding"],
-      capacity: "All pets welcome"
+      priceRange: "$$$",
+      daycareAvailable: !0,
+      address: "900 Riverbend Rd",
+      zipCode: "29501",
+      phone: "(843) 555-0168",
+      description: "Premium boarding resort with structured daycare groups and daily report cards.",
+      paymentMethods: ["Credit Card", "Debit Card", "Digital Wallet"],
+      boardingStyles: ["Cage-Free", "Kenneled"],
+      servicesOffered: ["Overnight Boarding", "Daycare", "Grooming", "Training"],
+      specialFeatures: ["Overnight Staff", "Vet On-Site", "Webcam Access", "Outdoor Play Area"],
+      photos: [Wr],
+      hours: {
+        monday: "6:30 AM - 7:30 PM",
+        tuesday: "6:30 AM - 7:30 PM",
+        wednesday: "6:30 AM - 7:30 PM",
+        thursday: "6:30 AM - 7:30 PM",
+        friday: "6:30 AM - 7:30 PM",
+        saturday: "7:30 AM - 5:00 PM",
+        sunday: "7:30 AM - 5:00 PM"
+      }
     },
     {
+      id: "boarding-4",
+      name: "Florence Home Pet Stay",
+      city: "Florence",
+      rating: 4.4,
+      priceRange: "$$",
+      daycareAvailable: !0,
+      address: "74 Garden Path",
+      zipCode: "29505",
+      phone: "(843) 555-0135",
+      description: "Boutique in-home boarding and small-group daycare designed for shy and senior pets.",
+      paymentMethods: ["Cash", "Credit Card", "Check"],
+      boardingStyles: ["In-Home"],
+      servicesOffered: ["Overnight Boarding", "Daycare"],
+      specialFeatures: ["Webcam Access", "Outdoor Play Area"],
+      photos: [Wr],
+      hours: {
+        monday: "7:30 AM - 6:00 PM",
+        tuesday: "7:30 AM - 6:00 PM",
+        wednesday: "7:30 AM - 6:00 PM",
+        thursday: "7:30 AM - 6:00 PM",
+        friday: "7:30 AM - 6:00 PM",
+        saturday: "9:00 AM - 12:00 PM",
+        sunday: "Closed"
+      }
+    },
+    {
+      id: "boarding-5",
       name: "Canine Country Club",
-      location: "Hartsville",
+      city: "Hartsville",
       rating: 4.7,
-      features: ["Large play yards", "Agility equipment", "Nature walks", "Pick-up/drop-off"],
-      capacity: "Dogs only"
+      priceRange: "$$",
+      daycareAvailable: !0,
+      address: "411 Meadow Run",
+      zipCode: "29550",
+      phone: "(843) 555-0172",
+      description: "Spacious play-based boarding and daycare campus with structured social sessions.",
+      paymentMethods: ["Credit Card", "Debit Card"],
+      boardingStyles: ["Cage-Free", "Kenneled"],
+      servicesOffered: ["Overnight Boarding", "Daycare", "Training"],
+      specialFeatures: ["Overnight Staff", "Webcam Access", "Outdoor Play Area"],
+      photos: [Wr],
+      hours: {
+        monday: "7:00 AM - 7:00 PM",
+        tuesday: "7:00 AM - 7:00 PM",
+        wednesday: "7:00 AM - 7:00 PM",
+        thursday: "7:00 AM - 7:00 PM",
+        friday: "7:00 AM - 7:00 PM",
+        saturday: "8:00 AM - 3:00 PM",
+        sunday: "8:00 AM - 3:00 PM"
+      }
     }
-  ];
+  ], [n, i] = E(""), [o, a] = E("all"), [l, c] = E(!1), [u, h] = E(!1), [p, m] = E(!1), [f, v] = E("all"), [g, b] = E(null);
+  U(() => {
+    window.scrollTo(0, 0);
+  }, []);
+  const w = (C) => {
+    const R = C.hours || {};
+    return !(R.saturday?.toLowerCase().includes("closed") && R.sunday?.toLowerCase().includes("closed"));
+  }, x = r.filter((C) => {
+    const R = n.trim().toLowerCase(), M = !R || C.name.toLowerCase().includes(R) || C.description.toLowerCase().includes(R), k = o === "all" || C.city === o, I = !l || C.daycareAvailable, z = !u || w(C), ee = !p || C.rating >= 4, G = f === "all" || C.priceRange === f;
+    return M && k && I && z && ee && G;
+  }), T = (C) => {
+    const R = C.hours || {};
+    return ["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"].map(
+      (M) => /* @__PURE__ */ d("div", { className: "flex justify-between gap-4 text-sm", children: [
+        /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize", children: M }),
+        /* @__PURE__ */ s("span", { className: `${R[M]?.toLowerCase().includes("closed") ? "text-red-600" : "text-green-700"}`, children: R[M] || "Closed" })
+      ] }, M)
+    );
+  };
   return /* @__PURE__ */ d("div", { className: "min-h-screen", children: [
     /* @__PURE__ */ s("section", { className: "bg-gradient-to-br from-green-400 via-emerald-500 to-teal-600 text-white h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[8px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
@@ -8068,191 +8162,225 @@ function lf({ onEditBusiness: t, onNavigate: e } = {}) {
         ]
       }
     ) }) }),
-    /* @__PURE__ */ s("section", { className: "py-16 px-4 sm:px-6 lg:px-8 bg-white", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto", children: [
-      /* @__PURE__ */ d(
-        D.div,
-        {
-          initial: { opacity: 0 },
-          whileInView: { opacity: 1 },
-          viewport: { once: !0 },
-          className: "text-center mb-12",
-          children: [
-            /* @__PURE__ */ s("h2", { className: "text-green-600 mb-4", children: "Boarding & Daycare Options" }),
-            /* @__PURE__ */ s("p", { className: "text-gray-600", children: "Choose the perfect care plan for your pet" })
-          ]
-        }
-      ),
-      /* @__PURE__ */ s("div", { className: "grid md:grid-cols-2 gap-8", children: r.map((i, o) => {
-        const a = i.icon;
-        return /* @__PURE__ */ d(
-          D.div,
-          {
-            initial: { opacity: 0, y: 50 },
-            whileInView: { opacity: 1, y: 0 },
-            viewport: { once: !0 },
-            transition: { delay: o * 0.1 },
-            whileHover: { scale: 1.02 },
-            className: "bg-white rounded-2xl shadow-lg p-6 border-2 border-gray-100 hover:border-green-300 transition-colors",
-            children: [
-              /* @__PURE__ */ d("div", { className: "flex items-start gap-4 mb-4", children: [
-                /* @__PURE__ */ s("div", { className: `${i.color} p-4 rounded-xl`, children: /* @__PURE__ */ s(a, { className: "w-8 h-8 text-green-600" }) }),
-                /* @__PURE__ */ d("div", { className: "flex-1", children: [
-                  /* @__PURE__ */ d("div", { className: "flex justify-between items-start mb-2", children: [
-                    /* @__PURE__ */ s("h3", { className: "text-gray-800", children: i.name }),
-                    /* @__PURE__ */ s("span", { className: "text-green-600", children: i.price })
-                  ] }),
-                  /* @__PURE__ */ s("p", { className: "text-gray-600 mb-4", children: i.description })
-                ] })
-              ] }),
-              /* @__PURE__ */ d("div", { className: "border-t pt-4", children: [
-                /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "Includes:" }),
-                /* @__PURE__ */ s("ul", { className: "grid grid-cols-2 gap-2", children: i.features.map((l) => /* @__PURE__ */ d("li", { className: "text-gray-600 text-sm flex items-start gap-1", children: [
-                  /* @__PURE__ */ s("span", { className: "text-green-500", children: "✓" }),
-                  /* @__PURE__ */ s("span", { children: l })
-                ] }, l)) })
-              ] })
-            ]
-          },
-          i.name
-        );
-      }) })
-    ] }) }),
-    /* @__PURE__ */ s("section", { className: "py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-green-50 to-white", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto", children: [
-      /* @__PURE__ */ d(
-        D.div,
-        {
-          initial: { opacity: 0 },
-          whileInView: { opacity: 1 },
-          viewport: { once: !0 },
-          className: "text-center mb-12",
-          children: [
-            /* @__PURE__ */ s("h2", { className: "text-green-600 mb-4", children: "Top Boarding Facilities" }),
-            /* @__PURE__ */ s("p", { className: "text-gray-600", children: "Trusted facilities in the Darlington/Florence area" })
-          ]
-        }
-      ),
-      /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: n.map((i, o) => /* @__PURE__ */ d(
-        D.div,
-        {
-          initial: { opacity: 0, scale: 0.9 },
-          whileInView: { opacity: 1, scale: 1 },
-          viewport: { once: !0 },
-          transition: { delay: o * 0.1 },
-          whileHover: { y: -10 },
-          className: "bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-all",
-          children: [
-            /* @__PURE__ */ d("div", { className: "text-center mb-4", children: [
-              /* @__PURE__ */ s("div", { className: "w-20 h-20 bg-gradient-to-br from-green-400 to-emerald-500 rounded-full mx-auto mb-3 flex items-center justify-center text-4xl", children: "🏡" }),
-              /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-2", children: i.name }),
-              /* @__PURE__ */ d("div", { className: "flex items-center justify-center gap-1 mb-2", children: [
-                /* @__PURE__ */ s("span", { className: "text-yellow-500", children: "⭐" }),
-                /* @__PURE__ */ s("span", { children: i.rating })
-              ] }),
-              /* @__PURE__ */ d("p", { className: "text-gray-600 text-sm mb-2", children: [
-                "📍 ",
-                i.location
-              ] }),
-              /* @__PURE__ */ s("p", { className: "text-green-600 text-sm", children: i.capacity })
-            ] }),
-            /* @__PURE__ */ d("div", { className: "border-t pt-4", children: [
-              /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-3", children: "Amenities:" }),
-              /* @__PURE__ */ s("div", { className: "space-y-2", children: i.features.map((a) => /* @__PURE__ */ d("div", { className: "text-gray-600 text-sm flex items-center gap-2", children: [
-                /* @__PURE__ */ s("span", { className: "text-green-500", children: "✓" }),
-                /* @__PURE__ */ s("span", { children: a })
-              ] }, a)) })
-            ] }),
+    /* @__PURE__ */ s("section", { className: "pt-0 md:py-16 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-green-50 to-white", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto", children: [
+      /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl shadow-md md:shadow-sm p-3.5 md:p-4 mb-4 -mt-[24px] md:mt-0 flex flex-col sm:flex-row gap-3 md:gap-4", children: [
+        /* @__PURE__ */ d("div", { className: "flex-1 relative", children: [
+          /* @__PURE__ */ s(mr, { className: "absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" }),
+          /* @__PURE__ */ s(
+            "input",
+            {
+              type: "text",
+              placeholder: "Search boarding/daycare by name...",
+              value: n,
+              onChange: (C) => i(C.target.value),
+              className: "w-full pl-10 pr-4 py-3 border-2 border-green-200 rounded-lg focus:outline-none focus:border-green-400 transition-colors"
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ d("div", { className: "bg-green-200 rounded-xl shadow-md p-4 md:p-6 mb-8", children: [
+        /* @__PURE__ */ d("div", { className: "grid grid-cols-1 md:grid-cols-5 gap-3", children: [
+          /* @__PURE__ */ d(
+            "select",
+            {
+              value: o,
+              onChange: (C) => a(C.target.value),
+              className: "px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg focus:outline-none focus:border-green-400",
+              children: [
+                /* @__PURE__ */ s("option", { value: "all", children: "All Cities" }),
+                /* @__PURE__ */ s("option", { value: "Darlington", children: "Darlington" }),
+                /* @__PURE__ */ s("option", { value: "Florence", children: "Florence" }),
+                /* @__PURE__ */ s("option", { value: "Hartsville", children: "Hartsville" })
+              ]
+            }
+          ),
+          /* @__PURE__ */ d(
+            "div",
+            {
+              className: "flex items-center justify-between gap-3 px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg cursor-pointer",
+              onClick: () => c(!l),
+              children: [
+                /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Daycare Available" }),
+                /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${l ? "bg-green-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${l ? "translate-x-6" : "translate-x-1"}` }) })
+              ]
+            }
+          ),
+          /* @__PURE__ */ d(
+            "div",
+            {
+              className: "flex items-center justify-between gap-3 px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg cursor-pointer",
+              onClick: () => h(!u),
+              children: [
+                /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Open Weekends" }),
+                /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${u ? "bg-green-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${u ? "translate-x-6" : "translate-x-1"}` }) })
+              ]
+            }
+          ),
+          /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg cursor-pointer", onClick: () => m(!p), children: [
+            /* @__PURE__ */ s("span", { className: "text-gray-700", children: "4 Stars" }),
             /* @__PURE__ */ s(
-              D.button,
+              "input",
               {
-                whileHover: { scale: 1.05 },
-                whileTap: { scale: 0.95 },
-                className: "mt-4 w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors",
-                children: "Book Now"
+                type: "checkbox",
+                checked: p,
+                onChange: (C) => m(C.target.checked),
+                className: "w-5 h-5 text-green-600 rounded cursor-pointer ml-auto"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-green-50 border-2 border-green-200 rounded-lg", children: [
+            /* @__PURE__ */ s(Zs, { className: "w-5 h-5 text-green-600" }),
+            /* @__PURE__ */ d(
+              "select",
+              {
+                value: f,
+                onChange: (C) => v(C.target.value),
+                className: "flex-1 bg-transparent focus:outline-none cursor-pointer text-gray-700",
+                children: [
+                  /* @__PURE__ */ s("option", { value: "all", children: "Price Range" }),
+                  /* @__PURE__ */ s("option", { value: "$", children: "$" }),
+                  /* @__PURE__ */ s("option", { value: "$$", children: "$$" }),
+                  /* @__PURE__ */ s("option", { value: "$$$", children: "$$$" }),
+                  /* @__PURE__ */ s("option", { value: "$$$$", children: "$$$$" })
+                ]
+              }
+            )
+          ] })
+        ] })
+      ] }),
+      /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6", children: x.length === 0 ? /* @__PURE__ */ d("div", { className: "col-span-1 md:col-span-2 text-center py-12", children: [
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "🔍" }),
+        /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No boarding/daycare matches found" })
+      ] }) : x.map((C) => /* @__PURE__ */ d(
+        "div",
+        {
+          className: "bg-white rounded-xl shadow-md border border-gray-100 p-4 md:p-6 hover:shadow-xl transition-all flex flex-col",
+          children: [
+            /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ s("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: /* @__PURE__ */ s(
+              "img",
+              {
+                src: C.photos && C.photos.length > 0 ? C.photos[0] : Wr,
+                alt: C.name,
+                className: "absolute inset-0 w-full h-full rounded-t-xl object-contain bg-gradient-to-br from-green-100 to-emerald-100"
+              }
+            ) }) }),
+            /* @__PURE__ */ d("div", { className: "flex justify-between items-start mb-3", children: [
+              /* @__PURE__ */ s("h3", { className: "text-gray-800", children: C.name }),
+              /* @__PURE__ */ s("span", { className: "text-green-600", children: C.priceRange })
+            ] }),
+            /* @__PURE__ */ d("p", { className: "text-gray-600 mb-3", children: [
+              "📍 ",
+              C.city
+            ] }),
+            /* @__PURE__ */ d("div", { className: "flex items-center gap-2 mb-4", children: [
+              /* @__PURE__ */ s("span", { className: "text-yellow-500", children: "⭐" }),
+              /* @__PURE__ */ s("span", { className: "text-gray-700", children: C.rating.toFixed(1) }),
+              /* @__PURE__ */ s("span", { className: "text-xs px-2 py-1 rounded-full bg-green-100 text-green-700 ml-auto", children: C.daycareAvailable ? "Daycare Available" : "Boarding Only" })
+            ] }),
+            /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: C.description }),
+            /* @__PURE__ */ s(
+              "button",
+              {
+                onClick: () => b(C),
+                className: "mt-auto w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors",
+                children: "View Details"
               }
             )
           ]
         },
-        i.name
+        C.id
       )) })
     ] }) }),
-    /* @__PURE__ */ s("section", { className: "py-16 px-4 sm:px-6 lg:px-8 bg-white", children: /* @__PURE__ */ d("div", { className: "max-w-4xl mx-auto", children: [
-      /* @__PURE__ */ d(
-        D.div,
-        {
-          initial: { opacity: 0 },
-          whileInView: { opacity: 1 },
-          viewport: { once: !0 },
-          className: "text-center mb-8",
-          children: [
-            /* @__PURE__ */ s("h2", { className: "text-green-600 mb-4", children: "What to Bring" }),
-            /* @__PURE__ */ s("p", { className: "text-gray-600", children: "Make your pet feel at home with these essentials" })
-          ]
-        }
-      ),
-      /* @__PURE__ */ s("div", { className: "grid md:grid-cols-2 gap-6", children: [
-        { icon: "🍖", title: "Food & Treats", items: ["Regular food (labeled)", "Favorite treats", "Feeding instructions"] },
-        { icon: "💊", title: "Medications", items: ["Current medications", "Dosage instructions", "Medical records"] },
-        { icon: "🧸", title: "Comfort Items", items: ["Favorite toy", "Blanket from home", "Bed (optional)"] },
-        { icon: "📋", title: "Important Info", items: ["Vaccination records", "Emergency contact", "Special needs"] }
-      ].map((i, o) => /* @__PURE__ */ s(
-        D.div,
-        {
-          initial: { opacity: 0, x: o % 2 === 0 ? -30 : 30 },
-          whileInView: { opacity: 1, x: 0 },
-          viewport: { once: !0 },
-          transition: { delay: o * 0.1 },
-          className: "bg-green-50 rounded-xl p-6",
-          children: /* @__PURE__ */ d("div", { className: "flex items-start gap-4", children: [
-            /* @__PURE__ */ s("div", { className: "text-4xl", children: i.icon }),
-            /* @__PURE__ */ d("div", { children: [
-              /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-3", children: i.title }),
-              /* @__PURE__ */ s("ul", { className: "space-y-1", children: i.items.map((a) => /* @__PURE__ */ d("li", { className: "text-gray-600 text-sm flex items-start gap-2", children: [
-                /* @__PURE__ */ s("span", { className: "text-green-500 mt-0.5", children: "•" }),
-                /* @__PURE__ */ s("span", { children: a })
-              ] }, a)) })
-            ] })
-          ] })
-        },
-        i.title
-      )) })
-    ] }) }),
-    /* @__PURE__ */ s("section", { className: "py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-green-600 to-emerald-600 text-white", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto", children: [
-      /* @__PURE__ */ d(
-        D.div,
-        {
-          initial: { opacity: 0 },
-          whileInView: { opacity: 1 },
-          viewport: { once: !0 },
-          className: "text-center mb-12",
-          children: [
-            /* @__PURE__ */ s("h2", { className: "mb-4", children: "Your Peace of Mind" }),
-            /* @__PURE__ */ s("p", { className: "max-w-2xl mx-auto", children: "We know leaving your pet can be stressful. That's why we go above and beyond to keep you connected." })
-          ]
-        }
-      ),
-      /* @__PURE__ */ s("div", { className: "grid md:grid-cols-4 gap-6", children: [
-        { icon: "📸", title: "Photo Updates", text: "Daily pics of your pet" },
-        { icon: "📱", title: "Text Updates", text: "Real-time notifications" },
-        { icon: "👁️", title: "Webcam Access", text: "Watch them play live" },
-        { icon: "🔒", title: "Secure Facility", text: "Safe & monitored 24/7" }
-      ].map((i, o) => /* @__PURE__ */ d(
-        D.div,
-        {
-          initial: { opacity: 0, y: 30 },
-          whileInView: { opacity: 1, y: 0 },
-          viewport: { once: !0 },
-          transition: { delay: o * 0.1 },
-          whileHover: { scale: 1.05, rotate: 2 },
-          className: "bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center",
-          children: [
-            /* @__PURE__ */ s("div", { className: "text-5xl mb-3", children: i.icon }),
-            /* @__PURE__ */ s("h3", { className: "mb-2", children: i.title }),
-            /* @__PURE__ */ s("p", { className: "text-green-100", children: i.text })
-          ]
-        },
-        i.title
-      )) })
-    ] }) })
+    /* @__PURE__ */ s(Pt, { children: g && /* @__PURE__ */ d(
+      D.div,
+      {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        className: "fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4",
+        onClick: () => b(null),
+        children: /* @__PURE__ */ d(
+          D.div,
+          {
+            initial: { scale: 0.95, opacity: 0 },
+            animate: { scale: 1, opacity: 1 },
+            exit: { scale: 0.95, opacity: 0 },
+            onClick: (C) => C.stopPropagation(),
+            className: "bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl",
+            children: [
+              /* @__PURE__ */ d("div", { className: "relative h-72 overflow-hidden rounded-t-2xl bg-gradient-to-br from-green-100 to-emerald-100", children: [
+                /* @__PURE__ */ s("img", { src: g.photos?.[0] || Wr, alt: g.name, className: "w-full h-full object-contain" }),
+                /* @__PURE__ */ s("div", { className: "absolute inset-0 bg-gradient-to-t from-black/50 to-transparent" }),
+                /* @__PURE__ */ s("button", { onClick: () => b(null), className: "absolute top-4 right-4 bg-white/90 p-2 rounded-full hover:bg-white", children: /* @__PURE__ */ s(we, { className: "w-5 h-5 text-gray-700" }) }),
+                /* @__PURE__ */ d("div", { className: "absolute bottom-4 left-6 text-white", children: [
+                  /* @__PURE__ */ s("h2", { className: "mb-1", children: g.name }),
+                  /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                    /* @__PURE__ */ s("span", { children: "⭐" }),
+                    /* @__PURE__ */ s("span", { children: g.rating.toFixed(1) }),
+                    /* @__PURE__ */ s("span", { className: "ml-2", children: g.priceRange })
+                  ] })
+                ] })
+              ] }),
+              /* @__PURE__ */ d("div", { className: "p-6", children: [
+                /* @__PURE__ */ s("p", { className: "text-gray-700 mb-6", children: g.description }),
+                /* @__PURE__ */ d("div", { className: "grid md:grid-cols-2 gap-4 mb-6", children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-green-50 rounded-lg", children: [
+                    /* @__PURE__ */ s(ar, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Address" }),
+                      /* @__PURE__ */ d("a", { href: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${g.address}, ${g.city}, SC ${g.zipCode}`)}`, target: "_blank", rel: "noopener noreferrer", className: "text-green-700 hover:underline", children: [
+                        g.address,
+                        ", ",
+                        g.city,
+                        ", SC ",
+                        g.zipCode
+                      ] })
+                    ] })
+                  ] }),
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-green-50 rounded-lg", children: [
+                    /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Phone" }),
+                      /* @__PURE__ */ s("a", { href: `tel:${g.phone}`, className: "text-green-700 hover:underline", children: g.phone })
+                    ] })
+                  ] }),
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-green-50 rounded-lg md:col-span-2", children: [
+                    /* @__PURE__ */ s(im, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { className: "w-full", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
+                      /* @__PURE__ */ s("div", { className: "space-y-1", children: T(g) })
+                    ] })
+                  ] })
+                ] }),
+                g.paymentMethods && g.paymentMethods.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6", children: [
+                  /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-3", children: "Payment Methods" }),
+                  /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: g.paymentMethods.map((C) => /* @__PURE__ */ s("span", { className: "bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm", children: C }, C)) })
+                ] }),
+                g.boardingStyles && g.boardingStyles.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6", children: [
+                  /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-3", children: "Boarding Style" }),
+                  /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: g.boardingStyles.map((C) => /* @__PURE__ */ s("span", { className: "bg-emerald-50 text-emerald-700 px-4 py-2 rounded-full text-sm", children: C }, C)) })
+                ] }),
+                g.servicesOffered && g.servicesOffered.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6", children: [
+                  /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-3", children: "Services Offered" }),
+                  /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: g.servicesOffered.map((C) => /* @__PURE__ */ s("span", { className: "bg-gradient-to-r from-green-100 to-emerald-100 text-emerald-800 px-4 py-2 rounded-full text-sm", children: C }, C)) })
+                ] }),
+                g.specialFeatures && g.specialFeatures.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6", children: [
+                  /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-3", children: "Special Features" }),
+                  /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: g.specialFeatures.map((C) => /* @__PURE__ */ d("span", { className: "bg-teal-50 text-teal-700 px-4 py-2 rounded-lg text-sm", children: [
+                    "✨ ",
+                    C
+                  ] }, C)) })
+                ] }),
+                /* @__PURE__ */ d("a", { href: `tel:${g.phone}`, className: "block w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-4 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-colors text-center", children: [
+                  "📞 Call ",
+                  g.name
+                ] })
+              ] })
+            ]
+          }
+        )
+      }
+    ) })
   ] });
 }
 function cf({ onEditBusiness: t, onNavigate: e } = {}) {
@@ -8780,7 +8908,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                     /* @__PURE__ */ s("option", { value: "grooming", children: "Grooming" }),
                     /* @__PURE__ */ s("option", { value: "training", children: "Training" }),
                     /* @__PURE__ */ s("option", { value: "boarding", children: "Boarding & Daycare" }),
-                    /* @__PURE__ */ s("option", { value: "vet", children: "Vet Services" })
+                    /* @__PURE__ */ s("option", { value: "vet", children: "Vet Care" })
                   ]
                 }
               )
@@ -9659,7 +9787,7 @@ function bf({ onNavigate: t, user: e }) {
             ),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Your Shortlist" })
           ] }),
-          /* @__PURE__ */ s("p", { className: "hidden md:block max-w-2xl mx-auto md:text-base", children: "All your shortlisted pet service providers in one place! Quick access to the grooming, training, boarding, and vet services you're interested in." })
+          /* @__PURE__ */ s("p", { className: "hidden md:block max-w-2xl mx-auto md:text-base", children: "All your shortlisted pet service providers in one place! Quick access to the grooming, training, boarding, and vet care you're interested in." })
         ]
       }
     ) }) }),
@@ -10124,7 +10252,7 @@ function Nf({
                 className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 ${r === "vet" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                 children: [
                   /* @__PURE__ */ s("span", { className: "text-xl", children: "⚕️" }),
-                  /* @__PURE__ */ s("span", { children: "Vet Services" })
+                  /* @__PURE__ */ s("span", { children: "Vet Care" })
                 ]
               }
             ),
@@ -13628,7 +13756,7 @@ function iy({ editBusiness: t, onClose: e }) {
               /* @__PURE__ */ s("option", { value: "grooming", children: "Grooming" }),
               /* @__PURE__ */ s("option", { value: "training", children: "Training" }),
               /* @__PURE__ */ s("option", { value: "boarding", children: "Boarding & Daycare" }),
-              /* @__PURE__ */ s("option", { value: "vet", children: "Vet Services" })
+              /* @__PURE__ */ s("option", { value: "vet", children: "Vet Care" })
             ]
           }
         )
@@ -15245,7 +15373,7 @@ function oy() {
             {
               onClick: () => C("vet"),
               className: `px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "vet" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-              children: "⚕️ Vet Services"
+              children: "⚕️ Vet Care"
             }
           ),
           /* @__PURE__ */ s(
