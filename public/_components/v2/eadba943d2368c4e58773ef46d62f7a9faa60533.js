@@ -7972,10 +7972,9 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
           /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ s("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: /* @__PURE__ */ s("img", { src: K.photos && K.photos.length > 0 ? K.photos[0] : Wr, alt: K.name, className: "absolute inset-0 w-full h-full object-cover rounded-t-xl" }) }) }),
           /* @__PURE__ */ d("div", { className: "flex justify-between items-start mb-3", children: [
             /* @__PURE__ */ s("h3", { className: "text-gray-800", children: K.name }),
-            K.priceRange && /* @__PURE__ */ s("div", { className: "text-blue-600", children: K.priceRange })
+            K.priceRange && /* @__PURE__ */ s("div", { className: "text-green-600", children: K.priceRange })
           ] }),
           /* @__PURE__ */ d("p", { className: "text-gray-600 mb-2", children: ["📍 ", K.city] }),
-          /* @__PURE__ */ d("p", { className: "text-blue-700 text-sm mb-2", children: ["🏆 ", K.certifications || "Certified Trainer"] }),
           /* @__PURE__ */ d("div", { className: "flex items-center gap-2 text-sm mb-3", children: [
             /* @__PURE__ */ s("span", { className: "text-yellow-500", children: "⭐⭐⭐⭐⭐" }),
             /* @__PURE__ */ s("span", { className: "text-gray-700", children: ((K.rating || 0).toFixed ? K.rating.toFixed(1) : K.rating) || "4.7" })
@@ -7984,7 +7983,6 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             K.inHomeTraining && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full", children: "🏠 In-Home" }),
             K.groupClassesAvailable && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-cyan-100 text-cyan-700 text-xs rounded-full", children: "👥 Group Classes" })
           ] }),
-          K.specialties && K.specialties.length > 0 && /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2 mb-3", children: K.specialties.slice(0, 4).map((L) => /* @__PURE__ */ s("span", { className: "bg-blue-50 text-blue-700 text-xs px-2 py-1 rounded-full", children: L }, L)) }),
           /* @__PURE__ */ s(D.button, { whileHover: { scale: 1.02 }, whileTap: { scale: 0.98 }, onClick: () => n(K), className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm", style: { backgroundColor: "#2563eb" }, children: "View Details" })
         ] }, K.id || K.name)),
         pe.length > R && !P && /* @__PURE__ */ s("div", { className: "col-span-1 md:col-span-2 flex justify-center mt-6 md:hidden", children: /* @__PURE__ */ s(D.button, { whileTap: { scale: 0.98 }, onClick: () => {
@@ -7993,7 +7991,17 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       ] }) })
     ] }),
     r && /* @__PURE__ */ s(D.div, { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 }, className: "fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4", onClick: () => n(null), children: /* @__PURE__ */ d(D.div, { initial: { scale: 0.9, opacity: 0 }, animate: { scale: 1, opacity: 1 }, exit: { scale: 0.9, opacity: 0 }, onClick: (K) => K.stopPropagation(), className: "bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl", children: [
-      /* @__PURE__ */ s("div", { className: "relative h-72 overflow-hidden rounded-t-2xl", children: /* @__PURE__ */ s("img", { src: r.photos && r.photos.length > 0 ? r.photos[0] : Wr, alt: r.name, className: "w-full h-72 object-cover" }) }),
+      /* @__PURE__ */ d("div", { className: "relative h-72 overflow-hidden rounded-t-2xl", children: [
+        /* @__PURE__ */ s("img", { src: r.photos && r.photos.length > 0 ? r.photos[0] : Wr, alt: r.name, className: "w-full h-72 object-cover" }),
+        /* @__PURE__ */ s(
+          "button",
+          {
+            onClick: () => n(null),
+            className: "absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-colors shadow-lg z-20",
+            children: /* @__PURE__ */ s(we, { className: "w-5 h-5 text-gray-700" })
+          }
+        )
+      ] }),
       /* @__PURE__ */ d("div", { className: "p-6 space-y-4", children: [
         /* @__PURE__ */ d("div", { className: "border-b pb-4", children: [
           /* @__PURE__ */ s("h2", { className: "text-gray-900 mb-2", children: r.name }),
@@ -8030,7 +8038,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         ] }),
         r.paymentMethods && r.paymentMethods.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
           /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Payment Methods" }),
-          /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.paymentMethods.map((L) => /* @__PURE__ */ s("span", { className: "bg-blue-50 text-blue-700 px-3 py-1 rounded-full text-sm", children: L }, L)) })
+          /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.paymentMethods.map((L) => /* @__PURE__ */ s("span", { className: "bg-green-50 border border-green-200 text-green-700 px-3 py-1 rounded-full text-sm", children: L }, L)) })
         ] }),
         r.trainingMethods && r.trainingMethods.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
           /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Training Methods" }),
@@ -8038,11 +8046,11 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         ] }),
         r.sessionFormats && r.sessionFormats.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
           /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Session Formats" }),
-          /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.sessionFormats.map((L) => /* @__PURE__ */ s("span", { className: "bg-indigo-50 text-indigo-700 px-3 py-1 rounded-full text-sm", children: L }, L)) })
+          /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.sessionFormats.map((L) => /* @__PURE__ */ s("span", { className: "bg-indigo-100 border border-indigo-200 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium", children: L }, L)) })
         ] }),
         r.specialties && r.specialties.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
           /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Specialties" }),
-          /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.specialties.map((L) => /* @__PURE__ */ s("span", { className: "bg-cyan-50 text-cyan-700 px-3 py-1 rounded-full text-sm", children: L }, L)) })
+          /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.specialties.map((L) => /* @__PURE__ */ s("span", { className: "bg-cyan-100 border border-cyan-200 text-cyan-700 px-3 py-1 rounded-full text-sm font-medium", children: L }, L)) })
         ] }),
         /* @__PURE__ */ s(D.a, { href: `tel:${r.phone}`, className: "hidden md:block w-full text-center text-white py-4 rounded-xl", style: { backgroundColor: "#2563eb" }, children: ["📞 Call ", r.name] })
       ] })
