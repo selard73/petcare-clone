@@ -7730,7 +7730,17 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
   }, [c, h]), U(() => {
     r && yn(r.id);
   }, [r]);
-  const z = async () => {
+  const getDeletedTrainingIds = () => {
+    try {
+      const K = localStorage.getItem("pawsitively_deleted_training_ids");
+      return new Set(K ? JSON.parse(K) : []);
+    } catch {
+      return new Set();
+    }
+  }, addDeletedTrainingId = (K) => {
+    const L = getDeletedTrainingIds();
+    L.add(K), localStorage.setItem("pawsitively_deleted_training_ids", JSON.stringify([...L]));
+  }, z = async () => {
     const K = [
       {
         id: "training-1",
@@ -7818,11 +7828,11 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       }
     ];
     try {
-      const L = (await Oe.getBusinesses("training")).businesses || [];
-      const y = new Set(L.map((F) => F.id)), B = [...L, ...K.filter((F) => !y.has(F.id))];
-      o(B);
+      const L = (await Oe.getBusinesses("training")).businesses || [], y = getDeletedTrainingIds(), B = new Set(L.map((F) => F.id)), _ = [...L, ...K.filter((F) => !B.has(F.id))].filter((F) => !y.has(F.id));
+      o(_);
     } catch (L) {
-      console.error("Error fetching training businesses:", L), o(K);
+      const y = getDeletedTrainingIds();
+      console.error("Error fetching training businesses:", L), o(K.filter((B) => !y.has(B.id)));
     } finally {
       l(!1);
     }
@@ -7868,7 +7878,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       return;
     ln(!0);
     try {
-      await Oe.deleteBusiness(r.id, "training", Kr), alert("Business listing deleted successfully!"), n(null), await z();
+      await Oe.deleteBusiness(r.id, "training", Kr), addDeletedTrainingId(r.id), o((L) => L.filter((y) => y.id !== r.id)), alert("Business listing deleted successfully!"), n(null), await z();
     } catch (K) {
       console.error("Error deleting business:", K), alert(K instanceof Error ? K.message : "Failed to delete business listing. Please try again.");
     } finally {
