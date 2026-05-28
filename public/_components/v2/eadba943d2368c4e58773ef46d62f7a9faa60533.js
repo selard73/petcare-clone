@@ -9125,11 +9125,11 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               whileInView: { opacity: 1, scale: 1 },
               viewport: { once: !0 },
               transition: { delay: F * 0.2 },
-              className: "bg-white/10 backdrop-blur-sm rounded-xl p-6",
+              className: "bg-white/15 backdrop-blur-sm rounded-xl p-6 border border-white/30",
               children: [
                 /* @__PURE__ */ s("div", { className: "text-4xl mb-3", children: y.icon }),
                 /* @__PURE__ */ s("h3", { className: "mb-2", children: y.title }),
-                /* @__PURE__ */ s("p", { className: "text-green-100", children: y.text })
+                /* @__PURE__ */ s("p", { className: "text-white/90", children: y.text })
               ]
             },
             y.title
@@ -10436,11 +10436,11 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               whileInView: { opacity: 1, scale: 1 },
               viewport: { once: !0 },
               transition: { delay: F * 0.2 },
-              className: "bg-white/10 backdrop-blur-sm rounded-xl p-6",
+              className: "bg-white/15 backdrop-blur-sm rounded-xl p-6 border border-white/30",
               children: [
                 /* @__PURE__ */ s("div", { className: "text-4xl mb-3", children: y.icon }),
                 /* @__PURE__ */ s("h3", { className: "mb-2", children: y.title }),
-                /* @__PURE__ */ s("p", { className: "text-orange-100", children: y.text })
+                /* @__PURE__ */ s("p", { className: "text-white/90", children: y.text })
               ]
             },
             y.title
