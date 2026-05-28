@@ -9146,13 +9146,14 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         className: "bg-white rounded-xl p-6 shadow-md border border-gray-100",
         children: [
           /* @__PURE__ */ s("h2", { className: "mb-3 text-left", children: "Pet Products We Recommend" }),
-          /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Carefully selected boarding essentials and comfort items we trust and love." }),
+          /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Carefully selected grooming tools and pet-safe essentials we trust and love." }),
           /* @__PURE__ */ s(
             D.button,
             {
               whileTap: { scale: 0.98 },
               onClick: () => e?.("products"),
-              className: "w-full px-6 py-3 bg-green-700 text-white rounded-lg hover:bg-green-800 transition-colors",
+              className: "w-full px-6 py-3 text-white rounded-lg transition-colors",
+              style: { backgroundColor: "#15803d", border: "1px solid #166534" },
               children: "Browse Pet Products →"
             }
           )
@@ -10456,13 +10457,14 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         className: "bg-white rounded-xl p-6 shadow-md border border-gray-100",
         children: [
           /* @__PURE__ */ s("h2", { className: "mb-3 text-left", children: "Pet Products We Recommend" }),
-          /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Recommended wellness and home-care products we trust for ongoing pet health." }),
+          /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Carefully selected grooming tools and pet-safe essentials we trust and love." }),
           /* @__PURE__ */ s(
             D.button,
             {
               whileTap: { scale: 0.98 },
               onClick: () => e?.("products"),
-              className: "w-full px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors",
+              className: "w-full px-6 py-3 text-white rounded-lg transition-colors",
+              style: { backgroundColor: "#ea580c", border: "1px solid #c2410c" },
               children: "Browse Pet Products →"
             }
           )
