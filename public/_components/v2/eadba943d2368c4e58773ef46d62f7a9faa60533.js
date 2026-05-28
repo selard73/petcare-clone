@@ -8158,7 +8158,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
           /* @__PURE__ */ d("p", { className: "text-gray-600 mb-2", children: ["📍 ", K.city] }),
           /* @__PURE__ */ d("div", { className: "flex items-center gap-2 text-sm mb-3", children: [
             /* @__PURE__ */ s("span", { className: "text-yellow-500", children: "⭐⭐⭐⭐⭐" }),
-            /* @__PURE__ */ s("span", { className: "text-gray-700", children: ((K.rating || 0).toFixed ? K.rating.toFixed(1) : K.rating) || "4.7" })
+            /* @__PURE__ */ s("span", { className: "text-gray-700", children: Number.isFinite(Number(K.rating)) ? Number(K.rating).toFixed(1) : "4.7" })
           ] }),
           /* @__PURE__ */ d("div", { className: "flex flex-wrap gap-2 mb-3", children: [
             K.inHomeTraining && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full", children: "🏠 In-Home" }),
