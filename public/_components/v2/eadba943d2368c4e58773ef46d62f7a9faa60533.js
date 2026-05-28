@@ -7002,7 +7002,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
           }
         )
       ] }) : /* @__PURE__ */ d(ie, { children: [
-        yt.slice(0, ft).map((y, F) => /* @__PURE__ */ d(
+        (window.innerWidth >= 768 ? yt : yt.slice(0, ft)).map((y, F) => /* @__PURE__ */ d(
           D.div,
           {
             initial: window.innerWidth >= 768 ? { opacity: 0, y: 30 } : !1,
