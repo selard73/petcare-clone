@@ -9146,7 +9146,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         className: "bg-white rounded-xl p-6 shadow-md border border-gray-100",
         children: [
           /* @__PURE__ */ s("h2", { className: "mb-3 text-left", children: "Pet Products We Recommend" }),
-          /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Carefully selected grooming tools and pet-safe essentials we trust and love." }),
+          /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Pet-approved toys and bedding essentials to keep pets comfortable and happy during their stay." }),
           /* @__PURE__ */ s(
             D.button,
             {
@@ -10457,7 +10457,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         className: "bg-white rounded-xl p-6 shadow-md border border-gray-100",
         children: [
           /* @__PURE__ */ s("h2", { className: "mb-3 text-left", children: "Pet Products We Recommend" }),
-          /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Carefully selected grooming tools and pet-safe essentials we trust and love." }),
+          /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Vet-recommended health essentials and wellness products we trust for ongoing care at home." }),
           /* @__PURE__ */ s(
             D.button,
             {
