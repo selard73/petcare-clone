@@ -8355,7 +8355,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s("span", { className: "text-xl", children: "🏠" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Daycare Available" })
                   ] }),
-                  /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${pe ? "bg-green-700" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
+                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: pe ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
                 ]
               }
             ),
@@ -8369,7 +8369,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Open Weekends" })
                   ] }),
-                  /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${W ? "bg-green-700" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
+                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: W ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
                 ]
               }
             ),
@@ -9669,7 +9669,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s("span", { className: "text-xl", children: "🚨" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "24/7 Emergency" })
                   ] }),
-                  /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${pe ? "bg-orange-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
+                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: pe ? "#ea580c" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
                 ]
               }
             ),
@@ -9683,7 +9683,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Accepting New Patients" })
                   ] }),
-                  /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${W ? "bg-orange-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
+                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: W ? "#ea580c" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
                 ]
               }
             ),
@@ -10109,6 +10109,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     whileHover: { scale: 1.02 },
                     whileTap: { scale: 0.98 },
                     className: "hidden md:block w-full bg-gradient-to-r from-orange-600 to-red-500 text-white py-4 rounded-xl hover:from-orange-700 hover:to-red-600 transition-colors text-center",
+                    style: { backgroundColor: "#ea580c", border: "1px solid #c2410c", color: "#ffffff" },
                     children: [
                       "📞 Call ",
                       n.name
