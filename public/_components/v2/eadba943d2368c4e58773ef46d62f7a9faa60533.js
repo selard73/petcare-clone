@@ -8517,7 +8517,11 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     window.innerWidth < 768 && B.stopPropagation(), i(y);
                   },
                   className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm",
-                  style: { backgroundColor: "#16a34a", border: "1px solid #15803d", color: "#ffffff" },
+                  style: {
+                    backgroundColor: window.innerWidth >= 768 ? "#16a34a" : "#15803d",
+                    border: window.innerWidth >= 768 ? "1px solid #15803d" : "1px solid #166534",
+                    color: "#ffffff"
+                  },
                   children: "View Details"
                 }
               )
@@ -9837,7 +9841,11 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     window.innerWidth < 768 && B.stopPropagation(), i(y);
                   },
                   className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm",
-                  style: { backgroundColor: "#fb923c", border: "1px solid #f97316", color: "#ffffff" },
+                  style: {
+                    backgroundColor: window.innerWidth >= 768 ? "#fb923c" : "#ea580c",
+                    border: window.innerWidth >= 768 ? "1px solid #f97316" : "1px solid #c2410c",
+                    color: "#ffffff"
+                  },
                   children: "View Details"
                 }
               )
