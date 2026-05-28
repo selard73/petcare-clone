@@ -6085,13 +6085,39 @@ class qm {
   constructor() {
     this.prefix = "pawsitively_";
   }
+  getDeletedBusinessIds(e) {
+    const r = `${this.prefix}deleted_businesses_${e}`, n = localStorage.getItem(r);
+    try {
+      return new Set(n ? JSON.parse(n) : []);
+    } catch {
+      return new Set();
+    }
+  }
+  markBusinessDeleted(e, r) {
+    const n = this.getDeletedBusinessIds(r);
+    n.add(e);
+    const i = `${this.prefix}deleted_businesses_${r}`;
+    localStorage.setItem(i, JSON.stringify([...n]));
+  }
+  unmarkBusinessDeleted(e, r) {
+    const n = this.getDeletedBusinessIds(r);
+    n.delete(e);
+    const i = `${this.prefix}deleted_businesses_${r}`;
+    localStorage.setItem(i, JSON.stringify([...n]));
+  }
   // Businesses
   getBusinessesByCategory(e) {
-    const r = `${this.prefix}businesses_${e}`, n = localStorage.getItem(r);
-    return n ? JSON.parse(n) : [];
+    const r = `${this.prefix}businesses_${e}`, n = localStorage.getItem(r), i = n ? JSON.parse(n) : [], o = this.getDeletedBusinessIds(e);
+    return i.filter((a) => !o.has(a.id));
   }
   saveBusiness(e) {
     console.log("💾 saveBusiness called for:", e.name), console.log("   - Has userEdited flag:", e.userEdited);
+    const rDeleted = this.getDeletedBusinessIds(e.category);
+    if (rDeleted.has(e.id) && !e.userEdited) {
+      console.log("🛑 BLOCKING seed restore for deleted business:", e.name);
+      return;
+    }
+    e.userEdited && rDeleted.has(e.id) && this.unmarkBusinessDeleted(e.id, e.category);
     const r = this.getBusinessesByCategory(e.category), n = r.findIndex((a) => a.id === e.id);
     if (n >= 0) {
       const a = r[n];
@@ -6114,7 +6140,7 @@ class qm {
   }
   deleteBusiness(e, r) {
     const i = this.getBusinessesByCategory(r).filter((a) => a.id !== e), o = `${this.prefix}businesses_${r}`;
-    localStorage.setItem(o, JSON.stringify(i));
+    localStorage.setItem(o, JSON.stringify(i)), this.markBusinessDeleted(e, r);
   }
   getBusiness(e) {
     const r = ["grooming", "training", "boarding", "vet"];
@@ -7730,17 +7756,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
   }, [c, h]), U(() => {
     r && yn(r.id);
   }, [r]);
-  const getDeletedTrainingIds = () => {
-    try {
-      const K = localStorage.getItem("pawsitively_deleted_training_ids");
-      return new Set(K ? JSON.parse(K) : []);
-    } catch {
-      return new Set();
-    }
-  }, addDeletedTrainingId = (K) => {
-    const L = getDeletedTrainingIds();
-    L.add(K), localStorage.setItem("pawsitively_deleted_training_ids", JSON.stringify([...L]));
-  }, z = async () => {
+  const z = async () => {
     const K = [
       {
         id: "training-1",
@@ -7828,11 +7844,10 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       }
     ];
     try {
-      const L = (await Oe.getBusinesses("training")).businesses || [], y = getDeletedTrainingIds(), B = new Set(L.map((F) => F.id)), _ = [...L, ...K.filter((F) => !B.has(F.id))].filter((F) => !y.has(F.id));
-      o(_);
+      const L = (await Oe.getBusinesses("training")).businesses || [], y = new Set(L.map((F) => F.id)), B = [...L, ...K.filter((F) => !y.has(F.id))];
+      o(B);
     } catch (L) {
-      const y = getDeletedTrainingIds();
-      console.error("Error fetching training businesses:", L), o(K.filter((B) => !y.has(B.id)));
+      console.error("Error fetching training businesses:", L), o(K);
     } finally {
       l(!1);
     }
@@ -7878,7 +7893,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       return;
     ln(!0);
     try {
-      await Oe.deleteBusiness(r.id, "training", Kr), addDeletedTrainingId(r.id), o((L) => L.filter((y) => y.id !== r.id)), alert("Business listing deleted successfully!"), n(null), await z();
+      await Oe.deleteBusiness(r.id, "training", Kr), o((L) => L.filter((y) => y.id !== r.id)), alert("Business listing deleted successfully!"), n(null), await z();
     } catch (K) {
       console.error("Error deleting business:", K), alert(K instanceof Error ? K.message : "Failed to delete business listing. Please try again.");
     } finally {
