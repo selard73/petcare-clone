@@ -7115,8 +7115,8 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             animate: { scale: 1, opacity: 1 },
             exit: { scale: 0.9, opacity: 0 },
             onClick: (y) => y.stopPropagation(),
-            className: "bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto overflow-x-hidden shadow-2xl",
-            style: { maxWidth: "calc(100vw - 2rem)" },
+            className: "bg-white rounded-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden shadow-2xl",
+            style: { width: "min(46rem, calc(100vw - 2rem))" },
             children: [
               /* @__PURE__ */ d("div", { className: "relative h-80 overflow-hidden rounded-t-2xl", children: [
                 n.photos && n.photos.length > 0 ? (() => {
