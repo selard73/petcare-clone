@@ -6356,6 +6356,12 @@ const Oe = {
   },
   async getBusinesses(t) {
     const e = await Qm(t), r = ce.getBusinessesByCategory(t), n = {}, deletedIds = ce.getDeletedBusinessIds(t), cloudDeleted = new Set(await fetchCloudDeletedBusinessIds(t));
+    for (const l of deletedIds)
+      cloudDeleted.has(l) || markCloudBusinessDeleted(l, t).then((c) => {
+        c?.success ? cloudDeleted.add(l) : console.warn("Failed to backfill cloud deletion marker:", l, c?.error);
+      }).catch((c) => {
+        console.warn("Error backfilling cloud deletion marker:", l, c);
+      });
     for (const l of e)
       n[l.id] = l;
     const i = [], o = /* @__PURE__ */ new Set();
