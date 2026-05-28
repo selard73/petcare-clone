@@ -10454,7 +10454,8 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         initial: { opacity: 0, y: 20 },
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: !0 },
-        className: "bg-orange-50 rounded-xl p-6 shadow-md border border-orange-200",
+        className: "rounded-xl p-6 shadow-md border",
+        style: { backgroundColor: "#fff7ed", borderColor: "#fed7aa" },
         children: [
           /* @__PURE__ */ s("h2", { className: "mb-3 text-left", children: "Pet Products We Recommend" }),
           /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Vet-recommended health essentials and wellness products we trust for ongoing care at home." }),
