@@ -10399,7 +10399,8 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     href: `tel:${n.phone}`,
                     whileHover: { scale: 1.02 },
                     whileTap: { scale: 0.98 },
-                    className: "flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-orange-600 to-red-500 text-white py-3.5 rounded-xl hover:from-orange-700 hover:to-red-600 transition-colors",
+                    className: "flex-1 flex items-center justify-center gap-2 text-white py-3.5 rounded-xl transition-colors",
+                    style: { backgroundColor: "#ea580c", border: "1px solid #c2410c" },
                     children: [
                       /* @__PURE__ */ s(Dn, { className: "w-5 h-5" }),
                       /* @__PURE__ */ s("span", { children: "Call" })
