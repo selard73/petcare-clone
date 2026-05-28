@@ -7253,14 +7253,14 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ d("div", { className: "flex-1 min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
                       n.callForHours ? /* @__PURE__ */ s("p", { className: "text-purple-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm md:text-base", children: [
-                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-x-1.5 md:gap-x-4 gap-y-2.5 md:gap-y-3", children: ["monday", "tuesday", "wednesday", "thursday"].map((y) => {
+                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-x-1.5 md:gap-x-4 gap-y-2.5 md:gap-y-3", children: ["monday", "tuesday", "wednesday", "thursday"].map((y) => {
                           const F = n.hours[y], B = F?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
                             /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize mb-1", children: y }),
                             /* @__PURE__ */ s("span", { className: `font-medium whitespace-nowrap ${B ? "text-red-600" : "text-green-600"}`, children: F })
                           ] }, y);
                         }) }),
-                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-x-1.5 md:gap-x-4 gap-y-2.5 md:gap-y-3", children: ["friday", "saturday", "sunday"].map((y) => {
+                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-3 gap-x-1.5 md:gap-x-4 gap-y-2.5 md:gap-y-3", children: ["friday", "saturday", "sunday"].map((y) => {
                           const F = n.hours[y], B = F?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
                             /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize mb-1", children: y }),
