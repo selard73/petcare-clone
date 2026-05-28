@@ -8517,7 +8517,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     window.innerWidth < 768 && B.stopPropagation(), i(y);
                   },
                   className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm",
-                  style: { backgroundColor: "#15803d" },
+                  style: { backgroundColor: "#86efac", border: "1px solid #4ade80", color: "#166534" },
                   children: "View Details"
                 }
               )
@@ -9107,7 +9107,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         )
       }
     ),
-    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 text-white", style: { backgroundColor: "#15803d" }, children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
+    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 text-white", style: { backgroundColor: "#16a34a" }, children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0 },
@@ -9837,7 +9837,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     window.innerWidth < 768 && B.stopPropagation(), i(y);
                   },
                   className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm",
-                  style: { backgroundColor: "#ea580c" },
+                  style: { backgroundColor: "#fdba74", border: "1px solid #fb923c", color: "#9a3412" },
                   children: "View Details"
                 }
               )
@@ -10419,7 +10419,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         )
       }
     ),
-    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 text-white", style: { backgroundColor: "#ea580c" }, children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
+    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 text-white", style: { backgroundColor: "#f97316" }, children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0 },
