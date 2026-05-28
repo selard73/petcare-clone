@@ -9826,7 +9826,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 "🕒 ",
                 y.hours.monday || "See hours in details"
               ] }),
-              y.servicesOffered && y.servicesOffered.length > 0 && /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2 mb-4 p-3 bg-orange-50 border border-orange-200 rounded-lg", children: y.servicesOffered.slice(0, 4).map((B) => /* @__PURE__ */ s("span", { className: "bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-full", children: B }, B)) }),
+              y.servicesOffered && y.servicesOffered.length > 0 && /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2 mb-4", children: y.servicesOffered.slice(0, 4).map((B) => /* @__PURE__ */ s("span", { className: "bg-orange-50 text-orange-700 text-xs px-2 py-1 rounded-full", children: B }, B)) }),
               /* @__PURE__ */ s(
                 D.button,
                 {
@@ -10091,12 +10091,12 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     y
                   )) })
                 ] }),
-                n.servicesOffered && n.servicesOffered.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6", children: [
+                n.servicesOffered && n.servicesOffered.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6 p-4 bg-orange-50 border border-orange-200 rounded-lg", children: [
                   /* @__PURE__ */ s("h3", { className: "text-orange-700 mb-3", children: "Services Offered" }),
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.servicesOffered.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
-                      className: "bg-orange-50 text-orange-700 px-4 py-2 rounded-full",
+                      className: "bg-orange-100 text-orange-700 px-4 py-2 rounded-full",
                       children: y
                     },
                     y
