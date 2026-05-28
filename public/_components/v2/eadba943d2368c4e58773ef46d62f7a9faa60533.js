@@ -6356,6 +6356,26 @@ const Oe = {
   },
   async getBusinesses(t) {
     const e = await Qm(t), r = ce.getBusinessesByCategory(t), n = {}, deletedIds = ce.getDeletedBusinessIds(t), cloudDeleted = new Set(await fetchCloudDeletedBusinessIds(t));
+    if (t === "grooming" && deletedIds.size === 0) {
+      const legacyGroomingIds = Array.from({ length: 30 }, (c, u) => `business-${String(u + 1).padStart(3, "0")}`), localIds = new Set(r.map((c) => c.id)), hasLegacySeedShape = r.length === 0 || r.some((c) => /^business-\d{3}$/.test(c.id));
+      if (hasLegacySeedShape) {
+        const missingLegacyIds = legacyGroomingIds.filter((c) => !localIds.has(c));
+        if (missingLegacyIds.length > 0) {
+          for (const c of missingLegacyIds)
+            ce.markBusinessDeleted(c, t), deletedIds.add(c);
+          await Promise.all(
+            missingLegacyIds.map(async (c) => {
+              try {
+                const u = await markCloudBusinessDeleted(c, t);
+                u?.success && cloudDeleted.add(c);
+              } catch (u) {
+                console.warn("Error backfilling legacy grooming deletion marker:", c, u);
+              }
+            })
+          );
+        }
+      }
+    }
     for (const l of deletedIds)
       cloudDeleted.has(l) || markCloudBusinessDeleted(l, t).then((c) => {
         c?.success ? cloudDeleted.add(l) : console.warn("Failed to backfill cloud deletion marker:", l, c?.error);
