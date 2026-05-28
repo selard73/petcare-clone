@@ -9827,10 +9827,6 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 y.hours.monday || "See hours in details"
               ] }),
               y.servicesOffered && y.servicesOffered.length > 0 && /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2 mb-4", children: y.servicesOffered.slice(0, 4).map((B) => /* @__PURE__ */ s("span", { className: "bg-orange-50 text-orange-700 text-xs px-2 py-1 rounded-full", children: B }, B)) }),
-              /* @__PURE__ */ d("div", { className: "grid grid-cols-2 gap-2 mb-3", children: [
-                /* @__PURE__ */ s(D.a, { href: `tel:${y.phone || ""}`, className: "text-center bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition-colors", children: "Call Now" }),
-                /* @__PURE__ */ s(D.a, { href: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${y.address || ""}, ${y.city || ""}, SC ${y.zipCode || ""}`)}`, target: "_blank", rel: "noopener noreferrer", className: "text-center border-2 border-orange-600 text-orange-600 py-2 rounded-lg hover:bg-orange-50 transition-colors", children: "Directions" })
-              ] }),
               /* @__PURE__ */ s(
                 D.button,
                 {
