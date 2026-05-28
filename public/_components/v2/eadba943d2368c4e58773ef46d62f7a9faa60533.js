@@ -8005,7 +8005,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
     } finally {
       ln(!1);
     }
-  }, ee = [...new Set(i.map((K) => K.city).filter(Boolean))], G = i.filter((K) => !(c.trim() && !K.name.toLowerCase().includes(c.toLowerCase()) || h !== "all" && K.city !== h || m && !K.inHomeTraining || v && !K.groupClassesAvailable || b && (K.rating || 0) < 4 || x !== "all" && K.priceRange !== x)), pe = [...G].sort((K, L) => K.name.localeCompare(L.name)), W = pe.slice(0, R);
+  }, ee = [...new Set(i.map((K) => K.city).filter(Boolean))], G = i.filter((K) => !(c.trim() && !K.name.toLowerCase().includes(c.toLowerCase()) || h !== "all" && K.city !== h || m && !K.inHomeTraining || v && !K.groupClassesAvailable || b && (K.rating || 0) < 4 || x !== "all" && K.priceRange !== x)), pe = [...G].sort((K, L) => K.name.localeCompare(L.name)), W = window.innerWidth >= 768 ? pe : pe.slice(0, R);
   return /* @__PURE__ */ d("div", { className: "min-h-screen bg-white md:bg-transparent", children: [
     /* @__PURE__ */ s("section", { className: "bg-gradient-to-br from-blue-400 via-cyan-500 to-teal-600 text-white h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[8px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
@@ -8832,7 +8832,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
           }
         )
       ] }) : /* @__PURE__ */ d(ie, { children: [
-        yt.slice(0, ft).map((y, F) => /* @__PURE__ */ d(
+        (window.innerWidth >= 768 ? yt : yt.slice(0, ft)).map((y, F) => /* @__PURE__ */ d(
           D.div,
           {
             initial: window.innerWidth >= 768 ? { opacity: 0, y: 30 } : !1,
@@ -10167,7 +10167,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
           }
         )
       ] }) : /* @__PURE__ */ d(ie, { children: [
-        yt.slice(0, ft).map((y, F) => /* @__PURE__ */ d(
+        (window.innerWidth >= 768 ? yt : yt.slice(0, ft)).map((y, F) => /* @__PURE__ */ d(
           D.div,
           {
             initial: window.innerWidth >= 768 ? { opacity: 0, y: 30 } : !1,
