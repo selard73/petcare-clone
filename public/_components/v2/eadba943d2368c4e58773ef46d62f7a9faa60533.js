@@ -8350,10 +8350,15 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
     try {
       const F = (await Oe.getBusinesses("boarding")).businesses || [];
       const ids = new Set(F.map((b) => b.id));
-      const merged = [...F, ...Lf.filter((s) => !ids.has(s.id))];
+      const deletedLocal = ce.getDeletedBusinessIds("boarding");
+      const deletedCloud = new Set(await fetchCloudDeletedBusinessIds("boarding"));
+      const deletedAll = new Set([...deletedLocal, ...deletedCloud]);
+      const merged = [...F, ...Lf.filter((s) => !ids.has(s.id) && !deletedAll.has(s.id))];
       a(merged), await Cr(merged);
     } catch (y) {
-      console.error("Error fetching businesses:", y);
+      const deletedLocal = ce.getDeletedBusinessIds("boarding");
+      const fallback = Lf.filter((b) => !deletedLocal.has(b.id));
+      console.error("Error fetching businesses:", y), a(fallback), await Cr(fallback);
     } finally {
       c(!1);
     }
@@ -9665,10 +9670,15 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
     try {
       const F = (await Oe.getBusinesses("vet")).businesses || [];
       const ids = new Set(F.map((b) => b.id));
-      const merged = [...F, ...Lf.filter((s) => !ids.has(s.id))];
+      const deletedLocal = ce.getDeletedBusinessIds("vet");
+      const deletedCloud = new Set(await fetchCloudDeletedBusinessIds("vet"));
+      const deletedAll = new Set([...deletedLocal, ...deletedCloud]);
+      const merged = [...F, ...Lf.filter((s) => !ids.has(s.id) && !deletedAll.has(s.id))];
       a(merged), await Cr(merged);
     } catch (y) {
-      console.error("Error fetching businesses:", y);
+      const deletedLocal = ce.getDeletedBusinessIds("vet");
+      const fallback = Lf.filter((b) => !deletedLocal.has(b.id));
+      console.error("Error fetching businesses:", y), a(fallback), await Cr(fallback);
     } finally {
       c(!1);
     }
