@@ -9842,8 +9842,8 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   },
                   className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm",
                   style: {
-                    backgroundColor: window.innerWidth >= 768 ? "#fb923c" : "#ea580c",
-                    border: window.innerWidth >= 768 ? "1px solid #f97316" : "1px solid #c2410c",
+                    backgroundColor: window.innerWidth >= 768 ? "#f97316" : "#ea580c",
+                    border: window.innerWidth >= 768 ? "1px solid #ea580c" : "1px solid #c2410c",
                     color: "#ffffff"
                   },
                   children: "View Details"
