@@ -9146,7 +9146,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         className: "bg-green-50 rounded-xl p-6 shadow-md border border-green-200",
         children: [
           /* @__PURE__ */ s("h2", { className: "mb-3 text-left", children: "Pet Products We Recommend" }),
-          /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Pet-approved toys and bedding essentials to keep pets comfortable and happy during their stay." }),
+          /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Carefully selected pet-approved toys and bedding essentials we trust and love." }),
           /* @__PURE__ */ s(
             D.button,
             {
