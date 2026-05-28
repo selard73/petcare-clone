@@ -9211,7 +9211,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "🏠" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Daycare Available" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${pe ? "bg-green-700" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: pe ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
                   ]
                 }
               ),
@@ -9225,7 +9225,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Open Weekends" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${W ? "bg-green-700" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: W ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
                   ]
                 }
               ),
@@ -9239,7 +9239,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${ae ? "bg-green-700" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${ae ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: ae ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${ae ? "translate-x-6" : "translate-x-1"}` }) })
                   ]
                 }
               ),
@@ -9626,6 +9626,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               {
                 onClick: () => Xe(!0),
                 className: "md:hidden flex items-center justify-center gap-2 px-4 py-2.5 bg-orange-600 text-white rounded-full hover:bg-orange-700 transition-colors",
+                style: { backgroundColor: "#ea580c", border: "1px solid #c2410c" },
                 children: [
                   /* @__PURE__ */ s(Am, { className: "w-4 h-4" }),
                   /* @__PURE__ */ s("span", { className: "text-sm", children: "Filters" })
@@ -10519,7 +10520,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "🚨" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "24/7 Emergency" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${pe ? "bg-orange-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: pe ? "#ea580c" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
                   ]
                 }
               ),
@@ -10533,7 +10534,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Accepting New Patients" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${W ? "bg-orange-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: W ? "#ea580c" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
                   ]
                 }
               ),
@@ -10547,7 +10548,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${ae ? "bg-orange-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${ae ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: ae ? "#ea580c" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${ae ? "translate-x-6" : "translate-x-1"}` }) })
                   ]
                 }
               ),
