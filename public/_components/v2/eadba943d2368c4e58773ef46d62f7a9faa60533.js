@@ -7907,10 +7907,11 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       }
     ];
     try {
-      const L = (await Oe.getBusinesses("training")).businesses || [], y = new Set(L.map((F) => F.id)), B = [...L, ...K.filter((F) => !y.has(F.id))];
-      o(B);
+      const L = (await Oe.getBusinesses("training")).businesses || [], y = new Set(L.map((F) => F.id)), B = ce.getDeletedBusinessIds("training"), _ = new Set(await fetchCloudDeletedBusinessIds("training")), Y = new Set([...B, ..._]), Te = [...L, ...K.filter((F) => !y.has(F.id) && !Y.has(F.id))];
+      o(Te);
     } catch (L) {
-      console.error("Error fetching training businesses:", L), o(K);
+      const y = ce.getDeletedBusinessIds("training");
+      console.error("Error fetching training businesses:", L), o(K.filter((B) => !y.has(B.id)));
     } finally {
       l(!1);
     }
