@@ -7106,7 +7106,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         initial: { opacity: 0 },
         animate: { opacity: 1 },
         exit: { opacity: 0 },
-        className: "fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-x-hidden",
+        className: "fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4",
         onClick: () => i(null),
         children: /* @__PURE__ */ d(
           D.div,
@@ -7115,7 +7115,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             animate: { scale: 1, opacity: 1 },
             exit: { scale: 0.9, opacity: 0 },
             onClick: (y) => y.stopPropagation(),
-            className: "bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto overflow-x-hidden shadow-2xl",
+            className: "bg-white rounded-2xl max-w-3xl w-[calc(100vw-2rem)] max-h-[90vh] overflow-y-auto shadow-2xl",
             children: [
               /* @__PURE__ */ d("div", { className: "relative h-80 overflow-hidden rounded-t-2xl", children: [
                 n.photos && n.photos.length > 0 ? (() => {
@@ -7199,7 +7199,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] })
               ] }),
-              /* @__PURE__ */ d("div", { className: "p-6 pb-8 md:pb-6 mb-28 md:mb-0 overflow-x-hidden", children: [
+              /* @__PURE__ */ d("div", { className: "p-6 pb-8 md:pb-6 mb-28 md:mb-0", children: [
                 /* @__PURE__ */ s("p", { className: "text-gray-700 mb-6", children: n.description }),
                 p.length > 0 && /* @__PURE__ */ s("div", { className: "bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-xl mb-6 border border-yellow-200", children: /* @__PURE__ */ d("div", { className: "flex items-center justify-between", children: [
                   /* @__PURE__ */ d("div", { children: [
@@ -7215,7 +7215,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] }) }),
                 /* @__PURE__ */ d("div", { className: "grid md:grid-cols-2 gap-4 mb-6", children: [
-                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg", children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg w-full", children: [
                     /* @__PURE__ */ s(ar, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Address" }),
@@ -7239,14 +7239,14 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg", children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg w-full", children: [
                     /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Phone" }),
                       /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "text-purple-600 hover:underline break-all", children: n.phone })
                     ] })
                   ] }),
-                  n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg md:col-span-2", children: [
+                  n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg md:col-span-2 w-full", children: [
                     /* @__PURE__ */ s(im, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "flex-1", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
@@ -7268,7 +7268,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       ] })
                     ] })
                   ] }),
-                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg", children: [
+                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg w-full", children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Website" }),
@@ -7284,7 +7284,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg", children: [
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg w-full", children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
@@ -7304,7 +7304,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.paymentMethods.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
-                      className: "bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm break-words",
+                      className: "bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm whitespace-normal break-words max-w-full",
                       children: y
                     },
                     y
@@ -7322,7 +7322,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.specialFeatures.filter((y) => y.trim()).map((y) => /* @__PURE__ */ d(
                     "span",
                     {
-                      className: "bg-purple-50 text-purple-600 px-4 py-2 rounded-lg break-words",
+                      className: "bg-purple-50 text-purple-600 px-4 py-2 rounded-lg whitespace-normal break-words max-w-full",
                       children: [
                         "✨ ",
                         y
@@ -7336,7 +7336,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.servicesOffered.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
-                      className: "bg-gradient-to-r from-pink-100 to-purple-100 text-purple-700 px-4 py-2 rounded-full break-words",
+                      className: "bg-gradient-to-r from-pink-100 to-purple-100 text-purple-700 px-4 py-2 rounded-full whitespace-normal break-words max-w-full",
                       children: y
                     },
                     y
