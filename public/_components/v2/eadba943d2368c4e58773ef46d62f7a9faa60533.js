@@ -7070,7 +7070,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 /* @__PURE__ */ d("div", { className: "absolute bottom-4 left-6 text-white z-10 pointer-events-none", children: [
                   /* @__PURE__ */ s("h2", { className: "mb-2", children: n.name }),
                   n.priceRange && /* @__PURE__ */ d("div", { className: "relative group pointer-events-auto", children: [
-                    /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-green-400 cursor-help", children: /* @__PURE__ */ s("span", { className: "text-xl", children: n.priceRange }) }),
+                    /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-orange-400 cursor-help", children: /* @__PURE__ */ s("span", { className: "text-xl", children: n.priceRange }) }),
                     /* @__PURE__ */ d("div", { className: "absolute bottom-full left-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap", children: [
                       Ri(n.priceRange),
                       /* @__PURE__ */ s("div", { className: "absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900" })
@@ -8629,7 +8629,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 /* @__PURE__ */ d("div", { className: "absolute bottom-4 left-6 text-white z-10 pointer-events-none", children: [
                   /* @__PURE__ */ s("h2", { className: "mb-2", children: n.name }),
                   n.priceRange && /* @__PURE__ */ d("div", { className: "relative group pointer-events-auto", children: [
-                    /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-green-400 cursor-help", children: /* @__PURE__ */ s("span", { className: "text-xl", children: n.priceRange }) }),
+                    /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-orange-400 cursor-help", children: /* @__PURE__ */ s("span", { className: "text-xl", children: n.priceRange }) }),
                     /* @__PURE__ */ d("div", { className: "absolute bottom-full left-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap", children: [
                       Ri(n.priceRange),
                       /* @__PURE__ */ s("div", { className: "absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900" })
@@ -9208,7 +9208,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: () => Ee(!pe),
                   children: [
                     /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🏠" }),
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🚨" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Daycare Available" })
                     ] }),
                     /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${pe ? "bg-green-700" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
@@ -9292,72 +9292,240 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
     )
   ] });
 }
-function cf({ onEditBusiness: t, onNavigate: e } = {}) {
-  const r = [
-    {
-      name: "Wellness Exams",
-      icon: _m,
-      description: "Comprehensive health checkups and preventive care",
-      items: ["Annual physical exams", "Vaccinations", "Parasite prevention", "Health screenings"],
-      color: "bg-red-100"
-    },
-    {
-      name: "Emergency Care",
-      icon: yi,
-      description: "Urgent medical attention when your pet needs it most",
-      items: ["24/7 emergency services", "Critical care", "Trauma treatment", "Poison control"],
-      color: "bg-orange-100"
-    },
-    {
-      name: "Surgery & Procedures",
-      icon: rm,
-      description: "Expert surgical care with modern equipment",
-      items: ["Spay/neuter", "Dental surgery", "Orthopedic surgery", "Soft tissue surgery"],
-      color: "bg-blue-100"
-    },
-    {
-      name: "Preventive Care",
-      icon: Vm,
-      description: "Keep your pet healthy with regular preventive services",
-      items: ["Vaccinations", "Flea/tick prevention", "Heartworm prevention", "Dental cleanings"],
-      color: "bg-green-100"
+function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
+  const [n, i] = E(null), [o, a] = E([]), [l, c] = E(!0), [u, h] = E(0), [p, m] = E([]), [f, v] = E({ rating: 5, comment: "" }), [g, b] = E(!1), [w, x] = E({}), [T, P] = E(!1), [N, S] = E({ reviewerName: "", rating: 5, comment: "" }), [C, R] = E(!1), [M, k] = E(!1), { user: I, accessToken: z } = vi(), [ee, G] = E("all"), [pe, Ee] = E(!1), [W, te] = E(!1), [ae, ue] = E(!1), [Me, qe] = E("all"), [Ke, Ht] = E(""), [Re, Ye] = E("name"), [Be, mt] = E([]), [Nr, Xe] = E(!1), [ft, A] = E(10), [O, V] = E(!1), [H, se] = E(!1), [Ze, $e] = E(!1), [zt, gt] = E(""), [Ai, Ei] = E(void 0);
+  U(() => {
+    Mi(), jl();
+  }, [I]), U(() => {
+    window.scrollTo(0, 0);
+  }, []), U(() => {
+    A(10), se(!1);
+  }, [Ke, ee, Re]), U(() => {
+    if (n && n.photos && n.photos.length > 1) {
+      const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+      if (F.length > 1) {
+        const B = setInterval(() => {
+          h(
+            (_) => _ === F.length - 1 ? 0 : _ + 1
+          );
+        }, 4e3);
+        return () => clearInterval(B);
+      }
     }
-  ], n = [
-    {
-      name: "Darlington Animal Hospital",
-      location: "Darlington",
-      rating: 4.9,
-      services: ["General practice", "Surgery", "Emergency care", "Dental"],
-      hours: "Mon-Fri 8am-6pm, Sat 9am-2pm",
-      emergency: !0
-    },
-    {
-      name: "Florence Veterinary Clinic",
-      location: "Florence",
-      rating: 4.8,
-      services: ["Wellness exams", "Vaccinations", "Lab work", "Radiology"],
-      hours: "Mon-Fri 8am-5pm",
-      emergency: !1
-    },
-    {
-      name: "Paws & Claws Veterinary Center",
-      location: "Hartsville",
-      rating: 4.7,
-      services: ["General care", "Exotic pets", "Surgery", "Boarding"],
-      hours: "Mon-Sat 8am-6pm",
-      emergency: !1
-    },
-    {
-      name: "Emergency Pet Hospital",
-      location: "Florence",
-      rating: 4.9,
-      services: ["24/7 emergency", "Critical care", "Surgery", "ICU"],
-      hours: "24/7 Emergency Services",
-      emergency: !0
+  }, [n, u]), U(() => {
+    n && (h(0), Vl(n.id));
+  }, [n]);
+  const Mi = async () => {
+    const Lf = [
+      { id: "vet-1", name: "Darlington Animal Hospital", city: "Darlington", rating: 4.9, priceRange: "$$$", emergency24x7: !0, acceptingNewPatients: !0, address: "1201 Vet Center Dr", zipCode: "29532", phone: "(843) 555-0147", description: "Full-service veterinary hospital offering preventive care, diagnostics, surgery, and 24/7 emergency treatment.", paymentMethods: ["Cash", "Credit Card", "CareCredit", "Pet Insurance Accepted"], servicesOffered: ["General Practice", "Surgery", "Emergency Care", "Dental"], specialFeatures: ["Accepting New Patients", "Online Booking", "Boarding Available"], photos: [Wr], hours: { monday: "8:00 AM - 6:00 PM", tuesday: "8:00 AM - 6:00 PM", wednesday: "8:00 AM - 6:00 PM", thursday: "8:00 AM - 6:00 PM", friday: "8:00 AM - 6:00 PM", saturday: "9:00 AM - 2:00 PM", sunday: "Emergency Only" } },
+      { id: "vet-2", name: "Florence Veterinary Clinic", city: "Florence", rating: 4.7, priceRange: "$$", emergency24x7: !1, acceptingNewPatients: !0, address: "402 Palmetto Rd", zipCode: "29501", phone: "(843) 555-0121", description: "Compassionate routine and urgent care with modern diagnostics, vaccines, and wellness plans for cats and dogs.", paymentMethods: ["Cash", "Credit Card", "CareCredit"], servicesOffered: ["General Practice", "Vaccinations", "Lab Work", "Dental"], specialFeatures: ["Accepting New Patients", "Online Booking"], photos: [Wr], hours: { monday: "8:00 AM - 5:00 PM", tuesday: "8:00 AM - 5:00 PM", wednesday: "8:00 AM - 5:00 PM", thursday: "8:00 AM - 5:00 PM", friday: "8:00 AM - 5:00 PM", saturday: "9:00 AM - 12:00 PM", sunday: "Closed" } },
+      { id: "vet-3", name: "Paws & Claws Vet Center", city: "Hartsville", rating: 4.8, priceRange: "$$$", emergency24x7: !1, acceptingNewPatients: !1, notAcceptingClients: !0, address: "811 Care Lane", zipCode: "29550", phone: "(843) 555-0184", description: "Advanced surgical and preventive care with in-house imaging and senior pet support programs.", paymentMethods: ["Credit Card", "CareCredit", "Pet Insurance Accepted"], servicesOffered: ["General Practice", "Surgery", "Radiology", "Senior Pet Care"], specialFeatures: ["House Calls", "Boarding Available"], photos: [Wr], hours: { monday: "7:30 AM - 5:30 PM", tuesday: "7:30 AM - 5:30 PM", wednesday: "7:30 AM - 5:30 PM", thursday: "7:30 AM - 5:30 PM", friday: "7:30 AM - 5:30 PM", saturday: "8:30 AM - 1:00 PM", sunday: "Closed" } },
+      { id: "vet-4", name: "Emergency Pet Hospital", city: "Florence", rating: 4.9, priceRange: "$$$$", emergency24x7: !0, acceptingNewPatients: !0, address: "99 Urgent Care Way", zipCode: "29505", phone: "(843) 555-0100", description: "24/7 emergency and critical care team for urgent injuries, overnight monitoring, and specialty referrals.", paymentMethods: ["Cash", "Credit Card", "CareCredit", "Pet Insurance Accepted"], servicesOffered: ["Emergency Care", "Critical Care", "Surgery", "ICU"], specialFeatures: ["Accepting New Patients", "Online Booking"], photos: [Wr], hours: { monday: "Open 24 Hours", tuesday: "Open 24 Hours", wednesday: "Open 24 Hours", thursday: "Open 24 Hours", friday: "Open 24 Hours", saturday: "Open 24 Hours", sunday: "Open 24 Hours" } },
+      { id: "vet-5", name: "Southside Family Vet", city: "Darlington", rating: 4.5, priceRange: "$$", emergency24x7: !1, acceptingNewPatients: !0, address: "55 Magnolia Ave", zipCode: "29540", phone: "(843) 555-0132", description: "Family-focused veterinary practice providing routine care, dental procedures, and chronic condition management.", paymentMethods: ["Cash", "Credit Card", "Pet Insurance Accepted"], servicesOffered: ["General Practice", "Dental", "Wellness Exams", "Vaccinations"], specialFeatures: ["Accepting New Patients", "Online Booking", "House Calls"], photos: [Wr], hours: { monday: "8:00 AM - 5:00 PM", tuesday: "8:00 AM - 5:00 PM", wednesday: "8:00 AM - 5:00 PM", thursday: "8:00 AM - 5:00 PM", friday: "8:00 AM - 5:00 PM", saturday: "Closed", sunday: "Closed" } }
+    ];
+    try {
+      const F = (await Oe.getBusinesses("vet")).businesses || [];
+      const ids = new Set(F.map((b) => b.id));
+      const merged = [...F, ...Lf.filter((s) => !ids.has(s.id))];
+      a(merged), await Cr(merged);
+    } catch (y) {
+      console.error("Error fetching businesses:", y);
+    } finally {
+      c(!1);
     }
-  ];
+  }, Cr = async (y) => {
+    const F = {};
+    await Promise.all(
+      y.map(async (B) => {
+        try {
+          const Y = (await Oe.getReviews(B.id)).reviews || [];
+          if (Y.length > 0) {
+            const Te = Sr(Y);
+            F[B.id] = {
+              average: Te,
+              count: Y.length
+            };
+          } else if (B.rating) {
+            F[B.id] = {
+              average: B.rating,
+              count: 0
+            };
+          }
+        } catch (_) {
+          console.error(`Error fetching reviews for business ${B.id}:`, _);
+        }
+      })
+    ), x(F);
+  }, Vl = async (y) => {
+    try {
+      const F = await Oe.getReviews(y);
+      m(F.reviews || []);
+    } catch (F) {
+      console.error("Error fetching reviews:", F), m([]);
+    }
+  }, jl = () => {
+    try {
+      bl(I);
+      const y = sf(I);
+      mt(y);
+    } catch (y) {
+      console.error("Error fetching shortlist:", y);
+    }
+  }, Hl = (y, F) => {
+    F.stopPropagation();
+    const B = Be.includes(y);
+    try {
+      if (B)
+        xl(I, y), mt(Be.filter((_) => _ !== y)), gt("Removed from Shortlist"), Ei(void 0), $e(!0);
+      else {
+        const _ = o.find((Y) => Y.id === y);
+        if (_) {
+          console.log("🔍 Found business to add to shortlist:", _), console.log("🔍 Business rating:", w[_.id]);
+          const Y = {
+            id: _.id,
+            name: _.name,
+            category: "vet",
+            city: _.city,
+            phone: _.phone,
+            rating: w[_.id]?.average,
+            photoUrl: _.photos?.[0],
+            address: _.address,
+            zipCode: _.zipCode
+          };
+          console.log("💾 Shortlist item to save:", Y), nf(I, Y), mt([...Be, y]), gt("Saved to Shortlist"), Ei(() => () => {
+            e && e("shortlist");
+          }), $e(!0);
+        } else
+          console.error("❌ Business not found in providers list:", y);
+      }
+    } catch (_) {
+      console.error("Error updating shortlist:", _);
+    }
+  }, zl = async () => {
+    if (!I) {
+      alert("Please log in to submit a review");
+      return;
+    }
+    if (!f.comment.trim()) {
+      alert("Please enter a comment");
+      return;
+    }
+    b(!0);
+    try {
+      const y = await Oe.addReview(
+        n.id,
+        f.rating,
+        f.comment,
+        z
+      );
+      y.review && m([y.review, ...p]), await Cr(o), v({ rating: 5, comment: "" }), alert("Review submitted successfully!");
+    } catch (y) {
+      console.error("Error submitting review:", y), alert(y instanceof Error ? y.message : "Failed to submit review. Please try again.");
+    } finally {
+      b(!1);
+    }
+  }, Wl = async () => {
+    if (!I) {
+      alert("Please log in to submit a review");
+      return;
+    }
+    if (!N.reviewerName.trim()) {
+      alert("Please enter a reviewer name");
+      return;
+    }
+    if (!N.comment.trim()) {
+      alert("Please enter a comment");
+      return;
+    }
+    R(!0);
+    try {
+      const y = await Oe.addReview(
+        n.id,
+        N.rating,
+        N.comment,
+        z,
+        N.reviewerName
+      );
+      y.review && m([y.review, ...p]), await Cr(o), S({ reviewerName: "", rating: 5, comment: "" }), P(!1), alert("Review added successfully!");
+    } catch (y) {
+      console.error("Error submitting admin review:", y), alert(y instanceof Error ? y.message : "Failed to submit admin review. Please try again.");
+    } finally {
+      R(!1);
+    }
+  }, Sr = (y) => !y || y.length === 0 ? 0 : y.reduce((B, _) => B + _.rating, 0) / y.length, Tr = (y, F = "md") => {
+    const B = Math.floor(y), _ = y % 1 >= 0.5, Y = 5 - B - (_ ? 1 : 0), Te = F === "sm" ? "w-4 h-4" : F === "lg" ? "w-6 h-6" : "w-5 h-5";
+    return /* @__PURE__ */ d("div", { className: "flex items-center gap-0.5", children: [
+      [...Array(B)].map((Xl, Pr) => /* @__PURE__ */ s(Ct, { className: `${Te} fill-yellow-400 text-yellow-400` }, `full-${Pr}`)),
+      _ && /* @__PURE__ */ s(Im, { className: `${Te} fill-yellow-400 text-yellow-400` }),
+      [...Array(Y)].map((Xl, Pr) => /* @__PURE__ */ s(Ct, { className: `${Te} text-gray-300` }, `empty-${Pr}`))
+    ] });
+  }, Ul = () => {
+    if (n && n.photos) {
+      const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+      h(
+        (B) => B === F.length - 1 ? 0 : B + 1
+      );
+    }
+  }, Gl = () => {
+    if (n && n.photos) {
+      const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+      h(
+        (B) => B === 0 ? F.length - 1 : B - 1
+      );
+    }
+  }, Ri = (y) => ({
+    $: "Budget-Friendly",
+    $$: "Moderate Pricing",
+    $$$: "Premium Services",
+    $$$$: "Luxury Experience"
+  })[y] || "Price Range", ql = async () => {
+    if (!(!I || !n || !window.confirm(
+      `Are you sure you want to delete "${n.name}"? This action cannot be undone.`
+    ))) {
+      k(!0);
+      try {
+        await Oe.deleteBusiness(n.id, "vet", z), alert("Business listing deleted successfully!"), i(null), await Mi();
+      } catch (F) {
+        console.error("Error deleting business:", F), alert(F instanceof Error ? F.message : "Failed to delete business. Please try again.");
+      } finally {
+        k(!1);
+      }
+    }
+  }, yt = (() => {
+    let y = o.filter((F) => !(Ke.trim() && !F.name.toLowerCase().includes(Ke.toLowerCase()) || ee !== "all" && F.city !== ee || pe && !(F.emergency24x7 || F.emergency) || W && (F.notAcceptingClients || F.acceptingNewPatients === !1) || ae && (w[F.id]?.average || 0) < 4 || Me !== "all" && F.priceRange !== Me));
+    return y.sort((F, B) => {
+      if (Re === "name")
+        return F.name.localeCompare(B.name);
+      if (Re === "rating") {
+        const _ = w[F.id]?.average || 0;
+        return (w[B.id]?.average || 0) - _;
+      } else if (Re === "price") {
+        const _ = { $: 1, $$: 2, $$$: 3, $$$$: 4 }, Y = _[F.priceRange] || 0, Te = _[B.priceRange] || 0;
+        return Y - Te;
+      }
+      return 0;
+    }), y;
+  })(), Kl = () => {
+    V(!0), setTimeout(() => {
+      A((y) => y + 10), setTimeout(() => {
+        V(!1);
+      }, 100);
+    }, 3e3);
+  }, Yl = () => /* @__PURE__ */ d("div", { className: "bg-white rounded-xl shadow-md border border-gray-100 p-4 flex flex-col animate-pulse", children: [
+    /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ s("div", { className: "relative w-full bg-gradient-to-br from-gray-200 to-gray-300", style: { paddingBottom: "56.25%" }, children: /* @__PURE__ */ s("div", { className: "absolute inset-0 shimmer" }) }) }),
+    /* @__PURE__ */ d("div", { className: "flex justify-between items-start mb-3", children: [
+      /* @__PURE__ */ s("div", { className: "h-6 bg-gray-200 rounded w-2/3" }),
+      /* @__PURE__ */ s("div", { className: "h-8 w-8 bg-gray-200 rounded-full" })
+    ] }),
+    /* @__PURE__ */ s("div", { className: "h-4 bg-gray-200 rounded w-1/2 mb-3" }),
+    /* @__PURE__ */ d("div", { className: "flex items-center gap-2 mb-3", children: [
+      /* @__PURE__ */ s("div", { className: "flex gap-1", children: [...Array(5)].map((y, F) => /* @__PURE__ */ s("div", { className: "h-4 w-4 bg-gray-200 rounded" }, F)) }),
+      /* @__PURE__ */ s("div", { className: "h-4 bg-gray-200 rounded w-20" })
+    ] }),
+    /* @__PURE__ */ s("div", { className: "mt-auto w-full h-10 bg-gray-200 rounded-lg" })
+  ] });
   return /* @__PURE__ */ d("div", { className: "min-h-screen", children: [
-    /* @__PURE__ */ s("section", { className: "bg-gradient-to-br from-red-400 via-orange-500 to-pink-600 text-white h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[8px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
+    /* @__PURE__ */ s("section", { className: "bg-gradient-to-br from-orange-400 via-orange-500 to-orange-600 text-white h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[31.5px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0, y: 30 },
@@ -9365,7 +9533,7 @@ function cf({ onEditBusiness: t, onNavigate: e } = {}) {
         className: "text-center",
         children: [
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[300px] mx-auto", children: [
-            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Veterinary Services" }),
+            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Vet Care" }),
             /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Care, cure, comfort — locally." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
@@ -9378,249 +9546,1059 @@ function cf({ onEditBusiness: t, onNavigate: e } = {}) {
                 children: "⚕️"
               }
             ),
-            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Veterinary Services" })
+            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Vet Care" })
           ] }),
-          /* @__PURE__ */ s("p", { className: "hidden md:block max-w-2xl mx-auto md:text-base", children: "Find the best veterinary care in the Darlington/Florence area! Browse compassionate vets offering everything from routine checkups to emergency services for your pets." })
+          /* @__PURE__ */ s("p", { className: "hidden md:block max-w-2xl mx-auto md:text-base", children: "Find trusted veterinary clinics and hospitals in the Darlington/Florence area with routine, urgent, and emergency pet care." })
         ]
       }
     ) }) }),
-    /* @__PURE__ */ s("section", { className: "py-16 px-4 sm:px-6 lg:px-8 bg-white", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto", children: [
+    /* @__PURE__ */ s("section", { className: "pt-0 md:py-16 pb-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-orange-50 to-white", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto", children: [
       /* @__PURE__ */ d(
         D.div,
         {
-          initial: { opacity: 0 },
-          whileInView: { opacity: 1 },
-          viewport: { once: !0 },
-          className: "text-center mb-12",
+          initial: { opacity: 0, y: 20 },
+          animate: { opacity: 1, y: 0 },
+          className: "bg-white rounded-2xl shadow-md md:shadow-sm p-3.5 md:p-4 mb-6 md:mb-4 mt-0 md:mt-0 flex flex-col sm:flex-row gap-3 md:gap-4",
           children: [
-            /* @__PURE__ */ s("h2", { className: "text-red-600 mb-4", children: "Veterinary Services" }),
-            /* @__PURE__ */ s("p", { className: "text-gray-600", children: "Comprehensive care for all your pet's health needs" })
-          ]
-        }
-      ),
-      /* @__PURE__ */ s("div", { className: "grid md:grid-cols-2 gap-8", children: r.map((i, o) => {
-        const a = i.icon;
-        return /* @__PURE__ */ d(
-          D.div,
-          {
-            initial: { opacity: 0, y: 50 },
-            whileInView: { opacity: 1, y: 0 },
-            viewport: { once: !0 },
-            transition: { delay: o * 0.1 },
-            whileHover: { scale: 1.02 },
-            className: "bg-white rounded-2xl shadow-lg p-6 border-2 border-gray-100 hover:border-red-300 transition-colors",
-            children: [
-              /* @__PURE__ */ d("div", { className: "flex items-start gap-4 mb-4", children: [
-                /* @__PURE__ */ s("div", { className: `${i.color} p-4 rounded-xl`, children: /* @__PURE__ */ s(a, { className: "w-8 h-8 text-red-600" }) }),
-                /* @__PURE__ */ d("div", { className: "flex-1", children: [
-                  /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-2", children: i.name }),
-                  /* @__PURE__ */ s("p", { className: "text-gray-600 mb-4", children: i.description })
-                ] })
-              ] }),
-              /* @__PURE__ */ s("div", { className: "border-t pt-4", children: /* @__PURE__ */ s("ul", { className: "grid grid-cols-2 gap-2", children: i.items.map((l) => /* @__PURE__ */ d("li", { className: "text-gray-600 text-sm flex items-start gap-1", children: [
-                /* @__PURE__ */ s("span", { className: "text-red-500", children: "✓" }),
-                /* @__PURE__ */ s("span", { children: l })
-              ] }, l)) }) })
-            ]
-          },
-          i.name
-        );
-      }) })
-    ] }) }),
-    /* @__PURE__ */ s("section", { className: "py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-red-50 to-white", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto", children: [
-      /* @__PURE__ */ d(
-        D.div,
-        {
-          initial: { opacity: 0 },
-          whileInView: { opacity: 1 },
-          viewport: { once: !0 },
-          className: "text-center mb-12",
-          children: [
-            /* @__PURE__ */ s("h2", { className: "text-red-600 mb-4", children: "Veterinary Clinics" }),
-            /* @__PURE__ */ s("p", { className: "text-gray-600", children: "Trusted veterinary care in the Darlington/Florence area" })
-          ]
-        }
-      ),
-      /* @__PURE__ */ s("div", { className: "grid md:grid-cols-2 gap-6", children: n.map((i, o) => /* @__PURE__ */ d(
-        D.div,
-        {
-          initial: { opacity: 0, scale: 0.9 },
-          whileInView: { opacity: 1, scale: 1 },
-          viewport: { once: !0 },
-          transition: { delay: o * 0.1 },
-          whileHover: { y: -5 },
-          className: "bg-white rounded-xl shadow-md p-6 hover:shadow-xl transition-all",
-          children: [
-            /* @__PURE__ */ d("div", { className: "flex items-start justify-between mb-4", children: [
-              /* @__PURE__ */ d("div", { className: "flex-1", children: [
-                /* @__PURE__ */ d("div", { className: "flex items-start gap-3 mb-2", children: [
-                  /* @__PURE__ */ s("div", { className: "text-3xl", children: "🏥" }),
-                  /* @__PURE__ */ d("div", { children: [
-                    /* @__PURE__ */ s("h3", { className: "text-gray-800", children: i.name }),
-                    /* @__PURE__ */ d("div", { className: "flex items-center gap-1 mt-1", children: [
-                      /* @__PURE__ */ s("span", { className: "text-yellow-500", children: "⭐" }),
-                      /* @__PURE__ */ s("span", { children: i.rating })
-                    ] })
-                  ] })
-                ] }),
-                /* @__PURE__ */ d("p", { className: "text-gray-600 text-sm mb-2", children: [
-                  "📍 ",
-                  i.location
-                ] }),
-                /* @__PURE__ */ d("p", { className: "text-gray-600 text-sm mb-3", children: [
-                  "🕒 ",
-                  i.hours
-                ] })
-              ] }),
-              i.emergency && /* @__PURE__ */ s("span", { className: "bg-red-100 text-red-700 text-xs px-3 py-1 rounded-full", children: "24/7 Emergency" })
-            ] }),
-            /* @__PURE__ */ d("div", { className: "border-t pt-4 mb-4", children: [
-              /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-2", children: "Services offered:" }),
-              /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: i.services.map((a) => /* @__PURE__ */ s(
-                "span",
-                {
-                  className: "bg-red-50 text-red-700 text-xs px-2 py-1 rounded-full",
-                  children: a
-                },
-                a
-              )) })
-            ] }),
-            /* @__PURE__ */ d("div", { className: "grid grid-cols-2 gap-3", children: [
+            /* @__PURE__ */ d("div", { className: "flex-1 relative", children: [
+              /* @__PURE__ */ s(mr, { className: "absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" }),
               /* @__PURE__ */ s(
-                D.button,
+                "input",
                 {
-                  whileHover: { scale: 1.05 },
-                  whileTap: { scale: 0.95 },
-                  className: "bg-red-600 text-white py-2 rounded-lg hover:bg-red-700 transition-colors",
-                  children: "Call Now"
+                  type: "text",
+                  placeholder: "Search businesses by name...",
+                  value: Ke,
+                  onChange: (y) => Ht(y.target.value),
+                  className: "w-full pl-10 pr-4 py-3 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-400 transition-colors"
+                }
+              )
+            ] }),
+            /* @__PURE__ */ d("div", { className: "flex gap-3 md:hidden", children: [
+              /* @__PURE__ */ d(
+                "select",
+                {
+                  value: ee,
+                  onChange: (y) => G(y.target.value),
+                  className: "flex-1 px-4 py-3 bg-orange-50 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-400 transition-colors cursor-pointer",
+                  children: [
+                    /* @__PURE__ */ s("option", { value: "all", children: "All Cities" }),
+                    /* @__PURE__ */ s("option", { value: "Florence", children: "Florence" }),
+                    /* @__PURE__ */ s("option", { value: "Darlington", children: "Darlington" }),
+                    /* @__PURE__ */ s("option", { value: "Hartsville", children: "Hartsville" })
+                  ]
                 }
               ),
-              /* @__PURE__ */ s(
-                D.button,
+              /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-4 py-3 bg-orange-50 border-2 border-orange-200 rounded-lg", children: [
+                /* @__PURE__ */ s(Ys, { className: "w-5 h-5 text-orange-600" }),
+                /* @__PURE__ */ d(
+                  "select",
+                  {
+                    value: Re,
+                    onChange: (y) => Ye(y.target.value),
+                    className: "bg-transparent focus:outline-none cursor-pointer text-gray-700",
+                    children: [
+                      /* @__PURE__ */ s("option", { value: "name", children: "Name" }),
+                      /* @__PURE__ */ s("option", { value: "rating", children: "Rating" }),
+                      /* @__PURE__ */ s("option", { value: "price", children: "Price" })
+                    ]
+                  }
+                )
+              ] })
+            ] }),
+            /* @__PURE__ */ s("div", { className: "hidden sm:block sm:w-auto", children: /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-4 py-3 bg-orange-50 border-2 border-orange-200 rounded-lg", children: [
+              /* @__PURE__ */ s(Ys, { className: "w-5 h-5 text-orange-600" }),
+              /* @__PURE__ */ d(
+                "select",
                 {
-                  whileHover: { scale: 1.05 },
-                  whileTap: { scale: 0.95 },
-                  className: "border-2 border-red-600 text-red-600 py-2 rounded-lg hover:bg-red-50 transition-colors",
-                  children: "Directions"
+                  value: Re,
+                  onChange: (y) => Ye(y.target.value),
+                  className: "bg-transparent focus:outline-none cursor-pointer text-gray-700",
+                  children: [
+                    /* @__PURE__ */ s("option", { value: "name", children: "Sort by Name" }),
+                    /* @__PURE__ */ s("option", { value: "rating", children: "Sort by Rating" }),
+                    /* @__PURE__ */ s("option", { value: "price", children: "Sort by Price" })
+                  ]
+                }
+              )
+            ] }) }),
+            /* @__PURE__ */ d(
+              "button",
+              {
+                onClick: () => Xe(!0),
+                className: "md:hidden flex items-center justify-center gap-2 px-4 py-2.5 text-white rounded-full transition-colors",
+                style: { backgroundColor: "#ea580c", border: "1px solid #c2410c" },
+                children: [
+                  /* @__PURE__ */ s(Am, { className: "w-4 h-4" }),
+                  /* @__PURE__ */ s("span", { className: "text-sm", children: "Filters" })
+                ]
+              }
+            )
+          ]
+        }
+      ),
+      /* @__PURE__ */ s(
+        D.div,
+        {
+          initial: { opacity: 0, y: 20 },
+          animate: { opacity: 1, y: 0 },
+          transition: { delay: 0.1 },
+          className: "hidden md:block rounded-xl shadow-md p-4 md:p-6 mb-8",
+          style: { backgroundColor: "#fdba74" },
+          children: /* @__PURE__ */ d("div", { className: "flex flex-col md:flex-row gap-3 md:gap-4 items-stretch justify-between", children: [
+            /* @__PURE__ */ s("div", { className: "w-full md:w-auto", children: /* @__PURE__ */ d(
+              "select",
+              {
+                value: ee,
+                onChange: (y) => G(y.target.value),
+                className: "w-full h-full px-4 py-3 bg-orange-50 border-2 border-orange-200 rounded-lg focus:outline-none focus:border-orange-400 transition-colors cursor-pointer",
+                children: [
+                  /* @__PURE__ */ s("option", { value: "all", children: "All Cities" }),
+                  /* @__PURE__ */ s("option", { value: "Florence", children: "Florence" }),
+                  /* @__PURE__ */ s("option", { value: "Darlington", children: "Darlington" }),
+                  /* @__PURE__ */ s("option", { value: "Hartsville", children: "Hartsville" })
+                ]
+              }
+            ) }),
+            /* @__PURE__ */ d(
+              "div",
+              {
+                className: "flex items-center justify-between gap-3 px-4 py-3 bg-orange-50 border-2 border-orange-200 rounded-lg cursor-pointer hover:bg-orange-100 transition-colors",
+                onClick: () => Ee(!pe),
+                children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🚨" }),
+                    /* @__PURE__ */ s("span", { className: "text-gray-700", children: "24/7 Emergency" })
+                  ] }),
+                  /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${pe ? "bg-orange-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
+                ]
+              }
+            ),
+            /* @__PURE__ */ d(
+              "div",
+              {
+                className: "flex items-center justify-between gap-3 px-4 py-3 bg-orange-50 border-2 border-orange-200 rounded-lg cursor-pointer hover:bg-orange-100 transition-colors",
+                onClick: () => te(!W),
+                children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
+                    /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Accepting New Patients" })
+                  ] }),
+                  /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${W ? "bg-orange-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
+                ]
+              }
+            ),
+            /* @__PURE__ */ d(
+              "div",
+              {
+                className: "flex items-center gap-3 px-4 py-3 bg-orange-50 border-2 border-orange-200 rounded-lg cursor-pointer hover:bg-orange-100 transition-colors",
+                onClick: () => ue(!ae),
+                children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
+                    /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
+                  ] }),
+                  /* @__PURE__ */ s(
+                    "input",
+                    {
+                      type: "checkbox",
+                      checked: ae,
+                      onChange: (y) => ue(y.target.checked),
+                      className: "w-5 h-5 text-orange-600 rounded cursor-pointer ml-auto"
+                    }
+                  )
+                ]
+              }
+            ),
+            /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-orange-50 border-2 border-orange-200 rounded-lg", children: [
+              /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ s(Zs, { className: "w-5 h-5 text-orange-600" }),
+                /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Price Range" })
+              ] }),
+              /* @__PURE__ */ d(
+                "select",
+                {
+                  value: Me,
+                  onChange: (y) => qe(y.target.value),
+                  className: "px-3 py-1 bg-white border-2 border-orange-300 rounded-lg focus:outline-none focus:border-orange-400 transition-colors cursor-pointer ml-auto",
+                  children: [
+                    /* @__PURE__ */ s("option", { value: "all", children: "All" }),
+                    /* @__PURE__ */ s("option", { value: "$", children: "$" }),
+                    /* @__PURE__ */ s("option", { value: "$$", children: "$$" }),
+                    /* @__PURE__ */ s("option", { value: "$$$", children: "$$$" }),
+                    /* @__PURE__ */ s("option", { value: "$$$$", children: "$$$$" })
+                  ]
                 }
               )
             ] })
-          ]
-        },
-        i.name
-      )) })
+          ] })
+        }
+      ),
+      /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mt-6 md:mt-0 px-4 md:px-0", children: l ? /* @__PURE__ */ d("div", { className: "col-span-1 md:col-span-2 text-center py-12", children: [
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "🐾" }),
+        /* @__PURE__ */ s("p", { className: "text-gray-600", children: "Loading vet care businesses..." })
+      ] }) : yt.length === 0 ? /* @__PURE__ */ d("div", { className: "col-span-1 md:col-span-2 text-center py-6 md:py-12", children: [
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "🔍" }),
+        /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No matches found" }),
+        /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm mt-2 md:hidden", children: "Try a different city, adjust filters, or clear your search." }),
+        /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm mt-2 hidden md:block", children: "Try adjusting your search criteria." }),
+        /* @__PURE__ */ s(
+          D.button,
+          {
+            whileTap: { scale: 0.98 },
+            onClick: () => {
+              Ht(""), Ee(!1), te(!1), ue(!1), qe("all"), G("all"), Ye("name");
+            },
+            className: "md:hidden mt-6 px-6 py-3 bg-gradient-to-r from-orange-600 to-red-500 text-white rounded-xl hover:shadow-lg transition-shadow",
+            children: "Clear Filters"
+          }
+        )
+      ] }) : /* @__PURE__ */ d(ie, { children: [
+        yt.slice(0, ft).map((y, F) => /* @__PURE__ */ d(
+          D.div,
+          {
+            initial: window.innerWidth >= 768 ? { opacity: 0, y: 30 } : !1,
+            animate: window.innerWidth >= 768 ? void 0 : { opacity: 1, y: 0 },
+            whileInView: window.innerWidth >= 768 ? { opacity: 1, y: 0 } : void 0,
+            viewport: window.innerWidth >= 768 ? { once: !0, margin: "0px 0px -100px 0px" } : void 0,
+            transition: window.innerWidth >= 768 ? { duration: 0.3 } : void 0,
+            whileHover: { y: window.innerWidth >= 768 ? -5 : 0 },
+            onClick: () => window.innerWidth < 768 && i(y),
+            className: "bg-white rounded-xl shadow-md border border-gray-100 md:border-0 p-4 md:p-6 hover:shadow-xl transition-all md:cursor-default cursor-pointer flex flex-col active:shadow-2xl md:active:shadow-xl",
+            children: [
+              /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ s("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: /* @__PURE__ */ s(
+                "img",
+                {
+                  src: y.photos && y.photos.length > 0 ? y.photos[y.cardPhotoIndex || 0] : Wr,
+                  alt: y.name,
+                  className: `absolute inset-0 w-full h-full rounded-t-xl ${y.photos && y.photos.length > 0 ? "object-cover" : "object-contain bg-gradient-to-br from-orange-100 to-red-100"}`
+                }
+              ) }) }),
+              /* @__PURE__ */ d("div", { className: "flex justify-between items-start mb-3", children: [
+                /* @__PURE__ */ s("h3", { className: "text-gray-800", children: y.name }),
+                /* @__PURE__ */ d("div", { className: "flex items-center gap-3 md:gap-2", children: [
+                  /* @__PURE__ */ s(
+                    D.button,
+                    {
+                      whileHover: { scale: 1.1 },
+                      whileTap: { scale: 0.9 },
+                      onClick: (B) => Hl(y.id, B),
+                      className: "p-2 rounded-full hover:bg-orange-100 transition-colors",
+                      "aria-label": Be.includes(y.id) ? "Remove from shortlist" : "Add to shortlist",
+                      children: /* @__PURE__ */ s(
+                        yi,
+                        {
+                          className: `w-6 h-6 transition-colors ${Be.includes(y.id) ? "fill-red-500 text-red-500" : "text-gray-400 hover:text-red-400"}`
+                        }
+                      )
+                    }
+                  ),
+                  y.priceRange && /* @__PURE__ */ d("div", { className: "relative group", children: [
+                    /* @__PURE__ */ s("div", { className: "flex items-center gap-1 text-orange-600 cursor-help", children: /* @__PURE__ */ s("span", { children: y.priceRange }) }),
+                    /* @__PURE__ */ d("div", { className: "absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10", children: [
+                      Ri(y.priceRange),
+                      /* @__PURE__ */ s("div", { className: "absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900" })
+                    ] })
+                  ] })
+                ] })
+              ] }),
+              /* @__PURE__ */ d("p", { className: "text-gray-600 mb-3", children: [
+                "📍 ",
+                y.city
+              ] }),
+              /* @__PURE__ */ d("div", { className: "flex items-center justify-between mb-3", children: [
+                /* @__PURE__ */ s("div", { className: "flex items-center gap-3 md:gap-2", children: w[y.id] ? /* @__PURE__ */ d(ie, { children: [
+                  Tr(w[y.id].average, "sm"),
+                  /* @__PURE__ */ d("span", { className: "text-sm text-gray-600", children: [
+                    w[y.id].average.toFixed(1),
+                    " (",
+                    w[y.id].count,
+                    " ",
+                    w[y.id].count === 1 ? "review" : "reviews",
+                    ")"
+                  ] })
+                ] }) : /* @__PURE__ */ s("span", { className: "text-sm text-gray-500", children: "No reviews yet" }) }),
+                /* @__PURE__ */ d("div", { className: "flex flex-col gap-1 items-end", children: [
+                  (y.emergency24x7 || y.emergency) && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full", children: "🚨 24/7 Emergency" }),
+                  (y.notAcceptingClients || y.acceptingNewPatients === !1) && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full", children: "🚫 Not Accepting New Patients" })
+                ] })
+              ] }),
+              y.hours && /* @__PURE__ */ d("p", { className: "text-gray-600 text-sm mb-3", children: [
+                "🕒 ",
+                y.hours.monday || "See hours in details"
+              ] }),
+              y.servicesOffered && y.servicesOffered.length > 0 && /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2 mb-4", children: y.servicesOffered.slice(0, 4).map((B) => /* @__PURE__ */ s("span", { className: "bg-orange-50 text-orange-700 text-xs px-2 py-1 rounded-full", children: B }, B)) }),
+              /* @__PURE__ */ d("div", { className: "grid grid-cols-2 gap-2 mb-3", children: [
+                /* @__PURE__ */ s(D.a, { href: `tel:${y.phone || ""}`, className: "text-center bg-orange-600 text-white py-2 rounded-lg hover:bg-orange-700 transition-colors", children: "Call Now" }),
+                /* @__PURE__ */ s(D.a, { href: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${y.address || ""}, ${y.city || ""}, SC ${y.zipCode || ""}`)}`, target: "_blank", rel: "noopener noreferrer", className: "text-center border-2 border-orange-600 text-orange-600 py-2 rounded-lg hover:bg-orange-50 transition-colors", children: "Directions" })
+              ] }),
+              /* @__PURE__ */ s(
+                D.button,
+                {
+                  whileHover: { scale: 1.05 },
+                  whileTap: { scale: 0.95 },
+                  onClick: (B) => {
+                    window.innerWidth < 768 && B.stopPropagation(), i(y);
+                  },
+                  className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm",
+                  style: { backgroundColor: "#ea580c" },
+                  children: "View Details"
+                }
+              )
+            ]
+          },
+          y.id || y.name
+        )),
+        O && /* @__PURE__ */ s(ie, { children: [...Array(4)].map((y, F) => /* @__PURE__ */ s("div", { className: "md:hidden", children: /* @__PURE__ */ s(Yl, {}) }, `skeleton-${F}`)) }),
+        yt.length > ft && !O && /* @__PURE__ */ s("div", { className: "col-span-1 md:col-span-2 flex justify-center mt-6 md:hidden", children: /* @__PURE__ */ s(
+          D.button,
+          {
+            whileTap: { scale: 0.98 },
+            onClick: Kl,
+            className: "px-8 py-3 border-2 border-orange-600 text-orange-700 rounded-xl hover:bg-orange-50 transition-colors",
+            children: "Load More"
+          }
+        ) }),
+        yt.length > 0 && yt.length <= ft && /* @__PURE__ */ s("div", { className: "col-span-1 md:col-span-2 text-center mt-6 md:hidden", children: /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm", children: "You've reached the end" }) })
+      ] }) })
     ] }) }),
-    /* @__PURE__ */ s("section", { className: "py-16 px-4 sm:px-6 lg:px-8 bg-white", children: /* @__PURE__ */ d("div", { className: "max-w-6xl mx-auto", children: [
+    n && /* @__PURE__ */ s(
+      D.div,
+      {
+        initial: { opacity: 0 },
+        animate: { opacity: 1 },
+        exit: { opacity: 0 },
+        className: "fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4",
+        onClick: () => i(null),
+        children: /* @__PURE__ */ d(
+          D.div,
+          {
+            initial: { scale: 0.9, opacity: 0 },
+            animate: { scale: 1, opacity: 1 },
+            exit: { scale: 0.9, opacity: 0 },
+            onClick: (y) => y.stopPropagation(),
+            className: "bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl",
+            children: [
+              /* @__PURE__ */ d("div", { className: "relative h-80 overflow-hidden rounded-t-2xl", children: [
+                n.photos && n.photos.length > 0 ? (() => {
+                  const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+                  return F.length > 0 ? /* @__PURE__ */ d(ie, { children: [
+                    /* @__PURE__ */ s(Pt, { mode: "wait", children: /* @__PURE__ */ s(
+                      D.img,
+                      {
+                        src: F[u],
+                        alt: `${n.name} ${u + 1}`,
+                        className: "w-full h-80 object-cover",
+                        initial: { opacity: 0 },
+                        animate: { opacity: 1 },
+                        exit: { opacity: 0 },
+                        transition: { duration: 0.5 }
+                      },
+                      u
+                    ) }),
+                    F.length > 1 && /* @__PURE__ */ d(ie, { children: [
+                      /* @__PURE__ */ s(
+                        "button",
+                        {
+                          onClick: Gl,
+                          className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm p-3 rounded-full hover:bg-white transition-all shadow-lg",
+                          children: /* @__PURE__ */ s(Qp, { className: "w-6 h-6 text-gray-800" })
+                        }
+                      ),
+                      /* @__PURE__ */ s(
+                        "button",
+                        {
+                          onClick: Ul,
+                          className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm p-3 rounded-full hover:bg-white transition-all shadow-lg",
+                          children: /* @__PURE__ */ s(Xs, { className: "w-6 h-6 text-gray-800" })
+                        }
+                      ),
+                      /* @__PURE__ */ s("div", { className: "absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2", children: F.map((B, _) => /* @__PURE__ */ s(
+                        "button",
+                        {
+                          onClick: () => h(_),
+                          className: `w-3 h-3 rounded-full transition-all ${_ === u ? "bg-white scale-110" : "bg-white/60 hover:bg-white/80"}`
+                        },
+                        _
+                      )) })
+                    ] })
+                  ] }) : (
+                    // Fallback to placeholder if no photos available
+                    /* @__PURE__ */ s("div", { className: "w-full h-full bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center", children: /* @__PURE__ */ s(
+                      "img",
+                      {
+                        src: Wr,
+                        alt: n.name,
+                        className: "w-auto h-full object-contain"
+                      }
+                    ) })
+                  );
+                })() : /* @__PURE__ */ s("div", { className: "w-full h-full bg-gradient-to-br from-orange-100 to-red-100 flex items-center justify-center", children: /* @__PURE__ */ s(
+                  "img",
+                  {
+                    src: Wr,
+                    alt: n.name,
+                    className: "w-auto h-full object-contain"
+                  }
+                ) }),
+                /* @__PURE__ */ s("div", { className: "absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none" }),
+                /* @__PURE__ */ s(
+                  "button",
+                  {
+                    onClick: () => i(null),
+                    className: "absolute top-4 right-4 bg-white/90 backdrop-blur-sm p-2 rounded-full hover:bg-white transition-colors z-20",
+                    children: /* @__PURE__ */ s(we, { className: "w-6 h-6 text-gray-800" })
+                  }
+                ),
+                /* @__PURE__ */ d("div", { className: "absolute bottom-4 left-6 text-white z-10 pointer-events-none", children: [
+                  /* @__PURE__ */ s("h2", { className: "mb-2", children: n.name }),
+                  n.priceRange && /* @__PURE__ */ d("div", { className: "relative group pointer-events-auto", children: [
+                    /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-orange-400 cursor-help", children: /* @__PURE__ */ s("span", { className: "text-xl", children: n.priceRange }) }),
+                    /* @__PURE__ */ d("div", { className: "absolute bottom-full left-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap", children: [
+                      Ri(n.priceRange),
+                      /* @__PURE__ */ s("div", { className: "absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900" })
+                    ] })
+                  ] })
+                ] })
+              ] }),
+              /* @__PURE__ */ d("div", { className: "p-6 pb-8 md:pb-6 mb-28 md:mb-0", children: [
+                /* @__PURE__ */ s("p", { className: "text-gray-700 mb-6", children: n.description }),
+                p.length > 0 && /* @__PURE__ */ s("div", { className: "bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-xl mb-6 border border-yellow-200", children: /* @__PURE__ */ d("div", { className: "flex items-center justify-between", children: [
+                  /* @__PURE__ */ d("div", { children: [
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Overall Rating" }),
+                    /* @__PURE__ */ d("div", { className: "flex items-center gap-3", children: [
+                      Tr(Sr(p), "lg"),
+                      /* @__PURE__ */ s("span", { className: "text-3xl text-gray-800", children: Sr(p).toFixed(1) })
+                    ] })
+                  ] }),
+                  /* @__PURE__ */ d("div", { className: "text-right", children: [
+                    /* @__PURE__ */ s("p", { className: "text-2xl text-gray-800", children: p.length }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: p.length === 1 ? "Review" : "Reviews" })
+                  ] })
+                ] }) }),
+                /* @__PURE__ */ d("div", { className: "grid md:grid-cols-2 gap-4 mb-6", children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-50 rounded-lg", children: [
+                    /* @__PURE__ */ s(ar, { className: "w-5 h-5 text-orange-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Address" }),
+                      /* @__PURE__ */ d(
+                        "a",
+                        {
+                          href: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+                            `${n.address}, ${n.city}, SC ${n.zipCode}`
+                          )}`,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          className: "text-orange-600 hover:underline cursor-pointer",
+                          children: [
+                            n.address,
+                            ", ",
+                            n.city,
+                            ", SC ",
+                            n.zipCode
+                          ]
+                        }
+                      )
+                    ] })
+                  ] }),
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-50 rounded-lg", children: [
+                    /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-orange-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Phone" }),
+                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "text-orange-600 hover:underline", children: n.phone })
+                    ] })
+                  ] }),
+                  n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-50 rounded-lg md:col-span-2", children: [
+                    /* @__PURE__ */ s(im, { className: "w-5 h-5 text-orange-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { className: "flex-1", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
+                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-orange-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-4 text-sm", children: [
+                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-3", children: ["monday", "tuesday", "wednesday", "thursday"].map((y) => {
+                          const F = n.hours[y], B = F?.toLowerCase().includes("closed");
+                          return /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
+                            /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize mb-1", children: y }),
+                            /* @__PURE__ */ s("span", { className: `font-medium ${B ? "text-red-600" : "text-orange-600"}`, children: F })
+                          ] }, y);
+                        }) }),
+                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-3", children: ["friday", "saturday", "sunday"].map((y) => {
+                          const F = n.hours[y], B = F?.toLowerCase().includes("closed");
+                          return /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
+                            /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize mb-1", children: y }),
+                            /* @__PURE__ */ s("span", { className: `font-medium ${B ? "text-red-600" : "text-orange-600"}`, children: F })
+                          ] }, y);
+                        }) })
+                      ] })
+                    ] })
+                  ] }),
+                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-50 rounded-lg", children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-orange-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Website" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: n.website.startsWith("http") ? n.website : `https://${n.website}`,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          className: "text-orange-600 hover:underline",
+                          children: n.website
+                        }
+                      )
+                    ] })
+                  ] }),
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-50 rounded-lg", children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-orange-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: `mailto:${n.email}`,
+                          className: "text-orange-600 hover:underline",
+                          children: n.email
+                        }
+                      )
+                    ] })
+                  ] })
+                ] }),
+                n.paymentMethods && n.paymentMethods.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6", children: [
+                  /* @__PURE__ */ s("h3", { className: "text-gray-600 mb-3", children: "Payment Methods" }),
+                  /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.paymentMethods.map((y) => /* @__PURE__ */ s(
+                    "span",
+                    {
+                      className: "bg-orange-50 text-orange-700 px-3 py-1 rounded-full text-sm",
+                      children: y
+                    },
+                    y
+                  )) })
+                ] }),
+                n.emergency24x7 && /* @__PURE__ */ s("div", { className: "mb-6", children: /* @__PURE__ */ d("div", { className: "inline-flex items-center gap-2 px-4 py-3 bg-red-50 border-2 border-red-200 text-red-700 rounded-lg", children: [
+                  /* @__PURE__ */ s("span", { className: "text-2xl", children: "🚨" }),
+                  /* @__PURE__ */ d("div", { children: [
+                    /* @__PURE__ */ s("p", { className: "text-gray-800", children: "24/7 Emergency Services" }),
+                    /* @__PURE__ */ s("p", { className: "text-sm text-gray-600", children: "Immediate care available day and night" })
+                  ] })
+                ] }) }),
+                n.specialFeatures && n.specialFeatures.length > 0 && n.specialFeatures.some((y) => y.trim()) && /* @__PURE__ */ d("div", { className: "mb-6", children: [
+                  /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-3", children: "Special Features" }),
+                  /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.specialFeatures.filter((y) => y.trim()).map((y) => /* @__PURE__ */ d(
+                    "span",
+                    {
+                      className: "bg-orange-50 text-orange-600 px-4 py-2 rounded-lg",
+                      children: [
+                        "✨ ",
+                        y
+                      ]
+                    },
+                    y
+                  )) })
+                ] }),
+                n.servicesOffered && n.servicesOffered.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6", children: [
+                  /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-3", children: "Services Offered" }),
+                  /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.servicesOffered.map((y) => /* @__PURE__ */ s(
+                    "span",
+                    {
+                      className: "bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 px-4 py-2 rounded-full",
+                      children: y
+                    },
+                    y
+                  )) })
+                ] }),
+                /* @__PURE__ */ d(
+                  D.a,
+                  {
+                    href: `tel:${n.phone}`,
+                    whileHover: { scale: 1.02 },
+                    whileTap: { scale: 0.98 },
+                    className: "hidden md:block w-full bg-gradient-to-r from-orange-600 to-red-500 text-white py-4 rounded-xl hover:from-orange-700 hover:to-red-600 transition-colors text-center",
+                    children: [
+                      "📞 Call ",
+                      n.name
+                    ]
+                  }
+                ),
+                I && (n.ownerId === I.id || I.isAdmin) && t && /* @__PURE__ */ d("div", { className: "space-y-3 mt-3", children: [
+                  /* @__PURE__ */ d(
+                    D.button,
+                    {
+                      onClick: () => {
+                        i(null), t(n);
+                      },
+                      whileHover: { scale: 1.02 },
+                      whileTap: { scale: 0.98 },
+                      className: "flex items-center justify-center gap-2 w-full bg-blue-600 text-white py-4 rounded-xl hover:bg-blue-700 transition-colors",
+                      children: [
+                        /* @__PURE__ */ s(Mm, { className: "w-5 h-5" }),
+                        "Edit Business Listing"
+                      ]
+                    }
+                  ),
+                  /* @__PURE__ */ s(
+                    D.button,
+                    {
+                      onClick: ql,
+                      whileHover: { scale: 1.02 },
+                      whileTap: { scale: 0.98 },
+                      className: "flex items-center justify-center gap-2 w-full bg-red-600 text-white py-4 rounded-xl hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
+                      disabled: M,
+                      children: M ? /* @__PURE__ */ d(ie, { children: [
+                        /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
+                        "Deleting..."
+                      ] }) : /* @__PURE__ */ d(ie, { children: [
+                        /* @__PURE__ */ s(Lt, { className: "w-5 h-5" }),
+                        "Delete Business Listing"
+                      ] })
+                    }
+                  )
+                ] }),
+                /* @__PURE__ */ d("div", { className: "mt-6 border-t border-gray-200 pt-6", children: [
+                  /* @__PURE__ */ d("h3", { className: "text-gray-800 mb-4", children: [
+                    "Customer Reviews (",
+                    p.length,
+                    ")"
+                  ] }),
+                  p.length > 0 ? /* @__PURE__ */ s("div", { className: "space-y-4 mb-6", children: p.map((y) => /* @__PURE__ */ d(
+                    D.div,
+                    {
+                      initial: { opacity: 0, y: 10 },
+                      animate: { opacity: 1, y: 0 },
+                      className: "bg-gradient-to-r from-green-50 to-emerald-50 p-5 rounded-xl border border-green-100",
+                      children: [
+                        /* @__PURE__ */ d("div", { className: "flex items-start justify-between mb-3", children: [
+                          /* @__PURE__ */ d("div", { children: [
+                            /* @__PURE__ */ d("div", { className: "flex items-center gap-2 mb-1", children: [
+                              Tr(y.rating, "sm"),
+                              /* @__PURE__ */ s("span", { className: "text-sm text-gray-800", children: y.userName })
+                            ] }),
+                            /* @__PURE__ */ s("p", { className: "text-xs text-gray-500", children: new Date(y.createdAt).toLocaleDateString("en-US", {
+                              year: "numeric",
+                              month: "long",
+                              day: "numeric"
+                            }) })
+                          ] }),
+                          I && I.id === n.ownerId && /* @__PURE__ */ s(
+                            "button",
+                            {
+                              onClick: async () => {
+                                if (prompt("Enter admin password to delete this review:") !== "9634") {
+                                  alert("Incorrect password. Review not deleted.");
+                                  return;
+                                }
+                                try {
+                                  await Oe.deleteReview(y.id, z), m((_) => _.filter((Y) => Y.id !== y.id));
+                                  const B = p.filter((_) => _.id !== y.id);
+                                  if (B.length > 0) {
+                                    const _ = B.reduce((Y, Te) => Y + Te.rating, 0) / B.length;
+                                    x((Y) => ({
+                                      ...Y,
+                                      [n.id]: {
+                                        average: _,
+                                        count: B.length
+                                      }
+                                    }));
+                                  } else
+                                    x((_) => {
+                                      const Y = { ..._ };
+                                      return delete Y[n.id], Y;
+                                    });
+                                  alert("Review deleted successfully");
+                                } catch (B) {
+                                  console.error("Error deleting review:", B), alert("Failed to delete review");
+                                }
+                              },
+                              className: "text-red-600 hover:text-red-800",
+                              children: /* @__PURE__ */ s(Lt, { className: "w-5 h-5" })
+                            }
+                          )
+                        ] }),
+                        /* @__PURE__ */ s("p", { className: "text-gray-700 leading-relaxed", children: y.comment })
+                      ]
+                    },
+                    y.id
+                  )) }) : /* @__PURE__ */ d("div", { className: "text-center py-8 bg-gray-50 rounded-xl mb-6", children: [
+                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "⭐" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No reviews yet" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm", children: "Be the first to leave a review!" })
+                  ] }),
+                  I ? n.ownerId === I.id || I.isAdmin ? /* @__PURE__ */ d(ie, { children: [
+                    /* @__PURE__ */ d("div", { className: "bg-blue-50 rounded-xl border-2 border-blue-200 mb-4", children: [
+                      /* @__PURE__ */ d(
+                        "button",
+                        {
+                          onClick: () => P(!T),
+                          className: "w-full p-5 flex items-center justify-between text-left",
+                          children: [
+                            /* @__PURE__ */ d("div", { children: [
+                              /* @__PURE__ */ d("div", { className: "flex items-center gap-2 mb-1", children: [
+                                /* @__PURE__ */ s("span", { className: "text-2xl", children: "👨‍💼" }),
+                                /* @__PURE__ */ s("h4", { className: "text-gray-800", children: "Admin: Add Customer Review" })
+                              ] }),
+                              /* @__PURE__ */ s("p", { className: "text-sm text-gray-600", children: "Transfer existing online reviews to your listing" })
+                            ] }),
+                            /* @__PURE__ */ s(
+                              D.div,
+                              {
+                                animate: { rotate: T ? 180 : 0 },
+                                transition: { duration: 0.3 },
+                                children: /* @__PURE__ */ s(Xs, { className: "w-6 h-6 text-blue-600" })
+                              }
+                            )
+                          ]
+                        }
+                      ),
+                      /* @__PURE__ */ s(Pt, { children: T && /* @__PURE__ */ s(
+                        D.div,
+                        {
+                          initial: { height: 0, opacity: 0 },
+                          animate: { height: "auto", opacity: 1 },
+                          exit: { height: 0, opacity: 0 },
+                          transition: { duration: 0.3 },
+                          className: "overflow-hidden",
+                          children: /* @__PURE__ */ d("div", { className: "px-5 pb-5 border-t border-blue-200 pt-4", children: [
+                            /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                              /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Reviewer Name *" }),
+                              /* @__PURE__ */ s(
+                                "input",
+                                {
+                                  type: "text",
+                                  value: N.reviewerName,
+                                  onChange: (y) => S({ ...N, reviewerName: y.target.value }),
+                                  className: "w-full p-3 bg-white rounded-lg border-2 border-gray-200 focus:outline-none focus:border-blue-400 transition-colors",
+                                  placeholder: "Enter the reviewer's name"
+                                }
+                              )
+                            ] }),
+                            /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                              /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Rating" }),
+                              /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                                [1, 2, 3, 4, 5].map((y) => /* @__PURE__ */ s(
+                                  Ct,
+                                  {
+                                    className: `w-8 h-8 cursor-pointer transition-all hover:scale-110 ${y <= N.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-200"}`,
+                                    onClick: () => S({ ...N, rating: y })
+                                  },
+                                  y
+                                )),
+                                /* @__PURE__ */ d("span", { className: "ml-2 text-sm text-gray-600", children: [
+                                  "(",
+                                  N.rating,
+                                  " ",
+                                  N.rating === 1 ? "star" : "stars",
+                                  ")"
+                                ] })
+                              ] })
+                            ] }),
+                            /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                              /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Review Comment *" }),
+                              /* @__PURE__ */ s(
+                                "textarea",
+                                {
+                                  value: N.comment,
+                                  onChange: (y) => S({ ...N, comment: y.target.value }),
+                                  className: "w-full p-4 bg-white rounded-lg border-2 border-gray-200 focus:outline-none focus:border-blue-400 transition-colors",
+                                  placeholder: "Paste the customer's review here...",
+                                  rows: 4
+                                }
+                              )
+                            ] }),
+                            /* @__PURE__ */ s(
+                              D.button,
+                              {
+                                onClick: Wl,
+                                whileHover: { scale: 1.02 },
+                                whileTap: { scale: 0.98 },
+                                className: "w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl hover:from-blue-600 hover:to-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
+                                disabled: C || !N.reviewerName.trim() || !N.comment.trim(),
+                                children: C ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
+                                  /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
+                                  "Adding Review..."
+                                ] }) : "Add Review"
+                              }
+                            )
+                          ] })
+                        }
+                      ) })
+                    ] }),
+                    /* @__PURE__ */ d("div", { className: "text-center py-8 bg-orange-50 rounded-xl border-2 border-orange-200", children: [
+                      /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
+                      /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" }),
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mt-2", children: "Use the admin form above to add existing customer reviews" })
+                    ] })
+                  ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-orange-200 rounded-xl p-5", children: [
+                    /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Rating" }),
+                      /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                        [1, 2, 3, 4, 5].map((y) => /* @__PURE__ */ s(
+                          Ct,
+                          {
+                            className: `w-8 h-8 cursor-pointer transition-all hover:scale-110 ${y <= f.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-200"}`,
+                            onClick: () => v({ ...f, rating: y })
+                          },
+                          y
+                        )),
+                        /* @__PURE__ */ d("span", { className: "ml-2 text-sm text-gray-600", children: [
+                          "(",
+                          f.rating,
+                          " ",
+                          f.rating === 1 ? "star" : "stars",
+                          ")"
+                        ] })
+                      ] })
+                    ] }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Review" }),
+                      /* @__PURE__ */ s(
+                        "textarea",
+                        {
+                          value: f.comment,
+                          onChange: (y) => v({ ...f, comment: y.target.value }),
+                          className: "w-full p-4 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-orange-400 transition-colors",
+                          placeholder: "Share your experience with this business...",
+                          rows: 4
+                        }
+                      )
+                    ] }),
+                    /* @__PURE__ */ s(
+                      D.button,
+                      {
+                        onClick: zl,
+                        whileHover: { scale: 1.02 },
+                        whileTap: { scale: 0.98 },
+                        className: "w-full bg-gradient-to-r from-orange-600 to-red-500 text-white py-3 rounded-xl hover:from-orange-700 hover:to-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
+                        disabled: g,
+                        children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
+                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
+                          "Submitting..."
+                        ] }) : "Submit Review"
+                      }
+                    )
+                  ] }) : /* @__PURE__ */ d("div", { className: "text-center py-8 bg-orange-50 rounded-xl border-2 border-orange-200", children: [
+                    /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "Want to leave a review?" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Please log in to share your experience" })
+                  ] })
+                ] })
+              ] }),
+              /* @__PURE__ */ d("div", { className: "md:hidden sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-4 flex gap-3", children: [
+                /* @__PURE__ */ d(
+                  D.a,
+                  {
+                    href: `https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+                      `${n.address}, ${n.city}, SC ${n.zipCode}`
+                    )}`,
+                    target: "_blank",
+                    rel: "noopener noreferrer",
+                    whileHover: { scale: 1.02 },
+                    whileTap: { scale: 0.98 },
+                    className: "flex-1 flex items-center justify-center gap-2 bg-white border-2 border-orange-600 text-orange-700 py-3.5 rounded-xl hover:bg-orange-50 transition-colors",
+                    children: [
+                      /* @__PURE__ */ s(ar, { className: "w-5 h-5" }),
+                      /* @__PURE__ */ s("span", { children: "Directions" })
+                    ]
+                  }
+                ),
+                /* @__PURE__ */ d(
+                  D.a,
+                  {
+                    href: `tel:${n.phone}`,
+                    whileHover: { scale: 1.02 },
+                    whileTap: { scale: 0.98 },
+                    className: "flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-orange-600 to-red-500 text-white py-3.5 rounded-xl hover:from-orange-700 hover:to-red-600 transition-colors",
+                    children: [
+                      /* @__PURE__ */ s(Dn, { className: "w-5 h-5" }),
+                      /* @__PURE__ */ s("span", { children: "Call" })
+                    ]
+                  }
+                )
+              ] })
+            ]
+          }
+        )
+      }
+    ),
+    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 bg-orange-600 text-white", children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
+      D.div,
+      {
+        initial: { opacity: 0 },
+        whileInView: { opacity: 1 },
+        viewport: { once: !0 },
+        className: "text-center",
+        children: [
+          /* @__PURE__ */ s("h2", { className: "mb-8", children: "Vet Care Tips" }),
+          /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [
+            { icon: "📅", title: "Book Early", text: "Schedule routine wellness exams" }, { icon: "💉", title: "Vaccinations", text: "Keep vaccines and prevention current" }, { icon: "🏠", title: "Tour First", text: "Do not delay care for emergency symptoms" }
+          ].map((y, F) => /* @__PURE__ */ d(
+            D.div,
+            {
+              initial: { opacity: 0, scale: 0.8 },
+              whileInView: { opacity: 1, scale: 1 },
+              viewport: { once: !0 },
+              transition: { delay: F * 0.2 },
+              className: "bg-white/10 backdrop-blur-sm rounded-xl p-6",
+              children: [
+                /* @__PURE__ */ s("div", { className: "text-4xl mb-3", children: y.icon }),
+                /* @__PURE__ */ s("h3", { className: "mb-2", children: y.title }),
+                /* @__PURE__ */ s("p", { className: "text-green-100", children: y.text })
+              ]
+            },
+            y.title
+          )) })
+        ]
+      }
+    ) }) }),
+    /* @__PURE__ */ s("section", { className: "md:hidden pt-13 pb-8 px-4 bg-white", children: /* @__PURE__ */ d(
+      D.div,
+      {
+        initial: { opacity: 0, y: 20 },
+        whileInView: { opacity: 1, y: 0 },
+        viewport: { once: !0 },
+        className: "bg-white rounded-xl p-6 shadow-md border border-gray-100",
+        children: [
+          /* @__PURE__ */ s("h2", { className: "mb-3 text-left", children: "Pet Products We Recommend" }),
+          /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Recommended wellness and home-care products we trust for ongoing pet health." }),
+          /* @__PURE__ */ s(
+            D.button,
+            {
+              whileTap: { scale: 0.98 },
+              onClick: () => e?.("products"),
+              className: "w-full px-6 py-3 bg-orange-600 text-white rounded-lg hover:bg-orange-700 transition-colors",
+              children: "Browse Pet Products →"
+            }
+          )
+        ]
+      }
+    ) }),
+    /* @__PURE__ */ s(Pt, { children: Nr && /* @__PURE__ */ d(ie, { children: [
       /* @__PURE__ */ s(
         D.div,
         {
           initial: { opacity: 0 },
-          whileInView: { opacity: 1 },
-          viewport: { once: !0 },
-          className: "text-center mb-12",
-          children: /* @__PURE__ */ s("h2", { className: "text-red-600 mb-4", children: "When to Visit the Vet" })
+          animate: { opacity: 1 },
+          exit: { opacity: 0 },
+          onClick: () => Xe(!1),
+          className: "md:hidden fixed inset-0 bg-black/50 z-50"
         }
       ),
-      /* @__PURE__ */ d("div", { className: "grid md:grid-cols-2 gap-8", children: [
-        /* @__PURE__ */ d(
-          D.div,
-          {
-            initial: { opacity: 0, x: -30 },
-            whileInView: { opacity: 1, x: 0 },
-            viewport: { once: !0 },
-            className: "bg-green-50 rounded-2xl p-8",
-            children: [
-              /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-4", children: "✅ Routine Care" }),
-              /* @__PURE__ */ s("ul", { className: "space-y-3", children: [
-                "Annual wellness exams",
-                "Vaccination updates",
-                "Dental cleanings",
-                "Senior pet checkups",
-                "Parasite prevention",
-                "Nutrition consultations"
-              ].map((i) => /* @__PURE__ */ d("li", { className: "text-gray-600 flex items-start gap-2", children: [
-                /* @__PURE__ */ s("span", { className: "text-green-500 mt-0.5", children: "•" }),
-                /* @__PURE__ */ s("span", { children: i })
-              ] }, i)) })
-            ]
-          }
-        ),
-        /* @__PURE__ */ d(
-          D.div,
-          {
-            initial: { opacity: 0, x: 30 },
-            whileInView: { opacity: 1, x: 0 },
-            viewport: { once: !0 },
-            className: "bg-red-50 rounded-2xl p-8",
-            children: [
-              /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-4", children: "🚨 Emergency Signs" }),
-              /* @__PURE__ */ s("ul", { className: "space-y-3", children: [
-                "Difficulty breathing",
-                "Severe bleeding or injury",
-                "Seizures or collapse",
-                "Unable to urinate",
-                "Suspected poisoning",
-                "Extreme lethargy or weakness"
-              ].map((i) => /* @__PURE__ */ d("li", { className: "text-gray-600 flex items-start gap-2", children: [
-                /* @__PURE__ */ s("span", { className: "text-red-500 mt-0.5", children: "•" }),
-                /* @__PURE__ */ s("span", { children: i })
-              ] }, i)) })
-            ]
-          }
-        )
-      ] })
-    ] }) }),
-    /* @__PURE__ */ s("section", { className: "py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-red-600 to-orange-600 text-white", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto", children: [
       /* @__PURE__ */ d(
         D.div,
         {
-          initial: { opacity: 0 },
-          whileInView: { opacity: 1 },
-          viewport: { once: !0 },
-          className: "text-center mb-12",
+          initial: { y: "100%" },
+          animate: { y: 0 },
+          exit: { y: "100%" },
+          transition: { type: "spring", damping: 30, stiffness: 300 },
+          className: "md:hidden fixed bottom-0 left-0 right-0 bg-white rounded-t-[20px] z-50 max-h-[85vh] overflow-y-auto shadow-2xl",
           children: [
-            /* @__PURE__ */ s("h2", { className: "mb-4", children: "Keep Your Pet Healthy" }),
-            /* @__PURE__ */ s("p", { className: "max-w-2xl mx-auto", children: "Simple steps you can take at home to maintain your pet's health between vet visits" })
+            /* @__PURE__ */ s("div", { className: "sticky top-0 bg-white border-b border-gray-200 px-4 py-4 rounded-t-[20px]", children: /* @__PURE__ */ d("div", { className: "flex items-center justify-between", children: [
+              /* @__PURE__ */ s(
+                "button",
+                {
+                  onClick: () => {
+                    Ee(!1), te(!1), ue(!1), qe("all");
+                  },
+                  className: "text-orange-600 hover:text-orange-700 transition-colors",
+                  children: "Clear"
+                }
+              ),
+              /* @__PURE__ */ s("h3", { className: "text-gray-900", children: "Filters" }),
+              /* @__PURE__ */ s(
+                "button",
+                {
+                  onClick: () => Xe(!1),
+                  className: "p-2 hover:bg-gray-100 rounded-full transition-colors",
+                  children: /* @__PURE__ */ s(we, { className: "w-5 h-5 text-gray-500" })
+                }
+              )
+            ] }) }),
+            /* @__PURE__ */ d("div", { className: "p-4 space-y-4", children: [
+              /* @__PURE__ */ d(
+                "div",
+                {
+                  className: "flex items-center justify-between cursor-pointer",
+                  onClick: () => Ee(!pe),
+                  children: [
+                    /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🚨" }),
+                      /* @__PURE__ */ s("span", { className: "text-gray-700", children: "24/7 Emergency" })
+                    ] }),
+                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${pe ? "bg-orange-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ d(
+                "div",
+                {
+                  className: "flex items-center justify-between cursor-pointer",
+                  onClick: () => te(!W),
+                  children: [
+                    /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
+                      /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Accepting New Patients" })
+                    ] }),
+                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${W ? "bg-orange-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ d(
+                "div",
+                {
+                  className: "flex items-center justify-between cursor-pointer",
+                  onClick: () => ue(!ae),
+                  children: [
+                    /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
+                      /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
+                    ] }),
+                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${ae ? "bg-orange-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${ae ? "translate-x-6" : "translate-x-1"}` }) })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ d("div", { children: [
+                /* @__PURE__ */ s("label", { className: "text-sm text-gray-600 mb-2 block", children: "Price Range" }),
+                /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-orange-50 border-2 border-orange-200 rounded-lg", children: [
+                  /* @__PURE__ */ s(Zs, { className: "w-5 h-5 text-orange-600" }),
+                  /* @__PURE__ */ d(
+                    "select",
+                    {
+                      value: Me,
+                      onChange: (y) => qe(y.target.value),
+                      className: "flex-1 bg-transparent focus:outline-none cursor-pointer text-gray-700",
+                      children: [
+                        /* @__PURE__ */ s("option", { value: "all", children: "All" }),
+                        /* @__PURE__ */ s("option", { value: "$", children: "$" }),
+                        /* @__PURE__ */ s("option", { value: "$$", children: "$$" }),
+                        /* @__PURE__ */ s("option", { value: "$$$", children: "$$$" }),
+                        /* @__PURE__ */ s("option", { value: "$$$$", children: "$$$$" })
+                      ]
+                    }
+                  )
+                ] })
+              ] })
+            ] }),
+            /* @__PURE__ */ s("div", { className: "sticky bottom-0 bg-white border-t border-gray-200 p-4", children: /* @__PURE__ */ s(
+              D.button,
+              {
+                whileTap: { scale: 0.98 },
+                onClick: () => {
+                  Xe(!1), A(10);
+                },
+                className: "w-full bg-gradient-to-r from-orange-600 to-red-500 text-white py-3 rounded-xl hover:shadow-lg transition-shadow",
+                children: "Apply Filters"
+              }
+            ) })
           ]
         }
-      ),
-      /* @__PURE__ */ s("div", { className: "grid md:grid-cols-4 gap-6", children: [
-        { icon: "🍎", title: "Proper Nutrition", text: "Feed quality food appropriate for age" },
-        { icon: "🏃", title: "Regular Exercise", text: "Daily activity keeps pets fit" },
-        { icon: "🪥", title: "Dental Care", text: "Brush teeth to prevent disease" },
-        { icon: "🔍", title: "Watch for Changes", text: "Monitor behavior and appetite" }
-      ].map((i, o) => /* @__PURE__ */ d(
-        D.div,
-        {
-          initial: { opacity: 0, y: 30 },
-          whileInView: { opacity: 1, y: 0 },
-          viewport: { once: !0 },
-          transition: { delay: o * 0.1 },
-          whileHover: { scale: 1.05 },
-          className: "bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center",
-          children: [
-            /* @__PURE__ */ s(
-              D.div,
-              {
-                animate: {
-                  y: [0, -10, 0]
-                },
-                transition: {
-                  duration: 2,
-                  repeat: 1 / 0,
-                  delay: o * 0.2
-                },
-                className: "text-5xl mb-3",
-                children: i.icon
-              }
-            ),
-            /* @__PURE__ */ s("h3", { className: "mb-2", children: i.title }),
-            /* @__PURE__ */ s("p", { className: "text-red-100", children: i.text })
-          ]
-        },
-        i.title
-      )) })
-    ] }) })
+      )
+    ] }) }),
+    /* @__PURE__ */ s(
+      yl,
+      {
+        isVisible: Ze,
+        message: zt,
+        actionText: Ai ? "View" : void 0,
+        onAction: Ai,
+        onClose: () => $e(!1)
+      }
+    )
   ] });
 }
 function df({ onOpenSignup: t, onNavigate: e }) {
