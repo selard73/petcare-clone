@@ -9985,6 +9985,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           target: "_blank",
                           rel: "noopener noreferrer",
                           className: "text-orange-600 hover:underline cursor-pointer",
+                          style: { color: "#ea580c" },
                           children: [
                             n.address,
                             ", ",
@@ -10000,7 +10001,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-orange-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Phone" }),
-                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "text-orange-600 hover:underline", children: n.phone })
+                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "text-orange-600 hover:underline", style: { color: "#ea580c" }, children: n.phone })
                     ] })
                   ] }),
                   n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-50 rounded-lg md:col-span-2", children: [
@@ -10036,6 +10037,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           target: "_blank",
                           rel: "noopener noreferrer",
                           className: "text-orange-600 hover:underline",
+                          style: { color: "#ea580c" },
                           children: n.website
                         }
                       )
@@ -10050,6 +10052,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         {
                           href: `mailto:${n.email}`,
                           className: "text-orange-600 hover:underline",
+                          style: { color: "#ea580c" },
                           children: n.email
                         }
                       )
