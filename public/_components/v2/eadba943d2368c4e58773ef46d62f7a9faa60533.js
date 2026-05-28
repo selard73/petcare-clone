@@ -10091,11 +10091,12 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   )) })
                 ] }),
                 n.servicesOffered && n.servicesOffered.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6 p-4 bg-orange-50 border border-orange-200 rounded-lg", children: [
-                  /* @__PURE__ */ s("h3", { className: "text-orange-700 mb-3", children: "Services Offered" }),
+                  /* @__PURE__ */ s("h3", { className: "text-orange-700 mb-3", style: { color: "#c2410c" }, children: "Services Offered" }),
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.servicesOffered.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
                       className: "bg-orange-100 text-orange-700 px-4 py-2 rounded-full",
+                      style: { color: "#c2410c" },
                       children: y
                     },
                     y
