@@ -7270,7 +7270,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       ] })
                     ] })
                   ] }),
-                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0", children: [
+                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0 md:col-span-2 overflow-hidden", children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Website" }),
@@ -7280,14 +7280,14 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           href: n.website.startsWith("http") ? n.website : `https://${n.website}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-purple-600 hover:underline text-xs sm:text-sm leading-tight block whitespace-normal max-w-full",
+                          className: "text-purple-600 hover:underline text-xs sm:text-sm leading-tight block whitespace-normal max-w-full break-all",
                           style: { overflowWrap: "anywhere", wordBreak: "break-word" },
                           children: n.website
                         }
                       )
                     ] })
                   ] }),
-                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0", children: [
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0 md:col-span-2 overflow-hidden", children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
