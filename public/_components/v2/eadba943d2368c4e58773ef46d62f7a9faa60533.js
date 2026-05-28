@@ -8517,7 +8517,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     window.innerWidth < 768 && B.stopPropagation(), i(y);
                   },
                   className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm",
-                  style: { backgroundColor: "#86efac", border: "1px solid #4ade80", color: "#166534" },
+                  style: { backgroundColor: "#16a34a", border: "1px solid #15803d", color: "#ffffff" },
                   children: "View Details"
                 }
               )
@@ -9837,7 +9837,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     window.innerWidth < 768 && B.stopPropagation(), i(y);
                   },
                   className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm",
-                  style: { backgroundColor: "#fdba74", border: "1px solid #fb923c", color: "#9a3412" },
+                  style: { backgroundColor: "#fb923c", border: "1px solid #f97316", color: "#ffffff" },
                   children: "View Details"
                 }
               )
