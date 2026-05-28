@@ -9822,7 +9822,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   (y.notAcceptingClients || y.acceptingNewPatients === !1) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-red-100 text-red-700 text-xs md:text-sm leading-tight rounded-full", children: "🚫 Not Accepting New Patients" })
                 ] })
               ] }),
-              y.hours && /* @__PURE__ */ d("p", { className: "text-gray-600 text-sm mb-3", children: [
+              y.hours && /* @__PURE__ */ d("p", { className: "text-orange-700 text-sm mb-3", children: [
                 "🕒 ",
                 y.hours.monday || "See hours in details"
               ] }),
