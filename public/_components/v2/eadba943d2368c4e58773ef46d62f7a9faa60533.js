@@ -6376,12 +6376,18 @@ const Oe = {
         }
       }
     }
-    for (const l of deletedIds)
-      cloudDeleted.has(l) || markCloudBusinessDeleted(l, t).then((c) => {
-        c?.success ? cloudDeleted.add(l) : console.warn("Failed to backfill cloud deletion marker:", l, c?.error);
-      }).catch((c) => {
-        console.warn("Error backfilling cloud deletion marker:", l, c);
-      });
+    await Promise.all(
+      [...deletedIds].map(async (l) => {
+        if (cloudDeleted.has(l))
+          return;
+        try {
+          const c = await markCloudBusinessDeleted(l, t);
+          c?.success ? cloudDeleted.add(l) : console.warn("Failed to backfill cloud deletion marker:", l, c?.error);
+        } catch (c) {
+          console.warn("Error backfilling cloud deletion marker:", l, c);
+        }
+      })
+    );
     for (const l of e)
       n[l.id] = l;
     const i = [], o = /* @__PURE__ */ new Set();
@@ -7100,7 +7106,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         initial: { opacity: 0 },
         animate: { opacity: 1 },
         exit: { opacity: 0 },
-        className: "fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4",
+        className: "fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-x-hidden",
         onClick: () => i(null),
         children: /* @__PURE__ */ d(
           D.div,
@@ -7109,7 +7115,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             animate: { scale: 1, opacity: 1 },
             exit: { scale: 0.9, opacity: 0 },
             onClick: (y) => y.stopPropagation(),
-            className: "bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto shadow-2xl",
+            className: "bg-white rounded-2xl max-w-3xl w-full max-h-[90vh] overflow-y-auto overflow-x-hidden shadow-2xl",
             children: [
               /* @__PURE__ */ d("div", { className: "relative h-80 overflow-hidden rounded-t-2xl", children: [
                 n.photos && n.photos.length > 0 ? (() => {
@@ -7193,7 +7199,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] })
               ] }),
-              /* @__PURE__ */ d("div", { className: "p-6 pb-8 md:pb-6 mb-28 md:mb-0", children: [
+              /* @__PURE__ */ d("div", { className: "p-6 pb-8 md:pb-6 mb-28 md:mb-0 overflow-x-hidden", children: [
                 /* @__PURE__ */ s("p", { className: "text-gray-700 mb-6", children: n.description }),
                 p.length > 0 && /* @__PURE__ */ s("div", { className: "bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-xl mb-6 border border-yellow-200", children: /* @__PURE__ */ d("div", { className: "flex items-center justify-between", children: [
                   /* @__PURE__ */ d("div", { children: [
@@ -7211,7 +7217,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 /* @__PURE__ */ d("div", { className: "grid md:grid-cols-2 gap-4 mb-6", children: [
                   /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg", children: [
                     /* @__PURE__ */ s(ar, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
-                    /* @__PURE__ */ d("div", { children: [
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Address" }),
                       /* @__PURE__ */ d(
                         "a",
@@ -7221,7 +7227,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           )}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-purple-600 hover:underline cursor-pointer",
+                          className: "text-purple-600 hover:underline cursor-pointer break-words",
                           children: [
                             n.address,
                             ", ",
@@ -7235,9 +7241,9 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] }),
                   /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg", children: [
                     /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
-                    /* @__PURE__ */ d("div", { children: [
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Phone" }),
-                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "text-purple-600 hover:underline", children: n.phone })
+                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "text-purple-600 hover:underline break-all", children: n.phone })
                     ] })
                   ] }),
                   n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg md:col-span-2", children: [
@@ -7264,7 +7270,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] }),
                   n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg", children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
-                    /* @__PURE__ */ d("div", { children: [
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Website" }),
                       /* @__PURE__ */ s(
                         "a",
@@ -7272,7 +7278,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           href: n.website.startsWith("http") ? n.website : `https://${n.website}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-purple-600 hover:underline",
+                          className: "text-purple-600 hover:underline break-all",
                           children: n.website
                         }
                       )
@@ -7280,13 +7286,13 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] }),
                   n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg", children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
-                    /* @__PURE__ */ d("div", { children: [
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
                       /* @__PURE__ */ s(
                         "a",
                         {
                           href: `mailto:${n.email}`,
-                          className: "text-purple-600 hover:underline",
+                          className: "text-purple-600 hover:underline break-all",
                           children: n.email
                         }
                       )
@@ -7298,7 +7304,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.paymentMethods.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
-                      className: "bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm",
+                      className: "bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm break-words",
                       children: y
                     },
                     y
@@ -7316,7 +7322,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.specialFeatures.filter((y) => y.trim()).map((y) => /* @__PURE__ */ d(
                     "span",
                     {
-                      className: "bg-purple-50 text-purple-600 px-4 py-2 rounded-lg",
+                      className: "bg-purple-50 text-purple-600 px-4 py-2 rounded-lg break-words",
                       children: [
                         "✨ ",
                         y
@@ -7330,7 +7336,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.servicesOffered.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
-                      className: "bg-gradient-to-r from-pink-100 to-purple-100 text-purple-700 px-4 py-2 rounded-full",
+                      className: "bg-gradient-to-r from-pink-100 to-purple-100 text-purple-700 px-4 py-2 rounded-full break-words",
                       children: y
                     },
                     y
