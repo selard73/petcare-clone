@@ -6253,6 +6253,24 @@ async function Qm(t) {
     return console.error("fetchCloudBusinesses error:", e), [];
   }
 }
+async function fetchCloudDeletedBusinessIds(t) {
+  try {
+    const e = encodeURIComponent(`AND({price}="BUSINESS:DELETED",{name}="${t}")`), r = await fetch(`${st}?filterByFormula=${e}`, { headers: ot });
+    if (!r.ok)
+      return [];
+    const n = (await r.json()).records || [];
+    return n.map((i) => {
+      try {
+        const o = JSON.parse(i.fields.about || "{}");
+        return o.targetId || "";
+      } catch {
+        return "";
+      }
+    }).filter(Boolean);
+  } catch (e) {
+    return console.error("fetchCloudDeletedBusinessIds error:", e), [];
+  }
+}
 async function ef(t) {
   try {
     const e = encodeURIComponent(`{whyWeLoveIt}="${t.id}"`), r = await fetch(`${st}?filterByFormula=${e}`, { headers: ot });
@@ -6275,6 +6293,36 @@ async function ef(t) {
     return { success: !0 };
   } catch (e) {
     return console.error("saveCloudBusiness error:", e), { success: !1, error: e?.message || "Network error saving to cloud." };
+  }
+}
+async function markCloudBusinessDeleted(t, e) {
+  try {
+    const r = `DELETED:${e}:${t}`, n = encodeURIComponent(`{whyWeLoveIt}="${r}"`), i = await fetch(`${st}?filterByFormula=${n}`, { headers: ot });
+    if (!i.ok)
+      return { success: !1, error: "Could not reach Airtable to save deletion marker." };
+    const o = (await i.json()).records?.[0], a = {
+      name: e,
+      price: "BUSINESS:DELETED",
+      about: JSON.stringify({ category: e, targetId: t }),
+      whyWeLoveIt: r,
+      photos: ""
+    };
+    let l;
+    if (o ? l = await fetch(`${st}/${o.id}`, {
+      method: "PATCH",
+      headers: ot,
+      body: JSON.stringify({ fields: a })
+    }) : l = await fetch(st, {
+      method: "POST",
+      headers: ot,
+      body: JSON.stringify({ fields: a })
+    }), !l.ok) {
+      const c = await l.text();
+      return console.error("markCloudBusinessDeleted failed:", l.status, c), { success: !1, error: `Airtable error (${l.status})` };
+    }
+    return { success: !0 };
+  } catch (r) {
+    return console.error("markCloudBusinessDeleted error:", r), { success: !1, error: r?.message || "Failed to mark cloud deletion" };
   }
 }
 async function tf(t) {
@@ -6307,7 +6355,7 @@ const Oe = {
     return !1;
   },
   async getBusinesses(t) {
-    const e = await Qm(t), r = ce.getBusinessesByCategory(t), n = {}, deletedIds = ce.getDeletedBusinessIds(t);
+    const e = await Qm(t), r = ce.getBusinessesByCategory(t), n = {}, deletedIds = ce.getDeletedBusinessIds(t), cloudDeleted = new Set(await fetchCloudDeletedBusinessIds(t));
     for (const l of e)
       n[l.id] = l;
     const i = [], o = /* @__PURE__ */ new Set();
@@ -6315,7 +6363,7 @@ const Oe = {
       n[l.id] ? i.push({ ...n[l.id], _fromCloud: !0 }) : i.push(l), o.add(l.id);
     for (const l of e)
       o.has(l.id) || i.push({ ...l, _fromCloud: !0 });
-    return { businesses: i.filter((l) => !deletedIds.has(l.id)).map((l) => {
+    return { businesses: i.filter((l) => !deletedIds.has(l.id) && !cloudDeleted.has(l.id)).map((l) => {
       const c = ce.getBusinessOwner(l.id);
       return { ...l, ownerId: c || void 0 };
     }) };
@@ -6338,8 +6386,8 @@ const Oe = {
     return i.success ? { success: !0, business: r } : (console.warn("Airtable sync failed — saved locally only:", i.error), { success: !0, business: r, cloudWarning: "Saved locally, but could not sync to shared storage. Other browsers may not see this yet." });
   },
   async deleteBusiness(t, e) {
-    const r = await tf(t);
-    return r.success || console.warn("Cloud delete failed; keeping local deletion only:", r.error), ce.deleteBusiness(t, e), { success: !0, message: "Business deleted successfully", cloudWarning: r.success ? void 0 : r.error };
+    const r = await tf(t), n = await markCloudBusinessDeleted(t, e);
+    return r.success || console.warn("Cloud delete failed; keeping local deletion only:", r.error), n.success || console.warn("Cloud deletion marker failed:", n.error), ce.deleteBusiness(t, e), { success: !0, message: "Business deleted successfully", cloudWarning: [r.success ? null : r.error, n.success ? null : n.error].filter(Boolean).join(" | ") || void 0 };
   },
   async getReviews(t) {
     return { reviews: ce.getReviews(t) };
