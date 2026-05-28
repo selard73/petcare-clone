@@ -7280,7 +7280,8 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           href: n.website.startsWith("http") ? n.website : `https://${n.website}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-purple-600 hover:underline break-all text-xs sm:text-sm leading-tight block",
+                          className: "text-purple-600 hover:underline text-xs sm:text-sm leading-tight block whitespace-normal max-w-full",
+                          style: { overflowWrap: "anywhere", wordBreak: "break-word" },
                           children: n.website
                         }
                       )
