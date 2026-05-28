@@ -7260,7 +7260,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                             /* @__PURE__ */ s("span", { className: `font-medium whitespace-nowrap ${B ? "text-red-600" : "text-green-600"}`, children: F })
                           ] }, y);
                         }) }),
-                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-3 gap-x-1.5 md:gap-x-4 gap-y-2.5 md:gap-y-3", children: ["friday", "saturday", "sunday"].map((y) => {
+                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-x-1.5 md:gap-x-4 gap-y-2.5 md:gap-y-3", children: ["friday", "saturday", "sunday"].map((y) => {
                           const F = n.hours[y], B = F?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
                             /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize mb-1", children: y }),
@@ -7270,7 +7270,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       ] })
                     ] })
                   ] }),
-                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full md:w-fit max-w-full min-w-0 overflow-hidden md:justify-self-start", children: [
+                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full md:w-fit max-w-full min-w-0 overflow-hidden md:justify-self-start md:col-span-2", children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Website" }),
@@ -7287,7 +7287,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full md:w-fit max-w-full min-w-0 overflow-hidden md:justify-self-start", children: [
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full md:w-fit max-w-full min-w-0 overflow-hidden md:justify-self-start md:col-span-2", children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
