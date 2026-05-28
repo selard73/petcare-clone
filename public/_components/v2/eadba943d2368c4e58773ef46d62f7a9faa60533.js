@@ -9107,7 +9107,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         )
       }
     ),
-    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 bg-green-700 text-white", children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
+    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 text-white", style: { backgroundColor: "#15803d" }, children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0 },
@@ -9115,7 +9115,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         viewport: { once: !0 },
         className: "text-center",
         children: [
-          /* @__PURE__ */ s("h2", { className: "mb-8", children: "Boarding Tips" }),
+          /* @__PURE__ */ s("h2", { className: "mb-8", style: { color: "#ffffff" }, children: "Boarding Tips" }),
           /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [
             { icon: "📅", title: "Book Early", text: "Book boarding early during holidays" }, { icon: "💉", title: "Vaccinations", text: "Ask about vaccination requirements" }, { icon: "🏠", title: "Tour First", text: "Tour the facility before your first stay" }
           ].map((y, F) => /* @__PURE__ */ d(
@@ -9125,11 +9125,12 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               whileInView: { opacity: 1, scale: 1 },
               viewport: { once: !0 },
               transition: { delay: F * 0.2 },
-              className: "bg-white/15 backdrop-blur-sm rounded-xl p-6 border border-white/30",
+              className: "backdrop-blur-sm rounded-xl p-6",
+              style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" },
               children: [
                 /* @__PURE__ */ s("div", { className: "text-4xl mb-3", children: y.icon }),
-                /* @__PURE__ */ s("h3", { className: "mb-2", children: y.title }),
-                /* @__PURE__ */ s("p", { className: "text-white/90", children: y.text })
+                /* @__PURE__ */ s("h3", { className: "mb-2", style: { color: "#ffffff" }, children: y.title }),
+                /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: y.text })
               ]
             },
             y.title
@@ -10418,7 +10419,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         )
       }
     ),
-    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 bg-orange-600 text-white", children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
+    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 text-white", style: { backgroundColor: "#ea580c" }, children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0 },
@@ -10426,7 +10427,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         viewport: { once: !0 },
         className: "text-center",
         children: [
-          /* @__PURE__ */ s("h2", { className: "mb-8", children: "Vet Care Tips" }),
+          /* @__PURE__ */ s("h2", { className: "mb-8", style: { color: "#ffffff" }, children: "Vet Care Tips" }),
           /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [
             { icon: "📅", title: "Book Early", text: "Schedule routine wellness exams" }, { icon: "💉", title: "Vaccinations", text: "Keep vaccines and prevention current" }, { icon: "🏠", title: "Tour First", text: "Do not delay care for emergency symptoms" }
           ].map((y, F) => /* @__PURE__ */ d(
@@ -10436,11 +10437,12 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               whileInView: { opacity: 1, scale: 1 },
               viewport: { once: !0 },
               transition: { delay: F * 0.2 },
-              className: "bg-white/15 backdrop-blur-sm rounded-xl p-6 border border-white/30",
+              className: "backdrop-blur-sm rounded-xl p-6",
+              style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" },
               children: [
                 /* @__PURE__ */ s("div", { className: "text-4xl mb-3", children: y.icon }),
-                /* @__PURE__ */ s("h3", { className: "mb-2", children: y.title }),
-                /* @__PURE__ */ s("p", { className: "text-white/90", children: y.text })
+                /* @__PURE__ */ s("h3", { className: "mb-2", style: { color: "#ffffff" }, children: y.title }),
+                /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: y.text })
               ]
             },
             y.title
