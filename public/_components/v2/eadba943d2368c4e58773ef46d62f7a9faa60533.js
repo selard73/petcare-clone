@@ -7106,7 +7106,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         initial: { opacity: 0 },
         animate: { opacity: 1 },
         exit: { opacity: 0 },
-        className: "fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4",
+        className: "fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-x-hidden",
         onClick: () => i(null),
         children: /* @__PURE__ */ d(
           D.div,
@@ -7115,7 +7115,8 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             animate: { scale: 1, opacity: 1 },
             exit: { scale: 0.9, opacity: 0 },
             onClick: (y) => y.stopPropagation(),
-            className: "bg-white rounded-2xl max-w-3xl w-[calc(100vw-2rem)] max-h-[90vh] overflow-y-auto shadow-2xl",
+            className: "bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto overflow-x-hidden shadow-2xl",
+            style: { width: "calc(100vw - 2rem)", maxWidth: "48rem" },
             children: [
               /* @__PURE__ */ d("div", { className: "relative h-80 overflow-hidden rounded-t-2xl", children: [
                 n.photos && n.photos.length > 0 ? (() => {
@@ -7188,8 +7189,8 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     children: /* @__PURE__ */ s(we, { className: "w-6 h-6 text-gray-800" })
                   }
                 ),
-                /* @__PURE__ */ d("div", { className: "absolute bottom-4 left-6 text-white z-10 pointer-events-none", children: [
-                  /* @__PURE__ */ s("h2", { className: "mb-2", children: n.name }),
+                /* @__PURE__ */ d("div", { className: "absolute bottom-4 left-6 right-6 text-white z-10 pointer-events-none", children: [
+                  /* @__PURE__ */ s("h2", { className: "mb-2 break-words", children: n.name }),
                   n.priceRange && /* @__PURE__ */ d("div", { className: "relative group pointer-events-auto", children: [
                     /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-orange-400 cursor-help", children: /* @__PURE__ */ s("span", { className: "text-xl", children: n.priceRange }) }),
                     /* @__PURE__ */ d("div", { className: "absolute bottom-full left-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap", children: [
@@ -7214,7 +7215,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: p.length === 1 ? "Review" : "Reviews" })
                   ] })
                 ] }) }),
-                /* @__PURE__ */ d("div", { className: "grid md:grid-cols-2 gap-4 mb-6", children: [
+                /* @__PURE__ */ d("div", { className: "grid md:grid-cols-2 gap-4 mb-6 min-w-0", children: [
                   /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg w-full", children: [
                     /* @__PURE__ */ s(ar, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
@@ -7229,11 +7230,12 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           rel: "noopener noreferrer",
                           className: "text-purple-600 hover:underline cursor-pointer break-words",
                           children: [
-                            n.address,
-                            ", ",
-                            n.city,
-                            ", SC ",
-                            n.zipCode
+                            /* @__PURE__ */ s("span", { className: "block", children: n.address }),
+                            /* @__PURE__ */ d("span", { className: "block", children: [
+                              n.city,
+                              ", SC ",
+                              n.zipCode
+                            ] })
                           ]
                         }
                       )
@@ -7251,14 +7253,14 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ d("div", { className: "flex-1", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
                       n.callForHours ? /* @__PURE__ */ s("p", { className: "text-purple-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-4 text-sm", children: [
-                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-3", children: ["monday", "tuesday", "wednesday", "thursday"].map((y) => {
+                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-x-2 gap-y-3", children: ["monday", "tuesday", "wednesday", "thursday"].map((y) => {
                           const F = n.hours[y], B = F?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
                             /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize mb-1", children: y }),
                             /* @__PURE__ */ s("span", { className: `font-medium ${B ? "text-red-600" : "text-green-600"}`, children: F })
                           ] }, y);
                         }) }),
-                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-3", children: ["friday", "saturday", "sunday"].map((y) => {
+                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-x-2 gap-y-3", children: ["friday", "saturday", "sunday"].map((y) => {
                           const F = n.hours[y], B = F?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
                             /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize mb-1", children: y }),
@@ -7278,7 +7280,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           href: n.website.startsWith("http") ? n.website : `https://${n.website}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-purple-600 hover:underline break-all",
+                          className: "text-purple-600 hover:underline break-all text-sm",
                           children: n.website
                         }
                       )
@@ -7304,7 +7306,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.paymentMethods.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
-                      className: "bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm whitespace-normal break-words max-w-full",
+                      className: "bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm whitespace-normal break-all max-w-full",
                       children: y
                     },
                     y
@@ -7322,7 +7324,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.specialFeatures.filter((y) => y.trim()).map((y) => /* @__PURE__ */ d(
                     "span",
                     {
-                      className: "bg-purple-50 text-purple-600 px-4 py-2 rounded-lg whitespace-normal break-words max-w-full",
+                      className: "bg-purple-50 text-purple-600 px-4 py-2 rounded-lg whitespace-normal break-all max-w-full",
                       children: [
                         "✨ ",
                         y
@@ -7336,7 +7338,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.servicesOffered.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
-                      className: "bg-gradient-to-r from-pink-100 to-purple-100 text-purple-700 px-4 py-2 rounded-full whitespace-normal break-words max-w-full",
+                      className: "bg-gradient-to-r from-pink-100 to-purple-100 text-purple-700 px-4 py-2 rounded-full whitespace-normal break-all max-w-full",
                       children: y
                     },
                     y
