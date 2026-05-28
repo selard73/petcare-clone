@@ -9793,7 +9793,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     }
                   ),
                   y.priceRange && /* @__PURE__ */ d("div", { className: "relative group", children: [
-                    /* @__PURE__ */ s("div", { className: "flex items-center gap-1 text-orange-600 cursor-help", children: /* @__PURE__ */ s("span", { children: y.priceRange }) }),
+                    /* @__PURE__ */ s("div", { className: "flex items-center gap-1 text-green-600 cursor-help", children: /* @__PURE__ */ s("span", { children: y.priceRange }) }),
                     /* @__PURE__ */ d("div", { className: "absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10", children: [
                       Ri(y.priceRange),
                       /* @__PURE__ */ s("div", { className: "absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900" })
@@ -9826,7 +9826,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 "🕒 ",
                 y.hours.monday || "See hours in details"
               ] }),
-              y.servicesOffered && y.servicesOffered.length > 0 && /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2 mb-4", children: y.servicesOffered.slice(0, 4).map((B) => /* @__PURE__ */ s("span", { className: "bg-orange-50 text-orange-700 text-xs px-2 py-1 rounded-full", children: B }, B)) }),
+              y.servicesOffered && y.servicesOffered.length > 0 && /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2 mb-4 p-3 bg-orange-50 border border-orange-200 rounded-lg", children: y.servicesOffered.slice(0, 4).map((B) => /* @__PURE__ */ s("span", { className: "bg-orange-100 text-orange-700 text-xs px-2 py-1 rounded-full", children: B }, B)) }),
               /* @__PURE__ */ s(
                 D.button,
                 {
@@ -10060,7 +10060,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] }),
                 n.paymentMethods && n.paymentMethods.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6", children: [
-                  /* @__PURE__ */ s("h3", { className: "text-green-700 mb-3", children: "Payment Methods" }),
+                  /* @__PURE__ */ s("h3", { className: "text-gray-600 mb-3", children: "Payment Methods" }),
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.paymentMethods.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
