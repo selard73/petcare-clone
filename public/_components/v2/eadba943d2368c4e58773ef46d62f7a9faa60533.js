@@ -10060,11 +10060,11 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] }),
                 n.paymentMethods && n.paymentMethods.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6", children: [
-                  /* @__PURE__ */ s("h3", { className: "text-gray-600 mb-3", children: "Payment Methods" }),
+                  /* @__PURE__ */ s("h3", { className: "text-green-700 mb-3", children: "Payment Methods" }),
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.paymentMethods.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
-                      className: "bg-orange-50 text-orange-700 px-3 py-1 rounded-full text-sm",
+                      className: "bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm",
                       children: y
                     },
                     y
@@ -10092,11 +10092,11 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   )) })
                 ] }),
                 n.servicesOffered && n.servicesOffered.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6", children: [
-                  /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-3", children: "Services Offered" }),
+                  /* @__PURE__ */ s("h3", { className: "text-orange-700 mb-3", children: "Services Offered" }),
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.servicesOffered.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
-                      className: "bg-gradient-to-r from-orange-100 to-red-100 text-orange-700 px-4 py-2 rounded-full",
+                      className: "bg-orange-50 text-orange-700 px-4 py-2 rounded-full",
                       children: y
                     },
                     y
