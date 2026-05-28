@@ -9826,7 +9826,6 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 "🕒 ",
                 y.hours.monday || "See hours in details"
               ] }),
-              y.servicesOffered && y.servicesOffered.length > 0 && /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2 mb-4", children: y.servicesOffered.slice(0, 4).map((B) => /* @__PURE__ */ s("span", { className: "bg-orange-50 text-orange-700 text-xs px-2 py-1 rounded-full", children: B }, B)) }),
               /* @__PURE__ */ s(
                 D.button,
                 {
