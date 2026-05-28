@@ -7116,7 +7116,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             exit: { scale: 0.9, opacity: 0 },
             onClick: (y) => y.stopPropagation(),
             className: "bg-white rounded-2xl w-full max-w-3xl max-h-[90vh] overflow-y-auto overflow-x-hidden shadow-2xl",
-            style: { width: "calc(100vw - 2rem)", maxWidth: "48rem" },
+            style: { maxWidth: "calc(100vw - 2rem)" },
             children: [
               /* @__PURE__ */ d("div", { className: "relative h-80 overflow-hidden rounded-t-2xl", children: [
                 n.photos && n.photos.length > 0 ? (() => {
@@ -7200,7 +7200,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] })
               ] }),
-              /* @__PURE__ */ d("div", { className: "p-6 pb-8 md:pb-6 mb-28 md:mb-0", children: [
+              /* @__PURE__ */ d("div", { className: "p-4 md:p-6 pb-8 md:pb-6 mb-28 md:mb-0", children: [
                 /* @__PURE__ */ s("p", { className: "text-gray-700 mb-6", children: n.description }),
                 p.length > 0 && /* @__PURE__ */ s("div", { className: "bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-xl mb-6 border border-yellow-200", children: /* @__PURE__ */ d("div", { className: "flex items-center justify-between", children: [
                   /* @__PURE__ */ d("div", { children: [
@@ -7216,7 +7216,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] }) }),
                 /* @__PURE__ */ d("div", { className: "grid md:grid-cols-2 gap-4 mb-6 min-w-0", children: [
-                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg w-full", children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0", children: [
                     /* @__PURE__ */ s(ar, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Address" }),
@@ -7241,26 +7241,26 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg w-full", children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0", children: [
                     /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Phone" }),
                       /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "text-purple-600 hover:underline break-all", children: n.phone })
                     ] })
                   ] }),
-                  n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg md:col-span-2 w-full", children: [
+                  n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg md:col-span-2 w-full max-w-full min-w-0", children: [
                     /* @__PURE__ */ s(im, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
-                    /* @__PURE__ */ d("div", { className: "flex-1", children: [
+                    /* @__PURE__ */ d("div", { className: "flex-1 min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
-                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-purple-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-4 text-sm", children: [
-                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-x-2 gap-y-3", children: ["monday", "tuesday", "wednesday", "thursday"].map((y) => {
+                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-purple-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm", children: [
+                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-x-1.5 md:gap-x-2 gap-y-2.5", children: ["monday", "tuesday", "wednesday", "thursday"].map((y) => {
                           const F = n.hours[y], B = F?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
                             /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize mb-1", children: y }),
                             /* @__PURE__ */ s("span", { className: `font-medium ${B ? "text-red-600" : "text-green-600"}`, children: F })
                           ] }, y);
                         }) }),
-                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-x-2 gap-y-3", children: ["friday", "saturday", "sunday"].map((y) => {
+                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-x-1.5 md:gap-x-2 gap-y-2.5", children: ["friday", "saturday", "sunday"].map((y) => {
                           const F = n.hours[y], B = F?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
                             /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize mb-1", children: y }),
@@ -7270,7 +7270,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       ] })
                     ] })
                   ] }),
-                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg w-full", children: [
+                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0", children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Website" }),
@@ -7280,13 +7280,13 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           href: n.website.startsWith("http") ? n.website : `https://${n.website}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-purple-600 hover:underline break-all text-sm",
+                          className: "text-purple-600 hover:underline break-all text-xs sm:text-sm leading-tight block",
                           children: n.website
                         }
                       )
                     ] })
                   ] }),
-                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-purple-50 rounded-lg w-full", children: [
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0", children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
@@ -7294,7 +7294,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         "a",
                         {
                           href: `mailto:${n.email}`,
-                          className: "text-purple-600 hover:underline break-all",
+                          className: "text-purple-600 hover:underline break-all text-xs sm:text-sm leading-tight block",
                           children: n.email
                         }
                       )
