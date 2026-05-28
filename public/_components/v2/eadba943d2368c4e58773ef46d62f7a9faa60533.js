@@ -6280,12 +6280,26 @@ async function ef(t) {
 async function tf(t) {
   try {
     const e = encodeURIComponent(`{whyWeLoveIt}="${t}"`), r = await fetch(`${st}?filterByFormula=${e}`, { headers: ot });
-    if (!r.ok) return;
-    const i = (await r.json()).records?.[0];
-    if (!i) return;
-    await fetch(`${st}/${i.id}`, { method: "DELETE", headers: ot });
+    if (!r.ok) {
+      const n = await r.text();
+      return console.error("deleteCloudBusiness lookup failed:", r.status, n), { success: !1, error: `Airtable lookup failed (${r.status})` };
+    }
+    const i = (await r.json()).records || [];
+    if (i.length === 0)
+      return { success: !0, deletedCount: 0 };
+    const o = await Promise.all(
+      i.map(async (n) => {
+        const a = await fetch(`${st}/${n.id}`, { method: "DELETE", headers: ot });
+        if (!a.ok) {
+          const l = await a.text();
+          return console.error("deleteCloudBusiness delete failed:", a.status, l), !1;
+        }
+        return !0;
+      })
+    ), a = o.filter(Boolean).length;
+    return a === i.length ? { success: !0, deletedCount: a } : { success: !1, error: `Only deleted ${a}/${i.length} matching cloud records` };
   } catch (e) {
-    console.error("deleteCloudBusiness error:", e);
+    return console.error("deleteCloudBusiness error:", e), { success: !1, error: e?.message || "Cloud delete failed" };
   }
 }
 const Oe = {
@@ -6293,7 +6307,7 @@ const Oe = {
     return !1;
   },
   async getBusinesses(t) {
-    const e = await Qm(t), r = ce.getBusinessesByCategory(t), n = {};
+    const e = await Qm(t), r = ce.getBusinessesByCategory(t), n = {}, deletedIds = ce.getDeletedBusinessIds(t);
     for (const l of e)
       n[l.id] = l;
     const i = [], o = /* @__PURE__ */ new Set();
@@ -6301,7 +6315,7 @@ const Oe = {
       n[l.id] ? i.push({ ...n[l.id], _fromCloud: !0 }) : i.push(l), o.add(l.id);
     for (const l of e)
       o.has(l.id) || i.push({ ...l, _fromCloud: !0 });
-    return { businesses: i.map((l) => {
+    return { businesses: i.filter((l) => !deletedIds.has(l.id)).map((l) => {
       const c = ce.getBusinessOwner(l.id);
       return { ...l, ownerId: c || void 0 };
     }) };
@@ -6324,7 +6338,8 @@ const Oe = {
     return i.success ? { success: !0, business: r } : (console.warn("Airtable sync failed — saved locally only:", i.error), { success: !0, business: r, cloudWarning: "Saved locally, but could not sync to shared storage. Other browsers may not see this yet." });
   },
   async deleteBusiness(t, e) {
-    return await tf(t), ce.deleteBusiness(t, e), { success: !0, message: "Business deleted successfully" };
+    const r = await tf(t);
+    return r.success || console.warn("Cloud delete failed; keeping local deletion only:", r.error), ce.deleteBusiness(t, e), { success: !0, message: "Business deleted successfully", cloudWarning: r.success ? void 0 : r.error };
   },
   async getReviews(t) {
     return { reviews: ce.getReviews(t) };
