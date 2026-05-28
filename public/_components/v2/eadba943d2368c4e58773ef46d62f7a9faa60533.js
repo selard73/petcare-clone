@@ -7572,7 +7572,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         initial: { opacity: 0, y: 20 },
         whileInView: { opacity: 1, y: 0 },
         viewport: { once: !0 },
-        className: "bg-white rounded-xl p-6 shadow-md border border-gray-100",
+        className: "bg-purple-50 rounded-xl p-6 shadow-md border border-purple-200",
         children: [
           /* @__PURE__ */ s("h2", { className: "mb-3 text-left", children: "Pet Products We Recommend" }),
           /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Carefully selected grooming tools and pet-safe essentials we trust and love." }),
