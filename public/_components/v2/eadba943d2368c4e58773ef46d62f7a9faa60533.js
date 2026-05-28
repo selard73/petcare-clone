@@ -9972,8 +9972,8 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] }) }),
                 /* @__PURE__ */ d("div", { className: "grid md:grid-cols-2 gap-4 mb-6", children: [
-                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-50 rounded-lg", children: [
-                    /* @__PURE__ */ s(ar, { className: "w-5 h-5 text-orange-600 mt-1 flex-shrink-0" }),
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-100 border border-orange-200 rounded-lg", children: [
+                    /* @__PURE__ */ s(ar, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#ea580c" } }),
                     /* @__PURE__ */ d("div", { children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Address" }),
                       /* @__PURE__ */ d(
@@ -9997,15 +9997,15 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-50 rounded-lg", children: [
-                    /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-orange-600 mt-1 flex-shrink-0" }),
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-100 border border-orange-200 rounded-lg", children: [
+                    /* @__PURE__ */ s(Dn, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#ea580c" } }),
                     /* @__PURE__ */ d("div", { children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Phone" }),
                       /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "text-orange-600 hover:underline", style: { color: "#ea580c" }, children: n.phone })
                     ] })
                   ] }),
-                  n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-50 rounded-lg md:col-span-2", children: [
-                    /* @__PURE__ */ s(im, { className: "w-5 h-5 text-orange-600 mt-1 flex-shrink-0" }),
+                  n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-100 border border-orange-200 rounded-lg md:col-span-2", children: [
+                    /* @__PURE__ */ s(im, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#ea580c" } }),
                     /* @__PURE__ */ d("div", { className: "flex-1", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
                       n.callForHours ? /* @__PURE__ */ s("p", { className: "text-orange-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-4 text-sm", children: [
@@ -10026,8 +10026,8 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       ] })
                     ] })
                   ] }),
-                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-50 rounded-lg", children: [
-                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-orange-600 mt-1 flex-shrink-0" }),
+                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-100 border border-orange-200 rounded-lg", children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#ea580c" } }),
                     /* @__PURE__ */ d("div", { children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Website" }),
                       /* @__PURE__ */ s(
@@ -10043,8 +10043,8 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-50 rounded-lg", children: [
-                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-orange-600 mt-1 flex-shrink-0" }),
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-3 p-4 bg-orange-100 border border-orange-200 rounded-lg", children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#ea580c" } }),
                     /* @__PURE__ */ d("div", { children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
                       /* @__PURE__ */ s(
