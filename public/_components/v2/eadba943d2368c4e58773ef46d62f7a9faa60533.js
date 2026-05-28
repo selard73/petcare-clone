@@ -7116,7 +7116,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             exit: { scale: 0.9, opacity: 0 },
             onClick: (y) => y.stopPropagation(),
             className: "bg-white rounded-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden shadow-2xl",
-            style: { width: "min(46rem, calc(100vw - 2rem))" },
+            style: { width: window.innerWidth >= 768 ? "min(52rem, calc(100vw - 4rem))" : "calc(100vw - 2rem)" },
             children: [
               /* @__PURE__ */ d("div", { className: "relative h-80 overflow-hidden rounded-t-2xl", children: [
                 n.photos && n.photos.length > 0 ? (() => {
@@ -7252,19 +7252,19 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s(im, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "flex-1 min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
-                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-purple-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm", children: [
-                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-x-1.5 md:gap-x-2 gap-y-2.5", children: ["monday", "tuesday", "wednesday", "thursday"].map((y) => {
+                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-purple-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm md:text-base", children: [
+                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-x-1.5 md:gap-x-4 gap-y-2.5 md:gap-y-3", children: ["monday", "tuesday", "wednesday", "thursday"].map((y) => {
                           const F = n.hours[y], B = F?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
                             /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize mb-1", children: y }),
-                            /* @__PURE__ */ s("span", { className: `font-medium ${B ? "text-red-600" : "text-green-600"}`, children: F })
+                            /* @__PURE__ */ s("span", { className: `font-medium whitespace-nowrap ${B ? "text-red-600" : "text-green-600"}`, children: F })
                           ] }, y);
                         }) }),
-                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-x-1.5 md:gap-x-2 gap-y-2.5", children: ["friday", "saturday", "sunday"].map((y) => {
+                        /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-7 gap-x-1.5 md:gap-x-4 gap-y-2.5 md:gap-y-3", children: ["friday", "saturday", "sunday"].map((y) => {
                           const F = n.hours[y], B = F?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col", children: [
                             /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize mb-1", children: y }),
-                            /* @__PURE__ */ s("span", { className: `font-medium ${B ? "text-red-600" : "text-green-600"}`, children: F })
+                            /* @__PURE__ */ s("span", { className: `font-medium whitespace-nowrap ${B ? "text-red-600" : "text-green-600"}`, children: F })
                           ] }, y);
                         }) })
                       ] })
@@ -7280,7 +7280,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           href: n.website.startsWith("http") ? n.website : `https://${n.website}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-purple-600 hover:underline text-xs sm:text-sm leading-tight block whitespace-normal max-w-full break-all",
+                          className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block whitespace-normal md:whitespace-nowrap max-w-full break-all md:break-normal",
                           style: { overflowWrap: "anywhere", wordBreak: "break-word" },
                           children: n.website
                         }
@@ -7295,7 +7295,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         "a",
                         {
                           href: `mailto:${n.email}`,
-                          className: "text-purple-600 hover:underline break-all text-xs sm:text-sm leading-tight block",
+                          className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block break-all md:break-normal md:whitespace-nowrap",
                           children: n.email
                         }
                       )
