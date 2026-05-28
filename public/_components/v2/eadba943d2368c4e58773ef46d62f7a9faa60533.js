@@ -7722,12 +7722,14 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
   ] });
 }
 function af({ onEditBusiness: t, onNavigate: e } = {}) {
-  const [r, n] = E(null), [i, o] = E([]), [a, l] = E(!0), [c, u] = E(""), [h, p] = E("all"), [m, f] = E(!1), [v, g] = E(!1), [b, w] = E(!1), [x, T] = E("all"), [P, N] = E(!1), [S, C] = E(!1), [R, M] = E(10), [k, I] = E(!1);
+  const [r, n] = E(null), [i, o] = E([]), [a, l] = E(!0), [c, u] = E(""), [h, p] = E("all"), [m, f] = E(!1), [v, g] = E(!1), [b, w] = E(!1), [x, T] = E("all"), [P, N] = E(!1), [S, C] = E(!1), [R, M] = E(10), [k, I] = E(!1), { user: Lr, accessToken: Kr } = vi(), [Yr, Xr] = E([]), [Zr, rn] = E({ reviewerName: "", rating: 5, comment: "" }), [nn, on] = E(!1), [an, ln] = E(!1);
   U(() => {
     z();
   }, []), U(() => {
     M(10), I(!1);
-  }, [c, h]);
+  }, [c, h]), U(() => {
+    r && yn(r.id);
+  }, [r]);
   const z = async () => {
     const K = [
       {
@@ -7823,6 +7825,54 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       console.error("Error fetching training businesses:", L), o(K);
     } finally {
       l(!1);
+    }
+  }, yn = async (K) => {
+    try {
+      const L = await Oe.getReviews(K);
+      Xr(L.reviews || []);
+    } catch (L) {
+      console.error("Error fetching reviews:", L), Xr([]);
+    }
+  }, qn = async () => {
+    if (!r || !Lr) {
+      alert("Please log in to submit a review");
+      return;
+    }
+    if (!Zr.reviewerName.trim()) {
+      alert("Please enter a reviewer name");
+      return;
+    }
+    if (!Zr.comment.trim()) {
+      alert("Please enter a comment");
+      return;
+    }
+    on(!0);
+    try {
+      const K = await Oe.addReview(
+        r.id,
+        Zr.rating,
+        Zr.comment,
+        Kr,
+        Zr.reviewerName
+      );
+      K.review && Xr([K.review, ...Yr]), rn({ reviewerName: "", rating: 5, comment: "" }), alert("Review added successfully!");
+    } catch (K) {
+      console.error("Error submitting admin review:", K), alert(K instanceof Error ? K.message : "Failed to submit admin review. Please try again.");
+    } finally {
+      on(!1);
+    }
+  }, Ql = async () => {
+    if (!r)
+      return;
+    if (!window.confirm("Are you sure you want to delete this business listing? This action cannot be undone."))
+      return;
+    ln(!0);
+    try {
+      await Oe.deleteBusiness(r.id, "training", Kr), alert("Business listing deleted successfully!"), n(null), await z();
+    } catch (K) {
+      console.error("Error deleting business:", K), alert(K instanceof Error ? K.message : "Failed to delete business listing. Please try again.");
+    } finally {
+      ln(!1);
     }
   }, ee = [...new Set(i.map((K) => K.city).filter(Boolean))], G = i.filter((K) => !(c.trim() && !K.name.toLowerCase().includes(c.toLowerCase()) || h !== "all" && K.city !== h || m && !K.inHomeTraining || v && !K.groupClassesAvailable || b && (K.rating || 0) < 4 || x !== "all" && K.priceRange !== x)), pe = [...G].sort((K, L) => K.name.localeCompare(L.name)), W = pe.slice(0, R);
   return /* @__PURE__ */ d("div", { className: "min-h-screen bg-white md:bg-transparent", children: [
@@ -8052,7 +8102,45 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
           /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Specialties" }),
           /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.specialties.map((L) => /* @__PURE__ */ s("span", { className: "bg-cyan-100 border border-cyan-200 text-cyan-700 px-3 py-1 rounded-full text-sm font-medium", children: L }, L)) })
         ] }),
-        /* @__PURE__ */ s(D.a, { href: `tel:${r.phone}`, className: "hidden md:block w-full text-center text-white py-4 rounded-xl", style: { backgroundColor: "#2563eb" }, children: ["📞 Call ", r.name] })
+        /* @__PURE__ */ s(D.a, { href: `tel:${r.phone}`, className: "hidden md:block w-full text-center text-white py-4 rounded-xl", style: { backgroundColor: "#2563eb" }, children: ["📞 Call ", r.name] }),
+        Lr && (r.ownerId === Lr.id || Lr.isAdmin) && t && /* @__PURE__ */ d("div", { className: "space-y-3 mt-3", children: [
+          /* @__PURE__ */ d(D.button, { onClick: () => {
+            n(null), t(r);
+          }, whileHover: { scale: 1.02 }, whileTap: { scale: 0.98 }, className: "flex items-center justify-center gap-2 w-full bg-blue-600 text-white py-4 rounded-xl hover:bg-blue-700 transition-colors", children: [
+            /* @__PURE__ */ s(Mm, { className: "w-5 h-5" }),
+            "Edit Business Listing"
+          ] }),
+          /* @__PURE__ */ s(D.button, { onClick: Ql, whileHover: { scale: 1.02 }, whileTap: { scale: 0.98 }, className: "flex items-center justify-center gap-2 w-full bg-red-600 text-white py-4 rounded-xl hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed", disabled: an, children: [
+            an ? /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }) : /* @__PURE__ */ s(Km, { className: "w-5 h-5" }),
+            an ? "Deleting..." : "Delete Business Listing"
+          ] })
+        ] }),
+        Lr && (r.ownerId === Lr.id || Lr.isAdmin) && /* @__PURE__ */ d("div", { className: "bg-yellow-50 border-2 border-yellow-200 rounded-xl p-4 mt-4", children: [
+          /* @__PURE__ */ s("h4", { className: "text-gray-800", children: "Admin: Add Customer Review" }),
+          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "Add verified customer reviews on behalf of clients." }),
+          /* @__PURE__ */ d("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ s("input", { type: "text", placeholder: "Customer Name", value: Zr.reviewerName, onChange: (K) => rn({ ...Zr, reviewerName: K.target.value }), className: "w-full px-4 py-2 border-2 border-yellow-200 rounded-lg focus:outline-none focus:border-yellow-400" }),
+            /* @__PURE__ */ d("select", { value: Zr.rating, onChange: (K) => rn({ ...Zr, rating: parseInt(K.target.value) }), className: "w-full px-4 py-2 border-2 border-yellow-200 rounded-lg focus:outline-none focus:border-yellow-400", children: [
+              /* @__PURE__ */ s("option", { value: 5, children: "5 Stars" }),
+              /* @__PURE__ */ s("option", { value: 4, children: "4 Stars" }),
+              /* @__PURE__ */ s("option", { value: 3, children: "3 Stars" }),
+              /* @__PURE__ */ s("option", { value: 2, children: "2 Stars" }),
+              /* @__PURE__ */ s("option", { value: 1, children: "1 Star" })
+            ] }),
+            /* @__PURE__ */ s("textarea", { placeholder: "Customer review comment...", value: Zr.comment, onChange: (K) => rn({ ...Zr, comment: K.target.value }), rows: 3, className: "w-full px-4 py-2 border-2 border-yellow-200 rounded-lg focus:outline-none focus:border-yellow-400 resize-none" }),
+            /* @__PURE__ */ s(D.button, { onClick: qn, whileHover: { scale: 1.02 }, whileTap: { scale: 0.98 }, className: "w-full bg-yellow-500 text-white py-2 rounded-lg hover:bg-yellow-600 transition-colors disabled:opacity-50", disabled: nn, children: nn ? "Adding Review..." : "Add Customer Review" })
+          ] })
+        ] }),
+        Yr.length > 0 && /* @__PURE__ */ d("div", { className: "mt-4", children: [
+          /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-2", children: "Recent Reviews" }),
+          /* @__PURE__ */ s("div", { className: "space-y-2", children: Yr.slice(0, 3).map((K) => /* @__PURE__ */ d("div", { className: "bg-gray-50 border border-gray-200 rounded-lg p-3", children: [
+            /* @__PURE__ */ d("div", { className: "flex items-center justify-between mb-1", children: [
+              /* @__PURE__ */ s("p", { className: "text-gray-800 text-sm", children: K.reviewerName || "Customer" }),
+              /* @__PURE__ */ s("p", { className: "text-yellow-500 text-sm", children: `${"⭐".repeat(Math.max(1, Math.min(5, K.rating || 5)))}` })
+            ] }),
+            /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: K.comment })
+          ] }, K.id || `${K.reviewerName}-${K.comment}`)) })
+        ] })
       ] })
     ] }) }),
     r && /* @__PURE__ */ d("div", { className: "md:hidden sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-4 flex gap-3", children: [
