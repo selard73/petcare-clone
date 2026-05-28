@@ -9625,8 +9625,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               "button",
               {
                 onClick: () => Xe(!0),
-                className: "md:hidden flex items-center justify-center gap-2 px-4 py-2.5 text-white rounded-full transition-colors",
-                style: { backgroundColor: "#ea580c", border: "1px solid #c2410c" },
+                className: "md:hidden flex items-center justify-center gap-2 px-4 py-2.5 bg-orange-600 text-white rounded-full hover:bg-orange-700 transition-colors",
                 children: [
                   /* @__PURE__ */ s(Am, { className: "w-4 h-4" }),
                   /* @__PURE__ */ s("span", { className: "text-sm", children: "Filters" })
@@ -9805,7 +9804,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 "📍 ",
                 y.city
               ] }),
-              /* @__PURE__ */ d("div", { className: "flex items-center justify-between mb-3", children: [
+              /* @__PURE__ */ d("div", { className: "flex flex-col gap-2 mb-3 md:flex-row md:items-center md:justify-between", children: [
                 /* @__PURE__ */ s("div", { className: "flex items-center gap-3 md:gap-2", children: w[y.id] ? /* @__PURE__ */ d(ie, { children: [
                   Tr(w[y.id].average, "sm"),
                   /* @__PURE__ */ d("span", { className: "text-sm text-gray-600", children: [
@@ -9817,9 +9816,9 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     ")"
                   ] })
                 ] }) : /* @__PURE__ */ s("span", { className: "text-sm text-gray-500", children: "No reviews yet" }) }),
-                /* @__PURE__ */ d("div", { className: "flex flex-col gap-1 items-start md:items-end", children: [
-                  (y.emergency24x7 || y.emergency) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-red-100 text-red-700 text-xs md:text-sm leading-none whitespace-nowrap rounded-full", children: "🚨 24/7 Emergency" }),
-                  (y.notAcceptingClients || y.acceptingNewPatients === !1) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-red-100 text-red-700 text-xs md:text-sm leading-none whitespace-nowrap rounded-full", children: "🚫 Not Accepting New Patients" })
+                /* @__PURE__ */ d("div", { className: "flex flex-wrap gap-1 md:flex-col md:gap-1 md:items-end", children: [
+                  (y.emergency24x7 || y.emergency) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-red-100 text-red-700 text-xs md:text-sm leading-tight rounded-full", children: "🚨 24/7 Emergency" }),
+                  (y.notAcceptingClients || y.acceptingNewPatients === !1) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-red-100 text-red-700 text-xs md:text-sm leading-tight rounded-full", children: "🚫 Not Accepting New Patients" })
                 ] })
               ] }),
               y.hours && /* @__PURE__ */ d("p", { className: "text-gray-600 text-sm mb-3", children: [
