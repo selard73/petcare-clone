@@ -6271,6 +6271,60 @@ async function fetchCloudDeletedBusinessIds(t) {
     return console.error("fetchCloudDeletedBusinessIds error:", e), [];
   }
 }
+function reviewToCloudFields(t) {
+  return {
+    name: t.businessId || "",
+    price: `REVIEW:${t.businessId}`,
+    about: JSON.stringify(t),
+    whyWeLoveIt: t.id,
+    photos: ""
+  };
+}
+function cloudRecordToReview(t) {
+  try {
+    const e = JSON.parse(t.fields.about || "{}");
+    if (!e || typeof e != "object")
+      return null;
+    return { ...e, id: e.id || t.fields.whyWeLoveIt || t.id, businessId: e.businessId || t.fields.name || "" };
+  } catch {
+    return null;
+  }
+}
+async function fetchCloudReviewsForBusiness(t) {
+  try {
+    const e = encodeURIComponent(`{price}="REVIEW:${t}"`), r = await fetch(`${st}?filterByFormula=${e}`, { headers: ot });
+    if (!r.ok)
+      return [];
+    const n = (await r.json()).records || [];
+    return n.map(cloudRecordToReview).filter((i) => i && i.businessId === t);
+  } catch (e) {
+    return console.error("fetchCloudReviews error:", e), [];
+  }
+}
+async function saveCloudReviewRecord(t) {
+  try {
+    const e = encodeURIComponent(`{whyWeLoveIt}="${t.id}"`), r = await fetch(`${st}?filterByFormula=${e}`, { headers: ot });
+    if (!r.ok)
+      return { success: !1, error: "Could not reach Airtable to check for existing review." };
+    const n = (await r.json()).records?.[0], i = reviewToCloudFields(t);
+    let o;
+    if (n ? o = await fetch(`${st}/${n.id}`, {
+      method: "PATCH",
+      headers: ot,
+      body: JSON.stringify({ fields: i })
+    }) : o = await fetch(st, {
+      method: "POST",
+      headers: ot,
+      body: JSON.stringify({ fields: i })
+    }), !o.ok) {
+      const a = await o.text();
+      return console.error("saveCloudReview failed:", o.status, a), { success: !1, error: `Airtable error (${o.status})` };
+    }
+    return { success: !0 };
+  } catch (e) {
+    return console.error("saveCloudReview error:", e), { success: !1, error: e?.message || "Failed to save cloud review" };
+  }
+}
 async function ef(t) {
   try {
     const e = encodeURIComponent(`{whyWeLoveIt}="${t.id}"`), r = await fetch(`${st}?filterByFormula=${e}`, { headers: ot });
@@ -6422,7 +6476,21 @@ const Oe = {
     return r.success || console.warn("Cloud delete failed; keeping local deletion only:", r.error), n.success || console.warn("Cloud deletion marker failed:", n.error), ce.deleteBusiness(t, e), { success: !0, message: "Business deleted successfully", cloudWarning: [r.success ? null : r.error, n.success ? null : n.error].filter(Boolean).join(" | ") || void 0 };
   },
   async getReviews(t) {
-    return { reviews: ce.getReviews(t) };
+    const e = ce.getReviews(t) || [], r = await fetchCloudReviewsForBusiness(t), n = new Set(r.map((a) => a.id).filter(Boolean)), i = e.filter((a) => a?.id && !n.has(a.id));
+    await Promise.all(
+      i.map(async (a) => {
+        try {
+          await saveCloudReviewRecord(a);
+        } catch (l) {
+          console.warn("Failed to backfill cloud review:", a?.id, l);
+        }
+      })
+    );
+    const o = /* @__PURE__ */ new Map();
+    [...r, ...e].forEach((a) => {
+      a?.id && o.set(a.id, a);
+    });
+    return { reviews: [...o.values()].sort((a, l) => new Date(l.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime()) };
   },
   async addReview(t, e, r, n, i) {
     const o = localStorage.getItem("user"), a = o ? JSON.parse(o) : null, l = {
@@ -6435,7 +6503,9 @@ const Oe = {
       createdAt: (/* @__PURE__ */ new Date()).toISOString(),
       isAdminReview: !!i
     };
-    return ce.addReview(l), { success: !0, review: l };
+    ce.addReview(l);
+    const c = await saveCloudReviewRecord(l);
+    return c.success ? { success: !0, review: l } : { success: !0, review: l, cloudWarning: c.error || "Saved locally, but cloud sync failed." };
   },
   async deleteReview(t) {
     return ce.deleteReview(t), { success: !0, message: "Review deleted successfully" };
