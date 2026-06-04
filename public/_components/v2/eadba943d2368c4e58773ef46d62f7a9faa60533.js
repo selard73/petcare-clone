@@ -11350,13 +11350,13 @@ function hf(t) {
   ) : /* @__PURE__ */ s("img", { src: i, alt: o, className: l, style: a, ...c, onError: n });
 }
 const bi = "REDACTED_AIRTABLE_TOKEN", pf = "app0120M8RAwOR635", mf = "tblM97NVRfmIPsxTh", wi = `https://api.airtable.com/v0/${pf}/${mf}`, PRODUCT_CATEGORY_IDS = ["treats", "toys", "beds", "grooming", "bowls", "walking"];
-function ao(t) {
+function isNonProductAirtableRecord(t) {
   const e = (t?.fields?.price || "").toUpperCase();
   return e.startsWith("BUSINESS:") || e.startsWith("REVIEW:");
 }
 function Ni(t) {
   const r = (t.fields.category || "").toLowerCase().trim();
-  if (ao(t) || !PRODUCT_CATEGORY_IDS.includes(r) || !t.fields.name)
+  if (isNonProductAirtableRecord(t) || !PRODUCT_CATEGORY_IDS.includes(r) || !t.fields.name)
     return null;
   const e = t.fields.photos ? t.fields.photos.split(",").map((r) => r.trim()).filter((r) => r) : [];
   return {
@@ -11447,7 +11447,7 @@ async function yf(t, e) {
     throw console.error("❌ Error updating product in Airtable:", r), r;
   }
 }
-async function Po(t) {
+async function deleteProductAirtableRecord(t) {
   try {
     console.log("🗑️ Deleting product from Airtable:", t);
     const e = await fetch(`${wi}/${t}`, {
@@ -11493,7 +11493,7 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
       return;
     y0(g.id), m("");
     try {
-      await Po(g.id), c((b) => b.filter((w) => w.id !== g.id));
+      await deleteProductAirtableRecord(g.id), c((b) => b.filter((w) => w.id !== g.id));
     } catch (b) {
       console.error("❌ Error deleting product:", b), m(b instanceof Error ? b.message : "Failed to delete product");
     } finally {
