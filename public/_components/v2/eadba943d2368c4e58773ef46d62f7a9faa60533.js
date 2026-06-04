@@ -15981,7 +15981,7 @@ function iy({ editBusiness: t, onClose: e }) {
     specialFeatures: [""],
     category: "grooming",
     mobilePhotos: []
-  }), [a, l] = E([]), [c, u] = E([]), [h, p] = E([]), [L, j] = E([]), [q, Z] = E([]), [m, f] = E(0), [v, g] = E(!1), [b, w] = E(""), [x, T] = E(!1), [P, N] = E(null), [S, C] = E(""), [R, M] = E({ x: 0, y: 0 }), [k, I] = E(1), [z, ee] = E(null), [Jt, Qt] = E("desktop");
+  }), [a, l] = E([]), [c, u] = E([]), [h, p] = E([]), [L, j] = E([]), [q, Z] = E([]), [Y0, X0] = E([]), [m, f] = E(0), [v, g] = E(!1), [b, w] = E(""), [x, T] = E(!1), [P, N] = E(null), [S, C] = E(""), [R, M] = E({ x: 0, y: 0 }), [k, I] = E(1), [z, ee] = E(null), [Jt, Qt] = E("desktop");
   U(() => {
     if (t) {
       const A = {
@@ -16020,7 +16020,7 @@ function iy({ editBusiness: t, onClose: e }) {
         specialFeatures: t.specialFeatures?.length > 0 ? t.specialFeatures : [""],
         category: t.category || "grooming",
         mobilePhotos: t.mobilePhotos || []
-      }), p(t.photos || []), j(t.mobilePhotos || []), f(t.cardPhotoIndex || 0);
+      }), p(t.photos || []), Z(t.mobilePhotos || []), f(t.cardPhotoIndex || 0);
     }
   }, [t]);
   const G = (A, O) => {
@@ -16089,7 +16089,7 @@ function iy({ editBusiness: t, onClose: e }) {
         Jt === "mobile" ? j((V) => [...V, A]) : l((V) => [...V, A]);
         const O = new FileReader();
         O.onloadend = () => {
-          Jt === "mobile" ? Z((V) => [...V, O.result]) : u((V) => [...V, O.result]);
+          Jt === "mobile" ? X0((V) => [...V, O.result]) : u((V) => [...V, O.result]);
         }, O.readAsDataURL(A), T(!1), N(null), M({ x: 0, y: 0 }), I(1), ee(null);
       } catch (A) {
         console.error("Error cropping image:", A);
@@ -16099,7 +16099,9 @@ function iy({ editBusiness: t, onClose: e }) {
   }, Be = (A) => {
     l((O) => O.filter((V, H) => H !== A)), u((O) => O.filter((V, H) => H !== A));
   }, wt = (A) => {
-    j((O) => O.filter((V, H) => H !== A)), Z((O) => O.filter((V, H) => H !== A));
+    j((O) => O.filter((V, H) => H !== A)), X0((O) => O.filter((V, H) => H !== A));
+  }, wt0 = (A) => {
+    Z((O) => O.filter((V, H) => H !== A));
   }, mt = (A) => {
     p((O) => O.filter((V, H) => H !== A)), A === m ? f(0) : A < m && f(m - 1);
   }, Nr = (A, O) => {
@@ -16119,7 +16121,12 @@ function iy({ editBusiness: t, onClose: e }) {
     j((V) => {
       const H = [...V], [se] = H.splice(A, 1);
       return H.splice(O, 0, se), H;
-    }), Z((V) => {
+    }), X0((V) => {
+      const H = [...V], [se] = H.splice(A, 1);
+      return H.splice(O, 0, se), H;
+    });
+  }, Bt0 = (A, O) => {
+    Z((V) => {
       const H = [...V], [se] = H.splice(A, 1);
       return H.splice(O, 0, se), H;
     });
@@ -16204,7 +16211,7 @@ function iy({ editBusiness: t, onClose: e }) {
         specialFeatures: [""],
         category: "grooming",
         mobilePhotos: []
-      }), l([]), u([]), p([]), j([]), Z([]));
+      }), l([]), u([]), p([]), Z([]), j([]), X0([]));
     } catch (O) {
       console.error("Error saving business:", O), w(`Error: ${O instanceof Error ? O.message : "Failed to save business listing"}`);
     } finally {
@@ -16599,8 +16606,8 @@ function iy({ editBusiness: t, onClose: e }) {
                 src: A,
                 alt: `Mobile ${O + 1}`,
                 index: O,
-                onMove: Bt,
-                onRemove: wt,
+                onMove: Bt0,
+                onRemove: wt0,
                 badge: "Mobile",
                 badgeColor: "bg-indigo-600",
                 isCardPhoto: !1,
@@ -16629,9 +16636,9 @@ function iy({ editBusiness: t, onClose: e }) {
               /* @__PURE__ */ s("p", { className: "text-sm text-gray-400 mt-2", children: "Use this crop for the mobile modal carousel" })
             ] })
           ] }),
-          Z.length > 0 && /* @__PURE__ */ d("div", { children: [
+          Y0.length > 0 && /* @__PURE__ */ d("div", { children: [
             /* @__PURE__ */ s("h4", { className: "text-gray-700 mb-3", children: "New Mobile Photos to Upload" }),
-            /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-4", children: Z.map((A, O) => /* @__PURE__ */ s(
+            /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-4", children: Y0.map((A, O) => /* @__PURE__ */ s(
               To,
               {
                 src: A,
