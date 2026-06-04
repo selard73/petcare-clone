@@ -16702,9 +16702,9 @@ function iy({ editBusiness: t, onClose: e }) {
               type: "range",
               min: 1,
               max: 3,
-              step: 0.1,
+              step: 0.01,
               value: k,
-              onChange: (A) => I(Number(A.target.value)),
+              onChange: (A) => I(parseFloat(A.target.value)),
               className: "w-full"
             }
           )
