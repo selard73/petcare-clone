@@ -6636,8 +6636,8 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
   }, []), U(() => {
     A(10), se(!1);
   }, [Ke, ee, Re]), U(() => {
-    if (n && n.photos && n.photos.length > 1) {
-      const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+    if (n) {
+      const F = getDetailGalleryPhotos(n);
       if (F.length > 1) {
         const B = setInterval(() => {
           h(
@@ -6781,15 +6781,15 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       [...Array(Y)].map((Xl, Pr) => /* @__PURE__ */ s(Ct, { className: `${Te} text-gray-300` }, `empty-${Pr}`))
     ] });
   }, Ul = () => {
-    if (n && n.photos) {
-      const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+    if (n) {
+      const F = getDetailGalleryPhotos(n);
       h(
         (B) => B === F.length - 1 ? 0 : B + 1
       );
     }
   }, Gl = () => {
-    if (n && n.photos) {
-      const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+    if (n) {
+      const F = getDetailGalleryPhotos(n);
       h(
         (B) => B === 0 ? F.length - 1 : B - 1
       );
@@ -7189,8 +7189,8 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             style: { width: window.innerWidth >= 768 ? "min(52rem, calc(100vw - 4rem))" : "calc(100vw - 2rem)" },
             children: [
               /* @__PURE__ */ d("div", { className: "relative h-80 overflow-hidden rounded-t-2xl", children: [
-                n.photos && n.photos.length > 0 ? (() => {
-                  const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+                getDetailGalleryPhotos(n).length > 0 ? (() => {
+                  const F = getDetailGalleryPhotos(n);
                   return F.length > 0 ? /* @__PURE__ */ d(ie, { children: [
                     /* @__PURE__ */ s(Pt, { mode: "wait", children: /* @__PURE__ */ s(
                       D.img,
@@ -8450,8 +8450,8 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
   }, []), U(() => {
     A(10), se(!1);
   }, [Ke, ee, Re]), U(() => {
-    if (n && n.photos && n.photos.length > 1) {
-      const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+    if (n) {
+      const F = getDetailGalleryPhotos(n);
       if (F.length > 1) {
         const B = setInterval(() => {
           h(
@@ -8609,15 +8609,15 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       [...Array(Y)].map((Xl, Pr) => /* @__PURE__ */ s(Ct, { className: `${Te} text-gray-300` }, `empty-${Pr}`))
     ] });
   }, Ul = () => {
-    if (n && n.photos) {
-      const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+    if (n) {
+      const F = getDetailGalleryPhotos(n);
       h(
         (B) => B === F.length - 1 ? 0 : B + 1
       );
     }
   }, Gl = () => {
-    if (n && n.photos) {
-      const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+    if (n) {
+      const F = getDetailGalleryPhotos(n);
       h(
         (B) => B === 0 ? F.length - 1 : B - 1
       );
@@ -9024,8 +9024,8 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             style: { width: window.innerWidth >= 768 ? "min(52rem, calc(100vw - 4rem))" : "calc(100vw - 2rem)" },
             children: [
               /* @__PURE__ */ d("div", { className: "relative h-80 overflow-hidden rounded-t-2xl", children: [
-                n.photos && n.photos.length > 0 ? (() => {
-                  const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+                getDetailGalleryPhotos(n).length > 0 ? (() => {
+                  const F = getDetailGalleryPhotos(n);
                   return F.length > 0 ? /* @__PURE__ */ d(ie, { children: [
                     /* @__PURE__ */ s(Pt, { mode: "wait", children: /* @__PURE__ */ s(
                       D.img,
@@ -9780,8 +9780,8 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
   }, []), U(() => {
     A(10), se(!1);
   }, [Ke, ee, Re]), U(() => {
-    if (n && n.photos && n.photos.length > 1) {
-      const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+    if (n) {
+      const F = getDetailGalleryPhotos(n);
       if (F.length > 1) {
         const B = setInterval(() => {
           h(
@@ -9944,15 +9944,15 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       [...Array(Y)].map((Xl, Pr) => /* @__PURE__ */ s(Ct, { className: `${Te} text-gray-300` }, `empty-${Pr}`))
     ] });
   }, Ul = () => {
-    if (n && n.photos) {
-      const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+    if (n) {
+      const F = getDetailGalleryPhotos(n);
       h(
         (B) => B === F.length - 1 ? 0 : B + 1
       );
     }
   }, Gl = () => {
-    if (n && n.photos) {
-      const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+    if (n) {
+      const F = getDetailGalleryPhotos(n);
       h(
         (B) => B === 0 ? F.length - 1 : B - 1
       );
@@ -10363,8 +10363,8 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             style: { width: window.innerWidth >= 768 ? "min(52rem, calc(100vw - 4rem))" : "calc(100vw - 2rem)" },
             children: [
               /* @__PURE__ */ d("div", { className: "relative h-80 overflow-hidden rounded-t-2xl", children: [
-                n.photos && n.photos.length > 0 ? (() => {
-                  const y = n.cardPhotoIndex || 0, F = n.photos.filter((B, _) => _ !== y);
+                getDetailGalleryPhotos(n).length > 0 ? (() => {
+                  const F = getDetailGalleryPhotos(n);
                   return F.length > 0 ? /* @__PURE__ */ d(ie, { children: [
                     /* @__PURE__ */ s(Pt, { mode: "wait", children: /* @__PURE__ */ s(
                       D.img,
@@ -11349,13 +11349,20 @@ function hf(t) {
     }
   ) : /* @__PURE__ */ s("img", { src: i, alt: o, className: l, style: a, ...c, onError: n });
 }
-const bi = "REDACTED_AIRTABLE_TOKEN", pf = "app0120M8RAwOR635", mf = "tblM97NVRfmIPsxTh", wi = `https://api.airtable.com/v0/${pf}/${mf}`;
+const bi = "REDACTED_AIRTABLE_TOKEN", pf = "app0120M8RAwOR635", mf = "tblM97NVRfmIPsxTh", wi = `https://api.airtable.com/v0/${pf}/${mf}`, PRODUCT_CATEGORY_IDS = ["treats", "toys", "beds", "grooming", "bowls", "walking"];
+function ao(t) {
+  const e = (t?.fields?.price || "").toUpperCase();
+  return e.startsWith("BUSINESS:") || e.startsWith("REVIEW:");
+}
 function Ni(t) {
+  const r = (t.fields.category || "").toLowerCase().trim();
+  if (ao(t) || !PRODUCT_CATEGORY_IDS.includes(r) || !t.fields.name)
+    return null;
   const e = t.fields.photos ? t.fields.photos.split(",").map((r) => r.trim()).filter((r) => r) : [];
   return {
     id: t.id,
     name: t.fields.name || "",
-    category: t.fields.category || "treats",
+    category: r,
     about: t.fields.about,
     whyWeLoveIt: t.fields.whyWeLoveIt,
     affiliateLink: t.fields.affiliateLink,
@@ -11378,9 +11385,7 @@ async function ff() {
       throw console.error("❌ Airtable error:", n), new Error(`HTTP error! status: ${t.status}`);
     }
     const e = await t.json();
-    return console.log("✅ Loaded products from Airtable:", e.records), (e.records || []).filter(
-      (n) => !n.fields.price?.startsWith("BUSINESS:")
-    ).map(Ni);
+    return console.log("✅ Loaded products from Airtable:", e.records), (e.records || []).map(Ni).filter(Boolean);
   } catch (t) {
     throw console.error("❌ Error fetching products from Airtable:", t), t;
   }
@@ -11442,8 +11447,27 @@ async function yf(t, e) {
     throw console.error("❌ Error updating product in Airtable:", r), r;
   }
 }
+async function Po(t) {
+  try {
+    console.log("🗑️ Deleting product from Airtable:", t);
+    const e = await fetch(`${wi}/${t}`, {
+      method: "DELETE",
+      headers: {
+        Authorization: `Bearer ${bi}`,
+        "Content-Type": "application/json"
+      }
+    });
+    if (!e.ok) {
+      const r = await e.text();
+      throw console.error("❌ Airtable delete error:", r), new Error(`HTTP error! status: ${e.status}`);
+    }
+    return console.log("✅ Deleted product from Airtable:", t), !0;
+  } catch (e) {
+    throw console.error("❌ Error deleting product from Airtable:", e), e;
+  }
+}
 function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refreshKey: i }) {
-  const [o, a] = E("all"), [l, c] = E([]), [u, h] = E(!0), [p, m] = E("");
+  const [o, a] = E("all"), [l, c] = E([]), [u, h] = E(!0), [p, m] = E(""), [f0, y0] = E(null);
   U(() => {
     (async () => {
       h(!0), m("");
@@ -11464,7 +11488,18 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
     { id: "beds", label: "Beds & Comfort", icon: "🛏️" },
     { id: "grooming", label: "Grooming", icon: "✂️" },
     { id: "walking", label: "Walking & Travel", icon: "🦮" }
-  ], v = o === "all" ? l : l.filter((g) => g.category === o);
+  ], v = o === "all" ? l : l.filter((g) => g.category === o), b0 = async (g) => {
+    if (!e?.isAdmin || !g?.id || !window.confirm(`Delete "${g.name}" from Pet Products? This cannot be undone.`))
+      return;
+    y0(g.id), m("");
+    try {
+      await Po(g.id), c((b) => b.filter((w) => w.id !== g.id));
+    } catch (b) {
+      console.error("❌ Error deleting product:", b), m(b instanceof Error ? b.message : "Failed to delete product");
+    } finally {
+      y0(null);
+    }
+  };
   return /* @__PURE__ */ d("div", { className: "min-h-screen bg-gradient-to-b from-purple-50 to-pink-50", children: [
     /* @__PURE__ */ s("div", { className: "bg-white shadow-sm sticky top-0 z-10", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-3", children: /* @__PURE__ */ d("div", { className: "flex items-center gap-4", children: [
       /* @__PURE__ */ d("div", { className: "flex-1 text-center", children: [
@@ -11486,6 +11521,7 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
       )
     ] }) }) }),
     /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8", children: [
+      p && /* @__PURE__ */ s("div", { className: "mb-6 p-4 rounded-lg bg-red-50 text-red-700 border border-red-200", children: p }),
       /* @__PURE__ */ s(
         D.div,
         {
@@ -11571,6 +11607,17 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
                     "Edit Product",
                     /* @__PURE__ */ s(Sm, { className: "w-4 h-4" })
                   ]
+                }
+              ),
+              e?.isAdmin && /* @__PURE__ */ s(
+                D.button,
+                {
+                  whileHover: { scale: 1.05 },
+                  whileTap: { scale: 0.95 },
+                  onClick: () => b0(g),
+                  disabled: f0 === g.id,
+                  className: "flex items-center justify-center gap-2 w-full px-4 py-3 bg-red-600 text-white rounded-xl hover:bg-red-700 transition-colors mt-2 disabled:opacity-60",
+                  children: f0 === g.id ? "Deleting..." : "Delete Product"
                 }
               )
             ] })
@@ -15838,7 +15885,24 @@ async function ny(t, e, r) {
     }, "image/jpeg", 0.95);
   });
 }
-function To({ src: t, alt: e, index: r, onMove: n, onRemove: i, badge: o, badgeColor: a, isCardPhoto: l, onSetAsCard: c }) {
+function getDetailGalleryPhotos(t) {
+  if (!t)
+    return [];
+  const e = window.innerWidth < 768 && Array.isArray(t.mobilePhotos) && t.mobilePhotos.length > 0, r = e ? t.mobilePhotos : t.photos;
+  if (!Array.isArray(r) || r.length === 0)
+    return [];
+  if (e)
+    return r;
+  const n = t.cardPhotoIndex || 0;
+  return r.filter((i, o) => o !== n);
+}
+function getMobileDetailCropAspect() {
+  if (typeof window > "u")
+    return 1;
+  const t = window.innerWidth < 768 ? window.innerWidth : 390;
+  return Math.max((t - 32) / 320, 0.85);
+}
+function To({ src: t, alt: e, index: r, onMove: n, onRemove: i, badge: o, badgeColor: a, isCardPhoto: l, onSetAsCard: c, showCardControls: u0 = !0 }) {
   const [{ isDragging: u }, h] = R0({
     type: "PHOTO",
     item: { index: r },
@@ -15875,7 +15939,7 @@ function To({ src: t, alt: e, index: r, onMove: n, onRemove: i, badge: o, badgeC
             children: /* @__PURE__ */ s(we, { className: "w-4 h-4" })
           }
         ),
-        l ? /* @__PURE__ */ s("div", { className: "absolute bottom-2 left-2 px-2 py-1 bg-yellow-500 text-white text-xs rounded flex items-center gap-1", children: "⭐ Card Photo" }) : /* @__PURE__ */ s(
+        u0 && (l ? /* @__PURE__ */ s("div", { className: "absolute bottom-2 left-2 px-2 py-1 bg-yellow-500 text-white text-xs rounded flex items-center gap-1", children: "⭐ Card Photo" }) : /* @__PURE__ */ s(
           "button",
           {
             type: "button",
@@ -15883,7 +15947,7 @@ function To({ src: t, alt: e, index: r, onMove: n, onRemove: i, badge: o, badgeC
             className: "absolute bottom-2 left-2 px-2 py-1 bg-white/90 backdrop-blur-sm text-gray-700 text-xs rounded opacity-0 group-hover:opacity-100 transition-opacity hover:bg-yellow-100",
             children: "Set as Card Photo"
           }
-        ),
+        )),
         /* @__PURE__ */ s("div", { className: `absolute bottom-2 right-2 px-2 py-1 ${a} text-white text-xs rounded`, children: o })
       ]
     }
@@ -15915,8 +15979,9 @@ function iy({ editBusiness: t, onClose: e }) {
     notAcceptingClients: !1,
     paymentMethods: [],
     specialFeatures: [""],
-    category: "grooming"
-  }), [a, l] = E([]), [c, u] = E([]), [h, p] = E([]), [m, f] = E(0), [v, g] = E(!1), [b, w] = E(""), [x, T] = E(!1), [P, N] = E(null), [S, C] = E(""), [R, M] = E({ x: 0, y: 0 }), [k, I] = E(1), [z, ee] = E(null);
+    category: "grooming",
+    mobilePhotos: []
+  }), [a, l] = E([]), [c, u] = E([]), [h, p] = E([]), [L, j] = E([]), [q, Z] = E([]), [m, f] = E(0), [v, g] = E(!1), [b, w] = E(""), [x, T] = E(!1), [P, N] = E(null), [S, C] = E(""), [R, M] = E({ x: 0, y: 0 }), [k, I] = E(1), [z, ee] = E(null), [Jt, Qt] = E("desktop");
   U(() => {
     if (t) {
       const A = {
@@ -15953,8 +16018,9 @@ function iy({ editBusiness: t, onClose: e }) {
         notAcceptingClients: t.notAcceptingClients || !1,
         paymentMethods: t.paymentMethods || [],
         specialFeatures: t.specialFeatures?.length > 0 ? t.specialFeatures : [""],
-        category: t.category || "grooming"
-      }), p(t.photos || []), f(t.cardPhotoIndex || 0);
+        category: t.category || "grooming",
+        mobilePhotos: t.mobilePhotos || []
+      }), p(t.photos || []), j(t.mobilePhotos || []), f(t.cardPhotoIndex || 0);
     }
   }, [t]);
   const G = (A, O) => {
@@ -15999,15 +16065,15 @@ function iy({ editBusiness: t, onClose: e }) {
       ...O,
       paymentMethods: O.paymentMethods.includes(A) ? O.paymentMethods.filter((V) => V !== A) : [...O.paymentMethods, A]
     }));
-  }, Ke = (A) => {
-    const O = Array.from(A.target.files || []);
-    if (O.length > 0) {
-      const V = O[0];
-      C(V.name);
-      const H = new FileReader();
-      H.onloadend = () => {
-        N(H.result), T(!0);
-      }, H.readAsDataURL(V);
+  }, Ke = (A, O = "desktop") => {
+    const V = Array.from(A.target.files || []);
+    if (V.length > 0) {
+      const H = V[0];
+      Qt(O), C(H.name);
+      const se = new FileReader();
+      se.onloadend = () => {
+        N(se.result), T(!0);
+      }, se.readAsDataURL(H);
     }
     A.target.value = "";
   }, Ht = (A, O) => {
@@ -16020,18 +16086,20 @@ function iy({ editBusiness: t, onClose: e }) {
           z,
           S
         );
-        l((V) => [...V, A]);
+        Jt === "mobile" ? j((V) => [...V, A]) : l((V) => [...V, A]);
         const O = new FileReader();
         O.onloadend = () => {
-          u((V) => [...V, O.result]);
+          Jt === "mobile" ? Z((V) => [...V, O.result]) : u((V) => [...V, O.result]);
         }, O.readAsDataURL(A), T(!1), N(null), M({ x: 0, y: 0 }), I(1), ee(null);
       } catch (A) {
         console.error("Error cropping image:", A);
       }
   }, Ye = () => {
-    T(!1), N(null), M({ x: 0, y: 0 }), I(1), ee(null);
+    T(!1), N(null), M({ x: 0, y: 0 }), I(1), ee(null), Qt("desktop");
   }, Be = (A) => {
     l((O) => O.filter((V, H) => H !== A)), u((O) => O.filter((V, H) => H !== A));
+  }, wt = (A) => {
+    j((O) => O.filter((V, H) => H !== A)), Z((O) => O.filter((V, H) => H !== A));
   }, mt = (A) => {
     p((O) => O.filter((V, H) => H !== A)), A === m ? f(0) : A < m && f(m - 1);
   }, Nr = (A, O) => {
@@ -16047,10 +16115,18 @@ function iy({ editBusiness: t, onClose: e }) {
       const H = [...V], [se] = H.splice(A, 1);
       return H.splice(O, 0, se), H;
     });
+  }, Bt = (A, O) => {
+    j((V) => {
+      const H = [...V], [se] = H.splice(A, 1);
+      return H.splice(O, 0, se), H;
+    }), Z((V) => {
+      const H = [...V], [se] = H.splice(A, 1);
+      return H.splice(O, 0, se), H;
+    });
   }, ft = async (A) => {
     A.preventDefault(), console.log("🚀 FORM SUBMIT STARTED"), console.log("   - Edit mode:", !!t), console.log("   - Business ID:", t?.id), console.log("   - Form data:", i), g(!0), w("");
     try {
-      const O = [];
+      const O = [], V = [];
       console.log("📸 Starting photo upload. Number of new photos:", a.length);
       for (const se of a) {
         const Ze = new FormData();
@@ -16069,20 +16145,39 @@ function iy({ editBusiness: t, onClose: e }) {
         const zt = await $e.json();
         console.log("✅ Photo uploaded:", zt.secure_url), O.push(zt.secure_url);
       }
-      const V = {
+      console.log("📱 Starting mobile photo upload. Number of new photos:", L.length);
+      for (const se of L) {
+        const Ze = new FormData();
+        Ze.append("file", se), Ze.append("upload_preset", "pet-services-photos"), Ze.append("folder", "pet-directory-mobile-photos"), console.log("📱 Uploading mobile photo to Cloudinary...");
+        const $e = await fetch(
+          "https://api.cloudinary.com/v1_1/da3pbhktf/image/upload",
+          {
+            method: "POST",
+            body: Ze
+          }
+        );
+        if (!$e.ok) {
+          const gt = await $e.json().catch(() => ({ error: "Unknown error" }));
+          throw console.error("Mobile photo upload failed:", gt), new Error(`Failed to upload mobile photo: ${gt.error?.message || "Unknown error"}`);
+        }
+        const zt = await $e.json();
+        console.log("✅ Mobile photo uploaded:", zt.secure_url), V.push(zt.secure_url);
+      }
+      const H = {
         ...i,
         servicesOffered: i.servicesOffered.filter((se) => se.trim() !== ""),
         specialFeatures: i.specialFeatures.filter((se) => se.trim() !== ""),
         photos: [...h, ...O],
+        mobilePhotos: [...q, ...V],
         cardPhotoIndex: m,
         id: t?.id
         // Include ID if editing
       };
       w("💾 Saving...");
-      const H = await Oe.saveBusiness(V, n || void 0);
-      console.log("✅ api.saveBusiness returned:", H), t ? (w(H.cloudWarning ? `⚠️ ${H.cloudWarning}` : "Business listing updated successfully! 🎉"), setTimeout(() => {
+      const se = await Oe.saveBusiness(H, n || void 0);
+      console.log("✅ api.saveBusiness returned:", se), t ? (w(se.cloudWarning ? `⚠️ ${se.cloudWarning}` : "Business listing updated successfully! 🎉"), setTimeout(() => {
         e && e();
-      }, 1500)) : (w(H.cloudWarning ? `⚠️ ${H.cloudWarning}` : "Business listing created successfully! 🎉"), o({
+      }, 1500)) : (w(se.cloudWarning ? `⚠️ ${se.cloudWarning}` : "Business listing created successfully! 🎉"), o({
         name: "",
         description: "",
         address: "",
@@ -16107,8 +16202,9 @@ function iy({ editBusiness: t, onClose: e }) {
         notAcceptingClients: !1,
         paymentMethods: [],
         specialFeatures: [""],
-        category: "grooming"
-      }), l([]), u([]), p([]));
+        category: "grooming",
+        mobilePhotos: []
+      }), l([]), u([]), p([]), j([]), Z([]));
     } catch (O) {
       console.error("Error saving business:", O), w(`Error: ${O instanceof Error ? O.message : "Failed to save business listing"}`);
     } finally {
@@ -16459,7 +16555,7 @@ function iy({ editBusiness: t, onClose: e }) {
               type: "file",
               accept: "image/*",
               multiple: !0,
-              onChange: Ke,
+              onChange: (A) => Ke(A, "desktop"),
               className: "hidden",
               id: "photo-upload"
             }
@@ -16491,6 +16587,68 @@ function iy({ editBusiness: t, onClose: e }) {
             },
             O
           )) })
+        ] }),
+        /* @__PURE__ */ d("div", { className: "mt-8 pt-6 border-t border-purple-100 space-y-4", children: [
+          /* @__PURE__ */ s("h3", { className: "text-gray-700", children: "Mobile Detail Carousel Photos (Optional)" }),
+          /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 bg-blue-50 border border-blue-200 rounded-lg p-3", children: "Upload mobile-specific cropped photos for detail modals. These photos only appear in mobile detail carousels and help center subjects for smaller screens." }),
+          q.length > 0 && /* @__PURE__ */ d("div", { children: [
+            /* @__PURE__ */ s("h4", { className: "text-gray-700 mb-3", children: "Current Mobile Photos" }),
+            /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-4", children: q.map((A, O) => /* @__PURE__ */ s(
+              To,
+              {
+                src: A,
+                alt: `Mobile ${O + 1}`,
+                index: O,
+                onMove: Bt,
+                onRemove: wt,
+                badge: "Mobile",
+                badgeColor: "bg-indigo-600",
+                isCardPhoto: !1,
+                onSetAsCard: () => {
+                },
+                showCardControls: !1
+              },
+              O
+            )) })
+          ] }),
+          /* @__PURE__ */ d("div", { className: "border-2 border-dashed border-gray-300 rounded-lg p-8 text-center hover:border-indigo-400 transition-colors", children: [
+            /* @__PURE__ */ s(
+              "input",
+              {
+                type: "file",
+                accept: "image/*",
+                multiple: !0,
+                onChange: (A) => Ke(A, "mobile"),
+                className: "hidden",
+                id: "photo-upload-mobile"
+              }
+            ),
+            /* @__PURE__ */ d("label", { htmlFor: "photo-upload-mobile", className: "cursor-pointer", children: [
+              /* @__PURE__ */ s(ml, { className: "w-12 h-12 mx-auto text-gray-400 mb-4" }),
+              /* @__PURE__ */ s("p", { className: "text-gray-600", children: "Click to upload mobile detail photos" }),
+              /* @__PURE__ */ s("p", { className: "text-sm text-gray-400 mt-2", children: "Use this crop for the mobile modal carousel" })
+            ] })
+          ] }),
+          Z.length > 0 && /* @__PURE__ */ d("div", { children: [
+            /* @__PURE__ */ s("h4", { className: "text-gray-700 mb-3", children: "New Mobile Photos to Upload" }),
+            /* @__PURE__ */ s("div", { className: "grid grid-cols-2 md:grid-cols-4 gap-4", children: Z.map((A, O) => /* @__PURE__ */ s(
+              To,
+              {
+                src: A,
+                alt: `Mobile Preview ${O + 1}`,
+                index: O,
+                onMove: Bt,
+                onRemove: wt,
+                badge: "Mobile New",
+                badgeColor: "bg-teal-600",
+                isCardPhoto: !1,
+                onSetAsCard: () => {
+                },
+                showCardControls: !1
+              },
+              O
+            )) })
+          ] })
         ] })
       ] }),
       /* @__PURE__ */ s("div", { className: "flex justify-center pt-6", children: /* @__PURE__ */ s(
@@ -16505,7 +16663,7 @@ function iy({ editBusiness: t, onClose: e }) {
     ] }),
     x && P && /* @__PURE__ */ s("div", { className: "fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4", children: /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl shadow-2xl w-full max-w-2xl overflow-hidden", children: [
       /* @__PURE__ */ d("div", { className: "bg-gradient-to-r from-purple-600 to-pink-600 px-6 py-4 flex items-center justify-between", children: [
-        /* @__PURE__ */ s("h3", { className: "text-white", children: "Crop Your Photo" }),
+        /* @__PURE__ */ s("h3", { className: "text-white", children: Jt === "mobile" ? "Crop Your Mobile Detail Photo" : "Crop Your Desktop Photo" }),
         /* @__PURE__ */ s(
           "button",
           {
@@ -16521,13 +16679,14 @@ function iy({ editBusiness: t, onClose: e }) {
           image: P,
           crop: R,
           zoom: k,
-          aspect: 16 / 9,
+          aspect: Jt === "mobile" ? getMobileDetailCropAspect() : 16 / 9,
           onCropChange: M,
           onZoomChange: I,
           onCropComplete: Ht
         }
       ) }),
       /* @__PURE__ */ d("div", { className: "p-6 space-y-4", children: [
+        Jt === "mobile" && /* @__PURE__ */ s("p", { className: "text-sm text-indigo-700 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-2", children: "Mobile crop matches detail modal ratio." }),
         /* @__PURE__ */ d("div", { children: [
           /* @__PURE__ */ s("label", { className: "block text-sm text-gray-700 mb-2", children: "Zoom" }),
           /* @__PURE__ */ s(
