@@ -7138,7 +7138,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 ] }) : /* @__PURE__ */ s("span", { className: "text-sm text-gray-500", children: "No reviews yet" }) }),
                 /* @__PURE__ */ d("div", { className: "flex flex-col gap-1 items-end", children: [
                   y.mobileService && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full", children: "🚐 Mobile Service" }),
-                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full", children: "🚫 Not Accepting New Clients" })
+                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-center w-full text-center text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "🚫 Not Accepting New Clients" })
                 ] })
               ] }),
               /* @__PURE__ */ s(
@@ -8968,7 +8968,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 ] }) : /* @__PURE__ */ s("span", { className: "text-sm text-gray-500", children: "No reviews yet" }) }),
                 /* @__PURE__ */ d("div", { className: "flex flex-col gap-1 items-end", children: [
                   y.daycareAvailable && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full", children: "🏠 Daycare Available" }),
-                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-red-100 text-red-700 text-sm rounded-full", children: "🚫 Not Accepting New Clients" })
+                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-center w-full text-center text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "🚫 Not Accepting New Clients" })
                 ] })
               ] }),
               /* @__PURE__ */ s(
