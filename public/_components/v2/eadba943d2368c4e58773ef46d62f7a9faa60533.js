@@ -7002,7 +7002,15 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Open Weekends" })
                   ] }),
-                  /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${W ? "bg-purple-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
+                  /* @__PURE__ */ s(
+                    "input",
+                    {
+                      type: "checkbox",
+                      checked: W,
+                      onChange: (y) => te(y.target.checked),
+                      className: "w-5 h-5 text-purple-600 rounded cursor-pointer ml-auto"
+                    }
+                  )
                 ]
               }
             ),
@@ -7861,7 +7869,15 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Open Weekends" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${W ? "bg-purple-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s(
+                      "input",
+                      {
+                        type: "checkbox",
+                        checked: W,
+                        onChange: (y) => te(y.target.checked),
+                        className: "w-5 h-5 text-purple-600 rounded cursor-pointer ml-auto"
+                      }
+                    )
                   ]
                 }
               ),
@@ -7875,7 +7891,15 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "🚫" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Not Accepting New Clients" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${ae ? "bg-purple-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${ae ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s(
+                      "input",
+                      {
+                        type: "checkbox",
+                        checked: ae,
+                        onChange: (y) => ue(y.target.checked),
+                        className: "w-5 h-5 text-purple-600 rounded cursor-pointer ml-auto"
+                      }
+                    )
                   ]
                 }
               ),
