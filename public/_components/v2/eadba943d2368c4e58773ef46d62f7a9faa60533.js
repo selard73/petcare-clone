@@ -10349,7 +10349,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   "🕒 ",
                   y.hours.monday || "See hours in details"
                 ] }),
-                (y.emergency24x7 || y.emergency) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1 px-2 py-0.5 md:px-3 md:py-1 bg-red-100 text-red-700 text-[10px] md:text-sm leading-tight rounded-full shrink-0 whitespace-nowrap", children: "🚨 24/7 Emergency" })
+                (y.emergency24x7 || y.emergency) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1 px-2 py-0.5 md:px-3 md:py-1 bg-red-100 text-red-700 text-[10px] md:text-sm leading-tight rounded-full shrink-0 whitespace-nowrap ml-auto md:ml-0 translate-x-1 md:translate-x-0", children: window.innerWidth < 768 ? "🚨 24/7" : "🚨 24/7 Emergency" })
               ] }),
               /* @__PURE__ */ s(
                 D.button,
