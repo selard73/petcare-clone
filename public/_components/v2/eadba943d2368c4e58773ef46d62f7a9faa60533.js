@@ -15988,6 +15988,7 @@ function iy({ editBusiness: t, onClose: e }) {
     },
     callForHours: !1,
     mobileService: !1,
+    daycareAvailable: !1,
     notAcceptingClients: !1,
     paymentMethods: [],
     specialFeatures: [""],
@@ -16027,6 +16028,7 @@ function iy({ editBusiness: t, onClose: e }) {
         },
         callForHours: t.callForHours || !1,
         mobileService: t.mobileService || !1,
+        daycareAvailable: t.daycareAvailable || !1,
         notAcceptingClients: t.notAcceptingClients || !1,
         paymentMethods: t.paymentMethods || [],
         specialFeatures: t.specialFeatures?.length > 0 ? t.specialFeatures : [""],
@@ -16218,6 +16220,7 @@ function iy({ editBusiness: t, onClose: e }) {
         },
         callForHours: !1,
         mobileService: !1,
+        daycareAvailable: !1,
         notAcceptingClients: !1,
         paymentMethods: [],
         specialFeatures: [""],
@@ -16488,6 +16491,21 @@ function iy({ editBusiness: t, onClose: e }) {
           /* @__PURE__ */ d("div", { children: [
             /* @__PURE__ */ s("span", { className: "text-gray-800", children: "🚫 Not Accepting New Clients" }),
             /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if you are not currently accepting new clients" })
+          ] })
+        ] }),
+        /* @__PURE__ */ d("label", { className: "flex items-center gap-3 p-4 bg-teal-50 border-2 border-teal-200 rounded-lg cursor-pointer hover:bg-teal-100 transition-colors mt-4", children: [
+          /* @__PURE__ */ s(
+            "input",
+            {
+              type: "checkbox",
+              checked: i.daycareAvailable,
+              onChange: (A) => G("daycareAvailable", A.target.checked),
+              className: "w-5 h-5 text-teal-600 border-gray-300 rounded focus:ring-teal-500"
+            }
+          ),
+          /* @__PURE__ */ d("div", { children: [
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "🏠 Daycare Available (Boarding)" }),
+            /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if this boarding listing offers daycare" })
           ] })
         ] })
       ] }),
