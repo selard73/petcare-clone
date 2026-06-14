@@ -10339,6 +10339,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 ] }) : /* @__PURE__ */ s("span", { className: "text-sm text-gray-500", children: "No reviews yet" }) }),
                 /* @__PURE__ */ d("div", { className: "flex flex-wrap gap-1 md:flex-col md:gap-1 md:items-end", children: [
                   (y.emergency24x7 || y.emergency) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-red-100 text-red-700 text-xs md:text-sm leading-tight rounded-full", children: "🚨 24/7 Emergency" }),
+                  (y.acceptsWalkins || y.acceptingNewPatients) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-emerald-100 text-emerald-700 text-xs md:text-sm leading-tight rounded-full", children: "🚶 Accepts Walk-Ins" }),
                   (y.notAcceptingClients || y.acceptingNewPatients === !1) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-red-100 text-red-700 text-xs md:text-sm leading-tight rounded-full", children: "🚫 Not Accepting New Patients" })
                 ] })
               ] }),
