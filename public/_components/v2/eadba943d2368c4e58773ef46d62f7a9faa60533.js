@@ -6813,7 +6813,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       }
     }
   }, yt = (() => {
-    let y = o.filter((F) => !(Ke.trim() && !F.name.toLowerCase().includes(Ke.toLowerCase()) || ee !== "all" && F.city !== ee || pe && !F.mobileService || W && !(F.hours && (F.hours.saturday && !F.hours.saturday.toLowerCase().includes("closed") || F.hours.sunday && !F.hours.sunday.toLowerCase().includes("closed"))) || ae && (w[F.id]?.average || 0) < 4 || Me !== "all" && F.priceRange !== Me));
+    let y = o.filter((F) => !(Ke.trim() && !F.name.toLowerCase().includes(Ke.toLowerCase()) || ee !== "all" && F.city !== ee || pe && !F.mobileService || W && !(F.hours && (F.hours.saturday && !F.hours.saturday.toLowerCase().includes("closed") || F.hours.sunday && !F.hours.sunday.toLowerCase().includes("closed"))) || ae && !F.notAcceptingClients || Me !== "all" && F.priceRange !== Me));
     return y.sort((F, B) => {
       if (Re === "name")
         return F.name.localeCompare(B.name);
@@ -7013,8 +7013,8 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => ue(!ae),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
-                    /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🚫" }),
+                    /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Not Accepting New Clients" })
                   ] }),
                   /* @__PURE__ */ s(
                     "input",
@@ -7872,8 +7872,8 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: () => ue(!ae),
                   children: [
                     /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
-                      /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🚫" }),
+                      /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Not Accepting New Clients" })
                     ] }),
                     /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${ae ? "bg-purple-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${ae ? "translate-x-6" : "translate-x-1"}` }) })
                   ]
