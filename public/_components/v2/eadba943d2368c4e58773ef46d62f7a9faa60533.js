@@ -10326,7 +10326,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   "📍 ",
                   y.city
                 ] }),
-                (y.acceptsWalkins || y.acceptingNewPatients) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-emerald-100 text-emerald-700 text-xs md:text-sm leading-tight rounded-full ml-2", children: "🚶 Accepts Walk-Ins" })
+                (y.acceptsWalkins || y.acceptingNewPatients) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-gradient-to-r from-emerald-100 to-teal-100 border border-emerald-300 text-emerald-800 text-xs md:text-sm leading-tight rounded-full shadow-sm ml-2", children: "🚶 Accepts Walk-Ins" })
               ] }),
               /* @__PURE__ */ d("div", { className: "flex flex-col gap-2 mb-3 md:flex-row md:items-center md:justify-between", children: [
                 /* @__PURE__ */ s("div", { className: "flex items-center gap-3 md:gap-2", children: w[y.id] ? /* @__PURE__ */ d(ie, { children: [
@@ -10341,13 +10341,15 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] }) : /* @__PURE__ */ s("span", { className: "text-sm text-gray-500", children: "No reviews yet" }) }),
                 /* @__PURE__ */ d("div", { className: "flex flex-wrap gap-1 md:flex-col md:gap-1 md:items-end", children: [
-                  (y.emergency24x7 || y.emergency) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-red-100 text-red-700 text-xs md:text-sm leading-tight rounded-full", children: "🚨 24/7 Emergency" }),
                   (y.notAcceptingClients || y.acceptingNewPatients === !1) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-red-100 text-red-700 text-xs md:text-sm leading-tight rounded-full", children: "🚫 Not Accepting New Patients" })
                 ] })
               ] }),
-              y.hours && /* @__PURE__ */ d("p", { className: "text-orange-700 text-sm mb-3", children: [
-                "🕒 ",
-                y.hours.monday || "See hours in details"
+              y.hours && /* @__PURE__ */ d("div", { className: "flex items-center justify-between mb-3 gap-2", children: [
+                /* @__PURE__ */ d("p", { className: "text-orange-700 text-sm", children: [
+                  "🕒 ",
+                  y.hours.monday || "See hours in details"
+                ] }),
+                (y.emergency24x7 || y.emergency) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-red-100 text-red-700 text-xs md:text-sm leading-tight rounded-full shrink-0", children: "🚨 24/7 Emergency" })
               ] }),
               /* @__PURE__ */ s(
                 D.button,
