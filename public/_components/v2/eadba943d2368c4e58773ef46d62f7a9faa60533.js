@@ -16016,6 +16016,7 @@ function iy({ editBusiness: t, onClose: e }) {
     callForHours: !1,
     mobileService: !1,
     daycareAvailable: !1,
+    emergency24x7: !1,
     acceptsWalkins: !1,
     notAcceptingClients: !1,
     paymentMethods: [],
@@ -16057,6 +16058,7 @@ function iy({ editBusiness: t, onClose: e }) {
         callForHours: t.callForHours || !1,
         mobileService: t.mobileService || !1,
         daycareAvailable: t.daycareAvailable || !1,
+        emergency24x7: t.emergency24x7 || t.emergency || !1,
         acceptsWalkins: t.acceptsWalkins || !1,
         notAcceptingClients: t.notAcceptingClients || !1,
         paymentMethods: t.paymentMethods || [],
@@ -16250,6 +16252,7 @@ function iy({ editBusiness: t, onClose: e }) {
         callForHours: !1,
         mobileService: !1,
         daycareAvailable: !1,
+        emergency24x7: !1,
         acceptsWalkins: !1,
         notAcceptingClients: !1,
         paymentMethods: [],
@@ -16551,6 +16554,21 @@ function iy({ editBusiness: t, onClose: e }) {
           /* @__PURE__ */ d("div", { children: [
             /* @__PURE__ */ s("span", { className: "text-gray-800", children: "🚶 Accepts Walk-Ins (Vet Care)" }),
             /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if this vet clinic accepts walk-in visits" })
+          ] })
+        ] }),
+        i.category === "vet" && /* @__PURE__ */ d("label", { className: "flex items-center gap-3 p-4 bg-red-50 border-2 border-red-200 rounded-lg cursor-pointer hover:bg-red-100 transition-colors mt-4", children: [
+          /* @__PURE__ */ s(
+            "input",
+            {
+              type: "checkbox",
+              checked: i.emergency24x7,
+              onChange: (A) => G("emergency24x7", A.target.checked),
+              className: "w-5 h-5 text-red-600 border-gray-300 rounded focus:ring-red-500"
+            }
+          ),
+          /* @__PURE__ */ d("div", { children: [
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "🚨 24/7 Emergency Services (Vet Care)" }),
+            /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if this vet clinic provides 24/7 emergency care" })
           ] })
         ] })
       ] }),
