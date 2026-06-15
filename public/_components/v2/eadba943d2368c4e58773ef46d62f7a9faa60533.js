@@ -6423,6 +6423,36 @@ async function tf(t) {
     return console.error("deleteCloudBusiness error:", e), { success: !1, error: e?.message || "Cloud delete failed" };
   }
 }
+const REVIEW_SPAM_GUARD_KEY = "pawsitively_review_spam_guard", REVIEW_COOLDOWN_MS = 5 * 60 * 1e3, REVIEW_DAILY_BUSINESS_LIMIT = 3, REVIEW_DAILY_GLOBAL_LIMIT = 10, REVIEW_MIN_COMMENT_LENGTH = 10, REVIEW_MAX_COMMENT_LENGTH = 2e3;
+function getReviewSpamGuard() {
+  try {
+    return JSON.parse(localStorage.getItem(REVIEW_SPAM_GUARD_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+function saveReviewSpamGuard(t) {
+  localStorage.setItem(REVIEW_SPAM_GUARD_KEY, JSON.stringify(t));
+}
+function validateGuestReviewSubmission(t, e, r) {
+  const n = String(e || "").trim(), i = String(r || "").trim();
+  if (n.length < REVIEW_MIN_COMMENT_LENGTH)
+    return { ok: !1, message: `Please write at least ${REVIEW_MIN_COMMENT_LENGTH} characters in your review.` };
+  if (n.length > REVIEW_MAX_COMMENT_LENGTH)
+    return { ok: !1, message: `Please keep your review under ${REVIEW_MAX_COMMENT_LENGTH} characters.` };
+  if (/(.)\1{8,}/.test(n))
+    return { ok: !1, message: "Your review looks repetitive. Please share a genuine experience." };
+  if ((n.match(/https?:\/\/|www\./gi) || []).length > 2)
+    return { ok: !1, message: "Please avoid adding multiple links in your review." };
+  if ((ce.getReviews(t) || []).some((a) => String(a.comment || "").trim().toLowerCase() === n.toLowerCase() && String(a.userName || "").trim().toLowerCase() === i.toLowerCase()))
+    return { ok: !1, message: "You already submitted this review for this business." };
+  const o = Date.now(), a = o - 864e5, l = getReviewSpamGuard(), c = (l.byBusiness?.[t] || []).filter((u) => u > a), h = (l.global || []).filter((u) => u > a);
+  return c.length > 0 && o - c[c.length - 1] < REVIEW_COOLDOWN_MS ? { ok: !1, message: "Please wait a few minutes before submitting another review for this business." } : c.length >= REVIEW_DAILY_BUSINESS_LIMIT ? { ok: !1, message: "You've reached today's review limit for this business. Please try again tomorrow." } : h.length >= REVIEW_DAILY_GLOBAL_LIMIT ? { ok: !1, message: "You've submitted too many reviews today. Please try again tomorrow." } : { ok: !0 };
+}
+function recordGuestReviewSubmission(t) {
+  const e = Date.now(), r = e - 864e5, n = getReviewSpamGuard();
+  n.byBusiness = n.byBusiness || {}, n.byBusiness[t] = [...(n.byBusiness[t] || []).filter((i) => i > r), e], n.global = [...(n.global || []).filter((i) => i > r), e], saveReviewSpamGuard(n);
+}
 const Oe = {
   async isServerAvailable() {
     return !1;
@@ -6512,19 +6542,25 @@ const Oe = {
     return { reviews: [...o.values()].sort((a, l) => new Date(l.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime()) };
   },
   async addReview(t, e, r, n, i) {
-    const o = localStorage.getItem("user"), a = o ? JSON.parse(o) : null, l = {
+    const o = localStorage.getItem("user"), a = o ? JSON.parse(o) : null, c = !!(i && a?.isAdmin);
+    if (!c) {
+      const h = validateGuestReviewSubmission(t, r, i || a?.name || "");
+      if (!h.ok)
+        throw new Error(h.message);
+    }
+    const l = {
       id: crypto.randomUUID(),
       businessId: t,
-      userId: i ? `admin-${a?.id || "anonymous"}` : a?.id || "anonymous",
+      userId: a?.isAdmin && i ? `admin-${a?.id || "anonymous"}` : a?.id || (i ? `guest-${crypto.randomUUID().slice(0, 8)}` : "anonymous"),
       userName: i || a?.name || "Anonymous",
       rating: e,
       comment: r,
       createdAt: (/* @__PURE__ */ new Date()).toISOString(),
-      isAdminReview: !!i
+      isAdminReview: c
     };
-    ce.addReview(l);
-    const c = await saveCloudReviewRecord(l);
-    return c.success ? { success: !0, review: l } : { success: !0, review: l, cloudWarning: c.error || "Saved locally, but cloud sync failed." };
+    ce.addReview(l), c || recordGuestReviewSubmission(t);
+    const u = await saveCloudReviewRecord(l);
+    return u.success ? { success: !0, review: l } : { success: !0, review: l, cloudWarning: u.error || "Saved locally, but cloud sync failed." };
   },
   async deleteReview(t) {
     const e = await deleteCloudReviewRecord(t);
@@ -6648,7 +6684,7 @@ const xi = (t) => t ? `pawsitively_shortlist_${t.id}` : "pawsitively_shortlist_g
   }
 }, Wr = globalThis.__GLOBALS__.getAssetURL("2a637f54adfb8f3323c047246be7f5b36018b8af.png");
 function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
-  const [n, i] = E(null), [o, a] = E([]), [l, c] = E(!0), [u, h] = E(0), [p, m] = E([]), [f, v] = E({ rating: 5, comment: "" }), [g, b] = E(!1), [w, x] = E({}), [T, P] = E(!1), [N, S] = E({ reviewerName: "", rating: 5, comment: "" }), [C, R] = E(!1), [M, k] = E(!1), { user: I, accessToken: z } = vi(), [ee, G] = E("all"), [pe, Ee] = E(!1), [W, te] = E(!1), [ae, ue] = E(!1), [Me, qe] = E("all"), [Ke, Ht] = E(""), [Re, Ye] = E("name"), [Be, mt] = E([]), [Nr, Xe] = E(!1), [ft, A] = E(10), [O, V] = E(!1), [H, se] = E(!1), [Ze, $e] = E(!1), [zt, gt] = E(""), [Ai, Ei] = E(void 0);
+  const [n, i] = E(null), [o, a] = E([]), [l, c] = E(!0), [u, h] = E(0), [p, m] = E([]), [f, v] = E({ userName: "", rating: 5, comment: "" }), [g, b] = E(!1), [w, x] = E({}), [T, P] = E(!1), [N, S] = E({ reviewerName: "", rating: 5, comment: "" }), [C, R] = E(!1), [M, k] = E(!1), { user: I, accessToken: z } = vi(), [ee, G] = E("all"), [pe, Ee] = E(!1), [W, te] = E(!1), [ae, ue] = E(!1), [Me, qe] = E("all"), [Ke, Ht] = E(""), [Re, Ye] = E("name"), [Be, mt] = E([]), [Nr, Xe] = E(!1), [ft, A] = E(10), [O, V] = E(!1), [H, se] = E(!1), [Ze, $e] = E(!1), [zt, gt] = E(""), [Ai, Ei] = E(void 0);
   U(() => {
     Mi(), jl();
   }, [I]), U(() => {
@@ -6743,8 +6779,9 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       console.error("Error updating shortlist:", _);
     }
   }, zl = async () => {
-    if (!I) {
-      alert("Please log in to submit a review");
+    const displayName = f.userName.trim() || I?.name || "";
+    if (!displayName) {
+      alert("Please enter your name");
       return;
     }
     if (!f.comment.trim()) {
@@ -6757,9 +6794,10 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         n.id,
         f.rating,
         f.comment,
-        z
+        z,
+        I ? void 0 : displayName
       );
-      y.review && m([y.review, ...p]), await Cr(o), v({ rating: 5, comment: "" }), alert("Review submitted successfully!");
+      y.review && m([y.review, ...p]), await Cr(o), v({ userName: "", rating: 5, comment: "" }), alert("Review submitted successfully!");
     } catch (y) {
       console.error("Error submitting review:", y), alert(y instanceof Error ? y.message : "Failed to submit review. Please try again.");
     } finally {
@@ -7572,7 +7610,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No reviews yet" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm", children: "Be the first to leave a review!" })
                   ] }),
-                  I ? n.ownerId === I.id || I.isAdmin ? /* @__PURE__ */ d(ie, { children: [
+                  I && (n.ownerId === I.id || I.isAdmin) ? /* @__PURE__ */ d(ie, { children: [
                     /* @__PURE__ */ d("div", { className: "bg-blue-50 rounded-xl border-2 border-blue-200 mb-4", children: [
                       /* @__PURE__ */ d(
                         "button",
@@ -7679,6 +7717,20 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     ] })
                   ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-purple-200 rounded-xl p-5", children: [
                     /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Name *" }),
+                      /* @__PURE__ */ s(
+                        "input",
+                        {
+                          type: "text",
+                          value: f.userName || "",
+                          onChange: (y) => v({ ...f, userName: y.target.value }),
+                          className: "w-full p-3 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-purple-400 transition-colors",
+                          placeholder: I?.name || "Enter your name"
+                        }
+                      )
+                    ] }),
                     /* @__PURE__ */ d("div", { className: "mb-4", children: [
                       /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Rating" }),
                       /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
@@ -7719,16 +7771,13 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         whileHover: { scale: 1.02 },
                         whileTap: { scale: 0.98 },
                         className: "w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-xl hover:from-pink-600 hover:to-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
-                        disabled: g,
+                        disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
                         children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
                           /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                           "Submitting..."
                         ] }) : "Submit Review"
                       }
                     )
-                  ] }) : /* @__PURE__ */ d("div", { className: "text-center py-8 bg-purple-50 rounded-xl border-2 border-purple-200", children: [
-                    /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "Want to leave a review?" }),
-                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Please log in to share your experience" })
                   ] })
                 ] })
               ] }),
@@ -7973,7 +8022,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
   ] });
 }
 function af({ onEditBusiness: t, onNavigate: e } = {}) {
-  const [r, n] = E(null), [i, o] = E([]), [a, l] = E(!0), [c, u] = E(""), [h, p] = E("all"), [m, f] = E(!1), [v, g] = E(!1), [b, w] = E(!1), [x, T] = E("all"), [P, N] = E(!1), [S, C] = E(!1), [R, M] = E(10), [k, I] = E(!1), [tn, en] = E(0), { user: Lr, accessToken: Kr } = vi(), [sn, cn] = E({}), [Yr, Xr] = E([]), [Zr, rn] = E({ reviewerName: "", rating: 5, comment: "" }), [nn, on] = E(!1), [an, ln] = E(!1);
+  const [r, n] = E(null), [i, o] = E([]), [a, l] = E(!0), [c, u] = E(""), [h, p] = E("all"), [m, f] = E(!1), [v, g] = E(!1), [b, w] = E(!1), [x, T] = E("all"), [P, N] = E(!1), [S, C] = E(!1), [R, M] = E(10), [k, I] = E(!1), [tn, en] = E(0), { user: Lr, accessToken: Kr } = vi(), [sn, cn] = E({}), [Yr, Xr] = E([]), [Zr, rn] = E({ reviewerName: "", rating: 5, comment: "" }), [nn, on] = E(!1), [an, ln] = E(!1), [Qr, dn] = E({ userName: "", rating: 5, comment: "" }), [vn, gn] = E(!1);
   const hn = (K) => !K || K.length === 0 ? 0 : K.reduce((L, y) => L + Number(y?.rating || 0), 0) / K.length;
   const un = (K) => {
     const L = K && typeof K == "object" ? K : {}, y = (B) => Array.isArray(B) ? B.filter(Boolean) : typeof B == "string" && B.trim() ? B.split(",").map((_) => _.trim()).filter(Boolean) : [], B = y(L.photos);
@@ -8171,6 +8220,33 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       console.error("Error submitting admin review:", K), alert(K instanceof Error ? K.message : "Failed to submit admin review. Please try again.");
     } finally {
       on(!1);
+    }
+  }, Jn = async () => {
+    if (!r)
+      return;
+    const K = Qr.userName.trim() || Lr?.name || "";
+    if (!K) {
+      alert("Please enter your name");
+      return;
+    }
+    if (!Qr.comment.trim()) {
+      alert("Please enter a comment");
+      return;
+    }
+    gn(!0);
+    try {
+      const L = await Oe.addReview(
+        r.id,
+        Qr.rating,
+        Qr.comment,
+        Kr,
+        Lr ? void 0 : K
+      );
+      L.review && Xr([L.review, ...Yr]), await yn(r.id), dn({ userName: "", rating: 5, comment: "" }), alert("Review submitted successfully!");
+    } catch (L) {
+      console.error("Error submitting review:", L), alert(L instanceof Error ? L.message : "Failed to submit review. Please try again.");
+    } finally {
+      gn(!1);
     }
   }, Ql = async () => {
     if (!r)
@@ -8526,6 +8602,24 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             an ? "Deleting..." : "Delete Business Listing"
           ] })
         ] }),
+        !(Lr && r.ownerId === Lr.id) && /* @__PURE__ */ d("div", { className: "bg-white border-2 border-blue-200 rounded-xl p-5 mt-4", children: [
+          /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
+          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
+          /* @__PURE__ */ d("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ s("input", { type: "text", placeholder: Lr?.name || "Your name", value: Qr.userName, onChange: (K) => dn({ ...Qr, userName: K.target.value }), className: "w-full px-4 py-2 border-2 border-blue-200 rounded-lg focus:outline-none focus:border-blue-400" }),
+            /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+              [1, 2, 3, 4, 5].map((K) => /* @__PURE__ */ s("button", { type: "button", onClick: () => dn({ ...Qr, rating: K }), className: `text-2xl transition-transform hover:scale-110 ${K <= Qr.rating ? "opacity-100" : "opacity-30"}`, children: "⭐" }, K)),
+              /* @__PURE__ */ d("span", { className: "ml-2 text-sm text-gray-600", children: ["(", Qr.rating, " ", Qr.rating === 1 ? "star" : "stars", ")"] })
+            ] }),
+            /* @__PURE__ */ s("textarea", { placeholder: "Share your experience with this trainer...", value: Qr.comment, onChange: (K) => dn({ ...Qr, comment: K.target.value }), rows: 4, className: "w-full px-4 py-2 border-2 border-blue-200 rounded-lg focus:outline-none focus:border-blue-400 resize-none" }),
+            /* @__PURE__ */ s(D.button, { onClick: Jn, whileHover: { scale: 1.02 }, whileTap: { scale: 0.98 }, className: "w-full text-white py-3 rounded-lg transition-colors disabled:opacity-50", style: { backgroundColor: "#2563eb" }, disabled: vn || !Qr.comment.trim() || !Qr.userName.trim() && !Lr?.name, children: vn ? "Submitting..." : "Submit Review" })
+          ] })
+        ] }),
+        Lr && r.ownerId === Lr.id && /* @__PURE__ */ d("div", { className: "text-center py-6 bg-blue-50 rounded-xl border-2 border-blue-200 mt-4", children: [
+          /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
+          /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
+          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" })
+        ] }),
         Lr && (r.ownerId === Lr.id || Lr.isAdmin) && /* @__PURE__ */ d("div", { className: "bg-yellow-50 border-2 border-yellow-200 rounded-xl p-4 mt-4", children: [
           /* @__PURE__ */ s("h4", { className: "text-gray-800", children: "Admin: Add Customer Review" }),
           /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "Add verified customer reviews on behalf of clients." }),
@@ -8639,7 +8733,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
   ] });
 }
 function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
-  const [n, i] = E(null), [o, a] = E([]), [l, c] = E(!0), [u, h] = E(0), [p, m] = E([]), [f, v] = E({ rating: 5, comment: "" }), [g, b] = E(!1), [w, x] = E({}), [T, P] = E(!1), [N, S] = E({ reviewerName: "", rating: 5, comment: "" }), [C, R] = E(!1), [M, k] = E(!1), { user: I, accessToken: z } = vi(), [ee, G] = E("all"), [pe, Ee] = E(!1), [W, te] = E(!1), [ae, ue] = E(!1), [Me, qe] = E("all"), [Ke, Ht] = E(""), [Re, Ye] = E("name"), [Be, mt] = E([]), [Nr, Xe] = E(!1), [ft, A] = E(10), [O, V] = E(!1), [H, se] = E(!1), [Ze, $e] = E(!1), [zt, gt] = E(""), [Ai, Ei] = E(void 0);
+  const [n, i] = E(null), [o, a] = E([]), [l, c] = E(!0), [u, h] = E(0), [p, m] = E([]), [f, v] = E({ userName: "", rating: 5, comment: "" }), [g, b] = E(!1), [w, x] = E({}), [T, P] = E(!1), [N, S] = E({ reviewerName: "", rating: 5, comment: "" }), [C, R] = E(!1), [M, k] = E(!1), { user: I, accessToken: z } = vi(), [ee, G] = E("all"), [pe, Ee] = E(!1), [W, te] = E(!1), [ae, ue] = E(!1), [Me, qe] = E("all"), [Ke, Ht] = E(""), [Re, Ye] = E("name"), [Be, mt] = E([]), [Nr, Xe] = E(!1), [ft, A] = E(10), [O, V] = E(!1), [H, se] = E(!1), [Ze, $e] = E(!1), [zt, gt] = E(""), [Ai, Ei] = E(void 0);
   U(() => {
     Mi(), jl();
   }, [I]), U(() => {
@@ -8748,8 +8842,9 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       console.error("Error updating shortlist:", _);
     }
   }, zl = async () => {
-    if (!I) {
-      alert("Please log in to submit a review");
+    const displayName = f.userName.trim() || I?.name || "";
+    if (!displayName) {
+      alert("Please enter your name");
       return;
     }
     if (!f.comment.trim()) {
@@ -8762,9 +8857,10 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         n.id,
         f.rating,
         f.comment,
-        z
+        z,
+        I ? void 0 : displayName
       );
-      y.review && m([y.review, ...p]), await Cr(o), v({ rating: 5, comment: "" }), alert("Review submitted successfully!");
+      y.review && m([y.review, ...p]), await Cr(o), v({ userName: "", rating: 5, comment: "" }), alert("Review submitted successfully!");
     } catch (y) {
       console.error("Error submitting review:", y), alert(y instanceof Error ? y.message : "Failed to submit review. Please try again.");
     } finally {
@@ -9590,7 +9686,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No reviews yet" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm", children: "Be the first to leave a review!" })
                   ] }),
-                  I ? n.ownerId === I.id || I.isAdmin ? /* @__PURE__ */ d(ie, { children: [
+                  I && (n.ownerId === I.id || I.isAdmin) ? /* @__PURE__ */ d(ie, { children: [
                     /* @__PURE__ */ d("div", { className: "bg-blue-50 rounded-xl border-2 border-blue-200 mb-4", children: [
                       /* @__PURE__ */ d(
                         "button",
@@ -9697,6 +9793,20 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     ] })
                   ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-green-200 rounded-xl p-5", children: [
                     /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Name *" }),
+                      /* @__PURE__ */ s(
+                        "input",
+                        {
+                          type: "text",
+                          value: f.userName || "",
+                          onChange: (y) => v({ ...f, userName: y.target.value }),
+                          className: "w-full p-3 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-purple-400 transition-colors",
+                          placeholder: I?.name || "Enter your name"
+                        }
+                      )
+                    ] }),
                     /* @__PURE__ */ d("div", { className: "mb-4", children: [
                       /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Rating" }),
                       /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
@@ -9737,16 +9847,13 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         whileHover: { scale: 1.02 },
                         whileTap: { scale: 0.98 },
                         className: "w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
-                        disabled: g,
+                        disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
                         children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
                           /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                           "Submitting..."
                         ] }) : "Submit Review"
                       }
                     )
-                  ] }) : /* @__PURE__ */ d("div", { className: "text-center py-8 bg-green-50 rounded-xl border-2 border-green-200", children: [
-                    /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "Want to leave a review?" }),
-                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Please log in to share your experience" })
                   ] })
                 ] })
               ] }),
@@ -9975,7 +10082,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
   ] });
 }
 function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
-  const [n, i] = E(null), [o, a] = E([]), [l, c] = E(!0), [u, h] = E(0), [p, m] = E([]), [f, v] = E({ rating: 5, comment: "" }), [g, b] = E(!1), [w, x] = E({}), [T, P] = E(!1), [N, S] = E({ reviewerName: "", rating: 5, comment: "" }), [C, R] = E(!1), [M, k] = E(!1), { user: I, accessToken: z } = vi(), [ee, G] = E("all"), [pe, Ee] = E(!1), [W, te] = E(!1), [ae, ue] = E(!1), [Me, qe] = E("all"), [Ke, Ht] = E(""), [Re, Ye] = E("name"), [Be, mt] = E([]), [Nr, Xe] = E(!1), [ft, A] = E(10), [O, V] = E(!1), [H, se] = E(!1), [Ze, $e] = E(!1), [zt, gt] = E(""), [Ai, Ei] = E(void 0);
+  const [n, i] = E(null), [o, a] = E([]), [l, c] = E(!0), [u, h] = E(0), [p, m] = E([]), [f, v] = E({ userName: "", rating: 5, comment: "" }), [g, b] = E(!1), [w, x] = E({}), [T, P] = E(!1), [N, S] = E({ reviewerName: "", rating: 5, comment: "" }), [C, R] = E(!1), [M, k] = E(!1), { user: I, accessToken: z } = vi(), [ee, G] = E("all"), [pe, Ee] = E(!1), [W, te] = E(!1), [ae, ue] = E(!1), [Me, qe] = E("all"), [Ke, Ht] = E(""), [Re, Ye] = E("name"), [Be, mt] = E([]), [Nr, Xe] = E(!1), [ft, A] = E(10), [O, V] = E(!1), [H, se] = E(!1), [Ze, $e] = E(!1), [zt, gt] = E(""), [Ai, Ei] = E(void 0);
   U(() => {
     Mi(), jl();
   }, [I]), U(() => {
@@ -10089,8 +10196,9 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       console.error("Error updating shortlist:", _);
     }
   }, zl = async () => {
-    if (!I) {
-      alert("Please log in to submit a review");
+    const displayName = f.userName.trim() || I?.name || "";
+    if (!displayName) {
+      alert("Please enter your name");
       return;
     }
     if (!f.comment.trim()) {
@@ -10103,9 +10211,10 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         n.id,
         f.rating,
         f.comment,
-        z
+        z,
+        I ? void 0 : displayName
       );
-      y.review && m([y.review, ...p]), await Cr(o), v({ rating: 5, comment: "" }), alert("Review submitted successfully!");
+      y.review && m([y.review, ...p]), await Cr(o), v({ userName: "", rating: 5, comment: "" }), alert("Review submitted successfully!");
     } catch (y) {
       console.error("Error submitting review:", y), alert(y instanceof Error ? y.message : "Failed to submit review. Please try again.");
     } finally {
@@ -10924,7 +11033,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No reviews yet" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm", children: "Be the first to leave a review!" })
                   ] }),
-                  I ? n.ownerId === I.id || I.isAdmin ? /* @__PURE__ */ d(ie, { children: [
+                  I && (n.ownerId === I.id || I.isAdmin) ? /* @__PURE__ */ d(ie, { children: [
                     /* @__PURE__ */ d("div", { className: "bg-blue-50 rounded-xl border-2 border-blue-200 mb-4", children: [
                       /* @__PURE__ */ d(
                         "button",
@@ -11031,6 +11140,20 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     ] })
                   ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-orange-200 rounded-xl p-5", children: [
                     /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Name *" }),
+                      /* @__PURE__ */ s(
+                        "input",
+                        {
+                          type: "text",
+                          value: f.userName || "",
+                          onChange: (y) => v({ ...f, userName: y.target.value }),
+                          className: "w-full p-3 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-purple-400 transition-colors",
+                          placeholder: I?.name || "Enter your name"
+                        }
+                      )
+                    ] }),
                     /* @__PURE__ */ d("div", { className: "mb-4", children: [
                       /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Rating" }),
                       /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
@@ -11071,16 +11194,13 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         whileHover: { scale: 1.02 },
                         whileTap: { scale: 0.98 },
                         className: "w-full bg-gradient-to-r from-orange-600 to-red-500 text-white py-3 rounded-xl hover:from-orange-700 hover:to-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
-                        disabled: g,
+                        disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
                         children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
                           /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                           "Submitting..."
                         ] }) : "Submit Review"
                       }
                     )
-                  ] }) : /* @__PURE__ */ d("div", { className: "text-center py-8 bg-orange-50 rounded-xl border-2 border-orange-200", children: [
-                    /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "Want to leave a review?" }),
-                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Please log in to share your experience" })
                   ] })
                 ] })
               ] }),
