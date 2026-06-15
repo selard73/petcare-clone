@@ -7974,6 +7974,21 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
 }
 function af({ onEditBusiness: t, onNavigate: e } = {}) {
   const [r, n] = E(null), [i, o] = E([]), [a, l] = E(!0), [c, u] = E(""), [h, p] = E("all"), [m, f] = E(!1), [v, g] = E(!1), [b, w] = E(!1), [x, T] = E("all"), [P, N] = E(!1), [S, C] = E(!1), [R, M] = E(10), [k, I] = E(!1), { user: Lr, accessToken: Kr } = vi(), [sn, cn] = E({}), [Yr, Xr] = E([]), [Zr, rn] = E({ reviewerName: "", rating: 5, comment: "" }), [nn, on] = E(!1), [an, ln] = E(!1);
+  const un = (K) => {
+    const L = K && typeof K == "object" ? K : {}, y = (B) => Array.isArray(B) ? B.filter(Boolean) : typeof B == "string" && B.trim() ? B.split(",").map((_) => _.trim()).filter(Boolean) : [], B = y(L.photos);
+    return {
+      ...L,
+      id: L.id || L.businessId || L.name || "",
+      photos: B,
+      hours: L.hours && typeof L.hours == "object" && !Array.isArray(L.hours) ? L.hours : {},
+      paymentMethods: y(L.paymentMethods),
+      trainingMethods: y(L.trainingMethods),
+      sessionFormats: y(L.sessionFormats),
+      specialties: y(L.specialties),
+      rating: Number.isFinite(Number(L.rating)) ? Number(L.rating) : 0,
+      reviewCount: Number.isFinite(Number(L.reviewCount)) ? Number(L.reviewCount) : 0
+    };
+  };
   U(() => {
     z();
   }, []), U(() => {
@@ -8069,11 +8084,11 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       }
     ];
     try {
-      const L = (await Oe.getBusinesses("training")).businesses || [], y = new Set(L.map((F) => F.id)), B = ce.getDeletedBusinessIds("training"), _ = new Set(await fetchCloudDeletedBusinessIds("training")), Y = new Set([...B, ..._]), Te = [...L, ...K.filter((F) => !y.has(F.id) && !Y.has(F.id))];
+      const L = (await Oe.getBusinesses("training")).businesses || [], y = new Set(L.map((F) => F.id)), B = ce.getDeletedBusinessIds("training"), _ = new Set(await fetchCloudDeletedBusinessIds("training")), Y = new Set([...B, ..._]), Te = [...L, ...K.filter((F) => !y.has(F.id) && !Y.has(F.id))].map(un);
       o(Te), await Tn(Te);
     } catch (L) {
       const y = ce.getDeletedBusinessIds("training");
-      const B = K.filter((_) => !y.has(_.id));
+      const B = K.filter((_) => !y.has(_.id)).map(un);
       console.error("Error fetching training businesses:", L), o(B), await Tn(B);
     } finally {
       l(!1);
@@ -8333,7 +8348,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             K.inHomeTraining && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full", children: "🏠 In-Home" }),
             K.groupClassesAvailable && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-cyan-100 text-cyan-700 text-xs rounded-full", children: "👥 Group Classes" })
           ] }),
-          /* @__PURE__ */ s(D.button, { whileHover: { scale: 1.02 }, whileTap: { scale: 0.98 }, onClick: () => n(K), className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm", style: { backgroundColor: "#2563eb" }, children: "View Details" })
+          /* @__PURE__ */ s(D.button, { whileHover: { scale: 1.02 }, whileTap: { scale: 0.98 }, onClick: () => n(un(K)), className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm", style: { backgroundColor: "#2563eb" }, children: "View Details" })
         ] }, K.id || K.name)),
         pe.length > R && !P && /* @__PURE__ */ s("div", { className: "col-span-1 md:col-span-2 flex justify-center mt-6 md:hidden", children: /* @__PURE__ */ s(D.button, { whileTap: { scale: 0.98 }, onClick: () => {
           M((K) => K + 10), C(!0);
