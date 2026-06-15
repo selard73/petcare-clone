@@ -8345,7 +8345,13 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             /* @__PURE__ */ s("h3", { className: "text-gray-800", children: K.name }),
             K.priceRange && /* @__PURE__ */ s("div", { className: "text-green-600", children: K.priceRange })
           ] }),
-          /* @__PURE__ */ d("p", { className: "text-gray-600 mb-2", children: ["📍 ", K.city] }),
+          /* @__PURE__ */ d("div", { className: "flex items-start justify-between mb-3", children: [
+            /* @__PURE__ */ d("p", { className: "text-gray-600", children: ["📍 ", K.city] }),
+            /* @__PURE__ */ d("div", { className: "flex flex-col gap-1 items-end ml-2", children: [
+              K.inHomeTraining && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full", children: "🏠 In-Home" }),
+              K.groupClassesAvailable && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-cyan-100 text-cyan-700 text-xs rounded-full", children: "👥 Group Classes" })
+            ] })
+          ] }),
           /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-sm mb-3", children: sn[K.id] || Number(K.reviewCount || 0) > 0 && Number.isFinite(Number(K.rating)) ? /* @__PURE__ */ d(ie, { children: [
             /* @__PURE__ */ s("span", { className: "text-yellow-500", children: "⭐⭐⭐⭐⭐" }),
             /* @__PURE__ */ d("span", { className: "text-gray-700", children: [
@@ -8357,10 +8363,6 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
               ")"
             ] })
           ] }) : /* @__PURE__ */ s("span", { className: "text-gray-500", children: "No reviews yet" }) }),
-          /* @__PURE__ */ d("div", { className: "flex flex-wrap gap-2 mb-3", children: [
-            K.inHomeTraining && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full", children: "🏠 In-Home" }),
-            K.groupClassesAvailable && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-cyan-100 text-cyan-700 text-xs rounded-full", children: "👥 Group Classes" })
-          ] }),
           /* @__PURE__ */ s(D.button, { whileHover: { scale: 1.02 }, whileTap: { scale: 0.98 }, onClick: () => n(un(K)), className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm", style: { backgroundColor: "#2563eb" }, children: "View Details" })
         ] }, K.id || K.name)),
         pe.length > R && !P && /* @__PURE__ */ s("div", { className: "col-span-1 md:col-span-2 flex justify-center mt-6 md:hidden", children: /* @__PURE__ */ s(D.button, { whileTap: { scale: 0.98 }, onClick: () => {
