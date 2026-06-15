@@ -7973,7 +7973,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
   ] });
 }
 function af({ onEditBusiness: t, onNavigate: e } = {}) {
-  const [r, n] = E(null), [i, o] = E([]), [a, l] = E(!0), [c, u] = E(""), [h, p] = E("all"), [m, f] = E(!1), [v, g] = E(!1), [b, w] = E(!1), [x, T] = E("all"), [P, N] = E(!1), [S, C] = E(!1), [R, M] = E(10), [k, I] = E(!1), { user: Lr, accessToken: Kr } = vi(), [sn, cn] = E({}), [Yr, Xr] = E([]), [Zr, rn] = E({ reviewerName: "", rating: 5, comment: "" }), [nn, on] = E(!1), [an, ln] = E(!1);
+  const [r, n] = E(null), [i, o] = E([]), [a, l] = E(!0), [c, u] = E(""), [h, p] = E("all"), [m, f] = E(!1), [v, g] = E(!1), [b, w] = E(!1), [x, T] = E("all"), [P, N] = E(!1), [S, C] = E(!1), [R, M] = E(10), [k, I] = E(!1), [tn, en] = E(0), { user: Lr, accessToken: Kr } = vi(), [sn, cn] = E({}), [Yr, Xr] = E([]), [Zr, rn] = E({ reviewerName: "", rating: 5, comment: "" }), [nn, on] = E(!1), [an, ln] = E(!1);
   const hn = (K) => !K || K.length === 0 ? 0 : K.reduce((L, y) => L + Number(y?.rating || 0), 0) / K.length;
   const un = (K) => {
     const L = K && typeof K == "object" ? K : {}, y = (B) => Array.isArray(B) ? B.filter(Boolean) : typeof B == "string" && B.trim() ? B.split(",").map((_) => _.trim()).filter(Boolean) : [], B = y(L.photos);
@@ -7995,7 +7995,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
   }, []), U(() => {
     M(10), I(!1);
   }, [c, h]), U(() => {
-    r && yn(r.id);
+    r && (en(0), yn(r.id));
   }, [r]);
   const z = async () => {
     const K = [
@@ -8183,6 +8183,16 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
     } finally {
       ln(!1);
     }
+  }, Gn = () => {
+    if (r) {
+      const K = getDetailGalleryPhotos(r);
+      en((L) => L === K.length - 1 ? 0 : L + 1);
+    }
+  }, Un = () => {
+    if (r) {
+      const K = getDetailGalleryPhotos(r);
+      en((L) => L === 0 ? K.length - 1 : L - 1);
+    }
   }, ee = [...new Set(i.map((K) => K.city).filter(Boolean))], G = i.filter((K) => !(c.trim() && !K.name.toLowerCase().includes(c.toLowerCase()) || h !== "all" && K.city !== h || m && !K.inHomeTraining || v && !K.groupClassesAvailable || b && (sn[K.id]?.average || 0) < 4 || x !== "all" && K.priceRange !== x)), pe = [...G].sort((K, L) => K.name.localeCompare(L.name)), W = window.innerWidth >= 768 ? pe : pe.slice(0, R);
   return /* @__PURE__ */ d("div", { className: "min-h-screen bg-white md:bg-transparent", children: [
     /* @__PURE__ */ s("section", { className: "bg-gradient-to-br from-blue-400 via-cyan-500 to-teal-600 text-white h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[8px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
@@ -8358,7 +8368,29 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
     ] }),
     r && /* @__PURE__ */ s(D.div, { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 }, className: "fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-x-hidden", onClick: () => n(null), children: /* @__PURE__ */ d(D.div, { initial: { scale: 0.9, opacity: 0 }, animate: { scale: 1, opacity: 1 }, exit: { scale: 0.9, opacity: 0 }, onClick: (K) => K.stopPropagation(), className: "bg-white rounded-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden shadow-2xl", style: { width: window.innerWidth >= 768 ? "min(52rem, calc(100vw - 4rem))" : "calc(100vw - 2rem)" }, children: [
       /* @__PURE__ */ d("div", { className: "relative h-80 overflow-hidden rounded-t-2xl", children: [
-        /* @__PURE__ */ s("img", { src: r.photos && r.photos.length > 0 ? r.photos[0] : Wr, alt: r.name, className: "w-full h-80 object-cover" }),
+        getDetailGalleryPhotos(r).length > 0 ? (() => {
+          const K = getDetailGalleryPhotos(r);
+          return /* @__PURE__ */ d(ie, { children: [
+            /* @__PURE__ */ s(Pt, { mode: "wait", children: /* @__PURE__ */ s(
+              D.img,
+              {
+                src: K[tn],
+                alt: `${r.name} ${tn + 1}`,
+                className: "w-full h-80 object-cover",
+                initial: { opacity: 0 },
+                animate: { opacity: 1 },
+                exit: { opacity: 0 },
+                transition: { duration: 0.35 }
+              },
+              tn
+            ) }),
+            K.length > 1 && /* @__PURE__ */ d(ie, { children: [
+              /* @__PURE__ */ s("button", { onClick: Un, className: "absolute left-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm p-3 rounded-full hover:bg-white transition-all shadow-lg", children: /* @__PURE__ */ s(Qp, { className: "w-6 h-6 text-gray-800" }) }),
+              /* @__PURE__ */ s("button", { onClick: Gn, className: "absolute right-4 top-1/2 -translate-y-1/2 z-20 bg-white/90 backdrop-blur-sm p-3 rounded-full hover:bg-white transition-all shadow-lg", children: /* @__PURE__ */ s(Xs, { className: "w-6 h-6 text-gray-800" }) }),
+              /* @__PURE__ */ s("div", { className: "absolute bottom-4 left-1/2 -translate-x-1/2 z-20 flex gap-2", children: K.map((L, y) => /* @__PURE__ */ s("button", { onClick: () => en(y), className: `w-3 h-3 rounded-full transition-all ${y === tn ? "bg-white scale-110" : "bg-white/60 hover:bg-white/80"}` }, y)) })
+            ] })
+          ] });
+        })() : /* @__PURE__ */ s("img", { src: Wr, alt: r.name, className: "w-full h-80 object-cover" }),
         /* @__PURE__ */ s(
           "button",
           {
