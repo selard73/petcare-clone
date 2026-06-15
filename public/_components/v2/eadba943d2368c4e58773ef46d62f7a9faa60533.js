@@ -8276,10 +8276,17 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             K.priceRange && /* @__PURE__ */ s("div", { className: "text-green-600", children: K.priceRange })
           ] }),
           /* @__PURE__ */ d("p", { className: "text-gray-600 mb-2", children: ["📍 ", K.city] }),
-          /* @__PURE__ */ d("div", { className: "flex items-center gap-2 text-sm mb-3", children: [
+          /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-sm mb-3", children: Number(K.reviewCount || 0) > 0 && Number.isFinite(Number(K.rating)) ? /* @__PURE__ */ d(ie, { children: [
             /* @__PURE__ */ s("span", { className: "text-yellow-500", children: "⭐⭐⭐⭐⭐" }),
-            /* @__PURE__ */ s("span", { className: "text-gray-700", children: Number.isFinite(Number(K.rating)) ? Number(K.rating).toFixed(1) : "4.7" })
-          ] }),
+            /* @__PURE__ */ d("span", { className: "text-gray-700", children: [
+              Number(K.rating).toFixed(1),
+              " (",
+              K.reviewCount,
+              " ",
+              Number(K.reviewCount) === 1 ? "review" : "reviews",
+              ")"
+            ] })
+          ] }) : /* @__PURE__ */ s("span", { className: "text-gray-500", children: "No reviews yet" }) }),
           /* @__PURE__ */ d("div", { className: "flex flex-wrap gap-2 mb-3", children: [
             K.inHomeTraining && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full", children: "🏠 In-Home" }),
             K.groupClassesAvailable && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-cyan-100 text-cyan-700 text-xs rounded-full", children: "👥 Group Classes" })
@@ -8292,8 +8299,8 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       ] }) })
     ] }),
     r && /* @__PURE__ */ s(D.div, { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 }, className: "fixed inset-0 bg-black/50 backdrop-blur-sm z-50 flex items-center justify-center p-4 overflow-x-hidden", onClick: () => n(null), children: /* @__PURE__ */ d(D.div, { initial: { scale: 0.9, opacity: 0 }, animate: { scale: 1, opacity: 1 }, exit: { scale: 0.9, opacity: 0 }, onClick: (K) => K.stopPropagation(), className: "bg-white rounded-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden shadow-2xl", style: { width: window.innerWidth >= 768 ? "min(52rem, calc(100vw - 4rem))" : "calc(100vw - 2rem)" }, children: [
-      /* @__PURE__ */ d("div", { className: "relative h-72 overflow-hidden rounded-t-2xl", children: [
-        /* @__PURE__ */ s("img", { src: r.photos && r.photos.length > 0 ? r.photos[0] : Wr, alt: r.name, className: "w-full h-72 object-cover" }),
+      /* @__PURE__ */ d("div", { className: "relative h-80 overflow-hidden rounded-t-2xl", children: [
+        /* @__PURE__ */ s("img", { src: r.photos && r.photos.length > 0 ? r.photos[0] : Wr, alt: r.name, className: "w-full h-80 object-cover" }),
         /* @__PURE__ */ s(
           "button",
           {
