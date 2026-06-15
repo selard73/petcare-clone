@@ -6325,6 +6325,25 @@ async function saveCloudReviewRecord(t) {
     return console.error("saveCloudReview error:", e), { success: !1, error: e?.message || "Failed to save cloud review" };
   }
 }
+async function deleteCloudReviewRecord(t) {
+  try {
+    const e = encodeURIComponent(`{whyWeLoveIt}="${t}"`), r = await fetch(`${st}?filterByFormula=${e}`, { headers: ot });
+    if (!r.ok)
+      return { success: !1, error: "Could not reach Airtable to find review record." };
+    const n = (await r.json()).records || [];
+    if (n.length === 0)
+      return { success: !0, deletedCount: 0 };
+    const i = await Promise.all(
+      n.map(async (o) => {
+        const a = await fetch(`${st}/${o.id}`, { method: "DELETE", headers: ot });
+        return a.ok;
+      })
+    ), o = i.filter(Boolean).length;
+    return o === n.length ? { success: !0, deletedCount: o } : { success: !1, error: `Only deleted ${o}/${n.length} cloud review records` };
+  } catch (e) {
+    return console.error("deleteCloudReviewRecord error:", e), { success: !1, error: e?.message || "Failed to delete cloud review" };
+  }
+}
 async function ef(t) {
   try {
     const e = encodeURIComponent(`{whyWeLoveIt}="${t.id}"`), r = await fetch(`${st}?filterByFormula=${e}`, { headers: ot });
@@ -6508,7 +6527,8 @@ const Oe = {
     return c.success ? { success: !0, review: l } : { success: !0, review: l, cloudWarning: c.error || "Saved locally, but cloud sync failed." };
   },
   async deleteReview(t) {
-    return ce.deleteReview(t), { success: !0, message: "Review deleted successfully" };
+    const e = await deleteCloudReviewRecord(t);
+    return e.success || console.warn("Cloud review delete failed; keeping local deletion only:", e.error), ce.deleteReview(t), { success: !0, message: "Review deleted successfully", cloudWarning: e.success ? void 0 : e.error };
   },
   async uploadPhoto(t) {
     return new Promise((e) => {
