@@ -8542,11 +8542,11 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
           /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-2", children: "Recent Reviews" }),
           /* @__PURE__ */ s("div", { className: "space-y-2", children: Yr.slice(0, 3).map((K) => /* @__PURE__ */ d("div", { className: "bg-gray-50 border border-gray-200 rounded-lg p-3", children: [
             /* @__PURE__ */ d("div", { className: "flex items-center justify-between mb-1", children: [
-              /* @__PURE__ */ s("p", { className: "text-gray-800 text-sm", children: K.reviewerName || "Customer" }),
+              /* @__PURE__ */ s("p", { className: "text-gray-800 text-sm", children: K.userName || K.reviewerName || "Customer" }),
               /* @__PURE__ */ s("p", { className: "text-yellow-500 text-sm", children: `${"⭐".repeat(Math.max(1, Math.min(5, K.rating || 5)))}` })
             ] }),
             /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: K.comment })
-          ] }, K.id || `${K.reviewerName}-${K.comment}`)) })
+          ] }, K.id || `${K.userName || K.reviewerName || "review"}-${K.comment}`)) })
         ] })
       ] })
     ] }) }),
