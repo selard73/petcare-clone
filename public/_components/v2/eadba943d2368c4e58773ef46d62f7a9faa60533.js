@@ -8098,8 +8098,21 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
     ), cn(L);
   }, yn = async (K) => {
     try {
-      const L = await Oe.getReviews(K);
-      Xr(L.reviews || []);
+      const L = await Oe.getReviews(K), y = L.reviews || [];
+      Xr(y), cn((F) => {
+        if (y.length > 0) {
+          const B = Sr(y);
+          return {
+            ...F,
+            [K]: {
+              average: B,
+              count: y.length
+            }
+          };
+        }
+        const B = { ...F };
+        return delete B[K], B;
+      });
     } catch (L) {
       console.error("Error fetching reviews:", L), Xr([]);
     }
@@ -8125,18 +8138,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         Kr,
         Zr.reviewerName
       );
-      if (K.review) {
-        const L = [K.review, ...Yr];
-        Xr(L);
-        const y = Sr(L);
-        cn((F) => ({
-          ...F,
-          [r.id]: {
-            average: y,
-            count: L.length
-          }
-        }));
-      }
+      K.review && Xr([K.review, ...Yr]), await yn(r.id);
       rn({ reviewerName: "", rating: 5, comment: "" }), alert("Review added successfully!");
     } catch (K) {
       console.error("Error submitting admin review:", K), alert(K instanceof Error ? K.message : "Failed to submit admin review. Please try again.");
