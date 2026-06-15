@@ -7974,6 +7974,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
 }
 function af({ onEditBusiness: t, onNavigate: e } = {}) {
   const [r, n] = E(null), [i, o] = E([]), [a, l] = E(!0), [c, u] = E(""), [h, p] = E("all"), [m, f] = E(!1), [v, g] = E(!1), [b, w] = E(!1), [x, T] = E("all"), [P, N] = E(!1), [S, C] = E(!1), [R, M] = E(10), [k, I] = E(!1), { user: Lr, accessToken: Kr } = vi(), [sn, cn] = E({}), [Yr, Xr] = E([]), [Zr, rn] = E({ reviewerName: "", rating: 5, comment: "" }), [nn, on] = E(!1), [an, ln] = E(!1);
+  const hn = (K) => !K || K.length === 0 ? 0 : K.reduce((L, y) => L + Number(y?.rating || 0), 0) / K.length;
   const un = (K) => {
     const L = K && typeof K == "object" ? K : {}, y = (B) => Array.isArray(B) ? B.filter(Boolean) : typeof B == "string" && B.trim() ? B.split(",").map((_) => _.trim()).filter(Boolean) : [], B = y(L.photos);
     return {
@@ -8100,7 +8101,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         try {
           const B = (await Oe.getReviews(y.id)).reviews || [];
           if (B.length > 0) {
-            const _ = Sr(B);
+            const _ = hn(B);
             L[y.id] = {
               average: _,
               count: B.length
@@ -8125,7 +8126,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       const L = await Oe.getReviews(K), y = L.reviews || [];
       Xr(y), cn((F) => {
         if (y.length > 0) {
-          const B = Sr(y);
+          const B = hn(y);
           return {
             ...F,
             [K]: {
