@@ -7973,7 +7973,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
   ] });
 }
 function af({ onEditBusiness: t, onNavigate: e } = {}) {
-  const [r, n] = E(null), [i, o] = E([]), [a, l] = E(!0), [c, u] = E(""), [h, p] = E("all"), [m, f] = E(!1), [v, g] = E(!1), [b, w] = E(!1), [x, T] = E("all"), [P, N] = E(!1), [S, C] = E(!1), [R, M] = E(10), [k, I] = E(!1), { user: Lr, accessToken: Kr } = vi(), [Yr, Xr] = E([]), [Zr, rn] = E({ reviewerName: "", rating: 5, comment: "" }), [nn, on] = E(!1), [an, ln] = E(!1);
+  const [r, n] = E(null), [i, o] = E([]), [a, l] = E(!0), [c, u] = E(""), [h, p] = E("all"), [m, f] = E(!1), [v, g] = E(!1), [b, w] = E(!1), [x, T] = E("all"), [P, N] = E(!1), [S, C] = E(!1), [R, M] = E(10), [k, I] = E(!1), { user: Lr, accessToken: Kr } = vi(), [sn, cn] = E({}), [Yr, Xr] = E([]), [Zr, rn] = E({ reviewerName: "", rating: 5, comment: "" }), [nn, on] = E(!1), [an, ln] = E(!1);
   U(() => {
     z();
   }, []), U(() => {
@@ -8070,13 +8070,32 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
     ];
     try {
       const L = (await Oe.getBusinesses("training")).businesses || [], y = new Set(L.map((F) => F.id)), B = ce.getDeletedBusinessIds("training"), _ = new Set(await fetchCloudDeletedBusinessIds("training")), Y = new Set([...B, ..._]), Te = [...L, ...K.filter((F) => !y.has(F.id) && !Y.has(F.id))];
-      o(Te);
+      o(Te), await Tn(Te);
     } catch (L) {
       const y = ce.getDeletedBusinessIds("training");
-      console.error("Error fetching training businesses:", L), o(K.filter((B) => !y.has(B.id)));
+      const B = K.filter((_) => !y.has(_.id));
+      console.error("Error fetching training businesses:", L), o(B), await Tn(B);
     } finally {
       l(!1);
     }
+  }, Tn = async (K) => {
+    const L = {};
+    await Promise.all(
+      K.map(async (y) => {
+        try {
+          const B = (await Oe.getReviews(y.id)).reviews || [];
+          if (B.length > 0) {
+            const _ = Sr(B);
+            L[y.id] = {
+              average: _,
+              count: B.length
+            };
+          }
+        } catch (B) {
+          console.error(`Error fetching reviews for business ${y.id}:`, B);
+        }
+      })
+    ), cn(L);
   }, yn = async (K) => {
     try {
       const L = await Oe.getReviews(K);
@@ -8106,7 +8125,19 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         Kr,
         Zr.reviewerName
       );
-      K.review && Xr([K.review, ...Yr]), rn({ reviewerName: "", rating: 5, comment: "" }), alert("Review added successfully!");
+      if (K.review) {
+        const L = [K.review, ...Yr];
+        Xr(L);
+        const y = Sr(L);
+        cn((F) => ({
+          ...F,
+          [r.id]: {
+            average: y,
+            count: L.length
+          }
+        }));
+      }
+      rn({ reviewerName: "", rating: 5, comment: "" }), alert("Review added successfully!");
     } catch (K) {
       console.error("Error submitting admin review:", K), alert(K instanceof Error ? K.message : "Failed to submit admin review. Please try again.");
     } finally {
@@ -8125,7 +8156,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
     } finally {
       ln(!1);
     }
-  }, ee = [...new Set(i.map((K) => K.city).filter(Boolean))], G = i.filter((K) => !(c.trim() && !K.name.toLowerCase().includes(c.toLowerCase()) || h !== "all" && K.city !== h || m && !K.inHomeTraining || v && !K.groupClassesAvailable || b && (K.rating || 0) < 4 || x !== "all" && K.priceRange !== x)), pe = [...G].sort((K, L) => K.name.localeCompare(L.name)), W = window.innerWidth >= 768 ? pe : pe.slice(0, R);
+  }, ee = [...new Set(i.map((K) => K.city).filter(Boolean))], G = i.filter((K) => !(c.trim() && !K.name.toLowerCase().includes(c.toLowerCase()) || h !== "all" && K.city !== h || m && !K.inHomeTraining || v && !K.groupClassesAvailable || b && (sn[K.id]?.average || 0) < 4 || x !== "all" && K.priceRange !== x)), pe = [...G].sort((K, L) => K.name.localeCompare(L.name)), W = window.innerWidth >= 768 ? pe : pe.slice(0, R);
   return /* @__PURE__ */ d("div", { className: "min-h-screen bg-white md:bg-transparent", children: [
     /* @__PURE__ */ s("section", { className: "bg-gradient-to-br from-blue-400 via-cyan-500 to-teal-600 text-white h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[8px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
@@ -8276,14 +8307,14 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             K.priceRange && /* @__PURE__ */ s("div", { className: "text-green-600", children: K.priceRange })
           ] }),
           /* @__PURE__ */ d("p", { className: "text-gray-600 mb-2", children: ["📍 ", K.city] }),
-          /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-sm mb-3", children: Number(K.reviewCount || 0) > 0 && Number.isFinite(Number(K.rating)) ? /* @__PURE__ */ d(ie, { children: [
+          /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-sm mb-3", children: sn[K.id] ? /* @__PURE__ */ d(ie, { children: [
             /* @__PURE__ */ s("span", { className: "text-yellow-500", children: "⭐⭐⭐⭐⭐" }),
             /* @__PURE__ */ d("span", { className: "text-gray-700", children: [
-              Number(K.rating).toFixed(1),
+              sn[K.id].average.toFixed(1),
               " (",
-              K.reviewCount,
+              sn[K.id].count,
               " ",
-              Number(K.reviewCount) === 1 ? "review" : "reviews",
+              sn[K.id].count === 1 ? "review" : "reviews",
               ")"
             ] })
           ] }) : /* @__PURE__ */ s("span", { className: "text-gray-500", children: "No reviews yet" }) }),
