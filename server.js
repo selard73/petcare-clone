@@ -3,7 +3,12 @@ const fs = require("fs");
 const fsp = require("fs/promises");
 const path = require("path");
 const crypto = require("crypto");
-const { DatabaseSync } = require("node:sqlite");
+let DatabaseSync = null;
+try {
+  ({ DatabaseSync } = require("node:sqlite"));
+} catch {
+  DatabaseSync = null;
+}
 
 const PORT = Number(process.env.PORT) || 5600;
 const ROOT = __dirname;
@@ -26,6 +31,7 @@ const mimeTypes = {
 
 let writeQueue = Promise.resolve();
 let sqlite;
+let usingSqlite = false;
 
 function sendJson(res, statusCode, payload) {
   res.writeHead(statusCode, {
@@ -143,6 +149,7 @@ function rowToRecord(row) {
 }
 
 function migrateLegacyJsonToSqliteIfNeeded() {
+  if (!sqlite) return;
   const countRow = sqlite.prepare("SELECT COUNT(*) AS count FROM airtable_records").get();
   if ((countRow?.count || 0) > 0 || !fs.existsSync(AIRTABLE_DB_FILE)) {
     return;
@@ -167,6 +174,10 @@ function migrateLegacyJsonToSqliteIfNeeded() {
 }
 
 function initSqlite() {
+  if (!DatabaseSync) {
+    usingSqlite = false;
+    return;
+  }
   sqlite = new DatabaseSync(SQLITE_DB_FILE);
   sqlite.exec(
     `
@@ -179,26 +190,42 @@ function initSqlite() {
     `,
   );
   migrateLegacyJsonToSqliteIfNeeded();
+  usingSqlite = true;
 }
 
 async function listAllRecords() {
-  const rows = sqlite.prepare("SELECT id, created_time, fields_json FROM airtable_records ORDER BY created_time DESC").all();
-  return rows.map(rowToRecord);
+  if (usingSqlite) {
+    const rows = sqlite.prepare("SELECT id, created_time, fields_json FROM airtable_records ORDER BY created_time DESC").all();
+    return rows.map(rowToRecord);
+  }
+  const db = await readAirtableDb();
+  return (db.records || []).map(normalizeRecord);
 }
 
 async function getRecordById(id) {
-  const row = sqlite.prepare("SELECT id, created_time, fields_json FROM airtable_records WHERE id = ?").get(id);
-  return row ? rowToRecord(row) : null;
+  if (usingSqlite) {
+    const row = sqlite.prepare("SELECT id, created_time, fields_json FROM airtable_records WHERE id = ?").get(id);
+    return row ? rowToRecord(row) : null;
+  }
+  const db = await readAirtableDb();
+  return (db.records || []).map(normalizeRecord).find((record) => record.id === id) || null;
 }
 
 async function createRecords(records) {
   const normalized = records.map((record) => normalizeRecord(record));
-  const insert = sqlite.prepare(
-    "INSERT OR REPLACE INTO airtable_records (id, created_time, fields_json) VALUES (?, ?, ?)",
-  );
-  for (const item of normalized) {
-    insert.run(item.id, item.createdTime, JSON.stringify(item.fields || {}));
+  if (usingSqlite) {
+    const insert = sqlite.prepare(
+      "INSERT OR REPLACE INTO airtable_records (id, created_time, fields_json) VALUES (?, ?, ?)",
+    );
+    for (const item of normalized) {
+      insert.run(item.id, item.createdTime, JSON.stringify(item.fields || {}));
+    }
+    return normalized;
   }
+  const db = await readAirtableDb();
+  const existing = new Map((db.records || []).map((record) => [record.id, normalizeRecord(record)]));
+  for (const item of normalized) existing.set(item.id, item);
+  await writeAirtableDb({ records: Array.from(existing.values()) });
   return normalized;
 }
 
@@ -209,15 +236,33 @@ async function patchRecord(id, fields) {
     ...current,
     fields: { ...(current.fields || {}), ...(fields || {}) },
   };
-  sqlite
-    .prepare("UPDATE airtable_records SET fields_json = ? WHERE id = ?")
-    .run(JSON.stringify(next.fields || {}), id);
+  if (usingSqlite) {
+    sqlite
+      .prepare("UPDATE airtable_records SET fields_json = ? WHERE id = ?")
+      .run(JSON.stringify(next.fields || {}), id);
+  } else {
+    const db = await readAirtableDb();
+    const records = (db.records || []).map((record) => normalizeRecord(record));
+    const idx = records.findIndex((record) => record.id === id);
+    if (idx >= 0) {
+      records[idx] = next;
+      await writeAirtableDb({ records });
+    }
+  }
   return next;
 }
 
 async function deleteRecord(id) {
-  const result = sqlite.prepare("DELETE FROM airtable_records WHERE id = ?").run(id);
-  return (result.changes || 0) > 0;
+  if (usingSqlite) {
+    const result = sqlite.prepare("DELETE FROM airtable_records WHERE id = ?").run(id);
+    return (result.changes || 0) > 0;
+  }
+  const db = await readAirtableDb();
+  const records = (db.records || []).map((record) => normalizeRecord(record));
+  const next = records.filter((record) => record.id !== id);
+  if (next.length === records.length) return false;
+  await writeAirtableDb({ records: next });
+  return true;
 }
 
 async function handleAirtableApi(req, res, url) {
@@ -319,6 +364,10 @@ const server = http.createServer(async (req, res) => {
 server.listen(PORT, () => {
   initSqlite();
   console.log(`Exact petcare clone running at http://localhost:${PORT}`);
-  console.log(`Persistence backend: SQLite (${SQLITE_DB_FILE})`);
+  console.log(
+    usingSqlite
+      ? `Persistence backend: SQLite (${SQLITE_DB_FILE})`
+      : `Persistence backend: JSON fallback (${AIRTABLE_DB_FILE})`,
+  );
   console.log("Airtable writes are redirected to /api/airtable");
 });
