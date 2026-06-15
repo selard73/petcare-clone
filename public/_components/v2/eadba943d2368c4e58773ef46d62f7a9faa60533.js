@@ -8412,6 +8412,10 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             /* @__PURE__ */ s("span", { children: [r.city, ", SC"] })
           ] })
         ] }),
+        /* @__PURE__ */ d("div", { className: "mb-2", children: [
+          /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Description" }),
+          /* @__PURE__ */ s("p", { className: "text-gray-700", children: r.description || r.about || "Description not provided." })
+        ] }),
         /* @__PURE__ */ d("div", { className: "grid md:grid-cols-2 gap-4 min-w-0", children: [
           /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-blue-50 rounded-lg w-full max-w-full min-w-0", children: [
             /* @__PURE__ */ s(ar, { className: "w-5 h-5 text-blue-600 mt-1 flex-shrink-0" }),
