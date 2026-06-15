@@ -8090,7 +8090,16 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
               average: _,
               count: B.length
             };
-          }
+          } else if (Number(y.reviewCount || 0) > 0 && Number.isFinite(Number(y.rating)))
+            L[y.id] = {
+              average: Number(y.rating),
+              count: Number(y.reviewCount)
+            };
+          else if (Number.isFinite(Number(y.rating)) && Number(y.rating) > 0)
+            L[y.id] = {
+              average: Number(y.rating),
+              count: Number(y.reviewCount || 1)
+            };
         } catch (B) {
           console.error(`Error fetching reviews for business ${y.id}:`, B);
         }
@@ -8309,14 +8318,14 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             K.priceRange && /* @__PURE__ */ s("div", { className: "text-green-600", children: K.priceRange })
           ] }),
           /* @__PURE__ */ d("p", { className: "text-gray-600 mb-2", children: ["📍 ", K.city] }),
-          /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-sm mb-3", children: sn[K.id] ? /* @__PURE__ */ d(ie, { children: [
+          /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-sm mb-3", children: sn[K.id] || Number(K.reviewCount || 0) > 0 && Number.isFinite(Number(K.rating)) ? /* @__PURE__ */ d(ie, { children: [
             /* @__PURE__ */ s("span", { className: "text-yellow-500", children: "⭐⭐⭐⭐⭐" }),
             /* @__PURE__ */ d("span", { className: "text-gray-700", children: [
-              sn[K.id].average.toFixed(1),
+              Number(sn[K.id]?.average ?? K.rating).toFixed(1),
               " (",
-              sn[K.id].count,
+              Number(sn[K.id]?.count ?? K.reviewCount),
               " ",
-              sn[K.id].count === 1 ? "review" : "reviews",
+              Number(sn[K.id]?.count ?? K.reviewCount) === 1 ? "review" : "reviews",
               ")"
             ] })
           ] }) : /* @__PURE__ */ s("span", { className: "text-gray-500", children: "No reviews yet" }) }),
@@ -8390,19 +8399,19 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             ] })
           ] })
         ] }),
-        r.paymentMethods && r.paymentMethods.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
+        Array.isArray(r.paymentMethods) && r.paymentMethods.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
           /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Payment Methods" }),
           /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.paymentMethods.map((L) => /* @__PURE__ */ s("span", { className: "bg-green-50 border border-green-200 text-green-700 px-3 py-1 rounded-full text-sm", children: L }, L)) })
         ] }),
-        r.trainingMethods && r.trainingMethods.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
+        Array.isArray(r.trainingMethods) && r.trainingMethods.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
           /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Training Methods" }),
           /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.trainingMethods.map((L) => /* @__PURE__ */ s("span", { className: "bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm", children: L }, L)) })
         ] }),
-        r.sessionFormats && r.sessionFormats.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
+        Array.isArray(r.sessionFormats) && r.sessionFormats.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
           /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Session Formats" }),
           /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.sessionFormats.map((L) => /* @__PURE__ */ s("span", { className: "bg-indigo-100 border border-indigo-200 text-indigo-700 px-3 py-1 rounded-full text-sm font-medium", children: L }, L)) })
         ] }),
-        r.specialties && r.specialties.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
+        Array.isArray(r.specialties) && r.specialties.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
           /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Specialties" }),
           /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.specialties.map((L) => /* @__PURE__ */ s("span", { className: "bg-cyan-100 border border-cyan-200 text-cyan-700 px-3 py-1 rounded-full text-sm font-medium", children: L }, L)) })
         ] }),
