@@ -7983,6 +7983,8 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       photos: B,
       hours: L.hours && typeof L.hours == "object" && !Array.isArray(L.hours) ? L.hours : {},
       paymentMethods: y(L.paymentMethods),
+      servicesOffered: y(L.servicesOffered),
+      specialFeatures: y(L.specialFeatures),
       trainingMethods: y(L.trainingMethods),
       sessionFormats: y(L.sessionFormats),
       specialties: y(L.specialties),
@@ -8445,6 +8447,37 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
                 ] }, L)) })
               ] })
             ] })
+          ] }),
+          r.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-blue-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+            /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-blue-600 mt-1 flex-shrink-0" }),
+            /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+              /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Website" }),
+              /* @__PURE__ */ s(
+                "a",
+                {
+                  href: r.website.startsWith("http") ? r.website : `https://${r.website}`,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  className: "text-blue-700 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block whitespace-normal md:whitespace-nowrap max-w-full break-all md:break-normal",
+                  style: { overflowWrap: "anywhere", wordBreak: "break-word" },
+                  children: r.website
+                }
+              )
+            ] })
+          ] }),
+          r.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-blue-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+            /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-blue-600 mt-1 flex-shrink-0" }),
+            /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+              /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
+              /* @__PURE__ */ s(
+                "a",
+                {
+                  href: `mailto:${r.email}`,
+                  className: "text-blue-700 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block break-all md:break-normal md:whitespace-nowrap",
+                  children: r.email
+                }
+              )
+            ] })
           ] })
         ] }),
         Array.isArray(r.paymentMethods) && r.paymentMethods.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
@@ -8462,6 +8495,17 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         Array.isArray(r.specialties) && r.specialties.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
           /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Specialties" }),
           /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.specialties.map((L) => /* @__PURE__ */ s("span", { className: "bg-cyan-100 border border-cyan-200 text-cyan-700 px-3 py-1 rounded-full text-sm font-medium", children: L }, L)) })
+        ] }),
+        Array.isArray(r.specialFeatures) && r.specialFeatures.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
+          /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Special Features" }),
+          /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.specialFeatures.map((L) => /* @__PURE__ */ d("span", { className: "bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-sm", children: [
+            "✨ ",
+            L
+          ] }, L)) })
+        ] }),
+        Array.isArray(r.servicesOffered) && r.servicesOffered.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
+          /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Services Offered" }),
+          /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.servicesOffered.map((L) => /* @__PURE__ */ s("span", { className: "bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-3 py-1 rounded-full text-sm", children: L }, L)) })
         ] }),
         /* @__PURE__ */ s(D.a, { href: `tel:${r.phone}`, className: "hidden md:block w-full text-center text-white py-4 rounded-xl", style: { backgroundColor: "#2563eb" }, children: ["📞 Call ", r.name] }),
         Lr && (r.ownerId === Lr.id || Lr.isAdmin) && t && /* @__PURE__ */ d("div", { className: "space-y-3 mt-3", children: [
