@@ -16102,6 +16102,8 @@ function iy({ editBusiness: t, onClose: e }) {
     },
     callForHours: !1,
     mobileService: !1,
+    inHomeTraining: !1,
+    groupClassesAvailable: !1,
     daycareAvailable: !1,
     emergency24x7: !1,
     acceptsWalkins: !1,
@@ -16144,6 +16146,8 @@ function iy({ editBusiness: t, onClose: e }) {
         },
         callForHours: t.callForHours || !1,
         mobileService: t.mobileService || !1,
+        inHomeTraining: t.inHomeTraining || !1,
+        groupClassesAvailable: t.groupClassesAvailable || !1,
         daycareAvailable: t.daycareAvailable || !1,
         emergency24x7: t.emergency24x7 || t.emergency || !1,
         acceptsWalkins: t.acceptsWalkins || !1,
@@ -16338,6 +16342,8 @@ function iy({ editBusiness: t, onClose: e }) {
         },
         callForHours: !1,
         mobileService: !1,
+        inHomeTraining: !1,
+        groupClassesAvailable: !1,
         daycareAvailable: !1,
         emergency24x7: !1,
         acceptsWalkins: !1,
@@ -16611,6 +16617,36 @@ function iy({ editBusiness: t, onClose: e }) {
           /* @__PURE__ */ d("div", { children: [
             /* @__PURE__ */ s("span", { className: "text-gray-800", children: "🚫 Not Accepting New Clients" }),
             /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if you are not currently accepting new clients" })
+          ] })
+        ] }),
+        i.category === "training" && /* @__PURE__ */ d("label", { className: "flex items-center gap-3 p-4 bg-blue-50 border-2 border-blue-200 rounded-lg cursor-pointer hover:bg-blue-100 transition-colors mt-4", children: [
+          /* @__PURE__ */ s(
+            "input",
+            {
+              type: "checkbox",
+              checked: i.inHomeTraining,
+              onChange: (A) => G("inHomeTraining", A.target.checked),
+              className: "w-5 h-5 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+            }
+          ),
+          /* @__PURE__ */ d("div", { children: [
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "🏠 In-Home Training (Training)" }),
+            /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if this trainer offers in-home training sessions" })
+          ] })
+        ] }),
+        i.category === "training" && /* @__PURE__ */ d("label", { className: "flex items-center gap-3 p-4 bg-cyan-50 border-2 border-cyan-200 rounded-lg cursor-pointer hover:bg-cyan-100 transition-colors mt-4", children: [
+          /* @__PURE__ */ s(
+            "input",
+            {
+              type: "checkbox",
+              checked: i.groupClassesAvailable,
+              onChange: (A) => G("groupClassesAvailable", A.target.checked),
+              className: "w-5 h-5 text-cyan-600 border-gray-300 rounded focus:ring-cyan-500"
+            }
+          ),
+          /* @__PURE__ */ d("div", { children: [
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "👥 Group Classes Available (Training)" }),
+            /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if this trainer offers group class sessions" })
           ] })
         ] }),
         /* @__PURE__ */ d("label", { className: "flex items-center gap-3 p-4 bg-teal-50 border-2 border-teal-200 rounded-lg cursor-pointer hover:bg-teal-100 transition-colors mt-4", children: [
