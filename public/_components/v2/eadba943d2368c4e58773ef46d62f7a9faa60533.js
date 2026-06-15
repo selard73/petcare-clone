@@ -8080,20 +8080,22 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
     }
   }, Tn = async (K) => {
     const L = {};
-    for (const y of K)
-      try {
-        const B = (await Oe.getReviews(y.id)).reviews || [];
-        if (B.length > 0) {
-          const _ = Sr(B);
-          L[y.id] = {
-            average: _,
-            count: B.length
-          };
+    await Promise.all(
+      K.map(async (y) => {
+        try {
+          const B = (await Oe.getReviews(y.id)).reviews || [];
+          if (B.length > 0) {
+            const _ = Sr(B);
+            L[y.id] = {
+              average: _,
+              count: B.length
+            };
+          }
+        } catch (B) {
+          console.error(`Error fetching reviews for business ${y.id}:`, B);
         }
-      } catch (B) {
-        console.error(`Error fetching reviews for business ${y.id}:`, B);
-      }
-    cn(L), o((y) => y.map((B) => L[B.id] ? { ...B, rating: L[B.id].average, reviewCount: L[B.id].count } : B));
+      })
+    ), cn(L);
   }, yn = async (K) => {
     try {
       const L = await Oe.getReviews(K), y = L.reviews || [];
@@ -8110,11 +8112,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         }
         const B = { ...F };
         return delete B[K], B;
-      }), o((F) => F.map((B) => B.id === K ? {
-        ...B,
-        rating: y.length > 0 ? Sr(y) : B.rating,
-        reviewCount: y.length
-      } : B));
+      });
     } catch (L) {
       console.error("Error fetching reviews:", L), Xr([]);
     }
@@ -8311,14 +8309,14 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             K.priceRange && /* @__PURE__ */ s("div", { className: "text-green-600", children: K.priceRange })
           ] }),
           /* @__PURE__ */ d("p", { className: "text-gray-600 mb-2", children: ["📍 ", K.city] }),
-          /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-sm mb-3", children: sn[K.id] || Number(K.reviewCount || 0) > 0 && Number.isFinite(Number(K.rating)) ? /* @__PURE__ */ d(ie, { children: [
+          /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-sm mb-3", children: sn[K.id] ? /* @__PURE__ */ d(ie, { children: [
             /* @__PURE__ */ s("span", { className: "text-yellow-500", children: "⭐⭐⭐⭐⭐" }),
             /* @__PURE__ */ d("span", { className: "text-gray-700", children: [
-              Number(sn[K.id]?.average ?? K.rating).toFixed(1),
+              sn[K.id].average.toFixed(1),
               " (",
-              Number(sn[K.id]?.count ?? K.reviewCount),
+              sn[K.id].count,
               " ",
-              Number(sn[K.id]?.count ?? K.reviewCount) === 1 ? "review" : "reviews",
+              sn[K.id].count === 1 ? "review" : "reviews",
               ")"
             ] })
           ] }) : /* @__PURE__ */ s("span", { className: "text-gray-500", children: "No reviews yet" }) }),
