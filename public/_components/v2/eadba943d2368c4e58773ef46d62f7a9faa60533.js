@@ -5667,7 +5667,7 @@ const Gm = [
   ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
 ], we = j("x", Gm);
 function Qs({ onNavigate: t }) {
-  const [e, r] = E(null), [n, i] = E(0), [o, a] = E(""), [l, c] = E("");
+  const [e, r] = E(null), [n, i] = E(0), [o, a] = E(""), [l, c] = E(""), [Zc, $c] = E(null);
   Fp((p) => {
     i(p / 1e3);
   }), U(() => {
@@ -5680,6 +5680,18 @@ function Qs({ onNavigate: t }) {
       const f = new Image();
       f.src = m;
     });
+  }, []), U(() => {
+    (async () => {
+      try {
+        sessionStorage.getItem("pawsitively_visit_recorded") || (await fetch("/api/stats/visits", { method: "POST" }), sessionStorage.setItem("pawsitively_visit_recorded", "1"));
+        const m = await fetch("/api/stats/visits");
+        if (m.ok) {
+          const f = await m.json();
+          typeof f.visits == "number" && $c(f.visits);
+        }
+      } catch {
+      }
+    })();
   }, []);
   const u = ["bone", "vet", "house", "scissors", "bowl"], h = () => {
     o && t?.(o);
@@ -5739,6 +5751,16 @@ function Qs({ onNavigate: t }) {
                   className: "text-purple-600 text-2xl md:text-3xl mt-1",
                   style: { lineHeight: "1.3" },
                   children: "Pet Services Directory"
+                }
+              ),
+              Zc != null && /* @__PURE__ */ s(
+                D.p,
+                {
+                  initial: { opacity: 0 },
+                  animate: { opacity: 1 },
+                  transition: { delay: 0.55 },
+                  className: "text-gray-400 text-xs mt-2 tracking-wide",
+                  children: `${Zc.toLocaleString()} visits and counting`
                 }
               ),
               /* @__PURE__ */ s(

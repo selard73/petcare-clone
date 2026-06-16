@@ -15,6 +15,8 @@ const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, "public");
 const AIRTABLE_DB_FILE = path.join(ROOT, "data", "airtable.json");
 const SQLITE_DB_FILE = path.join(ROOT, "data", "petcare.db");
+const STATS_FILE = path.join(ROOT, "data", "stats.json");
+const VISIT_COUNT_KEY = "homepage_visits";
 
 const mimeTypes = {
   ".html": "text/html; charset=utf-8",
@@ -187,10 +189,75 @@ function initSqlite() {
       fields_json TEXT NOT NULL
     );
     CREATE INDEX IF NOT EXISTS idx_airtable_created_time ON airtable_records(created_time DESC);
+    CREATE TABLE IF NOT EXISTS site_stats (
+      key TEXT PRIMARY KEY,
+      value INTEGER NOT NULL
+    );
     `,
   );
+  const visitRow = sqlite.prepare("SELECT value FROM site_stats WHERE key = ?").get(VISIT_COUNT_KEY);
+  if (!visitRow) {
+    sqlite.prepare("INSERT INTO site_stats (key, value) VALUES (?, 0)").run(VISIT_COUNT_KEY);
+  }
   migrateLegacyJsonToSqliteIfNeeded();
   usingSqlite = true;
+}
+
+async function readStatsFile() {
+  try {
+    const raw = await fsp.readFile(STATS_FILE, "utf8");
+    const parsed = JSON.parse(raw);
+    return typeof parsed.visits === "number" ? parsed : { visits: 0 };
+  } catch {
+    return { visits: 0 };
+  }
+}
+
+async function writeStatsFile(stats) {
+  const tempFile = `${STATS_FILE}.tmp`;
+  const content = `${JSON.stringify(stats, null, 2)}\n`;
+  await fsp.writeFile(tempFile, content, "utf8");
+  await fsp.rename(tempFile, STATS_FILE);
+}
+
+function getVisitCount() {
+  if (usingSqlite) {
+    const row = sqlite.prepare("SELECT value FROM site_stats WHERE key = ?").get(VISIT_COUNT_KEY);
+    return row?.value ?? 0;
+  }
+  return null;
+}
+
+async function getVisitCountAsync() {
+  if (usingSqlite) return getVisitCount();
+  const stats = await readStatsFile();
+  return stats.visits;
+}
+
+async function incrementVisitCount() {
+  if (usingSqlite) {
+    sqlite.prepare("UPDATE site_stats SET value = value + 1 WHERE key = ?").run(VISIT_COUNT_KEY);
+    return getVisitCount();
+  }
+  const stats = await readStatsFile();
+  stats.visits = (stats.visits || 0) + 1;
+  await writeStatsFile(stats);
+  return stats.visits;
+}
+
+async function handleVisitStatsApi(req, res) {
+  if (req.method === "GET") {
+    const visits = await getVisitCountAsync();
+    sendJson(res, 200, { visits });
+    return true;
+  }
+  if (req.method === "POST") {
+    const visits = await incrementVisitCount();
+    sendJson(res, 200, { visits });
+    return true;
+  }
+  sendJson(res, 405, { error: "Method not allowed" });
+  return true;
 }
 
 async function listAllRecords() {
@@ -334,6 +401,11 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname.startsWith("/api/airtable")) {
       const handled = await handleAirtableApi(req, res, url);
       if (handled) return;
+    }
+
+    if (url.pathname === "/api/stats/visits") {
+      await handleVisitStatsApi(req, res);
+      return;
     }
 
     const filePath = sanitizePath(url.pathname);

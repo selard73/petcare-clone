@@ -2,6 +2,27 @@
 <!-- Created in Figma Make -->
 <html lang="en">
   <head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5LESZ1G423"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-5LESZ1G423");
+
+      function trackPawsitivelyPage() {
+        if (typeof gtag !== "function") return;
+        const page = (window.location.hash || "#home").slice(1) || "home";
+        gtag("event", "page_view", {
+          page_title: page,
+          page_path: "/" + page,
+        });
+      }
+      window.addEventListener("hashchange", trackPawsitivelyPage);
+      window.addEventListener("load", trackPawsitivelyPage);
+    </script>
     <meta charset="utf-8" />
     <noscript>
       <style>
