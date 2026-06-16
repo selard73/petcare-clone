@@ -11478,19 +11478,16 @@ function df({ onOpenSignup: t, onNavigate: e }) {
   const [r, n] = E(!1), [i, o] = E(""), [a, l] = E(""), c = () => {
     i && (e?.(i), n(!1));
   };
-  return /* @__PURE__ */ d("div", { className: "min-h-screen bg-gradient-to-b from-blue-50 to-purple-50", children: [
-    /* @__PURE__ */ s("div", { className: "max-w-[1200px] mx-auto px-4 md:px-6 lg:px-8 py-4 md:py-16", children: /* @__PURE__ */ d(
+  return /* @__PURE__ */ d("div", { className: "min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 md:hidden", children: [
+    /* @__PURE__ */ s("div", { className: "max-w-[1200px] mx-auto px-4 py-4", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0, y: 20 },
         animate: { opacity: 1, y: 0 },
         transition: { duration: 0.6 },
         children: [
-          /* @__PURE__ */ s("h1", { className: "hidden md:block text-purple-600 text-center mb-4", children: "Welcome to Pawsitively Fabulous 🐾" }),
-          /* @__PURE__ */ s("p", { className: "hidden md:block text-gray-600 text-center text-xl mb-3", children: "Your local directory for trusted pet care in" }),
-          /* @__PURE__ */ s("p", { className: "hidden md:block text-purple-600 text-center mb-12 text-xl", children: /* @__PURE__ */ s("strong", { children: "Darlington, Hartsville and Florence" }) }),
-          /* @__PURE__ */ d("div", { className: "grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-10 mb-8 mt-6 md:mt-0", children: [
-            /* @__PURE__ */ s("div", { className: "bg-white rounded-[20px] md:rounded-2xl p-5 md:p-8 border border-purple-100 md:border-purple-200 shadow-sm md:shadow-md relative mx-2 md:mx-0", children: /* @__PURE__ */ d(
+          /* @__PURE__ */ d("div", { className: "grid grid-cols-1 gap-8 mb-8 mt-6", children: [
+            /* @__PURE__ */ s("div", { className: "bg-white rounded-[20px] p-5 border border-purple-100 shadow-sm relative mx-2", children: /* @__PURE__ */ d(
               D.div,
               {
                 initial: { opacity: 0 },
@@ -11572,49 +11569,49 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                   /* @__PURE__ */ d("div", { className: "w-full md:max-w-[80%] md:mx-auto flex flex-col flex-1", children: [
                     /* @__PURE__ */ d("div", { className: "mb-3 md:mb-4 flex items-center gap-2 justify-start", children: [
                       /* @__PURE__ */ s("h2", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight text-left", children: "For Business Owners" }),
-                      /* @__PURE__ */ s(
-                        "button",
-                        {
-                          onClick: () => t?.("business"),
-                          className: "bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs hover:bg-purple-200 transition-colors cursor-pointer",
-                          children: "Free"
-                        }
-                      )
+                      /* @__PURE__ */ s("span", { className: "bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs", children: "Free Listing" })
                     ] }),
                     /* @__PURE__ */ d("p", { className: "text-gray-700 mb-3 md:mb-4 text-sm md:text-base leading-relaxed", children: [
                       "Located in ",
                       /* @__PURE__ */ s("strong", { children: "Darlington, Hartsville, or Florence?" }),
-                      " ",
-                      /* @__PURE__ */ s("strong", { children: "Join free" }),
-                      " to reach local pet owners:"
+                      " Listings are managed by our team. Email ",
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: "mailto:kawaii@kawaiipagepress.com?subject=Pawsitively%20Business%20Listing%20Request",
+                          className: "text-purple-600 font-semibold hover:underline break-all",
+                          children: "kawaii@kawaiipagepress.com"
+                        }
+                      ),
+                      " to be added or to request updates."
                     ] }),
                     /* @__PURE__ */ d("ul", { className: "text-gray-700 space-y-3 md:space-y-3 flex-1", children: [
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "✏️" }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "✉️" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
-                          /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Post your business" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Create your free listing in minutes" })
+                          /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Request a listing" }),
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Email us to add your business to the directory" })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
                         /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "📸" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
-                          /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Add photos + Service details" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Hours, services, contact info" })
+                          /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Share your details" }),
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Send hours, services, photos, and contact info" })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
                         /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "⭐" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
-                          /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Collect reviews" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Build trust with prospective customers" })
+                          /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Reach local pet owners" }),
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Get discovered by owners searching your area" })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
                         /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🔄" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
-                          /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Update information at any time" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Just log in to edit your listing" })
+                          /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Request listing updates" }),
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Contact us anytime your business info changes" })
                         ] })
                       ] })
                     ] })
@@ -11622,14 +11619,14 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                   /* @__PURE__ */ d("div", { className: "mt-5 md:mt-[30px]", children: [
                     /* @__PURE__ */ s("div", { className: "hidden md:block w-[58%] mx-auto border-t border-purple-300/30 mb-6" }),
                     /* @__PURE__ */ s(
-                      "button",
+                      "a",
                       {
-                        onClick: () => t?.("business"),
-                        className: "w-full md:max-w-[240px] md:mx-auto block bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-0 h-11 md:h-auto md:py-3 rounded-[14px] md:rounded-xl transition-colors",
-                        children: "Create Listing →"
+                        href: "mailto:kawaii@kawaiipagepress.com?subject=Pawsitively%20Business%20Listing%20Request",
+                        className: "w-full md:max-w-[240px] md:mx-auto block bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-0 h-11 md:h-auto md:py-3 rounded-[14px] md:rounded-xl transition-colors text-center leading-[44px] md:leading-normal",
+                        children: "Email Us →"
                       }
                     ),
-                    /* @__PURE__ */ s("p", { className: "text-center text-xs text-gray-400 mt-2", children: "Free to join • edit anytime" })
+                    /* @__PURE__ */ s("p", { className: "text-center text-xs text-gray-400 mt-2", children: "Free to join • we handle setup & updates" })
                   ] })
                 ] })
               }
@@ -18189,11 +18186,11 @@ function oy() {
     console.log("🎬 Initializing - URL hash:", k);
     const I = sessionStorage.getItem("pawsitively_current_page");
     console.log("🎬 Initializing - sessionStorage:", I);
-    const z = ["home", "products", "grooming", "training", "boarding", "vet", "about", "shortlist"];
-    return k && z.includes(k) ? (console.log("✅ Using hash:", k), k) : I && z.includes(I) ? (console.log("✅ Using sessionStorage:", I), I) : (console.log("📍 No valid page found, defaulting to home"), "home");
+    const z = ["home", "products", "grooming", "training", "boarding", "vet", "about", "shortlist"], A0 = (k) => k && z.includes(k) && !(k === "about" && window.innerWidth >= 768) ? k : null;
+    return A0(k) ? (console.log("✅ Using hash:", k), k) : A0(I) ? (console.log("✅ Using sessionStorage:", I), I) : (console.log("📍 No valid page found, defaulting to home"), "home");
   }), [r, n] = E(() => {
-    const k = window.location.hash.slice(1), I = sessionStorage.getItem("pawsitively_current_page"), z = ["home", "products", "grooming", "training", "boarding", "vet", "about", "shortlist"];
-    return k && z.includes(k) ? [k] : I && z.includes(I) ? [I] : ["home"];
+    const k = window.location.hash.slice(1), I = sessionStorage.getItem("pawsitively_current_page"), z = ["home", "products", "grooming", "training", "boarding", "vet", "about", "shortlist"], A0 = (G) => G && z.includes(G) && !(G === "about" && window.innerWidth >= 768) ? G : null;
+    return A0(k) ? [k] : A0(I) ? [I] : ["home"];
   }), [i, o] = E(!1), [a, l] = E(!1), [c, u] = E("guest"), [h, p] = E("signup"), [m, f] = E(null), [v, g] = E(null), [b, w] = E(!1), [x, T] = E(0), { user: P, login: N, logout: S } = vi(), C = (k) => {
     n((I) => [...I, k]), e(k);
   }, R = () => {
@@ -18229,6 +18226,8 @@ function oy() {
     I ? console.log(z ? "🔒 USER EDITS DETECTED - Seed blocked to preserve edits!" : "✅ Found existing data - not re-seeding") : (console.log("🌱 COMPLETELY EMPTY - First time ever, loading initial data..."), sy(), console.log("✅ Initial data loaded!"));
   }, []), U(() => {
     window.scrollTo(0, 0);
+  }, [t]), U(() => {
+    t === "about" && window.innerWidth >= 768 && e("home");
   }, [t]);
   const M = () => {
     switch (t) {
