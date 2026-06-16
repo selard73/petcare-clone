@@ -11743,6 +11743,12 @@ function Ni(t) {
     createdAt: t.fields.createdAt || (/* @__PURE__ */ new Date()).toISOString()
   };
 }
+function parseWhyWeLoveItBullets(t) {
+  if (!t?.trim())
+    return [];
+  const e = String(t).trim(), r = e.includes("\n") ? e.split(/\r?\n/) : e.split(/\s*•\s*/);
+  return r.map((n) => n.trim().replace(/^[-*•]\s*/, "")).filter(Boolean);
+}
 async function ff() {
   try {
     console.log("📦 Fetching products from Airtable...");
@@ -11950,7 +11956,7 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
               ] }),
               g.whyWeLoveIt && /* @__PURE__ */ d("div", { className: "mb-4 p-3 bg-purple-50 rounded-lg", children: [
                 /* @__PURE__ */ s("p", { className: "text-xs text-purple-600 uppercase tracking-wide mb-1", children: "💜 Why We Love It" }),
-                /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm leading-relaxed", children: g.whyWeLoveIt })
+                /* @__PURE__ */ s("ul", { className: "space-y-1 overflow-x-auto", children: parseWhyWeLoveItBullets(g.whyWeLoveIt).map((w0, x0) => /* @__PURE__ */ s("li", { className: "text-gray-700 text-sm whitespace-nowrap", children: ["• ", w0] }, `${g.id}-why-${x0}`)) })
               ] }),
               !g.about && g.description && /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4 leading-relaxed", children: g.description }),
               /* @__PURE__ */ d(
@@ -12489,7 +12495,7 @@ function eo({ editProduct: t, onClose: e }) {
                   onChange: (P) => n({ ...r, whyWeLoveIt: P.target.value }),
                   rows: 4,
                   className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-600 focus:border-transparent resize-none",
-                  placeholder: "Why do you recommend this product?"
+                  placeholder: "One reason per line (e.g. durable, easy to clean, dogs love it)"
                 }
               )
             ] }),
