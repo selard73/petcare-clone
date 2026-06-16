@@ -11569,21 +11569,26 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                   /* @__PURE__ */ d("div", { className: "w-full md:max-w-[80%] md:mx-auto flex flex-col flex-1", children: [
                     /* @__PURE__ */ d("div", { className: "mb-3 md:mb-4 flex items-center gap-2 justify-start", children: [
                       /* @__PURE__ */ s("h2", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight text-left", children: "For Business Owners" }),
-                      /* @__PURE__ */ s("span", { className: "bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs", children: "Free Listing" })
+                      /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs whitespace-nowrap flex-shrink-0", children: "Free Listing" })
                     ] }),
-                    /* @__PURE__ */ d("p", { className: "text-gray-700 mb-3 md:mb-4 text-sm md:text-base leading-relaxed", children: [
-                      "Located in ",
-                      /* @__PURE__ */ s("strong", { children: "Darlington, Hartsville, or Florence?" }),
-                      " Listings are managed by our team. Email ",
-                      /* @__PURE__ */ s(
-                        "a",
-                        {
-                          href: "mailto:kawaii@kawaiipagepress.com?subject=Pawsitively%20Business%20Listing%20Request",
-                          className: "text-purple-600 font-semibold hover:underline break-all",
-                          children: "kawaii@kawaiipagepress.com"
-                        }
-                      ),
-                      " to be added or to request updates."
+                    /* @__PURE__ */ d("div", { className: "text-gray-700 mb-3 md:mb-4 text-sm md:text-base leading-relaxed space-y-2", children: [
+                      /* @__PURE__ */ d("p", { children: [
+                        "Located in ",
+                        /* @__PURE__ */ s("strong", { children: "Darlington, Hartsville, or Florence?" }),
+                        " Listings are managed by our team."
+                      ] }),
+                      /* @__PURE__ */ d("p", { children: [
+                        "Email ",
+                        /* @__PURE__ */ s(
+                          "a",
+                          {
+                            href: "mailto:kawaii@kawaiipagepress.com?subject=Pawsitively%20Business%20Listing%20Request",
+                            className: "text-purple-600 font-semibold hover:underline break-all",
+                            children: "kawaii@kawaiipagepress.com"
+                          }
+                        ),
+                        " to be added or to request updates."
+                      ] })
                     ] }),
                     /* @__PURE__ */ d("ul", { className: "text-gray-700 space-y-3 md:space-y-3 flex-1", children: [
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
@@ -11622,7 +11627,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                       "a",
                       {
                         href: "mailto:kawaii@kawaiipagepress.com?subject=Pawsitively%20Business%20Listing%20Request",
-                        className: "w-full md:max-w-[240px] md:mx-auto block bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-0 h-11 md:h-auto md:py-3 rounded-[14px] md:rounded-xl transition-colors text-center leading-[44px] md:leading-normal",
+                        className: "w-full md:max-w-[240px] md:mx-auto flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-0 h-11 md:h-auto md:py-3 rounded-[14px] md:rounded-xl transition-colors",
                         children: "Email Us →"
                       }
                     ),
