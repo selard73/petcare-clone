@@ -5667,7 +5667,7 @@ const Gm = [
   ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
 ], we = j("x", Gm);
 function Qs({ onNavigate: t }) {
-  const [e, r] = E(null), [n, i] = E(0), [o, a] = E(""), [l, c] = E(""), [Zc, $c] = E(null);
+  const [e, r] = E(null), [n, i] = E(0), [o, a] = E(""), [l, c] = E("");
   Fp((p) => {
     i(p / 1e3);
   }), U(() => {
@@ -5680,18 +5680,6 @@ function Qs({ onNavigate: t }) {
       const f = new Image();
       f.src = m;
     });
-  }, []), U(() => {
-    (async () => {
-      try {
-        sessionStorage.getItem("pawsitively_visit_recorded") || (await fetch("/api/stats/visits", { method: "POST" }), sessionStorage.setItem("pawsitively_visit_recorded", "1"));
-        const m = await fetch("/api/stats/visits");
-        if (m.ok) {
-          const f = await m.json();
-          typeof f.visits == "number" && $c(f.visits);
-        }
-      } catch {
-      }
-    })();
   }, []);
   const u = ["bone", "vet", "house", "scissors", "bowl"], h = () => {
     o && t?.(o);
@@ -5751,16 +5739,6 @@ function Qs({ onNavigate: t }) {
                   className: "text-purple-600 text-2xl md:text-3xl mt-1",
                   style: { lineHeight: "1.3" },
                   children: "Pet Services Directory"
-                }
-              ),
-              Zc != null && /* @__PURE__ */ s(
-                D.p,
-                {
-                  initial: { opacity: 0 },
-                  animate: { opacity: 1 },
-                  transition: { delay: 0.55 },
-                  className: "text-gray-400 text-xs mt-2 tracking-wide",
-                  children: `${Zc.toLocaleString()} visits and counting`
                 }
               ),
               /* @__PURE__ */ s(
@@ -18211,7 +18189,7 @@ function oy() {
   }), [r, n] = E(() => {
     const k = window.location.hash.slice(1), I = sessionStorage.getItem("pawsitively_current_page"), z = ["home", "products", "grooming", "training", "boarding", "vet", "about", "shortlist"], A0 = (G) => G && z.includes(G) && !(G === "about" && window.innerWidth >= 768) ? G : null;
     return A0(k) ? [k] : A0(I) ? [I] : ["home"];
-  }), [i, o] = E(!1), [a, l] = E(!1), [c, u] = E("guest"), [h, p] = E("signup"), [m, f] = E(null), [v, g] = E(null), [b, w] = E(!1), [x, T] = E(0), { user: P, login: N, logout: S } = vi(), C = (k) => {
+  }), [i, o] = E(!1), [a, l] = E(!1), [c, u] = E("guest"), [h, p] = E("signup"), [m, f] = E(null), [v, g] = E(null), [b, w] = E(!1), [x, T] = E(0), [Pv, Nv] = E(null), { user: P, login: N, logout: S } = vi(), C = (k) => {
     n((I) => [...I, k]), e(k);
   }, R = () => {
     if (r.length > 1) {
@@ -18248,6 +18226,18 @@ function oy() {
     window.scrollTo(0, 0);
   }, [t]), U(() => {
     t === "about" && window.innerWidth >= 768 && e("home");
+  }, [t]), U(() => {
+    t === "home" && (async () => {
+      try {
+        sessionStorage.getItem("pawsitively_visit_recorded") || (await fetch("/api/stats/visits", { method: "POST" }), sessionStorage.setItem("pawsitively_visit_recorded", "1"));
+        const k = await fetch("/api/stats/visits");
+        if (k.ok) {
+          const I = await k.json();
+          typeof I.visits == "number" && Nv(I.visits);
+        }
+      } catch {
+      }
+    })();
   }, [t]);
   const M = () => {
     switch (t) {
@@ -18504,7 +18494,8 @@ function oy() {
         defaultMode: h
       }
     ),
-    /* @__PURE__ */ s("footer", { className: "bg-[#fce5c1] text-purple-900 py-3 px-4 md:py-8 md:px-0 mt-0 md:mt-16 border-t border-purple-100/60 md:border-t-0", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8 text-center", children: [
+    /* @__PURE__ */ d("footer", { className: "relative bg-[#fce5c1] text-purple-900 py-3 px-4 md:py-8 md:px-0 mt-0 md:mt-16 border-t border-purple-100/60 md:border-t-0", children: [
+      /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8 text-center", children: [
       /* @__PURE__ */ d("div", { className: "md:hidden flex flex-col items-center gap-1", children: [
         /* @__PURE__ */ d("p", { className: "text-sm font-medium text-purple-900", children: [
           /* @__PURE__ */ s("span", { className: "text-base", children: "🐾" }),
@@ -18522,7 +18513,9 @@ function oy() {
         /* @__PURE__ */ s("p", { children: "Pet Services Directory - One Stop Shop" }),
         /* @__PURE__ */ s("p", { className: "text-purple-600 mt-4", children: "All Your Pet Needs in Darlington/Florence Area" })
       ] })
-    ] }) })
+    ] }),
+      t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "absolute bottom-2 right-3 md:bottom-4 md:right-8 text-[10px] md:text-xs text-purple-500/70 tracking-wide pointer-events-none", children: `${Pv.toLocaleString()} visits and counting` })
+    ] })
   ] });
 }
 function ay() {
