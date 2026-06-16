@@ -5666,7 +5666,7 @@ const Gm = [
   ["path", { d: "M18 6 6 18", key: "1bl5f8" }],
   ["path", { d: "m6 6 12 12", key: "d8bk6v" }]
 ], we = j("x", Gm);
-function Qs({ onNavigate: t }) {
+function Qs({ onNavigate: t, visitCount: e0 }) {
   const [e, r] = E(null), [n, i] = E(0), [o, a] = E(""), [l, c] = E("");
   Fp((p) => {
     i(p / 1e3);
@@ -6041,7 +6041,8 @@ function Qs({ onNavigate: t }) {
         ] })
       }
     ) }),
-    /* @__PURE__ */ s("div", { className: "px-4 pb-22 md:px-0 md:pb-0 mt-10 md:mt-0", children: /* @__PURE__ */ s("section", { className: "py-7 px-5 md:py-20 md:px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-3xl md:rounded-none", children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto text-center", children: /* @__PURE__ */ d(
+    /* @__PURE__ */ d("div", { className: "px-4 md:px-0 md:pb-0 mt-10 md:mt-0", children: [
+      /* @__PURE__ */ s("section", { className: "py-7 px-5 md:py-20 md:px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-3xl md:rounded-none", children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto text-center", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0, y: 20 },
@@ -6078,7 +6079,9 @@ function Qs({ onNavigate: t }) {
           ] })
         ]
       }
-    ) }) }) })
+    ) }) }),
+      e0 != null && /* @__PURE__ */ s("div", { className: "md:hidden flex items-center justify-center py-11 text-[10px] text-purple-500/70 tracking-wide text-center", children: `${e0.toLocaleString()} visits and counting` })
+    ] })
   ] });
 }
 class qm {
@@ -18242,7 +18245,7 @@ function oy() {
   const M = () => {
     switch (t) {
       case "home":
-        return /* @__PURE__ */ s(Qs, { onNavigate: C });
+        return /* @__PURE__ */ s(Qs, { onNavigate: C, visitCount: Pv });
       case "products":
         return /* @__PURE__ */ s(
           vf,
@@ -18334,7 +18337,7 @@ function oy() {
           }
         );
       default:
-        return /* @__PURE__ */ s(Qs, { onNavigate: C });
+        return /* @__PURE__ */ s(Qs, { onNavigate: C, visitCount: Pv });
     }
   };
   return /* @__PURE__ */ d("div", { className: "relative min-h-screen md:bg-gradient-to-b md:from-blue-50 md:to-purple-50", style: {
@@ -18511,10 +18514,12 @@ function oy() {
       /* @__PURE__ */ d("div", { className: "hidden md:block", children: [
         /* @__PURE__ */ s("p", { className: "text-2xl mb-2", children: "🐾 Pawsitively Fabulous 🐾" }),
         /* @__PURE__ */ s("p", { children: "Pet Services Directory - One Stop Shop" }),
-        /* @__PURE__ */ s("p", { className: "text-purple-600 mt-4", children: "All Your Pet Needs in Darlington/Florence Area" })
+        /* @__PURE__ */ d("div", { className: "relative mt-4 w-full", children: [
+          /* @__PURE__ */ s("p", { className: "text-purple-600", children: "All Your Pet Needs in Darlington/Florence Area" }),
+          t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "absolute top-1/2 -translate-y-1/2 right-10 lg:right-14 text-xs text-purple-500/70 tracking-wide pointer-events-none whitespace-nowrap", children: `${Pv.toLocaleString()} visits and counting` })
+        ] })
       ] })
-    ] }),
-      t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "absolute bottom-2 right-3 md:bottom-4 md:right-8 text-[10px] md:text-xs text-purple-500/70 tracking-wide pointer-events-none", children: `${Pv.toLocaleString()} visits and counting` })
+    ] })
     ] })
   ] });
 }
