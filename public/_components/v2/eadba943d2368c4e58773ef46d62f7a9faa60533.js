@@ -6542,29 +6542,31 @@ const Oe = {
     return { reviews: [...o.values()].sort((a, l) => new Date(l.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime()) };
   },
   async addReview(t, e, r, n, i) {
-    const o = localStorage.getItem("user"), a = o ? JSON.parse(o) : null, c = !!(i && a?.isAdmin);
-    if (!c) {
-      const h = validateGuestReviewSubmission(t, r, i || a?.name || "");
-      if (!h.ok)
-        throw new Error(h.message);
-    }
+    const o = localStorage.getItem("user"), a = o ? JSON.parse(o) : null;
+    if (!a?.isAdmin)
+      throw new Error("Admin access required to add reviews.");
+    if (!i?.trim())
+      throw new Error("Please enter a reviewer name.");
     const l = {
       id: crypto.randomUUID(),
       businessId: t,
-      userId: a?.isAdmin && i ? `admin-${a?.id || "anonymous"}` : a?.id || (i ? `guest-${crypto.randomUUID().slice(0, 8)}` : "anonymous"),
-      userName: i || a?.name || "Anonymous",
+      userId: `admin-${a?.id || "anonymous"}`,
+      userName: i.trim(),
       rating: e,
       comment: r,
       createdAt: (/* @__PURE__ */ new Date()).toISOString(),
-      isAdminReview: c
+      isAdminReview: !0
     };
-    ce.addReview(l), c || recordGuestReviewSubmission(t);
-    const u = await saveCloudReviewRecord(l);
-    return u.success ? { success: !0, review: l } : { success: !0, review: l, cloudWarning: u.error || "Saved locally, but cloud sync failed." };
+    ce.addReview(l);
+    const c = await saveCloudReviewRecord(l);
+    return c.success ? { success: !0, review: l } : { success: !0, review: l, cloudWarning: c.error || "Saved locally, but cloud sync failed." };
   },
   async deleteReview(t) {
-    const e = await deleteCloudReviewRecord(t);
-    return e.success || console.warn("Cloud review delete failed; keeping local deletion only:", e.error), ce.deleteReview(t), { success: !0, message: "Review deleted successfully", cloudWarning: e.success ? void 0 : e.error };
+    const e = localStorage.getItem("user"), r = e ? JSON.parse(e) : null;
+    if (!r?.isAdmin)
+      throw new Error("Admin access required to delete reviews.");
+    const n = await deleteCloudReviewRecord(t);
+    return n.success || console.warn("Cloud review delete failed; keeping local deletion only:", n.error), ce.deleteReview(t), { success: !0, message: "Review deleted successfully", cloudWarning: n.success ? void 0 : n.error };
   },
   async uploadPhoto(t) {
     return new Promise((e) => {
@@ -6593,7 +6595,7 @@ function rf({ children: t }) {
     if (console.log("   - storedUser raw:", l), console.log("   - storedToken present:", !!c), l)
       try {
         const u = JSON.parse(l);
-        console.log("✅ Found stored user:", u.email, "isAdmin:", u.isAdmin), r(u);
+        console.log("✅ Found stored user:", u.email, "isAdmin:", u.isAdmin), r(u), syncAccountShortlist(u);
       } catch (u) {
         console.error("❌ Error parsing stored user:", u), localStorage.removeItem("user");
       }
@@ -6602,7 +6604,7 @@ function rf({ children: t }) {
     c ? (console.log("✅ Found stored access token"), i(c)) : console.log("❌ No stored access token");
   }, []);
   const o = (l, c, u) => {
-    console.log("🔑 LOGIN CALLED:"), console.log("   - User:", l.email, "isAdmin:", l.isAdmin), console.log("   - Access token:", c.substring(0, 20) + "..."), r(l), i(c), localStorage.setItem("user", JSON.stringify(l)), localStorage.setItem("accessToken", c), u && localStorage.setItem("refreshToken", u), console.log("✅ Login complete - data saved to localStorage");
+    console.log("🔑 LOGIN CALLED:"), console.log("   - User:", l.email, "isAdmin:", l.isAdmin), console.log("   - Access token:", c.substring(0, 20) + "..."), r(l), i(c), localStorage.setItem("user", JSON.stringify(l)), localStorage.setItem("accessToken", c), u && localStorage.setItem("refreshToken", u), syncAccountShortlist(l), console.log("✅ Login complete - data saved to localStorage");
   }, a = () => {
     r(null), i(null), localStorage.removeItem("user"), localStorage.removeItem("accessToken"), localStorage.removeItem("refreshToken");
   };
@@ -6655,9 +6657,20 @@ const xi = (t) => t ? `pawsitively_shortlist_${t.id}` : "pawsitively_shortlist_g
   try {
     const r = xi(t);
     localStorage.setItem(r, JSON.stringify(e)), console.log(`💾 Saved ${e.length} shortlist items to key: ${r}`);
+    if (t?.id && !t.isAdmin) {
+      const n = JSON.parse(localStorage.getItem("users") || "[]"), i = n.findIndex((o) => o.id === t.id);
+      i >= 0 && (n[i] = { ...n[i], shortlist: e }, localStorage.setItem("users", JSON.stringify(n)), console.log(`💾 Synced ${e.length} shortlist items to account ${t.email}`));
+    }
   } catch (r) {
     console.error("Error saving shortlist:", r);
   }
+}, syncAccountShortlist = (t) => {
+  if (!t?.id || t.isAdmin)
+    return fr(t);
+  const e = fr(t), r = fr(null), n = JSON.parse(localStorage.getItem("users") || "[]"), i = n.find((a) => a.id === t.id), o = Array.isArray(i?.shortlist) ? i.shortlist : [], l = /* @__PURE__ */ new Map();
+  return [...o, ...e, ...r].forEach((a) => {
+    a?.id && !l.has(a.id) && l.set(a.id, a);
+  }), vl(t, [...l.values()]), r.length > 0 && localStorage.setItem(xi(null), JSON.stringify([])), [...l.values()];
 }, nf = (t, e) => {
   const r = fr(t);
   return r.some((i) => i.id === e.id) || (r.push(e), vl(t, r)), r;
@@ -6804,8 +6817,8 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       b(!1);
     }
   }, Wl = async () => {
-    if (!I) {
-      alert("Please log in to submit a review");
+    if (!I?.isAdmin) {
+      alert("Admin access required to add reviews.");
       return;
     }
     if (!N.reviewerName.trim()) {
@@ -7566,7 +7579,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                               day: "numeric"
                             }) })
                           ] }),
-                          I && I.id === n.ownerId && /* @__PURE__ */ s(
+                          I?.isAdmin && /* @__PURE__ */ s(
                             "button",
                             {
                               onClick: async () => {
@@ -7610,7 +7623,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No reviews yet" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm", children: "Be the first to leave a review!" })
                   ] }),
-                  I && (n.ownerId === I.id || I.isAdmin) ? /* @__PURE__ */ d(ie, { children: [
+                  I?.isAdmin ? /* @__PURE__ */ d(ie, { children: [
                     /* @__PURE__ */ d("div", { className: "bg-blue-50 rounded-xl border-2 border-blue-200 mb-4", children: [
                       /* @__PURE__ */ d(
                         "button",
@@ -7708,77 +7721,8 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           ] })
                         }
                       ) })
-                    ] }),
-                    /* @__PURE__ */ d("div", { className: "text-center py-8 bg-purple-50 rounded-xl border-2 border-purple-200", children: [
-                      /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mt-2", children: "Use the admin form above to add existing customer reviews" })
                     ] })
-                  ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-purple-200 rounded-xl p-5", children: [
-                    /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
-                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
-                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
-                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Name *" }),
-                      /* @__PURE__ */ s(
-                        "input",
-                        {
-                          type: "text",
-                          value: f.userName || "",
-                          onChange: (y) => v({ ...f, userName: y.target.value }),
-                          className: "w-full p-3 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-purple-400 transition-colors",
-                          placeholder: I?.name || "Enter your name"
-                        }
-                      )
-                    ] }),
-                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
-                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Rating" }),
-                      /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                        [1, 2, 3, 4, 5].map((y) => /* @__PURE__ */ s(
-                          Ct,
-                          {
-                            className: `w-8 h-8 cursor-pointer transition-all hover:scale-110 ${y <= f.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-200"}`,
-                            onClick: () => v({ ...f, rating: y })
-                          },
-                          y
-                        )),
-                        /* @__PURE__ */ d("span", { className: "ml-2 text-sm text-gray-600", children: [
-                          "(",
-                          f.rating,
-                          " ",
-                          f.rating === 1 ? "star" : "stars",
-                          ")"
-                        ] })
-                      ] })
-                    ] }),
-                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
-                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Review" }),
-                      /* @__PURE__ */ s(
-                        "textarea",
-                        {
-                          value: f.comment,
-                          onChange: (y) => v({ ...f, comment: y.target.value }),
-                          className: "w-full p-4 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-purple-400 transition-colors",
-                          placeholder: "Share your experience with this business...",
-                          rows: 4
-                        }
-                      )
-                    ] }),
-                    /* @__PURE__ */ s(
-                      D.button,
-                      {
-                        onClick: zl,
-                        whileHover: { scale: 1.02 },
-                        whileTap: { scale: 0.98 },
-                        className: "w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-xl hover:from-pink-600 hover:to-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
-                        disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
-                        children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
-                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
-                          "Submitting..."
-                        ] }) : "Submit Review"
-                      }
-                    )
-                  ] })
+                  ] }) : null
                 ] })
               ] }),
               /* @__PURE__ */ d("div", { className: "md:hidden sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-4 flex gap-3", children: [
@@ -8193,8 +8137,8 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       console.error("Error fetching reviews:", L), Xr([]);
     }
   }, qn = async () => {
-    if (!r || !Lr) {
-      alert("Please log in to submit a review");
+    if (!r || !Lr?.isAdmin) {
+      alert("Admin access required to add reviews.");
       return;
     }
     if (!Zr.reviewerName.trim()) {
@@ -8602,25 +8546,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             an ? "Deleting..." : "Delete Business Listing"
           ] })
         ] }),
-        !(Lr && r.ownerId === Lr.id) && /* @__PURE__ */ d("div", { className: "bg-white border-2 border-blue-200 rounded-xl p-5 mt-4", children: [
-          /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
-          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
-          /* @__PURE__ */ d("div", { className: "space-y-3", children: [
-            /* @__PURE__ */ s("input", { type: "text", placeholder: Lr?.name || "Your name", value: Qr.userName, onChange: (K) => dn({ ...Qr, userName: K.target.value }), className: "w-full px-4 py-2 border-2 border-blue-200 rounded-lg focus:outline-none focus:border-blue-400" }),
-            /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-              [1, 2, 3, 4, 5].map((K) => /* @__PURE__ */ s("button", { type: "button", onClick: () => dn({ ...Qr, rating: K }), className: `text-2xl transition-transform hover:scale-110 ${K <= Qr.rating ? "opacity-100" : "opacity-30"}`, children: "⭐" }, K)),
-              /* @__PURE__ */ d("span", { className: "ml-2 text-sm text-gray-600", children: ["(", Qr.rating, " ", Qr.rating === 1 ? "star" : "stars", ")"] })
-            ] }),
-            /* @__PURE__ */ s("textarea", { placeholder: "Share your experience with this trainer...", value: Qr.comment, onChange: (K) => dn({ ...Qr, comment: K.target.value }), rows: 4, className: "w-full px-4 py-2 border-2 border-blue-200 rounded-lg focus:outline-none focus:border-blue-400 resize-none" }),
-            /* @__PURE__ */ s(D.button, { onClick: Jn, whileHover: { scale: 1.02 }, whileTap: { scale: 0.98 }, className: "w-full text-white py-3 rounded-lg transition-colors disabled:opacity-50", style: { backgroundColor: "#2563eb" }, disabled: vn || !Qr.comment.trim() || !Qr.userName.trim() && !Lr?.name, children: vn ? "Submitting..." : "Submit Review" })
-          ] })
-        ] }),
-        Lr && r.ownerId === Lr.id && /* @__PURE__ */ d("div", { className: "text-center py-6 bg-blue-50 rounded-xl border-2 border-blue-200 mt-4", children: [
-          /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
-          /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
-          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" })
-        ] }),
-        Lr && (r.ownerId === Lr.id || Lr.isAdmin) && /* @__PURE__ */ d("div", { className: "bg-yellow-50 border-2 border-yellow-200 rounded-xl p-4 mt-4", children: [
+        Lr?.isAdmin && /* @__PURE__ */ d("div", { className: "bg-yellow-50 border-2 border-yellow-200 rounded-xl p-4 mt-4", children: [
           /* @__PURE__ */ s("h4", { className: "text-gray-800", children: "Admin: Add Customer Review" }),
           /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "Add verified customer reviews on behalf of clients." }),
           /* @__PURE__ */ d("div", { className: "space-y-3", children: [
@@ -8640,8 +8566,44 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
           /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-2", children: "Recent Reviews" }),
           /* @__PURE__ */ s("div", { className: "space-y-2", children: Yr.slice(0, 3).map((K) => /* @__PURE__ */ d("div", { className: "bg-gray-50 border border-gray-200 rounded-lg p-3", children: [
             /* @__PURE__ */ d("div", { className: "flex items-center justify-between mb-1", children: [
-              /* @__PURE__ */ s("p", { className: "text-gray-800 text-sm", children: K.userName || K.reviewerName || "Customer" }),
-              /* @__PURE__ */ s("p", { className: "text-yellow-500 text-sm", children: `${"⭐".repeat(Math.max(1, Math.min(5, K.rating || 5)))}` })
+              /* @__PURE__ */ d("div", { children: [
+                /* @__PURE__ */ s("p", { className: "text-gray-800 text-sm", children: K.userName || K.reviewerName || "Customer" }),
+                /* @__PURE__ */ s("p", { className: "text-yellow-500 text-sm", children: `${"⭐".repeat(Math.max(1, Math.min(5, K.rating || 5)))}` })
+              ] }),
+              Lr?.isAdmin && /* @__PURE__ */ s(
+                "button",
+                {
+                  onClick: async () => {
+                    if (prompt("Enter admin password to delete this review:") !== "9634") {
+                      alert("Incorrect password. Review not deleted.");
+                      return;
+                    }
+                    try {
+                      await Oe.deleteReview(K.id), Xr((L) => L.filter((y) => y.id !== K.id));
+                      const L = Yr.filter((y) => y.id !== K.id);
+                      if (r && L.length > 0) {
+                        const y = L.reduce((B, _) => B + _.rating, 0) / L.length;
+                        cn((B) => ({
+                          ...B,
+                          [r.id]: {
+                            average: y,
+                            count: L.length
+                          }
+                        }));
+                      } else if (r)
+                        cn((y) => {
+                          const B = { ...y };
+                          return delete B[r.id], B;
+                        });
+                      alert("Review deleted successfully");
+                    } catch (L) {
+                      console.error("Error deleting review:", L), alert(L instanceof Error ? L.message : "Failed to delete review");
+                    }
+                  },
+                  className: "text-red-600 hover:text-red-800",
+                  children: /* @__PURE__ */ s(Lt, { className: "w-5 h-5" })
+                }
+              )
             ] }),
             /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: K.comment })
           ] }, K.id || `${K.userName || K.reviewerName || "review"}-${K.comment}`)) })
@@ -8867,8 +8829,8 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       b(!1);
     }
   }, Wl = async () => {
-    if (!I) {
-      alert("Please log in to submit a review");
+    if (!I?.isAdmin) {
+      alert("Admin access required to add reviews.");
       return;
     }
     if (!N.reviewerName.trim()) {
@@ -9642,7 +9604,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                               day: "numeric"
                             }) })
                           ] }),
-                          I && I.id === n.ownerId && /* @__PURE__ */ s(
+                          I?.isAdmin && /* @__PURE__ */ s(
                             "button",
                             {
                               onClick: async () => {
@@ -9686,7 +9648,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No reviews yet" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm", children: "Be the first to leave a review!" })
                   ] }),
-                  I && (n.ownerId === I.id || I.isAdmin) ? /* @__PURE__ */ d(ie, { children: [
+                  I?.isAdmin ? /* @__PURE__ */ d(ie, { children: [
                     /* @__PURE__ */ d("div", { className: "bg-blue-50 rounded-xl border-2 border-blue-200 mb-4", children: [
                       /* @__PURE__ */ d(
                         "button",
@@ -9784,77 +9746,8 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           ] })
                         }
                       ) })
-                    ] }),
-                    /* @__PURE__ */ d("div", { className: "text-center py-8 bg-green-50 rounded-xl border-2 border-green-200", children: [
-                      /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mt-2", children: "Use the admin form above to add existing customer reviews" })
                     ] })
-                  ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-green-200 rounded-xl p-5", children: [
-                    /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
-                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
-                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
-                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Name *" }),
-                      /* @__PURE__ */ s(
-                        "input",
-                        {
-                          type: "text",
-                          value: f.userName || "",
-                          onChange: (y) => v({ ...f, userName: y.target.value }),
-                          className: "w-full p-3 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-purple-400 transition-colors",
-                          placeholder: I?.name || "Enter your name"
-                        }
-                      )
-                    ] }),
-                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
-                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Rating" }),
-                      /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                        [1, 2, 3, 4, 5].map((y) => /* @__PURE__ */ s(
-                          Ct,
-                          {
-                            className: `w-8 h-8 cursor-pointer transition-all hover:scale-110 ${y <= f.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-200"}`,
-                            onClick: () => v({ ...f, rating: y })
-                          },
-                          y
-                        )),
-                        /* @__PURE__ */ d("span", { className: "ml-2 text-sm text-gray-600", children: [
-                          "(",
-                          f.rating,
-                          " ",
-                          f.rating === 1 ? "star" : "stars",
-                          ")"
-                        ] })
-                      ] })
-                    ] }),
-                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
-                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Review" }),
-                      /* @__PURE__ */ s(
-                        "textarea",
-                        {
-                          value: f.comment,
-                          onChange: (y) => v({ ...f, comment: y.target.value }),
-                          className: "w-full p-4 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-green-400 transition-colors",
-                          placeholder: "Share your experience with this business...",
-                          rows: 4
-                        }
-                      )
-                    ] }),
-                    /* @__PURE__ */ s(
-                      D.button,
-                      {
-                        onClick: zl,
-                        whileHover: { scale: 1.02 },
-                        whileTap: { scale: 0.98 },
-                        className: "w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
-                        disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
-                        children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
-                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
-                          "Submitting..."
-                        ] }) : "Submit Review"
-                      }
-                    )
-                  ] })
+                  ] }) : null
                 ] })
               ] }),
               /* @__PURE__ */ d("div", { className: "md:hidden sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-4 flex gap-3", children: [
@@ -10221,8 +10114,8 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       b(!1);
     }
   }, Wl = async () => {
-    if (!I) {
-      alert("Please log in to submit a review");
+    if (!I?.isAdmin) {
+      alert("Admin access required to add reviews.");
       return;
     }
     if (!N.reviewerName.trim()) {
@@ -10989,7 +10882,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                               day: "numeric"
                             }) })
                           ] }),
-                          I && I.id === n.ownerId && /* @__PURE__ */ s(
+                          I?.isAdmin && /* @__PURE__ */ s(
                             "button",
                             {
                               onClick: async () => {
@@ -11033,7 +10926,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No reviews yet" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm", children: "Be the first to leave a review!" })
                   ] }),
-                  I && (n.ownerId === I.id || I.isAdmin) ? /* @__PURE__ */ d(ie, { children: [
+                  I?.isAdmin ? /* @__PURE__ */ d(ie, { children: [
                     /* @__PURE__ */ d("div", { className: "bg-blue-50 rounded-xl border-2 border-blue-200 mb-4", children: [
                       /* @__PURE__ */ d(
                         "button",
@@ -11131,77 +11024,8 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           ] })
                         }
                       ) })
-                    ] }),
-                    /* @__PURE__ */ d("div", { className: "text-center py-8 bg-orange-50 rounded-xl border-2 border-orange-200", children: [
-                      /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mt-2", children: "Use the admin form above to add existing customer reviews" })
                     ] })
-                  ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-orange-200 rounded-xl p-5", children: [
-                    /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
-                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
-                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
-                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Name *" }),
-                      /* @__PURE__ */ s(
-                        "input",
-                        {
-                          type: "text",
-                          value: f.userName || "",
-                          onChange: (y) => v({ ...f, userName: y.target.value }),
-                          className: "w-full p-3 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-purple-400 transition-colors",
-                          placeholder: I?.name || "Enter your name"
-                        }
-                      )
-                    ] }),
-                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
-                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Rating" }),
-                      /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                        [1, 2, 3, 4, 5].map((y) => /* @__PURE__ */ s(
-                          Ct,
-                          {
-                            className: `w-8 h-8 cursor-pointer transition-all hover:scale-110 ${y <= f.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-200"}`,
-                            onClick: () => v({ ...f, rating: y })
-                          },
-                          y
-                        )),
-                        /* @__PURE__ */ d("span", { className: "ml-2 text-sm text-gray-600", children: [
-                          "(",
-                          f.rating,
-                          " ",
-                          f.rating === 1 ? "star" : "stars",
-                          ")"
-                        ] })
-                      ] })
-                    ] }),
-                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
-                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Review" }),
-                      /* @__PURE__ */ s(
-                        "textarea",
-                        {
-                          value: f.comment,
-                          onChange: (y) => v({ ...f, comment: y.target.value }),
-                          className: "w-full p-4 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-orange-400 transition-colors",
-                          placeholder: "Share your experience with this business...",
-                          rows: 4
-                        }
-                      )
-                    ] }),
-                    /* @__PURE__ */ s(
-                      D.button,
-                      {
-                        onClick: zl,
-                        whileHover: { scale: 1.02 },
-                        whileTap: { scale: 0.98 },
-                        className: "w-full bg-gradient-to-r from-orange-600 to-red-500 text-white py-3 rounded-xl hover:from-orange-700 hover:to-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
-                        disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
-                        children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
-                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
-                          "Submitting..."
-                        ] }) : "Submit Review"
-                      }
-                    )
-                  ] })
+                  ] }) : null
                 ] })
               ] }),
               /* @__PURE__ */ d("div", { className: "md:hidden sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-4 flex gap-3", children: [
