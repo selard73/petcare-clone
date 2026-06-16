@@ -11567,56 +11567,49 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                 className: "bg-white rounded-[20px] md:rounded-2xl p-5 md:p-8 border border-purple-100 md:border-purple-200 shadow-sm md:shadow-md relative mx-2 md:mx-0",
                 children: /* @__PURE__ */ d("div", { className: "h-full flex flex-col", children: [
                   /* @__PURE__ */ d("div", { className: "w-full md:max-w-[80%] md:mx-auto flex flex-col flex-1", children: [
-                    /* @__PURE__ */ d("div", { className: "mb-3 md:mb-4 flex items-center gap-2 justify-start", children: [
-                      /* @__PURE__ */ s("h2", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight text-left", children: "For Business Owners" }),
+                    /* @__PURE__ */ d("div", { className: "mb-3 md:mb-4 flex flex-nowrap items-center gap-2 justify-start", children: [
+                      /* @__PURE__ */ s("h2", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight text-left whitespace-nowrap flex-shrink-0", children: "For Business Owners" }),
                       /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs whitespace-nowrap flex-shrink-0", children: "Free Listing" })
                     ] }),
-                    /* @__PURE__ */ d("div", { className: "text-gray-700 mb-3 md:mb-4 text-sm md:text-base leading-relaxed space-y-2", children: [
-                      /* @__PURE__ */ d("p", { children: [
-                        "Located in ",
-                        /* @__PURE__ */ s("strong", { children: "Darlington, Hartsville, or Florence?" }),
-                        " Listings are managed by our team."
-                      ] }),
-                      /* @__PURE__ */ d("p", { children: [
-                        "Email ",
-                        /* @__PURE__ */ s(
-                          "a",
-                          {
-                            href: "mailto:kawaii@kawaiipagepress.com?subject=Pawsitively%20Business%20Listing%20Request",
-                            className: "text-purple-600 font-semibold hover:underline break-all",
-                            children: "kawaii@kawaiipagepress.com"
-                          }
-                        ),
-                        " to be added or to request updates."
-                      ] })
+                    /* @__PURE__ */ s("p", { className: "text-gray-700 mb-3 md:mb-4 text-sm md:text-base leading-relaxed", children: [
+                      "Email: ",
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: "mailto:kawaii@kawaiipagepress.com?subject=Pawsitively%20Business%20Listing%20Request",
+                          className: "text-purple-600 font-semibold hover:underline break-all",
+                          children: "kawaii@kawaiipagepress.com"
+                        }
+                      ),
+                      " to be added or to request updates."
                     ] }),
                     /* @__PURE__ */ d("ul", { className: "text-gray-700 space-y-3 md:space-y-3 flex-1", children: [
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
                         /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "✉️" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Request a listing" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Email us to add your business to the directory" })
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-snug", children: "Email us to add your business." })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
                         /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "📸" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Share your details" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Send hours, services, photos, and contact info" })
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-snug", children: "Send us your business updates" })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
                         /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "⭐" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Reach local pet owners" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Get discovered by owners searching your area" })
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-snug", children: "Get discovered by new customers" })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
                         /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🔄" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Request listing updates" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Contact us anytime your business info changes" })
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-snug", children: "Contact us anytime your business info changes" })
                         ] })
                       ] })
                     ] })
