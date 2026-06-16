@@ -11606,10 +11606,10 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🔄" }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🌐" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
-                          /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Request listing updates" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-snug", children: "Contact us anytime your business info changes" })
+                          /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Let us build your website" }),
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-snug", children: "Reach out for more info." })
                         ] })
                       ] })
                     ] })
