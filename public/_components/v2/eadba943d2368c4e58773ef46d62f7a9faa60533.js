@@ -11569,7 +11569,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                   /* @__PURE__ */ d("div", { className: "w-full md:max-w-[80%] md:mx-auto flex flex-col flex-1", children: [
                     /* @__PURE__ */ d("div", { className: "mb-3 md:mb-4 flex flex-nowrap items-center gap-2 justify-start", children: [
                       /* @__PURE__ */ s("h2", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight text-left whitespace-nowrap flex-shrink-0", children: "For Business Owners" }),
-                      /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs whitespace-nowrap flex-shrink-0", children: "Free Listing" })
+                      /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center bg-purple-100 text-purple-600 px-3 py-1 rounded-full text-xs whitespace-nowrap flex-shrink-0", children: "Free" })
                     ] }),
                     /* @__PURE__ */ s("p", { className: "text-gray-700 mb-3 md:mb-4 text-sm md:text-base leading-relaxed", children: [
                       "Email: ",
