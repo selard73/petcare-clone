@@ -6542,24 +6542,25 @@ const Oe = {
     return { reviews: [...o.values()].sort((a, l) => new Date(l.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime()) };
   },
   async addReview(t, e, r, n, i) {
-    const o = localStorage.getItem("user"), a = o ? JSON.parse(o) : null;
-    if (!a?.isAdmin)
-      throw new Error("Admin access required to add reviews.");
-    if (!i?.trim())
-      throw new Error("Please enter a reviewer name.");
+    const o = localStorage.getItem("user"), a = o ? JSON.parse(o) : null, c = !!(i && a?.isAdmin);
+    if (!c) {
+      const h = validateGuestReviewSubmission(t, r, i || a?.name || "");
+      if (!h.ok)
+        throw new Error(h.message);
+    }
     const l = {
       id: crypto.randomUUID(),
       businessId: t,
-      userId: `admin-${a?.id || "anonymous"}`,
-      userName: i.trim(),
+      userId: a?.isAdmin && i ? `admin-${a?.id || "anonymous"}` : a?.id || (i ? `guest-${crypto.randomUUID().slice(0, 8)}` : "anonymous"),
+      userName: i || a?.name || "Anonymous",
       rating: e,
       comment: r,
       createdAt: (/* @__PURE__ */ new Date()).toISOString(),
-      isAdminReview: !0
+      isAdminReview: c
     };
-    ce.addReview(l);
-    const c = await saveCloudReviewRecord(l);
-    return c.success ? { success: !0, review: l } : { success: !0, review: l, cloudWarning: c.error || "Saved locally, but cloud sync failed." };
+    ce.addReview(l), c || recordGuestReviewSubmission(t);
+    const u = await saveCloudReviewRecord(l);
+    return u.success ? { success: !0, review: l } : { success: !0, review: l, cloudWarning: u.error || "Saved locally, but cloud sync failed." };
   },
   async deleteReview(t) {
     const e = localStorage.getItem("user"), r = e ? JSON.parse(e) : null;
@@ -6818,7 +6819,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
     }
   }, Wl = async () => {
     if (!I?.isAdmin) {
-      alert("Admin access required to add reviews.");
+      alert("Admin access required to add customer reviews on behalf of clients.");
       return;
     }
     if (!N.reviewerName.trim()) {
@@ -7722,7 +7723,74 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         }
                       ) })
                     ] })
-                  ] }) : null
+                  ] }) : I && n.ownerId === I.id ? /* @__PURE__ */ d("div", { className: "text-center py-8 bg-purple-50 rounded-xl border-2 border-purple-200", children: [
+                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" })
+                  ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-purple-200 rounded-xl p-5", children: [
+                    /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Name *" }),
+                      /* @__PURE__ */ s(
+                        "input",
+                        {
+                          type: "text",
+                          value: f.userName || "",
+                          onChange: (y) => v({ ...f, userName: y.target.value }),
+                          className: "w-full p-3 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-purple-400 transition-colors",
+                          placeholder: I?.name || "Enter your name"
+                        }
+                      )
+                    ] }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Rating" }),
+                      /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                        [1, 2, 3, 4, 5].map((y) => /* @__PURE__ */ s(
+                          Ct,
+                          {
+                            className: `w-8 h-8 cursor-pointer transition-all hover:scale-110 ${y <= f.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-200"}`,
+                            onClick: () => v({ ...f, rating: y })
+                          },
+                          y
+                        )),
+                        /* @__PURE__ */ d("span", { className: "ml-2 text-sm text-gray-600", children: [
+                          "(",
+                          f.rating,
+                          " ",
+                          f.rating === 1 ? "star" : "stars",
+                          ")"
+                        ] })
+                      ] })
+                    ] }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Review" }),
+                      /* @__PURE__ */ s(
+                        "textarea",
+                        {
+                          value: f.comment,
+                          onChange: (y) => v({ ...f, comment: y.target.value }),
+                          className: "w-full p-4 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-purple-400 transition-colors",
+                          placeholder: "Share your experience with this business...",
+                          rows: 4
+                        }
+                      )
+                    ] }),
+                    /* @__PURE__ */ s(
+                      D.button,
+                      {
+                        onClick: zl,
+                        whileHover: { scale: 1.02 },
+                        whileTap: { scale: 0.98 },
+                        className: "w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-xl hover:from-pink-600 hover:to-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
+                        disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
+                        children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
+                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
+                          "Submitting..."
+                        ] }) : "Submit Review"
+                      }
+                    )
+                  ] })
                 ] })
               ] }),
               /* @__PURE__ */ d("div", { className: "md:hidden sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-4 flex gap-3", children: [
@@ -8546,6 +8614,24 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             an ? "Deleting..." : "Delete Business Listing"
           ] })
         ] }),
+        !(Lr && r.ownerId === Lr.id) && !Lr?.isAdmin && /* @__PURE__ */ d("div", { className: "bg-white border-2 border-blue-200 rounded-xl p-5 mt-4", children: [
+          /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
+          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
+          /* @__PURE__ */ d("div", { className: "space-y-3", children: [
+            /* @__PURE__ */ s("input", { type: "text", placeholder: Lr?.name || "Your name", value: Qr.userName, onChange: (K) => dn({ ...Qr, userName: K.target.value }), className: "w-full px-4 py-2 border-2 border-blue-200 rounded-lg focus:outline-none focus:border-blue-400" }),
+            /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+              [1, 2, 3, 4, 5].map((K) => /* @__PURE__ */ s("button", { type: "button", onClick: () => dn({ ...Qr, rating: K }), className: `text-2xl transition-transform hover:scale-110 ${K <= Qr.rating ? "opacity-100" : "opacity-30"}`, children: "⭐" }, K)),
+              /* @__PURE__ */ d("span", { className: "ml-2 text-sm text-gray-600", children: ["(", Qr.rating, " ", Qr.rating === 1 ? "star" : "stars", ")"] })
+            ] }),
+            /* @__PURE__ */ s("textarea", { placeholder: "Share your experience with this trainer...", value: Qr.comment, onChange: (K) => dn({ ...Qr, comment: K.target.value }), rows: 4, className: "w-full px-4 py-2 border-2 border-blue-200 rounded-lg focus:outline-none focus:border-blue-400 resize-none" }),
+            /* @__PURE__ */ s(D.button, { onClick: Jn, whileHover: { scale: 1.02 }, whileTap: { scale: 0.98 }, className: "w-full text-white py-3 rounded-lg transition-colors disabled:opacity-50", style: { backgroundColor: "#2563eb" }, disabled: vn || !Qr.comment.trim() || !Qr.userName.trim() && !Lr?.name, children: vn ? "Submitting..." : "Submit Review" })
+          ] })
+        ] }),
+        Lr && r.ownerId === Lr.id && !Lr?.isAdmin && /* @__PURE__ */ d("div", { className: "text-center py-6 bg-blue-50 rounded-xl border-2 border-blue-200 mt-4", children: [
+          /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
+          /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
+          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" })
+        ] }),
         Lr?.isAdmin && /* @__PURE__ */ d("div", { className: "bg-yellow-50 border-2 border-yellow-200 rounded-xl p-4 mt-4", children: [
           /* @__PURE__ */ s("h4", { className: "text-gray-800", children: "Admin: Add Customer Review" }),
           /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "Add verified customer reviews on behalf of clients." }),
@@ -8830,7 +8916,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
     }
   }, Wl = async () => {
     if (!I?.isAdmin) {
-      alert("Admin access required to add reviews.");
+      alert("Admin access required to add customer reviews on behalf of clients.");
       return;
     }
     if (!N.reviewerName.trim()) {
@@ -9747,7 +9833,74 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         }
                       ) })
                     ] })
-                  ] }) : null
+                  ] }) : I && n.ownerId === I.id ? /* @__PURE__ */ d("div", { className: "text-center py-8 bg-green-50 rounded-xl border-2 border-green-200", children: [
+                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" })
+                  ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-green-200 rounded-xl p-5", children: [
+                    /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Name *" }),
+                      /* @__PURE__ */ s(
+                        "input",
+                        {
+                          type: "text",
+                          value: f.userName || "",
+                          onChange: (y) => v({ ...f, userName: y.target.value }),
+                          className: "w-full p-3 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-green-400 transition-colors",
+                          placeholder: I?.name || "Enter your name"
+                        }
+                      )
+                    ] }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Rating" }),
+                      /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                        [1, 2, 3, 4, 5].map((y) => /* @__PURE__ */ s(
+                          Ct,
+                          {
+                            className: `w-8 h-8 cursor-pointer transition-all hover:scale-110 ${y <= f.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-200"}`,
+                            onClick: () => v({ ...f, rating: y })
+                          },
+                          y
+                        )),
+                        /* @__PURE__ */ d("span", { className: "ml-2 text-sm text-gray-600", children: [
+                          "(",
+                          f.rating,
+                          " ",
+                          f.rating === 1 ? "star" : "stars",
+                          ")"
+                        ] })
+                      ] })
+                    ] }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Review" }),
+                      /* @__PURE__ */ s(
+                        "textarea",
+                        {
+                          value: f.comment,
+                          onChange: (y) => v({ ...f, comment: y.target.value }),
+                          className: "w-full p-4 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-green-400 transition-colors",
+                          placeholder: "Share your experience with this business...",
+                          rows: 4
+                        }
+                      )
+                    ] }),
+                    /* @__PURE__ */ s(
+                      D.button,
+                      {
+                        onClick: zl,
+                        whileHover: { scale: 1.02 },
+                        whileTap: { scale: 0.98 },
+                        className: "w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
+                        disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
+                        children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
+                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
+                          "Submitting..."
+                        ] }) : "Submit Review"
+                      }
+                    )
+                  ] })
                 ] })
               ] }),
               /* @__PURE__ */ d("div", { className: "md:hidden sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-4 flex gap-3", children: [
@@ -10115,7 +10268,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
     }
   }, Wl = async () => {
     if (!I?.isAdmin) {
-      alert("Admin access required to add reviews.");
+      alert("Admin access required to add customer reviews on behalf of clients.");
       return;
     }
     if (!N.reviewerName.trim()) {
@@ -11025,7 +11178,74 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         }
                       ) })
                     ] })
-                  ] }) : null
+                  ] }) : I && n.ownerId === I.id ? /* @__PURE__ */ d("div", { className: "text-center py-8 bg-orange-50 rounded-xl border-2 border-orange-200", children: [
+                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" })
+                  ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-orange-200 rounded-xl p-5", children: [
+                    /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Name *" }),
+                      /* @__PURE__ */ s(
+                        "input",
+                        {
+                          type: "text",
+                          value: f.userName || "",
+                          onChange: (y) => v({ ...f, userName: y.target.value }),
+                          className: "w-full p-3 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-orange-400 transition-colors",
+                          placeholder: I?.name || "Enter your name"
+                        }
+                      )
+                    ] }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Rating" }),
+                      /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                        [1, 2, 3, 4, 5].map((y) => /* @__PURE__ */ s(
+                          Ct,
+                          {
+                            className: `w-8 h-8 cursor-pointer transition-all hover:scale-110 ${y <= f.rating ? "fill-yellow-400 text-yellow-400" : "text-gray-300 hover:text-yellow-200"}`,
+                            onClick: () => v({ ...f, rating: y })
+                          },
+                          y
+                        )),
+                        /* @__PURE__ */ d("span", { className: "ml-2 text-sm text-gray-600", children: [
+                          "(",
+                          f.rating,
+                          " ",
+                          f.rating === 1 ? "star" : "stars",
+                          ")"
+                        ] })
+                      ] })
+                    ] }),
+                    /* @__PURE__ */ d("div", { className: "mb-4", children: [
+                      /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Review" }),
+                      /* @__PURE__ */ s(
+                        "textarea",
+                        {
+                          value: f.comment,
+                          onChange: (y) => v({ ...f, comment: y.target.value }),
+                          className: "w-full p-4 bg-gray-50 rounded-xl border-2 border-gray-200 focus:outline-none focus:border-orange-400 transition-colors",
+                          placeholder: "Share your experience with this business...",
+                          rows: 4
+                        }
+                      )
+                    ] }),
+                    /* @__PURE__ */ s(
+                      D.button,
+                      {
+                        onClick: zl,
+                        whileHover: { scale: 1.02 },
+                        whileTap: { scale: 0.98 },
+                        className: "w-full bg-gradient-to-r from-orange-600 to-red-500 text-white py-3 rounded-xl hover:from-orange-700 hover:to-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
+                        disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
+                        children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
+                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
+                          "Submitting..."
+                        ] }) : "Submit Review"
+                      }
+                    )
+                  ] })
                 ] })
               ] }),
               /* @__PURE__ */ d("div", { className: "md:hidden sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-4 flex gap-3", children: [
