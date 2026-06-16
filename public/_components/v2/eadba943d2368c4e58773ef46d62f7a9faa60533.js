@@ -18514,9 +18514,11 @@ function oy() {
       /* @__PURE__ */ d("div", { className: "hidden md:block", children: [
         /* @__PURE__ */ s("p", { className: "text-2xl mb-2", children: "🐾 Pawsitively Fabulous 🐾" }),
         /* @__PURE__ */ s("p", { children: "Pet Services Directory - One Stop Shop" }),
-        /* @__PURE__ */ s("p", { className: "text-purple-600 mt-4", children: "All Your Pet Needs in Darlington/Florence Area" })
-      ] }),
-      t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "hidden md:block absolute bottom-1 right-4 sm:right-6 lg:right-8 text-xs text-purple-500/70 tracking-wide pointer-events-none whitespace-nowrap", children: `${Pv.toLocaleString()} visits and counting` })
+        /* @__PURE__ */ d("div", { className: "relative mt-4 w-full", children: [
+          /* @__PURE__ */ s("p", { className: "text-purple-600", children: "All Your Pet Needs in Darlington/Florence Area" }),
+          t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "absolute top-1/2 -translate-y-1/2 right-0 text-xs text-purple-500/70 tracking-wide pointer-events-none whitespace-nowrap", children: `${Pv.toLocaleString()} visits and counting` })
+        ] })
+      ] })
     ] })
     ] })
   ] });
