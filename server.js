@@ -17,9 +17,9 @@ const AIRTABLE_DB_FILE = path.join(ROOT, "data", "airtable.json");
 const SQLITE_DB_FILE = path.join(ROOT, "data", "petcare.db");
 const STATS_FILE = path.join(ROOT, "data", "stats.json");
 const VISIT_COUNT_KEY = "homepage_visits";
-const REVIEW_NOTIFY_TO = process.env.REVIEW_NOTIFY_EMAIL || "kawaii@kawaiipagepress.com";
+const REVIEW_NOTIFY_TO = process.env.REVIEW_NOTIFY_EMAIL || "selard73@gmail.com";
 const REVIEW_NOTIFY_FROM =
-  process.env.REVIEW_NOTIFY_FROM || "Pawsitively Fabulous <notifications@kawaiipagepress.com>";
+  process.env.REVIEW_NOTIFY_FROM || "Pawsitively Fabulous <selard73@gmail.com>";
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const SMTP_HOST = process.env.SMTP_HOST || "";
 const SMTP_PORT = Number(process.env.SMTP_PORT || 587);
