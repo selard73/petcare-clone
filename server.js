@@ -17,6 +17,21 @@ const AIRTABLE_DB_FILE = path.join(ROOT, "data", "airtable.json");
 const SQLITE_DB_FILE = path.join(ROOT, "data", "petcare.db");
 const STATS_FILE = path.join(ROOT, "data", "stats.json");
 const VISIT_COUNT_KEY = "homepage_visits";
+const REVIEW_NOTIFY_TO = process.env.REVIEW_NOTIFY_EMAIL || "kawaii@kawaiipagepress.com";
+const REVIEW_NOTIFY_FROM =
+  process.env.REVIEW_NOTIFY_FROM || "Pawsitively Fabulous <notifications@kawaiipagepress.com>";
+const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
+const SMTP_HOST = process.env.SMTP_HOST || "";
+const SMTP_PORT = Number(process.env.SMTP_PORT || 587);
+const SMTP_USER = process.env.SMTP_USER || "";
+const SMTP_PASS = process.env.SMTP_PASS || "";
+
+let nodemailer = null;
+try {
+  nodemailer = require("nodemailer");
+} catch {
+  nodemailer = null;
+}
 
 const mimeTypes = {
   ".html": "text/html; charset=utf-8",
@@ -260,6 +275,108 @@ async function handleVisitStatsApi(req, res) {
   return true;
 }
 
+function isReviewRecord(fields = {}) {
+  return String(fields.price || "").startsWith("REVIEW:");
+}
+
+function parseReviewFromFields(fields = {}) {
+  try {
+    const parsed = JSON.parse(fields.about || "{}");
+    return parsed && typeof parsed === "object" ? parsed : null;
+  } catch {
+    return null;
+  }
+}
+
+function buildReviewNotificationEmail(action, fields = {}) {
+  const review = parseReviewFromFields(fields) || {};
+  const businessId = review.businessId || fields.name || "unknown business";
+  const reviewer = review.userName || "Anonymous";
+  const rating = review.rating ?? "n/a";
+  const comment = String(review.comment || "").trim() || "(no comment)";
+  const when = review.createdAt || new Date().toISOString();
+  const actionLabel = action === "removed" ? "removed" : "added";
+  const subject =
+    action === "removed"
+      ? `Review removed on Pawsitively Fabulous`
+      : `New review on Pawsitively Fabulous`;
+  const text = [
+    `A review was ${actionLabel} on Pawsitively Fabulous.`,
+    "",
+    `Business ID: ${businessId}`,
+    `Reviewer: ${reviewer}`,
+    `Rating: ${rating}/5`,
+    `Submitted: ${when}`,
+    "",
+    "Review:",
+    comment,
+  ].join("\n");
+  return { subject, text };
+}
+
+async function sendViaResendEmail({ subject, text }) {
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${RESEND_API_KEY}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      from: REVIEW_NOTIFY_FROM,
+      to: [REVIEW_NOTIFY_TO],
+      subject,
+      text,
+    }),
+  });
+  if (!response.ok) {
+    const body = await response.text();
+    throw new Error(`Resend error (${response.status}): ${body}`);
+  }
+}
+
+async function sendViaSmtpEmail({ subject, text }) {
+  if (!nodemailer) {
+    throw new Error("nodemailer is not installed");
+  }
+  const transporter = nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: SMTP_PORT,
+    secure: SMTP_PORT === 465,
+    auth: {
+      user: SMTP_USER,
+      pass: SMTP_PASS,
+    },
+  });
+  await transporter.sendMail({
+    from: REVIEW_NOTIFY_FROM,
+    to: REVIEW_NOTIFY_TO,
+    subject,
+    text,
+  });
+}
+
+async function sendReviewNotificationEmail(action, fields = {}) {
+  if (!isReviewRecord(fields)) return;
+  const payload = buildReviewNotificationEmail(action, fields);
+  if (RESEND_API_KEY) {
+    await sendViaResendEmail(payload);
+    return;
+  }
+  if (SMTP_HOST && SMTP_USER && SMTP_PASS) {
+    await sendViaSmtpEmail(payload);
+    return;
+  }
+  console.warn(
+    "Review notification skipped: set RESEND_API_KEY or SMTP_HOST/SMTP_USER/SMTP_PASS on the server.",
+  );
+}
+
+function queueReviewNotification(action, fields = {}) {
+  sendReviewNotificationEmail(action, fields).catch((error) => {
+    console.error("Review notification email failed:", error.message);
+  });
+}
+
 async function listAllRecords() {
   if (usingSqlite) {
     const rows = sqlite.prepare("SELECT id, created_time, fields_json FROM airtable_records ORDER BY created_time DESC").all();
@@ -356,6 +473,11 @@ async function handleAirtableApi(req, res, url) {
   if (method === "POST" && !id) {
     const body = await parseBody(req);
     const created = await createRecords(Array.isArray(body.records) ? body.records : [body]);
+    for (const record of created) {
+      if (isReviewRecord(record.fields)) {
+        queueReviewNotification("added", record.fields);
+      }
+    }
     sendJson(res, 200, Array.isArray(body.records) ? { records: created } : created[0]);
     return true;
   }
@@ -372,10 +494,14 @@ async function handleAirtableApi(req, res, url) {
   }
 
   if (method === "DELETE" && id) {
+    const existing = await getRecordById(id);
     const deleted = await deleteRecord(id);
     if (!deleted) {
       sendJson(res, 404, { error: { type: "NOT_FOUND", message: "Record not found" } });
       return true;
+    }
+    if (existing && isReviewRecord(existing.fields)) {
+      queueReviewNotification("removed", existing.fields);
     }
     sendJson(res, 200, { id, deleted: true });
     return true;
@@ -442,4 +568,12 @@ server.listen(PORT, () => {
       : `Persistence backend: JSON fallback (${AIRTABLE_DB_FILE})`,
   );
   console.log("Airtable writes are redirected to /api/airtable");
+  console.log(`Review notifications target: ${REVIEW_NOTIFY_TO}`);
+  if (RESEND_API_KEY) {
+    console.log("Review notification email: Resend API");
+  } else if (SMTP_HOST && SMTP_USER && SMTP_PASS) {
+    console.log(`Review notification email: SMTP (${SMTP_HOST})`);
+  } else {
+    console.log("Review notification email: not configured (set RESEND_API_KEY or SMTP env vars)");
+  }
 });
