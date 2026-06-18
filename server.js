@@ -524,6 +524,44 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
+    if (url.pathname === "/api/review-notify-test" && req.method.toUpperCase() === "GET") {
+      try {
+        const payload = buildReviewNotificationEmail("added", {
+          price: "REVIEW:test-business",
+          name: "test-business",
+          about: JSON.stringify({
+            businessId: "test-business",
+            userName: "Email test",
+            rating: 5,
+            comment: "This is a test review notification from Pawsitively Fabulous.",
+            createdAt: new Date().toISOString(),
+          }),
+        });
+        if (RESEND_API_KEY) {
+          await sendViaResendEmail(payload);
+        } else if (SMTP_HOST && SMTP_USER && SMTP_PASS) {
+          await sendViaSmtpEmail(payload);
+        } else {
+          sendJson(res, 500, {
+            ok: false,
+            error: "Email is not configured on the server yet.",
+            hint: "Add SMTP_HOST, SMTP_USER, and SMTP_PASS in Render Environment, then redeploy.",
+          });
+          return;
+        }
+        sendJson(res, 200, {
+          ok: true,
+          message: `Test email sent to ${REVIEW_NOTIFY_TO}`,
+        });
+      } catch (error) {
+        sendJson(res, 500, {
+          ok: false,
+          error: error.message || "Failed to send test email",
+        });
+      }
+      return;
+    }
+
     if (url.pathname.startsWith("/api/airtable")) {
       const handled = await handleAirtableApi(req, res, url);
       if (handled) return;
