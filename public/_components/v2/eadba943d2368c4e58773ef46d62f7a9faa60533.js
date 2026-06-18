@@ -6888,7 +6888,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       }
     }
   }, yt = (() => {
-    let y = o.filter((F) => !(Ke.trim() && !F.name.toLowerCase().includes(Ke.toLowerCase()) || ee !== "all" && !(F.city === ee || ee === "Hartsville" && ["timmonsville", "cades"].includes(String(F.city || "").toLowerCase())) || pe && !F.mobileService || W && !(F.hours && (F.hours.saturday && !F.hours.saturday.toLowerCase().includes("closed") || F.hours.sunday && !F.hours.sunday.toLowerCase().includes("closed"))) || ae && !F.notAcceptingClients || Me !== "all" && F.priceRange !== Me));
+    let y = o.filter((F) => !(Ke.trim() && !F.name.toLowerCase().includes(Ke.toLowerCase()) || ee !== "all" && !businessMatchesCityFilter(F.city, ee) || pe && !F.mobileService || W && !(F.hours && (F.hours.saturday && !F.hours.saturday.toLowerCase().includes("closed") || F.hours.sunday && !F.hours.sunday.toLowerCase().includes("closed"))) || ae && !F.notAcceptingClients || Me !== "all" && F.priceRange !== Me));
     return y.sort((F, B) => {
       if (Re === "name")
         return F.name.localeCompare(B.name);
@@ -8286,7 +8286,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       const K = getDetailGalleryPhotos(r);
       en((L) => L === 0 ? K.length - 1 : L - 1);
     }
-  }, ee = [...new Set(i.map((K) => K.city).filter(Boolean))], G = i.filter((K) => !(c.trim() && !K.name.toLowerCase().includes(c.toLowerCase()) || h !== "all" && K.city !== h || m && !K.inHomeTraining || v && !K.groupClassesAvailable || b && (sn[K.id]?.average || 0) < 4 || x !== "all" && K.priceRange !== x)), pe = [...G].sort((K, L) => K.name.localeCompare(L.name)), W = window.innerWidth >= 768 ? pe : pe.slice(0, R);
+  }, ee = [...new Set(i.map((K) => K.city).filter(Boolean))], G = i.filter((K) => !(c.trim() && !K.name.toLowerCase().includes(c.toLowerCase()) || h !== "all" && !businessMatchesCityFilter(K.city, h) || m && !K.inHomeTraining || v && !K.groupClassesAvailable || b && (sn[K.id]?.average || 0) < 4 || x !== "all" && K.priceRange !== x)), pe = [...G].sort((K, L) => K.name.localeCompare(L.name)), W = window.innerWidth >= 768 ? pe : pe.slice(0, R);
   return /* @__PURE__ */ d("div", { className: "min-h-screen bg-white md:bg-transparent", children: [
     /* @__PURE__ */ s("section", { className: "bg-gradient-to-br from-blue-400 via-cyan-500 to-teal-600 text-white h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[8px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
@@ -8985,7 +8985,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       }
     }
   }, yt = (() => {
-    let y = o.filter((F) => !(Ke.trim() && !F.name.toLowerCase().includes(Ke.toLowerCase()) || ee !== "all" && !(F.city === ee || ee === "Hartsville" && ["timmonsville", "cades"].includes(String(F.city || "").toLowerCase())) || pe && !F.daycareAvailable || W && !(F.hours && (F.hours.saturday && !F.hours.saturday.toLowerCase().includes("closed") || F.hours.sunday && !F.hours.sunday.toLowerCase().includes("closed"))) || ae && (w[F.id]?.average || 0) < 4 || Me !== "all" && F.priceRange !== Me));
+    let y = o.filter((F) => !(Ke.trim() && !F.name.toLowerCase().includes(Ke.toLowerCase()) || ee !== "all" && !businessMatchesCityFilter(F.city, ee) || pe && !F.daycareAvailable || W && !(F.hours && (F.hours.saturday && !F.hours.saturday.toLowerCase().includes("closed") || F.hours.sunday && !F.hours.sunday.toLowerCase().includes("closed"))) || ae && (w[F.id]?.average || 0) < 4 || Me !== "all" && F.priceRange !== Me));
     return y.sort((F, B) => {
       if (Re === "name")
         return F.name.localeCompare(B.name);
@@ -10337,7 +10337,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       }
     }
   }, yt = (() => {
-    let y = o.filter((F) => !(Ke.trim() && !F.name.toLowerCase().includes(Ke.toLowerCase()) || ee !== "all" && !(F.city === ee || ee === "Hartsville" && ["timmonsville", "cades"].includes(String(F.city || "").toLowerCase())) || pe && !(F.emergency24x7 || F.emergency) || W && !(F.acceptsWalkins || F.acceptingNewPatients) || ae && (w[F.id]?.average || 0) < 4 || Me !== "all" && F.priceRange !== Me));
+    let y = o.filter((F) => !(Ke.trim() && !F.name.toLowerCase().includes(Ke.toLowerCase()) || ee !== "all" && !businessMatchesCityFilter(F.city, ee) || pe && !(F.emergency24x7 || F.emergency) || W && !(F.acceptsWalkins || F.acceptingNewPatients) || ae && (w[F.id]?.average || 0) < 4 || Me !== "all" && F.priceRange !== Me));
     return y.sort((F, B) => {
       if (Re === "name")
         return F.name.localeCompare(B.name);
@@ -16260,6 +16260,13 @@ async function ny(t, e, r) {
       a(u);
     }, "image/jpeg", 0.95);
   });
+}
+function businessMatchesCityFilter(t, e) {
+  const r = String(t || "").trim(), n = String(e || "").trim();
+  if (!n || n === "all") return !0;
+  if (r === n) return !0;
+  const i = r.toLowerCase(), o = n.toLowerCase();
+  return i === o || o === "hartsville" && ["timmonsville", "cades"].includes(i) || o === "florence" && ["scranton"].includes(i);
 }
 function getDetailGalleryPhotos(t) {
   if (!t)
