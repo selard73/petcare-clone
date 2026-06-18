@@ -8059,6 +8059,8 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
   U(() => {
     z();
   }, []), U(() => {
+    String(h).toLowerCase() === "scranton" && p("Florence");
+  }, [i]), U(() => {
     M(10), I(!1);
   }, [c, h]), U(() => {
     r && (en(0), yn(r.id));
@@ -8286,7 +8288,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       const K = getDetailGalleryPhotos(r);
       en((L) => L === 0 ? K.length - 1 : L - 1);
     }
-  }, ee = [...new Set(i.map((K) => K.city).filter(Boolean))], G = i.filter((K) => !(c.trim() && !K.name.toLowerCase().includes(c.toLowerCase()) || h !== "all" && !trainingMatchesCityFilter(K, h) || m && !K.inHomeTraining || v && !K.groupClassesAvailable || b && (sn[K.id]?.average || 0) < 4 || x !== "all" && K.priceRange !== x)), pe = [...G].sort((K, L) => K.name.localeCompare(L.name)), W = window.innerWidth >= 768 ? pe : pe.slice(0, R);
+  }, ee = getTrainingCityFilterOptions(i), G = i.filter((K) => !(c.trim() && !K.name.toLowerCase().includes(c.toLowerCase()) || h !== "all" && !trainingMatchesCityFilter(K, h) || m && !K.inHomeTraining || v && !K.groupClassesAvailable || b && (sn[K.id]?.average || 0) < 4 || x !== "all" && K.priceRange !== x)), pe = [...G].sort((K, L) => K.name.localeCompare(L.name)), W = window.innerWidth >= 768 ? pe : pe.slice(0, R);
   return /* @__PURE__ */ d("div", { className: "min-h-screen bg-white md:bg-transparent", children: [
     /* @__PURE__ */ s("section", { className: "bg-gradient-to-br from-blue-400 via-cyan-500 to-teal-600 text-white h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[8px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
@@ -16275,6 +16277,9 @@ function isMakorK9Training(t) {
 function trainingMatchesCityFilter(t, e) {
   const r = String(e || "").trim();
   return !r || r === "all" ? !0 : isMakorK9Training(t) && r.toLowerCase() === "florence" ? !0 : businessMatchesCityFilter(t?.city, e);
+}
+function getTrainingCityFilterOptions(t) {
+  return [...new Set(t.map((e) => e.city).filter(Boolean))].filter((e) => String(e).toLowerCase() !== "scranton").sort((e, r) => String(e).localeCompare(String(r)));
 }
 function getDetailGalleryPhotos(t) {
   if (!t)
