@@ -8286,7 +8286,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       const K = getDetailGalleryPhotos(r);
       en((L) => L === 0 ? K.length - 1 : L - 1);
     }
-  }, ee = [...new Set(i.map((K) => K.city).filter(Boolean))], G = i.filter((K) => !(c.trim() && !K.name.toLowerCase().includes(c.toLowerCase()) || h !== "all" && !businessMatchesCityFilter(K.city, h) || m && !K.inHomeTraining || v && !K.groupClassesAvailable || b && (sn[K.id]?.average || 0) < 4 || x !== "all" && K.priceRange !== x)), pe = [...G].sort((K, L) => K.name.localeCompare(L.name)), W = window.innerWidth >= 768 ? pe : pe.slice(0, R);
+  }, ee = [...new Set(i.map((K) => K.city).filter(Boolean))], G = i.filter((K) => !(c.trim() && !K.name.toLowerCase().includes(c.toLowerCase()) || h !== "all" && !trainingMatchesCityFilter(K, h) || m && !K.inHomeTraining || v && !K.groupClassesAvailable || b && (sn[K.id]?.average || 0) < 4 || x !== "all" && K.priceRange !== x)), pe = [...G].sort((K, L) => K.name.localeCompare(L.name)), W = window.innerWidth >= 768 ? pe : pe.slice(0, R);
   return /* @__PURE__ */ d("div", { className: "min-h-screen bg-white md:bg-transparent", children: [
     /* @__PURE__ */ s("section", { className: "bg-gradient-to-br from-blue-400 via-cyan-500 to-teal-600 text-white h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[8px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
@@ -16266,7 +16266,15 @@ function businessMatchesCityFilter(t, e) {
   if (!n || n === "all") return !0;
   if (r === n) return !0;
   const i = r.toLowerCase(), o = n.toLowerCase();
-  return i === o || o === "hartsville" && ["timmonsville", "cades"].includes(i) || o === "florence" && ["scranton"].includes(i);
+  return i === o || o === "hartsville" && ["timmonsville", "cades"].includes(i);
+}
+function isMakorK9Training(t) {
+  const e = String(t?.name || "").toLowerCase();
+  return e.includes("makor") && e.includes("k9");
+}
+function trainingMatchesCityFilter(t, e) {
+  const r = String(e || "").trim();
+  return !r || r === "all" ? !0 : isMakorK9Training(t) && r.toLowerCase() === "florence" ? !0 : businessMatchesCityFilter(t?.city, e);
 }
 function getDetailGalleryPhotos(t) {
   if (!t)
