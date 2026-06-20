@@ -520,14 +520,46 @@ function getUserAccountStats() {
 
 async function getUserAccountStatsAsync() {
   const sqliteStats = getUserAccountStats();
-  if (sqliteStats) return sqliteStats;
+  const accounts = await listRegisteredAccountsAsync();
+  if (sqliteStats) {
+    return { ...sqliteStats, accounts };
+  }
   const db = await readUsersDb();
-  const accounts = db.users.filter((user) => !user.is_admin);
+  const filtered = db.users.filter((user) => !user.is_admin);
   return {
-    totalAccounts: accounts.length,
-    guestAccounts: accounts.filter((user) => user.role === "guest").length,
-    businessAccounts: accounts.filter((user) => user.role === "business").length,
+    totalAccounts: filtered.length,
+    guestAccounts: filtered.filter((user) => user.role === "guest").length,
+    businessAccounts: filtered.filter((user) => user.role === "business").length,
+    accounts,
   };
+}
+
+async function listRegisteredAccountsAsync() {
+  if (usingSqlite) {
+    const rows = sqlite
+      .prepare(
+        "SELECT id, email, name, role, created_at FROM users WHERE is_admin = 0 ORDER BY created_at DESC",
+      )
+      .all();
+    return rows.map((row) => ({
+      id: row.id,
+      email: row.email,
+      name: row.name,
+      role: row.role,
+      createdAt: row.created_at,
+    }));
+  }
+  const db = await readUsersDb();
+  return db.users
+    .filter((user) => !user.is_admin)
+    .map((user) => ({
+      id: user.id,
+      email: user.email,
+      name: user.name,
+      role: user.role,
+      createdAt: user.created_at,
+    }))
+    .sort((a, b) => new Date(b.createdAt || 0).getTime() - new Date(a.createdAt || 0).getTime());
 }
 
 async function ensureDefaultAdminUser() {

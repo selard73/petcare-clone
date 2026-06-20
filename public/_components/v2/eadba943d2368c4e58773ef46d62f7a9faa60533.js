@@ -16741,15 +16741,28 @@ function iy({ editBusiness: t, onClose: e }) {
         ]
       }
     ),
-    r?.isAdmin && accountStats && /* @__PURE__ */ d("div", { className: "mb-6 p-4 rounded-xl bg-purple-50 border border-purple-200 text-center", children: [
-      /* @__PURE__ */ s("p", { className: "text-sm text-purple-700 font-medium mb-1", children: "Registered accounts" }),
-      /* @__PURE__ */ s("p", { className: "text-3xl font-semibold text-purple-600", children: accountStats.totalAccounts }),
-      /* @__PURE__ */ d("p", { className: "text-xs text-gray-600 mt-2", children: [
-        accountStats.guestAccounts,
-        " guest · ",
-        accountStats.businessAccounts,
-        " business"
-      ] })
+    r?.isAdmin && accountStats && /* @__PURE__ */ d("div", { className: "mb-6 p-4 rounded-xl bg-purple-50 border border-purple-200", children: [
+      /* @__PURE__ */ d("div", { className: "text-center mb-4", children: [
+        /* @__PURE__ */ s("p", { className: "text-sm text-purple-700 font-medium mb-1", children: "Registered accounts" }),
+        /* @__PURE__ */ s("p", { className: "text-3xl font-semibold text-purple-600", children: accountStats.totalAccounts }),
+        /* @__PURE__ */ d("p", { className: "text-xs text-gray-600 mt-2", children: [
+          accountStats.guestAccounts,
+          " guest · ",
+          accountStats.businessAccounts,
+          " business"
+        ] })
+      ] }),
+      Array.isArray(accountStats.accounts) && accountStats.accounts.length > 0 ? /* @__PURE__ */ d("div", { className: "border-t border-purple-200 pt-4", children: [
+        /* @__PURE__ */ s("p", { className: "text-sm font-medium text-purple-700 mb-3", children: "Account emails" }),
+        /* @__PURE__ */ s("div", { className: "max-h-56 overflow-y-auto space-y-2", children: accountStats.accounts.map((A) => /* @__PURE__ */ d("div", { className: "bg-white rounded-lg px-3 py-2 text-left text-sm border border-purple-100", children: [
+          /* @__PURE__ */ d("div", { className: "flex justify-between gap-2 items-start", children: [
+            /* @__PURE__ */ s("span", { className: "font-medium text-gray-800", children: A.name }),
+            /* @__PURE__ */ s("span", { className: "text-xs text-purple-600 whitespace-nowrap", children: A.role === "business" ? "Business" : "Pet Owner" })
+          ] }),
+          /* @__PURE__ */ s("p", { className: "text-gray-600 break-all mt-1", children: A.email }),
+          A.createdAt && /* @__PURE__ */ s("p", { className: "text-xs text-gray-400 mt-1", children: new Date(A.createdAt).toLocaleDateString() })
+        ] }, A.id)) })
+      ] }) : /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 text-center border-t border-purple-200 pt-4", children: "No registered accounts yet." })
     ] }),
     /* @__PURE__ */ s("h1", { className: "text-purple-600 text-center mb-2", children: t ? "Edit Business Listing" : "Add New Business Listing" }),
     /* @__PURE__ */ s("p", { className: "text-gray-600 text-center mb-8", children: t ? "Update your business information below" : "Fill in the details below to add a business to the directory" }),
