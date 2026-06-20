@@ -12786,11 +12786,19 @@ function bf({ onNavigate: t, user: e }) {
   ] });
 }
 function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", defaultMode: i = "signup" }) {
-  const [o, a] = E(i === "login"), [l, c] = E(""), [u, h] = E(""), [p, m] = E(""), [f, v] = E(n), [g, b] = E(""), [w, x] = E(!1);
+  const [o, a] = E(i === "login"), [l, c] = E(""), [u, h] = E(""), [R0, M0] = E(""), [p, m] = E(""), [f, v] = E(n), [g, b] = E(""), [w, x] = E(!1);
   if (U(() => {
-    t && (v(n), a(i === "login"));
+    t && (v(n), a(i === "login"), M0(""));
   }, [t, n, i]), !t) return null;
-  const T = async (P) => {
+  const k0 = (P) => {
+    if (P.length < 8)
+      return "Password must be at least 8 characters.";
+    if (!/[A-Za-z]/.test(P))
+      return "Password must include at least one letter.";
+    if (!/[0-9]/.test(P))
+      return "Password must include at least one number.";
+    return null;
+  }, T = async (P) => {
     P.preventDefault(), b(""), x(!0);
     try {
       if (o) {
@@ -12803,16 +12811,19 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
           throw new Error(S.error || "Invalid email or password");
         r(S.user, S.accessToken, S.refreshToken, S.shortlist), e();
       } else {
-        if (u.length < 6)
-          throw new Error("Password must be at least 6 characters");
-        const N = await fetch("/api/auth/signup", {
+        const N = k0(u);
+        if (N)
+          throw new Error(N);
+        if (u !== R0)
+          throw new Error("Passwords do not match. Please re-enter them.");
+        const S = await fetch("/api/auth/signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ email: l, password: u, name: p, role: f })
-        }), S = await N.json().catch(() => ({}));
-        if (!N.ok)
-          throw new Error(S.error || "Could not create account");
-        r(S.user, S.accessToken, S.refreshToken, S.shortlist), e();
+        }), C = await S.json().catch(() => ({}));
+        if (!S.ok)
+          throw new Error(C.error || "Could not create account");
+        r(C.user, C.accessToken, C.refreshToken, C.shortlist), e();
       }
     } catch (N) {
       b(N.message || "Something went wrong");
@@ -12885,7 +12896,24 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
                     onChange: (P) => h(P.target.value),
                     className: "w-full h-[46px] px-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent",
                     required: !0,
-                    minLength: 6
+                    minLength: o ? 1 : 8,
+                    autoComplete: o ? "current-password" : "new-password"
+                  }
+                ),
+                !o && /* @__PURE__ */ s("p", { className: "text-xs text-gray-500 mt-2 leading-relaxed", children: "Use at least 8 characters with one letter and one number." })
+              ] }),
+              !o && /* @__PURE__ */ d("div", { children: [
+                /* @__PURE__ */ s("label", { className: "block text-gray-600 text-sm mb-2", children: "Confirm Password" }),
+                /* @__PURE__ */ s(
+                  "input",
+                  {
+                    type: "password",
+                    value: R0,
+                    onChange: (P) => M0(P.target.value),
+                    className: "w-full h-[46px] px-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent",
+                    required: !0,
+                    minLength: 8,
+                    autoComplete: "new-password"
                   }
                 )
               ] }),
@@ -12932,7 +12960,7 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
                 "button",
                 {
                   onClick: () => {
-                    a(!o), b("");
+                    a(!o), b(""), M0("");
                   },
                   className: "text-purple-600 hover:text-purple-700 transition-colors",
                   children: o ? "Sign up" : "Log in"

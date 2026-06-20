@@ -552,6 +552,20 @@ async function buildAuthResponse(user) {
   };
 }
 
+function validateAccountPassword(password = "") {
+  const value = String(password);
+  if (value.length < 8) {
+    return "Password must be at least 8 characters.";
+  }
+  if (!/[A-Za-z]/.test(value)) {
+    return "Password must include at least one letter.";
+  }
+  if (!/[0-9]/.test(value)) {
+    return "Password must include at least one number.";
+  }
+  return null;
+}
+
 async function handleAuthSignup(req, res) {
   const body = await parseBody(req);
   const email = normalizeEmail(body.email);
@@ -563,8 +577,9 @@ async function handleAuthSignup(req, res) {
     sendJson(res, 400, { error: "A valid email address is required." });
     return true;
   }
-  if (password.length < 6) {
-    sendJson(res, 400, { error: "Password must be at least 6 characters." });
+  const passwordError = validateAccountPassword(password);
+  if (passwordError) {
+    sendJson(res, 400, { error: passwordError });
     return true;
   }
   if (!name) {
