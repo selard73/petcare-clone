@@ -6596,7 +6596,15 @@ function rf({ children: t }) {
   U(() => {
     console.log("🔐 AuthProvider: Loading user from localStorage..."), console.log("   - All localStorage keys:", Object.keys(localStorage));
     const l = localStorage.getItem("user"), c = localStorage.getItem("accessToken");
-    if (console.log("   - storedUser raw:", l), console.log("   - storedToken present:", !!c), l)
+    if (console.log("   - storedUser raw:", l), console.log("   - storedToken present:", !!c), c) {
+      fetch("/api/auth/me", { headers: { Authorization: `Bearer ${c}` } }).then((u) => u.ok ? u.json() : Promise.reject(new Error("Session expired"))).then((u) => {
+        u?.user && (console.log("✅ Restored cloud session:", u.user.email), r(u.user), i(c), localStorage.setItem("user", JSON.stringify(u.user)), syncAccountShortlist(u.user, u.shortlist));
+      }).catch((u) => {
+        console.warn("❌ Cloud session restore failed:", u), localStorage.removeItem("user"), localStorage.removeItem("accessToken"), localStorage.removeItem("refreshToken");
+      });
+      return;
+    }
+    if (l)
       try {
         const u = JSON.parse(l);
         console.log("✅ Found stored user:", u.email, "isAdmin:", u.isAdmin), r(u), syncAccountShortlist(u);
@@ -6605,12 +6613,13 @@ function rf({ children: t }) {
       }
     else
       console.log("❌ No stored user found");
-    c ? (console.log("✅ Found stored access token"), i(c)) : console.log("❌ No stored access token");
   }, []);
-  const o = (l, c, u) => {
-    console.log("🔑 LOGIN CALLED:"), console.log("   - User:", l.email, "isAdmin:", l.isAdmin), console.log("   - Access token:", c.substring(0, 20) + "..."), r(l), i(c), localStorage.setItem("user", JSON.stringify(l)), localStorage.setItem("accessToken", c), u && localStorage.setItem("refreshToken", u), syncAccountShortlist(l), console.log("✅ Login complete - data saved to localStorage");
+  const o = (l, c, u, h) => {
+    console.log("🔑 LOGIN CALLED:"), console.log("   - User:", l.email, "isAdmin:", l.isAdmin), console.log("   - Access token:", c.substring(0, 20) + "..."), r(l), i(c), localStorage.setItem("user", JSON.stringify(l)), localStorage.setItem("accessToken", c), u && localStorage.setItem("refreshToken", u), syncAccountShortlist(l, h), console.log("✅ Login complete - data saved to localStorage");
   }, a = () => {
-    r(null), i(null), localStorage.removeItem("user"), localStorage.removeItem("accessToken"), localStorage.removeItem("refreshToken");
+    const l = localStorage.getItem("accessToken");
+    l && fetch("/api/auth/logout", { method: "POST", headers: { Authorization: `Bearer ${l}` } }).catch(() => {
+    }), r(null), i(null), localStorage.removeItem("user"), localStorage.removeItem("accessToken"), localStorage.removeItem("refreshToken");
   };
   return /* @__PURE__ */ s(gl.Provider, { value: { user: e, login: o, logout: a, accessToken: n }, children: t });
 }
@@ -6662,19 +6671,26 @@ const xi = (t) => t ? `pawsitively_shortlist_${t.id}` : "pawsitively_shortlist_g
     const r = xi(t);
     localStorage.setItem(r, JSON.stringify(e)), console.log(`💾 Saved ${e.length} shortlist items to key: ${r}`);
     if (t?.id && !t.isAdmin) {
-      const n = JSON.parse(localStorage.getItem("users") || "[]"), i = n.findIndex((o) => o.id === t.id);
-      i >= 0 && (n[i] = { ...n[i], shortlist: e }, localStorage.setItem("users", JSON.stringify(n)), console.log(`💾 Synced ${e.length} shortlist items to account ${t.email}`));
+      const n = localStorage.getItem("accessToken");
+      n && fetch("/api/auth/shortlist", {
+        method: "PATCH",
+        headers: {
+          Authorization: `Bearer ${n}`,
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ shortlist: e })
+      }).catch((i) => console.warn("Cloud shortlist sync failed:", i));
     }
   } catch (r) {
     console.error("Error saving shortlist:", r);
   }
-}, syncAccountShortlist = (t) => {
+}, syncAccountShortlist = (t, e) => {
   if (!t?.id || t.isAdmin)
     return fr(t);
-  const e = fr(t), r = fr(null), n = JSON.parse(localStorage.getItem("users") || "[]"), i = n.find((a) => a.id === t.id), o = Array.isArray(i?.shortlist) ? i.shortlist : [], l = /* @__PURE__ */ new Map();
-  return [...o, ...e, ...r].forEach((a) => {
-    a?.id && !l.has(a.id) && l.set(a.id, a);
-  }), vl(t, [...l.values()]), r.length > 0 && localStorage.setItem(xi(null), JSON.stringify([])), [...l.values()];
+  const r = fr(t), n = fr(null), i = Array.isArray(e) ? e : [], o = /* @__PURE__ */ new Map();
+  return [...i, ...r, ...n].forEach((a) => {
+    a?.id && !o.has(a.id) && o.set(a.id, a);
+  }), vl(t, [...o.values()]), n.length > 0 && localStorage.setItem(xi(null), JSON.stringify([])), [...o.values()];
 }, nf = (t, e) => {
   const r = fr(t);
   return r.some((i) => i.id === e.id) || (r.push(e), vl(t, r)), r;
@@ -12778,39 +12794,25 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
     P.preventDefault(), b(""), x(!0);
     try {
       if (o) {
-        if (l === "admin@pawsitively.com" && u === "admin123") {
-          const k = {
-            id: "admin-user",
-            email: "admin@pawsitively.com",
-            name: "Admin",
-            role: "business",
-            isAdmin: !0
-          }, I = `admin_token_${Date.now()}_${Math.random().toString(36)}`;
-          r(k, I, I), e();
-          return;
-        }
-        const S = JSON.parse(localStorage.getItem("users") || "[]").find((k) => k.email === l && k.password === u);
-        if (!S)
-          throw new Error("Invalid email or password");
-        const C = `token_${Date.now()}_${Math.random().toString(36)}`, { password: R, ...M } = S;
-        r(M, C, C), e();
+        const N = await fetch("/api/auth/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: l, password: u })
+        }), S = await N.json().catch(() => ({}));
+        if (!N.ok)
+          throw new Error(S.error || "Invalid email or password");
+        r(S.user, S.accessToken, S.refreshToken, S.shortlist), e();
       } else {
-        const N = JSON.parse(localStorage.getItem("users") || "[]");
-        if (N.some((k) => k.email === l))
-          throw new Error("An account with this email already exists");
         if (u.length < 6)
           throw new Error("Password must be at least 6 characters");
-        const S = {
-          id: `user_${Date.now()}`,
-          email: l,
-          password: u,
-          // In a real app, this should be hashed
-          name: p,
-          role: f
-        };
-        N.push(S), localStorage.setItem("users", JSON.stringify(N));
-        const C = `token_${Date.now()}_${Math.random().toString(36)}`, { password: R, ...M } = S;
-        r(M, C, C), e();
+        const N = await fetch("/api/auth/signup", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: l, password: u, name: p, role: f })
+        }), S = await N.json().catch(() => ({}));
+        if (!N.ok)
+          throw new Error(S.error || "Could not create account");
+        r(S.user, S.accessToken, S.refreshToken, S.shortlist), e();
       }
     } catch (N) {
       b(N.message || "Something went wrong");
@@ -16350,7 +16352,7 @@ function To({ src: t, alt: e, index: r, onMove: n, onRemove: i, badge: o, badgeC
   );
 }
 function iy({ editBusiness: t, onClose: e }) {
-  const { user: r, accessToken: n } = vi(), [i, o] = E({
+  const { user: r, accessToken: n } = vi(), [accountStats, setAccountStats] = E(null), [i, o] = E({
     name: "",
     description: "",
     address: "",
@@ -16383,6 +16385,12 @@ function iy({ editBusiness: t, onClose: e }) {
     category: "grooming",
     mobilePhotos: []
   }), [a, l] = E([]), [c, u] = E([]), [h, p] = E([]), [L, j] = E([]), [q, Z] = E([]), [Y0, X0] = E([]), [m, f] = E(0), [v, g] = E(!1), [b, w] = E(""), [x, T] = E(!1), [P, N] = E(null), [S, C] = E(""), [R, M] = E({ x: 0, y: 0 }), [k, I] = E(1), [z, ee] = E(null), [Jt, Qt] = E("desktop");
+  U(() => {
+    if (!r?.isAdmin || !n)
+      return;
+    fetch("/api/admin/user-stats", { headers: { Authorization: `Bearer ${n}` } }).then((A) => A.ok ? A.json() : null).then((A) => A && setAccountStats(A)).catch(() => {
+    });
+  }, [r?.isAdmin, n]);
   U(() => {
     if (t) {
       const A = {
@@ -16641,6 +16649,16 @@ function iy({ editBusiness: t, onClose: e }) {
         ]
       }
     ),
+    r?.isAdmin && accountStats && /* @__PURE__ */ d("div", { className: "mb-6 p-4 rounded-xl bg-purple-50 border border-purple-200 text-center", children: [
+      /* @__PURE__ */ s("p", { className: "text-sm text-purple-700 font-medium mb-1", children: "Registered accounts" }),
+      /* @__PURE__ */ s("p", { className: "text-3xl font-semibold text-purple-600", children: accountStats.totalAccounts }),
+      /* @__PURE__ */ d("p", { className: "text-xs text-gray-600 mt-2", children: [
+        accountStats.guestAccounts,
+        " guest · ",
+        accountStats.businessAccounts,
+        " business"
+      ] })
+    ] }),
     /* @__PURE__ */ s("h1", { className: "text-purple-600 text-center mb-2", children: t ? "Edit Business Listing" : "Add New Business Listing" }),
     /* @__PURE__ */ s("p", { className: "text-gray-600 text-center mb-8", children: t ? "Update your business information below" : "Fill in the details below to add a business to the directory" }),
     b && /* @__PURE__ */ s("div", { className: `mb-6 p-4 rounded-lg text-sm font-medium ${b.startsWith("Error") || b.startsWith("❌") ? "bg-red-50 text-red-700 border border-red-200" : b.startsWith("⚠️") ? "bg-yellow-50 text-yellow-800 border border-yellow-200" : "bg-green-50 text-green-700 border border-green-200"}`, children: b }),
@@ -18510,8 +18528,8 @@ function oy() {
       {
         isOpen: i,
         onClose: () => o(!1),
-        onSuccess: (k, I, z) => {
-          console.log("🎯 AuthModal onSuccess called in App.tsx!"), console.log("   - userData:", k), console.log("   - token:", I.substring(0, 20) + "..."), console.log("   - About to call login()..."), N(k, I, z), console.log("   - login() called successfully!"), o(!1);
+        onSuccess: (k, I, z, A) => {
+          console.log("🎯 AuthModal onSuccess called in App.tsx!"), console.log("   - userData:", k), console.log("   - token:", I.substring(0, 20) + "..."), console.log("   - About to call login()..."), N(k, I, z, A), console.log("   - login() called successfully!"), o(!1);
         },
         defaultRole: c,
         defaultMode: h

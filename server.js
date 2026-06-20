@@ -16,7 +16,11 @@ const PUBLIC_DIR = path.join(ROOT, "public");
 const AIRTABLE_DB_FILE = path.join(ROOT, "data", "airtable.json");
 const SQLITE_DB_FILE = path.join(ROOT, "data", "petcare.db");
 const STATS_FILE = path.join(ROOT, "data", "stats.json");
+const USERS_FILE = path.join(ROOT, "data", "users.json");
 const VISIT_COUNT_KEY = "homepage_visits";
+const ADMIN_EMAIL = (process.env.ADMIN_EMAIL || "admin@pawsitively.com").toLowerCase();
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
+const AUTH_SESSION_DAYS = Number(process.env.AUTH_SESSION_DAYS || 30);
 const REVIEW_NOTIFY_TO = process.env.REVIEW_NOTIFY_EMAIL || "selard73@gmail.com";
 const REVIEW_NOTIFY_FROM =
   process.env.REVIEW_NOTIFY_FROM || "Pawsitively Fabulous <selard73@gmail.com>";
@@ -208,6 +212,24 @@ function initSqlite() {
       key TEXT PRIMARY KEY,
       value INTEGER NOT NULL
     );
+    CREATE TABLE IF NOT EXISTS users (
+      id TEXT PRIMARY KEY,
+      email TEXT NOT NULL UNIQUE COLLATE NOCASE,
+      password_hash TEXT NOT NULL,
+      name TEXT NOT NULL,
+      role TEXT NOT NULL DEFAULT 'guest',
+      is_admin INTEGER NOT NULL DEFAULT 0,
+      shortlist_json TEXT NOT NULL DEFAULT '[]',
+      created_at TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_users_created_at ON users(created_at DESC);
+    CREATE TABLE IF NOT EXISTS auth_sessions (
+      token TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL,
+      created_at TEXT NOT NULL,
+      expires_at TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_auth_sessions_user_id ON auth_sessions(user_id);
     `,
   );
   const visitRow = sqlite.prepare("SELECT value FROM site_stats WHERE key = ?").get(VISIT_COUNT_KEY);
@@ -216,6 +238,438 @@ function initSqlite() {
   }
   migrateLegacyJsonToSqliteIfNeeded();
   usingSqlite = true;
+}
+
+function generateUserId() {
+  return `user_${crypto.randomBytes(8).toString("hex")}`;
+}
+
+function hashPassword(password) {
+  const salt = crypto.randomBytes(16).toString("hex");
+  const hash = crypto.scryptSync(password, salt, 64).toString("hex");
+  return `${salt}:${hash}`;
+}
+
+function verifyPassword(password, storedHash) {
+  if (!storedHash || !storedHash.includes(":")) return false;
+  const [salt, hash] = storedHash.split(":");
+  if (!salt || !hash) return false;
+  const verify = crypto.scryptSync(password, salt, 64).toString("hex");
+  try {
+    return crypto.timingSafeEqual(Buffer.from(hash, "hex"), Buffer.from(verify, "hex"));
+  } catch {
+    return false;
+  }
+}
+
+function normalizeEmail(email = "") {
+  return String(email).trim().toLowerCase();
+}
+
+function publicUser(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    email: row.email,
+    name: row.name,
+    role: row.role || "guest",
+    isAdmin: !!(row.is_admin ?? row.isAdmin),
+    createdAt: row.created_at || row.createdAt || null,
+  };
+}
+
+function parseShortlistJson(text) {
+  try {
+    const parsed = JSON.parse(text || "[]");
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function getBearerToken(req) {
+  const auth = req.headers.authorization || "";
+  const match = auth.match(/^Bearer\s+(.+)$/i);
+  return match ? match[1].trim() : "";
+}
+
+function getSessionExpiryIso() {
+  const expires = new Date();
+  expires.setDate(expires.getDate() + AUTH_SESSION_DAYS);
+  return expires.toISOString();
+}
+
+async function readUsersDb() {
+  try {
+    const raw = await fsp.readFile(USERS_FILE, "utf8");
+    const parsed = JSON.parse(raw);
+    return {
+      users: Array.isArray(parsed.users) ? parsed.users : [],
+      sessions: Array.isArray(parsed.sessions) ? parsed.sessions : [],
+    };
+  } catch {
+    return { users: [], sessions: [] };
+  }
+}
+
+async function writeUsersDb(data) {
+  const tempFile = `${USERS_FILE}.tmp`;
+  const content = `${JSON.stringify(data, null, 2)}\n`;
+  writeQueue = writeQueue.then(async () => {
+    await fsp.mkdir(path.dirname(USERS_FILE), { recursive: true });
+    await fsp.writeFile(tempFile, content, "utf8");
+    await fsp.rename(tempFile, USERS_FILE);
+  });
+  return writeQueue;
+}
+
+function sqliteRowToUser(row) {
+  return row
+    ? {
+        id: row.id,
+        email: row.email,
+        password_hash: row.password_hash,
+        name: row.name,
+        role: row.role,
+        is_admin: row.is_admin,
+        shortlist_json: row.shortlist_json,
+        created_at: row.created_at,
+      }
+    : null;
+}
+
+function getUserByEmail(email) {
+  const normalized = normalizeEmail(email);
+  if (usingSqlite) {
+    const row = sqlite
+      .prepare("SELECT * FROM users WHERE lower(email) = lower(?)")
+      .get(normalized);
+    return sqliteRowToUser(row);
+  }
+  return null;
+}
+
+async function getUserByEmailAsync(email) {
+  if (usingSqlite) return getUserByEmail(email);
+  const db = await readUsersDb();
+  const normalized = normalizeEmail(email);
+  return db.users.find((user) => normalizeEmail(user.email) === normalized) || null;
+}
+
+function getUserById(userId) {
+  if (usingSqlite) {
+    const row = sqlite.prepare("SELECT * FROM users WHERE id = ?").get(userId);
+    return sqliteRowToUser(row);
+  }
+  return null;
+}
+
+async function getUserByIdAsync(userId) {
+  if (usingSqlite) return getUserById(userId);
+  const db = await readUsersDb();
+  return db.users.find((user) => user.id === userId) || null;
+}
+
+async function createUserRecord({ email, password, name, role = "guest", isAdmin = false }) {
+  const normalizedEmail = normalizeEmail(email);
+  const now = new Date().toISOString();
+  const user = {
+    id: generateUserId(),
+    email: normalizedEmail,
+    password_hash: hashPassword(password),
+    name: String(name || "").trim() || normalizedEmail.split("@")[0],
+    role: role === "business" ? "business" : "guest",
+    is_admin: isAdmin ? 1 : 0,
+    shortlist_json: "[]",
+    created_at: now,
+  };
+
+  if (usingSqlite) {
+    sqlite
+      .prepare(
+        "INSERT INTO users (id, email, password_hash, name, role, is_admin, shortlist_json, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, ?)",
+      )
+      .run(
+        user.id,
+        user.email,
+        user.password_hash,
+        user.name,
+        user.role,
+        user.is_admin,
+        user.shortlist_json,
+        user.created_at,
+      );
+    return user;
+  }
+
+  const db = await readUsersDb();
+  db.users.push(user);
+  await writeUsersDb(db);
+  return user;
+}
+
+async function createAuthSession(userId) {
+  const token = crypto.randomBytes(32).toString("hex");
+  const createdAt = new Date().toISOString();
+  const expiresAt = getSessionExpiryIso();
+
+  if (usingSqlite) {
+    sqlite
+      .prepare(
+        "INSERT INTO auth_sessions (token, user_id, created_at, expires_at) VALUES (?, ?, ?, ?)",
+      )
+      .run(token, userId, createdAt, expiresAt);
+    return { token, expiresAt };
+  }
+
+  const db = await readUsersDb();
+  db.sessions.push({ token, user_id: userId, created_at: createdAt, expires_at: expiresAt });
+  await writeUsersDb(db);
+  return { token, expiresAt };
+}
+
+async function deleteAuthSession(token) {
+  if (!token) return;
+  if (usingSqlite) {
+    sqlite.prepare("DELETE FROM auth_sessions WHERE token = ?").run(token);
+    return;
+  }
+  const db = await readUsersDb();
+  db.sessions = db.sessions.filter((session) => session.token !== token);
+  await writeUsersDb(db);
+}
+
+async function getAuthSession(token) {
+  if (!token) return null;
+  const now = new Date().toISOString();
+
+  if (usingSqlite) {
+    const row = sqlite
+      .prepare("SELECT token, user_id, created_at, expires_at FROM auth_sessions WHERE token = ?")
+      .get(token);
+    if (!row || row.expires_at <= now) {
+      if (row) sqlite.prepare("DELETE FROM auth_sessions WHERE token = ?").run(token);
+      return null;
+    }
+    return row;
+  }
+
+  const db = await readUsersDb();
+  const session = db.sessions.find((item) => item.token === token);
+  if (!session || session.expires_at <= now) {
+    if (session) {
+      db.sessions = db.sessions.filter((item) => item.token !== token);
+      await writeUsersDb(db);
+    }
+    return null;
+  }
+  return session;
+}
+
+async function getUserFromRequest(req) {
+  const token = getBearerToken(req);
+  const session = await getAuthSession(token);
+  if (!session) return null;
+  return getUserByIdAsync(session.user_id);
+}
+
+async function updateUserShortlist(userId, shortlist) {
+  const payload = JSON.stringify(Array.isArray(shortlist) ? shortlist : []);
+  if (usingSqlite) {
+    sqlite.prepare("UPDATE users SET shortlist_json = ? WHERE id = ?").run(payload, userId);
+    return;
+  }
+  const db = await readUsersDb();
+  const idx = db.users.findIndex((user) => user.id === userId);
+  if (idx >= 0) {
+    db.users[idx].shortlist_json = payload;
+    await writeUsersDb(db);
+  }
+}
+
+function getUserAccountStats() {
+  if (usingSqlite) {
+    const totalRow = sqlite
+      .prepare("SELECT COUNT(*) AS count FROM users WHERE is_admin = 0")
+      .get();
+    const guestRow = sqlite
+      .prepare("SELECT COUNT(*) AS count FROM users WHERE is_admin = 0 AND role = 'guest'")
+      .get();
+    const businessRow = sqlite
+      .prepare("SELECT COUNT(*) AS count FROM users WHERE is_admin = 0 AND role = 'business'")
+      .get();
+    return {
+      totalAccounts: totalRow?.count || 0,
+      guestAccounts: guestRow?.count || 0,
+      businessAccounts: businessRow?.count || 0,
+    };
+  }
+  return null;
+}
+
+async function getUserAccountStatsAsync() {
+  const sqliteStats = getUserAccountStats();
+  if (sqliteStats) return sqliteStats;
+  const db = await readUsersDb();
+  const accounts = db.users.filter((user) => !user.is_admin);
+  return {
+    totalAccounts: accounts.length,
+    guestAccounts: accounts.filter((user) => user.role === "guest").length,
+    businessAccounts: accounts.filter((user) => user.role === "business").length,
+  };
+}
+
+async function ensureDefaultAdminUser() {
+  const existing = await getUserByEmailAsync(ADMIN_EMAIL);
+  if (existing) return;
+
+  try {
+    await createUserRecord({
+      email: ADMIN_EMAIL,
+      password: ADMIN_PASSWORD,
+      name: "Admin",
+      role: "business",
+      isAdmin: true,
+    });
+    console.log(`Default admin account ready: ${ADMIN_EMAIL}`);
+  } catch (error) {
+    const message = String(error?.message || "");
+    if (message.includes("UNIQUE") || error?.code === "ERR_SQLITE_ERROR") {
+      return;
+    }
+    throw error;
+  }
+}
+
+async function buildAuthResponse(user) {
+  const session = await createAuthSession(user.id);
+  return {
+    user: publicUser(user),
+    accessToken: session.token,
+    refreshToken: session.token,
+    shortlist: parseShortlistJson(user.shortlist_json),
+    expiresAt: session.expiresAt,
+  };
+}
+
+async function handleAuthSignup(req, res) {
+  const body = await parseBody(req);
+  const email = normalizeEmail(body.email);
+  const password = String(body.password || "");
+  const name = String(body.name || "").trim();
+  const role = body.role === "business" ? "business" : "guest";
+
+  if (!email || !email.includes("@")) {
+    sendJson(res, 400, { error: "A valid email address is required." });
+    return true;
+  }
+  if (password.length < 6) {
+    sendJson(res, 400, { error: "Password must be at least 6 characters." });
+    return true;
+  }
+  if (!name) {
+    sendJson(res, 400, { error: "Name is required." });
+    return true;
+  }
+  if (email === ADMIN_EMAIL) {
+    sendJson(res, 400, { error: "This email is reserved." });
+    return true;
+  }
+
+  const existing = await getUserByEmailAsync(email);
+  if (existing) {
+    sendJson(res, 409, { error: "An account with this email already exists." });
+    return true;
+  }
+
+  const user = await createUserRecord({ email, password, name, role, isAdmin: false });
+  const payload = await buildAuthResponse(user);
+  sendJson(res, 201, payload);
+  return true;
+}
+
+async function handleAuthLogin(req, res) {
+  const body = await parseBody(req);
+  const email = normalizeEmail(body.email);
+  const password = String(body.password || "");
+
+  const user = await getUserByEmailAsync(email);
+  if (!user || !verifyPassword(password, user.password_hash)) {
+    sendJson(res, 401, { error: "Invalid email or password." });
+    return true;
+  }
+
+  const payload = await buildAuthResponse(user);
+  sendJson(res, 200, payload);
+  return true;
+}
+
+async function handleAuthMe(req, res) {
+  const user = await getUserFromRequest(req);
+  if (!user) {
+    sendJson(res, 401, { error: "Not authenticated." });
+    return true;
+  }
+  sendJson(res, 200, {
+    user: publicUser(user),
+    shortlist: parseShortlistJson(user.shortlist_json),
+  });
+  return true;
+}
+
+async function handleAuthLogout(req, res) {
+  const token = getBearerToken(req);
+  await deleteAuthSession(token);
+  sendJson(res, 200, { ok: true });
+  return true;
+}
+
+async function handleAuthShortlist(req, res) {
+  const user = await getUserFromRequest(req);
+  if (!user) {
+    sendJson(res, 401, { error: "Not authenticated." });
+    return true;
+  }
+  const body = await parseBody(req);
+  const shortlist = Array.isArray(body.shortlist) ? body.shortlist : [];
+  await updateUserShortlist(user.id, shortlist);
+  sendJson(res, 200, { ok: true, shortlist });
+  return true;
+}
+
+async function handleAdminUserStats(req, res) {
+  const user = await getUserFromRequest(req);
+  if (!user || !user.is_admin) {
+    sendJson(res, 403, { error: "Admin access required." });
+    return true;
+  }
+  sendJson(res, 200, await getUserAccountStatsAsync());
+  return true;
+}
+
+async function handleAuthApi(req, res, url) {
+  const method = req.method.toUpperCase();
+  const route = url.pathname.replace(/\/$/, "");
+
+  if (route === "/api/auth/signup" && method === "POST") {
+    return handleAuthSignup(req, res);
+  }
+  if (route === "/api/auth/login" && method === "POST") {
+    return handleAuthLogin(req, res);
+  }
+  if (route === "/api/auth/me" && method === "GET") {
+    return handleAuthMe(req, res);
+  }
+  if (route === "/api/auth/logout" && method === "POST") {
+    return handleAuthLogout(req, res);
+  }
+  if (route === "/api/auth/shortlist" && method === "PATCH") {
+    return handleAuthShortlist(req, res);
+  }
+  if (route === "/api/admin/user-stats" && method === "GET") {
+    return handleAdminUserStats(req, res);
+  }
+  return false;
 }
 
 async function readStatsFile() {
@@ -562,6 +1016,11 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
+    if (url.pathname.startsWith("/api/auth") || url.pathname === "/api/admin/user-stats") {
+      const handled = await handleAuthApi(req, res, url);
+      if (handled) return;
+    }
+
     if (url.pathname.startsWith("/api/airtable")) {
       const handled = await handleAirtableApi(req, res, url);
       if (handled) return;
@@ -597,8 +1056,9 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-server.listen(PORT, () => {
+server.listen(PORT, async () => {
   initSqlite();
+  await ensureDefaultAdminUser();
   console.log(`Exact petcare clone running at http://localhost:${PORT}`);
   console.log(
     usingSqlite
