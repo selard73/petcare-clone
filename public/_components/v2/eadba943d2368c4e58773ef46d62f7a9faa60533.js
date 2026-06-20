@@ -12785,11 +12785,11 @@ function bf({ onNavigate: t, user: e }) {
     )
   ] });
 }
-function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", defaultMode: i = "signup" }) {
-  const [o, a] = E(i === "login"), [l, c] = E(""), [u, h] = E(""), [R0, M0] = E(""), [p, m] = E(""), [f, v] = E(n), [g, b] = E(""), [w, x] = E(!1);
+function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", defaultMode: i = "signup", resetToken: B0 = null }) {
+  const [view, setView] = E(i === "login" ? "login" : "signup"), [l, c] = E(""), [u, h] = E(""), [R0, M0] = E(""), [p, m] = E(""), [f, v] = E(n), [g, b] = E(""), [successMsg, setSuccessMsg] = E(""), [resetTok, setResetTok] = E(""), [w, x] = E(!1);
   if (U(() => {
-    t && (v(n), a(i === "login"), M0(""));
-  }, [t, n, i]), !t) return null;
+    t && (v(n), b(""), setSuccessMsg(""), M0(""), B0 ? (setResetTok(B0), setView("reset")) : (setResetTok(""), setView(i === "login" ? "login" : "signup")));
+  }, [t, n, i, B0]), !t) return null;
   const k0 = (P) => {
     if (P.length < 8)
       return "Password must be at least 8 characters.";
@@ -12799,18 +12799,18 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
       return "Password must include at least one number.";
     return null;
   }, T = async (P) => {
-    P.preventDefault(), b(""), x(!0);
+    P.preventDefault(), b(""), setSuccessMsg(""), x(!0);
     try {
-      if (o) {
+      if (view === "login") {
         const N = await fetch("/api/auth/login", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: l, password: u })
+          body: JSON.stringify({ email: l.trim().toLowerCase(), password: u })
         }), S = await N.json().catch(() => ({}));
         if (!N.ok)
           throw new Error(S.error || "Invalid email or password");
         r(S.user, S.accessToken, S.refreshToken, S.shortlist), e();
-      } else {
+      } else if (view === "signup") {
         const N = k0(u);
         if (N)
           throw new Error(N);
@@ -12819,18 +12819,41 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
         const S = await fetch("/api/auth/signup", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email: l, password: u, name: p, role: f })
+          body: JSON.stringify({ email: l.trim().toLowerCase(), password: u, name: p, role: f })
         }), C = await S.json().catch(() => ({}));
         if (!S.ok)
           throw new Error(C.error || "Could not create account");
         r(C.user, C.accessToken, C.refreshToken, C.shortlist), e();
+      } else if (view === "forgot") {
+        const N = await fetch("/api/auth/forgot-password", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ email: l.trim().toLowerCase() })
+        }), S = await N.json().catch(() => ({}));
+        if (!N.ok)
+          throw new Error(S.error || "Could not send reset email.");
+        setSuccessMsg(S.message || "If an account exists for that email, password reset instructions have been sent.");
+      } else if (view === "reset") {
+        const N = k0(u);
+        if (N)
+          throw new Error(N);
+        if (u !== R0)
+          throw new Error("Passwords do not match. Please re-enter them.");
+        const S = await fetch("/api/auth/reset-password", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ token: resetTok || B0, password: u })
+        }), C = await S.json().catch(() => ({}));
+        if (!S.ok)
+          throw new Error(C.error || "Could not reset password.");
+        setSuccessMsg(C.message || "Your password has been updated. You can log in now."), setView("login"), h(""), M0("");
       }
     } catch (N) {
       b(N.message || "Something went wrong");
     } finally {
       x(!1);
     }
-  };
+  }, I0 = view === "login" ? "Log In" : view === "signup" ? "Create Account" : view === "forgot" ? "Forgot Password" : "Set New Password", z0 = view === "forgot" ? "Send Reset Link" : view === "reset" ? "Update Password" : view === "login" ? "Log In" : "Create Account";
   return /* @__PURE__ */ s(
     D.div,
     {
@@ -12849,7 +12872,7 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
           className: "bg-white rounded-[20px] max-w-[380px] w-full px-7 pt-6 pb-7 shadow-xl",
           children: [
             /* @__PURE__ */ d("div", { className: "relative mb-6", children: [
-              /* @__PURE__ */ s("h2", { className: "text-purple-500 text-center text-2xl font-semibold leading-tight", children: o ? "Log In" : "Create Account" }),
+              /* @__PURE__ */ s("h2", { className: "text-purple-500 text-center text-2xl font-semibold leading-tight", children: I0 }),
               /* @__PURE__ */ s(
                 "button",
                 {
@@ -12860,7 +12883,7 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
               )
             ] }),
             /* @__PURE__ */ d("form", { onSubmit: T, className: "flex flex-col gap-3", children: [
-              !o && /* @__PURE__ */ d("div", { children: [
+              view === "signup" && /* @__PURE__ */ d("div", { children: [
                 /* @__PURE__ */ s("label", { className: "block text-gray-600 text-sm mb-2", children: "Name" }),
                 /* @__PURE__ */ s(
                   "input",
@@ -12873,7 +12896,7 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
                   }
                 )
               ] }),
-              /* @__PURE__ */ d("div", { children: [
+              view !== "reset" && /* @__PURE__ */ d("div", { children: [
                 /* @__PURE__ */ s("label", { className: "block text-gray-600 text-sm mb-2", children: "Email" }),
                 /* @__PURE__ */ s(
                   "input",
@@ -12884,10 +12907,11 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
                     className: "w-full h-[46px] px-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent",
                     required: !0
                   }
-                )
+                ),
+                view === "forgot" && /* @__PURE__ */ s("p", { className: "text-xs text-gray-500 mt-2 leading-relaxed", children: "We'll email you a secure link to reset your password." })
               ] }),
-              /* @__PURE__ */ d("div", { children: [
-                /* @__PURE__ */ s("label", { className: "block text-gray-600 text-sm mb-2", children: "Password" }),
+              (view === "login" || view === "signup" || view === "reset") && /* @__PURE__ */ d("div", { children: [
+                /* @__PURE__ */ s("label", { className: "block text-gray-600 text-sm mb-2", children: view === "reset" ? "New Password" : "Password" }),
                 /* @__PURE__ */ s(
                   "input",
                   {
@@ -12896,13 +12920,24 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
                     onChange: (P) => h(P.target.value),
                     className: "w-full h-[46px] px-4 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-600 focus:border-transparent",
                     required: !0,
-                    minLength: o ? 1 : 8,
-                    autoComplete: o ? "current-password" : "new-password"
+                    minLength: view === "login" ? 1 : 8,
+                    autoComplete: view === "login" ? "current-password" : "new-password"
                   }
                 ),
-                !o && /* @__PURE__ */ s("p", { className: "text-xs text-gray-500 mt-2 leading-relaxed", children: "Use at least 8 characters with one letter and one number." })
+                view === "login" && /* @__PURE__ */ s(
+                  "button",
+                  {
+                    type: "button",
+                    onClick: () => {
+                      setView("forgot"), b(""), setSuccessMsg("");
+                    },
+                    className: "text-xs text-purple-600 hover:text-purple-700 mt-2 transition-colors",
+                    children: "Forgot password?"
+                  }
+                ),
+                (view === "signup" || view === "reset") && /* @__PURE__ */ s("p", { className: "text-xs text-gray-500 mt-2 leading-relaxed", children: "Use at least 8 characters with one letter and one number." })
               ] }),
-              !o && /* @__PURE__ */ d("div", { children: [
+              (view === "signup" || view === "reset") && /* @__PURE__ */ d("div", { children: [
                 /* @__PURE__ */ s("label", { className: "block text-gray-600 text-sm mb-2", children: "Confirm Password" }),
                 /* @__PURE__ */ s(
                   "input",
@@ -12917,8 +12952,8 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
                   }
                 )
               ] }),
-              !o && /* @__PURE__ */ s("div", { className: "h-px bg-gray-200/10 my-5" }),
-              !o && /* @__PURE__ */ d("div", { children: [
+              view === "signup" && /* @__PURE__ */ s("div", { className: "h-px bg-gray-200/10 my-5" }),
+              view === "signup" && /* @__PURE__ */ d("div", { children: [
                 /* @__PURE__ */ s("label", { className: "block text-gray-600 text-sm mb-2", children: "Account Type" }),
                 /* @__PURE__ */ d("div", { className: "flex gap-3", children: [
                   /* @__PURE__ */ s(
@@ -12941,6 +12976,7 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
                   )
                 ] })
               ] }),
+              successMsg && /* @__PURE__ */ s("div", { className: "bg-green-50 text-green-700 px-4 py-2 rounded-lg text-sm mt-3", children: successMsg }),
               g && /* @__PURE__ */ s("div", { className: "bg-red-50 text-red-600 px-4 py-2 rounded-lg text-sm mt-3", children: g }),
               /* @__PURE__ */ s("div", { className: "flex justify-center mt-6", children: /* @__PURE__ */ s(
                 D.button,
@@ -12950,20 +12986,48 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
                   type: "submit",
                   disabled: w,
                   className: "bg-purple-600 hover:bg-purple-700 text-white h-[48px] w-[75%] rounded-[15px] transition-all disabled:opacity-50 flex items-center justify-center",
-                  children: w ? "Processing..." : o ? "Log In" : "Create Account"
+                  children: w ? "Processing..." : z0
                 }
               ) })
             ] }),
-            /* @__PURE__ */ d("div", { className: "mt-3.5 text-center text-sm", children: [
-              /* @__PURE__ */ s("span", { className: "text-gray-600", children: o ? "Don't have an account? " : "Already have an account? " }),
+            view === "login" && /* @__PURE__ */ d("div", { className: "mt-3.5 text-center text-sm", children: [
+              /* @__PURE__ */ s("span", { className: "text-gray-600", children: "Don't have an account? " }),
               /* @__PURE__ */ s(
                 "button",
                 {
+                  type: "button",
                   onClick: () => {
-                    a(!o), b(""), M0("");
+                    setView("signup"), b(""), setSuccessMsg(""), M0("");
                   },
                   className: "text-purple-600 hover:text-purple-700 transition-colors",
-                  children: o ? "Sign up" : "Log in"
+                  children: "Sign up"
+                }
+              )
+            ] }),
+            view === "signup" && /* @__PURE__ */ d("div", { className: "mt-3.5 text-center text-sm", children: [
+              /* @__PURE__ */ s("span", { className: "text-gray-600", children: "Already have an account? " }),
+              /* @__PURE__ */ s(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => {
+                    setView("login"), b(""), setSuccessMsg(""), M0("");
+                  },
+                  className: "text-purple-600 hover:text-purple-700 transition-colors",
+                  children: "Log in"
+                }
+              )
+            ] }),
+            (view === "forgot" || view === "reset") && /* @__PURE__ */ d("div", { className: "mt-3.5 text-center text-sm", children: [
+              /* @__PURE__ */ s(
+                "button",
+                {
+                  type: "button",
+                  onClick: () => {
+                    setView("login"), b(""), setSuccessMsg(""), M0("");
+                  },
+                  className: "text-purple-600 hover:text-purple-700 transition-colors",
+                  children: "Back to Log in"
                 }
               )
             ] })
@@ -18258,7 +18322,7 @@ function oy() {
   }), [r, n] = E(() => {
     const k = window.location.hash.slice(1), I = sessionStorage.getItem("pawsitively_current_page"), z = ["home", "products", "grooming", "training", "boarding", "vet", "about", "shortlist"], A0 = (G) => G && z.includes(G) && !(G === "about" && window.innerWidth >= 768) ? G : null;
     return A0(k) ? [k] : A0(I) ? [I] : ["home"];
-  }), [i, o] = E(!1), [a, l] = E(!1), [c, u] = E("guest"), [h, p] = E("signup"), [m, f] = E(null), [v, g] = E(null), [b, w] = E(!1), [x, T] = E(0), [Pv, Nv] = E(null), { user: P, login: N, logout: S } = vi(), C = (k) => {
+  }), [i, o] = E(!1), [a, l] = E(!1), [c, u] = E("guest"), [h, p] = E("signup"), [m, f] = E(null), [v, g] = E(null), [b, w] = E(!1), [x, T] = E(0), [Pv, Nv] = E(null), [Iv, zv] = E(null), { user: P, login: N, logout: S } = vi(), C = (k) => {
     n((I) => [...I, k]), e(k);
   }, R = () => {
     if (r.length > 1) {
@@ -18277,6 +18341,9 @@ function oy() {
       let k = document.querySelector('meta[name="viewport"]');
       k || (k = document.createElement("meta"), k.setAttribute("name", "viewport"), document.head.appendChild(k)), k.setAttribute("content", "width=device-width, initial-scale=1, viewport-fit=cover");
     }
+  }, []), U(() => {
+    const k = new URLSearchParams(window.location.search).get("reset");
+    k && (zv(k), o(!0), window.history.replaceState({}, "", window.location.pathname + window.location.hash));
   }, []), U(() => {
     console.log("📝 Updating hash to:", t), window.location.hash = t, sessionStorage.setItem("pawsitively_current_page", t), console.log("💾 Saved to sessionStorage:", t);
   }, [t]), U(() => {
@@ -18555,7 +18622,10 @@ function oy() {
       wf,
       {
         isOpen: i,
-        onClose: () => o(!1),
+        onClose: () => {
+          o(!1), zv(null);
+        },
+        resetToken: Iv,
         onSuccess: (k, I, z, A) => {
           console.log("🎯 AuthModal onSuccess called in App.tsx!"), console.log("   - userData:", k), console.log("   - token:", I.substring(0, 20) + "..."), console.log("   - About to call login()..."), N(k, I, z, A), console.log("   - login() called successfully!"), o(!1);
         },

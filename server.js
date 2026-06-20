@@ -21,6 +21,8 @@ const VISIT_COUNT_KEY = "homepage_visits";
 const ADMIN_EMAIL = (process.env.ADMIN_EMAIL || "admin@pawsitively.com").toLowerCase();
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
 const AUTH_SESSION_DAYS = Number(process.env.AUTH_SESSION_DAYS || 30);
+const APP_BASE_URL = (process.env.APP_BASE_URL || "https://petcare-clone.onrender.com").replace(/\/$/, "");
+const PASSWORD_RESET_HOURS = Number(process.env.PASSWORD_RESET_HOURS || 1);
 const REVIEW_NOTIFY_TO = process.env.REVIEW_NOTIFY_EMAIL || "selard73@gmail.com";
 const REVIEW_NOTIFY_FROM =
   process.env.REVIEW_NOTIFY_FROM || "Pawsitively Fabulous <selard73@gmail.com>";
@@ -230,6 +232,14 @@ function initSqlite() {
       expires_at TEXT NOT NULL
     );
     CREATE INDEX IF NOT EXISTS idx_auth_sessions_user_id ON auth_sessions(user_id);
+    CREATE TABLE IF NOT EXISTS password_reset_tokens (
+      token TEXT PRIMARY KEY,
+      user_id TEXT NOT NULL,
+      created_at TEXT NOT NULL,
+      expires_at TEXT NOT NULL,
+      used_at TEXT
+    );
+    CREATE INDEX IF NOT EXISTS idx_password_reset_user_id ON password_reset_tokens(user_id);
     `,
   );
   const visitRow = sqlite.prepare("SELECT value FROM site_stats WHERE key = ?").get(VISIT_COUNT_KEY);
@@ -306,9 +316,10 @@ async function readUsersDb() {
     return {
       users: Array.isArray(parsed.users) ? parsed.users : [],
       sessions: Array.isArray(parsed.sessions) ? parsed.sessions : [],
+      passwordResets: Array.isArray(parsed.passwordResets) ? parsed.passwordResets : [],
     };
   } catch {
-    return { users: [], sessions: [] };
+    return { users: [], sessions: [], passwordResets: [] };
   }
 }
 
@@ -593,13 +604,218 @@ async function handleAuthSignup(req, res) {
 
   const existing = await getUserByEmailAsync(email);
   if (existing) {
-    sendJson(res, 409, { error: "An account with this email already exists." });
+    sendJson(res, 409, { error: "An account with this email already exists. Try logging in or use Forgot password." });
     return true;
   }
 
-  const user = await createUserRecord({ email, password, name, role, isAdmin: false });
-  const payload = await buildAuthResponse(user);
-  sendJson(res, 201, payload);
+  try {
+    const user = await createUserRecord({ email, password, name, role, isAdmin: false });
+    const payload = await buildAuthResponse(user);
+    sendJson(res, 201, payload);
+  } catch (error) {
+    const message = String(error?.message || "");
+    if (message.includes("UNIQUE") || error?.code === "ERR_SQLITE_ERROR") {
+      sendJson(res, 409, { error: "An account with this email already exists. Try logging in or use Forgot password." });
+      return true;
+    }
+    throw error;
+  }
+  return true;
+}
+
+async function updateUserPassword(userId, password) {
+  const passwordHash = hashPassword(password);
+  if (usingSqlite) {
+    sqlite.prepare("UPDATE users SET password_hash = ? WHERE id = ?").run(passwordHash, userId);
+    return;
+  }
+  const db = await readUsersDb();
+  const idx = db.users.findIndex((user) => user.id === userId);
+  if (idx >= 0) {
+    db.users[idx].password_hash = passwordHash;
+    await writeUsersDb(db);
+  }
+}
+
+async function invalidateUserSessions(userId) {
+  if (usingSqlite) {
+    sqlite.prepare("DELETE FROM auth_sessions WHERE user_id = ?").run(userId);
+    return;
+  }
+  const db = await readUsersDb();
+  db.sessions = db.sessions.filter((session) => session.user_id !== userId);
+  await writeUsersDb(db);
+}
+
+async function createPasswordResetToken(userId) {
+  const token = crypto.randomBytes(32).toString("hex");
+  const createdAt = new Date().toISOString();
+  const expiresAt = new Date(Date.now() + PASSWORD_RESET_HOURS * 60 * 60 * 1000).toISOString();
+
+  if (usingSqlite) {
+    sqlite.prepare("DELETE FROM password_reset_tokens WHERE user_id = ?").run(userId);
+    sqlite
+      .prepare(
+        "INSERT INTO password_reset_tokens (token, user_id, created_at, expires_at, used_at) VALUES (?, ?, ?, ?, NULL)",
+      )
+      .run(token, userId, createdAt, expiresAt);
+    return token;
+  }
+
+  const db = await readUsersDb();
+  db.passwordResets = (db.passwordResets || []).filter((row) => row.user_id !== userId);
+  db.passwordResets.push({
+    token,
+    user_id: userId,
+    created_at: createdAt,
+    expires_at: expiresAt,
+    used_at: null,
+  });
+  await writeUsersDb(db);
+  return token;
+}
+
+async function getPasswordResetToken(token) {
+  if (!token) return null;
+  const now = new Date().toISOString();
+
+  if (usingSqlite) {
+    const row = sqlite
+      .prepare(
+        "SELECT token, user_id, created_at, expires_at, used_at FROM password_reset_tokens WHERE token = ?",
+      )
+      .get(token);
+    if (!row || row.used_at || row.expires_at <= now) return null;
+    return row;
+  }
+
+  const db = await readUsersDb();
+  const row = (db.passwordResets || []).find((item) => item.token === token);
+  if (!row || row.used_at || row.expires_at <= now) return null;
+  return row;
+}
+
+async function markPasswordResetTokenUsed(token) {
+  const usedAt = new Date().toISOString();
+  if (usingSqlite) {
+    sqlite.prepare("UPDATE password_reset_tokens SET used_at = ? WHERE token = ?").run(usedAt, token);
+    return;
+  }
+  const db = await readUsersDb();
+  const row = (db.passwordResets || []).find((item) => item.token === token);
+  if (row) row.used_at = usedAt;
+  await writeUsersDb(db);
+}
+
+async function sendAccountEmail({ to, subject, text }) {
+  if (RESEND_API_KEY) {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: REVIEW_NOTIFY_FROM,
+        to: [to],
+        subject,
+        text,
+      }),
+    });
+    if (!response.ok) {
+      const body = await response.text();
+      throw new Error(`Resend error (${response.status}): ${body}`);
+    }
+    return;
+  }
+  if (!SMTP_HOST || !SMTP_USER || !SMTP_PASS) {
+    throw new Error("Email is not configured on the server.");
+  }
+  if (!nodemailer) {
+    throw new Error("nodemailer is not installed");
+  }
+  const transporter = nodemailer.createTransport({
+    host: SMTP_HOST,
+    port: SMTP_PORT,
+    secure: SMTP_PORT === 465,
+    auth: {
+      user: SMTP_USER,
+      pass: SMTP_PASS,
+    },
+  });
+  await transporter.sendMail({
+    from: REVIEW_NOTIFY_FROM,
+    to,
+    subject,
+    text,
+  });
+}
+
+async function handleAuthForgotPassword(req, res) {
+  const body = await parseBody(req);
+  const email = normalizeEmail(body.email);
+  const genericMessage =
+    "If an account exists for that email, password reset instructions have been sent.";
+
+  if (!email || !email.includes("@")) {
+    sendJson(res, 400, { error: "Please enter a valid email address." });
+    return true;
+  }
+
+  const user = await getUserByEmailAsync(email);
+  if (user && !user.is_admin) {
+    try {
+      const token = await createPasswordResetToken(user.id);
+      const resetUrl = `${APP_BASE_URL}/?reset=${token}`;
+      await sendAccountEmail({
+        to: user.email,
+        subject: "Reset your Pawsitively Fabulous password",
+        text: [
+          "Hello,",
+          "",
+          "We received a request to reset your Pawsitively Fabulous password.",
+          "",
+          `Reset your password using this link (valid for ${PASSWORD_RESET_HOURS} hour${PASSWORD_RESET_HOURS === 1 ? "" : "s"}):`,
+          resetUrl,
+          "",
+          "If you did not request this, you can ignore this email.",
+          "",
+          "Pawsitively Fabulous",
+        ].join("\n"),
+      });
+    } catch (error) {
+      console.error("Password reset email failed:", error.message);
+      sendJson(res, 500, {
+        error: "Could not send reset email right now. Please try again later.",
+      });
+      return true;
+    }
+  }
+
+  sendJson(res, 200, { ok: true, message: genericMessage });
+  return true;
+}
+
+async function handleAuthResetPassword(req, res) {
+  const body = await parseBody(req);
+  const token = String(body.token || "").trim();
+  const password = String(body.password || "");
+  const passwordError = validateAccountPassword(password);
+  if (passwordError) {
+    sendJson(res, 400, { error: passwordError });
+    return true;
+  }
+
+  const resetRow = await getPasswordResetToken(token);
+  if (!resetRow) {
+    sendJson(res, 400, { error: "This reset link is invalid or has expired." });
+    return true;
+  }
+
+  await updateUserPassword(resetRow.user_id, password);
+  await markPasswordResetTokenUsed(token);
+  await invalidateUserSessions(resetRow.user_id);
+  sendJson(res, 200, { ok: true, message: "Your password has been updated. You can log in now." });
   return true;
 }
 
@@ -680,6 +896,12 @@ async function handleAuthApi(req, res, url) {
   }
   if (route === "/api/auth/shortlist" && method === "PATCH") {
     return handleAuthShortlist(req, res);
+  }
+  if (route === "/api/auth/forgot-password" && method === "POST") {
+    return handleAuthForgotPassword(req, res);
+  }
+  if (route === "/api/auth/reset-password" && method === "POST") {
+    return handleAuthResetPassword(req, res);
   }
   if (route === "/api/admin/user-stats" && method === "GET") {
     return handleAdminUserStats(req, res);
