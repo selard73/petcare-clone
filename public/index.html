@@ -146,6 +146,14 @@
                 const headers = new Headers(forwarded.headers);
                 headers.delete("authorization");
                 forwarded.headers = headers;
+              } else {
+                forwarded.headers = {};
+              }
+              const sessionToken = localStorage.getItem("accessToken");
+              if (sessionToken) {
+                const headers = new Headers(forwarded.headers);
+                headers.set("X-Pawsitively-Session", sessionToken);
+                forwarded.headers = headers;
               }
               return nativeFetch(targetUrl, forwarded);
             }

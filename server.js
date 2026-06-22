@@ -17,6 +17,7 @@ const AIRTABLE_DB_FILE = path.join(ROOT, "data", "airtable.json");
 const SQLITE_DB_FILE = path.join(ROOT, "data", "petcare.db");
 const STATS_FILE = path.join(ROOT, "data", "stats.json");
 const USERS_FILE = path.join(ROOT, "data", "users.json");
+const BUSINESS_AUDIT_FILE = path.join(ROOT, "data", "business-audit.json");
 const VISIT_COUNT_KEY = "homepage_visits";
 const ADMIN_EMAIL = (process.env.ADMIN_EMAIL || "admin@pawsitively.com").toLowerCase();
 const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || "admin123";
@@ -240,6 +241,19 @@ function initSqlite() {
       used_at TEXT
     );
     CREATE INDEX IF NOT EXISTS idx_password_reset_user_id ON password_reset_tokens(user_id);
+    CREATE TABLE IF NOT EXISTS business_audit_log (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      action TEXT NOT NULL,
+      business_id TEXT,
+      business_name TEXT,
+      business_category TEXT,
+      actor_user_id TEXT,
+      actor_email TEXT,
+      actor_name TEXT,
+      actor_is_admin INTEGER NOT NULL DEFAULT 0,
+      created_at TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_business_audit_created_at ON business_audit_log(created_at DESC);
     `,
   );
   const visitRow = sqlite.prepare("SELECT value FROM site_stats WHERE key = ?").get(VISIT_COUNT_KEY);
@@ -301,6 +315,163 @@ function getBearerToken(req) {
   const auth = req.headers.authorization || "";
   const match = auth.match(/^Bearer\s+(.+)$/i);
   return match ? match[1].trim() : "";
+}
+
+function getSessionTokenFromRequest(req) {
+  const headerToken = req.headers["x-pawsitively-session"];
+  return headerToken ? String(headerToken).trim() : getBearerToken(req);
+}
+
+async function getActorFromRequest(req) {
+  const token = getSessionTokenFromRequest(req);
+  if (!token) return null;
+  const session = await getAuthSession(token);
+  if (!session) return null;
+  return getUserByIdAsync(session.user_id);
+}
+
+function actorToMeta(actor) {
+  if (!actor) {
+    return { userId: null, email: "unknown", name: "Unknown", isAdmin: false };
+  }
+  return {
+    userId: actor.id,
+    email: actor.email,
+    name: actor.name,
+    isAdmin: !!(actor.is_admin ?? actor.isAdmin),
+  };
+}
+
+function isBusinessRecord(fields = {}) {
+  const price = String(fields.price || "");
+  return price.startsWith("BUSINESS:") && price !== "BUSINESS:DELETED";
+}
+
+function parseBusinessAbout(fields = {}) {
+  try {
+    const parsed = JSON.parse(fields.about || "{}");
+    return parsed && typeof parsed === "object" ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+function stampBusinessFields(fields = {}, actor, { isCreate = false, existingFields = null } = {}) {
+  if (!isBusinessRecord(fields)) return fields;
+  const about = parseBusinessAbout(fields);
+  const existingAbout = existingFields ? parseBusinessAbout(existingFields) : {};
+  const actorMeta = actorToMeta(actor);
+  const now = new Date().toISOString();
+
+  if (isCreate && !about.createdByEmail && !existingAbout.createdByEmail) {
+    about.createdByUserId = actorMeta.userId;
+    about.createdByEmail = actorMeta.email;
+    about.createdByName = actorMeta.name;
+    about.createdByIsAdmin = actorMeta.isAdmin;
+    about.createdAt = about.createdAt || now;
+  } else if (!about.createdByEmail && existingAbout.createdByEmail) {
+    about.createdByUserId = existingAbout.createdByUserId;
+    about.createdByEmail = existingAbout.createdByEmail;
+    about.createdByName = existingAbout.createdByName;
+    about.createdByIsAdmin = existingAbout.createdByIsAdmin;
+    about.createdAt = existingAbout.createdAt || about.createdAt;
+  }
+
+  about.lastUpdatedByUserId = actorMeta.userId;
+  about.lastUpdatedByEmail = actorMeta.email;
+  about.lastUpdatedByName = actorMeta.name;
+  about.lastUpdatedByIsAdmin = actorMeta.isAdmin;
+  about.updatedAt = now;
+
+  return { ...fields, about: JSON.stringify(about) };
+}
+
+async function appendBusinessAuditLog({ action, fields, actor }) {
+  if (!isBusinessRecord(fields)) return;
+  const about = parseBusinessAbout(fields);
+  const actorMeta = actorToMeta(actor);
+  const entry = {
+    action,
+    businessId: fields.whyWeLoveIt || about.id || "",
+    businessName: about.name || fields.name || "",
+    businessCategory: String(fields.price || "").replace(/^BUSINESS:/, ""),
+    actorUserId: actorMeta.userId,
+    actorEmail: actorMeta.email,
+    actorName: actorMeta.name,
+    actorIsAdmin: actorMeta.isAdmin ? 1 : 0,
+    createdAt: new Date().toISOString(),
+  };
+
+  if (usingSqlite) {
+    sqlite
+      .prepare(
+        `INSERT INTO business_audit_log
+          (action, business_id, business_name, business_category, actor_user_id, actor_email, actor_name, actor_is_admin, created_at)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      )
+      .run(
+        entry.action,
+        entry.businessId,
+        entry.businessName,
+        entry.businessCategory,
+        entry.actorUserId,
+        entry.actorEmail,
+        entry.actorName,
+        entry.actorIsAdmin,
+        entry.createdAt,
+      );
+    return;
+  }
+
+  let db = { entries: [] };
+  try {
+    const raw = await fsp.readFile(BUSINESS_AUDIT_FILE, "utf8");
+    db = JSON.parse(raw);
+  } catch {
+    db = { entries: [] };
+  }
+  db.entries.unshift(entry);
+  db.entries = db.entries.slice(0, 500);
+  await fsp.mkdir(path.dirname(BUSINESS_AUDIT_FILE), { recursive: true });
+  await fsp.writeFile(BUSINESS_AUDIT_FILE, `${JSON.stringify(db, null, 2)}\n`, "utf8");
+}
+
+async function listBusinessAuditLog(limit = 50) {
+  const max = Math.min(Math.max(Number(limit) || 50, 1), 200);
+  if (usingSqlite) {
+    return sqlite
+      .prepare(
+        `SELECT action, business_id AS businessId, business_name AS businessName, business_category AS businessCategory,
+                actor_user_id AS actorUserId, actor_email AS actorEmail, actor_name AS actorName,
+                actor_is_admin AS actorIsAdmin, created_at AS createdAt
+         FROM business_audit_log
+         ORDER BY created_at DESC
+         LIMIT ?`,
+      )
+      .all(max)
+      .map((row) => ({
+        ...row,
+        actorIsAdmin: !!row.actorIsAdmin,
+      }));
+  }
+  try {
+    const raw = await fsp.readFile(BUSINESS_AUDIT_FILE, "utf8");
+    const parsed = JSON.parse(raw);
+    return (parsed.entries || []).slice(0, max);
+  } catch {
+    return [];
+  }
+}
+
+async function handleAdminBusinessAudit(req, res, url) {
+  const user = await getUserFromRequest(req);
+  if (!user || !user.is_admin) {
+    sendJson(res, 403, { error: "Admin access required." });
+    return true;
+  }
+  const limit = url.searchParams.get("limit") || "50";
+  sendJson(res, 200, { entries: await listBusinessAuditLog(limit) });
+  return true;
 }
 
 function getSessionExpiryIso() {
@@ -938,6 +1109,9 @@ async function handleAuthApi(req, res, url) {
   if (route === "/api/admin/user-stats" && method === "GET") {
     return handleAdminUserStats(req, res);
   }
+  if (route === "/api/admin/business-audit" && method === "GET") {
+    return handleAdminBusinessAudit(req, res, url);
+  }
   return false;
 }
 
@@ -1195,10 +1369,22 @@ async function handleAirtableApi(req, res, url) {
 
   if (method === "POST" && !id) {
     const body = await parseBody(req);
-    const created = await createRecords(Array.isArray(body.records) ? body.records : [body]);
+    const items = Array.isArray(body.records) ? body.records : [body];
+    const actor = await getActorFromRequest(req);
+    const prepared = items.map((item) => {
+      const incomingFields = item.fields || {};
+      if (!isBusinessRecord(incomingFields)) {
+        return item;
+      }
+      const nextFields = stampBusinessFields(incomingFields, actor, { isCreate: true });
+      return { ...item, fields: nextFields };
+    });
+    const created = await createRecords(prepared);
     for (const record of created) {
       if (isReviewRecord(record.fields)) {
         queueReviewNotification("added", record.fields);
+      } else if (isBusinessRecord(record.fields)) {
+        await appendBusinessAuditLog({ action: "created", fields: record.fields, actor });
       }
     }
     sendJson(res, 200, Array.isArray(body.records) ? { records: created } : created[0]);
@@ -1207,10 +1393,19 @@ async function handleAirtableApi(req, res, url) {
 
   if (method === "PATCH" && id) {
     const body = await parseBody(req);
-    const next = await patchRecord(id, body.fields || {});
+    const existing = await getRecordById(id);
+    let fields = body.fields || {};
+    const actor = await getActorFromRequest(req);
+    if (isBusinessRecord(fields)) {
+      fields = stampBusinessFields(fields, actor, { isCreate: false, existingFields: existing?.fields });
+    }
+    const next = await patchRecord(id, fields);
     if (!next) {
       sendJson(res, 404, { error: { type: "NOT_FOUND", message: "Record not found" } });
       return true;
+    }
+    if (isBusinessRecord(next.fields)) {
+      await appendBusinessAuditLog({ action: "updated", fields: next.fields, actor });
     }
     sendJson(res, 200, next);
     return true;
@@ -1218,6 +1413,7 @@ async function handleAirtableApi(req, res, url) {
 
   if (method === "DELETE" && id) {
     const existing = await getRecordById(id);
+    const actor = await getActorFromRequest(req);
     const deleted = await deleteRecord(id);
     if (!deleted) {
       sendJson(res, 404, { error: { type: "NOT_FOUND", message: "Record not found" } });
@@ -1225,6 +1421,8 @@ async function handleAirtableApi(req, res, url) {
     }
     if (existing && isReviewRecord(existing.fields)) {
       queueReviewNotification("removed", existing.fields);
+    } else if (existing && isBusinessRecord(existing.fields)) {
+      await appendBusinessAuditLog({ action: "deleted", fields: existing.fields, actor });
     }
     sendJson(res, 200, { id, deleted: true });
     return true;
@@ -1285,7 +1483,7 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    if (url.pathname.startsWith("/api/auth") || url.pathname === "/api/admin/user-stats") {
+    if (url.pathname.startsWith("/api/auth") || url.pathname.startsWith("/api/admin/")) {
       const handled = await handleAuthApi(req, res, url);
       if (handled) return;
     }

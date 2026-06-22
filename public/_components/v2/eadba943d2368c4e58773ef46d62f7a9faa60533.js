@@ -6230,6 +6230,10 @@ const ce = new qm(), Km = "REDACTED_AIRTABLE_TOKEN", Ym = "app0120M8RAwOR635", X
   Authorization: `Bearer ${Km}`,
   "Content-Type": "application/json"
 };
+function cloudWriteHeaders() {
+  const t = localStorage.getItem("accessToken");
+  return t ? { ...ot, "X-Pawsitively-Session": t } : ot;
+}
 function Zm(t) {
   const { photos: e, _airtableId: r, _fromCloud: n, ...i } = t;
   return {
@@ -6349,18 +6353,18 @@ async function deleteCloudReviewRecord(t) {
 }
 async function ef(t) {
   try {
-    const e = encodeURIComponent(`{whyWeLoveIt}="${t.id}"`), r = await fetch(`${st}?filterByFormula=${e}`, { headers: ot });
+    const e = encodeURIComponent(`{whyWeLoveIt}="${t.id}"`), r = await fetch(`${st}?filterByFormula=${e}`, { headers: cloudWriteHeaders() });
     if (!r.ok)
       return { success: !1, error: "Could not reach Airtable to check for existing record." };
     const i = (await r.json()).records?.[0], o = Zm(t);
     let a;
     if (i ? a = await fetch(`${st}/${i.id}`, {
       method: "PATCH",
-      headers: ot,
+      headers: cloudWriteHeaders(),
       body: JSON.stringify({ fields: o })
     }) : a = await fetch(st, {
       method: "POST",
-      headers: ot,
+      headers: cloudWriteHeaders(),
       body: JSON.stringify({ fields: o })
     }), !a.ok) {
       const l = await a.text();
@@ -6403,7 +6407,7 @@ async function markCloudBusinessDeleted(t, e) {
 }
 async function tf(t) {
   try {
-    const e = encodeURIComponent(`{whyWeLoveIt}="${t}"`), r = await fetch(`${st}?filterByFormula=${e}`, { headers: ot });
+    const e = encodeURIComponent(`{whyWeLoveIt}="${t}"`), r = await fetch(`${st}?filterByFormula=${e}`, { headers: cloudWriteHeaders() });
     if (!r.ok) {
       const n = await r.text();
       return console.error("deleteCloudBusiness lookup failed:", r.status, n), { success: !1, error: `Airtable lookup failed (${r.status})` };
@@ -6413,7 +6417,7 @@ async function tf(t) {
       return { success: !0, deletedCount: 0 };
     const o = await Promise.all(
       i.map(async (n) => {
-        const a = await fetch(`${st}/${n.id}`, { method: "DELETE", headers: ot });
+        const a = await fetch(`${st}/${n.id}`, { method: "DELETE", headers: cloudWriteHeaders() });
         if (!a.ok) {
           const l = await a.text();
           return console.error("deleteCloudBusiness delete failed:", a.status, l), !1;
@@ -6514,12 +6518,12 @@ const Oe = {
       updatedAt: (/* @__PURE__ */ new Date()).toISOString(),
       userEdited: !0
     };
-    ce.saveBusiness(r);
     const n = localStorage.getItem("user");
     if (n) {
       const o = JSON.parse(n);
-      ce.setBusinessOwner(r.id, o.id), ce.setUserBusiness(o.id, r.id);
+      r.ownerId = o.id, r.ownerEmail = o.email, r.ownerName = o.name, ce.setBusinessOwner(r.id, o.id), ce.setUserBusiness(o.id, r.id);
     }
+    ce.saveBusiness(r);
     const i = await ef(r);
     return i.success ? { success: !0, business: r } : (console.warn("Airtable sync failed — saved locally only:", i.error), { success: !0, business: r, cloudWarning: "Saved locally, but could not sync to shared storage. Other browsers may not see this yet." });
   },
@@ -8075,7 +8079,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
   U(() => {
     z();
   }, []), U(() => {
-    String(h).toLowerCase() === "scranton" && p("Florence");
+    ["scranton", "effingham"].includes(String(h).toLowerCase()) && p("Florence");
   }, [i]), U(() => {
     M(10), I(!1);
   }, [c, h]), U(() => {
@@ -16444,7 +16448,7 @@ function To({ src: t, alt: e, index: r, onMove: n, onRemove: i, badge: o, badgeC
   );
 }
 function iy({ editBusiness: t, onClose: e }) {
-  const { user: r, accessToken: n } = vi(), [accountStats, setAccountStats] = E(null), [i, o] = E({
+  const { user: r, accessToken: n } = vi(), [accountStats, setAccountStats] = E(null), [businessAudit, setBusinessAudit] = E([]), [i, o] = E({
     name: "",
     description: "",
     address: "",
@@ -16480,7 +16484,12 @@ function iy({ editBusiness: t, onClose: e }) {
   U(() => {
     if (!r?.isAdmin || !n)
       return;
-    fetch("/api/admin/user-stats", { headers: { Authorization: `Bearer ${n}` } }).then((A) => A.ok ? A.json() : null).then((A) => A && setAccountStats(A)).catch(() => {
+    Promise.all([
+      fetch("/api/admin/user-stats", { headers: { Authorization: `Bearer ${n}` } }),
+      fetch("/api/admin/business-audit?limit=30", { headers: { Authorization: `Bearer ${n}` } })
+    ]).then(async ([A, O]) => {
+      A.ok && setAccountStats(await A.json()), O.ok && setBusinessAudit((await O.json()).entries || []);
+    }).catch(() => {
     });
   }, [r?.isAdmin, n]);
   U(() => {
@@ -16763,6 +16772,25 @@ function iy({ editBusiness: t, onClose: e }) {
           A.createdAt && /* @__PURE__ */ s("p", { className: "text-xs text-gray-400 mt-1", children: new Date(A.createdAt).toLocaleDateString() })
         ] }, A.id)) })
       ] }) : /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 text-center border-t border-purple-200 pt-4", children: "No registered accounts yet." })
+    ] }),
+    r?.isAdmin && businessAudit.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6 p-4 rounded-xl bg-blue-50 border border-blue-200", children: [
+      /* @__PURE__ */ s("p", { className: "text-sm font-medium text-blue-800 mb-3", children: "Recent listing activity" }),
+      /* @__PURE__ */ s("div", { className: "max-h-64 overflow-y-auto space-y-2", children: businessAudit.map((A) => /* @__PURE__ */ d("div", { className: "bg-white rounded-lg px-3 py-2 text-left text-sm border border-blue-100", children: [
+        /* @__PURE__ */ d("div", { className: "flex justify-between gap-2 items-start", children: [
+          /* @__PURE__ */ s("span", { className: "font-medium text-gray-800", children: A.businessName || "Unnamed listing" }),
+          /* @__PURE__ */ s("span", { className: "text-xs text-blue-700 whitespace-nowrap capitalize", children: A.action })
+        ] }),
+        /* @__PURE__ */ d("p", { className: "text-gray-600 mt-1", children: [
+          "By ",
+          A.actorEmail || A.actorName || "Unknown",
+          A.actorIsAdmin ? " (admin)" : ""
+        ] }),
+        /* @__PURE__ */ d("p", { className: "text-xs text-gray-400 mt-1", children: [
+          A.businessCategory || "listing",
+          " · ",
+          A.createdAt ? new Date(A.createdAt).toLocaleString() : ""
+        ] })
+      ] }, `${A.createdAt}-${A.businessId}-${A.action}`)) })
     ] }),
     /* @__PURE__ */ s("h1", { className: "text-purple-600 text-center mb-2", children: t ? "Edit Business Listing" : "Add New Business Listing" }),
     /* @__PURE__ */ s("p", { className: "text-gray-600 text-center mb-8", children: t ? "Update your business information below" : "Fill in the details below to add a business to the directory" }),
