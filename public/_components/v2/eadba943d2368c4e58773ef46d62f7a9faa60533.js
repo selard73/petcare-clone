@@ -6368,7 +6368,7 @@ async function ef(t) {
       body: JSON.stringify({ fields: o })
     }), !a.ok) {
       const l = await a.text();
-      return console.error("Airtable save failed:", a.status, l), { success: !1, error: `Airtable error (${a.status}): ${l}` };
+      return a.status === 403 ? (console.error("Airtable save denied:", l), { success: !1, error: "Permission denied. Please log out and log in again, then retry." }) : (console.error("Airtable save failed:", a.status, l), { success: !1, error: `Airtable error (${a.status}): ${l}` });
     }
     return { success: !0 };
   } catch (e) {
@@ -6526,7 +6526,7 @@ const Oe = {
     }
     ce.saveBusiness(r);
     const i = await ef(r);
-    return i.success ? { success: !0, business: r } : (console.warn("Airtable sync failed — saved locally only:", i.error), { success: !0, business: r, cloudWarning: "Saved locally, but could not sync to shared storage. Other browsers may not see this yet." });
+    return i.success ? { success: !0, business: r } : i.error && i.error.includes("Permission denied") ? (console.warn("Cloud save denied:", i.error), { success: !1, error: i.error, business: r }) : (console.warn("Airtable sync failed — saved locally only:", i.error), { success: !0, business: r, cloudWarning: "Saved locally, but could not sync to shared storage. Other browsers may not see this yet." });
   },
   async deleteBusiness(t, e) {
     const r = await tf(t), n = await markCloudBusinessDeleted(t, e);
@@ -6612,7 +6612,7 @@ function rf({ children: t }) {
     if (l)
       try {
         const u = JSON.parse(l);
-        console.log("✅ Found stored user:", u.email, "isAdmin:", u.isAdmin), r(u), syncAccountShortlist(u);
+        console.log("❌ Found stored user without session token; clearing stale login:", u.email), localStorage.removeItem("user");
       } catch (u) {
         console.error("❌ Error parsing stored user:", u), localStorage.removeItem("user");
       }
@@ -11774,10 +11774,7 @@ async function ff() {
   try {
     console.log("📦 Fetching products from Airtable...");
     const t = await fetch(wi, {
-      headers: {
-        Authorization: `Bearer ${bi}`,
-        "Content-Type": "application/json"
-      }
+      headers: cloudWriteHeaders()
     });
     if (!t.ok) {
       const n = await t.text();
@@ -11794,10 +11791,7 @@ async function gf(t) {
     console.log("📝 Creating product in Airtable:", t);
     const e = await fetch(wi, {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${bi}`,
-        "Content-Type": "application/json"
-      },
+      headers: cloudWriteHeaders(),
       body: JSON.stringify({
         fields: {
           name: t.name,
@@ -11828,10 +11822,7 @@ async function yf(t, e) {
     e.photos && (r.photos = e.photos.join(","));
     const n = await fetch(`${wi}/${t}`, {
       method: "PATCH",
-      headers: {
-        Authorization: `Bearer ${bi}`,
-        "Content-Type": "application/json"
-      },
+      headers: cloudWriteHeaders(),
       body: JSON.stringify({
         fields: r
       })
@@ -16649,6 +16640,10 @@ function iy({ editBusiness: t, onClose: e }) {
   }, ft = async (A) => {
     A.preventDefault(), console.log("🚀 FORM SUBMIT STARTED"), console.log("   - Edit mode:", !!t), console.log("   - Business ID:", t?.id), console.log("   - Form data:", i), g(!0), w("");
     try {
+      if (!n) {
+        w("Error: Your session expired. Please log out and log in again.");
+        return;
+      }
       if (!t && !r?.isAdmin) {
         w("Error: Only admin can add new business listings.");
         return;
@@ -16702,7 +16697,7 @@ function iy({ editBusiness: t, onClose: e }) {
       };
       w("💾 Saving...");
       const se = await Oe.saveBusiness(H, n || void 0);
-      console.log("✅ api.saveBusiness returned:", se), t ? (w(se.cloudWarning ? `⚠️ ${se.cloudWarning}` : "Business listing updated successfully! 🎉"), setTimeout(() => {
+      console.log("✅ api.saveBusiness returned:", se), se.error ? (w(`Error: ${se.error}`), g(!1)) : t ? (w(se.cloudWarning ? `⚠️ ${se.cloudWarning}` : "Business listing updated successfully! 🎉"), setTimeout(() => {
         e && e();
       }, 1500)) : (w(se.cloudWarning ? `⚠️ ${se.cloudWarning}` : "Business listing created successfully! 🎉"), o({
         name: "",

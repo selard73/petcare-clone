@@ -465,7 +465,7 @@ async function listBusinessAuditLog(limit = 50) {
 
 async function handleAdminBusinessAudit(req, res, url) {
   const user = await getUserFromRequest(req);
-  if (!user || !user.is_admin) {
+  if (!user || !isActorAdmin(user)) {
     sendJson(res, 403, { error: "Admin access required." });
     return true;
   }
@@ -649,7 +649,8 @@ async function getAuthSession(token) {
 }
 
 async function getUserFromRequest(req) {
-  const token = getBearerToken(req);
+  const token = getSessionTokenFromRequest(req);
+  if (!token) return null;
   const session = await getAuthSession(token);
   if (!session) return null;
   return getUserByIdAsync(session.user_id);
@@ -1033,6 +1034,20 @@ async function handleAuthLogin(req, res) {
     return true;
   }
 
+  if (normalizeEmail(user.email) === ADMIN_EMAIL && !user.is_admin) {
+    if (usingSqlite) {
+      sqlite.prepare("UPDATE users SET is_admin = 1 WHERE id = ?").run(user.id);
+    } else {
+      const db = await readUsersDb();
+      const idx = db.users.findIndex((entry) => entry.id === user.id);
+      if (idx >= 0) {
+        db.users[idx].is_admin = 1;
+        await writeUsersDb(db);
+      }
+    }
+    user.is_admin = 1;
+  }
+
   const payload = await buildAuthResponse(user);
   sendJson(res, 200, payload);
   return true;
@@ -1052,7 +1067,7 @@ async function handleAuthMe(req, res) {
 }
 
 async function handleAuthLogout(req, res) {
-  const token = getBearerToken(req);
+  const token = getSessionTokenFromRequest(req);
   await deleteAuthSession(token);
   sendJson(res, 200, { ok: true });
   return true;
@@ -1073,7 +1088,7 @@ async function handleAuthShortlist(req, res) {
 
 async function handleAdminUserStats(req, res) {
   const user = await getUserFromRequest(req);
-  if (!user || !user.is_admin) {
+  if (!user || !isActorAdmin(user)) {
     sendJson(res, 403, { error: "Admin access required." });
     return true;
   }
@@ -1347,7 +1362,9 @@ async function deleteRecord(id) {
 }
 
 function isActorAdmin(actor) {
-  return !!(actor?.is_admin ?? actor?.isAdmin);
+  if (!actor) return false;
+  if (!!(actor.is_admin ?? actor.isAdmin)) return true;
+  return normalizeEmail(actor.email) === ADMIN_EMAIL;
 }
 
 async function findBusinessRecordByBusinessId(businessId) {
