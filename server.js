@@ -13,6 +13,13 @@ try {
 const PORT = Number(process.env.PORT) || 5600;
 const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, "public");
+const CATEGORY_PAGE_PATHS = {
+  "/grooming": "grooming",
+  "/training": "training",
+  "/boarding": "boarding",
+  "/vet-care": "vet",
+  "/vet": "vet",
+};
 const AIRTABLE_DB_FILE = path.join(ROOT, "data", "airtable.json");
 const SQLITE_DB_FILE = path.join(ROOT, "data", "petcare.db");
 const STATS_FILE = path.join(ROOT, "data", "stats.json");
@@ -1860,6 +1867,19 @@ const server = http.createServer(async (req, res) => {
 
     if (url.pathname === "/api/stats/visits") {
       await handleVisitStatsApi(req, res);
+      return;
+    }
+
+    if (req.method.toUpperCase() === "GET" && CATEGORY_PAGE_PATHS[url.pathname]) {
+      const indexFile = path.join(PUBLIC_DIR, "index.html");
+      fs.readFile(indexFile, (err, data) => {
+        if (err) {
+          sendText(res, 500, "Server error");
+          return;
+        }
+        res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+        res.end(data);
+      });
       return;
     }
 

@@ -23,7 +23,96 @@
       window.addEventListener("hashchange", trackPawsitivelyPage);
       window.addEventListener("load", trackPawsitivelyPage);
     </script>
+    <script>
+      (function () {
+        var categoryPaths = {
+          "/grooming": "grooming",
+          "/training": "training",
+          "/boarding": "boarding",
+          "/vet-care": "vet",
+          "/vet": "vet",
+        };
+        var page = categoryPaths[window.location.pathname];
+        if (page && !window.location.hash) {
+          window.location.replace("/#" + page);
+        }
+      })();
+    </script>
     <meta charset="utf-8" />
+    <link rel="canonical" href="https://www.peedeepetcare.com/" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.peedeepetcare.com/#organization",
+            "name": "Peedee Pet Care",
+            "url": "https://www.peedeepetcare.com/",
+            "description": "A curated pet services directory for Darlington County and Florence, SC, helping pet owners find grooming, training, boarding, and vet care providers in one place.",
+            "logo": "https://www.peedeepetcare.com/_assets/v11/f963f27ff710f642f960fd158ca115b1c0fb3e48.png",
+            "sameAs": []
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.peedeepetcare.com/#website",
+            "url": "https://www.peedeepetcare.com/",
+            "name": "Peedee Pet Care",
+            "description": "Discover local pet care services in Darlington County and Florence, including grooming, training, boarding, and vet care.",
+            "publisher": {
+              "@id": "https://www.peedeepetcare.com/#organization"
+            },
+            "inLanguage": "en-US"
+          },
+          {
+            "@type": "ItemList",
+            "@id": "https://www.peedeepetcare.com/#services",
+            "name": "Pet Services Directory Categories",
+            "description": "Browse pet service categories available in the Pee Dee region directory.",
+            "itemListOrder": "https://schema.org/ItemListOrderAscending",
+            "numberOfItems": 4,
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Grooming",
+                "url": "https://www.peedeepetcare.com/grooming"
+              },
+              {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Training",
+                "url": "https://www.peedeepetcare.com/training"
+              },
+              {
+                "@type": "ListItem",
+                "position": 3,
+                "name": "Boarding",
+                "url": "https://www.peedeepetcare.com/boarding"
+              },
+              {
+                "@type": "ListItem",
+                "position": 4,
+                "name": "Vet Care",
+                "url": "https://www.peedeepetcare.com/vet-care"
+              }
+            ]
+          },
+          {
+            "@type": "BreadcrumbList",
+            "@id": "https://www.peedeepetcare.com/#breadcrumb",
+            "itemListElement": [
+              {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.peedeepetcare.com/"
+              }
+            ]
+          }
+        ]
+      }
+    </script>
     <noscript>
       <style>
         #container {
@@ -101,28 +190,28 @@
     <meta
       id="meta-qw40fu"
       name="description"
-      content="Discover comprehensive pet care services in Darlington County and Florence, including grooming, training, boarding, and vet care, all in one inviting platform."
+      content="Peedee Pet Care is a curated pet services directory for Darlington County and Florence, SC. Find grooming, training, boarding, and vet care providers in one place."
     />
-    <meta id="meta-7ie4y4" name="title" content="Homepage for Petcare Services" />
-    <meta id="meta-yw3oin" name="robots" content="noindex" />
+    <meta id="meta-7ie4y4" name="title" content="Peedee Pet Care | Pet Services Directory" />
+    <meta id="meta-yw3oin" name="robots" content="index,follow" />
     <meta id="meta-1ab1uk" name="twitter:card" content="summary_large_image" />
-    <meta id="meta-fnr44y" name="twitter:url" content="https://shred-cone-30402532.figma.site/" />
-    <meta id="meta-7oyegr" name="twitter:title" content="Homepage for Petcare Services" />
+    <meta id="meta-fnr44y" name="twitter:url" content="https://www.peedeepetcare.com/" />
+    <meta id="meta-7oyegr" name="twitter:title" content="Peedee Pet Care | Pet Services Directory" />
     <meta
       id="meta-p36owd"
       name="twitter:description"
-      content="Discover comprehensive pet care services in Darlington County and Florence, including grooming, training, boarding, and vet care, all in one inviting platform."
+      content="A curated pet services directory for Darlington County and Florence, SC. Find grooming, training, boarding, and vet care providers in one place."
     />
-    <meta id="meta-kmt82y" property="og:title" content="Homepage for Petcare Services" />
+    <meta id="meta-kmt82y" property="og:title" content="Peedee Pet Care | Pet Services Directory" />
     <meta
       id="meta-g68ld4"
       property="og:description"
-      content="Discover comprehensive pet care services in Darlington County and Florence, including grooming, training, boarding, and vet care, all in one inviting platform."
+      content="A curated pet services directory for Darlington County and Florence, SC. Find grooming, training, boarding, and vet care providers in one place."
     />
     <meta id="meta-zfz6ci" property="og:type" content="website" />
-    <meta id="meta-oncyjb" property="og:url" content="https://shred-cone-30402532.figma.site/" />
-    <meta id="meta-pca8gl" property="og:site_name" content="Homepage for Petcare Services" />
-    <title id="title-7i2s6v">Homepage for Petcare Services</title>
+    <meta id="meta-oncyjb" property="og:url" content="https://www.peedeepetcare.com/" />
+    <meta id="meta-pca8gl" property="og:site_name" content="Peedee Pet Care" />
+    <title id="title-7i2s6v">Peedee Pet Care | Pet Services Directory</title>
     <link rel="stylesheet" href="/_components/v2/eadba943d2368c4e58773ef46d62f7a9faa60533.css" />
   </head>
   <body>
