@@ -6178,6 +6178,12 @@ class qm {
       }
     }
   }
+  updateReview(e) {
+    if (!e?.businessId || !e?.id)
+      return;
+    const r = this.getReviews(e.businessId), n = r.findIndex((i) => i.id === e.id);
+    n >= 0 ? r[n] = e : r.push(e), localStorage.setItem(`${this.prefix}reviews_${e.businessId}`, JSON.stringify(r));
+  }
   // Users
   getUser(e) {
     const r = `${this.prefix}user_${e}`, n = localStorage.getItem(r);
@@ -6317,11 +6323,11 @@ async function saveCloudReviewRecord(t) {
     let o;
     if (n ? o = await fetch(`${st}/${n.id}`, {
       method: "PATCH",
-      headers: ot,
+      headers: cloudWriteHeaders(),
       body: JSON.stringify({ fields: i })
     }) : o = await fetch(st, {
       method: "POST",
-      headers: ot,
+      headers: cloudWriteHeaders(),
       body: JSON.stringify({ fields: i })
     }), !o.ok) {
       const a = await o.text();
@@ -6577,6 +6583,49 @@ const Oe = {
     const n = await deleteCloudReviewRecord(t);
     return n.success || console.warn("Cloud review delete failed; keeping local deletion only:", n.error), ce.deleteReview(t), { success: !0, message: "Review deleted successfully", cloudWarning: n.success ? void 0 : n.error };
   },
+  async respondToReview(t, e) {
+    const r = localStorage.getItem("user"), n = r ? JSON.parse(r) : null;
+    if (!n)
+      throw new Error("Please log in to respond to reviews.");
+    const i = String(e || "").trim();
+    if (!i)
+      throw new Error("Please enter a response.");
+    const o = {
+      ...t,
+      ownerResponse: i,
+      ownerResponseAt: (/* @__PURE__ */ new Date()).toISOString(),
+      ownerResponseBy: n.id
+    };
+    ce.updateReview(o);
+    const a = await saveCloudReviewRecord(o);
+    return a.success ? { success: !0, review: o } : { success: !1, error: a.error || "Could not save your response.", review: o };
+  },
+  async requestBusinessLink(t, e) {
+    const r = localStorage.getItem("accessToken");
+    if (!r)
+      throw new Error("Please log in first.");
+    const n = await fetch("/api/claims", {
+      method: "POST",
+      headers: { Authorization: `Bearer ${r}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ businessId: t, message: e || "" })
+    }), i = await n.json().catch(() => ({}));
+    if (!n.ok)
+      throw new Error(i.error || "Could not submit link request.");
+    return i;
+  },
+  async reviewBusinessClaim(t, e) {
+    const r = localStorage.getItem("accessToken");
+    if (!r)
+      throw new Error("Not authenticated.");
+    const n = await fetch(`/api/admin/claims/${t}`, {
+      method: "PATCH",
+      headers: { Authorization: `Bearer ${r}`, "Content-Type": "application/json" },
+      body: JSON.stringify({ action: e })
+    }), i = await n.json().catch(() => ({}));
+    if (!n.ok)
+      throw new Error(i.error || "Could not update claim request.");
+    return i;
+  },
   async uploadPhoto(t) {
     return new Promise((e) => {
       const r = new FileReader();
@@ -6721,6 +6770,71 @@ const xi = (t) => t ? `pawsitively_shortlist_${t.id}` : "pawsitively_shortlist_g
     console.error("Error migrating favorites to shortlist:", e);
   }
 }, Wr = globalThis.__GLOBALS__.getAssetURL("2a637f54adfb8f3323c047246be7f5b36018b8af.png");
+function BusinessLinkRequestBox({ business: t, user: e, onLinked: r }) {
+  const [n, i] = E("idle"), [o, a] = E(""), [l, c] = E("");
+  U(() => {
+    if (!e?.id || e.isAdmin || e.role !== "business" || t.ownerId)
+      return;
+    const u = localStorage.getItem("accessToken");
+    u && fetch(`/api/claims/mine?businessId=${encodeURIComponent(t.id)}`, { headers: { Authorization: `Bearer ${u}` } }).then((h) => h.ok ? h.json() : null).then((h) => {
+      h?.request?.status === "pending" ? i("pending") : h?.request?.status === "approved" && r?.();
+    }).catch(() => {
+    });
+  }, [e?.id, e?.role, t.id, t.ownerId]);
+  if (!e || e.isAdmin || e.role !== "business" || t.ownerId)
+    return null;
+  const u = async () => {
+    c(""), i("loading");
+    try {
+      await Oe.requestBusinessLink(t.id, o), i("pending");
+    } catch (h) {
+      c(h instanceof Error ? h.message : "Could not submit request."), i("idle");
+    }
+  };
+  return n === "pending" ? /* @__PURE__ */ d("div", { className: "mt-4 p-4 bg-amber-50 border-2 border-amber-200 rounded-xl text-center", children: [
+    /* @__PURE__ */ s("div", { className: "text-2xl mb-2", children: "⏳" }),
+    /* @__PURE__ */ s("p", { className: "text-gray-800 font-medium", children: "Link request pending" }),
+    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mt-1", children: "An admin will review your request to manage this listing." })
+  ] }) : /* @__PURE__ */ d("div", { className: "mt-4 p-4 bg-green-50 border-2 border-green-200 rounded-xl", children: [
+    /* @__PURE__ */ s("h4", { className: "text-gray-800 font-medium mb-2", children: "Is this your business?" }),
+    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-3", children: "Request to link your business account so you can manage this listing and respond to reviews." }),
+    /* @__PURE__ */ s("textarea", { value: o, onChange: (h) => a(h.target.value), rows: 3, className: "w-full p-3 bg-white rounded-lg border-2 border-green-200 focus:outline-none focus:border-green-400 text-sm", placeholder: "Optional message for admin (e.g. your role at the business)" }),
+    l && /* @__PURE__ */ s("p", { className: "text-red-600 text-sm mt-2", children: l }),
+    /* @__PURE__ */ s("button", { type: "button", onClick: u, disabled: n === "loading", className: "mt-3 w-full bg-green-600 text-white py-3 rounded-lg hover:bg-green-700 transition-colors disabled:opacity-50", children: n === "loading" ? "Submitting..." : "Request to link this listing" })
+  ] });
+}
+function ReviewOwnerReply({ review: t, business: e, user: r, onUpdated: n }) {
+  const [i, o] = E(t.ownerResponse || ""), [a, l] = E(!1), [c, u] = E(""), h = !!(r && e?.ownerId && e.ownerId === r.id);
+  if (t.ownerResponse && !h)
+    return /* @__PURE__ */ d("div", { className: "mt-3 pt-3 border-t border-purple-200 bg-white/70 rounded-lg p-3", children: [
+      /* @__PURE__ */ s("p", { className: "text-xs font-semibold text-purple-700 mb-1", children: "Owner response" }),
+      /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm leading-relaxed", children: t.ownerResponse })
+    ] });
+  if (!h)
+    return null;
+  const p = async () => {
+    u(""), l(!0);
+    try {
+      const m = await Oe.respondToReview(t, i);
+      if (!m.success)
+        throw new Error(m.error || "Could not save response.");
+      n?.(m.review), o(m.review.ownerResponse || "");
+    } catch (m) {
+      u(m instanceof Error ? m.message : "Could not save response.");
+    } finally {
+      l(!1);
+    }
+  };
+  return /* @__PURE__ */ d("div", { className: "mt-3 pt-3 border-t border-purple-200", children: [
+    t.ownerResponse && /* @__PURE__ */ d("div", { className: "mb-3 bg-white/70 rounded-lg p-3", children: [
+      /* @__PURE__ */ s("p", { className: "text-xs font-semibold text-purple-700 mb-1", children: "Your response" }),
+      /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm leading-relaxed", children: t.ownerResponse })
+    ] }),
+    /* @__PURE__ */ s("textarea", { value: i, onChange: (m) => o(m.target.value), rows: 3, className: "w-full p-3 bg-white rounded-lg border-2 border-purple-200 focus:outline-none focus:border-purple-400 text-sm", placeholder: t.ownerResponse ? "Update your response..." : "Write a response to this review..." }),
+    c && /* @__PURE__ */ s("p", { className: "text-red-600 text-sm mt-2", children: c }),
+    /* @__PURE__ */ s("button", { type: "button", onClick: p, disabled: a || !i.trim(), className: "mt-2 px-4 py-2 bg-purple-600 text-white text-sm rounded-lg hover:bg-purple-700 disabled:opacity-50", children: a ? "Saving..." : t.ownerResponse ? "Update response" : "Post response" })
+  ] });
+}
 function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
   const [n, i] = E(null), [o, a] = E([]), [l, c] = E(!0), [u, h] = E(0), [p, m] = E([]), [f, v] = E({ userName: "", rating: 5, comment: "" }), [g, b] = E(!1), [w, x] = E({}), [T, P] = E(!1), [N, S] = E({ reviewerName: "", rating: 5, comment: "" }), [C, R] = E(!1), [M, k] = E(!1), { user: I, accessToken: z } = vi(), [ee, G] = E("all"), [pe, Ee] = E(!1), [W, te] = E(!1), [ae, ue] = E(!1), [Me, qe] = E("all"), [Ke, Ht] = E(""), [Re, Ye] = E("name"), [Be, mt] = E([]), [Nr, Xe] = E(!1), [ft, A] = E(10), [O, V] = E(!1), [H, se] = E(!1), [Ze, $e] = E(!1), [zt, gt] = E(""), [Ai, Ei] = E(void 0);
   U(() => {
@@ -7579,6 +7693,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     }
                   )
                 ] }),
+                /* @__PURE__ */ s(BusinessLinkRequestBox, { business: n, user: I, onLinked: () => i({ ...n, ownerId: I?.id }) }),
                 /* @__PURE__ */ d("div", { className: "mt-6 border-t border-gray-200 pt-6", children: [
                   /* @__PURE__ */ d("h3", { className: "text-gray-800 mb-4", children: [
                     "Customer Reviews (",
@@ -7639,7 +7754,8 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                             }
                           )
                         ] }),
-                        /* @__PURE__ */ s("p", { className: "text-gray-700 leading-relaxed", children: y.comment })
+                        /* @__PURE__ */ s("p", { className: "text-gray-700 leading-relaxed", children: y.comment }),
+                        /* @__PURE__ */ s(ReviewOwnerReply, { review: y, business: n, user: I, onUpdated: (updated) => m((reviews) => reviews.map((rv) => rv.id === updated.id ? updated : rv)) })
                       ]
                     },
                     y.id
@@ -7750,7 +7866,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] }) : I && n.ownerId === I.id ? /* @__PURE__ */ d("div", { className: "text-center py-8 bg-purple-50 rounded-xl border-2 border-purple-200", children: [
                     /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
-                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" })
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "You can respond to customer reviews below" })
                   ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-purple-200 rounded-xl p-5", children: [
                     /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
@@ -8640,6 +8756,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             an ? "Deleting..." : "Delete Business Listing"
           ] })
         ] }),
+        /* @__PURE__ */ s(BusinessLinkRequestBox, { business: r, user: Lr, onLinked: () => n({ ...r, ownerId: Lr?.id }) }),
         !(Lr && r.ownerId === Lr.id) && !Lr?.isAdmin && /* @__PURE__ */ d("div", { className: "bg-white border-2 border-blue-200 rounded-xl p-5 mt-4", children: [
           /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
           /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
@@ -8656,7 +8773,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         Lr && r.ownerId === Lr.id && !Lr?.isAdmin && /* @__PURE__ */ d("div", { className: "text-center py-6 bg-blue-50 rounded-xl border-2 border-blue-200 mt-4", children: [
           /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
           /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
-          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" })
+          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "You can respond to customer reviews below" })
         ] }),
         Lr?.isAdmin && /* @__PURE__ */ d("div", { className: "bg-yellow-50 border-2 border-yellow-200 rounded-xl p-4 mt-4", children: [
           /* @__PURE__ */ s("h4", { className: "text-gray-800", children: "Admin: Add Customer Review" }),
@@ -8717,7 +8834,8 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
                 }
               )
             ] }),
-            /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: K.comment })
+            /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: K.comment }),
+            /* @__PURE__ */ s(ReviewOwnerReply, { review: K, business: r, user: Lr, onUpdated: (updated) => Xr((reviews) => reviews.map((rv) => rv.id === updated.id ? updated : rv)) })
           ] }, K.id || `${K.userName || K.reviewerName || "review"}-${K.comment}`)) })
         ] })
       ] })
@@ -9691,6 +9809,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     }
                   )
                 ] }),
+                /* @__PURE__ */ s(BusinessLinkRequestBox, { business: n, user: I, onLinked: () => i({ ...n, ownerId: I?.id }) }),
                 /* @__PURE__ */ d("div", { className: "mt-6 border-t border-gray-200 pt-6", children: [
                   /* @__PURE__ */ d("h3", { className: "text-gray-800 mb-4", children: [
                     "Customer Reviews (",
@@ -9751,7 +9870,8 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                             }
                           )
                         ] }),
-                        /* @__PURE__ */ s("p", { className: "text-gray-700 leading-relaxed", children: y.comment })
+                        /* @__PURE__ */ s("p", { className: "text-gray-700 leading-relaxed", children: y.comment }),
+                        /* @__PURE__ */ s(ReviewOwnerReply, { review: y, business: n, user: I, onUpdated: (updated) => m((reviews) => reviews.map((rv) => rv.id === updated.id ? updated : rv)) })
                       ]
                     },
                     y.id
@@ -9862,7 +9982,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] }) : I && n.ownerId === I.id ? /* @__PURE__ */ d("div", { className: "text-center py-8 bg-green-50 rounded-xl border-2 border-green-200", children: [
                     /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
-                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" })
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "You can respond to customer reviews below" })
                   ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-green-200 rounded-xl p-5", children: [
                     /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
@@ -11036,6 +11156,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     }
                   )
                 ] }),
+                /* @__PURE__ */ s(BusinessLinkRequestBox, { business: n, user: I, onLinked: () => i({ ...n, ownerId: I?.id }) }),
                 /* @__PURE__ */ d("div", { className: "mt-6 border-t border-gray-200 pt-6", children: [
                   /* @__PURE__ */ d("h3", { className: "text-gray-800 mb-4", children: [
                     "Customer Reviews (",
@@ -11096,7 +11217,8 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                             }
                           )
                         ] }),
-                        /* @__PURE__ */ s("p", { className: "text-gray-700 leading-relaxed", children: y.comment })
+                        /* @__PURE__ */ s("p", { className: "text-gray-700 leading-relaxed", children: y.comment }),
+                        /* @__PURE__ */ s(ReviewOwnerReply, { review: y, business: n, user: I, onUpdated: (updated) => m((reviews) => reviews.map((rv) => rv.id === updated.id ? updated : rv)) })
                       ]
                     },
                     y.id
@@ -11207,7 +11329,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] }) : I && n.ownerId === I.id ? /* @__PURE__ */ d("div", { className: "text-center py-8 bg-orange-50 rounded-xl border-2 border-orange-200", children: [
                     /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
-                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "Business owners cannot review their own business" })
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "You can respond to customer reviews below" })
                   ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-orange-200 rounded-xl p-5", children: [
                     /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
@@ -16440,7 +16562,7 @@ function To({ src: t, alt: e, index: r, onMove: n, onRemove: i, badge: o, badgeC
   );
 }
 function iy({ editBusiness: t, onClose: e }) {
-  const { user: r, accessToken: n } = vi(), [accountStats, setAccountStats] = E(null), [businessAudit, setBusinessAudit] = E([]), [i, o] = E({
+  const { user: r, accessToken: n } = vi(), [accountStats, setAccountStats] = E(null), [businessAudit, setBusinessAudit] = E([]), [pendingClaims, setPendingClaims] = E([]), [i, o] = E({
     name: "",
     description: "",
     address: "",
@@ -16478,12 +16600,25 @@ function iy({ editBusiness: t, onClose: e }) {
       return;
     Promise.all([
       fetch("/api/admin/user-stats", { headers: { Authorization: `Bearer ${n}` } }),
-      fetch("/api/admin/business-audit?limit=30", { headers: { Authorization: `Bearer ${n}` } })
-    ]).then(async ([A, O]) => {
-      A.ok && setAccountStats(await A.json()), O.ok && setBusinessAudit((await O.json()).entries || []);
+      fetch("/api/admin/business-audit?limit=30", { headers: { Authorization: `Bearer ${n}` } }),
+      fetch("/api/admin/claims?status=pending", { headers: { Authorization: `Bearer ${n}` } })
+    ]).then(async ([A, O, V]) => {
+      A.ok && setAccountStats(await A.json()), O.ok && setBusinessAudit((await O.json()).entries || []), V.ok && setPendingClaims((await V.json()).requests || []);
     }).catch(() => {
     });
   }, [r?.isAdmin, n]);
+  const reviewClaim = async (claimId, action) => {
+    try {
+      const result = await Oe.reviewBusinessClaim(claimId, action);
+      if (action === "approve" && result.ownerId && result.request?.businessId) {
+        ce.setBusinessOwner(result.request.businessId, result.ownerId);
+      }
+      setPendingClaims((claims) => claims.filter((c) => c.id !== claimId));
+      alert(action === "approve" ? "Business link approved." : "Request denied.");
+    } catch (err) {
+      alert(err instanceof Error ? err.message : "Could not update request.");
+    }
+  };
   U(() => {
     if (t) {
       const A = {
@@ -16787,6 +16922,24 @@ function iy({ editBusiness: t, onClose: e }) {
           A.createdAt && /* @__PURE__ */ s("p", { className: "text-xs text-gray-400 mt-1", children: new Date(A.createdAt).toLocaleDateString() })
         ] }, A.id)) })
       ] }) : /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 text-center border-t border-purple-200 pt-4", children: "No registered accounts yet." })
+    ] }),
+    r?.isAdmin && pendingClaims.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6 p-4 rounded-xl bg-green-50 border border-green-200", children: [
+      /* @__PURE__ */ s("p", { className: "text-sm font-medium text-green-800 mb-3", children: "Pending business link requests" }),
+      /* @__PURE__ */ s("div", { className: "max-h-64 overflow-y-auto space-y-2", children: pendingClaims.map((A) => /* @__PURE__ */ d("div", { className: "bg-white rounded-lg px-3 py-3 text-left text-sm border border-green-100", children: [
+        /* @__PURE__ */ d("div", { className: "flex justify-between gap-2 items-start", children: [
+          /* @__PURE__ */ s("span", { className: "font-medium text-gray-800", children: A.businessName || A.businessId }),
+          /* @__PURE__ */ s("span", { className: "text-xs text-green-700 whitespace-nowrap", children: "Pending" })
+        ] }),
+        /* @__PURE__ */ d("p", { className: "text-gray-600 mt-1", children: [
+          "Requested by ",
+          A.userName || A.userEmail || "Unknown"
+        ] }),
+        A.message && /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs mt-1 italic", children: A.message }),
+        /* @__PURE__ */ d("div", { className: "flex gap-2 mt-3", children: [
+          /* @__PURE__ */ s("button", { type: "button", onClick: () => reviewClaim(A.id, "approve"), className: "px-3 py-1.5 bg-green-600 text-white text-xs rounded-lg hover:bg-green-700", children: "Approve" }),
+          /* @__PURE__ */ s("button", { type: "button", onClick: () => reviewClaim(A.id, "deny"), className: "px-3 py-1.5 bg-gray-200 text-gray-700 text-xs rounded-lg hover:bg-gray-300", children: "Deny" })
+        ] })
+      ] }, A.id)) })
     ] }),
     r?.isAdmin && businessAudit.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6 p-4 rounded-xl bg-blue-50 border border-blue-200", children: [
       /* @__PURE__ */ s("p", { className: "text-sm font-medium text-blue-800 mb-3", children: "Recent listing activity" }),

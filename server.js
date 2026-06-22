@@ -254,6 +254,22 @@ function initSqlite() {
       created_at TEXT NOT NULL
     );
     CREATE INDEX IF NOT EXISTS idx_business_audit_created_at ON business_audit_log(created_at DESC);
+    CREATE TABLE IF NOT EXISTS business_claim_requests (
+      id TEXT PRIMARY KEY,
+      business_id TEXT NOT NULL,
+      business_name TEXT,
+      user_id TEXT NOT NULL,
+      user_email TEXT,
+      user_name TEXT,
+      message TEXT,
+      status TEXT NOT NULL DEFAULT 'pending',
+      created_at TEXT NOT NULL,
+      reviewed_at TEXT,
+      reviewed_by TEXT
+    );
+    CREATE INDEX IF NOT EXISTS idx_claim_requests_status ON business_claim_requests(status, created_at DESC);
+    CREATE INDEX IF NOT EXISTS idx_claim_requests_business ON business_claim_requests(business_id, status);
+    CREATE INDEX IF NOT EXISTS idx_claim_requests_user ON business_claim_requests(user_id, status);
     `,
   );
   const visitRow = sqlite.prepare("SELECT value FROM site_stats WHERE key = ?").get(VISIT_COUNT_KEY);
@@ -472,6 +488,261 @@ async function handleAdminBusinessAudit(req, res, url) {
   const limit = url.searchParams.get("limit") || "50";
   sendJson(res, 200, { entries: await listBusinessAuditLog(limit) });
   return true;
+}
+
+function generateClaimId() {
+  return `claim_${crypto.randomBytes(8).toString("hex")}`;
+}
+
+function claimRowToObject(row) {
+  if (!row) return null;
+  return {
+    id: row.id,
+    businessId: row.business_id,
+    businessName: row.business_name,
+    userId: row.user_id,
+    userEmail: row.user_email,
+    userName: row.user_name,
+    message: row.message || "",
+    status: row.status,
+    createdAt: row.created_at,
+    reviewedAt: row.reviewed_at || null,
+    reviewedBy: row.reviewed_by || null,
+  };
+}
+
+function getPendingClaimForUserAndBusiness(userId, businessId) {
+  if (!usingSqlite) return null;
+  const row = sqlite
+    .prepare(
+      "SELECT * FROM business_claim_requests WHERE user_id = ? AND business_id = ? AND status = 'pending' ORDER BY created_at DESC LIMIT 1",
+    )
+    .get(userId, businessId);
+  return claimRowToObject(row);
+}
+
+function listClaimRequests({ status = null, userId = null, businessId = null, limit = 50 } = {}) {
+  if (!usingSqlite) return [];
+  const clauses = [];
+  const params = [];
+  if (status) {
+    clauses.push("status = ?");
+    params.push(status);
+  }
+  if (userId) {
+    clauses.push("user_id = ?");
+    params.push(userId);
+  }
+  if (businessId) {
+    clauses.push("business_id = ?");
+    params.push(businessId);
+  }
+  const where = clauses.length ? `WHERE ${clauses.join(" AND ")}` : "";
+  params.push(Number(limit) || 50);
+  const rows = sqlite
+    .prepare(
+      `SELECT * FROM business_claim_requests ${where} ORDER BY created_at DESC LIMIT ?`,
+    )
+    .all(...params);
+  return rows.map(claimRowToObject);
+}
+
+async function assignBusinessOwner(businessId, user) {
+  const record = await findBusinessRecordByBusinessId(businessId);
+  if (!record) {
+    throw new Error("Business listing not found.");
+  }
+  const about = parseBusinessAbout(record.fields);
+  if (about.ownerId && about.ownerId !== user.id) {
+    throw new Error("This listing already has an owner.");
+  }
+  about.ownerId = user.id;
+  about.ownerEmail = user.email;
+  about.ownerName = user.name;
+  about.linkedAt = new Date().toISOString();
+  const nextFields = { ...record.fields, about: JSON.stringify(about) };
+  await patchRecord(record.id, nextFields);
+  return nextFields;
+}
+
+async function handleCreateBusinessClaim(req, res) {
+  if (!usingSqlite) {
+    sendJson(res, 503, { error: "Claim requests are not available on this server." });
+    return true;
+  }
+  const user = await getUserFromRequest(req);
+  if (!user) {
+    sendJson(res, 401, { error: "Please log in to request a business link." });
+    return true;
+  }
+  if (user.role !== "business" && !isActorAdmin(user)) {
+    sendJson(res, 403, { error: "Only business accounts can request to link a listing." });
+    return true;
+  }
+  const body = await parseBody(req);
+  const businessId = String(body.businessId || "").trim();
+  const message = String(body.message || "").trim();
+  if (!businessId) {
+    sendJson(res, 400, { error: "Business ID is required." });
+    return true;
+  }
+  const record = await findBusinessRecordByBusinessId(businessId);
+  if (!record) {
+    sendJson(res, 404, { error: "Business listing not found." });
+    return true;
+  }
+  const about = parseBusinessAbout(record.fields);
+  if (about.ownerId) {
+    sendJson(res, 409, { error: "This listing already has a linked owner." });
+    return true;
+  }
+  const existingPending = getPendingClaimForUserAndBusiness(user.id, businessId);
+  if (existingPending) {
+    sendJson(res, 200, { ok: true, request: existingPending, message: "You already have a pending request for this listing." });
+    return true;
+  }
+  const now = new Date().toISOString();
+  const claim = {
+    id: generateClaimId(),
+    business_id: businessId,
+    business_name: about.name || record.fields.name || "",
+    user_id: user.id,
+    user_email: user.email,
+    user_name: user.name,
+    message,
+    status: "pending",
+    created_at: now,
+    reviewed_at: null,
+    reviewed_by: null,
+  };
+  sqlite
+    .prepare(
+      "INSERT INTO business_claim_requests (id, business_id, business_name, user_id, user_email, user_name, message, status, created_at, reviewed_at, reviewed_by) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+    )
+    .run(
+      claim.id,
+      claim.business_id,
+      claim.business_name,
+      claim.user_id,
+      claim.user_email,
+      claim.user_name,
+      claim.message,
+      claim.status,
+      claim.created_at,
+      claim.reviewed_at,
+      claim.reviewed_by,
+    );
+  sendJson(res, 201, { ok: true, request: claimRowToObject(claim) });
+  return true;
+}
+
+async function handleMyBusinessClaim(req, res, url) {
+  const user = await getUserFromRequest(req);
+  if (!user) {
+    sendJson(res, 401, { error: "Not authenticated." });
+    return true;
+  }
+  const businessId = url.searchParams.get("businessId");
+  if (businessId) {
+    const pending = getPendingClaimForUserAndBusiness(user.id, businessId);
+    const approved = sqlite
+      ?.prepare(
+        "SELECT * FROM business_claim_requests WHERE user_id = ? AND business_id = ? AND status = 'approved' ORDER BY reviewed_at DESC LIMIT 1",
+      )
+      .get(user.id, businessId);
+    sendJson(res, 200, {
+      request: pending || claimRowToObject(approved) || null,
+    });
+    return true;
+  }
+  sendJson(res, 200, { requests: listClaimRequests({ userId: user.id, limit: 20 }) });
+  return true;
+}
+
+async function handleAdminListClaims(req, res, url) {
+  const user = await getUserFromRequest(req);
+  if (!user || !isActorAdmin(user)) {
+    sendJson(res, 403, { error: "Admin access required." });
+    return true;
+  }
+  const status = url.searchParams.get("status") || "pending";
+  sendJson(res, 200, { requests: listClaimRequests({ status, limit: 100 }) });
+  return true;
+}
+
+async function handleAdminReviewClaim(req, res, claimId) {
+  if (!usingSqlite) {
+    sendJson(res, 503, { error: "Claim requests are not available on this server." });
+    return true;
+  }
+  const admin = await getUserFromRequest(req);
+  if (!admin || !isActorAdmin(admin)) {
+    sendJson(res, 403, { error: "Admin access required." });
+    return true;
+  }
+  const body = await parseBody(req);
+  const action = String(body.action || "").trim().toLowerCase();
+  if (!["approve", "deny"].includes(action)) {
+    sendJson(res, 400, { error: "Action must be approve or deny." });
+    return true;
+  }
+  const row = sqlite.prepare("SELECT * FROM business_claim_requests WHERE id = ?").get(claimId);
+  const claim = claimRowToObject(row);
+  if (!claim) {
+    sendJson(res, 404, { error: "Claim request not found." });
+    return true;
+  }
+  if (claim.status !== "pending") {
+    sendJson(res, 409, { error: "This request has already been reviewed." });
+    return true;
+  }
+  const now = new Date().toISOString();
+  if (action === "deny") {
+    sqlite
+      .prepare("UPDATE business_claim_requests SET status = 'denied', reviewed_at = ?, reviewed_by = ? WHERE id = ?")
+      .run(now, admin.id, claimId);
+    sendJson(res, 200, { ok: true, request: { ...claim, status: "denied", reviewedAt: now, reviewedBy: admin.id } });
+    return true;
+  }
+  const claimant = await getUserByIdAsync(claim.userId);
+  if (!claimant) {
+    sendJson(res, 404, { error: "Claimant account not found." });
+    return true;
+  }
+  await assignBusinessOwner(claim.businessId, claimant);
+  sqlite
+    .prepare("UPDATE business_claim_requests SET status = 'approved', reviewed_at = ?, reviewed_by = ? WHERE id = ?")
+    .run(now, admin.id, claimId);
+  sqlite
+    .prepare(
+      "UPDATE business_claim_requests SET status = 'denied', reviewed_at = ?, reviewed_by = ? WHERE business_id = ? AND status = 'pending' AND id != ?",
+    )
+    .run(now, admin.id, claim.businessId, claimId);
+  sendJson(res, 200, {
+    ok: true,
+    request: { ...claim, status: "approved", reviewedAt: now, reviewedBy: admin.id },
+    ownerId: claimant.id,
+  });
+  return true;
+}
+
+async function handleClaimsApi(req, res, url) {
+  const method = req.method.toUpperCase();
+  const route = url.pathname.replace(/\/$/, "");
+  if (route === "/api/claims" && method === "POST") {
+    return handleCreateBusinessClaim(req, res);
+  }
+  if (route === "/api/claims/mine" && method === "GET") {
+    return handleMyBusinessClaim(req, res, url);
+  }
+  if (route === "/api/admin/claims" && method === "GET") {
+    return handleAdminListClaims(req, res, url);
+  }
+  const claimMatch = route.match(/^\/api\/admin\/claims\/([^/]+)$/);
+  if (claimMatch && method === "PATCH") {
+    return handleAdminReviewClaim(req, res, claimMatch[1]);
+  }
+  return false;
 }
 
 function getSessionExpiryIso() {
@@ -1388,6 +1659,22 @@ function canEditBusinessFields(existingFields = {}, incomingFields = {}, actor) 
   return ownerId === actor.id || createdByUserId === actor.id;
 }
 
+async function getBusinessOwnerIdForBusinessId(businessId) {
+  if (!businessId) return null;
+  const record = await findBusinessRecordByBusinessId(businessId);
+  if (!record) return null;
+  return parseBusinessAbout(record.fields).ownerId || null;
+}
+
+async function canModifyReview(existingFields = {}, actor) {
+  if (!actor) return false;
+  if (isActorAdmin(actor)) return true;
+  const review = parseReviewFromFields(existingFields);
+  if (!review?.businessId) return false;
+  const ownerId = await getBusinessOwnerIdForBusinessId(review.businessId);
+  return ownerId === actor.id;
+}
+
 async function handleAirtableApi(req, res, url) {
   const method = req.method.toUpperCase();
   const id = url.pathname.replace("/api/airtable", "").replace(/^\//, "");
@@ -1458,6 +1745,11 @@ async function handleAirtableApi(req, res, url) {
         return true;
       }
       fields = stampBusinessFields(fields, actor, { isCreate: false, existingFields: existing?.fields });
+    } else if (existing && isReviewRecord(existing.fields)) {
+      if (!(await canModifyReview(existing.fields, actor))) {
+        sendJson(res, 403, { error: "You do not have permission to update this review." });
+        return true;
+      }
     }
     const next = await patchRecord(id, fields);
     if (!next) {
@@ -1549,6 +1841,11 @@ const server = http.createServer(async (req, res) => {
         });
       }
       return;
+    }
+
+    if (url.pathname.startsWith("/api/claims") || url.pathname.startsWith("/api/admin/claims")) {
+      const handled = await handleClaimsApi(req, res, url);
+      if (handled) return;
     }
 
     if (url.pathname.startsWith("/api/auth") || url.pathname.startsWith("/api/admin/")) {
