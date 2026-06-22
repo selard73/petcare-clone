@@ -6511,6 +6511,9 @@ const Oe = {
     }) };
   },
   async saveBusiness(t, e) {
+    const n = localStorage.getItem("user"), o = n ? JSON.parse(n) : null;
+    if (!t.id && !o?.isAdmin)
+      throw new Error("Only admin can add new business listings.");
     const r = {
       ...t,
       id: t.id || crypto.randomUUID(),
@@ -6518,9 +6521,7 @@ const Oe = {
       updatedAt: (/* @__PURE__ */ new Date()).toISOString(),
       userEdited: !0
     };
-    const n = localStorage.getItem("user");
-    if (n) {
-      const o = JSON.parse(n);
+    if (o) {
       r.ownerId = o.id, r.ownerEmail = o.email, r.ownerName = o.name, ce.setBusinessOwner(r.id, o.id), ce.setUserBusiness(o.id, r.id);
     }
     ce.saveBusiness(r);
@@ -13203,7 +13204,7 @@ function Nf({
           ] }),
           /* @__PURE__ */ s("div", { className: "h-px bg-gray-200 mx-4 my-2" }),
           /* @__PURE__ */ s("div", { className: "p-4 space-y-2", children: i ? /* @__PURE__ */ d(ie, { children: [
-            (i.role === "business" || i.isAdmin) && /* @__PURE__ */ s(
+            i.isAdmin && /* @__PURE__ */ s(
               "button",
               {
                 onClick: () => {
@@ -16648,6 +16649,10 @@ function iy({ editBusiness: t, onClose: e }) {
   }, ft = async (A) => {
     A.preventDefault(), console.log("🚀 FORM SUBMIT STARTED"), console.log("   - Edit mode:", !!t), console.log("   - Business ID:", t?.id), console.log("   - Form data:", i), g(!0), w("");
     try {
+      if (!t && !r?.isAdmin) {
+        w("Error: Only admin can add new business listings.");
+        return;
+      }
       const O = [], V = [];
       console.log("📸 Starting photo upload. Number of new photos:", a.length);
       for (const se of a) {
@@ -16738,6 +16743,21 @@ function iy({ editBusiness: t, onClose: e }) {
       g(!1);
     }
   };
+  if (!t && !r?.isAdmin)
+    return /* @__PURE__ */ s("div", { className: "min-h-screen bg-gradient-to-b from-purple-50 to-blue-50 py-12 px-4", children: /* @__PURE__ */ d("div", { className: "max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 text-center", children: [
+      /* @__PURE__ */ s("h1", { className: "text-xl font-semibold text-red-700 mb-2", children: "Access denied" }),
+      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6", children: "Only admin can add new business listings." }),
+      e && /* @__PURE__ */ s("button", { onClick: e, className: "px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700", children: "Go back" })
+    ] }) });
+  if (t && !r?.isAdmin) {
+    const deniedOwner = t.ownerId || ce.getBusinessOwner(t.id);
+    if (deniedOwner !== r?.id)
+      return /* @__PURE__ */ s("div", { className: "min-h-screen bg-gradient-to-b from-purple-50 to-blue-50 py-12 px-4", children: /* @__PURE__ */ d("div", { className: "max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 text-center", children: [
+        /* @__PURE__ */ s("h1", { className: "text-xl font-semibold text-red-700 mb-2", children: "Access denied" }),
+        /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6", children: "You do not have permission to edit this listing." }),
+        e && /* @__PURE__ */ s("button", { onClick: e, className: "px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700", children: "Go back" })
+      ] }) });
+  }
   return /* @__PURE__ */ s(a0, { backend: ey, children: /* @__PURE__ */ s("div", { className: "min-h-screen bg-gradient-to-b from-purple-50 to-blue-50 py-12 px-4", children: /* @__PURE__ */ d("div", { className: "max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8", children: [
     e && /* @__PURE__ */ d(
       "button",
@@ -18491,7 +18511,7 @@ function oy() {
       case "shortlist":
         return /* @__PURE__ */ s(bf, { onNavigate: C, user: P });
       case "admin":
-        return /* @__PURE__ */ s(
+        return !m && !P?.isAdmin ? (e("home"), null) : /* @__PURE__ */ s(
           iy,
           {
             editBusiness: m,
@@ -18599,7 +18619,7 @@ function oy() {
               P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-red-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "👑 Admin" }),
               P.role === "business" && !P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-purple-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "Business" })
             ] }),
-            (P.role === "business" || P.isAdmin) && /* @__PURE__ */ s(
+            P.isAdmin && /* @__PURE__ */ s(
               "button",
               {
                 onClick: () => {
@@ -18644,9 +18664,9 @@ function oy() {
         user: P,
         onLogin: () => o(!0),
         onLogout: S,
-        onAddBusiness: () => {
+        onAddBusiness: P?.isAdmin ? () => {
           f(null), C("admin");
-        }
+        } : void 0
       }
     ),
     /* @__PURE__ */ s("main", { className: "md:pb-0", children: M() }),

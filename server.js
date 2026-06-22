@@ -1346,6 +1346,13 @@ async function deleteRecord(id) {
   return true;
 }
 
+function canEditBusinessFields(fields = {}, actor) {
+  if (!actor) return false;
+  if (actor.is_admin) return true;
+  const about = parseBusinessAbout(fields);
+  return about.ownerId === actor.id || about.createdByUserId === actor.id;
+}
+
 async function handleAirtableApi(req, res, url) {
   const method = req.method.toUpperCase();
   const id = url.pathname.replace("/api/airtable", "").replace(/^\//, "");
@@ -1371,6 +1378,13 @@ async function handleAirtableApi(req, res, url) {
     const body = await parseBody(req);
     const items = Array.isArray(body.records) ? body.records : [body];
     const actor = await getActorFromRequest(req);
+    for (const item of items) {
+      const incomingFields = item.fields || {};
+      if (isBusinessRecord(incomingFields) && !actor?.is_admin) {
+        sendJson(res, 403, { error: "Only admin can add new business listings." });
+        return true;
+      }
+    }
     const prepared = items.map((item) => {
       const incomingFields = item.fields || {};
       if (!isBusinessRecord(incomingFields)) {
@@ -1397,6 +1411,10 @@ async function handleAirtableApi(req, res, url) {
     let fields = body.fields || {};
     const actor = await getActorFromRequest(req);
     if (isBusinessRecord(fields)) {
+      if (!canEditBusinessFields(existing?.fields || fields, actor)) {
+        sendJson(res, 403, { error: "You do not have permission to edit this listing." });
+        return true;
+      }
       fields = stampBusinessFields(fields, actor, { isCreate: false, existingFields: existing?.fields });
     }
     const next = await patchRecord(id, fields);
@@ -1414,14 +1432,22 @@ async function handleAirtableApi(req, res, url) {
   if (method === "DELETE" && id) {
     const existing = await getRecordById(id);
     const actor = await getActorFromRequest(req);
+    if (!existing) {
+      sendJson(res, 404, { error: { type: "NOT_FOUND", message: "Record not found" } });
+      return true;
+    }
+    if (isBusinessRecord(existing.fields) && !canEditBusinessFields(existing.fields, actor)) {
+      sendJson(res, 403, { error: "You do not have permission to delete this listing." });
+      return true;
+    }
     const deleted = await deleteRecord(id);
     if (!deleted) {
       sendJson(res, 404, { error: { type: "NOT_FOUND", message: "Record not found" } });
       return true;
     }
-    if (existing && isReviewRecord(existing.fields)) {
+    if (isReviewRecord(existing.fields)) {
       queueReviewNotification("removed", existing.fields);
-    } else if (existing && isBusinessRecord(existing.fields)) {
+    } else if (isBusinessRecord(existing.fields)) {
       await appendBusinessAuditLog({ action: "deleted", fields: existing.fields, actor });
     }
     sendJson(res, 200, { id, deleted: true });
