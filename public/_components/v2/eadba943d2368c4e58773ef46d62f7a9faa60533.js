@@ -16362,7 +16362,7 @@ function businessMatchesCityFilter(t, e) {
   if (!n || n === "all") return !0;
   if (r === n) return !0;
   const i = r.toLowerCase(), o = n.toLowerCase();
-  return i === o || o === "hartsville" && ["timmonsville", "cades"].includes(i);
+  return i === o || o === "florence" && i === "effingham" || o === "hartsville" && ["timmonsville", "cades"].includes(i);
 }
 function isMakorK9Training(t) {
   const e = String(t?.name || "").toLowerCase();
@@ -16373,7 +16373,7 @@ function trainingMatchesCityFilter(t, e) {
   return !r || r === "all" ? !0 : isMakorK9Training(t) && r.toLowerCase() === "florence" ? !0 : businessMatchesCityFilter(t?.city, e);
 }
 function getTrainingCityFilterOptions(t) {
-  return [...new Set(t.map((e) => e.city).filter(Boolean))].filter((e) => String(e).toLowerCase() !== "scranton").sort((e, r) => String(e).localeCompare(String(r)));
+  return [...new Set(t.map((e) => e.city).filter(Boolean))].filter((e) => !["scranton", "effingham"].includes(String(e).toLowerCase())).sort((e, r) => String(e).localeCompare(String(r)));
 }
 function getDetailGalleryPhotos(t) {
   if (!t)
