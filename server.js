@@ -1346,11 +1346,29 @@ async function deleteRecord(id) {
   return true;
 }
 
-function canEditBusinessFields(fields = {}, actor) {
+function isActorAdmin(actor) {
+  return !!(actor?.is_admin ?? actor?.isAdmin);
+}
+
+async function findBusinessRecordByBusinessId(businessId) {
+  if (!businessId) return null;
+  const records = await listAllRecords();
+  return (
+    records.find(
+      (record) =>
+        isBusinessRecord(record.fields) && String(record.fields.whyWeLoveIt || "") === String(businessId),
+    ) || null
+  );
+}
+
+function canEditBusinessFields(existingFields = {}, incomingFields = {}, actor) {
   if (!actor) return false;
-  if (actor.is_admin) return true;
-  const about = parseBusinessAbout(fields);
-  return about.ownerId === actor.id || about.createdByUserId === actor.id;
+  if (isActorAdmin(actor)) return true;
+  const existingAbout = parseBusinessAbout(existingFields);
+  const incomingAbout = parseBusinessAbout(incomingFields);
+  const ownerId = existingAbout.ownerId || incomingAbout.ownerId;
+  const createdByUserId = existingAbout.createdByUserId || incomingAbout.createdByUserId;
+  return ownerId === actor.id || createdByUserId === actor.id;
 }
 
 async function handleAirtableApi(req, res, url) {
@@ -1380,7 +1398,14 @@ async function handleAirtableApi(req, res, url) {
     const actor = await getActorFromRequest(req);
     for (const item of items) {
       const incomingFields = item.fields || {};
-      if (isBusinessRecord(incomingFields) && !actor?.is_admin) {
+      if (!isBusinessRecord(incomingFields)) continue;
+      const existing = await findBusinessRecordByBusinessId(incomingFields.whyWeLoveIt);
+      if (existing) {
+        if (!canEditBusinessFields(existing.fields, incomingFields, actor)) {
+          sendJson(res, 403, { error: "You do not have permission to edit this listing." });
+          return true;
+        }
+      } else if (!isActorAdmin(actor)) {
         sendJson(res, 403, { error: "Only admin can add new business listings." });
         return true;
       }
@@ -1411,7 +1436,7 @@ async function handleAirtableApi(req, res, url) {
     let fields = body.fields || {};
     const actor = await getActorFromRequest(req);
     if (isBusinessRecord(fields)) {
-      if (!canEditBusinessFields(existing?.fields || fields, actor)) {
+      if (!canEditBusinessFields(existing?.fields || {}, fields, actor)) {
         sendJson(res, 403, { error: "You do not have permission to edit this listing." });
         return true;
       }
@@ -1436,7 +1461,7 @@ async function handleAirtableApi(req, res, url) {
       sendJson(res, 404, { error: { type: "NOT_FOUND", message: "Record not found" } });
       return true;
     }
-    if (isBusinessRecord(existing.fields) && !canEditBusinessFields(existing.fields, actor)) {
+    if (isBusinessRecord(existing.fields) && !canEditBusinessFields(existing.fields, {}, actor)) {
       sendJson(res, 403, { error: "You do not have permission to delete this listing." });
       return true;
     }
