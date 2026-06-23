@@ -88,103 +88,17 @@
     </div>
 
     <noscript data-nosnippet>
-      <main
-        style="
-          height: 100vh;
-          width: 100vw;
-          background-color: white;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          text-align: center;
-        "
-      >
-        <p style="font-size: 24px; padding: 8px; color: black; font-weight: bold; margin: 0">
-          This site requires JavaScript
-        </p>
-        <p style="font-size: 16px; padding: 8px; color: #00000080">
-          To view this website, enable JavaScript in your browser settings and reload the page.
-        </p>
-        <form style="margin-top: 12px" action="">
-          <button
-            type="submit"
-            style="
-              font-size: 14px;
-              color: black;
-              border: 1px solid #0000001a;
-              border-radius: 5px;
-              width: 256px;
-              height: 32px;
-            "
-          >
-            Reload page
-          </button>
-        </form>
+      <main style="max-width:40rem;margin:2rem auto;padding:1rem;font-family:system-ui,sans-serif;color:#1e1b4b">
+        <h1 style="font-size:1.25rem;margin:0 0 0.75rem">Peedee Pet Care — Pet Services Directory</h1>
+        <p style="margin:0 0 0.75rem;line-height:1.5">Local pet services directory for Darlington County and Florence, SC. Find grooming, training, boarding, daycare, and veterinary care. Free for pet owners and businesses — no subscription or listing fees.</p>
+        <p style="margin:0 0 0.75rem;line-height:1.5">Browse categories: <a href="/grooming">Grooming</a>, <a href="/training">Training</a>, <a href="/boarding">Boarding</a>, <a href="/vet-care">Vet Care</a>.</p>
+        <p style="margin:0;line-height:1.5">Enable JavaScript for the full interactive directory experience.</p>
       </main>
     </noscript>
 
-    <!-- SEO/perf: scripts moved out of head. Re-apply after Figma Make re-export. -->
-    <script>
-      (function () {
-        var categoryPaths = {
-          "/grooming": "grooming",
-          "/training": "training",
-          "/boarding": "boarding",
-          "/vet-care": "vet",
-          "/vet": "vet",
-          "/about": "about",
-          "/contact": "about",
-        };
-        var page = categoryPaths[window.location.pathname];
-        if (page && !window.location.hash) {
-          window.location.replace("/#" + page);
-        }
-      })();
-    </script>
-    <script>
-      window.__serverRenderedCSSClassNames = {
-        "css-uwf2km": '{"position":"relative","flex":"1 0 0","display":"block"}',
-        "css-fou3uo": '{"minHeight":1,"width":"100%","height":"100dvh"}',
-      };
-    </script>
+    <!-- Boot logic lives in /js/peedee-boot.js (injected via seo/fragments/body-scripts-extra.html). -->
     <script data-template-id="country-code">
       window.__cf_country = "US";
-    </script>
-    <script>
-      // Intercept Airtable requests so admin/business saves persist on local backend.
-      (() => {
-        const TABLE_BASE = "https://api.airtable.com/v0/app0120M8RAwOR635/tblM97NVRfmIPsxTh";
-        const nativeFetch = window.fetch.bind(window);
-        window.fetch = (input, init = {}) => {
-          try {
-            const originalUrl = typeof input === "string" ? input : input.url;
-            if (originalUrl && originalUrl.startsWith(TABLE_BASE)) {
-              const src = new URL(originalUrl);
-              const suffix = src.pathname.replace("/v0/app0120M8RAwOR635/tblM97NVRfmIPsxTh", "");
-              const targetUrl = `/api/airtable${suffix}${src.search}`;
-              const forwarded = { ...init };
-              if (forwarded.headers) {
-                const headers = new Headers(forwarded.headers);
-                headers.delete("authorization");
-                forwarded.headers = headers;
-              } else {
-                forwarded.headers = {};
-              }
-              const sessionToken = localStorage.getItem("accessToken");
-              if (sessionToken) {
-                const headers = new Headers(forwarded.headers);
-                headers.set("X-Pawsitively-Session", sessionToken);
-                forwarded.headers = headers;
-              }
-              return nativeFetch(targetUrl, forwarded);
-            }
-          } catch {
-            // Fallback to native fetch.
-          }
-          return nativeFetch(input, init);
-        };
-      })();
     </script>
     <script type="module">
       import { SitesRuntime } from "/_runtimes/sites-runtime.542ef8b971b159ea788637ae287720437fb4f9ac60e8add3c2be69cbc0c76d2a.js";
@@ -205,47 +119,6 @@
         renderOptions: {
           metronomeEnabled: false,
         },
-      });
-    </script>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5LESZ1G423"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-5LESZ1G423");
-
-      document.addEventListener("DOMContentLoaded", function () {
-        function trackPawsitivelyPage() {
-          if (typeof gtag !== "function") return;
-          const page = (window.location.hash || "#home").slice(1) || "home";
-          gtag("event", "page_view", {
-            page_title: page,
-            page_path: "/" + page,
-          });
-        }
-        window.addEventListener("hashchange", trackPawsitivelyPage);
-        window.addEventListener("load", trackPawsitivelyPage);
-      });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var seoTitle = "Pet Services in Darlington & Florence SC | Peedee Pet Care";
-        function applySeoTitle() {
-          if (document.title !== seoTitle) {
-            document.title = seoTitle;
-          }
-          var metaTitle = document.querySelector('meta[name="title"]');
-          if (metaTitle && metaTitle.getAttribute("content") !== seoTitle) {
-            metaTitle.setAttribute("content", seoTitle);
-          }
-        }
-        applySeoTitle();
-        window.addEventListener("load", applySeoTitle);
-        setTimeout(applySeoTitle, 1500);
       });
     </script>
   </body>
