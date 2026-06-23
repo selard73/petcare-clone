@@ -19,6 +19,8 @@ const CATEGORY_PAGE_PATHS = {
   "/boarding": "boarding",
   "/vet-care": "vet",
   "/vet": "vet",
+  "/about": "about",
+  "/contact": "about",
 };
 const AIRTABLE_DB_FILE = path.join(ROOT, "data", "airtable.json");
 const SQLITE_DB_FILE = path.join(ROOT, "data", "petcare.db");
