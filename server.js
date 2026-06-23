@@ -23,6 +23,10 @@ const CATEGORY_PAGE_PATHS = {
   "/contact": "about",
 };
 const SITEMAP_FILE = path.join(PUBLIC_DIR, "sitemap.xml");
+const CANONICAL_ORIGIN = (process.env.CANONICAL_ORIGIN || "https://www.peedeepetcare.com").replace(/\/$/, "");
+const CANONICAL_HOST = new URL(CANONICAL_ORIGIN).hostname.toLowerCase();
+const APEX_HOST = (process.env.APEX_HOST || "peedeepetcare.com").toLowerCase();
+const ENABLE_APEX_TO_WWW_REDIRECT = process.env.ENABLE_APEX_TO_WWW_REDIRECT !== "false";
 const AIRTABLE_DB_FILE = path.join(ROOT, "data", "airtable.json");
 const SQLITE_DB_FILE = path.join(ROOT, "data", "petcare.db");
 const STATS_FILE = path.join(ROOT, "data", "stats.json");
@@ -85,7 +89,39 @@ function sendText(res, statusCode, message) {
   res.end(message);
 }
 
-function serveSitemap(res) {
+function getRequestHost(req) {
+  const raw = req.headers["x-forwarded-host"] || req.headers.host || "";
+  return String(raw).split(",")[0].trim().toLowerCase().split(":")[0];
+}
+
+function normalizePathname(pathname) {
+  if (!pathname || pathname === "/") {
+    return "/";
+  }
+  return pathname.replace(/\/+$/, "") || "/";
+}
+
+function redirectToCanonicalHost(req, res, url) {
+  if (!ENABLE_APEX_TO_WWW_REDIRECT) {
+    return false;
+  }
+  if (req.method !== "GET" && req.method !== "HEAD") {
+    return false;
+  }
+  const host = getRequestHost(req);
+  if (host && host === APEX_HOST && APEX_HOST !== CANONICAL_HOST) {
+    const location = `${CANONICAL_ORIGIN}${url.pathname}${url.search}`;
+    res.writeHead(301, {
+      Location: location,
+      "Cache-Control": "public, max-age=86400",
+    });
+    res.end();
+    return true;
+  }
+  return false;
+}
+
+function serveSitemap(req, res) {
   fs.readFile(SITEMAP_FILE, (err, data) => {
     if (err) {
       sendText(res, 500, "Server error");
@@ -94,7 +130,31 @@ function serveSitemap(res) {
     res.writeHead(200, {
       "Content-Type": "text/xml; charset=utf-8",
       "Cache-Control": "public, max-age=3600",
+      "Content-Length": data.length,
     });
+    if (req.method === "HEAD") {
+      res.end();
+      return;
+    }
+    res.end(data);
+  });
+}
+
+function serveIndexHtml(req, res) {
+  const indexFile = path.join(PUBLIC_DIR, "index.html");
+  fs.readFile(indexFile, (err, data) => {
+    if (err) {
+      sendText(res, 500, "Server error");
+      return;
+    }
+    res.writeHead(200, {
+      "Content-Type": "text/html; charset=utf-8",
+      "Content-Length": data.length,
+    });
+    if (req.method === "HEAD") {
+      res.end();
+      return;
+    }
     res.end(data);
   });
 }
@@ -1825,9 +1885,14 @@ const server = http.createServer(async (req, res) => {
     }
 
     const url = new URL(req.url, "http://localhost");
+    const pathname = normalizePathname(url.pathname);
 
-    if (req.method.toUpperCase() === "GET" && url.pathname === "/sitemap.xml") {
-      serveSitemap(res);
+    if (redirectToCanonicalHost(req, res, url)) {
+      return;
+    }
+
+    if ((req.method === "GET" || req.method === "HEAD") && pathname === "/sitemap.xml") {
+      serveSitemap(req, res);
       return;
     }
 
@@ -1894,20 +1959,17 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    if (req.method.toUpperCase() === "GET" && CATEGORY_PAGE_PATHS[url.pathname]) {
-      const indexFile = path.join(PUBLIC_DIR, "index.html");
-      fs.readFile(indexFile, (err, data) => {
-        if (err) {
-          sendText(res, 500, "Server error");
-          return;
-        }
-        res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
-        res.end(data);
-      });
+    if ((req.method === "GET" || req.method === "HEAD") && CATEGORY_PAGE_PATHS[pathname]) {
+      serveIndexHtml(req, res);
       return;
     }
 
-    const filePath = sanitizePath(url.pathname);
+    if (req.method !== "GET" && req.method !== "HEAD") {
+      sendText(res, 405, "Method not allowed");
+      return;
+    }
+
+    const filePath = sanitizePath(pathname);
     if (!filePath) {
       sendText(res, 403, "Forbidden");
       return;
@@ -1924,7 +1986,14 @@ const server = http.createServer(async (req, res) => {
       }
       const ext = path.extname(filePath).toLowerCase();
       const contentType = mimeTypes[ext] || "application/octet-stream";
-      res.writeHead(200, { "Content-Type": contentType });
+      res.writeHead(200, {
+        "Content-Type": contentType,
+        "Content-Length": data.length,
+      });
+      if (req.method === "HEAD") {
+        res.end();
+        return;
+      }
       res.end(data);
     });
   } catch (error) {
