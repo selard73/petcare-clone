@@ -251,10 +251,10 @@
       }
     </style>
     <link
-      rel="preload"
+      rel="stylesheet"
       href="/_components/v2/eadba943d2368c4e58773ef46d62f7a9faa60533.css"
-      as="style"
-      onload="this.onload=null;this.rel='stylesheet'"
+      media="print"
+      onload="this.media='all'"
       crossorigin
     />
     <noscript>
@@ -275,89 +275,6 @@
     </style>
   </head>
   <body>
-    <script>
-      (function () {
-        var categoryPaths = {
-          "/grooming": "grooming",
-          "/training": "training",
-          "/boarding": "boarding",
-          "/vet-care": "vet",
-          "/vet": "vet",
-          "/about": "about",
-          "/contact": "about",
-        };
-        var page = categoryPaths[window.location.pathname];
-        if (page && !window.location.hash) {
-          window.location.replace("/#" + page);
-        }
-      })();
-    </script>
-    <script>
-      window.__serverRenderedCSSClassNames = {
-        "css-uwf2km": '{"position":"relative","flex":"1 0 0","display":"block"}',
-        "css-fou3uo": '{"minHeight":1,"width":"100%","height":"100dvh"}',
-      };
-    </script>
-    <script data-template-id="country-code">
-      window.__cf_country = "US";
-    </script>
-    <script>
-      // Intercept Airtable requests so admin/business saves persist on local backend.
-      (() => {
-        const TABLE_BASE = "https://api.airtable.com/v0/app0120M8RAwOR635/tblM97NVRfmIPsxTh";
-        const nativeFetch = window.fetch.bind(window);
-        window.fetch = (input, init = {}) => {
-          try {
-            const originalUrl = typeof input === "string" ? input : input.url;
-            if (originalUrl && originalUrl.startsWith(TABLE_BASE)) {
-              const src = new URL(originalUrl);
-              const suffix = src.pathname.replace("/v0/app0120M8RAwOR635/tblM97NVRfmIPsxTh", "");
-              const targetUrl = `/api/airtable${suffix}${src.search}`;
-              const forwarded = { ...init };
-              if (forwarded.headers) {
-                const headers = new Headers(forwarded.headers);
-                headers.delete("authorization");
-                forwarded.headers = headers;
-              } else {
-                forwarded.headers = {};
-              }
-              const sessionToken = localStorage.getItem("accessToken");
-              if (sessionToken) {
-                const headers = new Headers(forwarded.headers);
-                headers.set("X-Pawsitively-Session", sessionToken);
-                forwarded.headers = headers;
-              }
-              return nativeFetch(targetUrl, forwarded);
-            }
-          } catch {
-            // Fallback to native fetch.
-          }
-          return nativeFetch(input, init);
-        };
-      })();
-    </script>
-    <script type="module">
-      import { SitesRuntime } from "/_runtimes/sites-runtime.542ef8b971b159ea788637ae287720437fb4f9ac60e8add3c2be69cbc0c76d2a.js";
-      const sitesRuntime = new SitesRuntime({
-        container: document.getElementById("container"),
-        env: "published",
-        bundleId: "847eb79c-b06b-4a00-9ff2-6ae59855cd07",
-        loadComponentsOverNetwork: true,
-        assetsVersion: "v11",
-        fontsVersion: "v1",
-        videosVersion: "v1",
-        codeComponentsVersion: "v2",
-        withBaseStyles: false,
-        reportingDomain: "https://www.figma.com",
-        bundleCreationDate: "2026-05-25 19:07:53 UTC",
-        isFigmake: true,
-        enableMetaTags: false,
-        renderOptions: {
-          metronomeEnabled: false,
-        },
-      });
-    </script>
-
     <div id="seo-content" class="seo-content">
       <h1>Pet Services in Darlington &amp; Florence SC | Peedee Pet Care</h1>
       <h2>Pet Services Directory</h2>
@@ -502,6 +419,90 @@
         </form>
       </main>
     </noscript>
+
+    <!-- SEO/perf: scripts moved out of head. Re-apply after Figma Make re-export. -->
+    <script>
+      (function () {
+        var categoryPaths = {
+          "/grooming": "grooming",
+          "/training": "training",
+          "/boarding": "boarding",
+          "/vet-care": "vet",
+          "/vet": "vet",
+          "/about": "about",
+          "/contact": "about",
+        };
+        var page = categoryPaths[window.location.pathname];
+        if (page && !window.location.hash) {
+          window.location.replace("/#" + page);
+        }
+      })();
+    </script>
+    <script>
+      window.__serverRenderedCSSClassNames = {
+        "css-uwf2km": '{"position":"relative","flex":"1 0 0","display":"block"}',
+        "css-fou3uo": '{"minHeight":1,"width":"100%","height":"100dvh"}',
+      };
+    </script>
+    <script data-template-id="country-code">
+      window.__cf_country = "US";
+    </script>
+    <script>
+      // Intercept Airtable requests so admin/business saves persist on local backend.
+      (() => {
+        const TABLE_BASE = "https://api.airtable.com/v0/app0120M8RAwOR635/tblM97NVRfmIPsxTh";
+        const nativeFetch = window.fetch.bind(window);
+        window.fetch = (input, init = {}) => {
+          try {
+            const originalUrl = typeof input === "string" ? input : input.url;
+            if (originalUrl && originalUrl.startsWith(TABLE_BASE)) {
+              const src = new URL(originalUrl);
+              const suffix = src.pathname.replace("/v0/app0120M8RAwOR635/tblM97NVRfmIPsxTh", "");
+              const targetUrl = `/api/airtable${suffix}${src.search}`;
+              const forwarded = { ...init };
+              if (forwarded.headers) {
+                const headers = new Headers(forwarded.headers);
+                headers.delete("authorization");
+                forwarded.headers = headers;
+              } else {
+                forwarded.headers = {};
+              }
+              const sessionToken = localStorage.getItem("accessToken");
+              if (sessionToken) {
+                const headers = new Headers(forwarded.headers);
+                headers.set("X-Pawsitively-Session", sessionToken);
+                forwarded.headers = headers;
+              }
+              return nativeFetch(targetUrl, forwarded);
+            }
+          } catch {
+            // Fallback to native fetch.
+          }
+          return nativeFetch(input, init);
+        };
+      })();
+    </script>
+    <script type="module">
+      import { SitesRuntime } from "/_runtimes/sites-runtime.542ef8b971b159ea788637ae287720437fb4f9ac60e8add3c2be69cbc0c76d2a.js";
+      const sitesRuntime = new SitesRuntime({
+        container: document.getElementById("container"),
+        env: "published",
+        bundleId: "847eb79c-b06b-4a00-9ff2-6ae59855cd07",
+        loadComponentsOverNetwork: true,
+        assetsVersion: "v11",
+        fontsVersion: "v1",
+        videosVersion: "v1",
+        codeComponentsVersion: "v2",
+        withBaseStyles: false,
+        reportingDomain: "https://www.figma.com",
+        bundleCreationDate: "2026-05-25 19:07:53 UTC",
+        isFigmake: true,
+        enableMetaTags: false,
+        renderOptions: {
+          metronomeEnabled: false,
+        },
+      });
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5LESZ1G423"></script>
