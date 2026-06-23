@@ -18894,7 +18894,7 @@ function oy() {
         ] })
       ] }),
       /* @__PURE__ */ d("div", { className: "hidden md:block relative w-full mt-4", children: [
-        /* @__PURE__ */ d("div", { className: "absolute text-xs text-purple-600/90 text-left leading-snug", style: { left: "1.75rem", top: "50%", transform: "translateY(calc(-50% - 4px))" }, children: [
+        /* @__PURE__ */ d("div", { className: "absolute text-xs text-purple-600/90 text-left leading-snug", style: { left: "2.25rem", top: "50%", transform: "translateY(calc(-50% - 10px))" }, children: [
           /* @__PURE__ */ s("p", { children: "Questions?" }),
           /* @__PURE__ */ d("p", { children: [
             "Email us at ",
