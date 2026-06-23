@@ -6080,7 +6080,13 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
         ]
       }
     ) }) }),
-      /* @__PURE__ */ s("div", { className: "md:hidden flex items-center justify-center text-[10px] text-purple-500/70 tracking-wide text-center", style: { marginTop: "2.1328125rem", marginBottom: "0.5rem" }, children: e0 != null ? `${e0.toLocaleString()} visits and counting` : "" })
+      /* @__PURE__ */ s("div", { className: "md:hidden flex items-center justify-center text-[10px] text-purple-500/70 tracking-wide text-center", style: { marginTop: "2.1328125rem", marginBottom: "0.75rem" }, children: e0 != null ? `${e0.toLocaleString()} visits and counting` : "" }),
+      /* @__PURE__ */ d("div", { className: "md:hidden text-center px-4", style: { marginBottom: "2.1328125rem" }, children: [
+        /* @__PURE__ */ d("p", { className: "text-xs text-purple-600/90", children: [
+          "Questions? Email us at ",
+          /* @__PURE__ */ s("a", { href: "mailto:kawaii@kawaiipagepress.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "kawaii@kawaiipagepress.com" })
+        ] })
+      ] })
     ] })
   ] });
 }
@@ -18866,12 +18872,6 @@ function oy() {
         defaultMode: h
       }
     ),
-    /* @__PURE__ */ d("div", { className: "md:hidden text-center px-4 pt-1 pb-3 bg-[#fce5c1]", children: [
-      /* @__PURE__ */ d("p", { className: "text-xs text-purple-600/90", children: [
-        "Questions? Email us at ",
-        /* @__PURE__ */ s("a", { href: "mailto:kawaii@kawaiipagepress.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "kawaii@kawaiipagepress.com" })
-      ] })
-    ] }),
     /* @__PURE__ */ d("footer", { className: "relative bg-[#fce5c1] text-purple-900 py-3 px-4 md:py-8 md:px-0 mt-0 md:mt-16 border-t border-purple-100/60 md:border-t-0", children: [
       /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8 text-center relative", children: [
       /* @__PURE__ */ d("div", { className: "md:hidden flex flex-col items-center gap-1", children: [
