@@ -15,6 +15,7 @@ const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, "public");
 const CATEGORY_PAGE_PATHS = {
   "/services": "home",
+  "/products": "products",
   "/grooming": "grooming",
   "/training": "training",
   "/boarding": "boarding",

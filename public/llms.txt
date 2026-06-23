@@ -15,6 +15,7 @@ Peedee Pet Care is a local pet services directory serving Darlington County and 
 
 ## Main pages
 - Home: https://www.peedeepetcare.com/
+- Products: https://www.peedeepetcare.com/products
 - Grooming: https://www.peedeepetcare.com/grooming
 - Training: https://www.peedeepetcare.com/training
 - Boarding: https://www.peedeepetcare.com/boarding
