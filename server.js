@@ -14,6 +14,7 @@ const PORT = Number(process.env.PORT) || 5600;
 const ROOT = __dirname;
 const PUBLIC_DIR = path.join(ROOT, "public");
 const CATEGORY_PAGE_PATHS = {
+  "/services": "home",
   "/grooming": "grooming",
   "/training": "training",
   "/boarding": "boarding",
