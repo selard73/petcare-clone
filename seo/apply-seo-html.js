@@ -86,6 +86,16 @@ function removeFigmaMetaTags(html) {
     .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/gi, "");
 }
 
+function minifyJsonLd(html) {
+  return html.replace(/<script type="application\/ld\+json">\s*([\s\S]*?)\s*<\/script>/gi, (_, json) => {
+    try {
+      return `<script type="application/ld+json">${JSON.stringify(JSON.parse(json))}</script>`;
+    } catch {
+      return `<script type="application/ld+json">${json.trim()}</script>`;
+    }
+  });
+}
+
 function fixComponentsStylesheet(html) {
   const cssMatch = html.match(/href="(\/_components\/v2\/[^"]+\.css)"/i);
   const cssHref = cssMatch ? cssMatch[1] : "/_components/v2/eadba943d2368c4e58773ef46d62f7a9faa60533.css";
@@ -174,7 +184,7 @@ function applySeoToIndexHtml(html) {
 
   result = result.replace(/<\/body>/i, `    ${scriptBlock}\n  </body>`);
 
-  return result;
+  return minifyJsonLd(result);
 }
 
 module.exports = {
