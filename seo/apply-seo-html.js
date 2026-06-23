@@ -77,7 +77,12 @@ function removeFigmaMetaTags(html) {
     .replace(/<meta id="meta-[^"]*"[^>]*>/gi, "")
     .replace(/<title id="title-[^"]*"[^>]*>[\s\S]*?<\/title>/gi, "")
     .replace(/<title>[\s\S]*?<\/title>/i, "")
-    .replace(/<link rel="canonical"[^>]*>/gi, "");
+    .replace(/<link rel="canonical"[^>]*>/gi, "")
+    .replace(/<meta[\s\S]*?\bname=["']description["'][\s\S]*?\/?>/gi, "")
+    .replace(/<meta[\s\S]*?\bname=["']robots["'][\s\S]*?\/?>/gi, "")
+    .replace(/<meta[\s\S]*?\bname=["']title["'][\s\S]*?\/?>/gi, "")
+    .replace(/<meta[\s\S]*?\bproperty=["']og:[^"']+["'][\s\S]*?\/?>/gi, "")
+    .replace(/<meta[\s\S]*?\bname=["']twitter:[^"']+["'][\s\S]*?\/?>/gi, "");
 }
 
 function fixComponentsStylesheet(html) {
