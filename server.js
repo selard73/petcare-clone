@@ -24,6 +24,7 @@ const CATEGORY_PAGE_PATHS = {
   "/contact": "about",
 };
 const SITEMAP_FILE = path.join(PUBLIC_DIR, "sitemap.xml");
+const { applySeoToIndexHtml } = require("./seo/apply-seo-html");
 const CANONICAL_ORIGIN = (process.env.CANONICAL_ORIGIN || "https://www.peedeepetcare.com").replace(/\/$/, "");
 const CANONICAL_HOST = new URL(CANONICAL_ORIGIN).hostname.toLowerCase();
 const APEX_HOST = (process.env.APEX_HOST || "peedeepetcare.com").toLowerCase();
@@ -141,22 +142,36 @@ function serveSitemap(req, res) {
   });
 }
 
+let indexHtmlCache = { mtimeMs: 0, body: "" };
+
 function serveIndexHtml(req, res) {
   const indexFile = path.join(PUBLIC_DIR, "index.html");
-  fs.readFile(indexFile, (err, data) => {
-    if (err) {
+  fs.stat(indexFile, (statErr, stat) => {
+    if (statErr) {
       sendText(res, 500, "Server error");
       return;
     }
-    res.writeHead(200, {
-      "Content-Type": "text/html; charset=utf-8",
-      "Content-Length": data.length,
+    fs.readFile(indexFile, (err, data) => {
+      if (err) {
+        sendText(res, 500, "Server error");
+        return;
+      }
+      let body = indexHtmlCache.body;
+      if (stat.mtimeMs !== indexHtmlCache.mtimeMs) {
+        body = applySeoToIndexHtml(data.toString("utf8"));
+        indexHtmlCache = { mtimeMs: stat.mtimeMs, body };
+      }
+      const payload = Buffer.from(body, "utf8");
+      res.writeHead(200, {
+        "Content-Type": "text/html; charset=utf-8",
+        "Content-Length": payload.length,
+      });
+      if (req.method === "HEAD") {
+        res.end();
+        return;
+      }
+      res.end(payload);
     });
-    if (req.method === "HEAD") {
-      res.end();
-      return;
-    }
-    res.end(data);
   });
 }
 
@@ -1957,6 +1972,11 @@ const server = http.createServer(async (req, res) => {
 
     if (url.pathname === "/api/stats/visits") {
       await handleVisitStatsApi(req, res);
+      return;
+    }
+
+    if ((req.method === "GET" || req.method === "HEAD") && (pathname === "/" || pathname === "/index.html")) {
+      serveIndexHtml(req, res);
       return;
     }
 
