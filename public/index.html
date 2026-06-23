@@ -3,23 +3,6 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <script>
-      (function () {
-        var categoryPaths = {
-          "/grooming": "grooming",
-          "/training": "training",
-          "/boarding": "boarding",
-          "/vet-care": "vet",
-          "/vet": "vet",
-          "/about": "about",
-          "/contact": "about",
-        };
-        var page = categoryPaths[window.location.pathname];
-        if (page && !window.location.hash) {
-          window.location.replace("/#" + page);
-        }
-      })();
-    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Pet Services in Darlington & Florence SC | Peedee Pet Care</title>
     <meta
@@ -201,45 +184,6 @@
       }
     </script>
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5LESZ1G423"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-5LESZ1G423");
-
-      function trackPawsitivelyPage() {
-        if (typeof gtag !== "function") return;
-        const page = (window.location.hash || "#home").slice(1) || "home";
-        gtag("event", "page_view", {
-          page_title: page,
-          page_path: "/" + page,
-        });
-      }
-      window.addEventListener("hashchange", trackPawsitivelyPage);
-      window.addEventListener("load", trackPawsitivelyPage);
-    </script>
-    <script>
-      (function () {
-        var seoTitle = "Pet Services in Darlington & Florence SC | Peedee Pet Care";
-        function applySeoTitle() {
-          if (document.title !== seoTitle) {
-            document.title = seoTitle;
-          }
-          var metaTitle = document.querySelector('meta[name="title"]');
-          if (metaTitle && metaTitle.getAttribute("content") !== seoTitle) {
-            metaTitle.setAttribute("content", seoTitle);
-          }
-        }
-        applySeoTitle();
-        document.addEventListener("DOMContentLoaded", applySeoTitle);
-        window.addEventListener("load", applySeoTitle);
-        setTimeout(applySeoTitle, 1500);
-      })();
-    </script>
     <noscript>
       <style>
         #container {
@@ -306,13 +250,16 @@
         height: 100dvh;
       }
     </style>
-    <script>
-      window.__serverRenderedCSSClassNames = {
-        "css-uwf2km": '{"position":"relative","flex":"1 0 0","display":"block"}',
-        "css-fou3uo": '{"minHeight":1,"width":"100%","height":"100dvh"}',
-      };
-    </script>
-    <link rel="stylesheet" href="/_components/v2/eadba943d2368c4e58773ef46d62f7a9faa60533.css" />
+    <link
+      rel="preload"
+      href="/_components/v2/eadba943d2368c4e58773ef46d62f7a9faa60533.css"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+      crossorigin
+    />
+    <noscript>
+      <link rel="stylesheet" href="/_components/v2/eadba943d2368c4e58773ef46d62f7a9faa60533.css" />
+    </noscript>
     <style>
       .seo-content {
         position: absolute;
@@ -328,6 +275,29 @@
     </style>
   </head>
   <body>
+    <script>
+      (function () {
+        var categoryPaths = {
+          "/grooming": "grooming",
+          "/training": "training",
+          "/boarding": "boarding",
+          "/vet-care": "vet",
+          "/vet": "vet",
+          "/about": "about",
+          "/contact": "about",
+        };
+        var page = categoryPaths[window.location.pathname];
+        if (page && !window.location.hash) {
+          window.location.replace("/#" + page);
+        }
+      })();
+    </script>
+    <script>
+      window.__serverRenderedCSSClassNames = {
+        "css-uwf2km": '{"position":"relative","flex":"1 0 0","display":"block"}',
+        "css-fou3uo": '{"minHeight":1,"width":"100%","height":"100dvh"}',
+      };
+    </script>
     <script data-template-id="country-code">
       window.__cf_country = "US";
     </script>
@@ -532,5 +502,46 @@
         </form>
       </main>
     </noscript>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5LESZ1G423"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-5LESZ1G423");
+
+      document.addEventListener("DOMContentLoaded", function () {
+        function trackPawsitivelyPage() {
+          if (typeof gtag !== "function") return;
+          const page = (window.location.hash || "#home").slice(1) || "home";
+          gtag("event", "page_view", {
+            page_title: page,
+            page_path: "/" + page,
+          });
+        }
+        window.addEventListener("hashchange", trackPawsitivelyPage);
+        window.addEventListener("load", trackPawsitivelyPage);
+      });
+    </script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        var seoTitle = "Pet Services in Darlington & Florence SC | Peedee Pet Care";
+        function applySeoTitle() {
+          if (document.title !== seoTitle) {
+            document.title = seoTitle;
+          }
+          var metaTitle = document.querySelector('meta[name="title"]');
+          if (metaTitle && metaTitle.getAttribute("content") !== seoTitle) {
+            metaTitle.setAttribute("content", seoTitle);
+          }
+        }
+        applySeoTitle();
+        window.addEventListener("load", applySeoTitle);
+        setTimeout(applySeoTitle, 1500);
+      });
+    </script>
   </body>
 </html>
