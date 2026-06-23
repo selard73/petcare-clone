@@ -18889,16 +18889,16 @@ function oy() {
         /* @__PURE__ */ s("p", { children: "Pet Services Directory - One Stop Shop" })
       ] })
     ] }),
-      /* @__PURE__ */ d("div", { className: "hidden md:flex max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8 mt-4 items-center justify-between gap-6 w-full", children: [
-        /* @__PURE__ */ s("div", { className: "flex-1 min-w-[1rem]" }),
-        /* @__PURE__ */ s("p", { className: "text-purple-600 text-center px-4", children: "All Your Pet Needs in Darlington/Florence Area" }),
-        /* @__PURE__ */ d("div", { className: "flex-1 text-right text-xs text-purple-600/90 leading-relaxed pl-4", children: [
-          t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "text-purple-500/70 tracking-wide mb-1.5", children: `${Pv.toLocaleString()} visits and counting` }),
-          /* @__PURE__ */ d("p", { children: [
+      /* @__PURE__ */ d("div", { className: "hidden md:block relative w-full mt-4", children: [
+        /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8 flex items-center gap-6", children: [
+          /* @__PURE__ */ d("p", { className: "text-xs text-purple-600/90 text-left leading-relaxed flex-1", children: [
             "Questions? Email us at ",
             /* @__PURE__ */ s("a", { href: "mailto:kawaii@kawaiipagepress.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2 whitespace-nowrap", children: "kawaii@kawaiipagepress.com" })
-          ] })
-        ] })
+          ] }),
+          /* @__PURE__ */ s("p", { className: "text-purple-600 text-center flex-[2] px-4", children: "All Your Pet Needs in Darlington/Florence Area" }),
+          /* @__PURE__ */ s("div", { className: "flex-1" })
+        ] }),
+        t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "absolute top-1/2 -translate-y-1/2 text-xs text-purple-500/70 tracking-wide pointer-events-none whitespace-nowrap", style: { right: "1.75rem" }, children: `${Pv.toLocaleString()} visits and counting` })
       ] })
     ] })
   ] });
