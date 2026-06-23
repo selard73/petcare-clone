@@ -83,14 +83,14 @@ function removeFigmaMetaTags(html) {
 function fixComponentsStylesheet(html) {
   const cssMatch = html.match(/href="(\/_components\/v2\/[^"]+\.css)"/i);
   const cssHref = cssMatch ? cssMatch[1] : "/_components/v2/eadba943d2368c4e58773ef46d62f7a9faa60533.css";
-  const asyncCss = `<link rel="stylesheet" href="${cssHref}" media="print" onload="this.media='all'" crossorigin />\n    <noscript><link rel="stylesheet" href="${cssHref}" /></noscript>`;
+  const asyncCss = `<link rel="preload" href="${cssHref}" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin />\n    <noscript><link rel="stylesheet" href="${cssHref}" /></noscript>`;
   let result = html.replace(/<link[^>]*href="\/_components\/v2\/[^"]+\.css"[^>]*>\s*/gi, "");
   result = result.replace(
     /<noscript>\s*<link rel="stylesheet" href="\/_components\/v2\/[^"]+\.css"\s*\/>\s*<\/noscript>\s*/gi,
     "",
   );
   if (result.includes('id="ssr-css"')) {
-    result = result.replace(/(<\/style>\s*)(?=<link rel="preload"|<style id="font-faces|<link rel="stylesheet")/i, `$1${asyncCss}\n    `);
+    result = result.replace(/(<style id="ssr-css">[\s\S]*?<\/style>\s*)/i, `$1${asyncCss}\n    `);
   } else if (result.includes("</head>")) {
     result = result.replace("</head>", `    ${asyncCss}\n  </head>`);
   }
