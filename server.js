@@ -22,6 +22,14 @@ const CATEGORY_PAGE_PATHS = {
   "/about": "about",
   "/contact": "about",
 };
+const SITE_PUBLIC_URL = (process.env.SITE_PUBLIC_URL || "https://www.peedeepetcare.com").replace(/\/$/, "");
+const SITEMAP_PAGES = [
+  { path: "/", changefreq: "weekly", priority: "1.0" },
+  { path: "/grooming", changefreq: "weekly", priority: "0.8" },
+  { path: "/training", changefreq: "weekly", priority: "0.8" },
+  { path: "/boarding", changefreq: "weekly", priority: "0.8" },
+  { path: "/vet-care", changefreq: "weekly", priority: "0.8" },
+];
 const AIRTABLE_DB_FILE = path.join(ROOT, "data", "airtable.json");
 const SQLITE_DB_FILE = path.join(ROOT, "data", "petcare.db");
 const STATS_FILE = path.join(ROOT, "data", "stats.json");
@@ -61,6 +69,7 @@ const mimeTypes = {
   ".gif": "image/gif",
   ".ico": "image/x-icon",
   ".txt": "text/plain; charset=utf-8",
+  ".xml": "application/xml; charset=utf-8",
 };
 
 let writeQueue = Promise.resolve();
@@ -81,6 +90,22 @@ function sendText(res, statusCode, message) {
     "Cache-Control": "no-store",
   });
   res.end(message);
+}
+
+function buildSitemapXml() {
+  const urls = SITEMAP_PAGES.map(({ path: pagePath, changefreq, priority }) => {
+    const loc = pagePath === "/" ? `${SITE_PUBLIC_URL}/` : `${SITE_PUBLIC_URL}${pagePath}`;
+    return `  <url>
+    <loc>${loc}</loc>
+    <changefreq>${changefreq}</changefreq>
+    <priority>${priority}</priority>
+  </url>`;
+  }).join("\n");
+
+  return `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${urls}
+</urlset>`;
 }
 
 function sanitizePath(urlPath) {
@@ -1870,6 +1895,15 @@ const server = http.createServer(async (req, res) => {
 
     if (url.pathname === "/api/stats/visits") {
       await handleVisitStatsApi(req, res);
+      return;
+    }
+
+    if (req.method.toUpperCase() === "GET" && url.pathname === "/sitemap.xml") {
+      res.writeHead(200, {
+        "Content-Type": "application/xml; charset=utf-8",
+        "Cache-Control": "public, max-age=3600",
+      });
+      res.end(buildSitemapXml());
       return;
     }
 
