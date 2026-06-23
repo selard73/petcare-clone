@@ -82,7 +82,8 @@ function removeFigmaMetaTags(html) {
     .replace(/<meta[\s\S]*?\bname=["']robots["'][\s\S]*?\/?>/gi, "")
     .replace(/<meta[\s\S]*?\bname=["']title["'][\s\S]*?\/?>/gi, "")
     .replace(/<meta[\s\S]*?\bproperty=["']og:[^"']+["'][\s\S]*?\/?>/gi, "")
-    .replace(/<meta[\s\S]*?\bname=["']twitter:[^"']+["'][\s\S]*?\/?>/gi, "");
+    .replace(/<meta[\s\S]*?\bname=["']twitter:[^"']+["'][\s\S]*?\/?>/gi, "")
+    .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/gi, "");
 }
 
 function fixComponentsStylesheet(html) {
