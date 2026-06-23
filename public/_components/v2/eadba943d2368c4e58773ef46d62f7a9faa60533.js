@@ -5008,14 +5008,11 @@ function Tn({ type: t, className: e = "" }) {
     }[t] })
   ] });
 }
-function qs({ type: t, delay: e, position: r, offset: n, index: i, globalTime: o, onNavigate: a0 }) {
-  const [a, l] = E(!1), [c, u] = E(null), [h, p] = E(0), [m, f] = E(0), fm = { scissors: "/grooming", bowl: "/training", house: "/boarding", vet: "/vet-care" }, pm = { scissors: "grooming", bowl: "training", house: "boarding", vet: "vet" }, v = (R) => {
+function qs({ type: t, delay: e, position: r, offset: n, index: i, globalTime: o }) {
+  const [a, l] = E(!1), [c, u] = E(null), [h, p] = E(0), [m, f] = E(0), v = (R) => {
     if (R.stopPropagation(), a) return;
-    const page = pm[t];
-    page && a0 && R.preventDefault();
     const M = new Audio("http://soundbible.com/mp3/Blop-Mark_DiAngelo-79054334.mp3");
     M.volume = 0.5, M.play().catch((k) => console.log("Audio play failed:", k)), l(!0), u(o), f((k) => k + 1);
-    if (page && a0) a0(page);
   }, g = 14, w = 10 * 2.4, x = 3.6, T = () => {
     if (a && c !== null)
       if (o - c >= x)
@@ -5055,9 +5052,8 @@ function qs({ type: t, delay: e, position: r, offset: n, index: i, globalTime: o
       },
       children: [
         !a && /* @__PURE__ */ s(
-          "a",
+          "div",
           {
-            href: fm[t] || "/",
             onClick: v,
             className: "absolute inset-0 cursor-pointer pointer-events-auto",
             style: {
@@ -5756,51 +5752,6 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                 }
               )
             ] }),
-            /* @__PURE__ */ s(
-              D.div,
-              {
-                initial: { opacity: 0, y: 20 },
-                animate: { opacity: 1, y: 0 },
-                transition: { delay: 0.55 },
-                className: "flex justify-center gap-4 md:gap-8 mb-8 md:mb-10",
-                children: [
-                  { icon: "scissors", page: "grooming", label: "Grooming", href: "/grooming" },
-                  { icon: "bowl", page: "training", label: "Training", href: "/training" },
-                  { icon: "house", page: "boarding", label: "Boarding", href: "/boarding" },
-                  { icon: "vet", page: "vet", label: "Vet", href: "/vet-care" }
-                ].map((p, m) => /* @__PURE__ */ d(
-                  "a",
-                  {
-                    href: p.href,
-                    onClick: (f) => {
-                      f.preventDefault(), t?.(p.page);
-                    },
-                    className: "flex flex-col items-center no-underline",
-                    children: [
-                      /* @__PURE__ */ s(
-                        D.div,
-                        {
-                          whileHover: { scale: 1.1 },
-                          whileTap: { scale: 0.95 },
-                          className: "w-14 h-14 md:w-16 md:h-16 rounded-full bg-white flex items-center justify-center cursor-pointer",
-                          style: {
-                            boxShadow: window.innerWidth < 768 ? "0 3px 10px rgba(0, 0, 0, 0.10)" : "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)"
-                          },
-                          children: /* @__PURE__ */ s(Tn, { type: p.icon, className: "w-8 h-8 md:w-10 md:h-10" })
-                        }
-                      ),
-                      /* @__PURE__ */ s("span", { style: {
-                        fontSize: "12px",
-                        fontWeight: "600",
-                        color: "#4B5563",
-                        marginTop: "6px"
-                      }, children: p.label })
-                    ]
-                  },
-                  p.page
-                ))
-              }
-            ),
             /* @__PURE__ */ s("div", { className: "md:hidden mx-auto flex justify-center mb-2", children: /* @__PURE__ */ s(
               "button",
               {
@@ -5989,8 +5940,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                 position: "left",
                 offset: v,
                 index: p,
-                globalTime: n,
-                onNavigate: t
+                globalTime: n
               },
               `left-${p}`
             );
@@ -6005,8 +5955,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                 position: "right",
                 offset: v,
                 index: p,
-                globalTime: n,
-                onNavigate: t
+                globalTime: n
               },
               `right-${p}`
             );
@@ -18919,36 +18868,21 @@ function oy() {
     ),
     /* @__PURE__ */ d("footer", { className: "relative bg-[#fce5c1] text-purple-900 py-3 px-4 md:py-8 md:px-0 mt-0 md:mt-16 border-t border-purple-100/60 md:border-t-0", children: [
       /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8 text-center relative", children: [
-      /* @__PURE__ */ d("div", { className: "md:hidden flex flex-col items-center gap-2", children: [
+      /* @__PURE__ */ d("div", { className: "md:hidden flex flex-col items-center gap-1", children: [
         /* @__PURE__ */ d("p", { className: "text-sm font-medium text-purple-900", children: [
           /* @__PURE__ */ s("span", { className: "text-base", children: "🐾" }),
           " Pawsitively Fabulous"
-        ] }),
-        /* @__PURE__ */ d("div", { className: "flex flex-wrap justify-center gap-x-3 gap-y-1 text-xs", children: [
-          /* @__PURE__ */ s("a", { href: "/grooming", className: "text-purple-700 hover:underline", children: "Pet Grooming" }),
-          /* @__PURE__ */ s("a", { href: "/training", className: "text-purple-700 hover:underline", children: "Pet Training" }),
-          /* @__PURE__ */ s("a", { href: "/boarding", className: "text-purple-700 hover:underline", children: "Boarding & Daycare" }),
-          /* @__PURE__ */ s("a", { href: "/vet-care", className: "text-purple-700 hover:underline", children: "Vet Care" }),
-          /* @__PURE__ */ s("a", { href: "/about", className: "text-purple-700 hover:underline", children: "About" }),
-          /* @__PURE__ */ s("a", { href: "/contact", className: "text-purple-700 hover:underline", children: "Contact" })
         ] }),
         /* @__PURE__ */ d("p", { className: "text-xs text-purple-500/70", children: [
           "© ",
           (/* @__PURE__ */ new Date()).getFullYear(),
           " Pawsitively Fabulous. All rights reserved."
-        ] })
+        ] }),
+        /* @__PURE__ */ s("p", { className: "text-xs text-purple-500/70", children: "Privacy • Terms • Contact" })
       ] }),
       /* @__PURE__ */ d("div", { className: "hidden md:block", children: [
         /* @__PURE__ */ s("p", { className: "text-2xl mb-2", children: "🐾 Pawsitively Fabulous 🐾" }),
-        /* @__PURE__ */ s("p", { children: "Pet Services Directory - One Stop Shop" }),
-        /* @__PURE__ */ d("div", { className: "flex flex-wrap justify-center gap-x-4 gap-y-2 mt-4 text-sm", children: [
-          /* @__PURE__ */ s("a", { href: "/grooming", className: "text-purple-700 hover:underline", children: "Pet Grooming" }),
-          /* @__PURE__ */ s("a", { href: "/training", className: "text-purple-700 hover:underline", children: "Pet Training" }),
-          /* @__PURE__ */ s("a", { href: "/boarding", className: "text-purple-700 hover:underline", children: "Boarding & Daycare" }),
-          /* @__PURE__ */ s("a", { href: "/vet-care", className: "text-purple-700 hover:underline", children: "Vet Care" }),
-          /* @__PURE__ */ s("a", { href: "/about", className: "text-purple-700 hover:underline", children: "About Peedee Pet Care" }),
-          /* @__PURE__ */ s("a", { href: "/contact", className: "text-purple-700 hover:underline", children: "Contact" })
-        ] })
+        /* @__PURE__ */ s("p", { children: "Pet Services Directory - One Stop Shop" })
       ] })
     ] }),
       /* @__PURE__ */ d("div", { className: "hidden md:block relative w-full mt-4", children: [
