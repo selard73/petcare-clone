@@ -82,20 +82,8 @@ function removeFigmaMetaTags(html) {
     .replace(/<meta[\s\S]*?\bname=["']robots["'][\s\S]*?\/?>/gi, "")
     .replace(/<meta[\s\S]*?\bname=["']title["'][\s\S]*?\/?>/gi, "")
     .replace(/<meta[\s\S]*?\bproperty=["']og:[^"']+["'][\s\S]*?\/?>/gi, "")
-    .replace(/<meta[\s\S]*?\bname=["']twitter:[^"']+["'][\s\S]*?\/?>/gi, "");
-}
-
-function stripInlineBootScripts(html) {
-  return html
-    .replace(/<script(?![^>]*type=["']module["'])[^>]*>[\s\S]*?categoryPaths[\s\S]*?<\/script>\s*/gi, "")
-    .replace(/<script(?![^>]*type=["']module["'])[^>]*>[\s\S]*?__serverRenderedCSSClassNames[\s\S]*?<\/script>\s*/gi, "")
-    .replace(/<script(?![^>]*type=["']module["'])[^>]*>[\s\S]*?api\.airtable\.com[\s\S]*?<\/script>\s*/gi, "")
-    .replace(/<!-- Google tag \(gtag\.js\) -->[\s\S]*?(?=<script|$)/gi, "")
-    .replace(/<script(?![^>]*type=["']module["'])[^>]*>[\s\S]*?dataLayer[\s\S]*?<\/script>\s*/gi, "")
-    .replace(/<script(?![^>]*type=["']module["'])[^>]*>[\s\S]*?applySeoTitle[\s\S]*?<\/script>\s*/gi, "")
-    .replace(/<script[^>]*src=["']\/js\/peedee-boot\.js["'][^>]*>\s*<\/script>\s*/gi, "")
-    .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/gi, "")
-    .replace(/<script type="application\/ld\+json"[^>]*src=["'][^"']+["'][^>]*>\s*<\/script>\s*/gi, "");
+    .replace(/<meta[\s\S]*?\bname=["']twitter:[^"']+["'][\s\S]*?\/?>/gi, "")
+    .replace(/<script type="application\/ld\+json">[\s\S]*?<\/script>\s*/gi, "");
 }
 
 function minifyJsonLd(html) {
@@ -169,7 +157,6 @@ function applySeoToIndexHtml(html) {
   const figmaScripts = extractExecutableScripts(result);
   result = removeExecutableScripts(result);
   result = removeSeoContentBlock(result);
-  result = stripInlineBootScripts(result);
   result = removeFigmaMetaTags(result);
   result = fixComponentsStylesheet(result);
   result = result.replace(/enableMetaTags:\s*true/g, "enableMetaTags: false");
