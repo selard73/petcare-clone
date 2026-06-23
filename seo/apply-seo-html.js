@@ -67,13 +67,17 @@ function removeExecutableScripts(html) {
   return html.replace(/<script(?![^>]*type=["']application\/ld\+json["'])[^>]*>[\s\S]*?<\/script>/gi, "");
 }
 
+function removeSeoContentBlock(html) {
+  let result = stripBetween(html, MARKER_CONTENT_START, MARKER_CONTENT_END);
+  return result.replace(/<div id="seo-content"[\s\S]*?(?=<div id="container")/i, "");
+}
+
 function removeFigmaMetaTags(html) {
   return html
     .replace(/<meta id="meta-[^"]*"[^>]*>/gi, "")
     .replace(/<title id="title-[^"]*"[^>]*>[\s\S]*?<\/title>/gi, "")
     .replace(/<title>[\s\S]*?<\/title>/i, "")
-    .replace(/<link rel="canonical"[^>]*>/gi, "")
-    .replace(/<div id="seo-content"[\s\S]*?<\/div>\s*/i, "");
+    .replace(/<link rel="canonical"[^>]*>/gi, "");
 }
 
 function fixComponentsStylesheet(html) {
@@ -136,6 +140,7 @@ function applySeoToIndexHtml(html) {
 
   const figmaScripts = extractExecutableScripts(result);
   result = removeExecutableScripts(result);
+  result = removeSeoContentBlock(result);
   result = removeFigmaMetaTags(result);
   result = fixComponentsStylesheet(result);
   result = result.replace(/enableMetaTags:\s*true/g, "enableMetaTags: false");
@@ -145,16 +150,15 @@ function applySeoToIndexHtml(html) {
     `$1\n    ${MARKER_HEAD_START}\n    ${fragments.headInject}\n    ${MARKER_HEAD_END}`,
   );
 
-  result = result.replace(
-    /(<body[^>]*>)/i,
-    `$1\n    ${MARKER_CONTENT_START}\n    ${fragments.seoContent}\n    ${MARKER_CONTENT_END}\n`,
-  );
-
   const orderedFigmaScripts = orderScripts(figmaScripts)
     .map(scriptToHtml)
     .join("\n    ");
+
   const scriptBlock = [
     MARKER_SCRIPTS_START,
+    MARKER_CONTENT_START,
+    fragments.seoContent,
+    MARKER_CONTENT_END,
     fragments.bodyScriptsExtra.trim(),
     orderedFigmaScripts,
     MARKER_SCRIPTS_END,
