@@ -18885,19 +18885,18 @@ function oy() {
           " Pawsitively Fabulous. All rights reserved."
         ] }),
         /* @__PURE__ */ s("p", { className: "text-xs text-purple-500/70", children: "Privacy • Terms • Contact" })
-      ] }),
-      /* @__PURE__ */ d("div", { className: "hidden md:flex items-start gap-6", children: [
-        /* @__PURE__ */ d("p", { className: "text-xs text-purple-600/90 text-left leading-relaxed flex-1 pt-1", children: [
+      ] })
+    ] }),
+      /* @__PURE__ */ d("div", { className: "hidden md:block relative w-full", children: [
+        /* @__PURE__ */ d("p", { className: "absolute top-1 text-xs text-purple-600/90 text-left leading-relaxed", style: { left: "1.75rem" }, children: [
           "Questions? Email us at ",
           /* @__PURE__ */ s("a", { href: "mailto:kawaii@kawaiipagepress.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "kawaii@kawaiipagepress.com" })
         ] }),
-        /* @__PURE__ */ d("div", { className: "text-center flex-[2] px-4", children: [
+        /* @__PURE__ */ d("div", { className: "text-center max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8", children: [
           /* @__PURE__ */ s("p", { className: "text-2xl mb-2", children: "🐾 Pawsitively Fabulous 🐾" }),
           /* @__PURE__ */ s("p", { children: "Pet Services Directory - One Stop Shop" })
-        ] }),
-        /* @__PURE__ */ s("div", { className: "flex-1" })
-      ] })
-    ] }),
+        ] })
+      ] }),
       /* @__PURE__ */ d("div", { className: "hidden md:block relative w-full mt-4", children: [
         /* @__PURE__ */ s("p", { className: "text-purple-600 text-center", children: "All Your Pet Needs in Darlington/Florence Area" }),
         t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "absolute top-1/2 -translate-y-1/2 text-xs text-purple-500/70 tracking-wide pointer-events-none whitespace-nowrap", style: { right: "1.75rem" }, children: `${Pv.toLocaleString()} visits and counting` })
