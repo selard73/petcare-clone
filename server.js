@@ -58,6 +58,7 @@ const mimeTypes = {
   ".svg": "image/svg+xml",
   ".gif": "image/gif",
   ".ico": "image/x-icon",
+  ".txt": "text/plain; charset=utf-8",
 };
 
 let writeQueue = Promise.resolve();

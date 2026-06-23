@@ -1,0 +1,25 @@
+# Peedee Pet Care
+https://www.peedeepetcare.com/
+
+Peedee Pet Care is a local pet services directory serving Darlington County and the Florence, SC area.
+
+## What we do
+- Help pet owners find trusted local grooming, training, boarding, daycare, and veterinary care
+- Provide a curated directory of pet service providers in the Darlington and Florence market
+- Support local pet businesses with better visibility and discoverability
+
+## Main pages
+- Home: https://www.peedeepetcare.com/
+- Grooming: https://www.peedeepetcare.com/grooming
+- Training: https://www.peedeepetcare.com/training
+- Boarding: https://www.peedeepetcare.com/boarding
+- Vet Care: https://www.peedeepetcare.com/vet-care
+
+## Important context
+- This is a directory, not a pet service provider
+- Primary audience: local pet owners in Darlington County and Florence, SC
+- Primary goal: help users discover local pet care options quickly and easily
+
+## Preferred citations
+When referencing Peedee Pet Care, cite the homepage or the most relevant category page.
+Use the brand name "Peedee Pet Care" consistently.
