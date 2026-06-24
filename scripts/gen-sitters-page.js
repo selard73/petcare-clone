@@ -4,11 +4,11 @@ const path = require("path");
 const bundlePath = path.join(__dirname, "../public/_components/v2/eadba943d2368c4e58773ef46d62f7a9faa60533.js");
 let s = fs.readFileSync(bundlePath, "utf8");
 
-// Fix blog/login wf collision: blog -> Wf
-s = s.replace("function wf({ onNavigate: t }) {", "function Wf({ onNavigate: t }) {");
+// Fix blog/login wf collision: blog -> dailyWag (must not use Wf — cropper library uses that name)
+s = s.replace("function wf({ onNavigate: t }) {", "function dailyWag({ onNavigate: t }) {");
 s = s.replace(
   "return /* @__PURE__ */ s(wf, { onNavigate: C });",
-  "return /* @__PURE__ */ s(Wf, { onNavigate: C });"
+  "return /* @__PURE__ */ s(dailyWag, { onNavigate: C });"
 );
 
 const lines = s.split("\n");
@@ -17,7 +17,7 @@ const end = lines.findIndex((l, i) => i > start && l.startsWith("function cf({")
 let chunk = lines.slice(start, end).join("\n");
 
 chunk = chunk
-  .replace(/^function lf\(/, "function Hf(")
+  .replace(/^function lf\(/, "function sittersCat(")
   .replace(/"boarding"/g, '"sitters"')
   .replace(/boarding-/g, "sitters-")
   .replace(/Boarding & Daycare/g, "Sitters & Walkers")
@@ -61,8 +61,8 @@ chunk = chunk.replace(
   `const Mi = async () => {\n${seedBlock}`
 );
 
-if (s.includes("function Hf(")) {
-  console.log("Hf already exists — updating Wf fix only");
+if (s.includes("function sittersCat(")) {
+  console.log("sittersCat already exists — updating dailyWag fix only");
   fs.writeFileSync(bundlePath, s);
   process.exit(0);
 }
@@ -70,4 +70,4 @@ if (s.includes("function Hf(")) {
 const insertAt = lines.findIndex((l) => l.startsWith("function cf({"));
 const newLines = [...lines.slice(0, insertAt), chunk, "", ...lines.slice(insertAt)];
 fs.writeFileSync(bundlePath, newLines.join("\n"));
-console.log("Inserted Hf sitters page (" + chunk.split("\n").length + " lines)");
+console.log("Inserted sittersCat page (" + chunk.split("\n").length + " lines)");

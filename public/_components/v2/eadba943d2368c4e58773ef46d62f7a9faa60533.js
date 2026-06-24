@@ -10324,7 +10324,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
     )
   ] });
 }
-function Hf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
+function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
   const [n, i] = E(null), [o, a] = E([]), [l, c] = E(!0), [u, h] = E(0), [p, m] = E([]), [f, v] = E({ userName: "", rating: 5, comment: "" }), [g, b] = E(!1), [w, x] = E({}), [T, P] = E(!1), [N, S] = E({ reviewerName: "", rating: 5, comment: "" }), [C, R] = E(!1), [M, k] = E(!1), { user: I, accessToken: z } = vi(), [ee, G] = E("all"), [pe, Ee] = E(!1), [W, te] = E(!1), [ae, ue] = E(!1), [Me, qe] = E("all"), [Ke, Ht] = E(""), [Re, Ye] = E("name"), [Be, mt] = E([]), [Nr, Xe] = E(!1), [ft, A] = E(10), [O, V] = E(!1), [H, se] = E(!1), [Ze, $e] = E(!1), [zt, gt] = E(""), [Ai, Ei] = E(void 0);
   U(() => {
     Mi(), jl();
@@ -14091,7 +14091,7 @@ function eo({ editProduct: t, onClose: e }) {
     )
   ] });
 }
-function Wf({ onNavigate: t }) {
+function dailyWag({ onNavigate: t }) {
   const [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => {
     const h = window.location.hash.slice(1);
     return h.startsWith("blog/") ? h.slice(5) : null;
@@ -20204,7 +20204,7 @@ function oy() {
         );
       case "sitters":
         return /* @__PURE__ */ s(
-          Hf,
+          sittersCat,
           {
             onEditBusiness: (k) => {
               f(k), C("admin");
@@ -20238,7 +20238,7 @@ function oy() {
       case "shortlist":
         return /* @__PURE__ */ s(bf, { onNavigate: C, user: P });
       case "blog":
-        return /* @__PURE__ */ s(Wf, { onNavigate: C });
+        return /* @__PURE__ */ s(dailyWag, { onNavigate: C });
       case "admin":
         return !m && !P?.isAdmin ? (e("home"), null) : /* @__PURE__ */ s(
           iy,
