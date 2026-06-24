@@ -6291,8 +6291,8 @@ function Zm(t) {
 }
 function Jm(t) {
   try {
-    const e = JSON.parse(t.fields.about || "{}"), r = t.fields.photos || "", n = r ? r.split(",").map((i) => i.trim()).filter(Boolean) : [];
-    return { ...e, photos: n, _airtableId: t.id };
+    const e = JSON.parse(t.fields.about || "{}"), r = t.fields.photos || "", n = r ? r.split(",").map((i) => i.trim()).filter(Boolean) : [], i = Array.isArray(e.paymentMethods) ? e.paymentMethods.filter((o) => o !== "Digital Wallet") : e.paymentMethods;
+    return { ...e, paymentMethods: i, photos: n, _airtableId: t.id };
   } catch {
     return null;
   }
@@ -11044,7 +11044,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-pink-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Phone" }),
-                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "text-pink-600 hover:underline break-all", children: n.phone })
+                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "font-semibold underline underline-offset-2 break-all transition-all hover:brightness-110", style: { color: "#db2777", textShadow: "0 0 8px rgba(219, 39, 119, 0.65), 0 0 16px rgba(251, 113, 133, 0.4)" }, children: n.phone })
                     ] })
                   ] }),
                   n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg md:col-span-2 w-full max-w-full min-w-0", children: [
@@ -11086,8 +11086,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           href: n.website.startsWith("http") ? n.website : `https://${n.website}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-pink-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block whitespace-normal md:whitespace-nowrap max-w-full break-all md:break-normal",
-                          style: { overflowWrap: "anywhere", wordBreak: "break-word" },
+                          className: "font-semibold underline underline-offset-2 text-xs sm:text-sm md:text-base leading-tight md:leading-normal block whitespace-normal md:whitespace-nowrap max-w-full break-all md:break-normal transition-all hover:brightness-110",
+                          style: { overflowWrap: "anywhere", wordBreak: "break-word", color: "#db2777", textShadow: "0 0 8px rgba(219, 39, 119, 0.65), 0 0 16px rgba(251, 113, 133, 0.4)" },
                           children: n.website
                         }
                       )
@@ -11171,7 +11171,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     href: `tel:${n.phone}`,
                     whileHover: { scale: 1.02 },
                     whileTap: { scale: 0.98 },
-                    className: "hidden md:block w-full bg-gradient-to-r from-pink-600 to-rose-600 text-white py-4 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-colors text-center",
+                    className: "hidden md:block w-full text-center text-white py-4 rounded-xl transition-colors",
+                    style: { backgroundColor: "#db2777" },
                     children: [
                       "📞 Call ",
                       n.name
@@ -11476,10 +11477,11 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     href: `tel:${n.phone}`,
                     whileHover: { scale: 1.02 },
                     whileTap: { scale: 0.98 },
-                    className: "flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-pink-600 to-rose-600 text-white py-3.5 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-colors",
+                    className: "flex-1 flex items-center justify-center gap-2 text-white py-3.5 rounded-xl transition-colors",
+                    style: { backgroundColor: "#db2777", border: "1px solid #be185d" },
                     children: [
-                      /* @__PURE__ */ s(Dn, { className: "w-5 h-5" }),
-                      /* @__PURE__ */ s("span", { children: "Call" })
+                      /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-white" }),
+                      /* @__PURE__ */ s("span", { className: "text-white", children: "Call" })
                     ]
                   }
                 )
