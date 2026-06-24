@@ -20429,7 +20429,12 @@ function oy() {
               /* @__PURE__ */ s("p", { className: "text-xs text-gray-600 whitespace-nowrap", children: "Darlington/Florence Area" })
             ] })
           ] }),
-          /* @__PURE__ */ d("div", { className: "flex flex-1 justify-end items-center gap-3 ml-6 min-w-0 py-2", children: [
+          /* @__PURE__ */ d("div", { className: "flex items-center justify-evenly flex-1 min-w-0 ml-6 py-2", children: [
+          /* @__PURE__ */ s("span", { className: "invisible px-4 py-2 whitespace-nowrap", "aria-hidden": "true", children: "✂️ Grooming" }),
+          /* @__PURE__ */ s("span", { className: "invisible px-4 py-2 whitespace-nowrap", "aria-hidden": "true", children: "🎓 Training" }),
+          /* @__PURE__ */ s("span", { className: "invisible px-4 py-2 whitespace-nowrap", "aria-hidden": "true", children: "🏠 Boarding & Daycare" }),
+          /* @__PURE__ */ s("span", { className: "invisible px-4 py-2 whitespace-nowrap", "aria-hidden": "true", children: "🦮 Sitters & Walkers" }),
+          /* @__PURE__ */ s("span", { className: "invisible px-4 py-2 whitespace-nowrap", "aria-hidden": "true", children: "⚕️ Vet Care" }),
           /* @__PURE__ */ s(
             "button",
             {
@@ -20438,23 +20443,25 @@ function oy() {
               children: "❤️ Shortlist"
             }
           ),
-          P ? /* @__PURE__ */ d("div", { className: "flex items-center gap-3", children: [
-            /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-3 py-2 bg-purple-50 rounded-full", children: [
-              /* @__PURE__ */ s(fl, { className: "w-4 h-4 text-purple-600" }),
-              /* @__PURE__ */ s("span", { className: "text-gray-700 whitespace-nowrap", children: P.name }),
-              P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-red-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "👑 Admin" }),
-              P.role === "business" && !P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-purple-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "Business" })
+          P ? /* @__PURE__ */ d("div", { className: "relative inline-flex items-center shrink-0", children: [
+            /* @__PURE__ */ d("div", { className: "absolute right-full mr-3 top-1/2 -translate-y-1/2 flex items-center gap-3 whitespace-nowrap", children: [
+              /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-3 py-2 bg-purple-50 rounded-full", children: [
+                /* @__PURE__ */ s(fl, { className: "w-4 h-4 text-purple-600" }),
+                /* @__PURE__ */ s("span", { className: "text-gray-700 whitespace-nowrap", children: P.name }),
+                P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-red-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "👑 Admin" }),
+                P.role === "business" && !P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-purple-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "Business" })
+              ] }),
+              P.isAdmin && /* @__PURE__ */ s(
+                "button",
+                {
+                  onClick: () => {
+                    f(null), C("admin");
+                  },
+                  className: "px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors whitespace-nowrap",
+                  children: "+ Add Business"
+                }
+              )
             ] }),
-            P.isAdmin && /* @__PURE__ */ s(
-              "button",
-              {
-                onClick: () => {
-                  f(null), C("admin");
-                },
-                className: "px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors whitespace-nowrap",
-                children: "+ Add Business"
-              }
-            ),
             /* @__PURE__ */ d(
               "button",
               {
@@ -20470,7 +20477,7 @@ function oy() {
             "button",
             {
               onClick: () => o(!0),
-              className: "flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors whitespace-nowrap",
+              className: "flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors whitespace-nowrap shrink-0",
               children: [
                 /* @__PURE__ */ s(hl, { className: "w-4 h-4" }),
                 "Login"
