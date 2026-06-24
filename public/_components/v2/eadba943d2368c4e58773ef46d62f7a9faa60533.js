@@ -5759,9 +5759,12 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                 animate: { opacity: 1, y: 0 },
                 transition: { delay: 0.55 },
                 className: "max-w-2xl mx-auto px-3 mt-3 md:mt-5 mb-4 md:mb-6",
-                children: /* @__PURE__ */ d("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed", children: [
-                  /* @__PURE__ */ s("span", { className: "text-purple-700 font-medium", children: "Peedee Pet Care" }),
-                  " is a free local directory for pet grooming, training, boarding, and vet care in Darlington, Hartsville and Florence, SC. Browse verified providers — no fees for pet owners or businesses."
+                children: /* @__PURE__ */ d("div", { className: "space-y-2", children: [
+                  /* @__PURE__ */ d("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed", children: [
+                    /* @__PURE__ */ s("span", { className: "text-purple-700 font-medium", children: "Peedee Pet Care" }),
+                    " is a free local directory for pet grooming, training, boarding, and vet care in Darlington, Hartsville and Florence, SC."
+                  ] }),
+                  /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs md:text-sm leading-relaxed", children: "Browse verified providers, read reviews, and compare options — no fees for pet owners or businesses." })
                 ] })
               }
             ),
@@ -6014,7 +6017,8 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                     }
                   }
                 ),
-                /* @__PURE__ */ s("h2", { className: "text-purple-600 mb-4 text-2xl md:text-4xl relative", children: "Why Use Our Directory?" })
+                /* @__PURE__ */ s("h2", { className: "text-purple-600 mb-3 md:mb-4 text-2xl md:text-4xl relative", children: "Why Use Our Directory?" }),
+                /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed relative", children: "One free place to search local grooming, training, boarding, and vet care across the Pee Dee region." })
               ]
             }
           ),
@@ -7082,9 +7086,10 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         animate: { opacity: 1, y: 0 },
         className: "text-center",
         children: [
-          /* @__PURE__ */ d("div", { className: "md:hidden max-w-[300px] mx-auto", children: [
+          /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
             /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Grooming Services" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Snip, scrub, sparkle — locally." })
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Snip, scrub, sparkle — locally." }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Trusted groomers in Darlington, Hartsville & Florence." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(
@@ -7098,7 +7103,10 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             ),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Grooming Services" })
           ] }),
-          /* @__PURE__ */ s("p", { className: "hidden md:block max-w-2xl mx-auto md:text-base", children: "Find the best grooming services in the Darlington/Florence area! Browse local groomers offering everything from basic baths to full spa treatments for your pets." })
+          /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Compare trusted groomers in Darlington, Hartsville and Florence — from basic baths to full spa care." }),
+            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Read reviews and find the right groomer for your pet." })
+          ] })
         ]
       }
     ) }) }),
@@ -8453,9 +8461,10 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         animate: { opacity: 1, y: 0 },
         className: "text-center",
         children: [
-          /* @__PURE__ */ d("div", { className: "md:hidden max-w-[300px] mx-auto", children: [
+          /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
             /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Training Services" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Teach, train, transform — locally." })
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Teach, train, transform — locally." }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Puppy basics to advanced obedience nearby." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(
@@ -8469,7 +8478,10 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             ),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Training Services" })
           ] }),
-          /* @__PURE__ */ s("p", { className: "hidden md:block max-w-2xl mx-auto md:text-base", children: "Find the best training services in the Darlington/Florence area! Browse local trainers offering everything from puppy basics to advanced obedience." })
+          /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Find dog trainers in Darlington, Hartsville and Florence for puppy socialization, obedience, and behavior help." }),
+            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Browse local options and choose a trainer that fits your goals." })
+          ] })
         ]
       }
     ) }) }),
@@ -9185,9 +9197,10 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         animate: { opacity: 1, y: 0 },
         className: "text-center",
         children: [
-          /* @__PURE__ */ d("div", { className: "md:hidden max-w-[300px] mx-auto", children: [
+          /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
             /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Boarding & Daycare" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Stay, play, thrive — locally." })
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Stay, play, thrive — locally." }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Safe overnight stays and daytime care nearby." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(
@@ -9201,7 +9214,10 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             ),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Boarding & Daycare" })
           ] }),
-          /* @__PURE__ */ s("p", { className: "hidden md:block max-w-2xl mx-auto md:text-base", children: "Find the best boarding and daycare facilities in the Darlington/Florence area! Browse trusted facilities offering safe, fun overnight stays and daytime care for your pets." })
+          /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Boarding and daycare in Darlington, Hartsville and Florence for vacations, workdays, and extended trips." }),
+            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Trusted local facilities where your pet can stay, play, and rest comfortably." })
+          ] })
         ]
       }
     ) }) }),
@@ -10539,9 +10555,10 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         animate: { opacity: 1, y: 0 },
         className: "text-center",
         children: [
-          /* @__PURE__ */ d("div", { className: "md:hidden max-w-[300px] mx-auto", children: [
+          /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
             /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Vet Care" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Care, cure, comfort — locally." })
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Care, cure, comfort — locally." }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Routine wellness to urgent care, close to home." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(
@@ -10555,7 +10572,10 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             ),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Vet Care" })
           ] }),
-          /* @__PURE__ */ s("p", { className: "hidden md:block max-w-2xl mx-auto md:text-base", children: "Find trusted veterinary clinics and hospitals in the Darlington/Florence area with routine, urgent, and emergency pet care." })
+          /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Veterinary clinics and hospitals in Darlington, Hartsville and Florence for wellness visits, sick care, and emergencies." }),
+            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Find local vets you can rely on when your pet needs medical attention." })
+          ] })
         ]
       }
     ) }) }),
@@ -12035,7 +12055,8 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
     /* @__PURE__ */ s("div", { className: "bg-white shadow-sm sticky top-0 z-10", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-3", children: /* @__PURE__ */ d("div", { className: "flex items-center gap-4", children: [
       /* @__PURE__ */ d("div", { className: "flex-1 text-center", children: [
         /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl sm:text-2xl", children: "Pet Product Picks" }),
-        /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm hidden sm:block", children: "Handpicked essentials and fun extras for your furry friend" })
+        /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs sm:text-sm mt-0.5 leading-snug", children: "Handpicked essentials for Pee Dee pet owners" }),
+        /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs hidden sm:block mt-1 leading-relaxed", children: "Treats, toys, grooming tools, and more — curated by our team." })
       ] }),
       e?.isAdmin && /* @__PURE__ */ d(
         D.button,
