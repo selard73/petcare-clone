@@ -10347,14 +10347,6 @@ function sittersMatchesService(t, e) {
 function sittersMatchFlag(t, e, r) {
   return !!t[e] || sittersHasLegacyFeature(t, r || []);
 }
-function sittersFilterChip(t, e, r, n) {
-  return /* @__PURE__ */ d("button", {
-    type: "button",
-    onClick: () => e(!t),
-    className: "inline-flex items-center gap-2 px-3 py-2 rounded-full border-2 text-sm transition-colors " + (t ? "bg-white border-pink-600 text-pink-700 shadow-sm" : "bg-white/70 border-pink-200 text-gray-700 hover:border-pink-400 hover:bg-white"),
-    children: [/* @__PURE__ */ s("span", { children: r }), /* @__PURE__ */ s("span", { children: n })]
-  });
-}
 function sittersMobileToggle(t, e, r, n) {
   return /* @__PURE__ */ d("div", {
     className: "flex items-center justify-between cursor-pointer py-1",
@@ -10366,8 +10358,8 @@ function sittersServiceOptions() {
   return [/* @__PURE__ */ s("option", { value: "all", children: "All Services" }), /* @__PURE__ */ s("option", { value: "walking", children: "Dog Walking" }), /* @__PURE__ */ s("option", { value: "dropin", children: "Drop-In Visits" }), /* @__PURE__ */ s("option", { value: "housesitting", children: "House Sitting" }), /* @__PURE__ */ s("option", { value: "petsitting", children: "Pet Sitting" })];
 }
 function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
-  const [n, i] = E(null), [o, a] = E([]), [l, c] = E(!0), [u, h] = E(0), [p, m] = E([]), [f, v] = E({ userName: "", rating: 5, comment: "" }), [g, b] = E(!1), [w, x] = E({}), [T, P] = E(!1), [N, S] = E({ reviewerName: "", rating: 5, comment: "" }), [C, R] = E(!1), [M, k] = E(!1), { user: I, accessToken: z } = vi(), [ee, G] = E("all"), [pe, Ee] = E("all"), [W, te] = E(!1), [ae, ue] = E(!1), [Me, qe] = E("all"), [sbIns, setSbIns] = E(!1), [sbMed, setSbMed] = E(!1), [sbPhoto, setSbPhoto] = E(!1), [sbAccept, setSbAccept] = E(!1), [sbMobile, setSbMobile] = E(!1), [sbCpr, setSbCpr] = E(!1), [sbBg, setSbBg] = E(!1), [sbPro, setSbPro] = E(!1), [Ke, Ht] = E(""), [Re, Ye] = E("name"), [Be, mt] = E([]), [Nr, Xe] = E(!1), [ft, A] = E(10), [O, V] = E(!1), [H, se] = E(!1), [Ze, $e] = E(!1), [zt, gt] = E(""), [Ai, Ei] = E(void 0), sbActiveCount = (pe !== "all" ? 1 : 0) + (Me !== "all" ? 1 : 0) + (W ? 1 : 0) + (ae ? 1 : 0) + (sbIns ? 1 : 0) + (sbMed ? 1 : 0) + (sbPhoto ? 1 : 0) + (sbAccept ? 1 : 0) + (sbMobile ? 1 : 0) + (sbCpr ? 1 : 0) + (sbBg ? 1 : 0) + (sbPro ? 1 : 0), sittersResetFilters = () => {
-    Ht(""), Ee("all"), te(!1), ue(!1), qe("all"), G("all"), Ye("name"), setSbIns(!1), setSbMed(!1), setSbPhoto(!1), setSbAccept(!1), setSbMobile(!1), setSbCpr(!1), setSbBg(!1), setSbPro(!1);
+  const [n, i] = E(null), [o, a] = E([]), [l, c] = E(!0), [u, h] = E(0), [p, m] = E([]), [f, v] = E({ userName: "", rating: 5, comment: "" }), [g, b] = E(!1), [w, x] = E({}), [T, P] = E(!1), [N, S] = E({ reviewerName: "", rating: 5, comment: "" }), [C, R] = E(!1), [M, k] = E(!1), { user: I, accessToken: z } = vi(), [ee, G] = E("all"), [pe, Ee] = E("all"), [ae, ue] = E(!1), [Me, qe] = E("all"), [sbIns, setSbIns] = E(!1), [sbCpr, setSbCpr] = E(!1), [Ke, Ht] = E(""), [Re, Ye] = E("name"), [Be, mt] = E([]), [Nr, Xe] = E(!1), [ft, A] = E(10), [O, V] = E(!1), [H, se] = E(!1), [Ze, $e] = E(!1), [zt, gt] = E(""), [Ai, Ei] = E(void 0), sbActiveCount = (pe !== "all" ? 1 : 0) + (Me !== "all" ? 1 : 0) + (ae ? 1 : 0) + (sbIns ? 1 : 0) + (sbCpr ? 1 : 0), sittersResetFilters = () => {
+    Ht(""), Ee("all"), ue(!1), qe("all"), G("all"), Ye("name"), setSbIns(!1), setSbCpr(!1);
   };
   U(() => {
     Mi(), jl();
@@ -10375,7 +10367,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
     window.scrollTo(0, 0);
   }, []), U(() => {
     A(10), se(!1);
-  }, [Ke, ee, Re, pe, Me, W, ae, sbIns, sbMed, sbPhoto, sbAccept, sbMobile, sbCpr, sbBg, sbPro]), U(() => {
+  }, [Ke, ee, Re, pe, Me, ae, sbIns, sbCpr]), U(() => {
     if (n) {
       const F = getDetailGalleryPhotos(n);
       if (F.length > 1) {
@@ -10568,7 +10560,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       }
     }
   }, yt = (() => {
-    let y = o.filter((F) => !(Ke.trim() && !F.name.toLowerCase().includes(Ke.toLowerCase()) || ee !== "all" && !businessMatchesCityFilter(F.city, ee) || pe !== "all" && !sittersMatchesService(F, pe) || W && !(F.hours && (F.hours.saturday && !F.hours.saturday.toLowerCase().includes("closed") || F.hours.sunday && !F.hours.sunday.toLowerCase().includes("closed"))) || ae && (w[F.id]?.average || 0) < 4 || Me !== "all" && F.priceRange !== Me || sbIns && !sittersMatchFlag(F, "insuredBonded", ["insured", "bonded"]) || sbMed && !sittersMatchFlag(F, "medicationAdmin", ["medication"]) || sbPhoto && !sittersMatchFlag(F, "photoUpdates", ["photo update", "gps route"]) || sbAccept && F.notAcceptingClients || sbMobile && !F.mobileService || sbCpr && !sittersMatchFlag(F, "petCprCertified", ["cpr", "first aid"]) || sbBg && !sittersMatchFlag(F, "backgroundChecked", ["background"]) || sbPro && !sittersMatchFlag(F, "professionalMember", ["napps", "psi", "pet sitters"])));
+    let y = o.filter((F) => !(Ke.trim() && !F.name.toLowerCase().includes(Ke.toLowerCase()) || ee !== "all" && !businessMatchesCityFilter(F.city, ee) || pe !== "all" && !sittersMatchesService(F, pe) || ae && (w[F.id]?.average || 0) < 4 || Me !== "all" && F.priceRange !== Me || sbIns && !sittersMatchFlag(F, "insuredBonded", ["insured", "bonded"]) || sbCpr && !sittersMatchFlag(F, "petCprCertified", ["cpr", "first aid"])));
     return y.sort((F, B) => {
       if (Re === "name")
         return F.name.localeCompare(B.name);
@@ -10725,16 +10717,101 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
           transition: { delay: 0.1 },
           className: "hidden md:block rounded-xl shadow-md p-4 md:p-6 mb-8 border border-pink-300",
           style: { backgroundColor: "#fbcfe8" },
-          children: /* @__PURE__ */ d("div", { className: "space-y-4", children: [
-            /* @__PURE__ */ d("div", { className: "grid grid-cols-1 md:grid-cols-3 gap-3", children: [
-              /* @__PURE__ */ d("select", { value: ee, onChange: (y) => G(y.target.value), className: "w-full px-4 py-3 bg-white border-2 border-pink-300 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer", children: [/* @__PURE__ */ s("option", { value: "all", children: "All Cities" }), /* @__PURE__ */ s("option", { value: "Florence", children: "Florence" }), /* @__PURE__ */ s("option", { value: "Darlington", children: "Darlington" }), /* @__PURE__ */ s("option", { value: "Hartsville", children: "Hartsville" })] }),
-              /* @__PURE__ */ d("select", { value: pe, onChange: (y) => Ee(y.target.value), className: "w-full px-4 py-3 bg-white border-2 border-pink-300 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer", children: sittersServiceOptions() }),
-              /* @__PURE__ */ d("select", { value: Me, onChange: (y) => qe(y.target.value), className: "w-full px-4 py-3 bg-white border-2 border-pink-300 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer", children: [/* @__PURE__ */ s("option", { value: "all", children: "All Prices" }), /* @__PURE__ */ s("option", { value: "$", children: "$ Budget" }), /* @__PURE__ */ s("option", { value: "$$", children: "$$ Moderate" }), /* @__PURE__ */ s("option", { value: "$$$", children: "$$$ Premium" }), /* @__PURE__ */ s("option", { value: "$$$$", children: "$$$$ Luxury" })] })
-            ] }),
-            /* @__PURE__ */ d("div", { children: [/* @__PURE__ */ s("p", { className: "text-xs font-semibold text-pink-900 uppercase tracking-wide mb-2", children: "Trust & Credentials" }), /* @__PURE__ */ d("div", { className: "flex flex-wrap gap-2", children: [sittersFilterChip(sbIns, setSbIns, "🛡️", "Insured & Bonded"), sittersFilterChip(sbCpr, setSbCpr, "❤️", "CPR / First Aid"), sittersFilterChip(sbBg, setSbBg, "✅", "Background Checked"), sittersFilterChip(sbPro, setSbPro, "🏅", "Pro Association")] }) ] }),
-            /* @__PURE__ */ d("div", { children: [/* @__PURE__ */ s("p", { className: "text-xs font-semibold text-pink-900 uppercase tracking-wide mb-2", children: "Care Options" }), /* @__PURE__ */ d("div", { className: "flex flex-wrap gap-2", children: [sittersFilterChip(sbMed, setSbMed, "💊", "Medication OK"), sittersFilterChip(sbPhoto, setSbPhoto, "📸", "Photo Updates"), sittersFilterChip(sbMobile, setSbMobile, "🚗", "Comes to You"), sittersFilterChip(sbAccept, setSbAccept, "🐾", "Accepting Clients")] }) ] }),
-            /* @__PURE__ */ d("div", { children: [/* @__PURE__ */ s("p", { className: "text-xs font-semibold text-pink-900 uppercase tracking-wide mb-2", children: "Availability & Quality" }), /* @__PURE__ */ d("div", { className: "flex flex-wrap gap-2", children: [sittersFilterChip(W, te, "📅", "Open Weekends"), sittersFilterChip(ae, ue, "🌟", "4+ Stars")] }) ] }),
-            sbActiveCount > 0 && /* @__PURE__ */ s("div", { className: "flex justify-end", children: /* @__PURE__ */ s("button", { type: "button", onClick: sittersResetFilters, className: "text-sm text-pink-700 hover:text-pink-900 underline underline-offset-2", children: "Clear all filters" }) })
+          children: /* @__PURE__ */ d("div", { className: "flex flex-col md:flex-row gap-3 md:gap-4 items-stretch justify-between", children: [
+            /* @__PURE__ */ s("div", { className: "w-full md:w-auto", children: /* @__PURE__ */ d(
+              "select",
+              {
+                value: ee,
+                onChange: (y) => G(y.target.value),
+                className: "w-full h-full px-4 py-3 bg-white border-2 border-pink-300 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer",
+                children: [
+                  /* @__PURE__ */ s("option", { value: "all", children: "All Cities" }),
+                  /* @__PURE__ */ s("option", { value: "Florence", children: "Florence" }),
+                  /* @__PURE__ */ s("option", { value: "Darlington", children: "Darlington" }),
+                  /* @__PURE__ */ s("option", { value: "Hartsville", children: "Hartsville" })
+                ]
+              }
+            ) }),
+            /* @__PURE__ */ s("div", { className: "w-full md:w-auto", children: /* @__PURE__ */ d(
+              "select",
+              {
+                value: pe,
+                onChange: (y) => Ee(y.target.value),
+                className: "w-full h-full px-4 py-3 bg-white border-2 border-pink-300 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer",
+                children: sittersServiceOptions()
+              }
+            ) }),
+            /* @__PURE__ */ d(
+              "div",
+              {
+                className: "flex items-center justify-between gap-3 px-4 py-3 bg-white border-2 border-pink-300 rounded-lg cursor-pointer hover:bg-pink-50 transition-colors",
+                onClick: () => setSbIns(!sbIns),
+                children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🛡️" }),
+                    /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Insured & Bonded" })
+                  ] }),
+                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: sbIns ? "#db2777" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${sbIns ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
+                ]
+              }
+            ),
+            /* @__PURE__ */ d(
+              "div",
+              {
+                className: "flex items-center justify-between gap-3 px-4 py-3 bg-white border-2 border-pink-300 rounded-lg cursor-pointer hover:bg-pink-50 transition-colors",
+                onClick: () => setSbCpr(!sbCpr),
+                children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "❤️" }),
+                    /* @__PURE__ */ s("span", { className: "text-gray-700", children: "CPR / First Aid" })
+                  ] }),
+                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: sbCpr ? "#db2777" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${sbCpr ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
+                ]
+              }
+            ),
+            /* @__PURE__ */ d(
+              "div",
+              {
+                className: "flex items-center gap-3 px-4 py-3 bg-white border-2 border-pink-300 rounded-lg cursor-pointer hover:bg-pink-50 transition-colors",
+                onClick: () => ue(!ae),
+                children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
+                    /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
+                  ] }),
+                  /* @__PURE__ */ s(
+                    "input",
+                    {
+                      type: "checkbox",
+                      checked: ae,
+                      onChange: (y) => ue(y.target.checked),
+                      className: "w-5 h-5 text-pink-600 rounded cursor-pointer ml-auto"
+                    }
+                  )
+                ]
+              }
+            ),
+            /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-white border-2 border-pink-300 rounded-lg", children: [
+              /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                /* @__PURE__ */ s(Zs, { className: "w-5 h-5 text-pink-600" }),
+                /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Price Range" })
+              ] }),
+              /* @__PURE__ */ d(
+                "select",
+                {
+                  value: Me,
+                  onChange: (y) => qe(y.target.value),
+                  className: "px-3 py-1 bg-white border-2 border-pink-300 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer ml-auto",
+                  children: [
+                    /* @__PURE__ */ s("option", { value: "all", children: "All" }),
+                    /* @__PURE__ */ s("option", { value: "$", children: "$" }),
+                    /* @__PURE__ */ s("option", { value: "$$", children: "$$" }),
+                    /* @__PURE__ */ s("option", { value: "$$$", children: "$$$" }),
+                    /* @__PURE__ */ s("option", { value: "$$$$", children: "$$$$" })
+                  ]
+                }
+              )
+            ] })
           ] })
         }
       ),
@@ -11556,11 +11633,32 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 }
               )
             ] }) }),
-            /* @__PURE__ */ d("div", { className: "p-4 space-y-5", children: [
+            /* @__PURE__ */ d("div", { className: "p-4 space-y-4", children: [
               /* @__PURE__ */ d("div", { children: [/* @__PURE__ */ s("label", { className: "text-sm font-semibold text-gray-700 mb-2 block", children: "Service Type" }), /* @__PURE__ */ d("select", { value: pe, onChange: (y) => Ee(y.target.value), className: "w-full px-4 py-3 bg-pink-50 border-2 border-pink-200 rounded-lg focus:outline-none focus:border-pink-400 cursor-pointer", children: sittersServiceOptions() })] }),
-              /* @__PURE__ */ d("div", { children: [/* @__PURE__ */ s("p", { className: "text-sm font-semibold text-gray-700 mb-3", children: "Trust & Credentials" }), /* @__PURE__ */ d("div", { className: "space-y-3", children: [sittersMobileToggle(sbIns, setSbIns, "🛡️", "Insured & Bonded"), sittersMobileToggle(sbCpr, setSbCpr, "❤️", "CPR / First Aid"), sittersMobileToggle(sbBg, setSbBg, "✅", "Background Checked"), sittersMobileToggle(sbPro, setSbPro, "🏅", "Pro Association Member")] })] }),
-              /* @__PURE__ */ d("div", { children: [/* @__PURE__ */ s("p", { className: "text-sm font-semibold text-gray-700 mb-3", children: "Care Options" }), /* @__PURE__ */ d("div", { className: "space-y-3", children: [sittersMobileToggle(sbMed, setSbMed, "💊", "Medication Administration"), sittersMobileToggle(sbPhoto, setSbPhoto, "📸", "Photo Updates"), sittersMobileToggle(sbMobile, setSbMobile, "🚗", "Comes to You"), sittersMobileToggle(sbAccept, setSbAccept, "🐾", "Accepting New Clients")] })] }),
-              /* @__PURE__ */ d("div", { children: [/* @__PURE__ */ s("p", { className: "text-sm font-semibold text-gray-700 mb-3", children: "Availability & Quality" }), /* @__PURE__ */ d("div", { className: "space-y-3", children: [sittersMobileToggle(W, te, "📅", "Open Weekends"), sittersMobileToggle(ae, ue, "🌟", "4+ Stars")] })] }),
+              sittersMobileToggle(sbIns, setSbIns, "🛡️", "Insured & Bonded"),
+              sittersMobileToggle(sbCpr, setSbCpr, "❤️", "CPR / First Aid"),
+              /* @__PURE__ */ d(
+                "div",
+                {
+                  className: "flex items-center justify-between cursor-pointer",
+                  onClick: () => ue(!ae),
+                  children: [
+                    /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
+                      /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
+                    ] }),
+                    /* @__PURE__ */ s(
+                      "input",
+                      {
+                        type: "checkbox",
+                        checked: ae,
+                        onChange: (y) => ue(y.target.checked),
+                        className: "w-5 h-5 text-pink-600 rounded cursor-pointer"
+                      }
+                    )
+                  ]
+                }
+              ),
               /* @__PURE__ */ d("div", { children: [/* @__PURE__ */ s("label", { className: "text-sm font-semibold text-gray-700 mb-2 block", children: "Price Range" }), /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-pink-50 border-2 border-pink-200 rounded-lg", children: [/* @__PURE__ */ s(Zs, { className: "w-5 h-5 text-pink-600" }), /* @__PURE__ */ d("select", { value: Me, onChange: (y) => qe(y.target.value), className: "flex-1 bg-transparent focus:outline-none cursor-pointer text-gray-700", children: [/* @__PURE__ */ s("option", { value: "all", children: "All Prices" }), /* @__PURE__ */ s("option", { value: "$", children: "$" }), /* @__PURE__ */ s("option", { value: "$$", children: "$$" }), /* @__PURE__ */ s("option", { value: "$$$", children: "$$$" }), /* @__PURE__ */ s("option", { value: "$$$$", children: "$$$$" })] })] })] })
             ] }),
             /* @__PURE__ */ s("div", { className: "sticky bottom-0 bg-white border-t border-gray-200 p-4", children: /* @__PURE__ */ s(
