@@ -18839,6 +18839,14 @@ function oy() {
               children: "🛍️ Pet Products"
             }
           ),
+          /* @__PURE__ */ s(
+            "button",
+            {
+              onClick: () => C("shortlist"),
+              className: `px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "shortlist" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
+              children: "❤️ Shortlist"
+            }
+          ),
           P ? /* @__PURE__ */ d("div", { className: "flex items-center gap-3 ml-4", children: [
             /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-3 py-2 bg-purple-50 rounded-full", children: [
               /* @__PURE__ */ s(fl, { className: "w-4 h-4 text-purple-600" }),
