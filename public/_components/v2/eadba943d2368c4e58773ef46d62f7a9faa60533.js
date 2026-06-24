@@ -5715,7 +5715,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                 children: /* @__PURE__ */ s("span", { className: "text-6xl md:text-8xl", children: "🐾" })
               }
             ),
-            /* @__PURE__ */ d("div", { className: "max-w-xs mx-auto mb-6 md:mb-16", children: [
+            /* @__PURE__ */ d("div", { className: "max-w-xs mx-auto mb-4 md:mb-5", children: [
               /* @__PURE__ */ s(
                 D.h1,
                 {
@@ -5752,6 +5752,19 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                 }
               )
             ] }),
+            /* @__PURE__ */ s(
+              D.div,
+              {
+                initial: { opacity: 0, y: 12 },
+                animate: { opacity: 1, y: 0 },
+                transition: { delay: 0.55 },
+                className: "max-w-2xl mx-auto px-3 mt-3 md:mt-5 mb-4 md:mb-6",
+                children: /* @__PURE__ */ d("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed", children: [
+                  /* @__PURE__ */ s("span", { className: "text-purple-700 font-medium", children: "Peedee Pet Care" }),
+                  " is a free local directory for pet grooming, training, boarding, and vet care in Darlington County and Florence, SC. Browse verified providers — no fees for pet owners or businesses."
+                ] })
+              }
+            ),
             /* @__PURE__ */ s("div", { className: "md:hidden mx-auto flex justify-center mb-2", children: /* @__PURE__ */ s(
               "button",
               {
