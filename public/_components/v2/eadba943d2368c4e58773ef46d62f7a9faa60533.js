@@ -5699,7 +5699,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
     /* @__PURE__ */ d(
       "section",
       {
-        className: "relative pt-5 pb-10 md:pt-8 md:pb-8 px-4 sm:px-6 lg:px-8 md:bg-white mt-px md:mt-2",
+        className: "relative pt-5 pb-10 md:pt-8 md:pb-8 px-4 sm:px-6 lg:px-8 md:bg-white mt-px md:mt-0",
         style: {
           background: window.innerWidth < 768 ? "#FFFFFF" : void 0
         },
@@ -20311,7 +20311,7 @@ function oy() {
     background: window.innerWidth < 768 ? "linear-gradient(to bottom, #FFFFFF 0%, #F3FAFF 50%, #FAF5FF 100%)" : void 0
   }, children: [
     /* @__PURE__ */ d("div", { className: "sticky top-0 z-50", children: [
-    /* @__PURE__ */ s("nav", { className: "bg-[#fce5c1] shadow-sm", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 md:sm:px-6 md:lg:px-8", children: [
+    /* @__PURE__ */ s("nav", { className: "bg-[#fce5c1]", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 md:sm:px-6 md:lg:px-8", children: [
       /* @__PURE__ */ d("div", { className: "md:hidden flex justify-between items-center h-[56px] px-4", children: [
         ["grooming", "training", "boarding", "sitters", "vet", "about", "products", "shortlist", "blog"].includes(t) ? /* @__PURE__ */ s(
           "button",
@@ -20421,7 +20421,15 @@ function oy() {
         ] }) ] })
       ] })
     ] }) }),
-    /* @__PURE__ */ d("div", { className: "hidden md:block md:bg-white w-full", children: /* @__PURE__ */ d("div", { className: "flex justify-end items-center gap-3 py-2 pr-3 sm:pr-4 lg:pr-5 w-full", children: [
+    /* @__PURE__ */ d("div", { className: "hidden md:block md:bg-white", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 md:sm:px-6 md:lg:px-8", children: /* @__PURE__ */ d("div", { className: "px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ d("div", { className: "flex items-center", children: [
+          /* @__PURE__ */ d("div", { className: "flex items-center space-x-2 shrink-0 invisible pointer-events-none select-none", "aria-hidden": "true", children: [
+            /* @__PURE__ */ s("span", { className: "text-4xl", children: "🐾" }),
+            /* @__PURE__ */ d("div", { className: "whitespace-nowrap", children: [
+              /* @__PURE__ */ s("h1", { className: "text-purple-600 text-2xl", children: "Pawsitively Fabulous" }),
+              /* @__PURE__ */ s("p", { className: "text-xs text-gray-600 whitespace-nowrap", children: "Darlington/Florence Area" })
+            ] })
+          ] }),
+          /* @__PURE__ */ d("div", { className: "flex flex-1 justify-end items-center gap-3 ml-6 min-w-0 py-2", children: [
           /* @__PURE__ */ s(
             "button",
             {
@@ -20469,7 +20477,7 @@ function oy() {
               ]
             }
           )
-        ] }) }),
+        ] }) ] }) }) }) }),
     ] }),
     /* @__PURE__ */ s(
       Nf,
