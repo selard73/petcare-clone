@@ -16,9 +16,12 @@ const PUBLIC_DIR = path.join(ROOT, "public");
 const CATEGORY_PAGE_PATHS = {
   "/services": "home",
   "/products": "products",
+  "/blog": "blog",
   "/grooming": "grooming",
   "/training": "training",
   "/boarding": "boarding",
+  "/sitters": "sitters",
+  "/sitters-walkers": "sitters",
   "/vet-care": "vet",
   "/vet": "vet",
   "/about": "about",
@@ -1982,6 +1985,11 @@ const server = http.createServer(async (req, res) => {
     }
 
     if ((req.method === "GET" || req.method === "HEAD") && CATEGORY_PAGE_PATHS[pathname]) {
+      serveIndexHtml(req, res);
+      return;
+    }
+
+    if ((req.method === "GET" || req.method === "HEAD") && pathname.startsWith("/blog/") && pathname.length > 6) {
       serveIndexHtml(req, res);
       return;
     }

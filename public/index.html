@@ -129,9 +129,12 @@
       (function () {
         var categoryPaths = {
           "/products": "products",
+          "/blog": "blog",
           "/grooming": "grooming",
           "/training": "training",
           "/boarding": "boarding",
+          "/sitters": "sitters",
+          "/sitters-walkers": "sitters",
           "/vet-care": "vet",
           "/vet": "vet",
           "/about": "about",
@@ -140,6 +143,9 @@
         var page = categoryPaths[window.location.pathname];
         if (page && !window.location.hash) {
           window.location.replace("/#" + page);
+        }
+        if (window.location.pathname.indexOf("/blog/") === 0 && window.location.pathname.length > 6 && !window.location.hash) {
+          window.location.replace("/#" + window.location.pathname.slice(1));
         }
       })();
     </script>
