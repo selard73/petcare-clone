@@ -14151,8 +14151,8 @@ function dailyWag({ onNavigate: t }) {
       return g;
     }
   }, selected = posts.find((g) => g.slug === selectedSlug);
-  return /* @__PURE__ */ d("div", { className: "min-h-screen bg-white md:bg-transparent", children: [
-    /* @__PURE__ */ s("section", { className: "bg-gradient-to-br from-amber-300 via-orange-400 to-pink-500 text-white h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[10px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
+  return /* @__PURE__ */ d("div", { className: "min-h-screen", style: { backgroundColor: "#fffbeb" }, children: [
+    /* @__PURE__ */ s("section", { className: "h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", style: { background: "linear-gradient(135deg, #f59e0b 0%, #ea580c 45%, #db2777 100%)", color: "#ffffff" }, children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[10px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0, y: 30 },
@@ -14160,42 +14160,43 @@ function dailyWag({ onNavigate: t }) {
         className: "text-center",
         children: [
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
-            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "The Daily Wag" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Pet care tips & guides" })
+            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", style: { color: "#ffffff" }, children: "The Daily Wag" }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center leading-tight mt-0.5", style: { color: "rgba(255,255,255,0.92)" }, children: "Pet care tips & guides" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(D.div, { animate: { rotate: [0, 8, -8, 0] }, transition: { duration: 2, repeat: 1 / 0 }, className: "md:text-4xl", children: "📰" }),
-            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "The Daily Wag" })
+            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", style: { color: "#ffffff" }, children: "The Daily Wag" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
-            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Helpful articles on grooming, training, boarding, and everyday pet care in the Pee Dee." }),
-            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Practical advice for pet owners in Darlington, Hartsville, and Florence." })
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", style: { color: "#ffffff" }, children: "Helpful articles on grooming, training, boarding, and everyday pet care in the Pee Dee." }),
+            /* @__PURE__ */ s("p", { className: "text-sm leading-relaxed mt-2", style: { color: "rgba(255,255,255,0.9)" }, children: "Practical advice for pet owners in Darlington, Hartsville, and Florence." })
           ] })
         ]
       }
     ) }) }),
-    /* @__PURE__ */ s("div", { className: "max-w-3xl mx-auto px-4 sm:px-6 py-8 md:py-12", children: [
-      error && /* @__PURE__ */ s("div", { className: "mb-6 p-4 rounded-lg bg-red-50 text-red-700 border border-red-200", children: error }),
-      loading && /* @__PURE__ */ s("p", { className: "text-center text-gray-500 py-12", children: "Loading articles…" }),
-      !loading && selected && /* @__PURE__ */ d("article", { children: [
+    /* @__PURE__ */ s("div", { className: "max-w-3xl mx-auto px-4 sm:px-6 py-8 md:py-12", style: { backgroundColor: "#fffbeb" }, children: [
+      error && /* @__PURE__ */ s("div", { className: "mb-6 p-4 rounded-lg border", style: { backgroundColor: "#fef2f2", color: "#b91c1c", borderColor: "#fecaca" }, children: error }),
+      loading && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#6b7280" }, children: "Loading articles…" }),
+      !loading && selected && /* @__PURE__ */ d("article", { className: "rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #fde68a", boxShadow: "0 4px 6px -1px rgba(0,0,0,0.08)" }, children: [
         /* @__PURE__ */ s(
           "button",
           {
             type: "button",
             onClick: backToList,
-            className: "text-purple-600 hover:text-purple-800 text-sm font-medium mb-6 flex items-center gap-1",
+            className: "text-sm font-medium mb-6 flex items-center gap-1 hover:underline",
+            style: { color: "#c2410c" },
             children: "← Back to The Daily Wag"
           }
         ),
-        /* @__PURE__ */ s("h2", { className: "text-2xl md:text-3xl text-purple-700 font-semibold leading-snug mb-3", children: selected.title }),
-        /* @__PURE__ */ d("p", { className: "text-gray-500 text-sm mb-6", children: [
+        /* @__PURE__ */ s("h2", { className: "text-2xl md:text-3xl font-semibold leading-snug mb-3", style: { color: "#92400e" }, children: selected.title }),
+        /* @__PURE__ */ d("p", { className: "text-sm mb-6", style: { color: "#78716c" }, children: [
           formatDate(selected.date),
           selected.readMinutes ? ` · ${selected.readMinutes} min read` : ""
         ] }),
-        /* @__PURE__ */ s("div", { className: "space-y-4", children: (selected.body || []).map((g, b) => /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed", children: g }, `${selected.slug}-${b}`)) })
+        /* @__PURE__ */ s("div", { className: "space-y-4", children: (selected.body || []).map((g, b) => /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed", style: { color: "#374151" }, children: g }, `${selected.slug}-${b}`)) })
       ] }),
       !loading && !selected && /* @__PURE__ */ d("div", { className: "space-y-5", children: [
-        posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center text-gray-500 py-12", children: "New articles coming soon." }),
+        posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#6b7280" }, children: "New articles coming soon." }),
         posts.map((g, b) => /* @__PURE__ */ s(
           D.button,
           {
@@ -14204,11 +14205,12 @@ function dailyWag({ onNavigate: t }) {
             animate: { opacity: 1, y: 0 },
             transition: { delay: b * 0.08 },
             onClick: () => openPost(g.slug),
-            className: "w-full text-left bg-white rounded-2xl shadow-md md:shadow-sm border border-purple-100 p-5 md:p-6 hover:shadow-lg hover:border-purple-200 transition-all",
+            className: "w-full text-left rounded-2xl p-5 md:p-6 transition-all hover:shadow-lg",
+            style: { backgroundColor: "#ffffff", border: "1px solid #fde68a", boxShadow: "0 2px 4px rgba(0,0,0,0.06)" },
             children: /* @__PURE__ */ d("div", { children: [
-              /* @__PURE__ */ s("h2", { className: "text-lg md:text-xl text-purple-700 font-semibold leading-snug mb-2", children: g.title }),
-              /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed mb-3", children: g.excerpt }),
-              /* @__PURE__ */ d("p", { className: "text-gray-400 text-xs", children: [
+              /* @__PURE__ */ s("h2", { className: "text-lg md:text-xl font-semibold leading-snug mb-2", style: { color: "#92400e" }, children: g.title }),
+              /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed mb-3", style: { color: "#57534e" }, children: g.excerpt }),
+              /* @__PURE__ */ d("p", { className: "text-xs", style: { color: "#a8a29e" }, children: [
                 formatDate(g.date),
                 g.readMinutes ? ` · ${g.readMinutes} min read` : "",
                 " · Read more →"
