@@ -10663,7 +10663,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               {
                 onClick: () => Xe(!0),
                 className: "md:hidden flex items-center justify-center gap-2 px-4 py-2.5 text-white rounded-full transition-colors",
-                style: { backgroundColor: "#15803d", border: "1px solid #166534" },
+                style: { backgroundColor: "#db2777", border: "1px solid #be185d" },
                 children: [
                   /* @__PURE__ */ s(Am, { className: "w-4 h-4" }),
                   /* @__PURE__ */ s("span", { className: "text-sm", children: "Filters" })
@@ -10679,15 +10679,15 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
           initial: { opacity: 0, y: 20 },
           animate: { opacity: 1, y: 0 },
           transition: { delay: 0.1 },
-          className: "hidden md:block rounded-xl shadow-md p-4 md:p-6 mb-8",
-          style: { backgroundColor: "#86efac" },
+          className: "hidden md:block rounded-xl shadow-md p-4 md:p-6 mb-8 border border-pink-300",
+          style: { backgroundColor: "#fbcfe8" },
           children: /* @__PURE__ */ d("div", { className: "flex flex-col md:flex-row gap-3 md:gap-4 items-stretch justify-between", children: [
             /* @__PURE__ */ s("div", { className: "w-full md:w-auto", children: /* @__PURE__ */ d(
               "select",
               {
                 value: ee,
                 onChange: (y) => G(y.target.value),
-                className: "w-full h-full px-4 py-3 bg-pink-50 border-2 border-pink-200 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer",
+                className: "w-full h-full px-4 py-3 bg-white border-2 border-pink-300 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer",
                 children: [
                   /* @__PURE__ */ s("option", { value: "all", children: "All Cities" }),
                   /* @__PURE__ */ s("option", { value: "Florence", children: "Florence" }),
@@ -10699,35 +10699,35 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             /* @__PURE__ */ d(
               "div",
               {
-                className: "flex items-center justify-between gap-3 px-4 py-3 bg-pink-50 border-2 border-pink-200 rounded-lg cursor-pointer hover:bg-pink-100 transition-colors",
+                className: "flex items-center justify-between gap-3 px-4 py-3 bg-white border-2 border-pink-300 rounded-lg cursor-pointer hover:bg-pink-50 transition-colors",
                 onClick: () => Ee(!pe),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
                     /* @__PURE__ */ s("span", { className: "text-xl", children: "🦮" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Pet Sitting" })
                   ] }),
-                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: pe ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
+                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: pe ? "#db2777" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
                 ]
               }
             ),
             /* @__PURE__ */ d(
               "div",
               {
-                className: "flex items-center justify-between gap-3 px-4 py-3 bg-pink-50 border-2 border-pink-200 rounded-lg cursor-pointer hover:bg-pink-100 transition-colors",
+                className: "flex items-center justify-between gap-3 px-4 py-3 bg-white border-2 border-pink-300 rounded-lg cursor-pointer hover:bg-pink-50 transition-colors",
                 onClick: () => te(!W),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
                     /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Open Weekends" })
                   ] }),
-                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: W ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
+                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: W ? "#db2777" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
                 ]
               }
             ),
             /* @__PURE__ */ d(
               "div",
               {
-                className: "flex items-center gap-3 px-4 py-3 bg-pink-50 border-2 border-pink-200 rounded-lg cursor-pointer hover:bg-pink-100 transition-colors",
+                className: "flex items-center gap-3 px-4 py-3 bg-white border-2 border-pink-300 rounded-lg cursor-pointer hover:bg-pink-50 transition-colors",
                 onClick: () => ue(!ae),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
@@ -10746,7 +10746,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 ]
               }
             ),
-            /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-pink-50 border-2 border-pink-200 rounded-lg", children: [
+            /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-white border-2 border-pink-300 rounded-lg", children: [
               /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
                 /* @__PURE__ */ s(Zs, { className: "w-5 h-5 text-pink-600" }),
                 /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Price Range" })
@@ -10875,8 +10875,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   },
                   className: "mt-auto w-full inline-flex items-center justify-center text-white font-semibold py-2 rounded-lg transition-colors shadow-sm",
                   style: {
-                    backgroundColor: window.innerWidth >= 768 ? "#16a34a" : "#15803d",
-                    border: window.innerWidth >= 768 ? "1px solid #15803d" : "1px solid #166534",
+                    backgroundColor: window.innerWidth >= 768 ? "#ec4899" : "#db2777",
+                    border: window.innerWidth >= 768 ? "1px solid #db2777" : "1px solid #be185d",
                     color: "#ffffff"
                   },
                   children: "View Details"
@@ -11489,7 +11489,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         )
       }
     ),
-    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 text-white", style: { backgroundColor: "#16a34a" }, children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
+    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 text-white", style: { backgroundColor: "#ec4899" }, children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0 },
@@ -11536,7 +11536,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               whileTap: { scale: 0.98 },
               onClick: () => e?.("products"),
               className: "w-full px-6 py-3 text-white rounded-lg transition-colors",
-              style: { backgroundColor: "#15803d", border: "1px solid #166534" },
+              style: { backgroundColor: "#db2777", border: "1px solid #be185d" },
               children: "Browse Pet Products →"
             }
           )
@@ -11595,7 +11595,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "🦮" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Pet Sitting" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: pe ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: pe ? "#db2777" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
                   ]
                 }
               ),
@@ -11609,7 +11609,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Open Weekends" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: W ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: W ? "#db2777" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
                   ]
                 }
               ),
@@ -11623,7 +11623,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
                     ] }),
-                    /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: ae ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${ae ? "translate-x-6" : "translate-x-1"}` }) })
+                    /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: ae ? "#db2777" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${ae ? "translate-x-6" : "translate-x-1"}` }) })
                   ]
                 }
               ),
