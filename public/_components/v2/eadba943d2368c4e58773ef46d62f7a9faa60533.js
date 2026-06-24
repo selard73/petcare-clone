@@ -20424,7 +20424,7 @@ function oy() {
         ] }) ] })
       ] })
     ] }) }),
-    /* @__PURE__ */ d("div", { className: "hidden md:block md:bg-white", style: { paddingTop: "6px", overflowX: "hidden" }, children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 md:sm:px-6 md:lg:px-8", children: /* @__PURE__ */ d("div", { className: "px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ d("div", { className: "flex items-center overflow-hidden", children: [
+    /* @__PURE__ */ d("div", { className: "hidden md:block md:bg-white", style: { paddingTop: "6px" }, children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 md:sm:px-6 md:lg:px-8", children: /* @__PURE__ */ d("div", { className: "px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ d("div", { className: "flex items-center", children: [
           /* @__PURE__ */ d("div", { className: "flex items-center space-x-2 shrink-0 pointer-events-none select-none", style: { visibility: "hidden", marginLeft: "-10px" }, "aria-hidden": "true", children: [
             /* @__PURE__ */ s("span", { className: "text-4xl", children: "🐾" }),
             /* @__PURE__ */ d("div", { className: "whitespace-nowrap", children: [
@@ -20432,26 +20432,22 @@ function oy() {
               /* @__PURE__ */ s("p", { className: "text-xs text-gray-600 whitespace-nowrap", children: "Darlington/Florence Area" })
             ] })
           ] }),
-          /* @__PURE__ */ d("div", { className: "flex items-center justify-evenly flex-1 min-w-0 py-2", style: { marginLeft: "2.25rem", paddingTop: "4px" }, children: [
-          /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "✂️ Grooming" }),
-          /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "🎓 Training" }),
-          /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "🏠 Boarding & Daycare" }),
-          /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "🦮 Sitters & Walkers" }),
-          /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "⚕️ Vet Care" }),
-          /* @__PURE__ */ d("div", { className: "relative inline-flex justify-center", children: [
-            /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "🛍️ Pet Products" }),
-            /* @__PURE__ */ s(
+          /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: "repeat(7, minmax(0, 1fr))", alignItems: "center", flex: 1, minWidth: 0, marginLeft: "2.25rem", paddingTop: "4px" }, children: [
+          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "✂️ Grooming" }),
+          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "🎓 Training" }),
+          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "🏠 Boarding & Daycare" }),
+          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "🦮 Sitters & Walkers" }),
+          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "⚕️ Vet Care" }),
+          P ? /* @__PURE__ */ d("div", { style: { gridColumn: "6 / 8", display: "grid", gridTemplateColumns: "1fr 1fr", alignItems: "center", columnGap: "8px" }, children: [
+            /* @__PURE__ */ d("div", { style: { display: "flex", justifyContent: "center", alignItems: "center" }, children: /* @__PURE__ */ s(
               "button",
               {
                 onClick: () => C("shortlist"),
-                className: `absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "shortlist" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
+                className: `px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "shortlist" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
                 children: "❤️ Shortlist"
               }
-            )
-          ] }),
-          /* @__PURE__ */ d("div", { className: "relative inline-flex justify-center", children: [
-            /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "📰 The Daily Wag" }),
-            P ? /* @__PURE__ */ d("div", { style: { position: "absolute", right: 0, top: "50%", transform: "translateY(-50%)", display: "flex", alignItems: "center", gap: "8px", whiteSpace: "nowrap" }, children: [
+            ) }),
+            /* @__PURE__ */ d("div", { style: { display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "6px", whiteSpace: "nowrap" }, children: [
               /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-3 py-2 bg-purple-50 rounded-full", children: [
                 /* @__PURE__ */ s(fl, { className: "w-4 h-4 text-purple-600" }),
                 /* @__PURE__ */ s("span", { className: "text-gray-700 whitespace-nowrap", children: P.name }),
@@ -20479,18 +20475,28 @@ function oy() {
                   ]
                 }
               )
-            ] }) : /* @__PURE__ */ d(
+            ] })
+          ] }) : [
+            /* @__PURE__ */ d("div", { style: { display: "flex", justifyContent: "center", alignItems: "center" }, children: /* @__PURE__ */ s(
+              "button",
+              {
+                onClick: () => C("shortlist"),
+                className: `px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "shortlist" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
+                children: "❤️ Shortlist"
+              }
+            ) }),
+            /* @__PURE__ */ d("div", { style: { display: "flex", justifyContent: "center", alignItems: "center" }, children: /* @__PURE__ */ d(
               "button",
               {
                 onClick: () => o(!0),
-                className: "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors whitespace-nowrap",
+                className: "flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors whitespace-nowrap",
                 children: [
                   /* @__PURE__ */ s(hl, { className: "w-4 h-4" }),
                   "Login"
                 ]
               }
-            )
-          ] })
+            ) })
+          ]
         ] }) ] }) }) }) }),
     ] }),
     /* @__PURE__ */ s(
