@@ -10717,13 +10717,13 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
           transition: { delay: 0.1 },
           className: "hidden md:block rounded-xl shadow-md p-4 md:p-6 mb-8 border border-pink-300",
           style: { backgroundColor: "#fbcfe8" },
-          children: /* @__PURE__ */ d("div", { className: "flex flex-col md:flex-row gap-3 md:gap-4 items-stretch justify-between", children: [
-            /* @__PURE__ */ s("div", { className: "w-full md:w-auto", children: /* @__PURE__ */ d(
+          children: /* @__PURE__ */ d("div", { className: "flex flex-col md:flex-row md:flex-nowrap gap-3 md:gap-2 items-stretch", children: [
+            /* @__PURE__ */ s("div", { className: "w-full md:w-auto shrink-0", children: /* @__PURE__ */ d(
               "select",
               {
                 value: ee,
                 onChange: (y) => G(y.target.value),
-                className: "w-full h-full px-4 py-3 bg-white border-2 border-pink-300 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer",
+                className: "w-full h-full px-3 py-3 bg-white border-2 border-pink-300 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer text-sm whitespace-nowrap",
                 children: [
                   /* @__PURE__ */ s("option", { value: "all", children: "All Cities" }),
                   /* @__PURE__ */ s("option", { value: "Florence", children: "Florence" }),
@@ -10732,52 +10732,52 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 ]
               }
             ) }),
-            /* @__PURE__ */ s("div", { className: "w-full md:w-auto", children: /* @__PURE__ */ d(
+            /* @__PURE__ */ s("div", { className: "w-full md:w-auto shrink-0", children: /* @__PURE__ */ d(
               "select",
               {
                 value: pe,
                 onChange: (y) => Ee(y.target.value),
-                className: "w-full h-full px-4 py-3 bg-white border-2 border-pink-300 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer",
+                className: "w-full h-full px-3 py-3 bg-white border-2 border-pink-300 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer text-sm whitespace-nowrap",
                 children: sittersServiceOptions()
               }
             ) }),
             /* @__PURE__ */ d(
               "div",
               {
-                className: "flex items-center justify-between gap-3 px-4 py-3 bg-white border-2 border-pink-300 rounded-lg cursor-pointer hover:bg-pink-50 transition-colors",
+                className: "flex items-center justify-between gap-2 px-3 py-3 bg-white border-2 border-pink-300 rounded-lg cursor-pointer hover:bg-pink-50 transition-colors shrink-0 whitespace-nowrap",
                 onClick: () => setSbIns(!sbIns),
                 children: [
-                  /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🛡️" }),
-                    /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Insured & Bonded" })
+                  /* @__PURE__ */ d("div", { className: "flex items-center gap-1.5 shrink-0", children: [
+                    /* @__PURE__ */ s("span", { className: "text-lg leading-none", children: "🛡️" }),
+                    /* @__PURE__ */ s("span", { className: "text-sm text-gray-700 whitespace-nowrap", children: "Insured & Bonded" })
                   ] }),
-                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: sbIns ? "#db2777" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${sbIns ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
+                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors", style: { backgroundColor: sbIns ? "#db2777" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${sbIns ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
                 ]
               }
             ),
             /* @__PURE__ */ d(
               "div",
               {
-                className: "flex items-center justify-between gap-3 px-4 py-3 bg-white border-2 border-pink-300 rounded-lg cursor-pointer hover:bg-pink-50 transition-colors",
+                className: "flex items-center justify-between gap-2 px-3 py-3 bg-white border-2 border-pink-300 rounded-lg cursor-pointer hover:bg-pink-50 transition-colors shrink-0 whitespace-nowrap",
                 onClick: () => setSbCpr(!sbCpr),
                 children: [
-                  /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "❤️" }),
-                    /* @__PURE__ */ s("span", { className: "text-gray-700", children: "CPR / First Aid" })
+                  /* @__PURE__ */ d("div", { className: "flex items-center gap-1.5 shrink-0", children: [
+                    /* @__PURE__ */ s("span", { className: "text-lg leading-none", children: "❤️" }),
+                    /* @__PURE__ */ s("span", { className: "text-sm text-gray-700 whitespace-nowrap", children: "CPR / First Aid" })
                   ] }),
-                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: sbCpr ? "#db2777" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${sbCpr ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
+                  /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors", style: { backgroundColor: sbCpr ? "#db2777" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${sbCpr ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
                 ]
               }
             ),
             /* @__PURE__ */ d(
               "div",
               {
-                className: "flex items-center gap-3 px-4 py-3 bg-white border-2 border-pink-300 rounded-lg cursor-pointer hover:bg-pink-50 transition-colors",
+                className: "flex items-center gap-2 px-3 py-3 bg-white border-2 border-pink-300 rounded-lg cursor-pointer hover:bg-pink-50 transition-colors shrink-0 whitespace-nowrap",
                 onClick: () => ue(!ae),
                 children: [
-                  /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
-                    /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
+                  /* @__PURE__ */ d("div", { className: "flex items-center gap-1.5 shrink-0", children: [
+                    /* @__PURE__ */ s("span", { className: "text-lg leading-none", children: "🌟" }),
+                    /* @__PURE__ */ s("span", { className: "text-sm text-gray-700 whitespace-nowrap", children: ">4 Stars" })
                   ] }),
                   /* @__PURE__ */ s(
                     "input",
@@ -10785,23 +10785,23 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       type: "checkbox",
                       checked: ae,
                       onChange: (y) => ue(y.target.checked),
-                      className: "w-5 h-5 text-pink-600 rounded cursor-pointer ml-auto"
+                      className: "w-5 h-5 shrink-0 text-pink-600 rounded cursor-pointer ml-auto"
                     }
                   )
                 ]
               }
             ),
-            /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-white border-2 border-pink-300 rounded-lg", children: [
-              /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                /* @__PURE__ */ s(Zs, { className: "w-5 h-5 text-green-600" }),
-                /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Price Range" })
+            /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-3 py-3 bg-white border-2 border-pink-300 rounded-lg shrink-0 whitespace-nowrap", children: [
+              /* @__PURE__ */ d("div", { className: "flex items-center gap-1.5 shrink-0", children: [
+                /* @__PURE__ */ s(Zs, { className: "w-4 h-4 text-green-600 shrink-0" }),
+                /* @__PURE__ */ s("span", { className: "text-sm text-gray-700 whitespace-nowrap", children: "Price Range" })
               ] }),
               /* @__PURE__ */ d(
                 "select",
                 {
                   value: Me,
                   onChange: (y) => qe(y.target.value),
-                  className: "px-3 py-1 bg-white border-2 border-pink-300 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer ml-auto",
+                  className: "px-2 py-1 bg-white border-2 border-pink-300 rounded-lg focus:outline-none focus:border-pink-400 transition-colors cursor-pointer ml-auto text-sm whitespace-nowrap shrink-0",
                   children: [
                     /* @__PURE__ */ s("option", { value: "all", children: "All" }),
                     /* @__PURE__ */ s("option", { value: "$", children: "$" }),
@@ -10959,9 +10959,10 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             animate: { scale: 1, opacity: 1 },
             exit: { scale: 0.9, opacity: 0 },
             onClick: (y) => y.stopPropagation(),
-            className: "bg-white rounded-2xl max-h-[90vh] overflow-y-auto overflow-x-hidden shadow-2xl",
+            className: "bg-white rounded-2xl max-h-[90vh] overflow-hidden overflow-x-hidden shadow-2xl flex flex-col",
             style: { width: window.innerWidth >= 768 ? "min(52rem, calc(100vw - 4rem))" : "calc(100vw - 2rem)" },
             children: [
+              /* @__PURE__ */ s("div", { className: "flex-1 overflow-y-auto overflow-x-hidden min-h-0", children: [
               /* @__PURE__ */ d("div", { className: "relative h-80 overflow-hidden rounded-t-2xl", children: [
                 getDetailGalleryPhotos(n).length > 0 ? (() => {
                   const F = getDetailGalleryPhotos(n);
@@ -11044,7 +11045,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] })
               ] }),
-              /* @__PURE__ */ d("div", { className: "p-4 md:p-6 pb-8 md:pb-6 mb-28 md:mb-0", children: [
+              /* @__PURE__ */ d("div", { className: "p-4 md:p-6 pb-8 md:pb-6", children: [
                 /* @__PURE__ */ s("p", { className: "text-gray-700 mb-6", children: n.description }),
                 p.length > 0 && /* @__PURE__ */ s("div", { className: "bg-gradient-to-r from-yellow-50 to-orange-50 p-6 rounded-xl mb-6 border border-yellow-200", children: /* @__PURE__ */ d("div", { className: "flex items-center justify-between", children: [
                   /* @__PURE__ */ d("div", { children: [
@@ -11085,11 +11086,11 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0", children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg w-full max-w-full min-w-0", children: [
                     /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-pink-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Phone" }),
-                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "break-all hover:underline", style: { color: "#ff1493" }, children: n.phone })
+                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "text-pink-600 hover:underline break-all", children: n.phone })
                     ] })
                   ] }),
                   n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg md:col-span-2 w-full max-w-full min-w-0", children: [
@@ -11121,7 +11122,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       ] })
                     ] })
                   ] }),
-                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-pink-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Website" }),
@@ -11131,14 +11132,14 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           href: n.website.startsWith("http") ? n.website : `https://${n.website}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block whitespace-normal md:whitespace-nowrap max-w-full break-all md:break-normal",
-                          style: { overflowWrap: "anywhere", wordBreak: "break-word", color: "#ff1493" },
+                          className: "text-pink-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block whitespace-normal md:whitespace-nowrap max-w-full break-all md:break-normal",
+                          style: { overflowWrap: "anywhere", wordBreak: "break-word" },
                           children: n.website
                         }
                       )
                     ] })
                   ] }),
-                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-pink-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
@@ -11146,8 +11147,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         "a",
                         {
                           href: `mailto:${n.email}`,
-                          className: "hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block break-all md:break-normal md:whitespace-nowrap",
-                          style: { color: "#ff1493" },
+                          className: "text-pink-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block break-all md:break-normal md:whitespace-nowrap",
                           children: n.email
                         }
                       )
@@ -11275,7 +11275,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     {
                       initial: { opacity: 0, y: 10 },
                       animate: { opacity: 1, y: 0 },
-                      className: "bg-gradient-to-r from-green-50 to-emerald-50 p-5 rounded-xl border border-pink-100",
+                      className: "bg-gradient-to-r from-pink-50 to-rose-50 p-5 rounded-xl border border-pink-100",
                       children: [
                         /* @__PURE__ */ d("div", { className: "flex items-start justify-between mb-3", children: [
                           /* @__PURE__ */ d("div", { children: [
@@ -11492,7 +11492,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         onClick: zl,
                         whileHover: { scale: 1.02 },
                         whileTap: { scale: 0.98 },
-                        className: "w-full bg-gradient-to-r from-pink-600 to-rose-600 text-white py-3 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
+                        className: "w-full bg-gradient-to-r from-pink-600 to-rose-600 text-white py-3 rounded-xl hover:from-pink-700 hover:to-rose-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                         disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
                         children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
                           /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
@@ -11502,8 +11502,9 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     )
                   ] })
                 ] })
+              ] })
               ] }),
-              /* @__PURE__ */ d("div", { className: "md:hidden sticky bottom-0 left-0 right-0 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-4 flex gap-3", children: [
+              /* @__PURE__ */ d("div", { className: "md:hidden flex-shrink-0 bg-white border-t border-gray-200 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.1)] p-4 flex gap-3", children: [
                 /* @__PURE__ */ d(
                   D.a,
                   {
@@ -11527,7 +11528,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     href: `tel:${n.phone}`,
                     whileHover: { scale: 1.02 },
                     whileTap: { scale: 0.98 },
-                    className: "flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-pink-600 to-rose-600 text-white py-3.5 rounded-xl hover:from-pink-700 hover:to-rose-700 transition-colors",
+                    className: "flex-1 flex items-center justify-center gap-2 text-white py-3.5 rounded-xl transition-colors",
+                    style: { backgroundColor: "#db2777", border: "1px solid #be185d" },
                     children: [
                       /* @__PURE__ */ s(Dn, { className: "w-5 h-5" }),
                       /* @__PURE__ */ s("span", { children: "Call" })
@@ -20326,22 +20328,23 @@ function oy() {
           }
         )
       ] }),
-      /* @__PURE__ */ d("div", { className: "hidden md:flex justify-between items-center h-20 px-4 sm:px-6 lg:px-8", children: [
-        /* @__PURE__ */ d(
-          "button",
-          {
-            onClick: () => C("home"),
-            className: "flex items-center space-x-2 hover:opacity-80 transition-opacity flex-shrink-0 -ml-6",
-            children: [
-              /* @__PURE__ */ s("span", { className: "text-4xl", children: "🐾" }),
-              /* @__PURE__ */ d("div", { className: "whitespace-nowrap", children: [
-                /* @__PURE__ */ s("h1", { className: "text-purple-600 text-2xl", children: "Pawsitively Fabulous" }),
-                /* @__PURE__ */ s("p", { className: "text-xs text-gray-600 whitespace-nowrap", children: "Darlington/Florence Area" })
-              ] })
-            ]
-          }
-        ),
-        /* @__PURE__ */ d("div", { className: "flex items-center space-x-6 mx-8", children: [
+      /* @__PURE__ */ d("div", { className: "hidden md:block px-3 lg:px-4", children: [
+        /* @__PURE__ */ d("div", { className: "flex items-center gap-2 h-14", children: [
+          /* @__PURE__ */ d(
+            "button",
+            {
+              onClick: () => C("home"),
+              className: "flex items-center gap-1.5 hover:opacity-80 transition-opacity shrink-0",
+              children: [
+                /* @__PURE__ */ s("span", { className: "text-3xl leading-none", children: "🐾" }),
+                /* @__PURE__ */ d("div", { className: "whitespace-nowrap text-left", children: [
+                  /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl leading-tight", children: "Pawsitively Fabulous" }),
+                  /* @__PURE__ */ s("p", { className: "text-[10px] text-gray-600 whitespace-nowrap leading-tight", children: "Darlington/Florence Area" })
+                ] })
+              ]
+            }
+          ),
+          /* @__PURE__ */ d("div", { className: "flex items-center gap-1 flex-1 min-w-0 justify-start", children: [
           /* @__PURE__ */ s(
             "a",
             {
@@ -20349,7 +20352,7 @@ function oy() {
               onClick: (k) => {
                 k.preventDefault(), C("grooming");
               },
-              className: `px-4 py-2 rounded-full transition-all whitespace-nowrap no-underline ${t === "grooming" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
+              className: `px-2.5 py-1.5 text-sm rounded-full transition-all whitespace-nowrap no-underline ${t === "grooming" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
               children: "✂️ Grooming"
             }
           ),
@@ -20360,7 +20363,7 @@ function oy() {
               onClick: (k) => {
                 k.preventDefault(), C("training");
               },
-              className: `px-4 py-2 rounded-full transition-all whitespace-nowrap no-underline ${t === "training" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
+              className: `px-2.5 py-1.5 text-sm rounded-full transition-all whitespace-nowrap no-underline ${t === "training" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
               children: "🎓 Training"
             }
           ),
@@ -20371,7 +20374,7 @@ function oy() {
               onClick: (k) => {
                 k.preventDefault(), C("boarding");
               },
-              className: `px-4 py-2 rounded-full transition-all whitespace-nowrap no-underline ${t === "boarding" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
+              className: `px-2.5 py-1.5 text-sm rounded-full transition-all whitespace-nowrap no-underline ${t === "boarding" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
               children: "🏠 Boarding & Daycare"
             }
           ),
@@ -20382,7 +20385,7 @@ function oy() {
               onClick: (k) => {
                 k.preventDefault(), C("sitters");
               },
-              className: `px-4 py-2 rounded-full transition-all whitespace-nowrap no-underline ${t === "sitters" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
+              className: `px-2.5 py-1.5 text-sm rounded-full transition-all whitespace-nowrap no-underline ${t === "sitters" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
               children: "🦮 Sitters & Walkers"
             }
           ),
@@ -20393,7 +20396,7 @@ function oy() {
               onClick: (k) => {
                 k.preventDefault(), C("vet");
               },
-              className: `px-4 py-2 rounded-full transition-all whitespace-nowrap no-underline ${t === "vet" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
+              className: `px-2.5 py-1.5 text-sm rounded-full transition-all whitespace-nowrap no-underline ${t === "vet" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
               children: "⚕️ Vet Care"
             }
           ),
@@ -20401,32 +20404,34 @@ function oy() {
             "button",
             {
               onClick: () => C("products"),
-              className: `px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "products" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
+              className: `px-2.5 py-1.5 text-sm rounded-full transition-all whitespace-nowrap ${t === "products" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
               children: "🛍️ Pet Products"
             }
           ),
           /* @__PURE__ */ s(
             "button",
             {
-              onClick: () => C("shortlist"),
-              className: `px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "shortlist" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-              children: "❤️ Shortlist"
+              onClick: () => C("blog"),
+              className: `px-2.5 py-1.5 text-sm rounded-full transition-all whitespace-nowrap ${t === "blog" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
+              children: "📰 The Daily Wag"
             }
-          ),
+          )
+        ] }) ] }),
+        /* @__PURE__ */ d("div", { className: "flex justify-end items-center gap-2 pb-2.5 -mt-0.5", children: [
           /* @__PURE__ */ s(
             "button",
             {
-              onClick: () => C("blog"),
-              className: `px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "blog" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-              children: "📰 The Daily Wag"
+              onClick: () => C("shortlist"),
+              className: `px-3 py-1.5 text-sm rounded-full transition-all whitespace-nowrap ${t === "shortlist" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
+              children: "❤️ Shortlist"
             }
           ),
-          P ? /* @__PURE__ */ d("div", { className: "flex items-center gap-3 ml-4", children: [
-            /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-3 py-2 bg-purple-50 rounded-full", children: [
+          P ? /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
+            /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-3 py-1.5 bg-purple-50 rounded-full", children: [
               /* @__PURE__ */ s(fl, { className: "w-4 h-4 text-purple-600" }),
-              /* @__PURE__ */ s("span", { className: "text-gray-700 whitespace-nowrap", children: P.name }),
-              P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-red-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "👑 Admin" }),
-              P.role === "business" && !P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-purple-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "Business" })
+              /* @__PURE__ */ s("span", { className: "text-sm text-gray-700 whitespace-nowrap", children: P.name }),
+              P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-red-600 text-white px-2 py-0.5 rounded-full whitespace-nowrap", children: "👑 Admin" }),
+              P.role === "business" && !P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-purple-600 text-white px-2 py-0.5 rounded-full whitespace-nowrap", children: "Business" })
             ] }),
             P.isAdmin && /* @__PURE__ */ s(
               "button",
@@ -20434,7 +20439,7 @@ function oy() {
                 onClick: () => {
                   f(null), C("admin");
                 },
-                className: "px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors whitespace-nowrap",
+                className: "px-3 py-1.5 text-sm bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors whitespace-nowrap",
                 children: "+ Add Business"
               }
             ),
@@ -20442,7 +20447,7 @@ function oy() {
               "button",
               {
                 onClick: S,
-                className: "flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-full transition-colors whitespace-nowrap",
+                className: "flex items-center gap-1.5 px-3 py-1.5 text-sm text-gray-700 hover:bg-gray-100 rounded-full transition-colors whitespace-nowrap",
                 children: [
                   /* @__PURE__ */ s(pl, { className: "w-4 h-4" }),
                   "Logout"
@@ -20453,7 +20458,7 @@ function oy() {
             "button",
             {
               onClick: () => o(!0),
-              className: "flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors ml-4 whitespace-nowrap",
+              className: "flex items-center gap-1.5 px-3 py-1.5 text-sm bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors whitespace-nowrap",
               children: [
                 /* @__PURE__ */ s(hl, { className: "w-4 h-4" }),
                 "Login"
