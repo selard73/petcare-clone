@@ -11008,11 +11008,11 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg w-full max-w-full min-w-0", children: [
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0", children: [
                     /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-pink-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Phone" }),
-                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "break-all hover:opacity-90 transition-opacity", style: { color: "#ff1493", textShadow: "0 0 5px #ff69b4, 0 0 10px #ff1493" }, children: n.phone })
+                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "break-all hover:underline", style: { color: "#ff1493" }, children: n.phone })
                     ] })
                   ] }),
                   n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg md:col-span-2 w-full max-w-full min-w-0", children: [
@@ -11044,7 +11044,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       ] })
                     ] })
                   ] }),
-                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-pink-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Website" }),
@@ -11054,14 +11054,14 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           href: n.website.startsWith("http") ? n.website : `https://${n.website}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-xs sm:text-sm md:text-base leading-tight md:leading-normal block whitespace-normal md:whitespace-nowrap max-w-full break-all md:break-normal hover:opacity-90 transition-opacity",
-                          style: { overflowWrap: "anywhere", wordBreak: "break-word", color: "#ff1493", textShadow: "0 0 5px #ff69b4, 0 0 10px #ff1493" },
+                          className: "hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block whitespace-normal md:whitespace-nowrap max-w-full break-all md:break-normal",
+                          style: { overflowWrap: "anywhere", wordBreak: "break-word", color: "#ff1493" },
                           children: n.website
                         }
                       )
                     ] })
                   ] }),
-                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-pink-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
@@ -11069,7 +11069,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         "a",
                         {
                           href: `mailto:${n.email}`,
-                          className: "text-pink-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block break-all md:break-normal md:whitespace-nowrap",
+                          className: "hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block break-all md:break-normal md:whitespace-nowrap",
+                          style: { color: "#ff1493" },
                           children: n.email
                         }
                       )
@@ -11144,9 +11145,11 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     href: `tel:${n.phone}`,
                     whileHover: { scale: 1.02 },
                     whileTap: { scale: 0.98 },
-                    className: "w-full text-center py-4 rounded-xl transition-colors font-semibold",
-                    style: { backgroundColor: "#be185d", color: "#ffffff", border: "2px solid #9d174d" },
-                    children: /* @__PURE__ */ s("span", { style: { color: "#ffffff" }, children: ["📞 Call ", n.name] })
+                    className: "hidden md:block w-full bg-gradient-to-r from-pink-600 to-rose-600 text-white py-4 rounded-xl hover:from-pink-700 hover:to-rose-700 transition-colors text-center",
+                    children: [
+                      "📞 Call ",
+                      n.name
+                    ]
                   }
                 ),
                 I && (n.ownerId === I.id || I.isAdmin) && t && /* @__PURE__ */ d("div", { className: "space-y-3 mt-3", children: [
@@ -11447,11 +11450,10 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     href: `tel:${n.phone}`,
                     whileHover: { scale: 1.02 },
                     whileTap: { scale: 0.98 },
-                    className: "flex-1 flex items-center justify-center gap-2 py-3.5 rounded-xl transition-colors font-semibold",
-                    style: { backgroundColor: "#be185d", color: "#ffffff", border: "2px solid #9d174d" },
+                    className: "flex-1 flex items-center justify-center gap-2 bg-gradient-to-r from-pink-600 to-rose-600 text-white py-3.5 rounded-xl hover:from-pink-700 hover:to-rose-700 transition-colors",
                     children: [
-                      /* @__PURE__ */ s(Dn, { className: "w-5 h-5", style: { color: "#ffffff" } }),
-                      /* @__PURE__ */ s("span", { style: { color: "#ffffff" }, children: "Call" })
+                      /* @__PURE__ */ s(Dn, { className: "w-5 h-5" }),
+                      /* @__PURE__ */ s("span", { children: "Call" })
                     ]
                   }
                 )
