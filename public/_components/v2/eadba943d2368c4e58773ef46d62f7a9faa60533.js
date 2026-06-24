@@ -6018,14 +6018,14 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                   }
                 ),
                 /* @__PURE__ */ s("h2", { className: "text-purple-600 mb-3 md:mb-4 text-2xl md:text-4xl relative", children: "Why Use Our Directory?" }),
-                /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed relative", children: "One free place to search local grooming, training, boarding, and vet care across the Pee Dee region." })
+                /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed relative", children: "Compare local providers side by side — without jumping between a dozen websites." })
               ]
             }
           ),
           /* @__PURE__ */ s("div", { className: "flex flex-col items-center gap-3 md:grid md:grid-cols-3 md:gap-8", children: [
-            { icon: "🔍", title: "Easy to Find", description: "Grooming, training, boarding, and vet care in one Pee Dee directory" },
-            { icon: "⭐", title: "Trusted Reviews", description: "Ratings and reviews from pet owners in Darlington, Hartsville, and Florence" },
-            { icon: "📍", title: "Local Focus", description: "Supporting independent pet businesses across Darlington County and Florence, SC" }
+            { icon: "🔍", title: "Easy to Find", description: "Every category in one place — filter by service type or town" },
+            { icon: "⭐", title: "Trusted Reviews", description: "Real feedback from pet owners who've used these providers" },
+            { icon: "📍", title: "Local Focus", description: "Independent Pee Dee businesses, not a national chain directory" }
           ].map((p, m) => /* @__PURE__ */ s(
             D.div,
             {
@@ -6064,10 +6064,9 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
               transition: { delay: 0.15 },
               className: "max-w-3xl mx-auto mt-10 md:mt-14 px-2 text-center",
               children: /* @__PURE__ */ d("div", { className: "space-y-4", children: [
-                /* @__PURE__ */ s("h3", { className: "text-purple-700 text-lg md:text-xl font-semibold leading-snug", children: "Local pet services in Darlington, Hartsville & Florence" }),
-                /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed", children: "Peedee Pet Care helps you find pet grooming in Florence SC, dog training in Darlington, pet boarding in Hartsville, and veterinary care across the Pee Dee region — all in one free directory." }),
-                /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed", children: "Whether you need a dog groomer near Darlington County, pet boarding near Florence SC, a local dog trainer in Hartsville, or veterinary clinics in the Pee Dee, you can search by service and location, read reviews, and compare providers before you reach out." }),
-                /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs md:text-sm leading-relaxed", children: "No subscription or listing fees for pet owners or local businesses. A trusted starting point for pet care in Darlington, Hartsville, Florence, and surrounding communities." })
+                /* @__PURE__ */ s("h3", { className: "text-purple-700 text-lg md:text-xl font-semibold leading-snug", children: "Built for pet owners in the Pee Dee" }),
+                /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed", children: "Need a groomer in Florence, a trainer in Hartsville, or boarding while you're away? We list local providers across Darlington County and the greater Florence area — so you can see who's nearby, what they offer, and what other owners have to say." }),
+                /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs md:text-sm leading-relaxed", children: "From routine wellness to a last-minute sitter, start here. Free to browse, free to list." })
               ] })
             }
           )
