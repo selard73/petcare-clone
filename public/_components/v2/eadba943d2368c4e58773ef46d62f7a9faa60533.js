@@ -11222,7 +11222,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     href: `tel:${n.phone}`,
                     whileHover: { scale: 1.02 },
                     whileTap: { scale: 0.98 },
-                    className: "hidden md:block w-full bg-gradient-to-r from-pink-600 to-rose-600 text-white py-4 rounded-xl hover:from-pink-700 hover:to-rose-700 transition-colors text-center",
+                    className: "hidden md:block w-full text-white py-4 rounded-xl transition-colors text-center",
+                    style: { backgroundColor: "#db2777", border: "1px solid #be185d", color: "#ffffff" },
                     children: [
                       "📞 Call ",
                       n.name
@@ -20420,15 +20421,7 @@ function oy() {
         ] }) ] })
       ] })
     ] }) }),
-    /* @__PURE__ */ d("div", { className: "hidden md:block", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ d("div", { className: "flex items-center py-2", children: [
-          /* @__PURE__ */ d("div", { className: "flex items-center space-x-2 shrink-0 invisible pointer-events-none select-none", "aria-hidden": "true", children: [
-            /* @__PURE__ */ s("span", { className: "text-4xl", children: "🐾" }),
-            /* @__PURE__ */ d("div", { className: "whitespace-nowrap", children: [
-              /* @__PURE__ */ s("h1", { className: "text-purple-600 text-2xl", children: "Pawsitively Fabulous" }),
-              /* @__PURE__ */ s("p", { className: "text-xs text-gray-600 whitespace-nowrap", children: "Darlington/Florence Area" })
-            ] })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "flex flex-1 justify-end items-center gap-3 ml-6 min-w-0", children: [
+    /* @__PURE__ */ d("div", { className: "hidden md:block md:bg-white w-full", children: /* @__PURE__ */ d("div", { className: "flex justify-end items-center gap-3 py-2 pr-3 sm:pr-4 lg:pr-5 w-full", children: [
           /* @__PURE__ */ s(
             "button",
             {
@@ -20476,7 +20469,7 @@ function oy() {
               ]
             }
           )
-        ] }) ] }) }) }),
+        ] }) }),
     ] }),
     /* @__PURE__ */ s(
       Nf,
