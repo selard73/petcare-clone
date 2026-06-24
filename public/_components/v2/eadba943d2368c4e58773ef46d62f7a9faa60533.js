@@ -11061,8 +11061,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] }) }),
                 /* @__PURE__ */ d("div", { className: "grid md:grid-cols-2 gap-4 mb-6 min-w-0", children: [
-                  /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg w-full max-w-full min-w-0", children: [
-                    /* @__PURE__ */ s(ar, { className: "w-5 h-5 text-pink-600 mt-1 flex-shrink-0" }),
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0", style: { backgroundColor: "#fdf2f8" }, children: [
+                    /* @__PURE__ */ s(ar, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#db2777" } }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Address" }),
                       /* @__PURE__ */ d(
@@ -11087,44 +11087,44 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg w-full max-w-full min-w-0", children: [
-                    /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-pink-600 mt-1 flex-shrink-0" }),
+                  /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0", style: { backgroundColor: "#fdf2f8" }, children: [
+                    /* @__PURE__ */ s(Dn, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#db2777" } }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Phone" }),
                       /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "hover:underline break-all", style: { color: "#ff1493" }, children: n.phone })
                     ] })
                   ] }),
-                  n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg md:col-span-2 w-full max-w-full min-w-0", children: [
-                    /* @__PURE__ */ s(im, { className: "w-5 h-5 text-pink-600 mt-1 flex-shrink-0" }),
+                  n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg md:col-span-2 w-full max-w-full min-w-0", style: { backgroundColor: "#fdf2f8" }, children: [
+                    /* @__PURE__ */ s(im, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#db2777" } }),
                     /* @__PURE__ */ d("div", { className: "flex-1 min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
-                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-pink-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm md:text-base", children: [
+                      n.callForHours ? /* @__PURE__ */ s("p", { style: { color: "#db2777" }, children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm md:text-base", children: [
                         /* @__PURE__ */ s("div", { className: "md:hidden space-y-3", children: [["monday", "tuesday"], ["wednesday", "thursday"], ["friday", "saturday"], ["sunday"]].map((y, F) => /* @__PURE__ */ s("div", { className: "grid grid-cols-2 gap-x-3", children: y.map((B) => {
                           const _ = n.hours[B], Y = _?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col gap-0.5", children: [
                             /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize", children: B }),
-                            /* @__PURE__ */ s("span", { className: `font-medium whitespace-nowrap ${Y ? "text-red-600" : "text-pink-600"}`, children: _ })
+                            /* @__PURE__ */ s("span", { className: "font-medium whitespace-nowrap", style: { color: Y ? "#dc2626" : "#db2777" }, children: _ })
                           ] }, B);
                         }) }, F)) }),
                         /* @__PURE__ */ s("div", { className: "hidden md:grid md:grid-cols-4 gap-x-4 gap-y-3", children: ["monday", "tuesday", "wednesday", "thursday"].map((y) => {
                           const F = n.hours[y], B = F?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col gap-0.5", children: [
                             /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize", children: y }),
-                            /* @__PURE__ */ s("span", { className: `font-medium whitespace-nowrap ${B ? "text-red-600" : "text-pink-600"}`, children: F })
+                            /* @__PURE__ */ s("span", { className: "font-medium whitespace-nowrap", style: { color: B ? "#dc2626" : "#db2777" }, children: F })
                           ] }, y);
                         }) }),
                         /* @__PURE__ */ s("div", { className: "hidden md:grid md:grid-cols-4 gap-x-4 gap-y-3", children: ["friday", "saturday", "sunday"].map((y) => {
                           const F = n.hours[y], B = F?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col gap-0.5", children: [
                             /* @__PURE__ */ s("span", { className: "text-gray-600 capitalize", children: y }),
-                            /* @__PURE__ */ s("span", { className: `font-medium whitespace-nowrap ${B ? "text-red-600" : "text-pink-600"}`, children: F })
+                            /* @__PURE__ */ s("span", { className: "font-medium whitespace-nowrap", style: { color: B ? "#dc2626" : "#db2777" }, children: F })
                           ] }, y);
                         }) })
                       ] })
                     ] })
                   ] }),
-                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
-                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-pink-600 mt-1 flex-shrink-0" }),
+                  n.website && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { backgroundColor: "#fdf2f8", width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#db2777" } }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Website" }),
                       /* @__PURE__ */ s(
@@ -11140,8 +11140,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
-                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-pink-600 mt-1 flex-shrink-0" }),
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { backgroundColor: "#fdf2f8", width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#db2777" } }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
                       /* @__PURE__ */ s(
@@ -11161,7 +11161,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.paymentMethods.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
-                      className: "bg-pink-50 text-pink-700 px-3 py-1 rounded-full text-sm",
+                      className: "px-3 py-1 rounded-full text-sm",
+                      style: { backgroundColor: "#fdf2f8", color: "#be185d" },
                       children: y
                     },
                     y
@@ -11170,13 +11171,13 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 (n.insuredBonded || n.petCprCertified || n.backgroundChecked || n.professionalMember || n.medicationAdmin || n.photoUpdates || n.mobileService || sittersMatchFlag(n, "insuredBonded", ["insured", "bonded"]) || sittersMatchFlag(n, "petCprCertified", ["cpr", "first aid"]) || sittersMatchFlag(n, "backgroundChecked", ["background"]) || sittersMatchFlag(n, "professionalMember", ["napps", "psi"]) || sittersMatchFlag(n, "medicationAdmin", ["medication"]) || sittersMatchFlag(n, "photoUpdates", ["photo update", "gps route"])) && /* @__PURE__ */ d("div", { className: "mb-6", children: [
                   /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-3", children: "Credentials & Care" }),
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: [
-                    (n.insuredBonded || sittersMatchFlag(n, "insuredBonded", ["insured", "bonded"])) && /* @__PURE__ */ s("span", { className: "bg-pink-50 text-pink-700 px-3 py-1 rounded-full text-sm", children: "🛡️ Insured & Bonded" }),
-                    (n.petCprCertified || sittersMatchFlag(n, "petCprCertified", ["cpr", "first aid"])) && /* @__PURE__ */ s("span", { className: "bg-pink-50 text-pink-700 px-3 py-1 rounded-full text-sm", children: "❤️ CPR / First Aid" }),
-                    (n.backgroundChecked || sittersMatchFlag(n, "backgroundChecked", ["background"])) && /* @__PURE__ */ s("span", { className: "bg-pink-50 text-pink-700 px-3 py-1 rounded-full text-sm", children: "✅ Background Checked" }),
-                    (n.professionalMember || sittersMatchFlag(n, "professionalMember", ["napps", "psi"])) && /* @__PURE__ */ s("span", { className: "bg-pink-50 text-pink-700 px-3 py-1 rounded-full text-sm", children: "🏅 Pro Association" }),
-                    (n.medicationAdmin || sittersMatchFlag(n, "medicationAdmin", ["medication"])) && /* @__PURE__ */ s("span", { className: "bg-pink-50 text-pink-700 px-3 py-1 rounded-full text-sm", children: "💊 Medication OK" }),
-                    (n.photoUpdates || sittersMatchFlag(n, "photoUpdates", ["photo update", "gps route"])) && /* @__PURE__ */ s("span", { className: "bg-pink-50 text-pink-700 px-3 py-1 rounded-full text-sm", children: "📸 Photo Updates" }),
-                    n.mobileService && /* @__PURE__ */ s("span", { className: "bg-pink-50 text-pink-700 px-3 py-1 rounded-full text-sm", children: "🚗 Comes to You" })
+                    (n.insuredBonded || sittersMatchFlag(n, "insuredBonded", ["insured", "bonded"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "🛡️ Insured & Bonded" }),
+                    (n.petCprCertified || sittersMatchFlag(n, "petCprCertified", ["cpr", "first aid"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "❤️ CPR / First Aid" }),
+                    (n.backgroundChecked || sittersMatchFlag(n, "backgroundChecked", ["background"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "✅ Background Checked" }),
+                    (n.professionalMember || sittersMatchFlag(n, "professionalMember", ["napps", "psi"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "🏅 Pro Association" }),
+                    (n.medicationAdmin || sittersMatchFlag(n, "medicationAdmin", ["medication"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "💊 Medication OK" }),
+                    (n.photoUpdates || sittersMatchFlag(n, "photoUpdates", ["photo update", "gps route"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "📸 Photo Updates" }),
+                    n.mobileService && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "🚗 Comes to You" })
                   ].filter(Boolean) })
                 ] }),
                 n.boardingStyles && n.boardingStyles.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6", children: [
@@ -11184,7 +11185,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.boardingStyles.map((y) => /* @__PURE__ */ d(
                     "span",
                     {
-                      className: "bg-pink-50 text-pink-600 px-4 py-2 rounded-lg",
+                      className: "px-4 py-2 rounded-lg",
+                      style: { backgroundColor: "#fdf2f8", color: "#db2777" },
                       children: [
                         "🏠 ",
                         y
@@ -11198,7 +11200,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.specialFeatures.filter((y) => y.trim()).map((y) => /* @__PURE__ */ d(
                     "span",
                     {
-                      className: "bg-pink-50 text-pink-600 px-4 py-2 rounded-lg",
+                      className: "px-4 py-2 rounded-lg",
+                      style: { backgroundColor: "#fdf2f8", color: "#db2777" },
                       children: [
                         "✨ ",
                         y
@@ -11212,7 +11215,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: n.servicesOffered.map((y) => /* @__PURE__ */ s(
                     "span",
                     {
-                      className: "bg-gradient-to-r from-pink-100 to-rose-100 text-pink-700 px-4 py-2 rounded-full",
+                      className: "px-4 py-2 rounded-full",
+                      style: { backgroundColor: "#fce7f3", color: "#be185d" },
                       children: y
                     },
                     y
