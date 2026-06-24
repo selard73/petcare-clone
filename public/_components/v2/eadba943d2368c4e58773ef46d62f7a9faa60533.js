@@ -20339,6 +20339,7 @@ function oy() {
             {
               onClick: () => C("home"),
               className: "flex items-center space-x-2 hover:opacity-80 transition-opacity shrink-0",
+              style: { marginLeft: "-10px" },
               children: [
                 /* @__PURE__ */ s("span", { className: "text-4xl", children: "🐾" }),
                 /* @__PURE__ */ d("div", { className: "whitespace-nowrap", children: [
@@ -20348,7 +20349,7 @@ function oy() {
               ]
             }
           ),
-          /* @__PURE__ */ d("div", { className: "flex items-center justify-evenly flex-1 min-w-0 ml-6", children: [
+          /* @__PURE__ */ d("div", { className: "flex items-center justify-evenly flex-1 min-w-0", style: { marginLeft: "2.25rem" }, children: [
           /* @__PURE__ */ s(
             "a",
             {
@@ -20423,15 +20424,15 @@ function oy() {
         ] }) ] })
       ] })
     ] }) }),
-    /* @__PURE__ */ d("div", { className: "hidden md:block md:bg-white", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 md:sm:px-6 md:lg:px-8", children: /* @__PURE__ */ d("div", { className: "px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ d("div", { className: "flex items-center", children: [
-          /* @__PURE__ */ d("div", { className: "flex items-center space-x-2 shrink-0 pointer-events-none select-none", style: { visibility: "hidden" }, "aria-hidden": "true", children: [
+    /* @__PURE__ */ d("div", { className: "hidden md:block md:bg-white", style: { paddingTop: "6px" }, children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 md:sm:px-6 md:lg:px-8", children: /* @__PURE__ */ d("div", { className: "px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ d("div", { className: "flex items-center", children: [
+          /* @__PURE__ */ d("div", { className: "flex items-center space-x-2 shrink-0 pointer-events-none select-none", style: { visibility: "hidden", marginLeft: "-10px" }, "aria-hidden": "true", children: [
             /* @__PURE__ */ s("span", { className: "text-4xl", children: "🐾" }),
             /* @__PURE__ */ d("div", { className: "whitespace-nowrap", children: [
               /* @__PURE__ */ s("h1", { className: "text-purple-600 text-2xl", children: "Pawsitively Fabulous" }),
               /* @__PURE__ */ s("p", { className: "text-xs text-gray-600 whitespace-nowrap", children: "Darlington/Florence Area" })
             ] })
           ] }),
-          /* @__PURE__ */ d("div", { className: "flex items-center justify-evenly flex-1 min-w-0 ml-6 py-2", children: [
+          /* @__PURE__ */ d("div", { className: "flex items-center justify-evenly flex-1 min-w-0 py-2", style: { marginLeft: "2.25rem", paddingTop: "4px" }, children: [
           /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "✂️ Grooming" }),
           /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "🎓 Training" }),
           /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "🏠 Boarding & Daycare" }),
