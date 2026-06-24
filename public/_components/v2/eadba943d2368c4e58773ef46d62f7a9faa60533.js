@@ -11073,7 +11073,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           )}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-pink-600 hover:underline cursor-pointer break-words",
+                          className: "hover:underline cursor-pointer break-words",
+                          style: { color: "#ff1493" },
                           children: [
                             /* @__PURE__ */ s("span", { className: "block", children: n.address }),
                             /* @__PURE__ */ d("span", { className: "block", children: [
@@ -11090,7 +11091,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s(Dn, { className: "w-5 h-5 text-pink-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Phone" }),
-                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "text-pink-600 hover:underline break-all", children: n.phone })
+                      /* @__PURE__ */ s("a", { href: `tel:${n.phone}`, className: "hover:underline break-all", style: { color: "#ff1493" }, children: n.phone })
                     ] })
                   ] }),
                   n.hours && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-pink-50 rounded-lg md:col-span-2 w-full max-w-full min-w-0", children: [
@@ -11132,8 +11133,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           href: n.website.startsWith("http") ? n.website : `https://${n.website}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-pink-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block whitespace-normal md:whitespace-nowrap max-w-full break-all md:break-normal",
-                          style: { overflowWrap: "anywhere", wordBreak: "break-word" },
+                          className: "hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block whitespace-normal md:whitespace-nowrap max-w-full break-all md:break-normal",
+                          style: { overflowWrap: "anywhere", wordBreak: "break-word", color: "#ff1493" },
                           children: n.website
                         }
                       )
@@ -11147,7 +11148,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         "a",
                         {
                           href: `mailto:${n.email}`,
-                          className: "text-pink-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block break-all md:break-normal md:whitespace-nowrap",
+                          className: "hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block break-all md:break-normal md:whitespace-nowrap",
+                          style: { color: "#ff1493" },
                           children: n.email
                         }
                       )
@@ -20422,7 +20424,7 @@ function oy() {
       ] })
     ] }) }),
     /* @__PURE__ */ d("div", { className: "hidden md:block md:bg-white", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 md:sm:px-6 md:lg:px-8", children: /* @__PURE__ */ d("div", { className: "px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ d("div", { className: "flex items-center", children: [
-          /* @__PURE__ */ d("div", { className: "flex items-center space-x-2 shrink-0 invisible pointer-events-none select-none", "aria-hidden": "true", children: [
+          /* @__PURE__ */ d("div", { className: "flex items-center space-x-2 shrink-0 pointer-events-none select-none", style: { visibility: "hidden" }, "aria-hidden": "true", children: [
             /* @__PURE__ */ s("span", { className: "text-4xl", children: "🐾" }),
             /* @__PURE__ */ d("div", { className: "whitespace-nowrap", children: [
               /* @__PURE__ */ s("h1", { className: "text-purple-600 text-2xl", children: "Pawsitively Fabulous" }),
@@ -20430,60 +20432,66 @@ function oy() {
             ] })
           ] }),
           /* @__PURE__ */ d("div", { className: "flex items-center justify-evenly flex-1 min-w-0 ml-6 py-2", children: [
-          /* @__PURE__ */ s("span", { className: "invisible px-4 py-2 whitespace-nowrap", "aria-hidden": "true", children: "✂️ Grooming" }),
-          /* @__PURE__ */ s("span", { className: "invisible px-4 py-2 whitespace-nowrap", "aria-hidden": "true", children: "🎓 Training" }),
-          /* @__PURE__ */ s("span", { className: "invisible px-4 py-2 whitespace-nowrap", "aria-hidden": "true", children: "🏠 Boarding & Daycare" }),
-          /* @__PURE__ */ s("span", { className: "invisible px-4 py-2 whitespace-nowrap", "aria-hidden": "true", children: "🦮 Sitters & Walkers" }),
-          /* @__PURE__ */ s("span", { className: "invisible px-4 py-2 whitespace-nowrap", "aria-hidden": "true", children: "⚕️ Vet Care" }),
-          /* @__PURE__ */ s(
-            "button",
-            {
-              onClick: () => C("shortlist"),
-              className: `px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "shortlist" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-              children: "❤️ Shortlist"
-            }
-          ),
-          P ? /* @__PURE__ */ d("div", { className: "relative inline-flex items-center shrink-0", children: [
-            /* @__PURE__ */ d("div", { className: "absolute right-full mr-3 top-1/2 -translate-y-1/2 flex items-center gap-3 whitespace-nowrap", children: [
-              /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-3 py-2 bg-purple-50 rounded-full", children: [
-                /* @__PURE__ */ s(fl, { className: "w-4 h-4 text-purple-600" }),
-                /* @__PURE__ */ s("span", { className: "text-gray-700 whitespace-nowrap", children: P.name }),
-                P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-red-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "👑 Admin" }),
-                P.role === "business" && !P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-purple-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "Business" })
-              ] }),
-              P.isAdmin && /* @__PURE__ */ s(
-                "button",
-                {
-                  onClick: () => {
-                    f(null), C("admin");
-                  },
-                  className: "px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors whitespace-nowrap",
-                  children: "+ Add Business"
-                }
-              )
-            ] }),
-            /* @__PURE__ */ d(
+          /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "✂️ Grooming" }),
+          /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "🎓 Training" }),
+          /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "🏠 Boarding & Daycare" }),
+          /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "🦮 Sitters & Walkers" }),
+          /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "⚕️ Vet Care" }),
+          /* @__PURE__ */ d("div", { className: "relative inline-flex justify-center", children: [
+            /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "🛍️ Pet Products" }),
+            /* @__PURE__ */ s(
               "button",
               {
-                onClick: S,
-                className: "flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-full transition-colors whitespace-nowrap",
+                onClick: () => C("shortlist"),
+                className: `absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "shortlist" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
+                children: "❤️ Shortlist"
+              }
+            )
+          ] }),
+          /* @__PURE__ */ d("div", { className: "relative inline-flex justify-center", children: [
+            /* @__PURE__ */ s("span", { className: "px-4 py-2 whitespace-nowrap", style: { visibility: "hidden" }, "aria-hidden": "true", children: "📰 The Daily Wag" }),
+            P ? /* @__PURE__ */ d("div", { className: "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 inline-flex items-center whitespace-nowrap", children: [
+              /* @__PURE__ */ d("div", { className: "absolute right-full mr-3 top-1/2 -translate-y-1/2 flex items-center gap-3 whitespace-nowrap", children: [
+                /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-3 py-2 bg-purple-50 rounded-full", children: [
+                  /* @__PURE__ */ s(fl, { className: "w-4 h-4 text-purple-600" }),
+                  /* @__PURE__ */ s("span", { className: "text-gray-700 whitespace-nowrap", children: P.name }),
+                  P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-red-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "👑 Admin" }),
+                  P.role === "business" && !P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-purple-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "Business" })
+                ] }),
+                P.isAdmin && /* @__PURE__ */ s(
+                  "button",
+                  {
+                    onClick: () => {
+                      f(null), C("admin");
+                    },
+                    className: "px-4 py-2 bg-green-600 text-white rounded-full hover:bg-green-700 transition-colors whitespace-nowrap",
+                    children: "+ Add Business"
+                  }
+                )
+              ] }),
+              /* @__PURE__ */ d(
+                "button",
+                {
+                  onClick: S,
+                  className: "flex items-center gap-2 px-4 py-2 text-gray-700 hover:bg-gray-100 rounded-full transition-colors whitespace-nowrap",
+                  children: [
+                    /* @__PURE__ */ s(pl, { className: "w-4 h-4" }),
+                    "Logout"
+                  ]
+                }
+              )
+            ] }) : /* @__PURE__ */ d(
+              "button",
+              {
+                onClick: () => o(!0),
+                className: "absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors whitespace-nowrap",
                 children: [
-                  /* @__PURE__ */ s(pl, { className: "w-4 h-4" }),
-                  "Logout"
+                  /* @__PURE__ */ s(hl, { className: "w-4 h-4" }),
+                  "Login"
                 ]
               }
             )
-          ] }) : /* @__PURE__ */ d(
-            "button",
-            {
-              onClick: () => o(!0),
-              className: "flex items-center gap-2 px-4 py-2 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition-colors whitespace-nowrap shrink-0",
-              children: [
-                /* @__PURE__ */ s(hl, { className: "w-4 h-4" }),
-                "Login"
-              ]
-            }
-          )
+          ] })
         ] }) ] }) }) }) }),
     ] }),
     /* @__PURE__ */ s(
