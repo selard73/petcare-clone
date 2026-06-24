@@ -6065,7 +6065,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
               className: "max-w-3xl mx-auto mt-10 md:mt-14 px-2 text-center",
               children: /* @__PURE__ */ d("div", { className: "space-y-4", children: [
                 /* @__PURE__ */ s("h3", { className: "text-purple-700 text-lg md:text-xl font-semibold leading-snug", children: "Built for pet owners in the Pee Dee" }),
-                /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed", children: "Need a groomer in Florence, a trainer in Hartsville, or boarding while you're away? We list local providers across Darlington County and the greater Florence area — so you can see who's nearby, what they offer, and what other owners have to say." }),
+                /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed", children: "Need a dog groomer in Florence, a trainer in Hartsville, or boarding while you're away? We list local providers across Darlington County and the greater Florence area — so you can see who's nearby, what they offer, and what other owners have to say." }),
                 /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs md:text-sm leading-relaxed", children: "From routine wellness to a last-minute sitter, start here. Free to browse, free to list." })
               ] })
             }
