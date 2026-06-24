@@ -10793,7 +10793,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             ),
             /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-white border-2 border-pink-300 rounded-lg", children: [
               /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                /* @__PURE__ */ s(Zs, { className: "w-5 h-5 text-pink-600" }),
+                /* @__PURE__ */ s(Zs, { className: "w-5 h-5 text-green-600" }),
                 /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Price Range" })
               ] }),
               /* @__PURE__ */ d(
@@ -10875,7 +10875,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     }
                   ),
                   y.priceRange && /* @__PURE__ */ d("div", { className: "relative group", children: [
-                    /* @__PURE__ */ s("div", { className: "flex items-center gap-1 text-pink-600 cursor-help", children: /* @__PURE__ */ s("span", { children: y.priceRange }) }),
+                    /* @__PURE__ */ s("div", { className: "flex items-center gap-1 text-green-600 cursor-help", children: /* @__PURE__ */ s("span", { children: y.priceRange }) }),
                     /* @__PURE__ */ d("div", { className: "absolute bottom-full right-0 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10", children: [
                       Ri(y.priceRange),
                       /* @__PURE__ */ s("div", { className: "absolute top-full right-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-900" })
@@ -11659,7 +11659,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ]
                 }
               ),
-              /* @__PURE__ */ d("div", { children: [/* @__PURE__ */ s("label", { className: "text-sm font-semibold text-gray-700 mb-2 block", children: "Price Range" }), /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-pink-50 border-2 border-pink-200 rounded-lg", children: [/* @__PURE__ */ s(Zs, { className: "w-5 h-5 text-pink-600" }), /* @__PURE__ */ d("select", { value: Me, onChange: (y) => qe(y.target.value), className: "flex-1 bg-transparent focus:outline-none cursor-pointer text-gray-700", children: [/* @__PURE__ */ s("option", { value: "all", children: "All Prices" }), /* @__PURE__ */ s("option", { value: "$", children: "$" }), /* @__PURE__ */ s("option", { value: "$$", children: "$$" }), /* @__PURE__ */ s("option", { value: "$$$", children: "$$$" }), /* @__PURE__ */ s("option", { value: "$$$$", children: "$$$$" })] })] })] })
+              /* @__PURE__ */ d("div", { children: [/* @__PURE__ */ s("label", { className: "text-sm font-semibold text-gray-700 mb-2 block", children: "Price Range" }), /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-pink-50 border-2 border-pink-200 rounded-lg", children: [/* @__PURE__ */ s(Zs, { className: "w-5 h-5 text-green-600" }), /* @__PURE__ */ d("select", { value: Me, onChange: (y) => qe(y.target.value), className: "flex-1 bg-transparent focus:outline-none cursor-pointer text-gray-700", children: [/* @__PURE__ */ s("option", { value: "all", children: "All Prices" }), /* @__PURE__ */ s("option", { value: "$", children: "$" }), /* @__PURE__ */ s("option", { value: "$$", children: "$$" }), /* @__PURE__ */ s("option", { value: "$$$", children: "$$$" }), /* @__PURE__ */ s("option", { value: "$$$$", children: "$$$$" })] })] })] })
             ] }),
             /* @__PURE__ */ s("div", { className: "sticky bottom-0 bg-white border-t border-gray-200 p-4", children: /* @__PURE__ */ s(
               D.button,
