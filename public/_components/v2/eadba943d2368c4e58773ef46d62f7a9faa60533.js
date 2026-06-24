@@ -5764,7 +5764,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                     /* @__PURE__ */ s("span", { className: "text-purple-700 font-medium", children: "Peedee Pet Care" }),
                     " is a free local directory for pet grooming, training, boarding, and vet care in Darlington, Hartsville and Florence, SC."
                   ] }),
-                  /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs md:text-sm leading-relaxed", children: "Browse verified providers, read reviews, and compare options — no fees for pet owners or businesses." })
+                  /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs md:text-sm leading-relaxed", children: "Browse verified providers, read reviews, shortlist your favorites, and compare options — no fees for pet owners or businesses." })
                 ] })
               }
             ),
