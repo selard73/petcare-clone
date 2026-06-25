@@ -7,7 +7,7 @@ const DEFAULT_OG_IMAGE = `${CANONICAL_ORIGIN}/og-image.jpg`;
 
 const SITE_TITLE = "Pet Services in Darlington & Florence SC | Peedee Pet Care";
 const SITE_DESCRIPTION =
-  "Free local pet services directory for Darlington County and Florence, SC. Browse grooming, training, boarding, sitters and vet listings with reviews. Not a service provider.";
+  "Free pet services directory for Darlington & Florence, SC. Browse grooming, training, boarding, sitters and vet listings with reviews. Not a service provider.";
 
 const BLOG_INDEX_TITLE = "The Daily Wag | Pee Dee Pet Tips | Peedee Pet Care";
 const BLOG_INDEX_DESCRIPTION =
