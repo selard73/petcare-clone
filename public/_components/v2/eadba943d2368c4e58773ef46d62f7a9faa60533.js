@@ -8019,28 +8019,29 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         initial: { opacity: 0 },
         whileInView: { opacity: 1 },
         viewport: { once: !0 },
-        className: "text-left space-y-6",
+        className: "text-center",
         children: [
-          /* @__PURE__ */ d("div", { className: "text-center mb-4", children: [
-            /* @__PURE__ */ s("h2", { className: "mb-4", children: "How to Find a Dog Groomer in the Pee Dee" }),
-            /* @__PURE__ */ s("p", { className: "text-purple-100 max-w-3xl mx-auto", children: "Peedee Pet Care is a free directory. Compare the listings above and contact independent groomers directly — we do not provide grooming services." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "bg-white/10 backdrop-blur-sm rounded-xl p-6", children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", children: "Match the groomer to your dog" }),
-            /* @__PURE__ */ s("p", { className: "text-purple-100", children: "Coat type, breed, age, and temperament matter. Ask who on staff handles your dog's coat type regularly and how they manage anxious pets." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "bg-white/10 backdrop-blur-sm rounded-xl p-6", children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", children: "Questions to ask before booking" }),
-            /* @__PURE__ */ s("p", { className: "text-purple-100", children: "Confirm what is included in the price, typical appointment length, products used on sensitive skin, and vaccination requirements. Contact listed businesses directly — we do not book appointments." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "bg-white/10 backdrop-blur-sm rounded-xl p-6", children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", children: "Salon vs mobile grooming" }),
-            /* @__PURE__ */ s("p", { className: "text-purple-100", children: "Salons suit many standard grooms; mobile groomers can help dogs stressed by travel or lobby noise. Both are listed above serving Florence, Darlington, and Hartsville." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "bg-white/10 backdrop-blur-sm rounded-xl p-6", children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", children: "Read reviews, then call a shortlist" }),
-            /* @__PURE__ */ s("p", { className: "text-purple-100", children: "Use reviews from local pet owners on this directory, then contact two or three groomers about breed experience and availability before you book." })
-          ] })
+          /* @__PURE__ */ s("h2", { className: "mb-8", children: "Grooming Tips" }),
+          /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [
+            { icon: "📅", title: "Regular Visits", text: "Schedule grooming every 4-8 weeks" },
+            { icon: "🧴", title: "Quality Products", text: "We use premium, pet-safe products" },
+            { icon: "💖", title: "Stress-Free", text: "Gentle handling for anxious pets" }
+          ].map((y, F) => /* @__PURE__ */ d(
+            D.div,
+            {
+              initial: { opacity: 0, scale: 0.8 },
+              whileInView: { opacity: 1, scale: 1 },
+              viewport: { once: !0 },
+              transition: { delay: F * 0.2 },
+              className: "bg-white/10 backdrop-blur-sm rounded-xl p-6",
+              children: [
+                /* @__PURE__ */ s("div", { className: "text-4xl mb-3", children: y.icon }),
+                /* @__PURE__ */ s("h3", { className: "mb-2", children: y.title }),
+                /* @__PURE__ */ s("p", { className: "text-purple-100", children: y.text })
+              ]
+            },
+            y.title
+          )) })
         ]
       }
     ) }) }),
@@ -8896,27 +8897,13 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         /* @__PURE__ */ s("span", { children: "Call" })
       ] })
     ] }),
-    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 bg-blue-600 text-white", children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(D.div, { className: "text-left space-y-6", children: [
-      /* @__PURE__ */ d("div", { className: "text-center mb-4", children: [
-        /* @__PURE__ */ s("h2", { className: "mb-4", children: "How to Find a Dog Trainer in the Pee Dee" }),
-        /* @__PURE__ */ s("p", { className: "text-white/90 max-w-3xl mx-auto", children: "Peedee Pet Care is a free directory. Compare the listings above and contact independent trainers directly — we do not provide training services." })
-      ] }),
-      /* @__PURE__ */ d("div", { className: "bg-white/15 rounded-xl p-6 border border-white/30", children: [
-        /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", children: "Define your training goal first" }),
-        /* @__PURE__ */ s("p", { className: "text-white/90", children: "Puppy socialization, leash manners, and reactivity work need different experience. Match the trainer's specialty to your dog's age and issue before you compare price or location." })
-      ] }),
-      /* @__PURE__ */ d("div", { className: "bg-white/15 rounded-xl p-6 border border-white/30", children: [
-        /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", children: "Group classes vs private lessons" }),
-        /* @__PURE__ */ s("p", { className: "text-white/90", children: "Groups help many puppies learn around distractions. Private or in-home sessions may fit reactive dogs or specific behavior problems better." })
-      ] }),
-      /* @__PURE__ */ d("div", { className: "bg-white/15 rounded-xl p-6 border border-white/30", children: [
-        /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", children: "Ask about methods and homework" }),
-        /* @__PURE__ */ s("p", { className: "text-white/90", children: "Ask how they handle fearful or reactive dogs, class size, and what you should practice between sessions. Good trainers set realistic expectations." })
-      ] }),
-      /* @__PURE__ */ d("div", { className: "bg-white/15 rounded-xl p-6 border border-white/30", children: [
-        /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", children: "Confirm they serve your area" }),
-        /* @__PURE__ */ s("p", { className: "text-white/90", children: "Trainers listed above serve Florence, Darlington, Hartsville, and nearby Pee Dee communities. Contact providers directly to confirm they cover your address." })
-      ] })
+    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 bg-blue-600 text-white", children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(D.div, { className: "text-center", children: [
+      /* @__PURE__ */ s("h2", { className: "mb-8", children: "Training Tips" }),
+      /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [{ icon: "📅", title: "Stay Consistent", text: "Short daily reps beat long inconsistent sessions." }, { icon: "🦴", title: "Reward Good Choices", text: "Mark and reward what you want repeated." }, { icon: "🤝", title: "Practice Everywhere", text: "Generalize cues at home, outside, and in public." }].map((K) => /* @__PURE__ */ d("div", { className: "bg-white/15 rounded-xl p-6 border border-white/30", children: [
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-3", children: K.icon }),
+        /* @__PURE__ */ s("h3", { className: "mb-2", children: K.title }),
+        /* @__PURE__ */ s("p", { className: "text-white/90", children: K.text })
+      ] }, K.title)) })
     ] }) }) }),
     /* @__PURE__ */ s("section", { className: "md:hidden pt-13 pb-8 px-4 bg-white", children: /* @__PURE__ */ d(D.div, { className: "bg-blue-50 rounded-xl p-6 shadow-md border border-blue-200", children: [
       /* @__PURE__ */ s("h2", { className: "mb-3 text-left", children: "Pet Products We Recommend" }),
@@ -10156,28 +10143,28 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         initial: { opacity: 0 },
         whileInView: { opacity: 1 },
         viewport: { once: !0 },
-        className: "text-left space-y-6",
+        className: "text-center",
         children: [
-          /* @__PURE__ */ d("div", { className: "text-center mb-4", children: [
-            /* @__PURE__ */ s("h2", { className: "mb-4", style: { color: "#ffffff" }, children: "How to Find Pet Boarding in the Pee Dee" }),
-            /* @__PURE__ */ s("p", { className: "max-w-3xl mx-auto", style: { color: "#f0fdf4" }, children: "Peedee Pet Care is a free directory. Compare the listings above and contact independent kennels directly — we do not board pets." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "backdrop-blur-sm rounded-xl p-6", style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" }, children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", style: { color: "#ffffff" }, children: "Tour before you book" }),
-            /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: "Ask about daily routines, supervision, vaccination requirements, and emergency vet plans. Clean floors, fresh water, and calm handling are good signs." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "backdrop-blur-sm rounded-xl p-6", style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" }, children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", style: { color: "#ffffff" }, children: "Match the facility to your pet" }),
-            /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: "Some facilities specialize in group play; others offer quieter suites for anxious pets. Cats and dogs have different needs — confirm species accommodations." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "backdrop-blur-sm rounded-xl p-6", style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" }, children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", style: { color: "#ffffff" }, children: "Boarding vs in-home sitting" }),
-            /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: "Boarding suits pets who do well with structured routines. Anxious pets may prefer in-home sitters listed in our sitters directory — compare both before you travel." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "backdrop-blur-sm rounded-xl p-6", style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" }, children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", style: { color: "#ffffff" }, children: "Book early for holidays" }),
-            /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: "Popular Pee Dee boarding facilities fill up around holidays. Contact listed providers directly for rates, drop-off times, and availability." })
-          ] })
+          /* @__PURE__ */ s("h2", { className: "mb-8", style: { color: "#ffffff" }, children: "Boarding Tips" }),
+          /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [
+            { icon: "📅", title: "Book Early", text: "Book boarding early during holidays" }, { icon: "💉", title: "Vaccinations", text: "Ask about vaccination requirements" }, { icon: "🏠", title: "Tour First", text: "Tour the facility before your first stay" }
+          ].map((y, F) => /* @__PURE__ */ d(
+            D.div,
+            {
+              initial: { opacity: 0, scale: 0.8 },
+              whileInView: { opacity: 1, scale: 1 },
+              viewport: { once: !0 },
+              transition: { delay: F * 0.2 },
+              className: "backdrop-blur-sm rounded-xl p-6",
+              style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" },
+              children: [
+                /* @__PURE__ */ s("div", { className: "text-4xl mb-3", children: y.icon }),
+                /* @__PURE__ */ s("h3", { className: "mb-2", style: { color: "#ffffff" }, children: y.title }),
+                /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: y.text })
+              ]
+            },
+            y.title
+          )) })
         ]
       }
     ) }) }),
@@ -11568,28 +11555,28 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         initial: { opacity: 0 },
         whileInView: { opacity: 1 },
         viewport: { once: !0 },
-        className: "text-left space-y-6",
+        className: "text-center",
         children: [
-          /* @__PURE__ */ d("div", { className: "text-center mb-4", children: [
-            /* @__PURE__ */ s("h2", { className: "mb-4", style: { color: "#ffffff" }, children: "How to Find a Pet Sitter in the Pee Dee" }),
-            /* @__PURE__ */ s("p", { className: "max-w-3xl mx-auto", style: { color: "#fdf2f8" }, children: "Peedee Pet Care is a free directory. Compare the listings above and contact independent sitters directly — we do not provide sitting services." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "backdrop-blur-sm rounded-xl p-6", style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" }, children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", style: { color: "#ffffff" }, children: "Schedule a meet and greet" }),
-            /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: "Watch how a sitter interacts with your pet before a long trip. Ask about backup coverage if they get sick and how they handle emergencies." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "backdrop-blur-sm rounded-xl p-6", style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" }, children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", style: { color: "#ffffff" }, children: "Dog walking vs overnight sitting" }),
-            /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: "Midday walks may be enough for some dogs; multi-day travel often needs drop-in visits or overnight in-home care. Match the service to your schedule." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "backdrop-blur-sm rounded-xl p-6", style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" }, children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", style: { color: "#ffffff" }, children: "Leave clear instructions" }),
-            /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: "Share feeding schedules, medications, vet contacts, and your pet's quirks. Many local sitters listed above serve Florence, Darlington, and Hartsville." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "backdrop-blur-sm rounded-xl p-6", style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" }, children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", style: { color: "#ffffff" }, children: "Ask about insurance and bonding" }),
-            /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: "Professional sitters should be comfortable discussing insurance, references, and how they secure your home during visits." })
-          ] })
+          /* @__PURE__ */ s("h2", { className: "mb-8", style: { color: "#ffffff" }, children: "Sitter Tips" }),
+          /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [
+            { icon: "🤝", title: "Meet & Greet", text: "Schedule a meet and greet before your first booking" }, { icon: "🛡️", title: "Verify Insurance", text: "Ask for proof of insurance and bonding" }, { icon: "🔑", title: "Share Details", text: "Leave clear feeding, meds, and emergency contacts" }
+          ].map((y, F) => /* @__PURE__ */ d(
+            D.div,
+            {
+              initial: { opacity: 0, scale: 0.8 },
+              whileInView: { opacity: 1, scale: 1 },
+              viewport: { once: !0 },
+              transition: { delay: F * 0.2 },
+              className: "backdrop-blur-sm rounded-xl p-6",
+              style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" },
+              children: [
+                /* @__PURE__ */ s("div", { className: "text-4xl mb-3", children: y.icon }),
+                /* @__PURE__ */ s("h3", { className: "mb-2", style: { color: "#ffffff" }, children: y.title }),
+                /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: y.text })
+              ]
+            },
+            y.title
+          )) })
         ]
       }
     ) }) }),
@@ -12883,28 +12870,28 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         initial: { opacity: 0 },
         whileInView: { opacity: 1 },
         viewport: { once: !0 },
-        className: "text-left space-y-6",
+        className: "text-center",
         children: [
-          /* @__PURE__ */ d("div", { className: "text-center mb-4", children: [
-            /* @__PURE__ */ s("h2", { className: "mb-4", style: { color: "#ffffff" }, children: "How to Find a Veterinarian in the Pee Dee" }),
-            /* @__PURE__ */ s("p", { className: "max-w-3xl mx-auto", style: { color: "#fff7ed" }, children: "Peedee Pet Care is a free directory. Compare the listings above and contact independent clinics directly — we do not provide veterinary care." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "backdrop-blur-sm rounded-xl p-6", style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" }, children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", style: { color: "#ffffff" }, children: "Build a relationship before an emergency" }),
-            /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: "Establish care with a local Florence or Darlington vet for wellness visits and vaccines. That makes urgent situations easier when minutes matter." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "backdrop-blur-sm rounded-xl p-6", style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" }, children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", style: { color: "#ffffff" }, children: "Routine care vs emergency hospitals" }),
-            /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: "Use this directory for primary care veterinarians. For life-threatening emergencies, call the nearest emergency animal hospital directly — do not delay care." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "backdrop-blur-sm rounded-xl p-6", style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" }, children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", style: { color: "#ffffff" }, children: "Questions for a new clinic" }),
-            /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: "Ask about new-client availability, species served, after-hours policies, and how they handle referrals to specialists in the region." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "backdrop-blur-sm rounded-xl p-6", style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" }, children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", style: { color: "#ffffff" }, children: "Read reviews from local pet owners" }),
-            /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: "Reviews on this directory can highlight communication, wait times, and bedside manner. Contact clinics listed above to confirm they accept new patients." })
-          ] })
+          /* @__PURE__ */ s("h2", { className: "mb-8", style: { color: "#ffffff" }, children: "Vet Care Tips" }),
+          /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [
+            { icon: "📅", title: "Book Early", text: "Schedule routine wellness exams" }, { icon: "💉", title: "Vaccinations", text: "Keep vaccines and prevention current" }, { icon: "🏠", title: "Tour First", text: "Do not delay care for emergency symptoms" }
+          ].map((y, F) => /* @__PURE__ */ d(
+            D.div,
+            {
+              initial: { opacity: 0, scale: 0.8 },
+              whileInView: { opacity: 1, scale: 1 },
+              viewport: { once: !0 },
+              transition: { delay: F * 0.2 },
+              className: "backdrop-blur-sm rounded-xl p-6",
+              style: { backgroundColor: "rgba(255,255,255,0.18)", border: "1px solid rgba(255,255,255,0.38)" },
+              children: [
+                /* @__PURE__ */ s("div", { className: "text-4xl mb-3", children: y.icon }),
+                /* @__PURE__ */ s("h3", { className: "mb-2", style: { color: "#ffffff" }, children: y.title }),
+                /* @__PURE__ */ s("p", { style: { color: "#f9fafb" }, children: y.text })
+              ]
+            },
+            y.title
+          )) })
         ]
       }
     ) }) }),
@@ -13605,38 +13592,7 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
           ] })
         }
       )
-    ] }),
-    /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white", children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(
-      D.div,
-      {
-        initial: { opacity: 0 },
-        whileInView: { opacity: 1 },
-        viewport: { once: !0 },
-        className: "text-left space-y-6",
-        children: [
-          /* @__PURE__ */ d("div", { className: "text-center mb-4", children: [
-            /* @__PURE__ */ s("h2", { className: "mb-4", children: "How to Find Local Pet Supplies in the Pee Dee" }),
-            /* @__PURE__ */ s("p", { className: "text-purple-100 max-w-3xl mx-auto", children: "Peedee Pet Care is a free directory. Compare local retailers in our listings and contact independent pet stores directly — we do not sell products ourselves." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "bg-white/10 backdrop-blur-sm rounded-xl p-6", children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", children: "What you can find at local pet stores" }),
-            /* @__PURE__ */ s("p", { className: "text-purple-100", children: "Pee Dee shops often carry food and treats, toys, leashes, beds, grooming supplies, and specialty diets. Local retailers can help you choose gear for your pet's age, breed, and health needs — often same-day." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "bg-white/10 backdrop-blur-sm rounded-xl p-6", children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", children: "How to use this directory" }),
-            /* @__PURE__ */ s("p", { className: "text-purple-100", children: "Browse listings by location, read reviews from local pet owners, and call ahead for hours, brands carried, and special orders. The curated picks above are separate recommendations — contact stores directly for in-person shopping." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "bg-white/10 backdrop-blur-sm rounded-xl p-6", children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", children: "Shop local for everyday essentials" }),
-            /* @__PURE__ */ s("p", { className: "text-purple-100", children: "When you run out of kibble or need a replacement leash before a walk, Florence, Darlington, and Hartsville pet stores save a drive and shipping wait. Independent shops may stock regional feed brands big-box chains skip." })
-          ] }),
-          /* @__PURE__ */ d("div", { className: "bg-white/10 backdrop-blur-sm rounded-xl p-6", children: [
-            /* @__PURE__ */ s("h3", { className: "mb-3 text-lg", children: "Nutrition and health products" }),
-            /* @__PURE__ */ s("p", { className: "text-purple-100", children: "Many local retailers carry premium food, training treats, flea prevention, and grooming tools. For prescription diets or supplements tied to a medical condition, ask your veterinarian first — then use this directory to find where to shop." })
-          ] })
-        ]
-      }
-    ) }) })
+    ] })
   ] });
 }
 function xf({ imageUrl: t, onSave: e, onClose: r, isOpen: n }) {
