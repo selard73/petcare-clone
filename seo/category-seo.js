@@ -308,15 +308,15 @@ const VET_CARE_SEO = {
   pathname: "/vet-care",
   title: "Veterinarians in Darlington & Florence SC | Peedee Pet Care",
   description:
-    "Vet directory for Darlington & Florence, SC. Compare veterinary clinics and animal hospitals with reviews. Free directory — not a vet clinic.",
+    "Vet directory for Darlington & Florence, SC. Compare independent clinics. Peedee Pet Care does not provide grooming, training, boarding, or veterinary care.",
   h1: "Veterinary Care Directory — Darlington County & Florence, SC",
   intro:
-    "Peedee Pet Care lists independent veterinary clinics, animal hospitals, and vet practices serving the Pee Dee region. We are an online directory — not a veterinary clinic or emergency hospital. Use this page to compare local veterinarians in Florence, Darlington, Hartsville, and nearby communities.",
+    "Peedee Pet Care is a free online directory that lists independent third-party veterinary clinics, animal hospitals, and vet practices serving the Pee Dee region. We do not provide veterinary care ourselves — and we are not a groomer, trainer, or boarding facility. All services are offered by the listed businesses; contact them directly. Use this page to compare local veterinarians in Florence, Darlington, Hartsville, and nearby communities.",
   sections: [
     {
-      heading: "Veterinary services you can find",
+      heading: "Veterinary services listed by independent providers",
       paragraphs: [
-        "Listings may include general practice veterinary clinics, wellness exams, vaccinations, surgery, dental care, diagnostics, and specialty referrals. Some practices focus on cats, exotics, or large animals; others offer extended hours or urgent-care slots for established clients.",
+        "Directory listings may include general practice veterinary clinics, wellness exams, vaccinations, surgery, dental care, diagnostics, and specialty referrals. These services are provided by independent Pee Dee area clinics — not by Peedee Pet Care.",
         "For life-threatening emergencies, contact the nearest emergency veterinary hospital directly. This directory helps you find routine and ongoing care providers in the Pee Dee area.",
       ],
     },
