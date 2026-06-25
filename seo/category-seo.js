@@ -504,7 +504,7 @@ function buildOrganizationNode() {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
-      email: "selard73@gmail.com",
+      email: "hello@peedeepetcare.com",
       areaServed: "US-SC",
       availableLanguage: "English",
     },
