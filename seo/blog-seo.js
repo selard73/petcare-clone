@@ -7,11 +7,11 @@ const DEFAULT_OG_IMAGE = `${CANONICAL_ORIGIN}/og-image.jpg`;
 
 const SITE_TITLE = "Pet Services in Darlington & Florence SC | Peedee Pet Care";
 const SITE_DESCRIPTION =
-  "Trusted local pet directory for Darlington County and Florence, SC. Find grooming, training, boarding, and vet care. No fees for owners or businesses.";
+  "Free local pet services directory for Darlington County and Florence, SC. Browse grooming, training, boarding, sitters and vet listings with reviews. Not a service provider.";
 
-const BLOG_INDEX_TITLE = "The Daily Wag | Pet Care Tips for the Pee Dee | Peedee Pet Care";
+const BLOG_INDEX_TITLE = "The Daily Wag | Pee Dee Pet Tips | Peedee Pet Care";
 const BLOG_INDEX_DESCRIPTION =
-  "Helpful articles on grooming, training, boarding, and everyday pet care for pet owners in Florence, Darlington, Hartsville, and the Pee Dee region.";
+  "Local pet care guides for Florence, Darlington, and the Pee Dee region — grooming, boarding, training, and directory tips from Peedee Pet Care.";
 
 let postsCache = { mtimeMs: 0, posts: [] };
 
@@ -161,6 +161,188 @@ function injectSeoIntoHtml(html, seo) {
   return result;
 }
 
+const SEO_CONTENT_START = "<!-- peedee-seo-content:start -->";
+const SEO_CONTENT_END = "<!-- peedee-seo-content:end -->";
+
+function buildOrganizationNode() {
+  return {
+    "@type": "Organization",
+    "@id": `${CANONICAL_ORIGIN}/#organization`,
+    name: "Peedee Pet Care",
+    url: `${CANONICAL_ORIGIN}/`,
+    description:
+      "Peedee Pet Care is a free online directory of local pet grooming, training, boarding, daycare, sitters, and veterinary businesses in Darlington County and Florence, SC. Not a service provider.",
+    disambiguatingDescription:
+      "Peedee Pet Care is a local business directory for the Pee Dee region of South Carolina. It is not a veterinary clinic, groomer, boarding kennel, or pet sitting company.",
+    logo: {
+      "@type": "ImageObject",
+      url: `${CANONICAL_ORIGIN}/logo.png`,
+      contentUrl: `${CANONICAL_ORIGIN}/logo.png`,
+    },
+    areaServed: [
+      {
+        "@type": "AdministrativeArea",
+        name: "Darlington County",
+        containedInPlace: { "@type": "State", name: "South Carolina" },
+      },
+      {
+        "@type": "City",
+        name: "Florence",
+        containedInPlace: { "@type": "State", name: "South Carolina" },
+      },
+    ],
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "customer support",
+      email: "selard73@gmail.com",
+      areaServed: "US-SC",
+      availableLanguage: "English",
+    },
+  };
+}
+
+function buildBlogIndexJsonLd() {
+  const posts = loadBlogPosts();
+  const blogPostNodes = posts.map((post, index) => ({
+    "@type": "BlogPosting",
+    "@id": `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}#article`,
+    headline: post.title,
+    description: post.excerpt || post.description || "",
+    datePublished: post.date,
+    url: `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}`,
+    mainEntityOfPage: `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}`,
+    author: { "@id": `${CANONICAL_ORIGIN}/#organization` },
+    publisher: { "@id": `${CANONICAL_ORIGIN}/#organization` },
+    image: post.coverImage ? absoluteUrl(post.coverImage) : DEFAULT_OG_IMAGE,
+    position: index + 1,
+  }));
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      buildOrganizationNode(),
+      {
+        "@type": "Blog",
+        "@id": `${CANONICAL_ORIGIN}/blog#blog`,
+        name: "The Daily Wag",
+        description: BLOG_INDEX_DESCRIPTION,
+        url: `${CANONICAL_ORIGIN}/blog`,
+        inLanguage: "en-US",
+        isPartOf: { "@id": `${CANONICAL_ORIGIN}/#website` },
+        publisher: { "@id": `${CANONICAL_ORIGIN}/#organization` },
+        blogPost: blogPostNodes.map((post) => ({ "@id": post["@id"] })),
+      },
+      ...blogPostNodes,
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${CANONICAL_ORIGIN}/blog#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${CANONICAL_ORIGIN}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "The Daily Wag",
+            item: `${CANONICAL_ORIGIN}/blog`,
+          },
+        ],
+      },
+      {
+        "@type": "WebPage",
+        "@id": `${CANONICAL_ORIGIN}/blog#webpage`,
+        url: `${CANONICAL_ORIGIN}/blog`,
+        name: BLOG_INDEX_TITLE,
+        description: BLOG_INDEX_DESCRIPTION,
+        isPartOf: { "@id": `${CANONICAL_ORIGIN}/blog#blog` },
+        about: { "@id": `${CANONICAL_ORIGIN}/#organization` },
+        inLanguage: "en-US",
+      },
+    ],
+  };
+}
+
+function buildBlogIndexSeoContentHtml() {
+  const posts = loadBlogPosts();
+  const articleItems = posts
+    .map(
+      (post) =>
+        `<li><a href="/blog/${escapeHtml(post.slug)}">${escapeHtml(post.title)}</a> — ${escapeHtml(post.excerpt || "")} <em>(${escapeHtml(post.date || "")}, ${escapeHtml(String(post.readMinutes || ""))} min read)</em></li>`,
+    )
+    .join("\n    ");
+
+  return `<div id="seo-content" class="seo-content">
+  <h1>The Daily Wag — Pet Care Tips for the Pee Dee</h1>
+  <p>
+    The Daily Wag is the blog of <a href="/">Peedee Pet Care</a>, a free local pet services directory for
+    Darlington County and Florence, SC. We publish practical guides to help pet owners choose groomers,
+    trainers, boarders, and other providers listed in our directory. Peedee Pet Care is a directory — not a
+    veterinary clinic, grooming salon, boarding kennel, or pet sitting service.
+  </p>
+  <h2>Articles</h2>
+  <ul>
+    ${articleItems}
+  </ul>
+  <h2>Find Local Providers</h2>
+  <p>
+    After reading a guide, browse live listings:
+    <a href="/grooming">dog groomers</a>,
+    <a href="/training">dog trainers</a>,
+    <a href="/boarding">pet boarding</a>,
+    <a href="/sitters">sitters and walkers</a>, and
+    <a href="/vet-care">veterinary care</a> in the Pee Dee region.
+  </p>
+  <h2>Trusted Pet Care Resources</h2>
+  <p>
+    Our guides align with advice from the
+    <a href="https://www.avma.org/" rel="noopener noreferrer">American Veterinary Medical Association (AVMA)</a>,
+    the <a href="https://www.akc.org/" rel="noopener noreferrer">American Kennel Club (AKC)</a>, and the
+    <a href="https://llr.sc.gov/vet/" rel="noopener noreferrer">South Carolina Board of Veterinary Medical Examiners</a>.
+  </p>
+  <h2>About Peedee Pet Care</h2>
+  <p>
+    Peedee Pet Care helps pet owners in Florence, Darlington, Hartsville, and surrounding Darlington County
+    communities compare local pet service providers, read reviews, and contact businesses directly. The
+    directory is free for pet owners and free for businesses to list.
+  </p>
+</div>`;
+}
+
+function replaceSeoContentBlock(html, seoContentHtml) {
+  const pattern = new RegExp(
+    `${SEO_CONTENT_START.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}[\\s\\S]*?${SEO_CONTENT_END.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}`,
+  );
+  return html.replace(
+    pattern,
+    `${SEO_CONTENT_START}\n    ${seoContentHtml}\n    ${SEO_CONTENT_END}`,
+  );
+}
+
+function replaceJsonLd(html, jsonLd) {
+  return html.replace(
+    /<script type="application\/ld\+json">[\s\S]*?<\/script>/i,
+    `<script type="application/ld+json">${JSON.stringify(jsonLd)}</script>`,
+  );
+}
+
+function injectBlogIndexEnhancements(html) {
+  let result = html;
+  result = replaceSeoContentBlock(result, buildBlogIndexSeoContentHtml());
+  result = replaceJsonLd(result, buildBlogIndexJsonLd());
+  return result;
+}
+
+function injectBlogEnhancements(html, pathname) {
+  const normalized = pathname.replace(/\/+$/, "") || "/";
+  if (normalized === "/blog") {
+    return injectBlogIndexEnhancements(html);
+  }
+  return html;
+}
+
 const STATIC_SITEMAP_PATHS = [
   { loc: "/", changefreq: "weekly", priority: "1.0" },
   { loc: "/blog", changefreq: "weekly", priority: "0.7" },
@@ -215,5 +397,6 @@ module.exports = {
   buildDefaultSiteSeo,
   resolveSeoForPathname,
   injectSeoIntoHtml,
+  injectBlogEnhancements,
   generateSitemapXml,
 };

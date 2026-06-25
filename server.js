@@ -29,7 +29,7 @@ const CATEGORY_PAGE_PATHS = {
 };
 const SITEMAP_FILE = path.join(PUBLIC_DIR, "sitemap.xml");
 const { applySeoToIndexHtml } = require("./seo/apply-seo-html");
-const { resolveSeoForPathname, injectSeoIntoHtml, generateSitemapXml } = require("./seo/blog-seo");
+const { resolveSeoForPathname, injectSeoIntoHtml, injectBlogEnhancements, generateSitemapXml } = require("./seo/blog-seo");
 const CANONICAL_ORIGIN = (process.env.CANONICAL_ORIGIN || "https://www.peedeepetcare.com").replace(/\/$/, "");
 const CANONICAL_HOST = new URL(CANONICAL_ORIGIN).hostname.toLowerCase();
 const APEX_HOST = (process.env.APEX_HOST || "peedeepetcare.com").toLowerCase();
@@ -184,6 +184,7 @@ function serveIndexHtml(req, res, pathname = "/") {
       const pageSeo = resolveSeoForPathname(pathname);
       if (pageSeo) {
         body = injectSeoIntoHtml(body, pageSeo);
+        body = injectBlogEnhancements(body, pathname);
       }
       const payload = Buffer.from(body, "utf8");
       res.writeHead(200, {

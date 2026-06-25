@@ -1,7 +1,7 @@
 <title>Pet Services in Darlington & Florence SC | Peedee Pet Care</title>
     <meta
       name="description"
-      content="Trusted local pet directory for Darlington County and Florence, SC. Find grooming, training, boarding, and vet care. No fees for owners or businesses."
+      content="Free local pet services directory for Darlington County &amp; Florence, SC. Browse grooming, training, boarding, sitters &amp; vet listings with reviews. Not a service provider."
     />
     <link rel="canonical" href="https://www.peedeepetcare.com/" />
     <link rel="icon" href="/logo.png" type="image/png" />
@@ -15,7 +15,7 @@
     <meta property="og:title" content="Pet Services in Darlington & Florence SC | Peedee Pet Care" />
     <meta
       property="og:description"
-      content="Trusted local pet directory for Darlington County and Florence, SC. Find grooming, training, boarding, and vet care. No fees for owners or businesses."
+      content="Free local pet services directory for Darlington County &amp; Florence, SC. Browse grooming, training, boarding, sitters &amp; vet listings with reviews. Not a service provider."
     />
     <meta property="og:image" content="https://www.peedeepetcare.com/og-image.jpg" />
     <meta property="og:image:width" content="1200" />
@@ -29,7 +29,7 @@
     <meta name="twitter:title" content="Pet Services in Darlington & Florence SC | Peedee Pet Care" />
     <meta
       name="twitter:description"
-      content="Trusted local pet directory for Darlington County and Florence, SC. Find grooming, training, boarding, and vet care. No fees for owners or businesses."
+      content="Free local pet services directory for Darlington County &amp; Florence, SC. Browse grooming, training, boarding, sitters &amp; vet listings with reviews. Not a service provider."
     />
     <meta name="twitter:image" content="https://www.peedeepetcare.com/og-image.jpg" />
 
@@ -43,7 +43,15 @@
             "@id": "https://www.peedeepetcare.com/#organization",
             "name": "Peedee Pet Care",
             "url": "https://www.peedeepetcare.com/",
-            "description": "Peedee Pet Care is an online directory of local pet grooming, training, boarding, daycare, and veterinary services in Darlington County and Florence, SC. Open to pet owners and local businesses at no charge.",
+            "description": "Peedee Pet Care is a free online directory of local pet grooming, training, boarding, daycare, sitters, and veterinary businesses in Darlington County and Florence, SC. Not a service provider.",
+            "disambiguatingDescription": "Peedee Pet Care is a local business directory for the Pee Dee region of South Carolina. It is not a veterinary clinic, groomer, boarding kennel, dog trainer, pet cremation service, or pet sitting company.",
+            "knowsAbout": [
+              "Pet service directories",
+              "Local pet business listings",
+              "Darlington County South Carolina",
+              "Florence South Carolina",
+              "Pee Dee region pet care"
+            ],
             "logo": {
               "@type": "ImageObject",
               "url": "https://www.peedeepetcare.com/logo.png",
@@ -77,12 +85,20 @@
             "@id": "https://www.peedeepetcare.com/#website",
             "url": "https://www.peedeepetcare.com/",
             "name": "Peedee Pet Care",
-            "description": "Peedee Pet Care is an online directory of local pet grooming, training, boarding, daycare, and veterinary services in Darlington County and Florence, SC. Open to pet owners and local businesses at no charge.",
+            "description": "Peedee Pet Care is a free online directory of local pet grooming, training, boarding, daycare, sitters, and veterinary businesses in Darlington County and Florence, SC. Not a service provider.",
             "publisher": {
               "@id": "https://www.peedeepetcare.com/#organization"
             },
             "isAccessibleForFree": true,
-            "inLanguage": "en-US"
+            "inLanguage": "en-US",
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": {
+                "@type": "EntryPoint",
+                "urlTemplate": "https://www.peedeepetcare.com/?q={search_term_string}"
+              },
+              "query-input": "required name=search_term_string"
+            }
           },
           {
             "@type": "ItemList",
@@ -90,7 +106,7 @@
             "name": "Pet Services Directory Categories",
             "description": "Browse pet service categories available in the Pee Dee region directory.",
             "itemListOrder": "https://schema.org/ItemListOrderAscending",
-            "numberOfItems": 4,
+            "numberOfItems": 5,
             "itemListElement": [
               {
                 "@type": "ListItem",
@@ -113,6 +129,12 @@
               {
                 "@type": "ListItem",
                 "position": 4,
+                "name": "Sitters & Walkers",
+                "url": "https://www.peedeepetcare.com/sitters"
+              },
+              {
+                "@type": "ListItem",
+                "position": 5,
                 "name": "Vet Care",
                 "url": "https://www.peedeepetcare.com/vet-care"
               }
@@ -170,6 +192,22 @@
                 "acceptedAnswer": {
                   "@type": "Answer",
                   "text": "There is no listing fee. Local pet service providers in Darlington County and Florence, SC can join the directory at no charge."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Is Peedee Pet Care a veterinary clinic, groomer, or boarding facility?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Peedee Pet Care is an online directory that lists independent local pet service businesses in Darlington County and Florence, SC. It does not operate clinics, salons, or kennels."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "Does Peedee Pet Care offer pet cremation or pet sitting services?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "No. Peedee Pet Care is a directory only. It does not provide cremation, burial, pet sitting, dog walking, or any hands-on pet care services."
                 }
               }
             ]
