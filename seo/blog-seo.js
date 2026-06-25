@@ -65,6 +65,109 @@ function buildBlogPostSeo(post) {
   return { title, description, canonical, ogImage, ogType: "article" };
 }
 
+const BLOG_AUTHOR_NAME = "Peedee Pet Care Team";
+
+const BLOG_POST_FAQS = {
+  "how-to-find-good-dog-groomer-pee-dee": [
+    {
+      q: "What should I ask a dog groomer before booking?",
+      a: "Ask about breed experience, handling of anxious dogs, products used on sensitive skin, what is included in the price, and typical appointment length.",
+    },
+    {
+      q: "How do I find a groomer near Florence or Darlington SC?",
+      a: "Browse grooming listings on Peedee Pet Care, compare reviews, and contact providers directly. Listings include salon and mobile groomers in the Pee Dee region.",
+    },
+    {
+      q: "Does Peedee Pet Care groom pets?",
+      a: "No. Peedee Pet Care is a free directory that lists independent local groomers.",
+    },
+  ],
+  "finding-local-dog-trainer-pee-dee": [
+    {
+      q: "What should I look for in a dog trainer?",
+      a: "Look for experience with your dog's age and issues, a training approach you are comfortable with, realistic expectations, and clear homework between sessions.",
+    },
+    {
+      q: "How do I know if a trainer is right for my dog?",
+      a: "Ask about class size or private-lesson format, how they handle reactive or fearful dogs, and whether they have worked with your breed before.",
+    },
+    {
+      q: "Are group classes or private lessons better?",
+      a: "Puppy socialization often works well in groups. Specific behavior issues like reactivity or recall problems may need private or in-home training.",
+    },
+  ],
+  "pet-boarding-questions-darlington-florence": [
+    {
+      q: "What should I ask before booking pet boarding?",
+      a: "Ask about daily routines, staff supervision, vaccination requirements, medication handling, emergency vet plans, and how they communicate with owners.",
+    },
+    {
+      q: "Should I tour a boarding facility first?",
+      a: "Yes, when possible. Cleanliness, fresh water, and clear supervision are good signs. Ask how they handle anxious pets or pets that do not do well in groups.",
+    },
+    {
+      q: "How do I compare boarding near Florence SC?",
+      a: "Use Peedee Pet Care to browse local kennels and daycare facilities, read reviews, and contact a shortlist before you travel.",
+    },
+  ],
+};
+
+function getBlogPostFaqs(post) {
+  return BLOG_POST_FAQS[post.slug] || [];
+}
+
+function buildAuthorPersonNode() {
+  return {
+    "@type": "Person",
+    "@id": `${CANONICAL_ORIGIN}/#author-team`,
+    name: BLOG_AUTHOR_NAME,
+    worksFor: { "@id": `${CANONICAL_ORIGIN}/#organization` },
+  };
+}
+
+function buildBlogPostTldr(post) {
+  return post.tldr || post.excerpt || post.description || "";
+}
+
+function buildTableOfContentsHtml(post) {
+  const headings = [];
+  if (Array.isArray(post.blocks)) {
+    post.blocks.forEach((block, index) => {
+      if (block.type === "h2" && block.text) {
+        headings.push({ id: `section-${index}`, text: block.text });
+      }
+    });
+  }
+  if (!headings.length) {
+    headings.push(
+      { id: "overview", text: "Overview" },
+      { id: "local-directory", text: "Browse local providers" },
+      { id: "faq", text: "Frequently asked questions" },
+    );
+  }
+  const items = headings
+    .map((heading) => `<li><a href="#${escapeHtml(heading.id)}">${escapeHtml(heading.text)}</a></li>`)
+    .join("\n    ");
+  return `<nav aria-label="Table of contents">
+  <h2>In this article</h2>
+  <ul>
+    ${items}
+  </ul>
+</nav>`;
+}
+
+function buildBlogPostFaqHtml(post) {
+  const faqs = getBlogPostFaqs(post);
+  if (!faqs.length) {
+    return "";
+  }
+  const items = faqs
+    .map((faq) => `<p><strong>${escapeHtml(faq.q)}</strong> ${escapeHtml(faq.a)}</p>`)
+    .join("\n  ");
+  return `<h2 id="faq">Frequently asked questions</h2>
+  ${items}`;
+}
+
 function buildBlogIndexSeo() {
   return {
     title: BLOG_INDEX_TITLE,
@@ -319,10 +422,17 @@ function buildBlogPostSeoContentHtml(post) {
         `<li><a href="/blog/${escapeHtml(entry.slug)}">${escapeHtml(entry.title)}</a> — ${escapeHtml(entry.excerpt || "")}</li>`,
     )
     .join("\n    ");
+  const tldr = buildBlogPostTldr(post);
+  const updated = post.dateModified && post.dateModified !== post.date ? post.dateModified : post.date;
   return `<div id="seo-content" class="seo-content">
   <p><a href="/blog">The Daily Wag</a> · <a href="/">Peedee Pet Care</a></p>
+  <p><em>Written by ${escapeHtml(BLOG_AUTHOR_NAME)} · Updated ${escapeHtml(updated)}</em></p>
+  <h2 id="overview">TL;DR</h2>
+  <p>${escapeHtml(tldr)}</p>
+  ${buildTableOfContentsHtml(post)}
   ${renderPostArticleSectionHtml(post, { useH1: true })}
-  <h2>Find Local Providers</h2>
+  ${buildBlogPostFaqHtml(post)}
+  <h2 id="local-directory">Find Local Providers</h2>
   <p>
     Browse listings on Peedee Pet Care:
     <a href="/grooming">grooming</a>,
@@ -331,7 +441,7 @@ function buildBlogPostSeoContentHtml(post) {
     <a href="/sitters">sitters</a>, and
     <a href="/vet-care">vet care</a> in Darlington County and Florence, SC.
   </p>
-  <h2>Trusted resources</h2>
+  <h2>Sources and further reading</h2>
   <p>${external}.</p>
   <h2>More from The Daily Wag</h2>
   <ul>
@@ -472,50 +582,68 @@ function replaceJsonLd(html, jsonLd) {
 }
 
 function buildBlogPostJsonLd(post) {
+  const faqEntities = getBlogPostFaqs(post).map((faq) => ({
+    "@type": "Question",
+    name: faq.q,
+    acceptedAnswer: { "@type": "Answer", text: faq.a },
+  }));
+  const dateModified = post.dateModified || post.date;
   const blogPostNode = {
     "@type": "BlogPosting",
     "@id": `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}#article`,
     headline: post.title,
     description: post.excerpt || post.description || "",
     datePublished: post.date,
+    dateModified,
     url: `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}`,
     mainEntityOfPage: `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}`,
-    author: { "@id": `${CANONICAL_ORIGIN}/#organization` },
+    author: { "@id": `${CANONICAL_ORIGIN}/#author-team` },
     publisher: { "@id": `${CANONICAL_ORIGIN}/#organization` },
     image: post.coverImage ? absoluteUrl(post.coverImage) : DEFAULT_OG_IMAGE,
     isPartOf: { "@id": `${CANONICAL_ORIGIN}/blog#blog` },
   };
 
+  const graph = [
+    buildOrganizationNode(),
+    buildAuthorPersonNode(),
+    blogPostNode,
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}#breadcrumb`,
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Home",
+          item: `${CANONICAL_ORIGIN}/`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "The Daily Wag",
+          item: `${CANONICAL_ORIGIN}/blog`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: post.title,
+          item: `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}`,
+        },
+      ],
+    },
+  ];
+
+  if (faqEntities.length) {
+    graph.push({
+      "@type": "FAQPage",
+      "@id": `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}#faq`,
+      mainEntity: faqEntities,
+    });
+  }
+
   return {
     "@context": "https://schema.org",
-    "@graph": [
-      buildOrganizationNode(),
-      blogPostNode,
-      {
-        "@type": "BreadcrumbList",
-        "@id": `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}#breadcrumb`,
-        itemListElement: [
-          {
-            "@type": "ListItem",
-            position: 1,
-            name: "Home",
-            item: `${CANONICAL_ORIGIN}/`,
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-            name: "The Daily Wag",
-            item: `${CANONICAL_ORIGIN}/blog`,
-          },
-          {
-            "@type": "ListItem",
-            position: 3,
-            name: post.title,
-            item: `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}`,
-          },
-        ],
-      },
-    ],
+    "@graph": graph,
   };
 }
 
