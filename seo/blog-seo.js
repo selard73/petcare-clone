@@ -58,7 +58,7 @@ function getBlogPostBySlug(slug) {
 }
 
 function buildBlogPostSeo(post) {
-  const title = `${post.title} | The Daily Wag | Peedee Pet Care`;
+  const title = post.seoTitle || `${post.title} | The Daily Wag | Peedee Pet Care`;
   const description = post.excerpt || post.description || SITE_DESCRIPTION;
   const canonical = `${CANONICAL_ORIGIN}/blog/${post.slug}`;
   const ogImage = absoluteUrl(post.coverImage);
@@ -140,7 +140,7 @@ function buildTableOfContentsHtml(post) {
   }
   if (!headings.length) {
     headings.push(
-      { id: "overview", text: "Overview" },
+      { id: "overview", text: post.tldrHeading || "TL;DR" },
       { id: "local-directory", text: "Browse local providers" },
       { id: "faq", text: "Frequently asked questions" },
     );
@@ -427,7 +427,7 @@ function buildBlogPostSeoContentHtml(post) {
   return `<div id="seo-content" class="seo-content">
   <p><a href="/blog">The Daily Wag</a> · <a href="/">Peedee Pet Care</a></p>
   <p><em>Written by ${escapeHtml(BLOG_AUTHOR_NAME)} · Updated ${escapeHtml(updated)}</em></p>
-  <h2 id="overview">TL;DR</h2>
+  <h2 id="overview">${escapeHtml(post.tldrHeading || "TL;DR")}</h2>
   <p>${escapeHtml(tldr)}</p>
   ${buildTableOfContentsHtml(post)}
   ${renderPostArticleSectionHtml(post, { useH1: true })}

@@ -159,7 +159,7 @@
 
         function buildPostSeo(post) {
           return {
-            title: post.title + " | The Daily Wag | Peedee Pet Care",
+            title: post.seoTitle || post.title + " | The Daily Wag | Peedee Pet Care",
             description: post.excerpt || SITE_DESCRIPTION,
             canonical: ORIGIN + "/blog/" + post.slug,
             ogImage: absoluteUrl(post.coverImage),
