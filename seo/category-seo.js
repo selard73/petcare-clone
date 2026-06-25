@@ -13,8 +13,11 @@ const GROOMING_SEO = {
   pathname: "/grooming",
   title: "Dog Groomers Directory | Darlington SC | Peedee Pet Care",
   description:
-    "Browse dog and cat groomers in Darlington & Florence, SC. Compare listings and reviews. Free directory — not a grooming salon.",
+    "Free directory of local dog and cat groomers in Darlington & Florence, SC. Compare listings and reviews. Peedee Pet Care does not provide grooming — contact businesses directly.",
   h1: "Dog & Cat Grooming Directory — Darlington County & Florence, SC",
+  guideHeading: "How to find a dog groomer in the Pee Dee",
+  guideIntro:
+    "Use the listings above to compare independent groomers in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not provide grooming services. Contact each business directly to ask about availability, pricing, and breed experience.",
   intro:
     "Peedee Pet Care lists independent pet grooming businesses serving the Pee Dee region. We are an online directory — not a grooming salon, mobile groomer, or veterinary clinic. Use this page to compare local groomers in Florence, Darlington, Hartsville, and nearby communities.",
   sections: [
@@ -35,6 +38,20 @@ const GROOMING_SEO = {
       heading: "Service area",
       paragraphs: [
         "This directory focuses on Darlington County and the Florence, South Carolina area, including Hartsville, Lamar, Society Hill, and surrounding Pee Dee communities. Each listed business sets its own hours, pricing, and service area — contact them directly for availability.",
+      ],
+    },
+    {
+      heading: "Questions to ask before you book",
+      paragraphs: [
+        "Ask about breed or coat-type experience, how they handle anxious dogs, what products they use on sensitive skin, and what is included in the quoted price. A professional groomer should welcome these questions.",
+        "Confirm typical appointment length and whether vaccination records are required before the first visit. Contact listed businesses directly — Peedee Pet Care does not book appointments.",
+      ],
+    },
+    {
+      heading: "Salon grooming vs mobile grooming",
+      paragraphs: [
+        "Salon groomers in Florence and Darlington often handle many breeds each day and may offer faster turnaround for standard cuts. Mobile groomers come to your home, which helps pets who struggle with car rides, lobby noise, or separation from their owner.",
+        "Both options appear in the listings above. Compare reviews, location, and your dog's temperament rather than choosing on price alone.",
       ],
     },
   ],
@@ -85,6 +102,9 @@ const TRAINING_SEO = {
   description:
     "Dog trainer directory for Darlington & Florence, SC. Compare obedience and puppy training listings with reviews. Free directory — not a trainer.",
   h1: "Dog Training Directory — Darlington County & Florence, SC",
+  guideHeading: "How to find a dog trainer in the Pee Dee",
+  guideIntro:
+    "Use the listings above to compare independent trainers in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not provide training services. Contact each provider directly about class formats, methods, and availability.",
   intro:
     "Peedee Pet Care lists independent dog trainers and training programs serving the Pee Dee region. We are an online directory — not a dog trainer, behaviorist, or veterinary clinic. Use this page to compare local trainers in Florence, Darlington, Hartsville, and nearby communities.",
   sections: [
@@ -105,6 +125,20 @@ const TRAINING_SEO = {
       heading: "Service area",
       paragraphs: [
         "This directory focuses on Darlington County and the Florence, South Carolina area, including Hartsville, Lamar, Society Hill, and surrounding Pee Dee communities. Trainers set their own service areas, rates, and availability — contact them directly to confirm they serve your location.",
+      ],
+    },
+    {
+      heading: "Group classes vs private lessons",
+      paragraphs: [
+        "Puppy socialization and basic manners often work well in group classes where dogs learn around distractions. Reactivity, severe fear, or specific behavior issues may need private or in-home training with fewer triggers.",
+        "Ask trainers listed above whether they offer both formats and which they recommend for your dog's age and goals before you commit to a package.",
+      ],
+    },
+    {
+      heading: "Puppy training vs behavior help",
+      paragraphs: [
+        "Puppy basics — house training, leash manners, and socialization — are different from adult behavior work such as reactivity or resource guarding. Match the trainer's experience to your situation, not just their location.",
+        "Read reviews from Pee Dee pet owners with similar breeds or issues, then schedule a consultation with a shortlist of trainers from this directory.",
       ],
     },
   ],
@@ -155,6 +189,9 @@ const BOARDING_SEO = {
   description:
     "Pet boarding directory for Darlington & Florence, SC. Compare kennels and daycare listings with reviews. Free directory — not a boarding kennel.",
   h1: "Pet Boarding & Daycare Directory — Darlington County & Florence, SC",
+  guideHeading: "How to find pet boarding in the Pee Dee",
+  guideIntro:
+    "Use the listings above to compare independent kennels and daycare facilities in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not board pets. Contact each facility directly for tours, rates, and availability.",
   intro:
     "Peedee Pet Care lists independent pet boarding kennels, daycare facilities, and overnight care providers serving the Pee Dee region. We are an online directory — not a boarding facility or veterinary clinic. Use this page to compare local options in Florence, Darlington, Hartsville, and nearby communities.",
   sections: [
@@ -175,6 +212,20 @@ const BOARDING_SEO = {
       heading: "Service area",
       paragraphs: [
         "This directory focuses on Darlington County and the Florence, South Carolina area, including Hartsville, Lamar, Society Hill, and surrounding Pee Dee communities. Each facility sets its own hours, pricing, and drop-off policies — contact them directly for availability.",
+      ],
+    },
+    {
+      heading: "Questions to ask before you book",
+      paragraphs: [
+        "Ask about daily routines, staff supervision, vaccination requirements, medication handling, and emergency veterinary plans. Reputable facilities in the Pee Dee region expect these questions and should answer clearly.",
+        "Tour the facility when possible. Cleanliness, fresh water, and calm handling are good signs. Peedee Pet Care lists providers — we do not operate a boarding facility.",
+      ],
+    },
+    {
+      heading: "Boarding vs in-home pet sitting",
+      paragraphs: [
+        "Boarding suits pets who do well with structured routines and supervised play. Anxious pets or multi-pet households may prefer in-home sitting listed on our sitters directory.",
+        "Compare both options on Peedee Pet Care, read local reviews, and choose based on your pet's temperament and trip length — not price alone.",
       ],
     },
   ],
@@ -225,6 +276,9 @@ const SITTERS_SEO = {
   description:
     "Pet sitter directory for Florence & Darlington, SC. Compare dog walkers and in-home care listings. Free directory — not a sitting company.",
   h1: "Pet Sitters & Dog Walkers Directory — Darlington County & Florence, SC",
+  guideHeading: "How to find a pet sitter in the Pee Dee",
+  guideIntro:
+    "Use the listings above to compare independent sitters and dog walkers in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not provide sitting services. Contact each provider directly about coverage area, rates, and meet-and-greets.",
   intro:
     "Peedee Pet Care lists independent pet sitters, dog walkers, and in-home care providers serving the Pee Dee region. We are an online directory — not a pet sitting agency or veterinary clinic. Use this page to compare local sitters in Florence, Darlington, Hartsville, and nearby communities.",
   sections: [
@@ -311,6 +365,9 @@ const VET_CARE_SEO = {
   description:
     "Vet directory for Darlington & Florence, SC. Compare independent clinics. Peedee Pet Care does not provide grooming, training, boarding, or veterinary care.",
   h1: "Veterinary Care Directory — Darlington County & Florence, SC",
+  guideHeading: "How to find a veterinarian in the Pee Dee",
+  guideIntro:
+    "Use the listings above to compare independent veterinary clinics and animal hospitals in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not provide medical care. Contact clinics directly for appointments and emergencies.",
   intro:
     "Peedee Pet Care is a free online directory that lists independent third-party veterinary clinics, animal hospitals, and vet practices serving the Pee Dee region. We do not provide veterinary care ourselves — and we are not a groomer, trainer, or boarding facility. All services are offered by the listed businesses; contact them directly. Use this page to compare local veterinarians in Florence, Darlington, Hartsville, and nearby communities.",
   sections: [
@@ -397,6 +454,9 @@ const PRODUCTS_SEO = {
   description:
     "Pet store directory for Darlington & Florence, SC. Find local food, toys, and supply shops. Free directory — not a pet store.",
   h1: "Pet Products & Supplies Directory — Darlington County & Florence, SC",
+  guideHeading: "How to find local pet supplies in the Pee Dee",
+  guideIntro:
+    "Use the listings above to compare independent pet stores and supply shops in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not sell products. Contact retailers directly for hours, brands, and inventory.",
   intro:
     "Peedee Pet Care lists independent pet supply stores, feed shops, and retailers serving the Pee Dee region. We are an online directory — not a pet store or veterinary clinic. Use this page to find local shops in Florence, Darlington, Hartsville, and nearby communities.",
   sections: [
@@ -670,13 +730,36 @@ function appendRelatedBlogExcerpt(config) {
   <p><a href="${href}">Read the full article</a></p>`;
 }
 
-function buildCategorySeoContentHtml(config, listings = []) {
-  const sections = (config.sections || [])
+function buildSectionsHtml(sections) {
+  return (sections || [])
     .map(
       (section) =>
-        `<h2>${escapeHtml(section.heading)}</h2>${section.paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join("")}`,
+        `<h3>${escapeHtml(section.heading)}</h3>${section.paragraphs.map((p) => `<p>${escapeHtml(p)}</p>`).join("")}`,
     )
     .join("\n  ");
+}
+
+function buildCategoryGuideHtml(config) {
+  const heading = config.guideHeading;
+  const intro = config.guideIntro;
+  const sections = config.sections || [];
+  if (!heading && !intro && !sections.length) {
+    return "";
+  }
+  const parts = [];
+  if (heading) {
+    parts.push(`<h2>${escapeHtml(heading)}</h2>`);
+  }
+  if (intro) {
+    parts.push(`<p>${escapeHtml(intro)}</p>`);
+  }
+  if (sections.length) {
+    parts.push(buildSectionsHtml(sections));
+  }
+  return parts.join("\n  ");
+}
+
+function buildCategorySeoContentHtml(config, listings = []) {
   const faqs = (config.faqs || [])
     .map((faq) => `<p><strong>${escapeHtml(faq.q)}</strong> ${escapeHtml(faq.a)}</p>`)
     .join("\n  ");
@@ -692,8 +775,8 @@ function buildCategorySeoContentHtml(config, listings = []) {
   <h1>${escapeHtml(config.h1)}</h1>
   <p>${escapeHtml(config.intro)}</p>
   <p>Directory questions or listing requests: <a href="mailto:${escapeHtml(DIRECTORY_CONTACT_EMAIL)}">${escapeHtml(DIRECTORY_CONTACT_EMAIL)}</a>.</p>
-  ${sections}
   ${buildListingsSectionHtml(listings)}
+  ${buildCategoryGuideHtml(config)}
   ${appendRelatedBlogExcerpt(config)}
   <h2>Frequently asked questions</h2>
   ${faqs}
@@ -736,4 +819,5 @@ module.exports = {
   resolveCategorySeoForPathname,
   injectCategoryEnhancements,
   getCategoryConfig,
+  buildCategoryGuideHtml,
 };

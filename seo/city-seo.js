@@ -1,5 +1,5 @@
 const { CANONICAL_ORIGIN } = require("./blog-seo");
-const { getCategoryConfig } = require("./category-seo");
+const { getCategoryConfig, buildCategoryGuideHtml } = require("./category-seo");
 const { getListingsForPathname } = require("./listings-loader");
 
 const SEO_CONTENT_START = "<!-- peedee-seo-content:start -->";
@@ -125,6 +125,7 @@ function buildCitySeoContentHtml(parsed, listings) {
   <p>${intro}</p>
   <p>${escapeHtml(base.intro)}</p>
   ${buildListingsSectionHtml(listings, parsed)}
+  ${base ? buildCategoryGuideHtml(base) : ""}
   <h2>Nearby Pee Dee communities</h2>
   <p>
     Also browse ${escapeHtml(parsed.labels.plural)} in
