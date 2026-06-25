@@ -101,7 +101,7 @@ const TRAINING_SEO = {
   title: "Dog Trainers Directory | Darlington SC | Peedee Pet Care",
   description:
     "Free directory of dog trainers in Darlington & Florence, SC. Compare listings and reviews. We do not provide training.",
-  h1: "Dog Training Directory — Darlington County & Florence, SC",
+  h1: "Dog Trainers Directory — Darlington County & Florence, SC",
   guideHeading: "How to find a dog trainer in the Pee Dee",
   guideIntro:
     "Use the listings above to compare independent trainers in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not provide training services. Contact each provider directly about class formats, methods, and availability.",

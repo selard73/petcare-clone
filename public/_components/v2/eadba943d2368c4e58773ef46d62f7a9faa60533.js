@@ -8480,7 +8480,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
             /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Dog Trainers Directory" }),
             /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory — compare local trainers." }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Independent trainers in Darlington, Hartsville & Florence." })
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "We do not provide training — independent trainers in Darlington, Hartsville & Florence." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(
@@ -8496,7 +8496,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
             /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory — find dog trainers in Darlington, Hartsville and Florence for puppy socialization, obedience, and behavior help." }),
-            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Browse local options and choose a trainer that fits your goals." })
+            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "We do not provide training — compare listings and contact providers directly." })
           ] })
         ]
       }
