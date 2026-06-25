@@ -1989,7 +1989,7 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    if ((req.method === "GET" || req.method === "HEAD") && pathname.startsWith("/blog/") && pathname.length > 6) {
+    if ((req.method === "GET" || req.method === "HEAD") && pathname.startsWith("/blog/") && pathname.length > 6 && !path.extname(pathname)) {
       serveIndexHtml(req, res);
       return;
     }

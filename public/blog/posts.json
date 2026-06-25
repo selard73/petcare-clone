@@ -1,16 +1,150 @@
 {
   "posts": [
     {
-      "slug": "choose-dog-groomer-florence-sc",
-      "title": "How to Choose a Dog Groomer in Florence, SC",
-      "excerpt": "What to look for in a local groomer — from coat type and temperament to reviews, pricing, and questions worth asking before the first appointment.",
-      "date": "2025-03-10",
-      "readMinutes": 4,
-      "body": [
-        "Finding the right groomer is about more than a clean cut. You want someone who handles your dog calmly, communicates clearly, and knows how to work with your pet's coat type — whether that's a quick bath for a short-haired pup or a full groom for a breed that mats easily.",
-        "Start with providers listed in your area on Peedee Pet Care. Read reviews from other local owners, check whether the business offers the services you need (nail trims, de-shedding, puppy grooms), and note if they serve Florence, Hartsville, Darlington, or nearby towns.",
-        "Before you book, ask about vaccination requirements, how they handle anxious dogs, and what happens if your pet needs a break. A good groomer will welcome those questions.",
-        "Shortlist two or three options, compare what owners are saying, and schedule a first visit with the one that feels like the best fit. Your dog's comfort — and your peace of mind — are worth the extra few minutes of research."
+      "slug": "how-to-find-good-dog-groomer-pee-dee",
+      "title": "How to Find a Good Dog Groomer in the Pee Dee Area - Without Rolling the Dice on Your Dog's Haircut",
+      "excerpt": "Most groomers love animals — finding the right match is about your dog's breed, temperament, and needs. A practical checklist for Florence, Darlington, Hartsville, and the Pee Dee.",
+      "date": "2026-06-24",
+      "readMinutes": 8,
+      "coverImage": "/blog/images/groomer-face-trim.png",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Most dog groomers got into this because they genuinely love animals. Finding the right one is less about vetting and more about matching. The good news: there are a lot of them in the Pee Dee area. The real question is not \"is this a good dog groomer?\" — it's \"is this the right groomer for my dog?\""
+        },
+        {
+          "type": "p",
+          "text": "A senior dachshund with sensitive skin has different needs than a bouncy goldendoodle puppy getting her first trim. Finding the right dog groomer means asking the right questions before you book."
+        },
+        {
+          "type": "p",
+          "text": "This guide covers what to look for in a groomer for your dog's specific needs, smart questions to ask to find your best match, and what to check after the appointment to know if it went well."
+        },
+        {
+          "type": "p",
+          "text": "Whether you're in Florence, Darlington, Hartsville, or anywhere else in the Pee Dee region, the same checklist applies."
+        },
+        {
+          "type": "img",
+          "src": "/blog/images/groomer-face-trim.png",
+          "alt": "Professional dog groomer carefully trimming a small white dog's face",
+          "caption": "A calm, skilled groomer makes all the difference — especially around sensitive areas like the face and ears."
+        },
+        {
+          "type": "h2",
+          "text": "What to Look for Before You Book"
+        },
+        {
+          "type": "p",
+          "text": "Proximity and price are fine starting points, but the real matching happens when you dig a little deeper. Here's what actually matters:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            {
+              "label": "Breed or coat-type experience.",
+              "text": "A dog groomer who works with doodles every day knows that coat in a way a generalist might not. Same goes for double-coated dogs, wire-haired breeds, or dogs with hair (not fur) that grows continuously. Ask specifically about your dog's breed."
+            },
+            {
+              "label": "Experience with anxious, sensitive, or special-needs dogs.",
+              "text": "If your dog gets stressed at the groomer, has skin allergies, or needs extra patience, that's the first thing to mention — and a great groomer will lean in, not brush it off."
+            },
+            {
+              "label": "Clear pricing upfront.",
+              "text": "A good groomer can give you a reasonable estimate based on breed, size, and coat condition and tell you what's included. No surprises on pickup day."
+            },
+            {
+              "label": "They ask about your dog before you ask anything.",
+              "text": "Health issues? Anxiety? Bad experiences in the past? A dog groomer who leads with those questions is already thinking about your dog as an individual, not just a booking slot."
+            }
+          ]
+        },
+        {
+          "type": "blockquote",
+          "label": "Quick note:",
+          "text": "According to the AKC, asking about breed experience and touring the facility are among the most important steps before choosing a groomer.",
+          "linkText": "Read the AKC guide on questions to ask groomers",
+          "linkHref": "https://www.akc.org/expert-advice/health/questions-ask-potential-groomers/"
+        },
+        {
+          "type": "img",
+          "src": "/blog/images/dog-bath-grooming.png",
+          "alt": "Happy French bulldog being bathed in a grooming tub",
+          "caption": "Bathing and handling should feel calm and confident — not rushed."
+        },
+        {
+          "type": "h2",
+          "text": "5 Questions Worth Asking Before You Book"
+        },
+        {
+          "type": "p",
+          "text": "Good groomers love these questions. Here are the ones that actually tell you something useful:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "\"Do you have experience with [your dog's breed]?\" Not all coats are created equal. This one question tells you a lot.",
+            "\"How do you handle anxious or sensitive dogs?\" Listen for specifics — go-slow techniques, low-stress handling, shorter sessions. \"We manage it\" is not an answer from any dog groomer worth booking.",
+            "\"Do you have experience with skin allergies or sensitivities?\" If your dog has a history of reactions, you want a groomer who knows which products to avoid and will actually ask.",
+            "\"What's included in the price?\" Bath, dry, trim, nail grind, ear cleaning — not always bundled. Worth knowing upfront.",
+            "\"How long does a typical appointment run?\" A full groom for a medium dog is usually 2 to 3 hours. Knowing the timeline helps you plan and sets expectations on both sides."
+          ]
+        },
+        {
+          "type": "img",
+          "src": "/blog/images/happy-groomed-dog.png",
+          "alt": "Fluffy well-groomed dog with a healthy, full coat after grooming",
+          "caption": "The goal: a groom your dog (and you) feel great about."
+        },
+        {
+          "type": "h2",
+          "text": "Signs the Fit Isn't Right"
+        },
+        {
+          "type": "p",
+          "text": "Not every mismatch is obvious upfront. Here's what to watch for:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "They don't ask about your dog at intake. A dog groomer who doesn't ask about health issues, anxiety, or past experiences before getting started is skipping steps that matter.",
+            "Vague answers to specific questions. If you ask how a dog groomer handles sensitive skin or a nervous dog and the answer is a shrug, that's useful information.",
+            "The price changes significantly at pickup with no explanation. Coat condition can affect pricing — but you should hear about that before, not after.",
+            "Your dog seems off afterward. Tired after a groom is completely normal. Unusually withdrawn, flinchy, or hiding for days is worth paying attention to. Your dog's reaction is feedback."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "The Pickup-Day Check Most Owners Skip"
+        },
+        {
+          "type": "p",
+          "text": "Before you leave the parking lot, do a quick once-over. It takes 60 seconds and it matters."
+        },
+        {
+          "type": "ol",
+          "items": [
+            "Ears — Any redness, odor, or discharge that wasn't there before?",
+            "Nails — Trimmed evenly? Any cracked or bleeding quick?",
+            "Paw pads — Check between the toes for irritation or nicks from clippers",
+            "Skin and coat — Look for razor burn, uneven cuts, or patches of irritation",
+            "Sanitary area — Should be clean and free of redness or raw skin"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "If you notice something, say something before you drive away. A good dog groomer will want to know. A dog groomer who gets defensive when you point out a problem is one you probably won't be returning to."
+        },
+        {
+          "type": "cta",
+          "heading": "Looking for a Dog Groomer in the Pee Dee Area?",
+          "paragraphs": [
+            "Now that you know what to look for, the next step is actually finding someone local to evaluate. Rather than piecing together a list from random searches, you can browse dog groomers serving Florence, Darlington, Hartsville, and the surrounding Pee Dee region all in one place.",
+            "Use this checklist to narrow it down. Your dog's next appointment should be one you feel good about, not one you're crossing your fingers over."
+          ],
+          "buttonText": "Browse local dog groomers on Pee Dee Pet Care",
+          "navigate": "grooming"
+        }
       ]
     },
     {

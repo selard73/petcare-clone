@@ -14113,6 +14113,52 @@ function eo({ editProduct: t, onClose: e }) {
     )
   ] });
 }
+function renderBlogBlock(block, slug, index, onNavigate) {
+  const key = `${slug}-block-${index}`, bodyStyle = { color: "#44403c" }, headingStyle = { color: "#6b1e2a" }, linkStyle = { color: "#8e2c32" };
+  if (typeof block === "string")
+    return /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed", style: bodyStyle, children: block }, key);
+  switch (block.type) {
+    case "p":
+      return /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed", style: bodyStyle, children: block.text }, key);
+    case "h2":
+      return /* @__PURE__ */ s("h2", { className: "text-xl md:text-2xl font-semibold leading-snug mt-8 mb-3 first:mt-0", style: headingStyle, children: block.text }, key);
+    case "ul":
+      return /* @__PURE__ */ s("ul", { className: "list-disc pl-5 space-y-2 text-sm md:text-base leading-relaxed", style: bodyStyle, children: (block.items || []).map((item, i) => /* @__PURE__ */ s("li", { className: "pl-1", children: typeof item === "string" ? item : /* @__PURE__ */ d(ie, { children: [
+        item.label && /* @__PURE__ */ s("strong", { style: { color: "#6b1e2a" }, children: `${item.label} ` }),
+        item.text
+      ] }) }, `${key}-li-${i}`)) }, key);
+    case "ol":
+      return /* @__PURE__ */ s("ol", { className: "list-decimal pl-5 space-y-2 text-sm md:text-base leading-relaxed", style: bodyStyle, children: (block.items || []).map((item, i) => /* @__PURE__ */ s("li", { className: "pl-1", children: item }, `${key}-li-${i}`)) }, key);
+    case "img":
+      return /* @__PURE__ */ d("figure", { className: "my-6", children: [
+        /* @__PURE__ */ s("img", { src: block.src, alt: block.alt || "", className: "w-full rounded-xl object-cover", style: { maxHeight: "420px" } }),
+        block.caption && /* @__PURE__ */ s("figcaption", { className: "text-xs text-center mt-2", style: { color: "#8f5c5c" }, children: block.caption })
+      ] }, key);
+    case "blockquote":
+      return /* @__PURE__ */ d("blockquote", { className: "my-6 pl-4 py-3 pr-4 rounded-r-xl text-sm md:text-base leading-relaxed", style: { borderLeft: "4px solid #8e2c32", backgroundColor: "#f9ecea", color: "#5c3a38" }, children: [
+        block.label && /* @__PURE__ */ s("strong", { className: "block mb-1", style: { color: "#6b1e2a" }, children: block.label }),
+        /* @__PURE__ */ s("span", { children: block.text }),
+        block.linkHref && /* @__PURE__ */ s("a", { href: block.linkHref, target: "_blank", rel: "noopener noreferrer", className: "block mt-2 font-medium hover:underline", style: linkStyle, children: block.linkText || block.linkHref })
+      ] }, key);
+    case "cta":
+      return /* @__PURE__ */ d("div", { className: "mt-10 p-6 rounded-2xl", style: { background: "linear-gradient(135deg, #f9ecea 0%, #f5ddd8 100%)", border: "1px solid #d4938e" }, children: [
+        block.heading && /* @__PURE__ */ s("h2", { className: "text-lg md:text-xl font-semibold mb-3", style: headingStyle, children: block.heading }),
+        ...(block.paragraphs || []).map((text, i) => /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed mb-3 last:mb-0", style: bodyStyle, children: text }, `${key}-cta-p-${i}`)),
+        block.buttonText && /* @__PURE__ */ s(
+          "button",
+          {
+            type: "button",
+            onClick: () => onNavigate(block.navigate || "grooming"),
+            className: "mt-4 inline-flex items-center justify-center px-6 py-3 rounded-full text-white font-medium text-sm md:text-base hover:opacity-90 transition-opacity",
+            style: { background: "linear-gradient(135deg, #b84a48 0%, #6b1e2a 100%)" },
+            children: block.buttonText
+          }
+        )
+      ] }, key);
+    default:
+      return block.text ? /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed", style: bodyStyle, children: block.text }, key) : null;
+  }
+}
 function dailyWag({ onNavigate: t }) {
   const blogSlugFromLocation = () => {
     const pathname = window.location.pathname.replace(/\/$/, "") || "/";
@@ -14200,7 +14246,7 @@ function dailyWag({ onNavigate: t }) {
           formatDate(selected.date),
           selected.readMinutes ? ` · ${selected.readMinutes} min read` : ""
         ] }),
-        /* @__PURE__ */ s("div", { className: "space-y-4", children: (selected.body || []).map((g, b) => /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed", style: { color: "#44403c" }, children: g }, `${selected.slug}-${b}`)) })
+        /* @__PURE__ */ s("div", { className: "space-y-4", children: (selected.blocks || selected.body || []).map((g, b) => renderBlogBlock(g, selected.slug, b, t)) })
       ] }),
       !loading && !selected && /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))`, gap: "20px" }, children: [
         posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c", gridColumn: "1 / -1" }, children: "New articles coming soon." }),
@@ -14217,6 +14263,7 @@ function dailyWag({ onNavigate: t }) {
             className: "block text-left rounded-2xl p-5 md:p-6 transition-all hover:shadow-lg no-underline",
             style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 2px 4px rgba(110,26,40,0.12)", color: "inherit" },
             children: /* @__PURE__ */ d("div", { children: [
+              g.coverImage && /* @__PURE__ */ s("img", { src: g.coverImage, alt: "", className: "w-full h-40 object-cover rounded-xl mb-4" }),
               /* @__PURE__ */ s("h2", { className: "text-lg md:text-xl font-semibold leading-snug mb-2", style: { color: "#6b1e2a" }, children: g.title }),
               /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed mb-3", style: { color: "#78716c" }, children: g.excerpt }),
               /* @__PURE__ */ d("p", { className: "text-xs", style: { color: "#a8a29e" }, children: [
