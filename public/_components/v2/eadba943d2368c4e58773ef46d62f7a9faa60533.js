@@ -9214,9 +9214,9 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         className: "text-center",
         children: [
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
-            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Boarding & Daycare" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Stay, play, thrive — locally." }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Safe overnight stays and daytime care nearby." })
+            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Pet Boarding Directory" }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory — compare local kennels." }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Independent boarding and daycare in Darlington, Hartsville & Florence." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(
@@ -9228,11 +9228,11 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 children: "🏠"
               }
             ),
-            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Boarding & Daycare" })
+            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Pet Boarding Directory" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
-            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Boarding and daycare in Darlington, Hartsville and Florence for vacations, workdays, and extended trips." }),
-            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Trusted local facilities where your pet can stay, play, and rest comfortably." })
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory — boarding and daycare in Darlington, Hartsville and Florence for vacations, workdays, and extended trips." }),
+            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Compare independent facilities and contact providers directly." })
           ] })
         ]
       }
