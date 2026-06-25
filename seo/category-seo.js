@@ -275,7 +275,7 @@ const SITTERS_SEO = {
   title: "Pet Sitters Directory | Darlington SC | Peedee Pet Care",
   description:
     "Free directory of pet sitters and dog walkers in Darlington & Florence, SC. Compare listings and reviews. We do not provide sitting.",
-  h1: "Pet Sitters & Dog Walkers Directory — Darlington County & Florence, SC",
+  h1: "Pet Sitters Directory — Darlington County & Florence, SC",
   guideHeading: "How to find a pet sitter in the Pee Dee",
   guideIntro:
     "Use the listings above to compare independent sitters and dog walkers in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not provide sitting services. Contact each provider directly about coverage area, rates, and meet-and-greets.",
@@ -355,7 +355,7 @@ const SITTERS_SEO = {
     { href: "/", label: "Peedee Pet Care home" },
   ],
   resourcesHeading: "Trusted pet sitting resources",
-  schemaName: "Pet Sitters & Walkers Directory — Florence SC",
+  schemaName: "Pet Sitters Directory — Darlington & Florence SC",
   schemaAbout: "Pet sitting and dog walking directory",
 };
 

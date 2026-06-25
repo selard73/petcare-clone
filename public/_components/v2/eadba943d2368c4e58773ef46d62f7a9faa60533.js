@@ -10384,7 +10384,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
   }, [n]);
   const Mi = async () => {
     const Lf = [
-      { id: "sitters-1", name: "Pee Dee Pet Sitters", city: "Florence", priceRange: "$", daycareAvailable: !0, address: "215 Oak Meadow Ln", zipCode: "29501", phone: "(843) 555-0191", description: "In-home pet sitting and daily dog walks with photo updates for Florence-area families.", paymentMethods: ["Cash", "Credit Card", "Venmo"], boardingStyles: ["In-Home Visits", "Dog Walking"], servicesOffered: ["Pet Sitting", "Dog Walking", "Drop-In Visits"], insuredBonded: !0, medicationAdmin: !0, photoUpdates: !0, mobileService: !0, petCprCertified: !0, specialFeatures: ["Photo Updates", "Medication Administration"], photos: [Wr], hours: { monday: "7:00 AM - 8:00 PM", tuesday: "7:00 AM - 8:00 PM", wednesday: "7:00 AM - 8:00 PM", thursday: "7:00 AM - 8:00 PM", friday: "7:00 AM - 8:00 PM", saturday: "8:00 AM - 6:00 PM", sunday: "8:00 AM - 6:00 PM" } },
+      { id: "sitters-1", name: "Oak Meadow Pet Sitters", city: "Florence", priceRange: "$", daycareAvailable: !0, address: "215 Oak Meadow Ln", zipCode: "29501", phone: "(843) 555-0191", description: "In-home pet sitting and daily dog walks with photo updates for Florence-area families.", paymentMethods: ["Cash", "Credit Card", "Venmo"], boardingStyles: ["In-Home Visits", "Dog Walking"], servicesOffered: ["Pet Sitting", "Dog Walking", "Drop-In Visits"], insuredBonded: !0, medicationAdmin: !0, photoUpdates: !0, mobileService: !0, petCprCertified: !0, specialFeatures: ["Photo Updates", "Medication Administration"], photos: [Wr], hours: { monday: "7:00 AM - 8:00 PM", tuesday: "7:00 AM - 8:00 PM", wednesday: "7:00 AM - 8:00 PM", thursday: "7:00 AM - 8:00 PM", friday: "7:00 AM - 8:00 PM", saturday: "8:00 AM - 6:00 PM", sunday: "8:00 AM - 6:00 PM" } },
       { id: "sitters-2", name: "Darlington Dog Walkers", city: "Darlington", priceRange: "$", daycareAvailable: !1, address: "88 Maple Creek Rd", zipCode: "29532", phone: "(843) 555-0188", description: "Reliable midday and after-work dog walks serving Darlington and nearby neighborhoods.", paymentMethods: ["Cash", "Credit Card"], boardingStyles: ["Dog Walking"], servicesOffered: ["Dog Walking", "Potty Breaks"], mobileService: !0, backgroundChecked: !0, photoUpdates: !0, specialFeatures: ["GPS Route Reports"], photos: [Wr], hours: { monday: "9:00 AM - 6:00 PM", tuesday: "9:00 AM - 6:00 PM", wednesday: "9:00 AM - 6:00 PM", thursday: "9:00 AM - 6:00 PM", friday: "9:00 AM - 6:00 PM", saturday: "10:00 AM - 2:00 PM", sunday: "Closed" } },
       { id: "sitters-3", name: "Hartsville Home Pet Care", city: "Hartsville", priceRange: "$", daycareAvailable: !0, address: "412 Pineview Dr", zipCode: "29550", phone: "(843) 555-0179", description: "Overnight pet sitting and vacation care in your home for dogs and cats in Hartsville.", paymentMethods: ["Credit Card", "Check"], boardingStyles: ["In-Home Visits", "Overnight Sitting"], servicesOffered: ["Pet Sitting", "Overnight Care", "Cat Visits"], insuredBonded: !0, medicationAdmin: !0, professionalMember: !0, specialFeatures: ["Meet and Greet Required", "Medication Administration"], photos: [Wr], hours: { monday: "8:00 AM - 7:00 PM", tuesday: "8:00 AM - 7:00 PM", wednesday: "8:00 AM - 7:00 PM", thursday: "8:00 AM - 7:00 PM", friday: "8:00 AM - 7:00 PM", saturday: "9:00 AM - 5:00 PM", sunday: "9:00 AM - 5:00 PM" } },
       { id: "sitters-4", name: "Florence Furry Friends", city: "Florence", priceRange: "$", daycareAvailable: !0, address: "601 Westfield Ave", zipCode: "29505", phone: "(843) 555-0163", description: "Flexible pet sitting, drop-in visits, and neighborhood dog walks across Florence.", paymentMethods: ["Cash", "Credit Card", "Digital Wallet"], boardingStyles: ["In-Home Visits", "Dog Walking"], servicesOffered: ["Pet Sitting", "Dog Walking", "Puppy Visits"], photoUpdates: !0, mobileService: !0, specialFeatures: ["Photo Updates", "Key Hold Service"], photos: [Wr], hours: { monday: "7:30 AM - 7:30 PM", tuesday: "7:30 AM - 7:30 PM", wednesday: "7:30 AM - 7:30 PM", thursday: "7:30 AM - 7:30 PM", friday: "7:30 AM - 7:30 PM", saturday: "8:00 AM - 4:00 PM", sunday: "8:00 AM - 4:00 PM" } }
@@ -10603,7 +10603,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
             /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Pet Sitters Directory" }),
             /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory — compare local sitters." }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Independent sitters and walkers in Darlington, Hartsville & Florence." })
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "We do not provide sitting — independent sitters in Darlington, Hartsville & Florence." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(
@@ -10619,7 +10619,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
             /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory — pet sitting and dog walking in Darlington, Hartsville and Florence for vacations, workdays, and extended trips." }),
-            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Compare independent sitters and contact providers directly." })
+            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "We do not provide sitting — compare listings and contact providers directly." })
           ] })
         ]
       }
@@ -14212,15 +14212,16 @@ function dailyWag({ onNavigate: t }) {
         children: [
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
             /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", style: { color: "#fffaf5" }, children: "The Daily Wag" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center leading-tight mt-0.5", style: { color: "rgba(255,250,245,0.92)" }, children: "Pet care tips & guides" })
+            /* @__PURE__ */ s("p", { className: "text-xs text-center leading-tight mt-0.5", style: { color: "rgba(255,250,245,0.92)" }, children: "Pee Dee Pet Tips" }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center leading-snug mt-1.5", style: { color: "rgba(255,250,245,0.78)" }, children: "Guides from Peedee Pet Care — a free directory, not a service provider." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(D.div, { animate: { rotate: [0, 8, -8, 0] }, transition: { duration: 2, repeat: 1 / 0 }, className: "md:text-4xl", children: "📰" }),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", style: { color: "#fffaf5" }, children: "The Daily Wag" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
-            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", style: { color: "#fffaf5" }, children: "Helpful articles on grooming, training, boarding, and everyday pet care in the Pee Dee." }),
-            /* @__PURE__ */ s("p", { className: "text-sm leading-relaxed mt-2", style: { color: "rgba(255,250,245,0.88)" }, children: "Practical advice for pet owners in Darlington, Hartsville, and Florence." })
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", style: { color: "#fffaf5" }, children: "Pee Dee Pet Tips — helpful articles on grooming, training, boarding, and everyday pet care in Darlington, Hartsville, and Florence." }),
+            /* @__PURE__ */ s("p", { className: "text-sm leading-relaxed mt-2", style: { color: "rgba(255,250,245,0.88)" }, children: "Published by Peedee Pet Care, a free local directory — we do not provide grooming, training, boarding, or sitting services." })
           ] })
         ]
       }

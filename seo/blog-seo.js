@@ -11,7 +11,7 @@ const SITE_DESCRIPTION =
 
 const BLOG_INDEX_TITLE = "The Daily Wag | Pee Dee Pet Tips | Peedee Pet Care";
 const BLOG_INDEX_DESCRIPTION =
-  "Local pet care guides for Florence, Darlington, and the Pee Dee region — grooming, boarding, training, and directory tips from Peedee Pet Care.";
+  "Pee Dee Pet Tips from Peedee Pet Care — local guides on grooming, boarding, training, and directory tips for Florence & Darlington, SC. Not a service provider.";
 
 let postsCache = { mtimeMs: 0, posts: [] };
 
@@ -473,7 +473,7 @@ function buildBlogIndexJsonLd() {
       {
         "@type": "Blog",
         "@id": `${CANONICAL_ORIGIN}/blog#blog`,
-        name: "The Daily Wag",
+        name: "The Daily Wag | Pee Dee Pet Tips",
         description: BLOG_INDEX_DESCRIPTION,
         url: `${CANONICAL_ORIGIN}/blog`,
         inLanguage: "en-US",
@@ -495,7 +495,7 @@ function buildBlogIndexJsonLd() {
           {
             "@type": "ListItem",
             position: 2,
-            name: "The Daily Wag",
+            name: "The Daily Wag | Pee Dee Pet Tips",
             item: `${CANONICAL_ORIGIN}/blog`,
           },
         ],
@@ -525,13 +525,13 @@ function buildBlogIndexSeoContentHtml() {
   const fullArticles = posts.map(renderPostArticleSectionHtml).join("\n  ");
 
   return `<div id="seo-content" class="seo-content">
-  <h1>The Daily Wag — Pet Care Tips for the Pee Dee</h1>
+  <h1>The Daily Wag — Pee Dee Pet Tips</h1>
   <p>
-    The Daily Wag is the blog of <a href="/">Peedee Pet Care</a>, a free local pet services directory for
-    Darlington County and Florence, SC. We publish practical guides to help pet owners choose groomers,
-    trainers, boarders, and other providers listed in our directory. Peedee Pet Care is a directory — not a
-    veterinary clinic, grooming salon, boarding kennel, or pet sitting service. Browse the full articles below
-    without JavaScript.
+    The Daily Wag | Pee Dee Pet Tips is the blog of <a href="/">Peedee Pet Care</a>, a free local pet services
+    directory for Darlington County and Florence, SC. We publish practical guides to help pet owners choose
+    groomers, trainers, boarders, and other providers listed in our directory. Peedee Pet Care is a directory —
+    not a veterinary clinic, grooming salon, boarding kennel, or pet sitting service. Browse the full articles
+    below without JavaScript.
   </p>
   <h2>Article Index</h2>
   <ul>
@@ -620,7 +620,7 @@ function buildBlogPostJsonLd(post) {
         {
           "@type": "ListItem",
           position: 2,
-          name: "The Daily Wag",
+          name: "The Daily Wag | Pee Dee Pet Tips",
           item: `${CANONICAL_ORIGIN}/blog`,
         },
         {
