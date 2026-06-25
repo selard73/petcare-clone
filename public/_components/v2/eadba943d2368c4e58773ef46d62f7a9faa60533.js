@@ -14166,7 +14166,7 @@ function dailyWag({ onNavigate: t }) {
       return decodeURIComponent(pathname.slice(6));
     const hash = window.location.hash.slice(1);
     return hash.startsWith("blog/") ? hash.slice(5) : null;
-  }, [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => blogSlugFromLocation()), [gridCols, setGridCols] = E(() => typeof window < "u" && window.matchMedia("(min-width: 768px)").matches ? 2 : 1);
+  }, [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => blogSlugFromLocation());
   U(() => {
     (async () => {
       setLoading(!0), setError("");
@@ -14181,11 +14181,6 @@ function dailyWag({ onNavigate: t }) {
         setLoading(!1);
       }
     })();
-  }, []);
-  U(() => {
-    const mq = window.matchMedia("(min-width: 768px)"), apply = () => setGridCols(mq.matches ? 2 : 1);
-    apply(), mq.addEventListener("change", apply);
-    return () => mq.removeEventListener("change", apply);
   }, []);
   U(() => {
     const sync = () => setSelectedSlug(blogSlugFromLocation());
@@ -14248,32 +14243,38 @@ function dailyWag({ onNavigate: t }) {
         ] }),
         /* @__PURE__ */ s("div", { className: "space-y-4", children: (selected.blocks || selected.body || []).map((g, b) => renderBlogBlock(g, selected.slug, b, t)) })
       ] }),
-      !loading && !selected && /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))`, gap: gridCols > 1 ? "40px" : "24px", width: "100%" }, children: [
-        posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c", gridColumn: "1 / -1" }, children: "New articles coming soon." }),
+      !loading && !selected && /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 w-full", children: [
+        posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12 col-span-1 md:col-span-2", style: { color: "#8f5c5c" }, children: "New articles coming soon." }),
         posts.map((g, b) => /* @__PURE__ */ s(
           D.a,
           {
             href: `/blog/${g.slug}`,
-            initial: { opacity: 0, y: 16 },
+            initial: { opacity: 0, y: 30 },
             animate: { opacity: 1, y: 0 },
-            transition: { delay: b * 0.08 },
+            transition: { delay: b * 0.08, duration: 0.3 },
+            whileHover: { y: -5 },
             onClick: (ev) => {
               ev.preventDefault(), openPost(g.slug);
             },
-            className: "block text-left rounded-2xl transition-all hover:shadow-lg no-underline",
-            style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 2px 4px rgba(110,26,40,0.12)", color: "inherit", padding: "16px", minHeight: gridCols > 1 ? "168px" : "auto" },
-            children: /* @__PURE__ */ d("div", { style: { display: "flex", flexDirection: "row", gap: "16px", alignItems: "stretch", height: "100%" }, children: [
-              g.coverImage && /* @__PURE__ */ s("img", { src: g.coverImage, alt: "", style: { width: gridCols > 1 ? "42%" : "36%", maxWidth: gridCols > 1 ? "280px" : "140px", minWidth: "110px", minHeight: "120px", objectFit: "cover", borderRadius: "12px", flexShrink: 0, alignSelf: "stretch" } }),
-              /* @__PURE__ */ d("div", { style: { flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", minWidth: 0, padding: "4px 4px 4px 0" }, children: [
-                /* @__PURE__ */ s("h2", { className: "text-base md:text-lg font-semibold leading-snug mb-2", style: { color: "#6b1e2a" }, children: g.title }),
-                /* @__PURE__ */ s("p", { className: "text-sm leading-relaxed mb-2 line-clamp-3", style: { color: "#78716c" }, children: g.excerpt }),
-                /* @__PURE__ */ d("p", { className: "text-xs mt-auto", style: { color: "#a8a29e" }, children: [
+            className: "bg-white rounded-xl shadow-md border border-gray-100 md:border-0 p-4 md:p-6 hover:shadow-xl transition-all flex flex-col no-underline text-left",
+            style: { color: "inherit" },
+            children: [
+              /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ s("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: /* @__PURE__ */ s(
+                "img",
+                {
+                  src: g.coverImage || Wr,
+                  alt: g.title,
+                  className: `absolute inset-0 w-full h-full rounded-t-xl ${g.coverImage ? "object-cover" : "object-contain bg-gradient-to-br from-rose-100 to-red-100"}`
+                }
+              ) }) }),
+              /* @__PURE__ */ d("div", { className: "flex justify-between items-start", children: [
+                /* @__PURE__ */ d("h3", { className: "text-gray-800 leading-snug", children: [
                   formatDate(g.date),
                   g.readMinutes ? ` · ${g.readMinutes} min read` : "",
                   " · Read more →"
                 ] })
               ] })
-            ] })
+            ]
           },
           g.slug
         ))
