@@ -14266,8 +14266,8 @@ function dailyWag({ onNavigate: t }) {
                   className: `absolute inset-0 w-full h-full rounded-t-xl ${g.coverImage ? "object-cover" : "object-contain bg-gradient-to-br from-rose-100 to-red-100"}`
                 }
               ) }) }),
-              /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-2", style: { color: "#1f2937", fontSize: "1rem", fontWeight: 400, lineHeight: "1.5", margin: 0, marginBottom: "8px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }, children: g.title }),
-              /* @__PURE__ */ s("p", { className: "text-gray-600", style: { color: "#4b5563", fontSize: "1rem", fontWeight: 400, lineHeight: "1.5", margin: 0 }, children: [
+              /* @__PURE__ */ s("h3", { className: "text-gray-900 mb-2", style: { color: "#111827", fontSize: "1rem", fontWeight: 500, lineHeight: "1.5", margin: 0, marginBottom: "8px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }, children: g.title }),
+              /* @__PURE__ */ s("p", { className: "text-gray-500", style: { color: "#6b7280", fontSize: "0.875rem", fontWeight: 400, lineHeight: "1.5", margin: 0 }, children: [
                 formatDate(g.date),
                 g.readMinutes ? ` · ${g.readMinutes} min read` : "",
                 " · Read more →"
