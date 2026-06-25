@@ -30,6 +30,7 @@ const CATEGORY_PAGE_PATHS = {
 const SITEMAP_FILE = path.join(PUBLIC_DIR, "sitemap.xml");
 const { applySeoToIndexHtml } = require("./seo/apply-seo-html");
 const { resolveSeoForPathname, injectSeoIntoHtml, injectBlogEnhancements, generateSitemapXml } = require("./seo/blog-seo");
+const { resolveCategorySeoForPathname, injectCategoryEnhancements } = require("./seo/category-seo");
 const CANONICAL_ORIGIN = (process.env.CANONICAL_ORIGIN || "https://www.peedeepetcare.com").replace(/\/$/, "");
 const CANONICAL_HOST = new URL(CANONICAL_ORIGIN).hostname.toLowerCase();
 const APEX_HOST = (process.env.APEX_HOST || "peedeepetcare.com").toLowerCase();
@@ -181,11 +182,12 @@ function serveIndexHtml(req, res, pathname = "/") {
         body = applySeoToIndexHtml(data.toString("utf8"));
         indexHtmlCache = { mtimeMs: stat.mtimeMs, body };
       }
-      const pageSeo = resolveSeoForPathname(pathname);
+      const pageSeo = resolveSeoForPathname(pathname) || resolveCategorySeoForPathname(pathname);
       if (pageSeo) {
         body = injectSeoIntoHtml(body, pageSeo);
-        body = injectBlogEnhancements(body, pathname);
       }
+      body = injectBlogEnhancements(body, pathname);
+      body = injectCategoryEnhancements(body, pathname);
       const payload = Buffer.from(body, "utf8");
       res.writeHead(200, {
         "Content-Type": "text/html; charset=utf-8",
