@@ -42,6 +42,14 @@ Peedee Pet Care is a free local pet services directory for Darlington County and
 - Sitters & Walkers: https://www.peedeepetcare.com/sitters
 - Vet Care: https://www.peedeepetcare.com/vet-care
 
+## City directory pages
+- Dog groomers in Florence: https://www.peedeepetcare.com/grooming/florence
+- Dog groomers in Darlington: https://www.peedeepetcare.com/grooming/darlington
+- Dog groomers in Hartsville: https://www.peedeepetcare.com/grooming/hartsville
+- Dog trainers in Florence: https://www.peedeepetcare.com/training/florence
+- Pet boarding in Florence: https://www.peedeepetcare.com/boarding/florence
+- Veterinarians in Florence: https://www.peedeepetcare.com/vet-care/florence
+
 ## Differentiators
 - Only pet services directory focused exclusively on Darlington County and Florence, SC
 - Free for pet owners to browse and for local businesses to list

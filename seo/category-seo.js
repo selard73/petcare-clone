@@ -534,7 +534,26 @@ function resolveCategorySeoForPathname(pathname) {
   };
 }
 
-function buildCategoryJsonLd(config) {
+function buildListingsSectionHtml(listings, heading = "Local listings on Peedee Pet Care") {
+  if (!listings.length) {
+    return "";
+  }
+  const items = listings
+    .map((listing) => {
+      const location = [listing.city, listing.address].filter(Boolean).join(" — ");
+      const phone = listing.phone ? ` Phone: ${listing.phone}.` : "";
+      const desc = listing.description ? ` ${listing.description}` : "";
+      return `<li><strong>${escapeHtml(listing.name)}</strong>${location ? ` — ${escapeHtml(location)}` : ""}.${desc}${phone}</li>`;
+    })
+    .join("\n    ");
+  return `<h2>${escapeHtml(heading)}</h2>
+  <p>Independent businesses listed on Peedee Pet Care. Contact providers directly for hours, pricing, and availability.</p>
+  <ul>
+    ${items}
+  </ul>`;
+}
+
+function buildCategoryJsonLd(config, listings = []) {
   const faqEntities = (config.faqs || []).map((faq) => ({
     "@type": "Question",
     name: faq.q,
@@ -582,6 +601,36 @@ function buildCategoryJsonLd(config) {
     });
   }
 
+  const itemListElement = listings.slice(0, 25).map((listing, index) => ({
+    "@type": "ListItem",
+    position: index + 1,
+    item: {
+      "@type": "LocalBusiness",
+      name: listing.name,
+      description: listing.description || undefined,
+      telephone: listing.phone || undefined,
+      address: listing.city
+        ? {
+            "@type": "PostalAddress",
+            streetAddress: listing.address || undefined,
+            addressLocality: listing.city,
+            addressRegion: "SC",
+            addressCountry: "US",
+          }
+        : undefined,
+    },
+  }));
+
+  if (itemListElement.length) {
+    graph.push({
+      "@type": "ItemList",
+      "@id": `${CANONICAL_ORIGIN}${config.pathname}#listings`,
+      name: config.schemaName || config.title,
+      numberOfItems: itemListElement.length,
+      itemListElement,
+    });
+  }
+
   return { "@context": "https://schema.org", "@graph": graph };
 }
 
@@ -620,7 +669,7 @@ function appendRelatedBlogExcerpt(config) {
   <p><a href="${href}">Read the full article</a></p>`;
 }
 
-function buildCategorySeoContentHtml(config) {
+function buildCategorySeoContentHtml(config, listings = []) {
   const sections = (config.sections || [])
     .map(
       (section) =>
@@ -642,6 +691,7 @@ function buildCategorySeoContentHtml(config) {
   <h1>${escapeHtml(config.h1)}</h1>
   <p>${escapeHtml(config.intro)}</p>
   ${sections}
+  ${buildListingsSectionHtml(listings)}
   ${appendRelatedBlogExcerpt(config)}
   <h2>Frequently asked questions</h2>
   ${faqs}
@@ -669,14 +719,14 @@ function replaceJsonLd(html, jsonLd) {
   );
 }
 
-function injectCategoryEnhancements(html, pathname) {
+function injectCategoryEnhancements(html, pathname, listings = []) {
   const config = getCategoryConfig(pathname);
   if (!config) {
     return html;
   }
   let result = html;
-  result = replaceSeoContentBlock(result, buildCategorySeoContentHtml(config));
-  result = replaceJsonLd(result, buildCategoryJsonLd(config));
+  result = replaceSeoContentBlock(result, buildCategorySeoContentHtml(config, listings));
+  result = replaceJsonLd(result, buildCategoryJsonLd(config, listings));
   return result;
 }
 

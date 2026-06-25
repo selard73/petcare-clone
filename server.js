@@ -31,6 +31,8 @@ const SITEMAP_FILE = path.join(PUBLIC_DIR, "sitemap.xml");
 const { applySeoToIndexHtml } = require("./seo/apply-seo-html");
 const { resolveSeoForPathname, injectSeoIntoHtml, injectBlogEnhancements, generateSitemapXml } = require("./seo/blog-seo");
 const { resolveCategorySeoForPathname, injectCategoryEnhancements } = require("./seo/category-seo");
+const { resolveCitySeoForPathname, injectCityEnhancements, isCityCategoryPath } = require("./seo/city-seo");
+const { getListingsForPathname } = require("./seo/listings-loader");
 const CANONICAL_ORIGIN = (process.env.CANONICAL_ORIGIN || "https://www.peedeepetcare.com").replace(/\/$/, "");
 const CANONICAL_HOST = new URL(CANONICAL_ORIGIN).hostname.toLowerCase();
 const APEX_HOST = (process.env.APEX_HOST || "peedeepetcare.com").toLowerCase();
@@ -182,12 +184,17 @@ function serveIndexHtml(req, res, pathname = "/") {
         body = applySeoToIndexHtml(data.toString("utf8"));
         indexHtmlCache = { mtimeMs: stat.mtimeMs, body };
       }
-      const pageSeo = resolveSeoForPathname(pathname) || resolveCategorySeoForPathname(pathname);
+      const listings = getListingsForPathname(pathname);
+      const pageSeo =
+        resolveSeoForPathname(pathname) ||
+        resolveCategorySeoForPathname(pathname) ||
+        resolveCitySeoForPathname(pathname);
       if (pageSeo) {
         body = injectSeoIntoHtml(body, pageSeo);
       }
       body = injectBlogEnhancements(body, pathname);
-      body = injectCategoryEnhancements(body, pathname);
+      body = injectCityEnhancements(body, pathname, listings);
+      body = injectCategoryEnhancements(body, pathname, listings);
       const payload = Buffer.from(body, "utf8");
       res.writeHead(200, {
         "Content-Type": "text/html; charset=utf-8",
@@ -2008,6 +2015,11 @@ const server = http.createServer(async (req, res) => {
     }
 
     if ((req.method === "GET" || req.method === "HEAD") && CATEGORY_PAGE_PATHS[pathname]) {
+      serveIndexHtml(req, res, pathname);
+      return;
+    }
+
+    if ((req.method === "GET" || req.method === "HEAD") && isCityCategoryPath(pathname)) {
       serveIndexHtml(req, res, pathname);
       return;
     }

@@ -270,16 +270,74 @@ function renderPostBodyHtml(post) {
   return "";
 }
 
-function renderPostArticleSectionHtml(post) {
+function renderPostArticleSectionHtml(post, { useH1 = false } = {}) {
   const url = `/blog/${encodeURIComponent(post.slug)}`;
   const meta = [post.date, post.readMinutes ? `${post.readMinutes} min read` : ""].filter(Boolean).join(" · ");
+  const headingTag = useH1 ? "h1" : "h2";
   return `<article id="blog-post-${escapeHtml(post.slug)}">
-  <h2><a href="${escapeHtml(url)}">${escapeHtml(post.title)}</a></h2>
+  <${headingTag}><a href="${escapeHtml(url)}">${escapeHtml(post.title)}</a></${headingTag}>
   ${meta ? `<p><em>${escapeHtml(meta)}</em></p>` : ""}
   ${post.excerpt ? `<p>${escapeHtml(post.excerpt)}</p>` : ""}
   ${renderPostBodyHtml(post)}
-  <p><a href="${escapeHtml(url)}">Read full article: ${escapeHtml(post.title)}</a></p>
 </article>`;
+}
+
+function getBlogPostExternalLinks(slug) {
+  if (slug.includes("groomer")) {
+    return [
+      { href: "https://www.akc.org/expert-advice/health/questions-ask-potential-groomers/", label: "AKC groomer questions" },
+      { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
+    ];
+  }
+  if (slug.includes("trainer")) {
+    return [
+      { href: "https://www.akc.org/expert-advice/training/", label: "AKC training resources" },
+      { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
+    ];
+  }
+  if (slug.includes("boarding")) {
+    return [
+      { href: "https://www.akc.org/expert-advice/training/how-to-prepare-your-dog-for-boarding/", label: "AKC boarding prep" },
+      { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
+    ];
+  }
+  return [
+    { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
+    { href: "https://www.akc.org/", label: "American Kennel Club" },
+  ];
+}
+
+function buildBlogPostSeoContentHtml(post) {
+  const external = getBlogPostExternalLinks(post.slug)
+    .map((link) => `<a href="${escapeHtml(link.href)}" rel="noopener noreferrer">${escapeHtml(link.label)}</a>`)
+    .join(", ");
+  const relatedPosts = loadBlogPosts()
+    .filter((entry) => entry.slug !== post.slug)
+    .slice(0, 3)
+    .map(
+      (entry) =>
+        `<li><a href="/blog/${escapeHtml(entry.slug)}">${escapeHtml(entry.title)}</a> — ${escapeHtml(entry.excerpt || "")}</li>`,
+    )
+    .join("\n    ");
+  return `<div id="seo-content" class="seo-content">
+  <p><a href="/blog">The Daily Wag</a> · <a href="/">Peedee Pet Care</a></p>
+  ${renderPostArticleSectionHtml(post, { useH1: true })}
+  <h2>Find Local Providers</h2>
+  <p>
+    Browse listings on Peedee Pet Care:
+    <a href="/grooming">grooming</a>,
+    <a href="/training">training</a>,
+    <a href="/boarding">boarding</a>,
+    <a href="/sitters">sitters</a>, and
+    <a href="/vet-care">vet care</a> in Darlington County and Florence, SC.
+  </p>
+  <h2>Trusted resources</h2>
+  <p>${external}.</p>
+  <h2>More from The Daily Wag</h2>
+  <ul>
+    ${relatedPosts}
+  </ul>
+</div>`;
 }
 
 function buildBlogIndexJsonLd() {
@@ -461,22 +519,6 @@ function buildBlogPostJsonLd(post) {
   };
 }
 
-function buildBlogPostSeoContentHtml(post) {
-  return `<div id="seo-content" class="seo-content">
-  <p><a href="/blog">The Daily Wag</a> · <a href="/">Peedee Pet Care</a></p>
-  ${renderPostArticleSectionHtml(post)}
-  <h2>Find Local Providers</h2>
-  <p>
-    Browse listings on Peedee Pet Care:
-    <a href="/grooming">grooming</a>,
-    <a href="/training">training</a>,
-    <a href="/boarding">boarding</a>,
-    <a href="/sitters">sitters</a>, and
-    <a href="/vet-care">vet care</a> in Darlington County and Florence, SC.
-  </p>
-</div>`;
-}
-
 function injectBlogPostEnhancements(html, post) {
   let result = html;
   result = replaceSeoContentBlock(result, buildBlogPostSeoContentHtml(post));
@@ -518,9 +560,11 @@ const STATIC_SITEMAP_PATHS = [
 ];
 
 function generateSitemapXml() {
+  const { getCitySitemapEntries } = require("./city-seo");
   const posts = loadBlogPosts();
   const urls = [
     ...STATIC_SITEMAP_PATHS.map((entry) => ({ ...entry, loc: `${CANONICAL_ORIGIN}${entry.loc}` })),
+    ...getCitySitemapEntries().map((entry) => ({ ...entry, loc: `${CANONICAL_ORIGIN}${entry.loc}` })),
     ...posts.map((post) => ({
       loc: `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}`,
       changefreq: "monthly",
