@@ -6117,7 +6117,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
       /* @__PURE__ */ d("div", { className: "md:hidden text-center px-4", style: { marginBottom: "2.1328125rem" }, children: [
         /* @__PURE__ */ d("p", { className: "text-xs text-purple-600/90", children: [
           "Questions? Email us at ",
-          /* @__PURE__ */ s("a", { href: "mailto:kawaii@kawaiipagepress.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "kawaii@kawaiipagepress.com" })
+          /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "hello@peedeepetcare.com" })
         ] })
       ] })
     ] })
@@ -13154,9 +13154,9 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                       /* @__PURE__ */ s(
                         "a",
                         {
-                          href: "mailto:kawaii@kawaiipagepress.com?subject=Pawsitively%20Business%20Listing%20Request",
+                          href: "mailto:hello@peedeepetcare.com?subject=Pawsitively%20Business%20Listing%20Request",
                           className: "text-purple-600 font-semibold hover:underline break-all",
-                          children: "kawaii@kawaiipagepress.com"
+                          children: "hello@peedeepetcare.com"
                         }
                       ),
                       " to be added or to request updates."
@@ -13197,7 +13197,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                     /* @__PURE__ */ s(
                       "a",
                       {
-                        href: "mailto:kawaii@kawaiipagepress.com?subject=Pawsitively%20Business%20Listing%20Request",
+                        href: "mailto:hello@peedeepetcare.com?subject=Pawsitively%20Business%20Listing%20Request",
                         className: "w-full md:max-w-[240px] md:mx-auto flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-0 h-11 md:h-auto md:py-3 rounded-[14px] md:rounded-xl transition-colors",
                         children: "Email Us →"
                       }
@@ -20648,7 +20648,7 @@ function oy() {
           /* @__PURE__ */ s("p", { children: "Questions?" }),
           /* @__PURE__ */ d("p", { children: [
             "Email us at ",
-            /* @__PURE__ */ s("a", { href: "mailto:kawaii@kawaiipagepress.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "kawaii@kawaiipagepress.com" })
+            /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "hello@peedeepetcare.com" })
           ] })
         ] }),
         /* @__PURE__ */ s("p", { className: "text-purple-600 text-center", children: "All Your Pet Needs in Darlington/Florence Area" }),
