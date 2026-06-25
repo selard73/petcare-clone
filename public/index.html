@@ -144,9 +144,6 @@
         if (page && !window.location.hash) {
           window.location.replace("/#" + page);
         }
-        if (window.location.pathname.indexOf("/blog/") === 0 && window.location.pathname.length > 6 && !window.location.hash) {
-          window.location.replace("/#" + window.location.pathname.slice(1));
-        }
       })();
     </script>
     <script>
@@ -226,33 +223,24 @@
       gtag("config", "G-5LESZ1G423");
 
       document.addEventListener("DOMContentLoaded", function () {
+        function analyticsPath() {
+          var pathname = window.location.pathname.replace(/\/$/, "") || "/";
+          if (pathname === "/blog" || pathname.indexOf("/blog/") === 0) {
+            return pathname;
+          }
+          return "/" + ((window.location.hash || "#home").slice(1) || "home");
+        }
         function trackPawsitivelyPage() {
           if (typeof gtag !== "function") return;
-          const page = (window.location.hash || "#home").slice(1) || "home";
+          var pagePath = analyticsPath();
           gtag("event", "page_view", {
-            page_title: page,
-            page_path: "/" + page,
+            page_title: document.title,
+            page_path: pagePath,
           });
         }
         window.addEventListener("hashchange", trackPawsitivelyPage);
+        window.addEventListener("popstate", trackPawsitivelyPage);
         window.addEventListener("load", trackPawsitivelyPage);
-      });
-    </script>
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var seoTitle = "Pet Services in Darlington & Florence SC | Peedee Pet Care";
-        function applySeoTitle() {
-          if (document.title !== seoTitle) {
-            document.title = seoTitle;
-          }
-          var metaTitle = document.querySelector('meta[name="title"]');
-          if (metaTitle && metaTitle.getAttribute("content") !== seoTitle) {
-            metaTitle.setAttribute("content", seoTitle);
-          }
-        }
-        applySeoTitle();
-        window.addEventListener("load", applySeoTitle);
-        setTimeout(applySeoTitle, 1500);
       });
     </script>
   </body>

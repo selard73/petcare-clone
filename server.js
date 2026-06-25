@@ -29,6 +29,7 @@ const CATEGORY_PAGE_PATHS = {
 };
 const SITEMAP_FILE = path.join(PUBLIC_DIR, "sitemap.xml");
 const { applySeoToIndexHtml } = require("./seo/apply-seo-html");
+const { resolveSeoForPathname, injectSeoIntoHtml, generateSitemapXml } = require("./seo/blog-seo");
 const CANONICAL_ORIGIN = (process.env.CANONICAL_ORIGIN || "https://www.peedeepetcare.com").replace(/\/$/, "");
 const CANONICAL_HOST = new URL(CANONICAL_ORIGIN).hostname.toLowerCase();
 const APEX_HOST = (process.env.APEX_HOST || "peedeepetcare.com").toLowerCase();
@@ -128,27 +129,42 @@ function redirectToCanonicalHost(req, res, url) {
 }
 
 function serveSitemap(req, res) {
-  fs.readFile(SITEMAP_FILE, (err, data) => {
-    if (err) {
-      sendText(res, 500, "Server error");
-      return;
-    }
+  try {
+    const body = generateSitemapXml();
+    const payload = Buffer.from(body, "utf8");
     res.writeHead(200, {
       "Content-Type": "text/xml; charset=utf-8",
       "Cache-Control": "public, max-age=3600",
-      "Content-Length": data.length,
+      "Content-Length": payload.length,
     });
     if (req.method === "HEAD") {
       res.end();
       return;
     }
-    res.end(data);
-  });
+    res.end(payload);
+  } catch {
+    fs.readFile(SITEMAP_FILE, (err, data) => {
+      if (err) {
+        sendText(res, 500, "Server error");
+        return;
+      }
+      res.writeHead(200, {
+        "Content-Type": "text/xml; charset=utf-8",
+        "Cache-Control": "public, max-age=3600",
+        "Content-Length": data.length,
+      });
+      if (req.method === "HEAD") {
+        res.end();
+        return;
+      }
+      res.end(data);
+    });
+  }
 }
 
 let indexHtmlCache = { mtimeMs: 0, body: "" };
 
-function serveIndexHtml(req, res) {
+function serveIndexHtml(req, res, pathname = "/") {
   const indexFile = path.join(PUBLIC_DIR, "index.html");
   fs.stat(indexFile, (statErr, stat) => {
     if (statErr) {
@@ -164,6 +180,10 @@ function serveIndexHtml(req, res) {
       if (stat.mtimeMs !== indexHtmlCache.mtimeMs) {
         body = applySeoToIndexHtml(data.toString("utf8"));
         indexHtmlCache = { mtimeMs: stat.mtimeMs, body };
+      }
+      const pageSeo = resolveSeoForPathname(pathname);
+      if (pageSeo) {
+        body = injectSeoIntoHtml(body, pageSeo);
       }
       const payload = Buffer.from(body, "utf8");
       res.writeHead(200, {
@@ -1980,17 +2000,17 @@ const server = http.createServer(async (req, res) => {
     }
 
     if ((req.method === "GET" || req.method === "HEAD") && (pathname === "/" || pathname === "/index.html")) {
-      serveIndexHtml(req, res);
+      serveIndexHtml(req, res, pathname);
       return;
     }
 
     if ((req.method === "GET" || req.method === "HEAD") && CATEGORY_PAGE_PATHS[pathname]) {
-      serveIndexHtml(req, res);
+      serveIndexHtml(req, res, pathname);
       return;
     }
 
     if ((req.method === "GET" || req.method === "HEAD") && pathname.startsWith("/blog/") && pathname.length > 6 && !path.extname(pathname)) {
-      serveIndexHtml(req, res);
+      serveIndexHtml(req, res, pathname);
       return;
     }
 

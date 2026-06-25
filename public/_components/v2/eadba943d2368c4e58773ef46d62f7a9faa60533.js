@@ -14199,6 +14199,9 @@ function dailyWag({ onNavigate: t }) {
       return g;
     }
   }, selected = posts.find((g) => g.slug === selectedSlug);
+  U(() => {
+    typeof window < "u" && typeof window.__peedeeApplyBlogSeo == "function" && window.__peedeeApplyBlogSeo(selected || null);
+  }, [selected, posts]);
   return /* @__PURE__ */ d("div", { className: "min-h-screen", style: { backgroundColor: "#f9ecea" }, children: [
     /* @__PURE__ */ s("section", { className: "h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", style: { background: "linear-gradient(135deg, #dea5a0 0%, #b84a48 20%, #8e2c32 48%, #6b1e2a 75%, #461018 100%)", color: "#fff8f5" }, children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[10px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
@@ -20242,6 +20245,11 @@ function oy() {
       return;
     }
     console.log("📝 Updating hash to:", t), window.location.hash = t, sessionStorage.setItem("pawsitively_current_page", t), console.log("💾 Saved to sessionStorage:", t);
+    const leavePathname = window.location.pathname.replace(/\/$/, "") || "/";
+    if (leavePathname === "/blog" || leavePathname.startsWith("/blog/")) {
+      window.history.replaceState({}, "", t === "home" ? "/" : "/#" + t);
+    }
+    typeof window.__peedeeRestoreDefaultSeo == "function" && window.__peedeeRestoreDefaultSeo();
   }, [t]), U(() => {
     console.log("🔍 Checking if we need to seed data...");
     const k = ["grooming", "training", "boarding", "sitters", "vet"];

@@ -17,9 +17,6 @@
         if (page && !window.location.hash) {
           window.location.replace("/#" + page);
         }
-        if (window.location.pathname.indexOf("/blog/") === 0 && window.location.pathname.length > 6 && !window.location.hash) {
-          window.location.replace("/#" + window.location.pathname.slice(1));
-        }
       })();
     </script>
     <script>
@@ -74,32 +71,175 @@
       gtag("config", "G-5LESZ1G423");
 
       document.addEventListener("DOMContentLoaded", function () {
+        function analyticsPath() {
+          var pathname = window.location.pathname.replace(/\/$/, "") || "/";
+          if (pathname === "/blog" || pathname.indexOf("/blog/") === 0) {
+            return pathname;
+          }
+          return "/" + ((window.location.hash || "#home").slice(1) || "home");
+        }
         function trackPawsitivelyPage() {
           if (typeof gtag !== "function") return;
-          const page = (window.location.hash || "#home").slice(1) || "home";
+          var pagePath = analyticsPath();
           gtag("event", "page_view", {
-            page_title: page,
-            page_path: "/" + page,
+            page_title: document.title,
+            page_path: pagePath,
           });
         }
         window.addEventListener("hashchange", trackPawsitivelyPage);
+        window.addEventListener("popstate", trackPawsitivelyPage);
         window.addEventListener("load", trackPawsitivelyPage);
       });
     </script>
     <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        var seoTitle = "Pet Services in Darlington & Florence SC | Peedee Pet Care";
-        function applySeoTitle() {
-          if (document.title !== seoTitle) {
-            document.title = seoTitle;
-          }
-          var metaTitle = document.querySelector('meta[name="title"]');
-          if (metaTitle && metaTitle.getAttribute("content") !== seoTitle) {
-            metaTitle.setAttribute("content", seoTitle);
-          }
+      (function () {
+        var ORIGIN = "https://www.peedeepetcare.com";
+        var SITE_TITLE = "Pet Services in Darlington & Florence SC | Peedee Pet Care";
+        var SITE_DESCRIPTION =
+          "Trusted local pet directory for Darlington County and Florence, SC. Find grooming, training, boarding, and vet care. No fees for owners or businesses.";
+        var BLOG_INDEX_TITLE = "The Daily Wag | Pet Care Tips for the Pee Dee | Peedee Pet Care";
+        var BLOG_INDEX_DESCRIPTION =
+          "Helpful articles on grooming, training, boarding, and everyday pet care for pet owners in Florence, Darlington, Hartsville, and the Pee Dee region.";
+        var DEFAULT_OG_IMAGE = ORIGIN + "/og-image.jpg";
+        var defaultSeo = {
+          title: SITE_TITLE,
+          description: SITE_DESCRIPTION,
+          canonical: ORIGIN + "/",
+          ogImage: DEFAULT_OG_IMAGE,
+          ogType: "website",
+        };
+        var postsPromise = null;
+
+        function absoluteUrl(relative) {
+          if (!relative) return DEFAULT_OG_IMAGE;
+          if (/^https?:\/\//i.test(relative)) return relative;
+          return ORIGIN + (relative.charAt(0) === "/" ? "" : "/") + relative;
         }
-        applySeoTitle();
-        window.addEventListener("load", applySeoTitle);
-        setTimeout(applySeoTitle, 1500);
-      });
+
+        function setMeta(attr, key, value) {
+          if (!value) return;
+          var selector = attr === "property" ? 'meta[property="' + key + '"]' : 'meta[name="' + key + '"]';
+          var node = document.querySelector(selector);
+          if (!node) {
+            node = document.createElement("meta");
+            if (attr === "property") node.setAttribute("property", key);
+            else node.setAttribute("name", key);
+            document.head.appendChild(node);
+          }
+          node.setAttribute("content", value);
+        }
+
+        function setCanonical(href) {
+          if (!href) return;
+          var node = document.querySelector('link[rel="canonical"]');
+          if (!node) {
+            node = document.createElement("link");
+            node.setAttribute("rel", "canonical");
+            document.head.appendChild(node);
+          }
+          node.setAttribute("href", href);
+        }
+
+        function applySeoConfig(config) {
+          if (!config) return;
+          document.title = config.title;
+          setMeta("name", "title", config.title);
+          setMeta("name", "description", config.description);
+          setCanonical(config.canonical);
+          setMeta("property", "og:type", config.ogType || "website");
+          setMeta("property", "og:url", config.canonical);
+          setMeta("property", "og:title", config.title);
+          setMeta("property", "og:description", config.description);
+          setMeta("property", "og:image", config.ogImage || DEFAULT_OG_IMAGE);
+          setMeta("name", "twitter:url", config.canonical);
+          setMeta("name", "twitter:title", config.title);
+          setMeta("name", "twitter:description", config.description);
+          setMeta("name", "twitter:image", config.ogImage || DEFAULT_OG_IMAGE);
+        }
+
+        function buildPostSeo(post) {
+          return {
+            title: post.title + " | The Daily Wag | Peedee Pet Care",
+            description: post.excerpt || SITE_DESCRIPTION,
+            canonical: ORIGIN + "/blog/" + post.slug,
+            ogImage: absoluteUrl(post.coverImage),
+            ogType: "article",
+          };
+        }
+
+        function buildBlogIndexSeo() {
+          return {
+            title: BLOG_INDEX_TITLE,
+            description: BLOG_INDEX_DESCRIPTION,
+            canonical: ORIGIN + "/blog",
+            ogImage: DEFAULT_OG_IMAGE,
+            ogType: "website",
+          };
+        }
+
+        function loadPosts() {
+          if (!postsPromise) {
+            postsPromise = fetch("/blog/posts.json")
+              .then(function (res) {
+                return res.ok ? res.json() : { posts: [] };
+              })
+              .then(function (data) {
+                return Array.isArray(data.posts) ? data.posts : [];
+              })
+              .catch(function () {
+                return [];
+              });
+          }
+          return postsPromise;
+        }
+
+        function blogSlugFromPath() {
+          var pathname = window.location.pathname.replace(/\/$/, "") || "/";
+          if (pathname.indexOf("/blog/") === 0 && pathname.length > 6) {
+            return decodeURIComponent(pathname.slice(6));
+          }
+          return null;
+        }
+
+        function isBlogPath() {
+          var pathname = window.location.pathname.replace(/\/$/, "") || "/";
+          return pathname === "/blog" || pathname.indexOf("/blog/") === 0;
+        }
+
+        function refreshBlogSeoFromPath() {
+          if (!isBlogPath()) return;
+          var slug = blogSlugFromPath();
+          if (!slug) {
+            applySeoConfig(buildBlogIndexSeo());
+            return;
+          }
+          loadPosts().then(function (posts) {
+            var post = posts.find(function (item) {
+              return item.slug === slug;
+            });
+            applySeoConfig(post ? buildPostSeo(post) : buildBlogIndexSeo());
+          });
+        }
+
+        window.__peedeeApplyBlogSeo = function (post) {
+          if (post) {
+            applySeoConfig(buildPostSeo(post));
+            return;
+          }
+          if (isBlogPath()) {
+            refreshBlogSeoFromPath();
+            return;
+          }
+          applySeoConfig(defaultSeo);
+        };
+
+        window.__peedeeRestoreDefaultSeo = function () {
+          applySeoConfig(defaultSeo);
+        };
+
+        document.addEventListener("DOMContentLoaded", function () {
+          refreshBlogSeoFromPath();
+        });
+        window.addEventListener("popstate", refreshBlogSeoFromPath);
+      })();
     </script>
