@@ -201,6 +201,87 @@ function buildOrganizationNode() {
   };
 }
 
+function categoryHref(navigate) {
+  const paths = {
+    grooming: "/grooming",
+    training: "/training",
+    boarding: "/boarding",
+    sitters: "/sitters",
+    vet: "/vet-care",
+  };
+  return paths[navigate] || "/";
+}
+
+function renderPostBlockHtml(block) {
+  if (!block || !block.type) {
+    return "";
+  }
+  switch (block.type) {
+    case "p":
+      return `<p>${escapeHtml(block.text)}</p>`;
+    case "h2":
+      return `<h3>${escapeHtml(block.text)}</h3>`;
+    case "ul":
+      return `<ul>${(block.items || [])
+        .map((item) => {
+          if (typeof item === "string") {
+            return `<li>${escapeHtml(item)}</li>`;
+          }
+          const label = item.label ? `<strong>${escapeHtml(item.label)}</strong> ` : "";
+          return `<li>${label}${escapeHtml(item.text || "")}</li>`;
+        })
+        .join("")}</ul>`;
+    case "ol":
+      return `<ol>${(block.items || [])
+        .map((item) => `<li>${escapeHtml(typeof item === "string" ? item : item.text || "")}</li>`)
+        .join("")}</ol>`;
+    case "blockquote": {
+      const link = block.linkHref
+        ? ` <a href="${escapeHtml(block.linkHref)}" rel="noopener noreferrer">${escapeHtml(block.linkText || block.linkHref)}</a>`
+        : "";
+      const label = block.label ? `<strong>${escapeHtml(block.label)}</strong> ` : "";
+      return `<p>${label}${escapeHtml(block.text || "")}${link}</p>`;
+    }
+    case "img":
+      return `<p>${escapeHtml(block.alt || block.caption || "")}${block.caption && block.alt ? `: ${escapeHtml(block.caption)}` : ""}</p>`;
+    case "cta": {
+      const paras = (block.paragraphs || []).map((text) => `<p>${escapeHtml(text)}</p>`).join("");
+      const href = categoryHref(block.navigate);
+      const button = block.buttonText
+        ? `<p><a href="${escapeHtml(href)}">${escapeHtml(block.buttonText)}</a></p>`
+        : "";
+      return `<h3>${escapeHtml(block.heading || "")}</h3>${paras}${button}`;
+    }
+    default:
+      return block.text ? `<p>${escapeHtml(block.text)}</p>` : "";
+  }
+}
+
+function renderPostBodyHtml(post) {
+  if (Array.isArray(post.blocks) && post.blocks.length) {
+    return post.blocks.map(renderPostBlockHtml).join("\n  ");
+  }
+  if (Array.isArray(post.body) && post.body.length) {
+    return post.body.map((paragraph) => `<p>${escapeHtml(paragraph)}</p>`).join("\n  ");
+  }
+  if (post.excerpt) {
+    return `<p>${escapeHtml(post.excerpt)}</p>`;
+  }
+  return "";
+}
+
+function renderPostArticleSectionHtml(post) {
+  const url = `/blog/${encodeURIComponent(post.slug)}`;
+  const meta = [post.date, post.readMinutes ? `${post.readMinutes} min read` : ""].filter(Boolean).join(" · ");
+  return `<article id="blog-post-${escapeHtml(post.slug)}">
+  <h2><a href="${escapeHtml(url)}">${escapeHtml(post.title)}</a></h2>
+  ${meta ? `<p><em>${escapeHtml(meta)}</em></p>` : ""}
+  ${post.excerpt ? `<p>${escapeHtml(post.excerpt)}</p>` : ""}
+  ${renderPostBodyHtml(post)}
+  <p><a href="${escapeHtml(url)}">Read full article: ${escapeHtml(post.title)}</a></p>
+</article>`;
+}
+
 function buildBlogIndexJsonLd() {
   const posts = loadBlogPosts();
   const blogPostNodes = posts.map((post, index) => ({
@@ -273,6 +354,7 @@ function buildBlogIndexSeoContentHtml() {
         `<li><a href="/blog/${escapeHtml(post.slug)}">${escapeHtml(post.title)}</a> — ${escapeHtml(post.excerpt || "")} <em>(${escapeHtml(post.date || "")}, ${escapeHtml(String(post.readMinutes || ""))} min read)</em></li>`,
     )
     .join("\n    ");
+  const fullArticles = posts.map(renderPostArticleSectionHtml).join("\n  ");
 
   return `<div id="seo-content" class="seo-content">
   <h1>The Daily Wag — Pet Care Tips for the Pee Dee</h1>
@@ -280,12 +362,15 @@ function buildBlogIndexSeoContentHtml() {
     The Daily Wag is the blog of <a href="/">Peedee Pet Care</a>, a free local pet services directory for
     Darlington County and Florence, SC. We publish practical guides to help pet owners choose groomers,
     trainers, boarders, and other providers listed in our directory. Peedee Pet Care is a directory — not a
-    veterinary clinic, grooming salon, boarding kennel, or pet sitting service.
+    veterinary clinic, grooming salon, boarding kennel, or pet sitting service. Browse the full articles below
+    without JavaScript.
   </p>
-  <h2>Articles</h2>
+  <h2>Article Index</h2>
   <ul>
     ${articleItems}
   </ul>
+  <h2>Full Articles</h2>
+  ${fullArticles}
   <h2>Find Local Providers</h2>
   <p>
     After reading a guide, browse live listings:
@@ -328,6 +413,77 @@ function replaceJsonLd(html, jsonLd) {
   );
 }
 
+function buildBlogPostJsonLd(post) {
+  const blogPostNode = {
+    "@type": "BlogPosting",
+    "@id": `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}#article`,
+    headline: post.title,
+    description: post.excerpt || post.description || "",
+    datePublished: post.date,
+    url: `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}`,
+    mainEntityOfPage: `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}`,
+    author: { "@id": `${CANONICAL_ORIGIN}/#organization` },
+    publisher: { "@id": `${CANONICAL_ORIGIN}/#organization` },
+    image: post.coverImage ? absoluteUrl(post.coverImage) : DEFAULT_OG_IMAGE,
+    isPartOf: { "@id": `${CANONICAL_ORIGIN}/blog#blog` },
+  };
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      buildOrganizationNode(),
+      blogPostNode,
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}#breadcrumb`,
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+            name: "Home",
+            item: `${CANONICAL_ORIGIN}/`,
+          },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "The Daily Wag",
+            item: `${CANONICAL_ORIGIN}/blog`,
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: post.title,
+            item: `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}`,
+          },
+        ],
+      },
+    ],
+  };
+}
+
+function buildBlogPostSeoContentHtml(post) {
+  return `<div id="seo-content" class="seo-content">
+  <p><a href="/blog">The Daily Wag</a> · <a href="/">Peedee Pet Care</a></p>
+  ${renderPostArticleSectionHtml(post)}
+  <h2>Find Local Providers</h2>
+  <p>
+    Browse listings on Peedee Pet Care:
+    <a href="/grooming">grooming</a>,
+    <a href="/training">training</a>,
+    <a href="/boarding">boarding</a>,
+    <a href="/sitters">sitters</a>, and
+    <a href="/vet-care">vet care</a> in Darlington County and Florence, SC.
+  </p>
+</div>`;
+}
+
+function injectBlogPostEnhancements(html, post) {
+  let result = html;
+  result = replaceSeoContentBlock(result, buildBlogPostSeoContentHtml(post));
+  result = replaceJsonLd(result, buildBlogPostJsonLd(post));
+  return result;
+}
+
 function injectBlogIndexEnhancements(html) {
   let result = html;
   result = replaceSeoContentBlock(result, buildBlogIndexSeoContentHtml());
@@ -339,6 +495,13 @@ function injectBlogEnhancements(html, pathname) {
   const normalized = pathname.replace(/\/+$/, "") || "/";
   if (normalized === "/blog") {
     return injectBlogIndexEnhancements(html);
+  }
+  if (normalized.startsWith("/blog/") && normalized.length > 6) {
+    const slug = decodeURIComponent(normalized.slice(6));
+    const post = getBlogPostBySlug(slug);
+    if (post) {
+      return injectBlogPostEnhancements(html, post);
+    }
   }
   return html;
 }
