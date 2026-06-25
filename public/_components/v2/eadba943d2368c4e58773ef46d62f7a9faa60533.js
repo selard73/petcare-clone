@@ -14158,8 +14158,8 @@ function dailyWag({ onNavigate: t }) {
       return g;
     }
   }, selected = posts.find((g) => g.slug === selectedSlug);
-  return /* @__PURE__ */ d("div", { className: "min-h-screen", style: { backgroundColor: "#f7f0e8" }, children: [
-    /* @__PURE__ */ s("section", { className: "h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", style: { background: "linear-gradient(135deg, #e8c9a0 0%, #c49a6c 30%, #9c7348 62%, #5d4032 100%)", color: "#fffaf5" }, children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[10px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
+  return /* @__PURE__ */ d("div", { className: "min-h-screen", style: { backgroundColor: "#faf2ef" }, children: [
+    /* @__PURE__ */ s("section", { className: "h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", style: { background: "linear-gradient(135deg, #e4b5a8 0%, #c47866 28%, #994839 58%, #6b2f28 100%)", color: "#fff8f5" }, children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[10px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0, y: 30 },
@@ -14181,29 +14181,29 @@ function dailyWag({ onNavigate: t }) {
         ]
       }
     ) }) }),
-    /* @__PURE__ */ s("div", { className: "max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12", style: { backgroundColor: "#f7f0e8" }, children: [
+    /* @__PURE__ */ s("div", { className: "max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12", style: { backgroundColor: "#faf2ef" }, children: [
       error && /* @__PURE__ */ s("div", { className: "mb-6 p-4 rounded-lg border", style: { backgroundColor: "#fef2f2", color: "#b91c1c", borderColor: "#fecaca" }, children: error }),
-      loading && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8a7968" }, children: "Loading articles…" }),
-      !loading && selected && /* @__PURE__ */ d("article", { className: "rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4b896", boxShadow: "0 4px 6px -1px rgba(93,64,50,0.1)" }, children: [
+      loading && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8a6a62" }, children: "Loading articles…" }),
+      !loading && selected && /* @__PURE__ */ d("article", { className: "rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4a090", boxShadow: "0 4px 6px -1px rgba(107,47,40,0.12)" }, children: [
         /* @__PURE__ */ s(
           "button",
           {
             type: "button",
             onClick: backToList,
             className: "text-sm font-medium mb-6 flex items-center gap-1 hover:underline",
-            style: { color: "#8b5e3c" },
+            style: { color: "#994839" },
             children: "← Back to The Daily Wag"
           }
         ),
-        /* @__PURE__ */ s("h2", { className: "text-2xl md:text-3xl font-semibold leading-snug mb-3", style: { color: "#5d4032" }, children: selected.title }),
-        /* @__PURE__ */ d("p", { className: "text-sm mb-6", style: { color: "#8a7968" }, children: [
+        /* @__PURE__ */ s("h2", { className: "text-2xl md:text-3xl font-semibold leading-snug mb-3", style: { color: "#6b2f28" }, children: selected.title }),
+        /* @__PURE__ */ d("p", { className: "text-sm mb-6", style: { color: "#8a6a62" }, children: [
           formatDate(selected.date),
           selected.readMinutes ? ` · ${selected.readMinutes} min read` : ""
         ] }),
         /* @__PURE__ */ s("div", { className: "space-y-4", children: (selected.body || []).map((g, b) => /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed", style: { color: "#44403c" }, children: g }, `${selected.slug}-${b}`)) })
       ] }),
       !loading && !selected && /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))`, gap: "20px" }, children: [
-        posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8a7968", gridColumn: "1 / -1" }, children: "New articles coming soon." }),
+        posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8a6a62", gridColumn: "1 / -1" }, children: "New articles coming soon." }),
         posts.map((g, b) => /* @__PURE__ */ s(
           D.a,
           {
@@ -14215,9 +14215,9 @@ function dailyWag({ onNavigate: t }) {
               ev.preventDefault(), openPost(g.slug);
             },
             className: "block text-left rounded-2xl p-5 md:p-6 transition-all hover:shadow-lg no-underline",
-            style: { backgroundColor: "#ffffff", border: "1px solid #d4b896", boxShadow: "0 2px 4px rgba(93,64,50,0.08)", color: "inherit" },
+            style: { backgroundColor: "#ffffff", border: "1px solid #d4a090", boxShadow: "0 2px 4px rgba(107,47,40,0.1)", color: "inherit" },
             children: /* @__PURE__ */ d("div", { children: [
-              /* @__PURE__ */ s("h2", { className: "text-lg md:text-xl font-semibold leading-snug mb-2", style: { color: "#5d4032" }, children: g.title }),
+              /* @__PURE__ */ s("h2", { className: "text-lg md:text-xl font-semibold leading-snug mb-2", style: { color: "#6b2f28" }, children: g.title }),
               /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed mb-3", style: { color: "#78716c" }, children: g.excerpt }),
               /* @__PURE__ */ d("p", { className: "text-xs", style: { color: "#a8a29e" }, children: [
                 formatDate(g.date),
