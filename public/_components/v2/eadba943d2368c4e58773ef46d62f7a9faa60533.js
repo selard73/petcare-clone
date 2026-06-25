@@ -14227,7 +14227,7 @@ function dailyWag({ onNavigate: t }) {
         ]
       }
     ) }) }),
-    /* @__PURE__ */ s("div", { className: "max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12", style: { backgroundColor: "#f9ecea" }, children: [
+    /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12", style: { backgroundColor: "#f9ecea", width: "100%" }, children: [
       error && /* @__PURE__ */ s("div", { className: "mb-6 p-4 rounded-lg border", style: { backgroundColor: "#fef2f2", color: "#b91c1c", borderColor: "#fecaca" }, children: error }),
       loading && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: "Loading articles…" }),
       !loading && selected && /* @__PURE__ */ d("article", { className: "rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 4px 6px -1px rgba(110,26,40,0.14)" }, children: [
@@ -14248,7 +14248,7 @@ function dailyWag({ onNavigate: t }) {
         ] }),
         /* @__PURE__ */ s("div", { className: "space-y-4", children: (selected.blocks || selected.body || []).map((g, b) => renderBlogBlock(g, selected.slug, b, t)) })
       ] }),
-      !loading && !selected && /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))`, gap: "20px" }, children: [
+      !loading && !selected && /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))`, gap: gridCols > 1 ? "40px" : "24px", width: "100%" }, children: [
         posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c", gridColumn: "1 / -1" }, children: "New articles coming soon." }),
         posts.map((g, b) => /* @__PURE__ */ s(
           D.a,
@@ -14260,16 +14260,18 @@ function dailyWag({ onNavigate: t }) {
             onClick: (ev) => {
               ev.preventDefault(), openPost(g.slug);
             },
-            className: "block text-left rounded-2xl p-5 md:p-6 transition-all hover:shadow-lg no-underline",
-            style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 2px 4px rgba(110,26,40,0.12)", color: "inherit" },
-            children: /* @__PURE__ */ d("div", { children: [
-              g.coverImage && /* @__PURE__ */ s("img", { src: g.coverImage, alt: "", className: "w-full h-40 object-cover rounded-xl mb-4" }),
-              /* @__PURE__ */ s("h2", { className: "text-lg md:text-xl font-semibold leading-snug mb-2", style: { color: "#6b1e2a" }, children: g.title }),
-              /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed mb-3", style: { color: "#78716c" }, children: g.excerpt }),
-              /* @__PURE__ */ d("p", { className: "text-xs", style: { color: "#a8a29e" }, children: [
-                formatDate(g.date),
-                g.readMinutes ? ` · ${g.readMinutes} min read` : "",
-                " · Read more →"
+            className: "block text-left rounded-2xl transition-all hover:shadow-lg no-underline",
+            style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 2px 4px rgba(110,26,40,0.12)", color: "inherit", padding: "16px", minHeight: gridCols > 1 ? "168px" : "auto" },
+            children: /* @__PURE__ */ d("div", { style: { display: "flex", flexDirection: "row", gap: "16px", alignItems: "stretch", height: "100%" }, children: [
+              g.coverImage && /* @__PURE__ */ s("img", { src: g.coverImage, alt: "", style: { width: gridCols > 1 ? "42%" : "36%", maxWidth: gridCols > 1 ? "280px" : "140px", minWidth: "110px", minHeight: "120px", objectFit: "cover", borderRadius: "12px", flexShrink: 0, alignSelf: "stretch" } }),
+              /* @__PURE__ */ d("div", { style: { flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", minWidth: 0, padding: "4px 4px 4px 0" }, children: [
+                /* @__PURE__ */ s("h2", { className: "text-base md:text-lg font-semibold leading-snug mb-2", style: { color: "#6b1e2a" }, children: g.title }),
+                /* @__PURE__ */ s("p", { className: "text-sm leading-relaxed mb-2 line-clamp-3", style: { color: "#78716c" }, children: g.excerpt }),
+                /* @__PURE__ */ d("p", { className: "text-xs mt-auto", style: { color: "#a8a29e" }, children: [
+                  formatDate(g.date),
+                  g.readMinutes ? ` · ${g.readMinutes} min read` : "",
+                  " · Read more →"
+                ] })
               ] })
             ] })
           },
