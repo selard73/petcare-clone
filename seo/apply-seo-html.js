@@ -19,6 +19,7 @@ function loadFragments() {
     headInject: fs.readFileSync(path.join(FRAGMENTS_DIR, "head-inject.html"), "utf8").trim(),
     seoContent: fs.readFileSync(path.join(FRAGMENTS_DIR, "seo-content.html"), "utf8").trim(),
     bodyScriptsExtra: fs.readFileSync(path.join(FRAGMENTS_DIR, "body-scripts-extra.html"), "utf8").trim(),
+    figmaRuntime: fs.readFileSync(path.join(FRAGMENTS_DIR, "figma-runtime.html"), "utf8").trim(),
   };
   return fragmentCache;
 }
@@ -147,6 +148,10 @@ function orderScripts(figmaScripts) {
 }
 
 function applySeoToIndexHtml(html) {
+  if (html.includes(MARKER_SCRIPTS_END) && html.includes("new SitesRuntime")) {
+    return minifyJsonLd(html);
+  }
+
   const fragments = loadFragments();
   let result = html;
 
@@ -167,6 +172,7 @@ function applySeoToIndexHtml(html) {
   );
 
   const orderedFigmaScripts = orderScripts(figmaScripts)
+    .filter((script) => !/type=["']module["']/i.test(script.attrs))
     .map(scriptToHtml)
     .join("\n    ");
 
@@ -176,6 +182,7 @@ function applySeoToIndexHtml(html) {
     fragments.seoContent,
     MARKER_CONTENT_END,
     fragments.bodyScriptsExtra.trim(),
+    fragments.figmaRuntime.trim(),
     orderedFigmaScripts,
     MARKER_SCRIPTS_END,
   ]
