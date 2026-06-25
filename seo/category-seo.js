@@ -2,6 +2,7 @@ const { CANONICAL_ORIGIN, getBlogPostBySlug } = require("./blog-seo");
 
 const SEO_CONTENT_START = "<!-- peedee-seo-content:start -->";
 const SEO_CONTENT_END = "<!-- peedee-seo-content:end -->";
+const DIRECTORY_CONTACT_EMAIL = "hello@peedeepetcare.com";
 
 const PATH_ALIASES = {
   "/vet": "/vet-care",
@@ -504,7 +505,7 @@ function buildOrganizationNode() {
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
-      email: "hello@peedeepetcare.com",
+      email: DIRECTORY_CONTACT_EMAIL,
       areaServed: "US-SC",
       availableLanguage: "English",
     },
@@ -690,6 +691,7 @@ function buildCategorySeoContentHtml(config, listings = []) {
   return `<div id="seo-content" class="seo-content">
   <h1>${escapeHtml(config.h1)}</h1>
   <p>${escapeHtml(config.intro)}</p>
+  <p>Directory questions or listing requests: <a href="mailto:${escapeHtml(DIRECTORY_CONTACT_EMAIL)}">${escapeHtml(DIRECTORY_CONTACT_EMAIL)}</a>.</p>
   ${sections}
   ${buildListingsSectionHtml(listings)}
   ${appendRelatedBlogExcerpt(config)}
