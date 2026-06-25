@@ -14114,10 +14114,13 @@ function eo({ editProduct: t, onClose: e }) {
   ] });
 }
 function dailyWag({ onNavigate: t }) {
-  const [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => {
-    const h = window.location.hash.slice(1);
-    return h.startsWith("blog/") ? h.slice(5) : null;
-  });
+  const blogSlugFromLocation = () => {
+    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+    if (pathname.startsWith("/blog/") && pathname.length > 6)
+      return decodeURIComponent(pathname.slice(6));
+    const hash = window.location.hash.slice(1);
+    return hash.startsWith("blog/") ? hash.slice(5) : null;
+  }, [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => blogSlugFromLocation()), [gridCols, setGridCols] = E(() => typeof window < "u" && window.matchMedia("(min-width: 768px)").matches ? 2 : 1);
   U(() => {
     (async () => {
       setLoading(!0), setError("");
@@ -14134,16 +14137,20 @@ function dailyWag({ onNavigate: t }) {
     })();
   }, []);
   U(() => {
-    const g = () => {
-      const b = window.location.hash.slice(1);
-      setSelectedSlug(b.startsWith("blog/") ? b.slice(5) : null);
+    const mq = window.matchMedia("(min-width: 768px)"), apply = () => setGridCols(mq.matches ? 2 : 1);
+    apply(), mq.addEventListener("change", apply);
+    return () => mq.removeEventListener("change", apply);
+  }, []);
+  U(() => {
+    const sync = () => setSelectedSlug(blogSlugFromLocation());
+    return window.addEventListener("popstate", sync), window.addEventListener("hashchange", sync), () => {
+      window.removeEventListener("popstate", sync), window.removeEventListener("hashchange", sync);
     };
-    return window.addEventListener("hashchange", g), () => window.removeEventListener("hashchange", g);
   }, []);
   const openPost = (g) => {
-    setSelectedSlug(g), window.location.hash = "blog/" + g;
+    setSelectedSlug(g), window.history.pushState({ blogSlug: g }, "", "/blog/" + g), window.scrollTo(0, 0);
   }, backToList = () => {
-    setSelectedSlug(null), window.location.hash = "blog";
+    setSelectedSlug(null), window.history.pushState({}, "", "/blog"), window.scrollTo(0, 0);
   }, formatDate = (g) => {
     try {
       return new Date(g).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" });
@@ -14151,8 +14158,8 @@ function dailyWag({ onNavigate: t }) {
       return g;
     }
   }, selected = posts.find((g) => g.slug === selectedSlug);
-  return /* @__PURE__ */ d("div", { className: "min-h-screen", style: { backgroundColor: "#fffbeb" }, children: [
-    /* @__PURE__ */ s("section", { className: "h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", style: { background: "linear-gradient(135deg, #f59e0b 0%, #ea580c 45%, #db2777 100%)", color: "#ffffff" }, children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[10px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
+  return /* @__PURE__ */ d("div", { className: "min-h-screen", style: { backgroundColor: "#f7f0e8" }, children: [
+    /* @__PURE__ */ s("section", { className: "h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", style: { background: "linear-gradient(135deg, #e8c9a0 0%, #c49a6c 30%, #9c7348 62%, #5d4032 100%)", color: "#fffaf5" }, children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[10px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0, y: 30 },
@@ -14160,56 +14167,58 @@ function dailyWag({ onNavigate: t }) {
         className: "text-center",
         children: [
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
-            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", style: { color: "#ffffff" }, children: "The Daily Wag" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center leading-tight mt-0.5", style: { color: "rgba(255,255,255,0.92)" }, children: "Pet care tips & guides" })
+            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", style: { color: "#fffaf5" }, children: "The Daily Wag" }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center leading-tight mt-0.5", style: { color: "rgba(255,250,245,0.92)" }, children: "Pet care tips & guides" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(D.div, { animate: { rotate: [0, 8, -8, 0] }, transition: { duration: 2, repeat: 1 / 0 }, className: "md:text-4xl", children: "📰" }),
-            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", style: { color: "#ffffff" }, children: "The Daily Wag" })
+            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", style: { color: "#fffaf5" }, children: "The Daily Wag" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
-            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", style: { color: "#ffffff" }, children: "Helpful articles on grooming, training, boarding, and everyday pet care in the Pee Dee." }),
-            /* @__PURE__ */ s("p", { className: "text-sm leading-relaxed mt-2", style: { color: "rgba(255,255,255,0.9)" }, children: "Practical advice for pet owners in Darlington, Hartsville, and Florence." })
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", style: { color: "#fffaf5" }, children: "Helpful articles on grooming, training, boarding, and everyday pet care in the Pee Dee." }),
+            /* @__PURE__ */ s("p", { className: "text-sm leading-relaxed mt-2", style: { color: "rgba(255,250,245,0.88)" }, children: "Practical advice for pet owners in Darlington, Hartsville, and Florence." })
           ] })
         ]
       }
     ) }) }),
-    /* @__PURE__ */ s("div", { className: "max-w-3xl mx-auto px-4 sm:px-6 py-8 md:py-12", style: { backgroundColor: "#fffbeb" }, children: [
+    /* @__PURE__ */ s("div", { className: "max-w-5xl mx-auto px-4 sm:px-6 py-8 md:py-12", style: { backgroundColor: "#f7f0e8" }, children: [
       error && /* @__PURE__ */ s("div", { className: "mb-6 p-4 rounded-lg border", style: { backgroundColor: "#fef2f2", color: "#b91c1c", borderColor: "#fecaca" }, children: error }),
-      loading && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#6b7280" }, children: "Loading articles…" }),
-      !loading && selected && /* @__PURE__ */ d("article", { className: "rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #fde68a", boxShadow: "0 4px 6px -1px rgba(0,0,0,0.08)" }, children: [
+      loading && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8a7968" }, children: "Loading articles…" }),
+      !loading && selected && /* @__PURE__ */ d("article", { className: "rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4b896", boxShadow: "0 4px 6px -1px rgba(93,64,50,0.1)" }, children: [
         /* @__PURE__ */ s(
           "button",
           {
             type: "button",
             onClick: backToList,
             className: "text-sm font-medium mb-6 flex items-center gap-1 hover:underline",
-            style: { color: "#c2410c" },
+            style: { color: "#8b5e3c" },
             children: "← Back to The Daily Wag"
           }
         ),
-        /* @__PURE__ */ s("h2", { className: "text-2xl md:text-3xl font-semibold leading-snug mb-3", style: { color: "#92400e" }, children: selected.title }),
-        /* @__PURE__ */ d("p", { className: "text-sm mb-6", style: { color: "#78716c" }, children: [
+        /* @__PURE__ */ s("h2", { className: "text-2xl md:text-3xl font-semibold leading-snug mb-3", style: { color: "#5d4032" }, children: selected.title }),
+        /* @__PURE__ */ d("p", { className: "text-sm mb-6", style: { color: "#8a7968" }, children: [
           formatDate(selected.date),
           selected.readMinutes ? ` · ${selected.readMinutes} min read` : ""
         ] }),
-        /* @__PURE__ */ s("div", { className: "space-y-4", children: (selected.body || []).map((g, b) => /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed", style: { color: "#374151" }, children: g }, `${selected.slug}-${b}`)) })
+        /* @__PURE__ */ s("div", { className: "space-y-4", children: (selected.body || []).map((g, b) => /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed", style: { color: "#44403c" }, children: g }, `${selected.slug}-${b}`)) })
       ] }),
-      !loading && !selected && /* @__PURE__ */ d("div", { className: "space-y-5", children: [
-        posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#6b7280" }, children: "New articles coming soon." }),
+      !loading && !selected && /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: `repeat(${gridCols}, minmax(0, 1fr))`, gap: "20px" }, children: [
+        posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8a7968", gridColumn: "1 / -1" }, children: "New articles coming soon." }),
         posts.map((g, b) => /* @__PURE__ */ s(
-          D.button,
+          D.a,
           {
-            type: "button",
+            href: `/blog/${g.slug}`,
             initial: { opacity: 0, y: 16 },
             animate: { opacity: 1, y: 0 },
             transition: { delay: b * 0.08 },
-            onClick: () => openPost(g.slug),
-            className: "w-full text-left rounded-2xl p-5 md:p-6 transition-all hover:shadow-lg",
-            style: { backgroundColor: "#ffffff", border: "1px solid #fde68a", boxShadow: "0 2px 4px rgba(0,0,0,0.06)" },
+            onClick: (ev) => {
+              ev.preventDefault(), openPost(g.slug);
+            },
+            className: "block text-left rounded-2xl p-5 md:p-6 transition-all hover:shadow-lg no-underline",
+            style: { backgroundColor: "#ffffff", border: "1px solid #d4b896", boxShadow: "0 2px 4px rgba(93,64,50,0.08)", color: "inherit" },
             children: /* @__PURE__ */ d("div", { children: [
-              /* @__PURE__ */ s("h2", { className: "text-lg md:text-xl font-semibold leading-snug mb-2", style: { color: "#92400e" }, children: g.title }),
-              /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed mb-3", style: { color: "#57534e" }, children: g.excerpt }),
+              /* @__PURE__ */ s("h2", { className: "text-lg md:text-xl font-semibold leading-snug mb-2", style: { color: "#5d4032" }, children: g.title }),
+              /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed mb-3", style: { color: "#78716c" }, children: g.excerpt }),
               /* @__PURE__ */ d("p", { className: "text-xs", style: { color: "#a8a29e" }, children: [
                 formatDate(g.date),
                 g.readMinutes ? ` · ${g.readMinutes} min read` : "",
@@ -20133,6 +20142,9 @@ function sy() {
 }
 function oy() {
   const [t, e] = E(() => {
+    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+    if (pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6)
+      return console.log("✅ Using pathname for blog:", pathname), "blog";
     const k = window.location.hash.slice(1);
     console.log("🎬 Initializing - URL hash:", k);
     const I = sessionStorage.getItem("pawsitively_current_page");
@@ -20140,6 +20152,9 @@ function oy() {
     const z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "shortlist", "blog"], A0 = (k) => k && (k === "blog" || k.startsWith("blog/")) ? "blog" : k && z.includes(k) && !(k === "about" && window.innerWidth >= 768) ? k : null;
     return A0(k) ? (console.log("✅ Using hash:", k), A0(k)) : A0(I) ? (console.log("✅ Using sessionStorage:", I), A0(I)) : (console.log("📍 No valid page found, defaulting to home"), "home");
   }), [r, n] = E(() => {
+    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+    if (pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6)
+      return [pathname.startsWith("/blog/") && pathname.length > 6 ? "blog/" + decodeURIComponent(pathname.slice(6)) : "blog"];
     const k = window.location.hash.slice(1), I = sessionStorage.getItem("pawsitively_current_page"), z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "shortlist", "blog"], A0 = (G) => G && (G === "blog" || G.startsWith("blog/")) ? "blog" : G && z.includes(G) && !(G === "about" && window.innerWidth >= 768) ? G : null;
     return A0(k) ? [k] : A0(I) ? [I] : ["home"];
   }), [i, o] = E(!1), [a, l] = E(!1), [c, u] = E("guest"), [h, p] = E("signup"), [m, f] = E(null), [v, g] = E(null), [b, w] = E(!1), [x, T] = E(0), [Pv, Nv] = E(null), [Iv, zv] = E(null), { user: P, login: N, logout: S } = vi(), C = (k) => {
@@ -20166,11 +20181,17 @@ function oy() {
     k && (zv(k), o(!0), window.history.replaceState({}, "", window.location.pathname + window.location.hash));
   }, []), U(() => {
     if (t === "blog") {
+      sessionStorage.setItem("pawsitively_current_page", "blog");
+      const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+      if (pathname === "/blog" || pathname.startsWith("/blog/"))
+        return;
       const k = window.location.hash.slice(1);
       if (k === "blog" || k.startsWith("blog/")) {
-        sessionStorage.setItem("pawsitively_current_page", "blog");
+        window.history.replaceState({}, "", k.startsWith("blog/") ? "/blog/" + k.slice(5) : "/blog");
         return;
       }
+      window.history.replaceState({}, "", "/blog");
+      return;
     }
     console.log("📝 Updating hash to:", t), window.location.hash = t, sessionStorage.setItem("pawsitively_current_page", t), console.log("💾 Saved to sessionStorage:", t);
   }, [t]), U(() => {
