@@ -7103,9 +7103,9 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         className: "text-center",
         children: [
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
-            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Grooming Services" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Snip, scrub, sparkle — locally." }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Trusted groomers in Darlington, Hartsville & Florence." })
+            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Dog Groomers Directory" }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory — compare local groomers." }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Independent groomers in Darlington, Hartsville & Florence." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(
@@ -7117,10 +7117,10 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 children: "✂️"
               }
             ),
-            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Grooming Services" })
+            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Dog Groomers Directory" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
-            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Compare trusted groomers in Darlington, Hartsville and Florence — from basic baths to full spa care." }),
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory — compare trusted groomers in Darlington, Hartsville and Florence." }),
             /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Read reviews and find the right groomer for your pet." })
           ] })
         ]
@@ -8024,7 +8024,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
           /* @__PURE__ */ s("h2", { className: "mb-8", children: "Grooming Tips" }),
           /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [
             { icon: "📅", title: "Regular Visits", text: "Schedule grooming every 4-8 weeks" },
-            { icon: "🧴", title: "Quality Products", text: "We use premium, pet-safe products" },
+            { icon: "🧴", title: "Quality Products", text: "Ask about pet-safe products used" },
             { icon: "💖", title: "Stress-Free", text: "Gentle handling for anxious pets" }
           ].map((y, F) => /* @__PURE__ */ d(
             D.div,
@@ -20249,7 +20249,7 @@ function oy() {
     if (leavePathname === "/blog" || leavePathname.startsWith("/blog/")) {
       window.history.replaceState({}, "", t === "home" ? "/" : "/#" + t);
     }
-    typeof window.__peedeeRestoreDefaultSeo == "function" && window.__peedeeRestoreDefaultSeo();
+    typeof window.__peedeeRefreshRouteSeo == "function" ? window.__peedeeRefreshRouteSeo(t) : typeof window.__peedeeRestoreDefaultSeo == "function" && window.__peedeeRestoreDefaultSeo();
   }, [t]), U(() => {
     console.log("🔍 Checking if we need to seed data...");
     const k = ["grooming", "training", "boarding", "sitters", "vet"];

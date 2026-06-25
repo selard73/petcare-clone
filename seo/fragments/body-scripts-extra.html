@@ -109,6 +109,44 @@
           ogType: "website",
         };
         var postsPromise = null;
+        var CATEGORY_PAGE_KEYS = {
+          grooming: "/grooming",
+          training: "/training",
+          boarding: "/boarding",
+          sitters: "/sitters",
+          vet: "/vet-care",
+          products: "/products",
+        };
+
+        function categorySeoFromPathname() {
+          var pathname = window.location.pathname.replace(/\/$/, "") || "/";
+          if (window.__peedeeCategorySeo && window.__peedeeCategorySeo[pathname]) {
+            return window.__peedeeCategorySeo[pathname];
+          }
+          return null;
+        }
+
+        function categorySeoFromPageKey(pageKey) {
+          if (!pageKey) return null;
+          var pathname = CATEGORY_PAGE_KEYS[pageKey];
+          if (pathname && window.__peedeeCategorySeo && window.__peedeeCategorySeo[pathname]) {
+            return window.__peedeeCategorySeo[pathname];
+          }
+          return null;
+        }
+
+        function refreshRouteSeo(pageKey) {
+          if (isBlogPath()) {
+            refreshBlogSeoFromPath();
+            return;
+          }
+          var categorySeo = categorySeoFromPathname() || categorySeoFromPageKey(pageKey);
+          if (categorySeo) {
+            applySeoConfig(categorySeo);
+            return;
+          }
+          applySeoConfig(defaultSeo);
+        }
 
         function absoluteUrl(relative) {
           if (!relative) return DEFAULT_OG_IMAGE;
@@ -230,16 +268,20 @@
             refreshBlogSeoFromPath();
             return;
           }
-          applySeoConfig(defaultSeo);
+          refreshRouteSeo();
         };
 
         window.__peedeeRestoreDefaultSeo = function () {
-          applySeoConfig(defaultSeo);
+          refreshRouteSeo();
         };
 
+        window.__peedeeRefreshRouteSeo = refreshRouteSeo;
+
         document.addEventListener("DOMContentLoaded", function () {
-          refreshBlogSeoFromPath();
+          refreshRouteSeo();
         });
-        window.addEventListener("popstate", refreshBlogSeoFromPath);
+        window.addEventListener("popstate", function () {
+          refreshRouteSeo();
+        });
       })();
     </script>

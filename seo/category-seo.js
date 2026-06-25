@@ -13,7 +13,7 @@ const GROOMING_SEO = {
   pathname: "/grooming",
   title: "Dog Groomers Directory | Darlington SC | Peedee Pet Care",
   description:
-    "Free directory of local dog and cat groomers in Darlington & Florence, SC. Compare listings and reviews. Peedee Pet Care does not provide grooming — contact businesses directly.",
+    "Free directory of dog and cat groomers in Darlington & Florence, SC. Compare listings and reviews. We do not provide grooming.",
   h1: "Dog & Cat Grooming Directory — Darlington County & Florence, SC",
   guideHeading: "How to find a dog groomer in the Pee Dee",
   guideIntro:
@@ -815,9 +815,24 @@ function injectCategoryEnhancements(html, pathname, listings = []) {
   return result;
 }
 
+function buildCategorySeoClientScript() {
+  const payload = {};
+  for (const config of Object.values(CATEGORY_PAGES)) {
+    payload[config.pathname] = {
+      title: config.title,
+      description: config.description,
+      canonical: `${CANONICAL_ORIGIN}${config.pathname}`,
+      ogImage: `${CANONICAL_ORIGIN}/og-image.jpg`,
+      ogType: "website",
+    };
+  }
+  return `window.__peedeeCategorySeo=${JSON.stringify(payload)};`;
+}
+
 module.exports = {
   resolveCategorySeoForPathname,
   injectCategoryEnhancements,
   getCategoryConfig,
   buildCategoryGuideHtml,
+  buildCategorySeoClientScript,
 };

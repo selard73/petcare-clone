@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const { buildCategorySeoClientScript } = require("./category-seo");
 
 const FRAGMENTS_DIR = path.join(__dirname, "fragments");
 const MARKER_HEAD_START = "<!-- peedee-seo-head:start -->";
@@ -176,11 +177,14 @@ function applySeoToIndexHtml(html) {
     .map(scriptToHtml)
     .join("\n    ");
 
+  const categorySeoScript = `<script>${buildCategorySeoClientScript()}</script>`;
+
   const scriptBlock = [
     MARKER_SCRIPTS_START,
     MARKER_CONTENT_START,
     fragments.seoContent,
     MARKER_CONTENT_END,
+    categorySeoScript,
     fragments.bodyScriptsExtra.trim(),
     fragments.figmaRuntime.trim(),
     orderedFigmaScripts,
