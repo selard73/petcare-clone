@@ -185,9 +185,9 @@ const TRAINING_SEO = {
 
 const BOARDING_SEO = {
   pathname: "/boarding",
-  title: "Pet Boarding in Darlington & Florence SC | Peedee Pet Care",
+  title: "Comprehensive Pet Services Directory for Darlington & Florence, SC",
   description:
-    "Pet boarding directory for Darlington & Florence, SC. Compare kennels and daycare listings with reviews. Free directory — not a boarding kennel.",
+    "Free directory of pet boarding and daycare in Darlington & Florence, SC. Compare kennels and reviews. Peedee Pet Care does not provide boarding — contact businesses directly.",
   h1: "Pet Boarding & Daycare Directory — Darlington County & Florence, SC",
   guideHeading: "How to find pet boarding in the Pee Dee",
   guideIntro:
