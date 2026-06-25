@@ -8478,9 +8478,9 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         className: "text-center",
         children: [
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
-            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Training Services" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Teach, train, transform — locally." }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Puppy basics to advanced obedience nearby." })
+            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Dog Trainers Directory" }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory — compare local trainers." }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Independent trainers in Darlington, Hartsville & Florence." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(
@@ -8492,10 +8492,10 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
                 children: "🎓"
               }
             ),
-            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Training Services" })
+            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Dog Trainers Directory" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
-            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Find dog trainers in Darlington, Hartsville and Florence for puppy socialization, obedience, and behavior help." }),
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory — find dog trainers in Darlington, Hartsville and Florence for puppy socialization, obedience, and behavior help." }),
             /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Browse local options and choose a trainer that fits your goals." })
           ] })
         ]
@@ -10601,9 +10601,9 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         className: "text-center",
         children: [
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
-            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Sitters & Walkers" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Walk, watch, wag — locally." }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "In-home visits and daily walks nearby." })
+            /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Pet Sitters Directory" }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory — compare local sitters." }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Independent sitters and walkers in Darlington, Hartsville & Florence." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(
@@ -10615,11 +10615,11 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 children: "🦮"
               }
             ),
-            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Sitters & Walkers" })
+            /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Pet Sitters Directory" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
-            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Pet sitting and dog walking in Darlington, Hartsville and Florence for vacations, workdays, and extended trips." }),
-            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Trusted locals who keep your pet active, comfortable, and cared for while you are away." })
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory — pet sitting and dog walking in Darlington, Hartsville and Florence for vacations, workdays, and extended trips." }),
+            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Compare independent sitters and contact providers directly." })
           ] })
         ]
       }
@@ -13446,9 +13446,9 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
   return /* @__PURE__ */ d("div", { className: "min-h-screen bg-gradient-to-b from-purple-50 to-pink-50", children: [
     /* @__PURE__ */ s("div", { className: "bg-white shadow-sm sticky top-0 z-10", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-3", children: /* @__PURE__ */ d("div", { className: "flex items-center gap-4", children: [
       /* @__PURE__ */ d("div", { className: "flex-1 text-center", children: [
-        /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl sm:text-2xl", children: "Pet Product Picks" }),
-        /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs sm:text-sm mt-0.5 leading-snug", children: "Handpicked essentials for Pee Dee pet owners" }),
-        /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs hidden sm:block mt-1 leading-relaxed", children: "Treats, toys, grooming tools, and more — curated by our team." })
+        /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl sm:text-2xl", children: "Pet Products Directory" }),
+        /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs sm:text-sm mt-0.5 leading-snug", children: "Free directory — find local pet supply stores" }),
+        /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs hidden sm:block mt-1 leading-relaxed", children: "Curated picks below — we do not sell products directly." })
       ] }),
       e?.isAdmin && /* @__PURE__ */ d(
         D.button,

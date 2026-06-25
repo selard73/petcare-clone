@@ -100,7 +100,7 @@ const TRAINING_SEO = {
   pathname: "/training",
   title: "Dog Trainers Directory | Darlington SC | Peedee Pet Care",
   description:
-    "Dog trainer directory for Darlington & Florence, SC. Compare obedience and puppy training listings with reviews. Free directory — not a trainer.",
+    "Free directory of dog trainers in Darlington & Florence, SC. Compare listings and reviews. We do not provide training.",
   h1: "Dog Training Directory — Darlington County & Florence, SC",
   guideHeading: "How to find a dog trainer in the Pee Dee",
   guideIntro:
@@ -272,9 +272,9 @@ const BOARDING_SEO = {
 
 const SITTERS_SEO = {
   pathname: "/sitters",
-  title: "Pet Sitters & Walkers in Florence SC | Peedee Pet Care",
+  title: "Pet Sitters Directory | Darlington SC | Peedee Pet Care",
   description:
-    "Pet sitter directory for Florence & Darlington, SC. Compare dog walkers and in-home care listings. Free directory — not a sitting company.",
+    "Free directory of pet sitters and dog walkers in Darlington & Florence, SC. Compare listings and reviews. We do not provide sitting.",
   h1: "Pet Sitters & Dog Walkers Directory — Darlington County & Florence, SC",
   guideHeading: "How to find a pet sitter in the Pee Dee",
   guideIntro:
@@ -450,9 +450,9 @@ const VET_CARE_SEO = {
 
 const PRODUCTS_SEO = {
   pathname: "/products",
-  title: "Pet Products Directory | Florence SC | Peedee Pet Care",
+  title: "Pet Products Directory | Darlington SC | Peedee Pet Care",
   description:
-    "Pet store directory for Darlington & Florence, SC. Find local food, toys, and supply shops. Free directory — not a pet store.",
+    "Free directory of pet supply stores in Darlington & Florence, SC. Compare listings and reviews. We do not sell products.",
   h1: "Pet Products & Supplies Directory — Darlington County & Florence, SC",
   guideHeading: "How to find local pet supplies in the Pee Dee",
   guideIntro:
