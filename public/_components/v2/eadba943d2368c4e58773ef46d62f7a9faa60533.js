@@ -14819,7 +14819,7 @@ function Nf({
                 {
                   onClick: () => g("home"),
                   className: "hover:opacity-80 transition-opacity active:opacity-60",
-                  children: /* @__PURE__ */ s("h2", { className: "text-purple-600 font-semibold", children: "Menu" })
+                  children: /* @__PURE__ */ s("h2", { className: "text-purple-600 font-semibold", children: "Home" })
                 }
               ) })
             ] }),
