@@ -13064,7 +13064,60 @@ function df({ onOpenSignup: t, onNavigate: e }) {
         animate: { opacity: 1, y: 0 },
         transition: { duration: 0.6 },
         children: [
-          /* @__PURE__ */ d("div", { className: "grid grid-cols-1 gap-8 mb-8 mt-6", children: [
+          /* @__PURE__ */ s(
+            D.div,
+            {
+              initial: { opacity: 0, y: 16 },
+              animate: { opacity: 1, y: 0 },
+              transition: { delay: 0.1 },
+              className: "bg-white rounded-[20px] p-5 border border-purple-100 shadow-sm mx-2",
+              children: /* @__PURE__ */ d("div", { className: "space-y-4 text-gray-700", children: [
+                /* @__PURE__ */ s("h2", { className: "text-purple-600 text-xl font-semibold leading-tight", children: "About Pawsitively Fabulous 🐾" }),
+                /* @__PURE__ */ d("div", { className: "space-y-3 text-sm leading-relaxed", children: [
+                  /* @__PURE__ */ s("p", { children: "Hi! I'm Shannon — and this all started because of my cat, Percy." }),
+                  /* @__PURE__ */ s("p", { children: "When Percy had a medical emergency, I was in a panic, frantically searching the internet for a vet — hours, services, phone numbers, one page at a time." }),
+                  /* @__PURE__ */ s("p", { children: "I thought: why isn't there just ONE place for all of this?" }),
+                  /* @__PURE__ */ s("p", { children: "So I built it. 💜" })
+                ] }),
+                /* @__PURE__ */ d("div", { className: "space-y-3", children: [
+                  /* @__PURE__ */ d("div", { children: [
+                    /* @__PURE__ */ s("p", { className: "text-sm font-semibold text-purple-700 mb-1", children: "🔎 One place for everything" }),
+                    /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 leading-relaxed", children: "Grooming, training, boarding, vet care & more — across Florence, Darlington, Hartsville & the Pee Dee. Hours, services, and contact info, all in one spot." })
+                  ] }),
+                  /* @__PURE__ */ d("div", { children: [
+                    /* @__PURE__ */ s("p", { className: "text-sm font-semibold text-purple-700 mb-1", children: "📱 Better than scrolling Facebook" }),
+                    /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 leading-relaxed", children: "Most local pet pros live on Facebook, scattered and hard to compare. I gathered them here so you don't have to hunt." })
+                  ] }),
+                  /* @__PURE__ */ d("div", { children: [
+                    /* @__PURE__ */ s("p", { className: "text-sm font-semibold text-purple-700 mb-1", children: "💛 100% free" }),
+                    /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 leading-relaxed", children: "Free to browse. Free for local businesses to be listed. Always." })
+                  ] }),
+                  /* @__PURE__ */ d("div", { children: [
+                    /* @__PURE__ */ s("p", { className: "text-sm font-semibold text-purple-700 mb-1", children: "🐶 Meet the crew" }),
+                    /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 leading-relaxed", children: "A Hartsville local + my three supervisors: Aggy (Chiweenie), Sierra Sunshine (pit bull mix), and Percy, the tabby who started it all." })
+                  ] })
+                ] }),
+                /* @__PURE__ */ d("div", { className: "pt-1 text-sm leading-relaxed", children: [
+                  /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "Spotted a business I missed? Want to say hi?" }),
+                  /* @__PURE__ */ d("p", { className: "mb-2", children: [
+                    "📧 ",
+                    /* @__PURE__ */ s(
+                      "a",
+                      {
+                        href: "mailto:hello@peedeepetcare.com",
+                        className: "text-purple-600 font-semibold hover:underline break-all",
+                        children: "hello@peedeepetcare.com"
+                      }
+                    )
+                  ] }),
+                  /* @__PURE__ */ s("p", { className: "text-gray-600", children: "— Shannon 🐾" })
+                ] })
+              ] })
+            }
+          ),
+          /* @__PURE__ */ d("div", { className: "mt-8 mx-2", children: [
+            /* @__PURE__ */ s("h2", { className: "text-purple-600 text-xl font-semibold leading-tight mb-4 px-1", children: "How it works" }),
+            /* @__PURE__ */ d("div", { className: "grid grid-cols-1 gap-8 mb-8", children: [
             /* @__PURE__ */ s("div", { className: "bg-white rounded-[20px] p-5 border border-purple-100 shadow-sm relative mx-2", children: /* @__PURE__ */ d(
               D.div,
               {
@@ -13207,6 +13260,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                 ] })
               }
             )
+          ] })
           ] })
         ]
       }
