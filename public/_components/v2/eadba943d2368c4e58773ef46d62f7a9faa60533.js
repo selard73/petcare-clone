@@ -13077,9 +13077,9 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                     /* @__PURE__ */ s("div", { className: "mb-3 md:mb-4", children: /* @__PURE__ */ s("h2", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight text-left", children: "About Pee Dee Pet Care 🐾" }) }),
                     /* @__PURE__ */ d("div", { className: "text-gray-700 mb-3 md:mb-4 text-sm md:text-base leading-relaxed space-y-3 text-justify", children: [
                       /* @__PURE__ */ s("p", { className: "text-justify", children: "Hi! I'm Shannon — and this all started because of my cat, Percy." }),
-                      /* @__PURE__ */ s("p", { className: "text-justify", children: "Percy had an emergency. I was in a panic, frantically searching the internet for a vet — hours, services, contacts, one page at a time." }),
+                      /* @__PURE__ */ s("p", { className: "text-justify", children: "Percy had an emergency. I was in a panic, frantically searching the internet for a vet — hours, services, contacts — one page at a time." }),
                       /* @__PURE__ */ s("p", { className: "text-justify", children: "I thought: why isn't there just ONE place for all of this?" }),
-                      /* @__PURE__ */ s("p", { className: "text-justify mt-3", children: "So I built it. 💜" })
+                      /* @__PURE__ */ s("p", { className: "text-justify mt-3", children: "So, I built it. 💜" })
                     ] }),
                     /* @__PURE__ */ d("ul", { className: "text-gray-700 space-y-2.5 md:space-y-3 w-full mt-3 mb-2", children: [
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3 w-full", children: [
