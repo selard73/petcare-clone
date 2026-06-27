@@ -13446,9 +13446,9 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
   return /* @__PURE__ */ d("div", { className: "min-h-screen bg-gradient-to-b from-purple-50 to-pink-50", children: [
     /* @__PURE__ */ s("div", { className: "bg-white shadow-sm sticky top-0 z-10", children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 pb-3", children: /* @__PURE__ */ d("div", { className: "flex items-center gap-4", children: [
       /* @__PURE__ */ d("div", { className: "flex-1 text-center", children: [
-        /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl sm:text-2xl", children: "Pet Products Directory" }),
-        /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs sm:text-sm mt-0.5 leading-snug", children: "Free directory — find local pet supply stores" }),
-        /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs hidden sm:block mt-1 leading-relaxed", children: "Curated picks below — we do not sell products directly." })
+        /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl sm:text-2xl", children: "Curated Pet Products" }),
+        /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs sm:text-sm mt-0.5 leading-snug", children: "Hand-picked treats, toys, and gear we recommend." }),
+        /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs hidden sm:block mt-1 leading-relaxed", children: "We do not sell products — purchases are through retailer links." })
       ] }),
       e?.isAdmin && /* @__PURE__ */ d(
         D.button,
