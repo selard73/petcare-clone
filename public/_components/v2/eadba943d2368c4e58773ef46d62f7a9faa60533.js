@@ -13073,48 +13073,48 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                 transition: { delay: 0.1 },
                 className: "h-full flex flex-col",
                 children: [
-                  /* @__PURE__ */ d("div", { className: "w-full md:max-w-[80%] md:mx-auto flex flex-col flex-1", children: [
+                  /* @__PURE__ */ d("div", { className: "w-full flex flex-col flex-1", children: [
                     /* @__PURE__ */ s("div", { className: "mb-3 md:mb-4", children: /* @__PURE__ */ s("h2", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight text-left", children: "About Pee Dee Pet Care 🐾" }) }),
-                    /* @__PURE__ */ d("div", { className: "text-gray-700 mb-3 md:mb-4 text-sm md:text-base leading-relaxed space-y-3", children: [
-                      /* @__PURE__ */ s("p", { children: "Hi! I'm Shannon — and this all started because of my cat, Percy." }),
-                      /* @__PURE__ */ s("p", { children: "Percy had an emergency, I was in a panic, frantically searching the internet for a vet — hours, services, phone numbers, one page at a time." }),
-                      /* @__PURE__ */ s("p", { children: "I thought: why isn't there just ONE place for all of this?" }),
-                      /* @__PURE__ */ s("p", { children: "So I built it. 💜" })
+                    /* @__PURE__ */ d("div", { className: "text-gray-700 mb-3 md:mb-4 text-sm md:text-base leading-relaxed space-y-3 text-justify", children: [
+                      /* @__PURE__ */ s("p", { className: "text-justify", children: "Hi! I'm Shannon — and this all started because of my cat, Percy." }),
+                      /* @__PURE__ */ s("p", { className: "text-justify", children: "Percy had an emergency, I was in a panic, frantically searching the internet for a vet — hours, services, phone numbers, one page at a time." }),
+                      /* @__PURE__ */ s("p", { className: "text-justify", children: "I thought: why isn't there just ONE place for all of this?" }),
+                      /* @__PURE__ */ s("p", { className: "text-justify", children: "So I built it. 💜" })
                     ] }),
-                    /* @__PURE__ */ d("ul", { className: "text-gray-700 space-y-2.5 md:space-y-3 flex-1", children: [
-                      /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
+                    /* @__PURE__ */ d("ul", { className: "text-gray-700 space-y-2.5 md:space-y-3 flex-1 w-full", children: [
+                      /* @__PURE__ */ d("li", { className: "flex items-start gap-3 w-full", children: [
                         /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🔎" }),
-                        /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
+                        /* @__PURE__ */ d("div", { className: "space-y-0.5 flex-1 min-w-0", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "One place for everything" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Grooming, training, boarding, vet care & more — across Florence, Darlington, Hartsville & the Pee Dee. Hours, services, and contact info, all in one spot." })
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug text-justify", children: "Grooming, training, boarding, vet care & more — across Florence, Darlington, Hartsville & the Pee Dee. Hours, services, and contact info, all in one spot." })
                         ] })
                       ] }),
-                      /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
+                      /* @__PURE__ */ d("li", { className: "flex items-start gap-3 w-full", children: [
                         /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "📱" }),
-                        /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
+                        /* @__PURE__ */ d("div", { className: "space-y-0.5 flex-1 min-w-0", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Better than scrolling Facebook" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Most local pet pros live on Facebook, scattered and hard to compare. I gathered them here so you don't have to hunt." })
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug text-justify", children: "Most local pet pros live on Facebook, scattered and hard to compare. I gathered them here so you don't have to hunt." })
                         ] })
                       ] }),
-                      /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
+                      /* @__PURE__ */ d("li", { className: "flex items-start gap-3 w-full", children: [
                         /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "💛" }),
-                        /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
+                        /* @__PURE__ */ d("div", { className: "space-y-0.5 flex-1 min-w-0", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "100% free" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Free to browse. Free for local businesses to be listed. Always." })
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug text-justify", children: "Free to browse. Free for local businesses to be listed. Always." })
                         ] })
                       ] }),
-                      /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
+                      /* @__PURE__ */ d("li", { className: "flex items-start gap-3 w-full", children: [
                         /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🐶" }),
-                        /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
+                        /* @__PURE__ */ d("div", { className: "space-y-0.5 flex-1 min-w-0", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Meet the crew" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "A Hartsville local + my three supervisors: Aggy (Chiweenie), Sierra Sunshine (pit bull mix), and Percy, the tabby who started it all." })
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug text-justify", children: "A Hartsville local + my three supervisors: Aggy (Chiweenie), Sierra Sunshine (pit bull mix), and Percy, the tabby who started it all." })
                         ] })
                       ] })
                     ] })
                   ] }),
                   /* @__PURE__ */ d("div", { className: "mt-5 md:mt-[30px]", children: [
                     /* @__PURE__ */ s("div", { className: "hidden md:block w-[58%] mx-auto border-t border-purple-300/30 mb-6" }),
-                    /* @__PURE__ */ d("div", { className: "text-gray-700 text-sm md:text-base leading-relaxed text-center md:text-left", children: [
+                    /* @__PURE__ */ d("div", { className: "text-gray-700 text-sm md:text-base leading-relaxed text-justify", children: [
                       /* @__PURE__ */ s("p", { className: "mb-2", children: "Spotted a business I missed? Want to say hi?" }),
                       /* @__PURE__ */ d("p", { className: "mb-2", children: [
                         "📧 ",
