@@ -13081,7 +13081,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                       /* @__PURE__ */ s("p", { className: "text-justify", children: "I thought: why isn't there just ONE place for all of this?" }),
                       /* @__PURE__ */ s("p", { className: "text-justify mt-3", children: "So I built it. 💜" })
                     ] }),
-                    /* @__PURE__ */ d("ul", { className: "text-gray-700 space-y-2.5 md:space-y-3 w-full mt-3 mb-4", children: [
+                    /* @__PURE__ */ d("ul", { className: "text-gray-700 space-y-2.5 md:space-y-3 w-full mt-3 mb-2", children: [
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3 w-full", children: [
                         /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🔎" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5 flex-1 min-w-0", children: [
@@ -13112,10 +13112,10 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                       ] })
                     ] })
                   ] }),
-                  /* @__PURE__ */ d("div", { className: "mt-6 md:mt-[30px] pt-2", children: [
+                  /* @__PURE__ */ d("div", { className: "mt-4 md:mt-[30px]", children: [
                     /* @__PURE__ */ s("div", { className: "hidden md:block w-[58%] mx-auto border-t border-purple-300/30 mb-6" }),
                     /* @__PURE__ */ d("div", { className: "text-gray-700 text-sm md:text-base leading-relaxed text-justify", children: [
-                      /* @__PURE__ */ s("p", { className: "mb-2 mt-1", children: "Spotted a business I missed? Want to say hi?" }),
+                      /* @__PURE__ */ s("p", { className: "mb-2", children: "Spotted a business I missed? Want to say hi?" }),
                       /* @__PURE__ */ d("p", { className: "mb-2 mt-2", children: [
                         "📧 ",
                         /* @__PURE__ */ s(
