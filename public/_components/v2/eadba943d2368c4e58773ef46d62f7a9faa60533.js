@@ -13116,7 +13116,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                     /* @__PURE__ */ s("div", { className: "hidden md:block w-[58%] mx-auto border-t border-purple-300/30 mb-6" }),
                     /* @__PURE__ */ d("div", { className: "text-gray-700 text-sm md:text-base leading-relaxed text-justify", children: [
                       /* @__PURE__ */ s("p", { className: "mb-2", children: "Spotted a business I missed? Want to say hi?" }),
-                      /* @__PURE__ */ d("p", { className: "mb-2 mt-2", children: [
+                      /* @__PURE__ */ d("p", { className: "mb-2 mt-3", children: [
                         "📧 ",
                         /* @__PURE__ */ s(
                           "a",
