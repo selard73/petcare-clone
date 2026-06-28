@@ -5867,7 +5867,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                 },
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex flex-col md:flex-row items-stretch", children: [
-                    /* @__PURE__ */ s("div", { className: "flex-1 w-full min-w-0 self-stretch flex", children: /* @__PURE__ */ d("picture", { className: "w-full h-[16rem] flex-1 flex", style: typeof window !== "undefined" && window.innerWidth >= 768 ? { height: "100%" } : void 0, children: [
+                    /* @__PURE__ */ s("div", { className: "flex-1 w-full min-w-0 self-stretch flex", children: /* @__PURE__ */ d("picture", { className: "w-full h-[16rem] flex-1 flex overflow-hidden", style: typeof window !== "undefined" && window.innerWidth >= 768 ? { height: "100%", overflow: "visible" } : void 0, children: [
                       /* @__PURE__ */ s("source", { media: "(min-width: 768px)", srcSet: "/images/home/hero-dog.jpg" }),
                       /* @__PURE__ */ s(
                         "img",
@@ -5886,6 +5886,8 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                             width: "100%",
                             objectFit: "contain",
                             objectPosition: "top center",
+                            transform: "scale(1.12)",
+                            transformOrigin: "top center",
                             display: "block"
                           } : void 0
                         }
