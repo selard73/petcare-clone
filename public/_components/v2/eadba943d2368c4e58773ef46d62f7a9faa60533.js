@@ -5874,7 +5874,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                         {
                           src: "/images/home/hero-dog-mobile.jpg",
                           alt: "Happy dog on the lawn",
-                          className: "w-full h-[16rem] object-cover object-center",
+                          className: "w-full h-[16rem] object-contain object-top",
                           style: typeof window !== "undefined" ? window.innerWidth >= 768 ? {
                             width: "100%",
                             height: "100%",
@@ -5884,8 +5884,8 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                           } : {
                             height: "16rem",
                             width: "100%",
-                            objectFit: "cover",
-                            objectPosition: "50% 42%",
+                            objectFit: "contain",
+                            objectPosition: "top center",
                             display: "block"
                           } : void 0
                         }
