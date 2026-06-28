@@ -7706,18 +7706,20 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   )) })
                 ] }),
                 (n.facebookPage || n.email) && /* @__PURE__ */ d("div", { className: "hidden md:grid md:grid-cols-2 gap-4 mb-6 min-w-0", children: [
-                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
-                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
-                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-center gap-2 md:gap-3 px-4 py-3 md:p-4 bg-purple-50 rounded-lg w-full min-w-0", children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0 flex-1", children: [
                       /* @__PURE__ */ s(
                         "a",
                         {
                           href: n.facebookPage.startsWith("http") ? n.facebookPage : `https://${n.facebookPage}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
-                          children: "Link"
+                          className: "inline-flex items-baseline gap-1 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal whitespace-nowrap",
+                          children: [
+                            /* @__PURE__ */ s("span", { className: "text-gray-600", children: "Facebook" }),
+                            /* @__PURE__ */ s("span", { className: "text-purple-600", children: "Link" })
+                          ]
                         }
                       )
                     ] })
@@ -8855,18 +8857,20 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
           /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.servicesOffered.map((L) => /* @__PURE__ */ s("span", { className: "bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-3 py-1 rounded-full text-sm", children: L }, L)) })
         ] }),
         (r.facebookPage || r.email) && /* @__PURE__ */ d("div", { className: "hidden md:grid md:grid-cols-2 gap-4 mb-2 min-w-0", children: [
-          r.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-blue-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
-            /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-blue-600 mt-1 flex-shrink-0" }),
-            /* @__PURE__ */ d("div", { className: "min-w-0", children: [
-              /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
+          r.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-center gap-2 md:gap-3 px-4 py-3 md:p-4 bg-blue-50 rounded-lg w-full min-w-0", children: [
+            /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-blue-600 flex-shrink-0" }),
+            /* @__PURE__ */ d("div", { className: "min-w-0 flex-1", children: [
               /* @__PURE__ */ s(
                 "a",
                 {
                   href: r.facebookPage.startsWith("http") ? r.facebookPage : `https://${r.facebookPage}`,
                   target: "_blank",
                   rel: "noopener noreferrer",
-                  className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
-                  children: "Link"
+                  className: "inline-flex items-baseline gap-1 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal whitespace-nowrap",
+                  children: [
+                    /* @__PURE__ */ s("span", { className: "text-gray-600", children: "Facebook" }),
+                    /* @__PURE__ */ s("span", { className: "text-purple-600", children: "Link" })
+                  ]
                 }
               )
             ] })
@@ -9926,18 +9930,20 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   )) })
                 ] }),
                 (n.facebookPage || n.email) && /* @__PURE__ */ d("div", { className: "hidden md:grid md:grid-cols-2 gap-4 mb-6 min-w-0", children: [
-                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-green-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
-                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
-                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-center gap-2 md:gap-3 px-4 py-3 md:p-4 bg-green-50 rounded-lg w-full min-w-0", children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-green-600 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0 flex-1", children: [
                       /* @__PURE__ */ s(
                         "a",
                         {
                           href: n.facebookPage.startsWith("http") ? n.facebookPage : `https://${n.facebookPage}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
-                          children: "Link"
+                          className: "inline-flex items-baseline gap-1 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal whitespace-nowrap",
+                          children: [
+                            /* @__PURE__ */ s("span", { className: "text-gray-600", children: "Facebook" }),
+                            /* @__PURE__ */ s("span", { className: "text-purple-600", children: "Link" })
+                          ]
                         }
                       )
                     ] })
@@ -11383,18 +11389,20 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   )) })
                 ] }),
                 (n.facebookPage || n.email) && /* @__PURE__ */ d("div", { className: "hidden md:grid md:grid-cols-2 gap-4 mb-6 min-w-0", children: [
-                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { backgroundColor: "#fdf2f8", width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
-                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#db2777" } }),
-                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-center gap-2 md:gap-3 px-4 py-3 md:p-4 rounded-lg w-full min-w-0", style: { backgroundColor: "#fdf2f8" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 flex-shrink-0", style: { color: "#db2777" } }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0 flex-1", children: [
                       /* @__PURE__ */ s(
                         "a",
                         {
                           href: n.facebookPage.startsWith("http") ? n.facebookPage : `https://${n.facebookPage}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
-                          children: "Link"
+                          className: "inline-flex items-baseline gap-1 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal whitespace-nowrap",
+                          children: [
+                            /* @__PURE__ */ s("span", { className: "text-gray-600", children: "Facebook" }),
+                            /* @__PURE__ */ s("span", { className: "text-purple-600", children: "Link" })
+                          ]
                         }
                       )
                     ] })
@@ -12748,18 +12756,20 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   )) })
                 ] }),
                 (n.facebookPage || n.email) && /* @__PURE__ */ d("div", { className: "hidden md:grid md:grid-cols-2 gap-4 mb-6 min-w-0", children: [
-                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-orange-50 border border-orange-200 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
-                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#ea580c" } }),
-                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-center gap-2 md:gap-3 px-4 py-3 md:p-4 bg-orange-50 border border-orange-200 rounded-lg w-full min-w-0", children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 flex-shrink-0", style: { color: "#ea580c" } }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0 flex-1", children: [
                       /* @__PURE__ */ s(
                         "a",
                         {
                           href: n.facebookPage.startsWith("http") ? n.facebookPage : `https://${n.facebookPage}`,
                           target: "_blank",
                           rel: "noopener noreferrer",
-                          className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
-                          children: "Link"
+                          className: "inline-flex items-baseline gap-1 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal whitespace-nowrap",
+                          children: [
+                            /* @__PURE__ */ s("span", { className: "text-gray-600", children: "Facebook" }),
+                            /* @__PURE__ */ s("span", { className: "text-purple-600", children: "Link" })
+                          ]
                         }
                       )
                     ] })
