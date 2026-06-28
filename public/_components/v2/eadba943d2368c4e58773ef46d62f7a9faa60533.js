@@ -20841,7 +20841,9 @@ function oy() {
           /* @__PURE__ */ s(
             "a",
             {
-              href: "#",
+              href: "https://www.youtube.com/@peedeepetcare",
+              target: "_blank",
+              rel: "noopener noreferrer",
               "aria-label": "YouTube",
               className: "inline-flex items-center justify-center rounded-full text-white transition-transform hover:scale-110",
               style: {
