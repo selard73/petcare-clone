@@ -91,7 +91,7 @@ function resolveCitySeoForPathname(pathname) {
     title: buildCityTitle(parsed),
     description: buildCityDescription(parsed),
     canonical: `${CANONICAL_ORIGIN}${parsed.pathname}`,
-    ogImage: `${CANONICAL_ORIGIN}/og-image.jpg`,
+    ogImage: `${CANONICAL_ORIGIN}/social-share.jpg`,
     ogType: "website",
   };
 }

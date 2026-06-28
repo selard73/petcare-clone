@@ -590,7 +590,7 @@ function resolveCategorySeoForPathname(pathname) {
     title: config.title,
     description: config.description,
     canonical: `${CANONICAL_ORIGIN}${config.pathname}`,
-    ogImage: `${CANONICAL_ORIGIN}/og-image.jpg`,
+    ogImage: `${CANONICAL_ORIGIN}/social-share.jpg`,
     ogType: "website",
   };
 }
@@ -822,7 +822,7 @@ function buildCategorySeoClientScript() {
       title: config.title,
       description: config.description,
       canonical: `${CANONICAL_ORIGIN}${config.pathname}`,
-      ogImage: `${CANONICAL_ORIGIN}/og-image.jpg`,
+      ogImage: `${CANONICAL_ORIGIN}/social-share.jpg`,
       ogType: "website",
     };
   }

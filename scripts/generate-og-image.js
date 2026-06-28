@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const sharp = require("sharp");
 
-const OUTPUT = path.join(__dirname, "..", "public", "og-image.jpg");
+const OUTPUT = path.join(__dirname, "..", "public", "social-share.jpg");
 const WIDTH = 1200;
 const HEIGHT = 630;
 
