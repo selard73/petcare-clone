@@ -20857,7 +20857,9 @@ function oy() {
           /* @__PURE__ */ s(
             "a",
             {
-              href: "#",
+              href: "https://www.facebook.com/peedeepetcare/",
+              target: "_blank",
+              rel: "noopener noreferrer",
               "aria-label": "Facebook",
               className: "inline-flex items-center justify-center rounded-full text-white transition-transform hover:scale-110",
               style: {
