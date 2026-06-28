@@ -7631,7 +7631,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex md:hidden items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
@@ -7647,7 +7647,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                  n.email && /* @__PURE__ */ d("div", { className: "flex md:hidden items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
@@ -7704,6 +7704,38 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     },
                     y
                   )) })
+                ] }),
+                (n.facebookPage || n.email) && /* @__PURE__ */ d("div", { className: "hidden md:grid md:grid-cols-2 gap-4 mb-6 min-w-0", children: [
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: n.facebookPage.startsWith("http") ? n.facebookPage : `https://${n.facebookPage}`,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
+                          children: "Link"
+                        }
+                      )
+                    ] })
+                  ] }),
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: `mailto:${n.email}`,
+                          className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block break-all md:break-normal md:whitespace-nowrap",
+                          children: n.email
+                        }
+                      )
+                    ] })
+                  ] })
                 ] }),
                 /* @__PURE__ */ d(
                   D.a,
@@ -8764,7 +8796,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
               )
             ] })
           ] }),
-          r.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-blue-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+          r.facebookPage && /* @__PURE__ */ d("div", { className: "flex md:hidden items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-blue-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
             /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-blue-600 mt-1 flex-shrink-0" }),
             /* @__PURE__ */ d("div", { className: "min-w-0", children: [
               /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
@@ -8780,7 +8812,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
               )
             ] })
           ] }),
-          r.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-blue-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+          r.email && /* @__PURE__ */ d("div", { className: "flex md:hidden items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-blue-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
             /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-blue-600 mt-1 flex-shrink-0" }),
             /* @__PURE__ */ d("div", { className: "min-w-0", children: [
               /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
@@ -8821,6 +8853,38 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         Array.isArray(r.servicesOffered) && r.servicesOffered.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
           /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Services Offered" }),
           /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.servicesOffered.map((L) => /* @__PURE__ */ s("span", { className: "bg-gradient-to-r from-blue-100 to-cyan-100 text-blue-700 px-3 py-1 rounded-full text-sm", children: L }, L)) })
+        ] }),
+        (r.facebookPage || r.email) && /* @__PURE__ */ d("div", { className: "hidden md:grid md:grid-cols-2 gap-4 mb-2 min-w-0", children: [
+          r.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-blue-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+            /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-blue-600 mt-1 flex-shrink-0" }),
+            /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+              /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
+              /* @__PURE__ */ s(
+                "a",
+                {
+                  href: r.facebookPage.startsWith("http") ? r.facebookPage : `https://${r.facebookPage}`,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
+                  children: "Link"
+                }
+              )
+            ] })
+          ] }),
+          r.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-blue-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+            /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-blue-600 mt-1 flex-shrink-0" }),
+            /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+              /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
+              /* @__PURE__ */ s(
+                "a",
+                {
+                  href: `mailto:${r.email}`,
+                  className: "text-blue-700 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block break-all md:break-normal md:whitespace-nowrap",
+                  children: r.email
+                }
+              )
+            ] })
+          ] })
         ] }),
         /* @__PURE__ */ s(D.a, { href: `tel:${r.phone}`, className: "hidden md:block w-full text-center text-white py-4 rounded-xl", style: { backgroundColor: "#2563eb" }, children: ["📞 Call ", r.name] }),
         Lr && (r.ownerId === Lr.id || Lr.isAdmin) && t && /* @__PURE__ */ d("div", { className: "space-y-3 mt-3", children: [
@@ -9773,7 +9837,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-green-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex md:hidden items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-green-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
@@ -9789,7 +9853,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-green-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                  n.email && /* @__PURE__ */ d("div", { className: "flex md:hidden items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-green-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
@@ -9860,6 +9924,38 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     },
                     y
                   )) })
+                ] }),
+                (n.facebookPage || n.email) && /* @__PURE__ */ d("div", { className: "hidden md:grid md:grid-cols-2 gap-4 mb-6 min-w-0", children: [
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-green-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: n.facebookPage.startsWith("http") ? n.facebookPage : `https://${n.facebookPage}`,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
+                          children: "Link"
+                        }
+                      )
+                    ] })
+                  ] }),
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-green-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: `mailto:${n.email}`,
+                          className: "text-green-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block break-all md:break-normal md:whitespace-nowrap",
+                          children: n.email
+                        }
+                      )
+                    ] })
+                  ] })
                 ] }),
                 /* @__PURE__ */ d(
                   D.a,
@@ -11188,7 +11284,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { backgroundColor: "#fdf2f8", width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex md:hidden items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { backgroundColor: "#fdf2f8", width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#db2777" } }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
@@ -11204,7 +11300,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { backgroundColor: "#fdf2f8", width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                  n.email && /* @__PURE__ */ d("div", { className: "flex md:hidden items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { backgroundColor: "#fdf2f8", width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#db2777" } }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
@@ -11285,6 +11381,39 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     },
                     y
                   )) })
+                ] }),
+                (n.facebookPage || n.email) && /* @__PURE__ */ d("div", { className: "hidden md:grid md:grid-cols-2 gap-4 mb-6 min-w-0", children: [
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { backgroundColor: "#fdf2f8", width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#db2777" } }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: n.facebookPage.startsWith("http") ? n.facebookPage : `https://${n.facebookPage}`,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
+                          children: "Link"
+                        }
+                      )
+                    ] })
+                  ] }),
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { backgroundColor: "#fdf2f8", width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#db2777" } }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: `mailto:${n.email}`,
+                          className: "hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block break-all md:break-normal md:whitespace-nowrap",
+                          style: { color: "#ff1493" },
+                          children: n.email
+                        }
+                      )
+                    ] })
+                  ] })
                 ] }),
                 /* @__PURE__ */ d(
                   D.a,
@@ -12542,7 +12671,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-orange-50 border border-orange-200 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex md:hidden items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-orange-50 border border-orange-200 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#ea580c" } }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
@@ -12558,7 +12687,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
-                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-orange-50 border border-orange-200 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                  n.email && /* @__PURE__ */ d("div", { className: "flex md:hidden items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-orange-50 border border-orange-200 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#ea580c" } }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
@@ -12617,6 +12746,39 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     },
                     y
                   )) })
+                ] }),
+                (n.facebookPage || n.email) && /* @__PURE__ */ d("div", { className: "hidden md:grid md:grid-cols-2 gap-4 mb-6 min-w-0", children: [
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-orange-50 border border-orange-200 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#ea580c" } }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: n.facebookPage.startsWith("http") ? n.facebookPage : `https://${n.facebookPage}`,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
+                          children: "Link"
+                        }
+                      )
+                    ] })
+                  ] }),
+                  n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-orange-50 border border-orange-200 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#ea580c" } }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Email" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: `mailto:${n.email}`,
+                          className: "text-orange-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block break-all md:break-normal md:whitespace-nowrap",
+                          style: { color: "#ea580c" },
+                          children: n.email
+                        }
+                      )
+                    ] })
+                  ] })
                 ] }),
                 /* @__PURE__ */ d(
                   D.a,
