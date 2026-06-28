@@ -6133,7 +6133,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
       }
     ) }) }),
       /* @__PURE__ */ s("div", { className: "md:hidden flex items-center justify-center text-[10px] text-purple-500/70 tracking-wide text-center", style: { marginTop: "2.1328125rem", marginBottom: "0.75rem" }, children: e0 != null ? `${e0.toLocaleString()} visits and counting` : "" }),
-      /* @__PURE__ */ s("div", { className: "md:hidden flex items-center justify-center", style: { gap: "5px", marginTop: "0.75rem", marginBottom: "0.75rem" }, children: [
+      /* @__PURE__ */ s("div", { className: "md:hidden flex items-center justify-center", style: { gap: "5px", marginTop: "1rem", marginBottom: "0.5rem" }, children: [
         /* @__PURE__ */ s(
           "a",
           {
@@ -6203,7 +6203,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
           }
         )
       ] }),
-      /* @__PURE__ */ d("div", { className: "md:hidden text-center px-4", style: { marginBottom: "2.1328125rem" }, children: [
+      /* @__PURE__ */ d("div", { className: "md:hidden text-center px-4", style: { marginBottom: "0.75rem" }, children: [
         /* @__PURE__ */ d("p", { className: "text-xs text-purple-600/90", children: [
           "Questions? Email us at ",
           /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "hello@peedeepetcare.com" })
