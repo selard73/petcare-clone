@@ -20848,7 +20848,7 @@ function oy() {
             "Email us at ",
             /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "hello@peedeepetcare.com" })
           ] }),
-          /* @__PURE__ */ d("div", { style: { position: "absolute", bottom: "100%", left: 0, paddingBottom: "2px" }, children: [
+          /* @__PURE__ */ d("div", { style: { position: "absolute", bottom: "100%", left: 0, paddingBottom: "8px" }, children: [
             /* @__PURE__ */ d("div", { style: { display: "flex", alignItems: "center", gap: "5px", marginBottom: "6px" }, children: [
               /* @__PURE__ */ s(
                 "a",
@@ -20915,7 +20915,7 @@ function oy() {
                 }
               )
             ] }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-purple-600/90 leading-snug", style: { margin: 0 }, children: "Questions?" })
+            /* @__PURE__ */ s("p", { className: "text-xs text-purple-600/90 leading-snug", style: { margin: 0, marginBottom: "2px" }, children: "Questions?" })
           ] })
         ] }),
         /* @__PURE__ */ s("p", { className: "text-purple-600 text-center absolute left-0 right-0 top-1/2", style: { transform: "translateY(-50%)", margin: 0 }, children: "All Your Pet Needs in Darlington/Florence Area" }),
