@@ -5871,7 +5871,14 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                       {
                         src: "/images/home/hero-dog.jpg",
                         alt: "Happy dog on the lawn",
-                        className: "flex-1 h-[16rem] md:h-[28rem] object-contain md:object-contain object-top"
+                        className: "flex-1 w-full self-stretch min-w-0 h-[16rem] md:h-[28rem] object-contain object-top",
+                        style: typeof window !== "undefined" ? {
+                          height: window.innerWidth >= 768 ? "28rem" : "16rem",
+                          width: "100%",
+                          objectFit: "contain",
+                          objectPosition: "top center",
+                          display: "block"
+                        } : void 0
                       }
                     ),
                     /* @__PURE__ */ s("div", { className: "flex-1 px-6 md:px-12 pt-6 md:pt-8 pb-7 md:pb-8 flex items-center justify-center", children: /* @__PURE__ */ d("div", { className: "text-purple-600 leading-loose text-center", children: [
