@@ -7631,6 +7631,22 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook Page" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: n.facebookPage.startsWith("http") ? n.facebookPage : `https://${n.facebookPage}`,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          className: "text-purple-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
+                          children: "Facebook Page"
+                        }
+                      )
+                    ] })
+                  ] }),
                   n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-purple-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
@@ -8748,6 +8764,22 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
               )
             ] })
           ] }),
+          r.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-blue-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+            /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-blue-600 mt-1 flex-shrink-0" }),
+            /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+              /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook Page" }),
+              /* @__PURE__ */ s(
+                "a",
+                {
+                  href: r.facebookPage.startsWith("http") ? r.facebookPage : `https://${r.facebookPage}`,
+                  target: "_blank",
+                  rel: "noopener noreferrer",
+                  className: "text-blue-700 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
+                  children: "Facebook Page"
+                }
+              )
+            ] })
+          ] }),
           r.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-blue-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
             /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-blue-600 mt-1 flex-shrink-0" }),
             /* @__PURE__ */ d("div", { className: "min-w-0", children: [
@@ -9737,6 +9769,22 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           className: "text-green-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block whitespace-normal md:whitespace-nowrap max-w-full break-all md:break-normal",
                           style: { overflowWrap: "anywhere", wordBreak: "break-word" },
                           children: n.website
+                        }
+                      )
+                    ] })
+                  ] }),
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-green-50 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook Page" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: n.facebookPage.startsWith("http") ? n.facebookPage : `https://${n.facebookPage}`,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          className: "text-green-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
+                          children: "Facebook Page"
                         }
                       )
                     ] })
@@ -11140,6 +11188,23 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       )
                     ] })
                   ] }),
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { backgroundColor: "#fdf2f8", width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#db2777" } }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook Page" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: n.facebookPage.startsWith("http") ? n.facebookPage : `https://${n.facebookPage}`,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          className: "hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
+                          style: { color: "#ff1493" },
+                          children: "Facebook Page"
+                        }
+                      )
+                    ] })
+                  ] }),
                   n.email && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { backgroundColor: "#fdf2f8", width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
                     /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#db2777" } }),
                     /* @__PURE__ */ d("div", { className: "min-w-0", children: [
@@ -12474,6 +12539,23 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           className: "text-orange-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block whitespace-normal md:whitespace-nowrap max-w-full break-all md:break-normal",
                           style: { color: "#ea580c" },
                           children: n.website
+                        }
+                      )
+                    ] })
+                  ] }),
+                  n.facebookPage && /* @__PURE__ */ d("div", { className: "flex items-start gap-2 md:gap-3 px-3 py-3 md:p-4 bg-orange-50 border border-orange-200 rounded-lg w-full max-w-full min-w-0 overflow-hidden md:justify-self-start", style: { width: window.innerWidth >= 768 ? "fit-content" : "100%" }, children: [
+                    /* @__PURE__ */ s(Js, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#ea580c" } }),
+                    /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 mb-1", children: "Facebook Page" }),
+                      /* @__PURE__ */ s(
+                        "a",
+                        {
+                          href: n.facebookPage.startsWith("http") ? n.facebookPage : `https://${n.facebookPage}`,
+                          target: "_blank",
+                          rel: "noopener noreferrer",
+                          className: "text-orange-600 hover:underline text-xs sm:text-sm md:text-base leading-tight md:leading-normal block",
+                          style: { color: "#ea580c" },
+                          children: "Facebook Page"
                         }
                       )
                     ] })
@@ -18287,6 +18369,7 @@ function iy({ editBusiness: t, onClose: e }) {
     phone: "",
     email: "",
     website: "",
+    facebookPage: "",
     servicesOffered: [""],
     priceRange: "",
     hours: {
@@ -18361,6 +18444,7 @@ function iy({ editBusiness: t, onClose: e }) {
         phone: t.phone || "",
         email: t.email || "",
         website: t.website || "",
+        facebookPage: t.facebookPage || "",
         servicesOffered: t.servicesOffered?.length > 0 ? t.servicesOffered : [""],
         priceRange: t.priceRange || "",
         hours: {
@@ -18571,6 +18655,7 @@ function iy({ editBusiness: t, onClose: e }) {
         phone: "",
         email: "",
         website: "",
+        facebookPage: "",
         servicesOffered: [""],
         priceRange: "",
         hours: {
@@ -18824,6 +18909,19 @@ function iy({ editBusiness: t, onClose: e }) {
               onChange: (A) => G("website", A.target.value),
               className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent",
               placeholder: "https://"
+            }
+          )
+        ] }),
+        /* @__PURE__ */ d("div", { children: [
+          /* @__PURE__ */ s("label", { className: "block text-gray-700 mb-2", children: "Facebook Page (optional)" }),
+          /* @__PURE__ */ s(
+            "input",
+            {
+              type: "url",
+              value: i.facebookPage,
+              onChange: (A) => G("facebookPage", A.target.value),
+              className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent",
+              placeholder: "https://www.facebook.com/yourpage"
             }
           )
         ] })
