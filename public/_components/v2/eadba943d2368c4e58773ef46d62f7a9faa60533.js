@@ -20837,7 +20837,7 @@ function oy() {
       ] })
     ] }),
       /* @__PURE__ */ d("div", { className: "hidden md:block relative w-full", children: [
-        /* @__PURE__ */ d("div", { style: { position: "absolute", left: "2.5rem", bottom: 0, display: "flex", alignItems: "flex-end", gap: "5px" }, children: [
+        /* @__PURE__ */ d("div", { style: { position: "absolute", left: "2.5rem", bottom: "14px", display: "flex", alignItems: "flex-end", gap: "5px" }, children: [
           /* @__PURE__ */ s(
             "a",
             {
@@ -20909,7 +20909,7 @@ function oy() {
         ] })
       ] }),
       /* @__PURE__ */ d("div", { className: "hidden md:block relative w-full mt-4", style: { minHeight: "3.25rem" }, children: [
-        /* @__PURE__ */ d("div", { style: { position: "absolute", left: "2.5rem", top: "50%" }, children: [
+        /* @__PURE__ */ d("div", { style: { position: "absolute", left: "2.5rem", top: "calc(50% - 10px)" }, children: [
           /* @__PURE__ */ d("p", { className: "text-xs text-purple-600/90 leading-snug", style: { margin: 0, transform: "translateY(-50%)" }, children: [
             "Email us at ",
             /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "hello@peedeepetcare.com" })
