@@ -75,7 +75,7 @@ function isCityCategoryPath(pathname) {
 }
 
 function buildCityTitle(parsed) {
-  return `${parsed.labels.directory} in ${parsed.cityName} SC | Peedee Pet Care`;
+  return `${parsed.labels.directory} in ${parsed.cityName} SC | Pee Dee Pet Care`;
 }
 
 function buildCityDescription(parsed) {
@@ -99,7 +99,7 @@ function resolveCitySeoForPathname(pathname) {
 function buildListingsSectionHtml(listings, parsed) {
   if (!listings.length) {
     return `<h2>Local ${escapeHtml(parsed.labels.plural)} in ${escapeHtml(parsed.cityName)}</h2>
-  <p>Peedee Pet Care lists independent ${escapeHtml(parsed.labels.plural)} serving ${escapeHtml(parsed.cityName)} and the Pee Dee region. Browse the full <a href="${escapeHtml(parsed.categoryPath)}">${escapeHtml(parsed.labels.directory.toLowerCase())} directory</a> for more listings.</p>`;
+  <p>Pee Dee Pet Care lists independent ${escapeHtml(parsed.labels.plural)} serving ${escapeHtml(parsed.cityName)} and the Pee Dee region. Browse the full <a href="${escapeHtml(parsed.categoryPath)}">${escapeHtml(parsed.labels.directory.toLowerCase())} directory</a> for more listings.</p>`;
   }
   const items = listings
     .map((listing) => {
@@ -110,7 +110,7 @@ function buildListingsSectionHtml(listings, parsed) {
     })
     .join("\n    ");
   return `<h2>Local ${escapeHtml(parsed.labels.plural)} in ${escapeHtml(parsed.cityName)}</h2>
-  <p>Examples of independent businesses listed on Peedee Pet Care in ${escapeHtml(parsed.cityName)}. We are a directory — contact providers directly for hours and availability.</p>
+  <p>Examples of independent businesses listed on Pee Dee Pet Care in ${escapeHtml(parsed.cityName)}. We are a directory — contact providers directly for hours and availability.</p>
   <ul>
     ${items}
   </ul>
@@ -119,7 +119,7 @@ function buildListingsSectionHtml(listings, parsed) {
 
 function buildCitySeoContentHtml(parsed, listings) {
   const base = getCategoryConfig(parsed.categoryPath);
-  const intro = `Peedee Pet Care is a free online directory of local ${parsed.labels.plural} in ${parsed.cityName}, South Carolina. We do not provide ${parsed.labels.singular} services ourselves — we help pet owners compare independent local listings and read reviews.`;
+  const intro = `Pee Dee Pet Care is a free online directory of local ${parsed.labels.plural} in ${parsed.cityName}, South Carolina. We do not provide ${parsed.labels.singular} services ourselves — we help pet owners compare independent local listings and read reviews.`;
   return `<div id="seo-content" class="seo-content">
   <h1>${escapeHtml(parsed.labels.directory)} in ${escapeHtml(parsed.cityName)}, SC</h1>
   <p>${intro}</p>
@@ -137,7 +137,7 @@ function buildCitySeoContentHtml(parsed, listings) {
   <h2>Related pages</h2>
   <p>
     <a href="${escapeHtml(parsed.categoryPath)}">All ${escapeHtml(parsed.labels.plural)}</a>,
-    <a href="/">Peedee Pet Care home</a>,
+    <a href="/">Pee Dee Pet Care home</a>,
     <a href="/blog">The Daily Wag</a>.
   </p>
 </div>`;

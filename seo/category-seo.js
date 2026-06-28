@@ -11,20 +11,20 @@ const PATH_ALIASES = {
 
 const GROOMING_SEO = {
   pathname: "/grooming",
-  title: "Dog Groomers Directory | Darlington SC | Peedee Pet Care",
+  title: "Dog Groomers Directory | Darlington SC | Pee Dee Pet Care",
   description:
     "Free directory of dog and cat groomers in Darlington & Florence, SC. Compare listings and reviews. We do not provide grooming.",
   h1: "Dog & Cat Grooming Directory — Darlington County & Florence, SC",
   guideHeading: "How to find a dog groomer in the Pee Dee",
   guideIntro:
-    "Use the listings above to compare independent groomers in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not provide grooming services. Contact each business directly to ask about availability, pricing, and breed experience.",
+    "Use the listings above to compare independent groomers in Florence, Darlington, and Hartsville. Pee Dee Pet Care is a free directory — we do not provide grooming services. Contact each business directly to ask about availability, pricing, and breed experience.",
   intro:
-    "Peedee Pet Care lists independent pet grooming businesses serving the Pee Dee region. We are an online directory — not a grooming salon, mobile groomer, or veterinary clinic. Use this page to compare local groomers in Florence, Darlington, Hartsville, and nearby communities.",
+    "Pee Dee Pet Care lists independent pet grooming businesses serving the Pee Dee region. We are an online directory — not a grooming salon, mobile groomer, or veterinary clinic. Use this page to compare local groomers in Florence, Darlington, Hartsville, and nearby communities.",
   sections: [
     {
       heading: "Grooming services you can find",
       paragraphs: [
-        "Listings on Peedee Pet Care may include full-service salon grooming, bath and brush packages, nail trims, ear cleaning, de-shedding treatments, breed-specific cuts, cat grooming, and mobile grooming that comes to your home. Many Pee Dee groomers work with anxious, senior, or special-needs pets — ask about temperament and coat type before you book.",
+        "Listings on Pee Dee Pet Care may include full-service salon grooming, bath and brush packages, nail trims, ear cleaning, de-shedding treatments, breed-specific cuts, cat grooming, and mobile grooming that comes to your home. Many Pee Dee groomers work with anxious, senior, or special-needs pets — ask about temperament and coat type before you book.",
         "Whether you need a routine maintenance groom every four to eight weeks or a one-time appointment before travel, browsing by location helps you find providers near Florence SC, Darlington County, or Hartsville.",
       ],
     },
@@ -44,7 +44,7 @@ const GROOMING_SEO = {
       heading: "Questions to ask before you book",
       paragraphs: [
         "Ask about breed or coat-type experience, how they handle anxious dogs, what products they use on sensitive skin, and what is included in the quoted price. A professional groomer should welcome these questions.",
-        "Confirm typical appointment length and whether vaccination records are required before the first visit. Contact listed businesses directly — Peedee Pet Care does not book appointments.",
+        "Confirm typical appointment length and whether vaccination records are required before the first visit. Contact listed businesses directly — Pee Dee Pet Care does not book appointments.",
       ],
     },
     {
@@ -57,8 +57,8 @@ const GROOMING_SEO = {
   ],
   faqs: [
     {
-      q: "Does Peedee Pet Care provide grooming services?",
-      a: "No. Peedee Pet Care is a free directory that lists independent local groomers. We do not groom pets ourselves.",
+      q: "Does Pee Dee Pet Care provide grooming services?",
+      a: "No. Pee Dee Pet Care is a free directory that lists independent local groomers. We do not groom pets ourselves.",
     },
     {
       q: "How do I find a dog groomer near Florence SC?",
@@ -88,7 +88,7 @@ const GROOMING_SEO = {
     { href: "/training", label: "Dog trainers" },
     { href: "/boarding", label: "Pet boarding" },
     { href: "/vet-care", label: "Veterinary care" },
-    { href: "/", label: "Peedee Pet Care home" },
+    { href: "/", label: "Pee Dee Pet Care home" },
   ],
   relatedBlogSlug: "how-to-find-good-dog-groomer-pee-dee",
   resourcesHeading: "Trusted grooming resources",
@@ -98,15 +98,15 @@ const GROOMING_SEO = {
 
 const TRAINING_SEO = {
   pathname: "/training",
-  title: "Dog Trainers Directory | Darlington SC | Peedee Pet Care",
+  title: "Dog Trainers Directory | Darlington SC | Pee Dee Pet Care",
   description:
     "Free directory of dog trainers in Darlington & Florence, SC. Compare listings and reviews. We do not provide training.",
   h1: "Dog Trainers Directory — Darlington County & Florence, SC",
   guideHeading: "How to find a dog trainer in the Pee Dee",
   guideIntro:
-    "Use the listings above to compare independent trainers in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not provide training services. Contact each provider directly about class formats, methods, and availability.",
+    "Use the listings above to compare independent trainers in Florence, Darlington, and Hartsville. Pee Dee Pet Care is a free directory — we do not provide training services. Contact each provider directly about class formats, methods, and availability.",
   intro:
-    "Peedee Pet Care lists independent dog trainers and training programs serving the Pee Dee region. We are an online directory — not a dog trainer, behaviorist, or veterinary clinic. Use this page to compare local trainers in Florence, Darlington, Hartsville, and nearby communities.",
+    "Pee Dee Pet Care lists independent dog trainers and training programs serving the Pee Dee region. We are an online directory — not a dog trainer, behaviorist, or veterinary clinic. Use this page to compare local trainers in Florence, Darlington, Hartsville, and nearby communities.",
   sections: [
     {
       heading: "Training services you can find",
@@ -144,8 +144,8 @@ const TRAINING_SEO = {
   ],
   faqs: [
     {
-      q: "Does Peedee Pet Care offer dog training?",
-      a: "No. Peedee Pet Care is a free directory that lists independent local dog trainers. We do not provide training services ourselves.",
+      q: "Does Pee Dee Pet Care offer dog training?",
+      a: "No. Pee Dee Pet Care is a free directory that lists independent local dog trainers. We do not provide training services ourselves.",
     },
     {
       q: "How do I find a dog trainer near Florence SC?",
@@ -175,7 +175,7 @@ const TRAINING_SEO = {
     { href: "/grooming", label: "Dog groomers" },
     { href: "/boarding", label: "Pet boarding" },
     { href: "/sitters", label: "Pet sitters and walkers" },
-    { href: "/", label: "Peedee Pet Care home" },
+    { href: "/", label: "Pee Dee Pet Care home" },
   ],
   relatedBlogSlug: "finding-local-dog-trainer-pee-dee",
   resourcesHeading: "Trusted dog training resources",
@@ -185,15 +185,15 @@ const TRAINING_SEO = {
 
 const BOARDING_SEO = {
   pathname: "/boarding",
-  title: "Pet Boarding Directory | Darlington SC | Peedee Pet Care",
+  title: "Pet Boarding Directory | Darlington SC | Pee Dee Pet Care",
   description:
     "Free directory of pet boarding and daycare in Darlington & Florence, SC. Compare listings and reviews. We do not provide boarding.",
   h1: "Pet Boarding & Daycare Directory — Darlington County & Florence, SC",
   guideHeading: "How to find pet boarding in the Pee Dee",
   guideIntro:
-    "Use the listings above to compare independent kennels and daycare facilities in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not board pets. Contact each facility directly for tours, rates, and availability.",
+    "Use the listings above to compare independent kennels and daycare facilities in Florence, Darlington, and Hartsville. Pee Dee Pet Care is a free directory — we do not board pets. Contact each facility directly for tours, rates, and availability.",
   intro:
-    "Peedee Pet Care lists independent pet boarding kennels, daycare facilities, and overnight care providers serving the Pee Dee region. We are an online directory — not a boarding facility or veterinary clinic. Use this page to compare local options in Florence, Darlington, Hartsville, and nearby communities.",
+    "Pee Dee Pet Care lists independent pet boarding kennels, daycare facilities, and overnight care providers serving the Pee Dee region. We are an online directory — not a boarding facility or veterinary clinic. Use this page to compare local options in Florence, Darlington, Hartsville, and nearby communities.",
   sections: [
     {
       heading: "Boarding and daycare services you can find",
@@ -218,21 +218,21 @@ const BOARDING_SEO = {
       heading: "Questions to ask before you book",
       paragraphs: [
         "Ask about daily routines, staff supervision, vaccination requirements, medication handling, and emergency veterinary plans. Reputable facilities in the Pee Dee region expect these questions and should answer clearly.",
-        "Tour the facility when possible. Cleanliness, fresh water, and calm handling are good signs. Peedee Pet Care lists providers — we do not operate a boarding facility.",
+        "Tour the facility when possible. Cleanliness, fresh water, and calm handling are good signs. Pee Dee Pet Care lists providers — we do not operate a boarding facility.",
       ],
     },
     {
       heading: "Boarding vs in-home pet sitting",
       paragraphs: [
         "Boarding suits pets who do well with structured routines and supervised play. Anxious pets or multi-pet households may prefer in-home sitting listed on our sitters directory.",
-        "Compare both options on Peedee Pet Care, read local reviews, and choose based on your pet's temperament and trip length — not price alone.",
+        "Compare both options on Pee Dee Pet Care, read local reviews, and choose based on your pet's temperament and trip length — not price alone.",
       ],
     },
   ],
   faqs: [
     {
-      q: "Does Peedee Pet Care provide pet boarding?",
-      a: "No. Peedee Pet Care is a free directory that lists independent local boarding and daycare facilities. We do not board pets ourselves.",
+      q: "Does Pee Dee Pet Care provide pet boarding?",
+      a: "No. Pee Dee Pet Care is a free directory that lists independent local boarding and daycare facilities. We do not board pets ourselves.",
     },
     {
       q: "How do I find pet boarding near Florence SC?",
@@ -262,7 +262,7 @@ const BOARDING_SEO = {
     { href: "/grooming", label: "Dog groomers" },
     { href: "/training", label: "Dog trainers" },
     { href: "/sitters", label: "Pet sitters and walkers" },
-    { href: "/", label: "Peedee Pet Care home" },
+    { href: "/", label: "Pee Dee Pet Care home" },
   ],
   relatedBlogSlug: "pet-boarding-questions-darlington-florence",
   resourcesHeading: "Trusted pet boarding resources",
@@ -272,15 +272,15 @@ const BOARDING_SEO = {
 
 const SITTERS_SEO = {
   pathname: "/sitters",
-  title: "Pet Sitters Directory | Darlington SC | Peedee Pet Care",
+  title: "Pet Sitters Directory | Darlington SC | Pee Dee Pet Care",
   description:
     "Free directory of pet sitters and dog walkers in Darlington & Florence, SC. Compare listings and reviews. We do not provide sitting.",
   h1: "Pet Sitters Directory — Darlington County & Florence, SC",
   guideHeading: "How to find a pet sitter in the Pee Dee",
   guideIntro:
-    "Use the listings above to compare independent sitters and dog walkers in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not provide sitting services. Contact each provider directly about coverage area, rates, and meet-and-greets.",
+    "Use the listings above to compare independent sitters and dog walkers in Florence, Darlington, and Hartsville. Pee Dee Pet Care is a free directory — we do not provide sitting services. Contact each provider directly about coverage area, rates, and meet-and-greets.",
   intro:
-    "Peedee Pet Care lists independent pet sitters, dog walkers, and in-home care providers serving the Pee Dee region. We are an online directory — not a pet sitting agency or veterinary clinic. Use this page to compare local sitters in Florence, Darlington, Hartsville, and nearby communities.",
+    "Pee Dee Pet Care lists independent pet sitters, dog walkers, and in-home care providers serving the Pee Dee region. We are an online directory — not a pet sitting agency or veterinary clinic. Use this page to compare local sitters in Florence, Darlington, Hartsville, and nearby communities.",
   sections: [
     {
       heading: "Pet sitting services you can find",
@@ -304,7 +304,7 @@ const SITTERS_SEO = {
     {
       heading: "Pet sitter vs boarding — which fits your pet?",
       paragraphs: [
-        "In-home sitting keeps your pet in familiar surroundings, which suits many cats, senior dogs, and anxious pets. Boarding works well when you need supervised group play or a facility with structured routines. Browsing both directories on Peedee Pet Care lets you compare options side by side.",
+        "In-home sitting keeps your pet in familiar surroundings, which suits many cats, senior dogs, and anxious pets. Boarding works well when you need supervised group play or a facility with structured routines. Browsing both directories on Pee Dee Pet Care lets you compare options side by side.",
         "For short weekday absences, a dog walker or drop-in visit may be enough. For multi-day travel, compare overnight in-home sitters with local boarding facilities and read reviews from Pee Dee pet owners who faced similar decisions.",
       ],
     },
@@ -317,8 +317,8 @@ const SITTERS_SEO = {
   ],
   faqs: [
     {
-      q: "Does Peedee Pet Care provide pet sitting?",
-      a: "No. Peedee Pet Care is a free directory that lists independent local pet sitters and dog walkers. We do not provide sitting services ourselves.",
+      q: "Does Pee Dee Pet Care provide pet sitting?",
+      a: "No. Pee Dee Pet Care is a free directory that lists independent local pet sitters and dog walkers. We do not provide sitting services ourselves.",
     },
     {
       q: "How do I find a dog walker near Florence SC?",
@@ -352,7 +352,7 @@ const SITTERS_SEO = {
     { href: "/boarding", label: "Pet boarding" },
     { href: "/grooming", label: "Dog groomers" },
     { href: "/training", label: "Dog trainers" },
-    { href: "/", label: "Peedee Pet Care home" },
+    { href: "/", label: "Pee Dee Pet Care home" },
   ],
   resourcesHeading: "Trusted pet sitting resources",
   schemaName: "Pet Sitters Directory — Darlington & Florence SC",
@@ -361,20 +361,20 @@ const SITTERS_SEO = {
 
 const VET_CARE_SEO = {
   pathname: "/vet-care",
-  title: "Veterinarians in Darlington & Florence SC | Peedee Pet Care",
+  title: "Veterinarians in Darlington & Florence SC | Pee Dee Pet Care",
   description:
-    "Vet directory for Darlington & Florence, SC. Compare independent clinics. Peedee Pet Care does not provide grooming, training, boarding, or veterinary care.",
+    "Vet directory for Darlington & Florence, SC. Compare independent clinics. Pee Dee Pet Care does not provide grooming, training, boarding, or veterinary care.",
   h1: "Veterinary Care Directory — Darlington County & Florence, SC",
   guideHeading: "How to find a veterinarian in the Pee Dee",
   guideIntro:
-    "Use the listings above to compare independent veterinary clinics and animal hospitals in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not provide medical care. Contact clinics directly for appointments and emergencies.",
+    "Use the listings above to compare independent veterinary clinics and animal hospitals in Florence, Darlington, and Hartsville. Pee Dee Pet Care is a free directory — we do not provide medical care. Contact clinics directly for appointments and emergencies.",
   intro:
-    "Peedee Pet Care is a free online directory that lists independent third-party veterinary clinics, animal hospitals, and vet practices serving the Pee Dee region. We do not provide veterinary care ourselves — and we are not a groomer, trainer, or boarding facility. All services are offered by the listed businesses; contact them directly. Use this page to compare local veterinarians in Florence, Darlington, Hartsville, and nearby communities.",
+    "Pee Dee Pet Care is a free online directory that lists independent third-party veterinary clinics, animal hospitals, and vet practices serving the Pee Dee region. We do not provide veterinary care ourselves — and we are not a groomer, trainer, or boarding facility. All services are offered by the listed businesses; contact them directly. Use this page to compare local veterinarians in Florence, Darlington, Hartsville, and nearby communities.",
   sections: [
     {
       heading: "Veterinary services listed by independent providers",
       paragraphs: [
-        "Directory listings may include general practice veterinary clinics, wellness exams, vaccinations, surgery, dental care, diagnostics, and specialty referrals. These services are provided by independent Pee Dee area clinics — not by Peedee Pet Care.",
+        "Directory listings may include general practice veterinary clinics, wellness exams, vaccinations, surgery, dental care, diagnostics, and specialty referrals. These services are provided by independent Pee Dee area clinics — not by Pee Dee Pet Care.",
         "For life-threatening emergencies, contact the nearest emergency veterinary hospital directly. This directory helps you find routine and ongoing care providers in the Pee Dee area.",
       ],
     },
@@ -400,14 +400,14 @@ const VET_CARE_SEO = {
     {
       heading: "What to ask a new veterinary clinic",
       paragraphs: [
-        "Ask about appointment availability for new clients, species served, payment options, and how after-hours calls are handled. If your pet has ongoing conditions, confirm the clinic can coordinate specialist referrals within the region. Reviews from Darlington and Florence pet owners on Peedee Pet Care can highlight wait times, communication, and bedside manner.",
+        "Ask about appointment availability for new clients, species served, payment options, and how after-hours calls are handled. If your pet has ongoing conditions, confirm the clinic can coordinate specialist referrals within the region. Reviews from Darlington and Florence pet owners on Pee Dee Pet Care can highlight wait times, communication, and bedside manner.",
       ],
     },
   ],
   faqs: [
     {
-      q: "Does Peedee Pet Care provide veterinary care?",
-      a: "No. Peedee Pet Care is a free directory that lists independent local veterinary clinics. We do not provide medical care for pets.",
+      q: "Does Pee Dee Pet Care provide veterinary care?",
+      a: "No. Pee Dee Pet Care is a free directory that lists independent local veterinary clinics. We do not provide medical care for pets.",
     },
     {
       q: "How do I find a vet near Florence SC?",
@@ -441,7 +441,7 @@ const VET_CARE_SEO = {
     { href: "/grooming", label: "Dog groomers" },
     { href: "/training", label: "Dog trainers" },
     { href: "/boarding", label: "Pet boarding" },
-    { href: "/", label: "Peedee Pet Care home" },
+    { href: "/", label: "Pee Dee Pet Care home" },
   ],
   resourcesHeading: "Trusted veterinary resources",
   schemaName: "Veterinarians Directory — Darlington & Florence SC",
@@ -450,15 +450,15 @@ const VET_CARE_SEO = {
 
 const PRODUCTS_SEO = {
   pathname: "/products",
-  title: "Pet Products Directory | Darlington SC | Peedee Pet Care",
+  title: "Pet Products Directory | Darlington SC | Pee Dee Pet Care",
   description:
     "Free directory of pet supply stores in Darlington & Florence, SC. Compare listings and reviews. We do not sell products.",
   h1: "Pet Products & Supplies Directory — Darlington County & Florence, SC",
   guideHeading: "How to find local pet supplies in the Pee Dee",
   guideIntro:
-    "Use the listings above to compare independent pet stores and supply shops in Florence, Darlington, and Hartsville. Peedee Pet Care is a free directory — we do not sell products. Contact retailers directly for hours, brands, and inventory.",
+    "Use the listings above to compare independent pet stores and supply shops in Florence, Darlington, and Hartsville. Pee Dee Pet Care is a free directory — we do not sell products. Contact retailers directly for hours, brands, and inventory.",
   intro:
-    "Peedee Pet Care lists independent pet supply stores, feed shops, and retailers serving the Pee Dee region. We are an online directory — not a pet store or veterinary clinic. Use this page to find local shops in Florence, Darlington, Hartsville, and nearby communities.",
+    "Pee Dee Pet Care lists independent pet supply stores, feed shops, and retailers serving the Pee Dee region. We are an online directory — not a pet store or veterinary clinic. Use this page to find local shops in Florence, Darlington, Hartsville, and nearby communities.",
   sections: [
     {
       heading: "Pet products you can find locally",
@@ -495,8 +495,8 @@ const PRODUCTS_SEO = {
   ],
   faqs: [
     {
-      q: "Does Peedee Pet Care sell pet products?",
-      a: "No. Peedee Pet Care is a free directory that lists independent local pet supply stores. We do not sell products ourselves.",
+      q: "Does Pee Dee Pet Care sell pet products?",
+      a: "No. Pee Dee Pet Care is a free directory that lists independent local pet supply stores. We do not sell products ourselves.",
     },
     {
       q: "How do I find a pet store near Florence SC?",
@@ -530,7 +530,7 @@ const PRODUCTS_SEO = {
     { href: "/training", label: "Dog trainers" },
     { href: "/vet-care", label: "Veterinary care" },
     { href: "/blog", label: "The Daily Wag" },
-    { href: "/", label: "Peedee Pet Care home" },
+    { href: "/", label: "Pee Dee Pet Care home" },
   ],
   resourcesHeading: "Trusted pet product resources",
   schemaName: "Pet Products Directory — Florence SC",
@@ -558,10 +558,10 @@ function buildOrganizationNode() {
   return {
     "@type": "Organization",
     "@id": `${CANONICAL_ORIGIN}/#organization`,
-    name: "Peedee Pet Care",
+    name: "Pee Dee Pet Care",
     url: `${CANONICAL_ORIGIN}/`,
     description:
-      "Peedee Pet Care is a free online directory of local pet grooming, training, boarding, daycare, sitters, and veterinary businesses in Darlington County and Florence, SC. Not a service provider.",
+      "Pee Dee Pet Care is a free online directory of local pet grooming, training, boarding, daycare, sitters, and veterinary businesses in Darlington County and Florence, SC. Not a service provider.",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
@@ -595,7 +595,7 @@ function resolveCategorySeoForPathname(pathname) {
   };
 }
 
-function buildListingsSectionHtml(listings, heading = "Local listings on Peedee Pet Care") {
+function buildListingsSectionHtml(listings, heading = "Local listings on Pee Dee Pet Care") {
   if (!listings.length) {
     return "";
   }
@@ -608,7 +608,7 @@ function buildListingsSectionHtml(listings, heading = "Local listings on Peedee 
     })
     .join("\n    ");
   return `<h2>${escapeHtml(heading)}</h2>
-  <p>Independent businesses listed on Peedee Pet Care. Contact providers directly for hours, pricing, and availability.</p>
+  <p>Independent businesses listed on Pee Dee Pet Care. Contact providers directly for hours, pricing, and availability.</p>
   <ul>
     ${items}
   </ul>`;

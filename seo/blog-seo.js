@@ -5,13 +5,13 @@ const CANONICAL_ORIGIN = (process.env.CANONICAL_ORIGIN || "https://www.peedeepet
 const POSTS_FILE = path.join(__dirname, "..", "public", "blog", "posts.json");
 const DEFAULT_OG_IMAGE = `${CANONICAL_ORIGIN}/og-image.jpg`;
 
-const SITE_TITLE = "Pet Services in Darlington & Florence SC | Peedee Pet Care";
+const SITE_TITLE = "Pet Services in Darlington & Florence SC | Pee Dee Pet Care";
 const SITE_DESCRIPTION =
   "Free pet services directory for Darlington & Florence, SC. Browse grooming, training, boarding, sitters and vet listings with reviews. Not a service provider.";
 
-const BLOG_INDEX_TITLE = "The Daily Wag | Pee Dee Pet Tips | Peedee Pet Care";
+const BLOG_INDEX_TITLE = "The Daily Wag | Pee Dee Pet Tips | Pee Dee Pet Care";
 const BLOG_INDEX_DESCRIPTION =
-  "Pee Dee Pet Tips from Peedee Pet Care — local guides on grooming, boarding, training, and directory tips for Florence & Darlington, SC. Not a service provider.";
+  "Pee Dee Pet Tips from Pee Dee Pet Care — local guides on grooming, boarding, training, and directory tips for Florence & Darlington, SC. Not a service provider.";
 
 let postsCache = { mtimeMs: 0, posts: [] };
 
@@ -58,14 +58,14 @@ function getBlogPostBySlug(slug) {
 }
 
 function buildBlogPostSeo(post) {
-  const title = post.seoTitle || `${post.title} | The Daily Wag | Peedee Pet Care`;
+  const title = post.seoTitle || `${post.title} | The Daily Wag | Pee Dee Pet Care`;
   const description = post.excerpt || post.description || SITE_DESCRIPTION;
   const canonical = `${CANONICAL_ORIGIN}/blog/${post.slug}`;
   const ogImage = absoluteUrl(post.coverImage);
   return { title, description, canonical, ogImage, ogType: "article" };
 }
 
-const BLOG_AUTHOR_NAME = "Peedee Pet Care Team";
+const BLOG_AUTHOR_NAME = "Pee Dee Pet Care Team";
 
 const BLOG_POST_FAQS = {
   "how-to-find-good-dog-groomer-pee-dee": [
@@ -75,11 +75,11 @@ const BLOG_POST_FAQS = {
     },
     {
       q: "How do I find a groomer near Florence or Darlington SC?",
-      a: "Browse grooming listings on Peedee Pet Care, compare reviews, and contact providers directly. Listings include salon and mobile groomers in the Pee Dee region.",
+      a: "Browse grooming listings on Pee Dee Pet Care, compare reviews, and contact providers directly. Listings include salon and mobile groomers in the Pee Dee region.",
     },
     {
-      q: "Does Peedee Pet Care groom pets?",
-      a: "No. Peedee Pet Care is a free directory that lists independent local groomers.",
+      q: "Does Pee Dee Pet Care groom pets?",
+      a: "No. Pee Dee Pet Care is a free directory that lists independent local groomers.",
     },
   ],
   "finding-local-dog-trainer-pee-dee": [
@@ -107,7 +107,7 @@ const BLOG_POST_FAQS = {
     },
     {
       q: "How do I compare boarding near Florence SC?",
-      a: "Use Peedee Pet Care to browse local kennels and daycare facilities, read reviews, and contact a shortlist before you travel.",
+      a: "Use Pee Dee Pet Care to browse local kennels and daycare facilities, read reviews, and contact a shortlist before you travel.",
     },
   ],
 };
@@ -271,12 +271,12 @@ function buildOrganizationNode() {
   return {
     "@type": "Organization",
     "@id": `${CANONICAL_ORIGIN}/#organization`,
-    name: "Peedee Pet Care",
+    name: "Pee Dee Pet Care",
     url: `${CANONICAL_ORIGIN}/`,
     description:
-      "Peedee Pet Care is a free online directory of local pet grooming, training, boarding, daycare, sitters, and veterinary businesses in Darlington County and Florence, SC. Not a service provider.",
+      "Pee Dee Pet Care is a free online directory of local pet grooming, training, boarding, daycare, sitters, and veterinary businesses in Darlington County and Florence, SC. Not a service provider.",
     disambiguatingDescription:
-      "Peedee Pet Care is a local business directory for the Pee Dee region of South Carolina. It is not a veterinary clinic, groomer, boarding kennel, or pet sitting company.",
+      "Pee Dee Pet Care is a local business directory for the Pee Dee region of South Carolina. It is not a veterinary clinic, groomer, boarding kennel, or pet sitting company.",
     logo: {
       "@type": "ImageObject",
       url: `${CANONICAL_ORIGIN}/logo.png`,
@@ -425,7 +425,7 @@ function buildBlogPostSeoContentHtml(post) {
   const tldr = buildBlogPostTldr(post);
   const updated = post.dateModified && post.dateModified !== post.date ? post.dateModified : post.date;
   return `<div id="seo-content" class="seo-content">
-  <p><a href="/blog">The Daily Wag</a> · <a href="/">Peedee Pet Care</a></p>
+  <p><a href="/blog">The Daily Wag</a> · <a href="/">Pee Dee Pet Care</a></p>
   <p><em>Written by ${escapeHtml(BLOG_AUTHOR_NAME)} · Updated ${escapeHtml(updated)}</em></p>
   <h2 id="overview">${escapeHtml(post.tldrHeading || "TL;DR")}</h2>
   <p>${escapeHtml(tldr)}</p>
@@ -434,7 +434,7 @@ function buildBlogPostSeoContentHtml(post) {
   ${buildBlogPostFaqHtml(post)}
   <h2 id="local-directory">Find Local Providers</h2>
   <p>
-    Browse listings on Peedee Pet Care:
+    Browse listings on Pee Dee Pet Care:
     <a href="/grooming">grooming</a>,
     <a href="/training">training</a>,
     <a href="/boarding">boarding</a>,
@@ -527,9 +527,9 @@ function buildBlogIndexSeoContentHtml() {
   return `<div id="seo-content" class="seo-content">
   <h1>The Daily Wag — Pee Dee Pet Tips</h1>
   <p>
-    The Daily Wag | Pee Dee Pet Tips is the blog of <a href="/">Peedee Pet Care</a>, a free local pet services
+    The Daily Wag | Pee Dee Pet Tips is the blog of <a href="/">Pee Dee Pet Care</a>, a free local pet services
     directory for Darlington County and Florence, SC. We publish practical guides to help pet owners choose
-    groomers, trainers, boarders, and other providers listed in our directory. Peedee Pet Care is a directory —
+    groomers, trainers, boarders, and other providers listed in our directory. Pee Dee Pet Care is a directory —
     not a veterinary clinic, grooming salon, boarding kennel, or pet sitting service. Browse the full articles
     below without JavaScript.
   </p>
@@ -555,9 +555,9 @@ function buildBlogIndexSeoContentHtml() {
     the <a href="https://www.akc.org/" rel="noopener noreferrer">American Kennel Club (AKC)</a>, and the
     <a href="https://llr.sc.gov/vet/" rel="noopener noreferrer">South Carolina Board of Veterinary Medical Examiners</a>.
   </p>
-  <h2>About Peedee Pet Care</h2>
+  <h2>About Pee Dee Pet Care</h2>
   <p>
-    Peedee Pet Care helps pet owners in Florence, Darlington, Hartsville, and surrounding Darlington County
+    Pee Dee Pet Care helps pet owners in Florence, Darlington, Hartsville, and surrounding Darlington County
     communities compare local pet service providers, read reviews, and contact businesses directly. The
     directory is free for pet owners and free for businesses to list.
   </p>
