@@ -20837,7 +20837,7 @@ function oy() {
       ] })
     ] }),
       /* @__PURE__ */ d("div", { className: "hidden md:block relative w-full", children: [
-        /* @__PURE__ */ d("div", { style: { position: "absolute", left: "2.5rem", top: 0, display: "flex", alignItems: "flex-start", gap: "5px" }, children: [
+        /* @__PURE__ */ d("div", { style: { position: "absolute", left: "2.5rem", bottom: 0, display: "flex", alignItems: "flex-end", gap: "5px" }, children: [
           /* @__PURE__ */ s(
             "a",
             {
