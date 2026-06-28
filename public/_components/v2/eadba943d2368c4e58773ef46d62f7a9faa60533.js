@@ -5866,33 +5866,32 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                   boxShadow: window.innerWidth < 768 ? "0 6px 10px -3px rgba(0, 0, 0, 0.06), 0 2px 4px -2px rgba(0, 0, 0, 0.06)" : void 0
                 },
                 children: [
-                  /* @__PURE__ */ d("div", { className: "flex flex-col md:flex-row items-stretch", children: [
-                    /* @__PURE__ */ s("div", { className: "flex-1 w-full min-w-0 self-stretch flex", children: /* @__PURE__ */ d("picture", { className: "w-full h-[16rem] flex-1 flex overflow-hidden", style: typeof window !== "undefined" && window.innerWidth >= 768 ? { height: "100%", overflow: "visible" } : void 0, children: [
+                  /* @__PURE__ */ d("div", { className: "flex flex-col md:flex-row items-center", style: typeof window !== "undefined" && window.innerWidth >= 768 ? { alignItems: "stretch" } : void 0, children: [
+                    typeof window !== "undefined" && window.innerWidth >= 768 ? /* @__PURE__ */ s("div", { className: "flex-1 w-full min-w-0 self-stretch flex", children: /* @__PURE__ */ d("picture", { className: "w-full h-[16rem] flex-1 flex", style: { height: "100%" }, children: [
                       /* @__PURE__ */ s("source", { media: "(min-width: 768px)", srcSet: "/images/home/hero-dog.jpg" }),
                       /* @__PURE__ */ s(
                         "img",
                         {
                           src: "/images/home/hero-dog-mobile.jpg",
                           alt: "Happy dog on the lawn",
-                          className: "w-full h-[16rem] object-contain object-top",
-                          style: typeof window !== "undefined" ? window.innerWidth >= 768 ? {
+                          className: "w-full h-full object-cover object-top",
+                          style: {
                             width: "100%",
                             height: "100%",
                             objectFit: "cover",
                             objectPosition: "center center",
                             display: "block"
-                          } : {
-                            height: "16rem",
-                            width: "100%",
-                            objectFit: "contain",
-                            objectPosition: "top center",
-                            transform: "scale(1.12)",
-                            transformOrigin: "top center",
-                            display: "block"
-                          } : void 0
+                          }
                         }
                       )
-                    ] }) }),
+                    ] }) }) : /* @__PURE__ */ s(
+                      "img",
+                      {
+                        src: "/images/home/hero-dog-mobile.jpg",
+                        alt: "Happy dog on the lawn",
+                        className: "flex-1 h-[16rem] object-contain object-top"
+                      }
+                    ),
                     /* @__PURE__ */ s("div", { className: "flex-1 px-6 md:px-12 pt-6 md:pt-8 pb-7 md:pb-8 flex items-center justify-center", children: /* @__PURE__ */ d("div", { className: "text-purple-600 leading-loose text-center", children: [
                       /* @__PURE__ */ d("h2", { className: "mb-3 md:mb-6 text-2xl md:text-4xl font-bold", children: [
                         "One Stop Shop",
