@@ -6203,7 +6203,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
           }
         )
       ] }),
-      /* @__PURE__ */ d("div", { className: "md:hidden text-center px-4", style: { marginBottom: "0.75rem" }, children: [
+      /* @__PURE__ */ d("div", { className: "md:hidden text-center px-4", style: { marginBottom: "0.875rem" }, children: [
         /* @__PURE__ */ d("p", { className: "text-xs text-purple-600/90", children: [
           "Questions? Email us at ",
           /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "hello@peedeepetcare.com" })
