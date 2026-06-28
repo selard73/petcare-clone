@@ -3,7 +3,7 @@ const path = require("path");
 
 const CANONICAL_ORIGIN = (process.env.CANONICAL_ORIGIN || "https://www.peedeepetcare.com").replace(/\/$/, "");
 const POSTS_FILE = path.join(__dirname, "..", "public", "blog", "posts.json");
-const DEFAULT_OG_IMAGE = `${CANONICAL_ORIGIN}/social-share.jpg`;
+const DEFAULT_OG_IMAGE = `${CANONICAL_ORIGIN}/share-card.jpg`;
 
 const SITE_TITLE = "Pet Services in Darlington & Florence SC | Pee Dee Pet Care";
 const SITE_DESCRIPTION =
