@@ -6132,7 +6132,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
         ]
       }
     ) }) }),
-      /* @__PURE__ */ s("div", { className: "md:hidden flex items-center justify-center text-[10px] text-purple-500/70 tracking-wide text-center", style: { marginTop: "2.1328125rem", marginBottom: "0.75rem" }, children: e0 != null ? `${e0.toLocaleString()} visits and counting` : "" }),
+      /* @__PURE__ */ s("div", { className: "md:hidden flex items-center justify-center text-[10px] text-purple-500/70 tracking-wide text-center", style: { marginTop: "1.5rem", marginBottom: "0.75rem" }, children: e0 != null ? `${e0.toLocaleString()} visits and counting` : "" }),
       /* @__PURE__ */ s("div", { className: "md:hidden flex items-center justify-center", style: { gap: "5px", marginTop: "1rem", marginBottom: "0.5rem" }, children: [
         /* @__PURE__ */ s(
           "a",
