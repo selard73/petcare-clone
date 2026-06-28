@@ -5672,6 +5672,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
     i(p / 1e3);
   }), U(() => {
     [
+      "/images/home/hero-dog.jpg",
       "https://i.imgur.com/9OFmvJS.gif",
       "https://i.imgur.com/uRQte4X.gif",
       "https://i.imgur.com/XeRVRwn.gif",
@@ -5868,8 +5869,8 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                     /* @__PURE__ */ s(
                       "img",
                       {
-                        src: "https://i.imgur.com/msrMpTU.gif",
-                        alt: "Happy pets",
+                        src: "/images/home/hero-dog.jpg",
+                        alt: "Happy dog on the lawn",
                         className: "flex-1 h-[16rem] md:h-[28rem] object-contain md:object-contain object-top"
                       }
                     ),
