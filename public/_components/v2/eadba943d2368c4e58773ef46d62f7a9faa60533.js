@@ -14449,7 +14449,7 @@ function renderMagazineArticleBody(blocks, slug, onNavigate) {
         }
         elements.push(/* @__PURE__ */ d("div", { className: "blog-magazine-section", children: [
           renderBlogBlock(block, slug, imgIndex, onNavigate, side),
-          /* @__PURE__ */ s("div", { className: "blog-magazine-copy", children: sectionBlocks.map(({ block: sectionBlock, index: sectionIndex }) => renderBlogBlock(sectionBlock, slug, sectionIndex, onNavigate)) })
+          ...sectionBlocks.map(({ block: sectionBlock, index: sectionIndex }) => renderBlogBlock(sectionBlock, slug, sectionIndex, onNavigate))
         ] }, `${slug}-magazine-${bodyImageCount}`));
         continue;
       }

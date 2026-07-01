@@ -32,12 +32,20 @@
       }
       .blog-magazine-section {
         margin: 1.75rem 0;
-        overflow: hidden;
       }
       .blog-magazine-section::after {
         content: "";
         display: table;
         clear: both;
+      }
+      .blog-magazine-section > h2,
+      .blog-magazine-section > h3,
+      .blog-magazine-section > p,
+      .blog-magazine-section > ul,
+      .blog-magazine-section > ol,
+      .blog-magazine-section > blockquote,
+      .blog-magazine-section > div {
+        overflow: visible;
       }
       figure.blog-magazine-figure-left {
         float: left;
@@ -66,13 +74,6 @@
         text-align: center;
         margin-top: 0.5rem;
         color: #8f5c5c;
-      }
-      .blog-magazine-copy {
-        overflow: hidden;
-      }
-      .blog-magazine-copy > h2:first-child,
-      .blog-magazine-copy > h3:first-child {
-        margin-top: 0;
       }
       article figure img:not(.blog-hero-image):not(.blog-magazine-image),
       figure.blog-article-figure img,
