@@ -8,9 +8,9 @@
       "tldr": "Dogs don't unlearn commands out of spite. When a dog stops responding to basic commands, something in their environment, body, or routine has shifted. Once you figure out what that is, you can reset.",
       "excerpt": "Learn why dogs stop listening to basic commands and how to reset training at home. Get practical fixes, red flags, and local help if needed.",
       "date": "2026-07-01",
-      "dateModified": "2026-07-01",
+      "dateModified": "2026-07-02",
       "readMinutes": 11,
-      "coverImage": "/blog/images/dog-wont-listen-cover.png",
+      "coverImage": "/blog/images/dog-wont-listen-cover-v2.png",
       "blocks": [
         {
           "type": "p",
@@ -31,8 +31,8 @@
         },
         {
           "type": "img",
-          "src": "/blog/images/dog-wont-listen-recall.png",
-          "alt": "Dog owner practicing a basic recall command with a dog in a quiet home setting",
+          "src": "/blog/images/dog-wont-listen-hero-v2.png",
+          "alt": "Woman kneeling in a kitchen offering a training treat to an attentive black and white dog",
           "caption": "A calm reset in a low-distraction space is often the fastest way to rebuild reliable responses."
         },
         {
@@ -144,8 +144,8 @@
         },
         {
           "type": "img",
-          "src": "/blog/images/dog-wont-listen-consistency.png",
-          "alt": "Dog responding to a sit command during a short home training session",
+          "src": "/blog/images/dog-wont-listen-consistency-v2.png",
+          "alt": "Woman kneeling on a living room rug giving a stay hand signal to a attentive golden doodle",
           "caption": "Short, consistent sessions with immediate rewards rebuild habits faster than long, frustrated drills."
         },
         {
@@ -217,9 +217,9 @@
         },
         {
           "type": "img",
-          "src": "/blog/images/dog-wont-listen-trainer.png",
-          "alt": "Dog trainer working with a dog owner during a positive reinforcement session",
-          "caption": "A good local trainer helps you build habits that stick at home — not just perform in class."
+          "src": "/blog/images/dog-wont-listen-trainer-v2.png",
+          "alt": "Man in a park holding a leash while a golden retriever pulls away and ignores a stay command",
+          "caption": "When home resets stall or distractions win every time, a local trainer can help you proof commands in real-world settings."
         },
         {
           "type": "p",
