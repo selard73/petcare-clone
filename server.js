@@ -167,6 +167,16 @@ function serveSitemap(req, res) {
 
 let indexHtmlCache = { mtimeMs: 0, body: "" };
 
+function getStaticCacheControl(pathname) {
+  if (pathname.startsWith("/blog/images/") || /\.(?:png|jpe?g|webp|gif|svg)$/i.test(pathname)) {
+    return "public, max-age=31536000, immutable";
+  }
+  if (pathname === "/blog/posts.json") {
+    return "public, max-age=300";
+  }
+  return null;
+}
+
 function serveIndexHtml(req, res, pathname = "/") {
   const indexFile = path.join(PUBLIC_DIR, "index.html");
   fs.stat(indexFile, (statErr, stat) => {
@@ -2051,10 +2061,15 @@ const server = http.createServer(async (req, res) => {
       }
       const ext = path.extname(filePath).toLowerCase();
       const contentType = mimeTypes[ext] || "application/octet-stream";
-      res.writeHead(200, {
+      const cacheControl = getStaticCacheControl(pathname);
+      const headers = {
         "Content-Type": contentType,
         "Content-Length": data.length,
-      });
+      };
+      if (cacheControl) {
+        headers["Cache-Control"] = cacheControl;
+      }
+      res.writeHead(200, headers);
       if (req.method === "HEAD") {
         res.end();
         return;

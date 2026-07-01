@@ -14383,11 +14383,18 @@ function renderBlogBlock(block, slug, index, onNavigate) {
       ] }) }, `${key}-li-${i}`)) }, key);
     case "ol":
       return /* @__PURE__ */ s("ol", { className: "list-decimal pl-5 space-y-2 text-sm md:text-base leading-relaxed", style: bodyStyle, children: (block.items || []).map((item, i) => /* @__PURE__ */ s("li", { className: "pl-1", children: item }, `${key}-li-${i}`)) }, key);
-    case "img":
+    case "img": {
+      const legacyCoverImages = slug === "how-to-find-good-dog-groomer-pee-dee";
+      if (legacyCoverImages)
+        return /* @__PURE__ */ d("figure", { className: "my-6 blog-legacy-cover-figure", children: [
+          /* @__PURE__ */ s("img", { src: block.src, alt: block.alt || "", className: "blog-legacy-cover-image", loading: "eager", fetchPriority: "high", decoding: "async" }),
+          block.caption && /* @__PURE__ */ s("figcaption", { className: "text-xs text-center mt-2", style: { color: "#8f5c5c" }, children: block.caption })
+        ] }, key);
       return /* @__PURE__ */ d("figure", { className: "my-6 blog-article-figure", children: [
-        /* @__PURE__ */ s("img", { src: block.src, alt: block.alt || "", className: "blog-article-image", style: { width: "100%", height: "auto", maxHeight: "none", objectFit: "contain", objectPosition: "center", display: "block", borderRadius: "0.75rem" } }),
+        /* @__PURE__ */ s("img", { src: block.src, alt: block.alt || "", className: "blog-article-image", loading: "eager", fetchPriority: "high", decoding: "async", style: { width: "100%", height: "auto", maxHeight: "none", objectFit: "contain", objectPosition: "center", display: "block", borderRadius: "0.75rem" } }),
         block.caption && /* @__PURE__ */ s("figcaption", { className: "text-xs text-center mt-2", style: { color: "#8f5c5c" }, children: block.caption })
       ] }, key);
+    }
     case "blockquote":
       return /* @__PURE__ */ d("blockquote", { className: "my-6 pl-4 py-3 pr-4 rounded-r-xl text-sm md:text-base leading-relaxed", style: { borderLeft: "4px solid #8e2c32", backgroundColor: "#f9ecea", color: "#5c3a38" }, children: [
         block.label && /* @__PURE__ */ s("strong", { className: "block mb-1", style: { color: "#6b1e2a" }, children: block.label }),
@@ -14420,15 +14427,19 @@ function dailyWag({ onNavigate: t }) {
       return decodeURIComponent(pathname.slice(6));
     const hash = window.location.hash.slice(1);
     return hash.startsWith("blog/") ? hash.slice(5) : null;
+  }, loadBlogPosts = async () => {
+    if (typeof window < "u" && typeof window.__peedeeLoadBlogPosts == "function")
+      return window.__peedeeLoadBlogPosts();
+    const g = await fetch("/blog/posts.json");
+    if (!g.ok) throw new Error("Failed to load");
+    const b = await g.json();
+    return Array.isArray(b.posts) ? b.posts : [];
   }, [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => blogSlugFromLocation());
   U(() => {
     (async () => {
       setLoading(!0), setError("");
       try {
-        const g = await fetch("/blog/posts.json");
-        if (!g.ok) throw new Error("Failed to load");
-        const b = await g.json();
-        setPosts(Array.isArray(b.posts) ? b.posts : []);
+        setPosts(await loadBlogPosts());
       } catch {
         setError("Could not load articles right now. Please try again later.");
       } finally {
@@ -14507,9 +14518,7 @@ function dailyWag({ onNavigate: t }) {
           D.a,
           {
             href: `/blog/${g.slug}`,
-            initial: { opacity: 0, y: 30 },
-            animate: { opacity: 1, y: 0 },
-            transition: { delay: b * 0.08, duration: 0.3 },
+            initial: !1,
             whileHover: { y: -5 },
             onClick: (ev) => {
               ev.preventDefault(), openPost(g.slug);
@@ -14521,6 +14530,9 @@ function dailyWag({ onNavigate: t }) {
                 {
                   src: g.coverImage || Wr,
                   alt: g.title,
+                  loading: b < 4 ? "eager" : "lazy",
+                  fetchPriority: b < 2 ? "high" : "auto",
+                  decoding: "async",
                   className: `absolute inset-0 w-full h-full rounded-t-xl ${g.coverImage ? "object-cover" : "object-contain bg-gradient-to-br from-rose-100 to-red-100"}`
                 }
               ) }) }),

@@ -694,17 +694,59 @@ function injectBlogIndexEnhancements(html) {
 
 function injectBlogEnhancements(html, pathname) {
   const normalized = pathname.replace(/\/+$/, "") || "/";
+  let result = html;
   if (normalized === "/blog") {
-    return injectBlogIndexEnhancements(html);
-  }
-  if (normalized.startsWith("/blog/") && normalized.length > 6) {
+    result = injectBlogIndexEnhancements(result);
+  } else if (normalized.startsWith("/blog/") && normalized.length > 6) {
     const slug = decodeURIComponent(normalized.slice(6));
     const post = getBlogPostBySlug(slug);
     if (post) {
-      return injectBlogPostEnhancements(html, post);
+      result = injectBlogPostEnhancements(result, post);
     }
   }
-  return html;
+  if (normalized === "/blog" || (normalized.startsWith("/blog/") && normalized.length > 6)) {
+    result = injectBlogImagePreloads(result, pathname);
+  }
+  return result;
+}
+
+function injectBlogImagePreloads(html, pathname) {
+  const normalized = pathname.replace(/\/+$/, "") || "/";
+  const links = ['<link rel="preload" href="/blog/posts.json" as="fetch" crossorigin />'];
+  const seen = new Set();
+
+  const addImagePreload = (relativePath) => {
+    if (!relativePath || seen.has(relativePath)) {
+      return;
+    }
+    seen.add(relativePath);
+    links.push(`<link rel="preload" href="${escapeHtml(absoluteUrl(relativePath))}" as="image" />`);
+  };
+
+  if (normalized === "/blog") {
+    loadBlogPosts()
+      .slice(0, 4)
+      .forEach((post) => addImagePreload(post.coverImage));
+  } else if (normalized.startsWith("/blog/") && normalized.length > 6) {
+    const post = getBlogPostBySlug(decodeURIComponent(normalized.slice(6)));
+    if (post && Array.isArray(post.blocks)) {
+      post.blocks.forEach((block) => {
+        if (block?.type === "img" && block.src) {
+          addImagePreload(block.src);
+        }
+      });
+    }
+  }
+
+  if (!links.length) {
+    return html;
+  }
+
+  const block = `<!-- peedee-blog-preloads:start -->\n    ${links.join("\n    ")}\n    <!-- peedee-blog-preloads:end -->`;
+  if (html.includes("<!-- peedee-blog-preloads:start -->")) {
+    return html.replace(/<!-- peedee-blog-preloads:start -->[\s\S]*?<!-- peedee-blog-preloads:end -->\s*/i, `${block}\n    `);
+  }
+  return html.replace("</head>", `    ${block}\n  </head>`);
 }
 
 const STATIC_SITEMAP_PATHS = [

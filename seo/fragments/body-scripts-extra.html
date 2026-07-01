@@ -277,6 +277,38 @@
 
         window.__peedeeRefreshRouteSeo = refreshRouteSeo;
 
+        window.__peedeeLoadBlogPosts = loadPosts;
+
+        function preloadBlogImages(posts, slug) {
+          if (!Array.isArray(posts) || !posts.length) return;
+          posts.slice(0, 4).forEach(function (post, index) {
+            if (post.coverImage && index < 4) {
+              var cover = new Image();
+              cover.decoding = "async";
+              cover.src = post.coverImage;
+            }
+          });
+          if (!slug) return;
+          var selected = posts.find(function (post) {
+            return post.slug === slug;
+          });
+          if (!selected || !Array.isArray(selected.blocks)) return;
+          selected.blocks.forEach(function (block) {
+            if (block.type === "img" && block.src) {
+              var img = new Image();
+              img.decoding = "async";
+              img.src = block.src;
+            }
+          });
+        }
+
+        if (isBlogPath()) {
+          var earlySlug = blogSlugFromPath();
+          loadPosts().then(function (posts) {
+            preloadBlogImages(posts, earlySlug);
+          });
+        }
+
         document.addEventListener("DOMContentLoaded", function () {
           refreshRouteSeo();
         });

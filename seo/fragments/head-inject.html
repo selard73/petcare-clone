@@ -16,7 +16,11 @@
         overflow: visible;
         max-height: none;
       }
-      article figure img,
+      figure.blog-legacy-cover-figure {
+        overflow: hidden;
+        border-radius: 0.75rem;
+      }
+      article figure img:not(.blog-legacy-cover-image),
       figure.blog-article-figure img,
       img.blog-article-image {
         width: 100% !important;
@@ -26,6 +30,15 @@
         object-position: center;
         display: block;
         border-radius: 0.75rem;
+      }
+      img.blog-legacy-cover-image {
+        width: 100% !important;
+        height: 420px !important;
+        max-height: 420px !important;
+        object-fit: cover !important;
+        object-position: center !important;
+        display: block !important;
+        border-radius: 0.75rem !important;
       }
     </style>
 
