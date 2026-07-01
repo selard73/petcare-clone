@@ -14374,6 +14374,8 @@ function renderBlogBlock(block, slug, index, onNavigate) {
       return /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed", style: bodyStyle, children: block.text }, key);
     case "h2":
       return /* @__PURE__ */ s("h2", { className: "text-xl md:text-2xl font-semibold leading-snug mt-8 mb-3 first:mt-0", style: headingStyle, children: block.text }, key);
+    case "h3":
+      return /* @__PURE__ */ s("h3", { className: "text-lg md:text-xl font-semibold leading-snug mt-6 mb-2", style: headingStyle, children: block.text }, key);
     case "ul":
       return /* @__PURE__ */ s("ul", { className: "list-disc pl-5 space-y-2 text-sm md:text-base leading-relaxed", style: bodyStyle, children: (block.items || []).map((item, i) => /* @__PURE__ */ s("li", { className: "pl-1", children: typeof item === "string" ? item : /* @__PURE__ */ d(ie, { children: [
         item.label && /* @__PURE__ */ s("strong", { style: { color: "#6b1e2a" }, children: `${item.label} ` }),

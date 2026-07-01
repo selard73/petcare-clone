@@ -96,6 +96,28 @@ const BLOG_POST_FAQS = {
       a: "Puppy socialization often works well in groups. Specific behavior issues like reactivity or recall problems may need private or in-home training.",
     },
   ],
+  "cat-grooming-guide": [
+    {
+      q: "How do I know if my cat needs professional grooming?",
+      a: "Look for matting, a greasy or dull coat, odor, dirt around the hindquarters, or trouble reaching certain areas while grooming. Long-haired, overweight, senior, or arthritic cats are the most common candidates for professional grooming.",
+    },
+    {
+      q: "How is cat grooming different from dog grooming?",
+      a: "Cat grooming requires a lighter touch, more attention to stress signals, and tools that work on thinner, more delicate skin. Cats usually need quieter environments, shorter sessions, and handling that prioritizes safety over speed.",
+    },
+    {
+      q: "How often should long-haired cats be groomed?",
+      a: "Many long-haired cats do best with professional grooming every 4 to 6 weeks, especially if they are seniors or prone to tangles. Regular at-home brushing between visits helps reduce matting and keeps appointments easier.",
+    },
+    {
+      q: "Can a dog groomer groom cats too?",
+      a: "Sometimes, but only if they have specific cat experience and a setup designed for feline grooming. A groomer who mainly works with dogs may not have the handling skills, tools, or environment cats need to stay calm and safe.",
+    },
+    {
+      q: "What should I ask before booking a cat groomer?",
+      a: "Ask about cat-specific experience, how they handle stressed cats, whether they offer quiet or cat-only appointment times, and what happens if your cat becomes too anxious during the session. Those answers tell you a lot.",
+    },
+  ],
   "pet-boarding-questions-darlington-florence": [
     {
       q: "What should I ask before booking pet boarding?",
@@ -324,6 +346,8 @@ function renderPostBlockHtml(block) {
       return `<p>${escapeHtml(block.text)}</p>`;
     case "h2":
       return `<h3>${escapeHtml(block.text)}</h3>`;
+    case "h3":
+      return `<h4>${escapeHtml(block.text)}</h4>`;
     case "ul":
       return `<ul>${(block.items || [])
         .map((item) => {
@@ -386,7 +410,14 @@ function renderPostArticleSectionHtml(post, { useH1 = false } = {}) {
 }
 
 function getBlogPostExternalLinks(slug) {
-  if (slug.includes("groomer")) {
+  if (slug.includes("groomer") || slug.includes("grooming")) {
+    if (slug.includes("cat")) {
+      return [
+        { href: "https://www.petmd.com/cat/grooming", label: "PetMD cat grooming guide" },
+        { href: "https://www.nationalcatgroomers.com/", label: "National Cat Groomers Institute" },
+        { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
+      ];
+    }
     return [
       { href: "https://www.akc.org/expert-advice/health/questions-ask-potential-groomers/", label: "AKC groomer questions" },
       { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
