@@ -213,9 +213,9 @@
         },
         {
           "type": "blockquote",
-          "text": "PetMD's cat grooming resource is a solid reference if you want to go deeper on coat types and at-home maintenance between professional visits.",
-          "linkText": "Read PetMD's cat grooming guide",
-          "linkHref": "https://www.petmd.com/cat/grooming"
+          "text": "The ASPCA's cat grooming tips are a solid reference if you want to go deeper on coat care and at-home maintenance between professional visits.",
+          "linkText": "Read the ASPCA's cat grooming tips",
+          "linkHref": "https://www.aspca.org/pet-care/cat-care/cat-grooming-tips"
         },
         {
           "type": "h2",

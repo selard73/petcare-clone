@@ -413,7 +413,7 @@ function getBlogPostExternalLinks(slug) {
   if (slug.includes("groomer") || slug.includes("grooming")) {
     if (slug.includes("cat")) {
       return [
-        { href: "https://www.petmd.com/cat/grooming", label: "PetMD cat grooming guide" },
+        { href: "https://www.aspca.org/pet-care/cat-care/cat-grooming-tips", label: "ASPCA cat grooming tips" },
         { href: "https://www.nationalcatgroomers.com/", label: "National Cat Groomers Institute" },
         { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
       ];
