@@ -215,9 +215,16 @@
           };
         }
 
+        function blogAssetUrl(src, version) {
+          if (!src) return src;
+          if (!version) return src;
+          var joiner = src.indexOf("?") === -1 ? "?" : "&";
+          return src + joiner + "v=" + encodeURIComponent(version);
+        }
+
         function loadPosts() {
           if (!postsPromise) {
-            postsPromise = fetch("/blog/posts.json")
+            postsPromise = fetch("/blog/posts.json", { cache: "no-store" })
               .then(function (res) {
                 return res.ok ? res.json() : { posts: [] };
               })
@@ -285,7 +292,7 @@
             if (post.coverImage && index < 4) {
               var cover = new Image();
               cover.decoding = "async";
-              cover.src = post.coverImage;
+              cover.src = blogAssetUrl(post.coverImage, post.dateModified || post.date);
             }
           });
           if (!slug) return;
@@ -293,11 +300,12 @@
             return post.slug === slug;
           });
           if (!selected || !Array.isArray(selected.blocks)) return;
+          var version = selected.dateModified || selected.date;
           selected.blocks.forEach(function (block) {
             if (block.type === "img" && block.src) {
               var img = new Image();
               img.decoding = "async";
-              img.src = block.src;
+              img.src = blogAssetUrl(block.src, version);
             }
           });
         }

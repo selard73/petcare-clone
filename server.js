@@ -169,10 +169,10 @@ let indexHtmlCache = { mtimeMs: 0, body: "" };
 
 function getStaticCacheControl(pathname) {
   if (pathname.startsWith("/blog/images/") || /\.(?:png|jpe?g|webp|gif|svg)$/i.test(pathname)) {
-    return "public, max-age=31536000, immutable";
+    return "public, max-age=86400, must-revalidate";
   }
   if (pathname === "/blog/posts.json") {
-    return "public, max-age=300";
+    return "no-cache, must-revalidate";
   }
   return null;
 }

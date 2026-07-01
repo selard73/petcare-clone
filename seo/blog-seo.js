@@ -710,29 +710,42 @@ function injectBlogEnhancements(html, pathname) {
   return result;
 }
 
+function blogAssetUrl(relativePath, version) {
+  if (!relativePath) {
+    return relativePath;
+  }
+  if (!version) {
+    return relativePath;
+  }
+  const joiner = relativePath.includes("?") ? "&" : "?";
+  return `${relativePath}${joiner}v=${encodeURIComponent(version)}`;
+}
+
 function injectBlogImagePreloads(html, pathname) {
   const normalized = pathname.replace(/\/+$/, "") || "/";
   const links = ['<link rel="preload" href="/blog/posts.json" as="fetch" crossorigin />'];
   const seen = new Set();
 
-  const addImagePreload = (relativePath) => {
+  const addImagePreload = (relativePath, version) => {
     if (!relativePath || seen.has(relativePath)) {
       return;
     }
     seen.add(relativePath);
-    links.push(`<link rel="preload" href="${escapeHtml(absoluteUrl(relativePath))}" as="image" />`);
+    const versionedPath = blogAssetUrl(relativePath, version);
+    links.push(`<link rel="preload" href="${escapeHtml(absoluteUrl(versionedPath))}" as="image" />`);
   };
 
   if (normalized === "/blog") {
     loadBlogPosts()
       .slice(0, 4)
-      .forEach((post) => addImagePreload(post.coverImage));
+      .forEach((post) => addImagePreload(post.coverImage, post.dateModified || post.date));
   } else if (normalized.startsWith("/blog/") && normalized.length > 6) {
     const post = getBlogPostBySlug(decodeURIComponent(normalized.slice(6)));
     if (post && Array.isArray(post.blocks)) {
+      const version = post.dateModified || post.date;
       post.blocks.forEach((block) => {
         if (block?.type === "img" && block.src) {
-          addImagePreload(block.src);
+          addImagePreload(block.src, version);
         }
       });
     }

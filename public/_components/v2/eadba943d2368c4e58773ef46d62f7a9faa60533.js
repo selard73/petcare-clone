@@ -14430,10 +14430,15 @@ function dailyWag({ onNavigate: t }) {
   }, loadBlogPosts = async () => {
     if (typeof window < "u" && typeof window.__peedeeLoadBlogPosts == "function")
       return window.__peedeeLoadBlogPosts();
-    const g = await fetch("/blog/posts.json");
+    const g = await fetch("/blog/posts.json", { cache: "no-store" });
     if (!g.ok) throw new Error("Failed to load");
     const b = await g.json();
     return Array.isArray(b.posts) ? b.posts : [];
+  }, blogAssetUrl = (src, version) => {
+    if (!src) return src;
+    if (!version) return src;
+    const joiner = src.includes("?") ? "&" : "?";
+    return `${src}${joiner}v=${encodeURIComponent(version)}`;
   }, [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => blogSlugFromLocation());
   U(() => {
     (async () => {
@@ -14528,7 +14533,7 @@ function dailyWag({ onNavigate: t }) {
               /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ s("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: /* @__PURE__ */ s(
                 "img",
                 {
-                  src: g.coverImage || Wr,
+                  src: blogAssetUrl(g.coverImage, g.dateModified || g.date) || Wr,
                   alt: g.title,
                   loading: b < 4 ? "eager" : "lazy",
                   fetchPriority: b < 2 ? "high" : "auto",
