@@ -14384,8 +14384,8 @@ function renderBlogBlock(block, slug, index, onNavigate) {
     case "ol":
       return /* @__PURE__ */ s("ol", { className: "list-decimal pl-5 space-y-2 text-sm md:text-base leading-relaxed", style: bodyStyle, children: (block.items || []).map((item, i) => /* @__PURE__ */ s("li", { className: "pl-1", children: item }, `${key}-li-${i}`)) }, key);
     case "img":
-      return /* @__PURE__ */ d("figure", { className: "my-6", children: [
-        /* @__PURE__ */ s("img", { src: block.src, alt: block.alt || "", className: "w-full h-auto rounded-xl", style: { maxWidth: "100%", display: "block" } }),
+      return /* @__PURE__ */ d("figure", { className: "my-6 blog-article-figure", children: [
+        /* @__PURE__ */ s("img", { src: block.src, alt: block.alt || "", className: "blog-article-image", style: { width: "100%", height: "auto", maxHeight: "none", objectFit: "contain", objectPosition: "center", display: "block", borderRadius: "0.75rem" } }),
         block.caption && /* @__PURE__ */ s("figcaption", { className: "text-xs text-center mt-2", style: { color: "#8f5c5c" }, children: block.caption })
       ] }, key);
     case "blockquote":
