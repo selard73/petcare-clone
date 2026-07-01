@@ -8,7 +8,7 @@
       "tldr": "Most healthy short-haired cats groom themselves well, but long-haired, senior, overweight, or arthritic cats often need professional help. Cat grooming is a different skill from dog grooming — look for matting, coat changes, odor, or trouble reaching hindquarters, then choose a groomer with real feline experience in the Pee Dee area.",
       "excerpt": "Learn when cat grooming is needed, how it differs from dog grooming, and what to ask before booking a local cat groomer in the Pee Dee area.",
       "date": "2026-06-30",
-      "dateModified": "2026-07-01",
+      "dateModified": "2026-07-02",
       "readMinutes": 12,
       "coverImage": "/blog/images/cat-grooming-cover-v2.png",
       "blocks": [
@@ -174,7 +174,8 @@
           "type": "img",
           "src": "/blog/images/cat-grooming-dry.png",
           "alt": "Wet cat wrapped in a towel while being dried with a low-heat blow dryer during grooming",
-          "caption": "Towel-drying and low-heat blow dryers are standard in cat grooming — high heat and rough handling can stress cats quickly."
+          "caption": "Towel-drying and low-heat blow dryers are standard in cat grooming — high heat and rough handling can stress cats quickly.",
+          "imageClass": "blog-magazine-image--headroom"
         },
         {
           "type": "h2",
@@ -311,7 +312,8 @@
           "type": "img",
           "src": "/blog/images/groomer-face-trim.png",
           "alt": "Professional dog groomer carefully trimming a small white dog's face",
-          "caption": "A calm, skilled groomer makes all the difference — especially around sensitive areas like the face and ears."
+          "caption": "A calm, skilled groomer makes all the difference — especially around sensitive areas like the face and ears.",
+          "imageClass": "blog-hero-image--headroom"
         },
         {
           "type": "h2",
@@ -378,7 +380,7 @@
           "src": "/blog/images/happy-groomed-dog.png",
           "alt": "Fluffy well-groomed dog with a healthy, full coat after grooming",
           "caption": "The goal: a groom your dog (and you) feel great about.",
-          "imageClass": "blog-legacy-cover-image--headroom"
+          "imageClass": "blog-magazine-image--headroom"
         },
         {
           "type": "h2",

@@ -14365,7 +14365,7 @@ function eo({ editProduct: t, onClose: e }) {
     )
   ] });
 }
-function renderBlogBlock(block, slug, index, onNavigate) {
+function renderBlogBlock(block, slug, index, onNavigate, imageLayout = "default") {
   const key = `${slug}-block-${index}`, bodyStyle = { color: "#44403c" }, headingStyle = { color: "#6b1e2a" }, linkStyle = { color: "#8e2c32" };
   if (typeof block === "string")
     return /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed", style: bodyStyle, children: block }, key);
@@ -14384,14 +14384,25 @@ function renderBlogBlock(block, slug, index, onNavigate) {
     case "ol":
       return /* @__PURE__ */ s("ol", { className: "list-decimal pl-5 space-y-2 text-sm md:text-base leading-relaxed", style: bodyStyle, children: (block.items || []).map((item, i) => /* @__PURE__ */ s("li", { className: "pl-1", children: item }, `${key}-li-${i}`)) }, key);
     case "img": {
-      const legacyCoverImages = slug === "how-to-find-good-dog-groomer-pee-dee";
-      if (legacyCoverImages)
-        return /* @__PURE__ */ d("figure", { className: "my-6 blog-legacy-cover-figure", children: [
-          /* @__PURE__ */ s("img", { src: block.src, alt: block.alt || "", className: `blog-legacy-cover-image${block.imageClass ? ` ${block.imageClass}` : ""}`, loading: "eager", fetchPriority: "high", decoding: "async" }),
+      const imgClassName = `blog-article-image${block.imageClass ? ` ${block.imageClass}` : ""}`;
+      const imgProps = { src: block.src, alt: block.alt || "", loading: "eager", fetchPriority: "high", decoding: "async" };
+      if (imageLayout === "hero")
+        return /* @__PURE__ */ d("figure", { className: "blog-hero-figure", children: [
+          /* @__PURE__ */ s("img", { ...imgProps, className: `blog-hero-image${block.imageClass ? ` ${block.imageClass}` : ""}` }),
           block.caption && /* @__PURE__ */ s("figcaption", { className: "text-xs text-center mt-2", style: { color: "#8f5c5c" }, children: block.caption })
         ] }, key);
+      if (imageLayout === "magazine-left")
+        return /* @__PURE__ */ d("figure", { className: "blog-magazine-figure-left", children: [
+          /* @__PURE__ */ s("img", { ...imgProps, className: `blog-magazine-image${block.imageClass ? ` ${block.imageClass}` : ""}` }),
+          block.caption && /* @__PURE__ */ s("figcaption", { className: "blog-magazine-caption", children: block.caption })
+        ] }, key);
+      if (imageLayout === "magazine-right")
+        return /* @__PURE__ */ d("figure", { className: "blog-magazine-figure-right", children: [
+          /* @__PURE__ */ s("img", { ...imgProps, className: `blog-magazine-image${block.imageClass ? ` ${block.imageClass}` : ""}` }),
+          block.caption && /* @__PURE__ */ s("figcaption", { className: "blog-magazine-caption", children: block.caption })
+        ] }, key);
       return /* @__PURE__ */ d("figure", { className: "my-6 blog-article-figure", children: [
-        /* @__PURE__ */ s("img", { src: block.src, alt: block.alt || "", className: "blog-article-image", loading: "eager", fetchPriority: "high", decoding: "async", style: { width: "100%", height: "auto", maxHeight: "none", objectFit: "contain", objectPosition: "center", display: "block", borderRadius: "0.75rem" } }),
+        /* @__PURE__ */ s("img", { ...imgProps, className: imgClassName, style: { width: "100%", height: "auto", maxHeight: "none", objectFit: "contain", objectPosition: "center", display: "block", borderRadius: "0.75rem" } }),
         block.caption && /* @__PURE__ */ s("figcaption", { className: "text-xs text-center mt-2", style: { color: "#8f5c5c" }, children: block.caption })
       ] }, key);
     }
@@ -14419,6 +14430,37 @@ function renderBlogBlock(block, slug, index, onNavigate) {
     default:
       return block.text ? /* @__PURE__ */ s("p", { className: "text-sm md:text-base leading-relaxed", style: bodyStyle, children: block.text }, key) : null;
   }
+}
+function renderMagazineArticleBody(blocks, slug, onNavigate) {
+  const elements = [];
+  let bodyImageCount = 0;
+  for (let i = 0; i < blocks.length; ) {
+    const block = blocks[i];
+    if (typeof block == "object" && block?.type === "img") {
+      bodyImageCount++;
+      const imgIndex = i;
+      if (bodyImageCount === 1 || bodyImageCount === 2) {
+        const side = bodyImageCount === 1 ? "magazine-left" : "magazine-right";
+        i++;
+        const sectionBlocks = [];
+        while (i < blocks.length && !(typeof blocks[i] == "object" && blocks[i]?.type === "img")) {
+          sectionBlocks.push({ block: blocks[i], index: i });
+          i++;
+        }
+        elements.push(/* @__PURE__ */ d("div", { className: "blog-magazine-section", children: [
+          renderBlogBlock(block, slug, imgIndex, onNavigate, side),
+          /* @__PURE__ */ s("div", { className: "blog-magazine-copy", children: sectionBlocks.map(({ block: sectionBlock, index: sectionIndex }) => renderBlogBlock(sectionBlock, slug, sectionIndex, onNavigate)) })
+        ] }, `${slug}-magazine-${bodyImageCount}`));
+        continue;
+      }
+      elements.push(renderBlogBlock(block, slug, imgIndex, onNavigate));
+      i++;
+      continue;
+    }
+    elements.push(renderBlogBlock(block, slug, i, onNavigate));
+    i++;
+  }
+  return elements;
 }
 function dailyWag({ onNavigate: t }) {
   const blogSlugFromLocation = () => {
@@ -14514,13 +14556,13 @@ function dailyWag({ onNavigate: t }) {
             children: "← Back to The Daily Wag"
           }
         ),
-        firstImageBlock && renderBlogBlock(firstImageBlock, selected.slug, firstImageIndex, t),
+        firstImageBlock && renderBlogBlock(firstImageBlock, selected.slug, firstImageIndex, t, "hero"),
         /* @__PURE__ */ s("h2", { className: "text-2xl md:text-3xl font-semibold leading-snug mb-3", style: { color: "#6b1e2a" }, children: selected.title }),
         /* @__PURE__ */ d("p", { className: "text-sm mb-6", style: { color: "#8f5c5c" }, children: [
           formatDate(selected.date),
           selected.readMinutes ? ` · ${selected.readMinutes} min read` : ""
         ] }),
-        /* @__PURE__ */ s("div", { className: "space-y-4", children: articleBodyBlocks.map((g, b) => renderBlogBlock(g, selected.slug, b, t)) })
+        /* @__PURE__ */ s("div", { className: "space-y-4 blog-magazine-article", children: renderMagazineArticleBody(articleBodyBlocks, selected.slug, t) })
       ] }),
       !loading && !selected && /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 w-full", children: [
         posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12 col-span-1 md:col-span-2", style: { color: "#8f5c5c" }, children: "New articles coming soon." }),
