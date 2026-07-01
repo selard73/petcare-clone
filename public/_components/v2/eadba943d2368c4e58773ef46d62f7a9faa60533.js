@@ -14489,7 +14489,7 @@ function dailyWag({ onNavigate: t }) {
     if (!version) return src;
     const joiner = src.includes("?") ? "&" : "?";
     return `${src}${joiner}v=${encodeURIComponent(version)}`;
-  }, [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => blogSlugFromLocation()), [showDesktopBackLink, setShowDesktopBackLink] = E(() => typeof window < "u" && typeof window.matchMedia == "function" && window.matchMedia("(min-width: 768px)").matches);
+  }, [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => typeof window < "u" && window.__PEEDEE_BOOT?.page === "blog" ? window.__PEEDEE_BOOT.slug || null : blogSlugFromLocation()), [showDesktopBackLink, setShowDesktopBackLink] = E(() => typeof window < "u" && typeof window.matchMedia == "function" && window.matchMedia("(min-width: 768px)").matches);
   U(() => {
     if (typeof window > "u" || typeof window.matchMedia != "function") return;
     const mq = window.matchMedia("(min-width: 768px)"), syncViewport = () => setShowDesktopBackLink(mq.matches);
@@ -20561,6 +20561,8 @@ function oy() {
     }
   }, blogPathname = () => window.location.pathname.replace(/\/$/, "") || "/", isBlogPathname = (pathname) => pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6;
   const [t, e] = E(() => {
+    if (typeof window < "u" && window.__PEEDEE_BOOT?.page === "blog")
+      return "blog";
     const pathname = blogPathname();
     if (isBlogPathname(pathname))
       return console.log("✅ Using pathname for blog:", pathname), "blog";
@@ -20571,6 +20573,8 @@ function oy() {
     const z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "shortlist", "blog"], A0 = (k) => k && (k === "blog" || k.startsWith("blog/")) ? "blog" : k && z.includes(k) && !(k === "about" && window.innerWidth >= 768) ? k : null;
     return A0(k) ? (console.log("✅ Using hash:", k), A0(k)) : A0(I) ? (console.log("✅ Using sessionStorage:", I), A0(I)) : (console.log("📍 No valid page found, defaulting to home"), "home");
   }), [r, n] = E(() => {
+    if (typeof window < "u" && window.__PEEDEE_BOOT?.page === "blog")
+      return [window.__PEEDEE_BOOT.slug ? "blog/" + window.__PEEDEE_BOOT.slug : "blog"];
     const pathname = blogPathname();
     if (isBlogPathname(pathname))
       return [pathname.startsWith("/blog/") && pathname.length > 6 ? "blog/" + decodeBlogSlug(pathname.slice(6)) : "blog"];
@@ -20604,11 +20608,10 @@ function oy() {
     const k = new URLSearchParams(window.location.search).get("reset");
     k && (zv(k), o(!0), window.history.replaceState({}, "", window.location.pathname + window.location.hash));
   }, []), U(() => {
-    const syncBlogPage = () => {
-      isBlogPathname(blogPathname()) && t !== "blog" && e("blog");
-    };
-    return syncBlogPage(), window.addEventListener("popstate", syncBlogPage), () => window.removeEventListener("popstate", syncBlogPage);
-  }, [t]), U(() => {
+    if (typeof window < "u" && window.__PEEDEE_BOOT?.page === "blog") {
+      sessionStorage.setItem("pawsitively_current_page", "blog");
+      return;
+    }
     const pathname = blogPathname();
     if (isBlogPathname(pathname) && t !== "blog") {
       e("blog");

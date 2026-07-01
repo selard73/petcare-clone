@@ -1,4 +1,34 @@
 <title>Pet Services in Darlington & Florence SC | Pee Dee Pet Care</title>
+    <script>
+      (function () {
+        function normalizePathname() {
+          return window.location.pathname.replace(/\/+$/, "") || "/";
+        }
+        function decodeSlug(value) {
+          try {
+            return decodeURIComponent(value);
+          } catch (e) {
+            return value;
+          }
+        }
+        var pathname = normalizePathname();
+        var onBlogPath = pathname === "/blog" || (pathname.indexOf("/blog/") === 0 && pathname.length > 6);
+        var hash = window.location.hash.replace(/^#/, "");
+        if (!onBlogPath && (hash === "blog" || hash.indexOf("blog/") === 0)) {
+          var hashSlug = hash.indexOf("blog/") === 0 ? decodeSlug(hash.slice(5)) : "";
+          window.history.replaceState({}, "", hashSlug ? "/blog/" + hashSlug : "/blog");
+          pathname = normalizePathname();
+          onBlogPath = true;
+        }
+        if (!onBlogPath) return;
+        var slug = "";
+        if (pathname.indexOf("/blog/") === 0 && pathname.length > 6) slug = decodeSlug(pathname.slice(6));
+        window.__PEEDEE_BOOT = { page: "blog", slug: slug };
+        try {
+          sessionStorage.setItem("pawsitively_current_page", "blog");
+        } catch (e) {}
+      })();
+    </script>
     <meta
       name="description"
       content="Free pet services directory for Darlington &amp; Florence, SC. Browse grooming, training, boarding, sitters and vet listings with reviews. Not a service provider."

@@ -98,10 +98,26 @@ function minifyJsonLd(html) {
   });
 }
 
+function getComponentBundleVersion() {
+  try {
+    const jsPath = path.join(__dirname, "..", "public", "_components", "v2", "eadba943d2368c4e58773ef46d62f7a9faa60533.js");
+    return String(Math.floor(fs.statSync(jsPath).mtimeMs));
+  } catch {
+    return "1";
+  }
+}
+
+function appendComponentCacheBust(html) {
+  const version = getComponentBundleVersion();
+  return html.replace(/(\/_components\/v2\/eadba943[^"?]+\.(?:js|css))(?=["?])/g, `$1?v=${version}`);
+}
+
 function fixComponentsStylesheet(html) {
   const cssMatch = html.match(/href="(\/_components\/v2\/[^"]+\.css)"/i);
   const cssHref = cssMatch ? cssMatch[1] : "/_components/v2/eadba943d2368c4e58773ef46d62f7a9faa60533.css";
-  const asyncCss = `<link rel="preload" href="${cssHref}" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin />\n    <noscript><link rel="stylesheet" href="${cssHref}" /></noscript>`;
+  const version = getComponentBundleVersion();
+  const cssWithVersion = cssHref.includes("?") ? cssHref : `${cssHref}?v=${version}`;
+  const asyncCss = `<link rel="preload" href="${cssWithVersion}" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin />\n    <noscript><link rel="stylesheet" href="${cssWithVersion}" /></noscript>`;
   let result = html.replace(/<link[^>]*href="\/_components\/v2\/[^"]+\.css"[^>]*>\s*/gi, "");
   result = result.replace(
     /<noscript>\s*<link rel="stylesheet" href="\/_components\/v2\/[^"]+\.css"\s*\/>\s*<\/noscript>\s*/gi,
@@ -150,7 +166,7 @@ function orderScripts(figmaScripts) {
 
 function applySeoToIndexHtml(html) {
   if (html.includes(MARKER_SCRIPTS_END) && html.includes("new SitesRuntime")) {
-    return minifyJsonLd(html);
+    return minifyJsonLd(appendComponentCacheBust(html));
   }
 
   const fragments = loadFragments();
@@ -195,7 +211,7 @@ function applySeoToIndexHtml(html) {
 
   result = result.replace(/<\/body>/i, `    ${scriptBlock}\n  </body>`);
 
-  return minifyJsonLd(result);
+  return minifyJsonLd(appendComponentCacheBust(result));
 }
 
 module.exports = {

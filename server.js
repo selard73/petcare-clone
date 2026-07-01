@@ -182,10 +182,18 @@ function getSeoCacheKey(indexMtimeMs) {
   } catch {
     parts.push("0");
   }
+  try {
+    parts.push(String(fs.statSync(path.join(PUBLIC_DIR, "_components", "v2", "eadba943d2368c4e58773ef46d62f7a9faa60533.js")).mtimeMs));
+  } catch {
+    parts.push("0");
+  }
   return parts.join(":");
 }
 
 function getStaticCacheControl(pathname) {
+  if (pathname.startsWith("/_components/") || pathname.startsWith("/_runtimes/")) {
+    return "no-cache, must-revalidate";
+  }
   if (pathname.startsWith("/blog/images/") || /\.(?:png|jpe?g|webp|gif|svg)$/i.test(pathname)) {
     return "public, max-age=86400, must-revalidate";
   }
@@ -228,6 +236,7 @@ function serveIndexHtml(req, res, pathname = "/") {
       res.writeHead(200, {
         "Content-Type": "text/html; charset=utf-8",
         "Content-Length": payload.length,
+        "Cache-Control": "no-cache, must-revalidate",
       });
       if (req.method === "HEAD") {
         res.end();
