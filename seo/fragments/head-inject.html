@@ -10,15 +10,19 @@
     <meta name="color-scheme" content="light dark" />
 
     <style id="blog-article-images">
+      article figure,
       figure.blog-article-figure {
         margin: 1.5rem 0;
         overflow: visible;
+        max-height: none;
       }
-      figure.blog-article-figure img {
+      article figure img,
+      figure.blog-article-figure img,
+      img.blog-article-image {
         width: 100% !important;
         height: auto !important;
         max-height: none !important;
-        object-fit: contain !important;
+        object-fit: unset !important;
         object-position: center;
         display: block;
         border-radius: 0.75rem;
