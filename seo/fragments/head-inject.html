@@ -146,24 +146,27 @@
         text-align: left;
         font: inherit;
         line-height: 1.4;
+        white-space: nowrap;
       }
       @media (min-width: 768px) {
         .blog-article-aside {
           position: fixed;
-          top: 17rem;
-          left: max(0.35rem, calc((100vw - min(100vw - 3rem, 80rem)) / 2 - 13.5rem));
-          width: 11rem;
+          top: 21rem;
+          left: max(0.35rem, calc((100vw - min(100vw - 3rem, 80rem)) / 2 - 15.5rem));
+          width: auto;
+          max-width: none;
           margin: 0;
           z-index: 60;
           pointer-events: auto;
         }
         .blog-article-back-link {
-          max-width: 11rem;
+          max-width: none;
+          font-size: 0.8125rem;
         }
       }
       @media (min-width: 1280px) {
         .blog-article-aside {
-          left: calc((100vw - 80rem) / 2 - 13.5rem);
+          left: calc((100vw - 80rem) / 2 - 15.5rem);
         }
       }
     </style>

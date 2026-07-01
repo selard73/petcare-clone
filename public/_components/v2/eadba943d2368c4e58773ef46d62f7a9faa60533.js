@@ -14547,7 +14547,7 @@ function dailyWag({ onNavigate: t }) {
       {
         type: "button",
         onClick: backToList,
-        className: "blog-article-back-link text-sm font-medium flex items-center gap-1 hover:underline",
+        className: "blog-article-back-link font-medium hover:underline",
         style: { color: "#8e2c32" },
         children: "← Back to The Daily Wag"
       }
