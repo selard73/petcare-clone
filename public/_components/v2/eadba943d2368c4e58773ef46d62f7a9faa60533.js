@@ -14469,6 +14469,10 @@ function dailyWag({ onNavigate: t }) {
       return g;
     }
   }, selected = posts.find((g) => g.slug === selectedSlug);
+  const selectedBlocks = selected ? selected.blocks || selected.body || [] : [];
+  const firstImageIndex = selectedBlocks.findIndex((block) => typeof block == "object" && block?.type === "img");
+  const firstImageBlock = firstImageIndex >= 0 ? selectedBlocks[firstImageIndex] : null;
+  const articleBodyBlocks = firstImageIndex >= 0 ? selectedBlocks.filter((_, index) => index !== firstImageIndex) : selectedBlocks;
   U(() => {
     typeof window < "u" && typeof window.__peedeeApplyBlogSeo == "function" && window.__peedeeApplyBlogSeo(selected || null);
   }, [selected, posts]);
@@ -14510,12 +14514,13 @@ function dailyWag({ onNavigate: t }) {
             children: "← Back to The Daily Wag"
           }
         ),
+        firstImageBlock && renderBlogBlock(firstImageBlock, selected.slug, firstImageIndex, t),
         /* @__PURE__ */ s("h2", { className: "text-2xl md:text-3xl font-semibold leading-snug mb-3", style: { color: "#6b1e2a" }, children: selected.title }),
         /* @__PURE__ */ d("p", { className: "text-sm mb-6", style: { color: "#8f5c5c" }, children: [
           formatDate(selected.date),
           selected.readMinutes ? ` · ${selected.readMinutes} min read` : ""
         ] }),
-        /* @__PURE__ */ s("div", { className: "space-y-4", children: (selected.blocks || selected.body || []).map((g, b) => renderBlogBlock(g, selected.slug, b, t)) })
+        /* @__PURE__ */ s("div", { className: "space-y-4", children: articleBodyBlocks.map((g, b) => renderBlogBlock(g, selected.slug, b, t)) })
       ] }),
       !loading && !selected && /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 w-full", children: [
         posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12 col-span-1 md:col-span-2", style: { color: "#8f5c5c" }, children: "New articles coming soon." }),
