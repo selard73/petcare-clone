@@ -169,7 +169,7 @@ let indexHtmlCache = { cacheKey: "", body: "" };
 
 function getSeoCacheKey(indexMtimeMs) {
   const fragmentFiles = ["head-inject.html", "seo-content.html", "body-scripts-extra.html", "figma-runtime.html"];
-  const parts = [String(indexMtimeMs)];
+  const parts = [String(indexMtimeMs), process.env.RENDER_GIT_COMMIT || "local"];
   for (const file of fragmentFiles) {
     try {
       parts.push(String(fs.statSync(path.join(__dirname, "seo", "fragments", file)).mtimeMs));

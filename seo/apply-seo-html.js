@@ -13,9 +13,6 @@ const MARKER_SCRIPTS_END = "<!-- peedee-seo-scripts:end -->";
 let fragmentCache = null;
 
 function loadFragments() {
-  if (fragmentCache) {
-    return fragmentCache;
-  }
   fragmentCache = {
     headInject: fs.readFileSync(path.join(FRAGMENTS_DIR, "head-inject.html"), "utf8").trim(),
     seoContent: fs.readFileSync(path.join(FRAGMENTS_DIR, "seo-content.html"), "utf8").trim(),
@@ -145,12 +142,23 @@ function orderScripts(figmaScripts) {
   const isCountry = (script) => /data-template-id=["']country-code["']/i.test(script.attrs);
   const isClassNames = (script) => script.body.includes("__serverRenderedCSSClassNames");
   const isCategory = (script) => script.body.includes("categoryPaths");
+  const isLegacyHashRedirect = (script) =>
+    script.body.includes("categoryPaths") && script.body.includes('location.replace("/#"');
   const isFetch = (script) => script.body.includes("api.airtable.com");
   const isGtag = (script) => script.body.includes("dataLayer") || script.body.includes("gtag(");
   const isSeoTitle = (script) => script.body.includes("applySeoTitle");
 
   for (const script of figmaScripts) {
-    if (!isModule(script) && !isCountry(script) && !isClassNames(script) && !isCategory(script) && !isFetch(script) && !isGtag(script) && !isSeoTitle(script)) {
+    if (
+      !isModule(script) &&
+      !isCountry(script) &&
+      !isClassNames(script) &&
+      !isCategory(script) &&
+      !isLegacyHashRedirect(script) &&
+      !isFetch(script) &&
+      !isGtag(script) &&
+      !isSeoTitle(script)
+    ) {
       pushUnique(script);
     }
   }
