@@ -127,9 +127,12 @@
     <!-- SEO/perf: scripts moved out of head. Re-apply after Figma Make re-export. -->
     <script>
       (function () {
+        var pathname = window.location.pathname.replace(/\/$/, "") || "/";
+        if (pathname === "/blog" || pathname.indexOf("/blog/") === 0) {
+          return;
+        }
         var categoryPaths = {
           "/products": "products",
-          "/blog": "blog",
           "/grooming": "grooming",
           "/training": "training",
           "/boarding": "boarding",
@@ -140,7 +143,7 @@
           "/about": "about",
           "/contact": "about",
         };
-        var page = categoryPaths[window.location.pathname];
+        var page = categoryPaths[pathname];
         if (page && !window.location.hash) {
           window.location.replace("/#" + page);
         }

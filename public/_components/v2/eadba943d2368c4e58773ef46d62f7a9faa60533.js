@@ -14463,12 +14463,18 @@ function renderMagazineArticleBody(blocks, slug, onNavigate) {
   return elements;
 }
 function dailyWag({ onNavigate: t }) {
-  const blogSlugFromLocation = () => {
+  const decodeBlogSlug = (value) => {
+    try {
+      return decodeURIComponent(value);
+    } catch {
+      return value;
+    }
+  }, blogSlugFromLocation = () => {
     const pathname = window.location.pathname.replace(/\/$/, "") || "/";
     if (pathname.startsWith("/blog/") && pathname.length > 6)
-      return decodeURIComponent(pathname.slice(6));
+      return decodeBlogSlug(pathname.slice(6));
     const hash = window.location.hash.slice(1);
-    return hash.startsWith("blog/") ? hash.slice(5) : null;
+    return hash.startsWith("blog/") ? decodeBlogSlug(hash.slice(5)) : null;
   }, loadBlogPosts = async () => {
     if (typeof window < "u" && typeof window.__peedeeLoadBlogPosts == "function")
       return window.__peedeeLoadBlogPosts();
@@ -14577,7 +14583,7 @@ function dailyWag({ onNavigate: t }) {
         ] }),
         /* @__PURE__ */ s("div", { className: "space-y-4 blog-magazine-article", children: renderMagazineArticleBody(articleBodyBlocks, selected.slug, t) })
       ] }),
-      !loading && selectedSlug && !selected && !error && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: "That article could not be found." }),
+      !loading && selectedSlug && !selected && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: error || "That article could not be found." }),
       !loading && !selectedSlug && /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 w-full", children: [
         posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12 col-span-1 md:col-span-2", style: { color: "#8f5c5c" }, children: "New articles coming soon." }),
         posts.map((g, b) => /* @__PURE__ */ s(
@@ -20541,9 +20547,16 @@ function sy() {
   }), console.log(`✅ Successfully seeded ${e.length} businesses (skipped claimed/edited ones)!`);
 }
 function oy() {
+  const decodeBlogSlug = (value) => {
+    try {
+      return decodeURIComponent(value);
+    } catch {
+      return value;
+    }
+  }, blogPathname = () => window.location.pathname.replace(/\/$/, "") || "/", isBlogPathname = (pathname) => pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6;
   const [t, e] = E(() => {
-    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
-    if (pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6)
+    const pathname = blogPathname();
+    if (isBlogPathname(pathname))
       return console.log("✅ Using pathname for blog:", pathname), "blog";
     const k = window.location.hash.slice(1);
     console.log("🎬 Initializing - URL hash:", k);
@@ -20552,9 +20565,9 @@ function oy() {
     const z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "shortlist", "blog"], A0 = (k) => k && (k === "blog" || k.startsWith("blog/")) ? "blog" : k && z.includes(k) && !(k === "about" && window.innerWidth >= 768) ? k : null;
     return A0(k) ? (console.log("✅ Using hash:", k), A0(k)) : A0(I) ? (console.log("✅ Using sessionStorage:", I), A0(I)) : (console.log("📍 No valid page found, defaulting to home"), "home");
   }), [r, n] = E(() => {
-    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
-    if (pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6)
-      return [pathname.startsWith("/blog/") && pathname.length > 6 ? "blog/" + decodeURIComponent(pathname.slice(6)) : "blog"];
+    const pathname = blogPathname();
+    if (isBlogPathname(pathname))
+      return [pathname.startsWith("/blog/") && pathname.length > 6 ? "blog/" + decodeBlogSlug(pathname.slice(6)) : "blog"];
     const k = window.location.hash.slice(1), I = sessionStorage.getItem("pawsitively_current_page"), z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "shortlist", "blog"], A0 = (G) => G && (G === "blog" || G.startsWith("blog/")) ? "blog" : G && z.includes(G) && !(G === "about" && window.innerWidth >= 768) ? G : null;
     return A0(k) ? [k] : A0(I) ? [I] : ["home"];
   }), [i, o] = E(!1), [a, l] = E(!1), [c, u] = E("guest"), [h, p] = E("signup"), [m, f] = E(null), [v, g] = E(null), [b, w] = E(!1), [x, T] = E(0), [Pv, Nv] = E(null), [Iv, zv] = E(null), { user: P, login: N, logout: S } = vi(), C = (k) => {
@@ -20585,10 +20598,14 @@ function oy() {
     const k = new URLSearchParams(window.location.search).get("reset");
     k && (zv(k), o(!0), window.history.replaceState({}, "", window.location.pathname + window.location.hash));
   }, []), U(() => {
+    const pathname = blogPathname();
+    if (isBlogPathname(pathname) && t !== "blog") {
+      e("blog");
+      return;
+    }
     if (t === "blog") {
       sessionStorage.setItem("pawsitively_current_page", "blog");
-      const pathname = window.location.pathname.replace(/\/$/, "") || "/";
-      if (pathname === "/blog" || pathname.startsWith("/blog/"))
+      if (isBlogPathname(pathname))
         return;
       const k = window.location.hash.slice(1);
       if (k === "blog" || k.startsWith("blog/")) {
@@ -20598,9 +20615,11 @@ function oy() {
       window.history.replaceState({}, "", "/blog");
       return;
     }
+    if (isBlogPathname(pathname))
+      return;
     console.log("📝 Updating hash to:", t), window.location.hash = t, sessionStorage.setItem("pawsitively_current_page", t), console.log("💾 Saved to sessionStorage:", t);
-    const leavePathname = window.location.pathname.replace(/\/$/, "") || "/";
-    if (leavePathname === "/blog" || leavePathname.startsWith("/blog/")) {
+    const leavePathname = blogPathname();
+    if (isBlogPathname(leavePathname)) {
       window.history.replaceState({}, "", t === "home" ? "/" : "/#" + t);
     }
     typeof window.__peedeeRefreshRouteSeo == "function" ? window.__peedeeRefreshRouteSeo(t) : typeof window.__peedeeRestoreDefaultSeo == "function" && window.__peedeeRestoreDefaultSeo();

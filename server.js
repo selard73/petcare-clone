@@ -165,7 +165,25 @@ function serveSitemap(req, res) {
   }
 }
 
-let indexHtmlCache = { mtimeMs: 0, body: "" };
+let indexHtmlCache = { cacheKey: "", body: "" };
+
+function getSeoCacheKey(indexMtimeMs) {
+  const fragmentFiles = ["head-inject.html", "seo-content.html", "body-scripts-extra.html", "figma-runtime.html"];
+  const parts = [String(indexMtimeMs)];
+  for (const file of fragmentFiles) {
+    try {
+      parts.push(String(fs.statSync(path.join(__dirname, "seo", "fragments", file)).mtimeMs));
+    } catch {
+      parts.push("0");
+    }
+  }
+  try {
+    parts.push(String(fs.statSync(path.join(__dirname, "seo", "category-seo.js")).mtimeMs));
+  } catch {
+    parts.push("0");
+  }
+  return parts.join(":");
+}
 
 function getStaticCacheControl(pathname) {
   if (pathname.startsWith("/blog/images/") || /\.(?:png|jpe?g|webp|gif|svg)$/i.test(pathname)) {
@@ -190,9 +208,10 @@ function serveIndexHtml(req, res, pathname = "/") {
         return;
       }
       let body = indexHtmlCache.body;
-      if (stat.mtimeMs !== indexHtmlCache.mtimeMs) {
+      const cacheKey = getSeoCacheKey(stat.mtimeMs);
+      if (cacheKey !== indexHtmlCache.cacheKey) {
         body = applySeoToIndexHtml(data.toString("utf8"));
-        indexHtmlCache = { mtimeMs: stat.mtimeMs, body };
+        indexHtmlCache = { cacheKey, body };
       }
       const listings = getListingsForPathname(pathname);
       const pageSeo =
