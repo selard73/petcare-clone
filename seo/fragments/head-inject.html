@@ -105,6 +105,14 @@
         figure.blog-hero-figure {
           margin: 0 0 1.5rem;
         }
+        .blog-article-aside {
+          max-width: 80rem;
+          margin-left: auto;
+          margin-right: auto;
+          padding-left: 1rem;
+          padding-right: 1rem;
+          padding-top: 0.75rem;
+        }
         img.blog-hero-image {
           height: auto !important;
           max-height: none !important;
@@ -125,11 +133,9 @@
           object-position: center !important;
         }
       }
-      .blog-article-layout {
-        width: 100%;
-      }
       .blog-article-aside {
         margin-bottom: 1rem;
+        padding: 0 0.25rem;
       }
       .blog-article-back-link {
         background: none;
@@ -138,27 +144,25 @@
         cursor: pointer;
         text-align: left;
         font: inherit;
+        line-height: 1.4;
       }
       @media (min-width: 768px) {
-        .blog-article-layout {
-          display: flex;
-          align-items: flex-start;
-          gap: 1.5rem;
-        }
         .blog-article-aside {
-          flex: 0 0 11rem;
+          position: fixed;
+          top: 17rem;
+          left: max(0.35rem, calc((100vw - min(100vw - 3rem, 80rem)) / 2 - 13.5rem));
           width: 11rem;
-          margin-bottom: 0;
-          position: sticky;
-          top: 1.25rem;
-          align-self: flex-start;
-        }
-        .blog-article-card {
-          flex: 1 1 auto;
-          min-width: 0;
+          margin: 0;
+          z-index: 60;
+          pointer-events: auto;
         }
         .blog-article-back-link {
-          line-height: 1.4;
+          max-width: 11rem;
+        }
+      }
+      @media (min-width: 1280px) {
+        .blog-article-aside {
+          left: calc((100vw - 80rem) / 2 - 13.5rem);
         }
       }
     </style>
