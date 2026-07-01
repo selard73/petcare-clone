@@ -1,6 +1,309 @@
 {
   "posts": [
     {
+      "slug": "dog-wont-listen-basic-commands",
+      "title": "Why Won't My Dog Listen to Basic Commands Anymore? Causes, Fixes, and When to Get Help",
+      "seoTitle": "Why Won't My Dog Listen? 5 Fixes for 2026",
+      "tldrHeading": "The bottom line",
+      "tldr": "Dogs don't unlearn commands out of spite. When a dog stops responding to basic commands, something in their environment, body, or routine has shifted. Once you figure out what that is, you can reset.",
+      "excerpt": "Learn why dogs stop listening to basic commands and how to reset training at home. Get practical fixes, red flags, and local help if needed.",
+      "date": "2026-07-01",
+      "dateModified": "2026-07-01",
+      "readMinutes": 11,
+      "coverImage": "/blog/images/dog-wont-listen-cover.png",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "You call your dog's name. You say \"sit.\" Nothing. You say it again, a little louder this time. Still nothing. Your dog just stares at you like you're speaking a foreign language, even though you know they learned that command months ago."
+        },
+        {
+          "type": "p",
+          "text": "If that sounds familiar, you are definitely not alone. Training regression is one of the most common things dog owners deal with, and it can feel really discouraging when it happens. But here is the good news: it almost never means your dog has forgotten everything or that something is seriously wrong. Most of the time, there is a clear reason it is happening, and it is completely fixable."
+        },
+        {
+          "type": "blockquote",
+          "label": "The bottom line:",
+          "text": "Dogs don't \"unlearn\" commands out of spite. When a dog stops responding to basic commands, something in their environment, body, or routine has shifted. Once you figure out what that is, you can reset."
+        },
+        {
+          "type": "p",
+          "text": "Let's walk through the most common causes and what you can actually do about them."
+        },
+        {
+          "type": "img",
+          "src": "/blog/images/dog-wont-listen-recall.png",
+          "alt": "Dog owner practicing a basic recall command with a dog in a quiet home setting",
+          "caption": "A calm reset in a low-distraction space is often the fastest way to rebuild reliable responses."
+        },
+        {
+          "type": "h2",
+          "text": "Why Your Dog Stopped Listening: The Most Common Reasons"
+        },
+        {
+          "type": "p",
+          "text": "There is rarely just one reason a dog suddenly seems to forget their training. Here are the culprits that come up most often."
+        },
+        {
+          "type": "h3",
+          "text": "They Are Going Through Adolescence"
+        },
+        {
+          "type": "p",
+          "text": "If your dog is somewhere between 6 months and 2 years old and has suddenly turned into a selective listener, adolescence is almost certainly the reason. This is the canine equivalent of the teenage years, and it is completely normal. Their brains are developing rapidly, hormones are shifting, and the outside world has become a lot more interesting than whatever you are saying."
+        },
+        {
+          "type": "blockquote",
+          "text": "Adolescent dogs can seem to regress dramatically even after solid early training. It is not defiance. It is development.",
+          "linkText": "American Kennel Club",
+          "linkHref": "https://www.akc.org"
+        },
+        {
+          "type": "h3",
+          "text": "Inconsistent Reinforcement Has Crept In"
+        },
+        {
+          "type": "p",
+          "text": "This one is on us, honestly. When training is going well, it is easy to get a little relaxed about it. We stop rewarding the \"sit\" every time. We let the \"stay\" slide a few seconds short. We skip practice for a week because life gets busy."
+        },
+        {
+          "type": "p",
+          "text": "Dogs learn through repetition and association. When practice drops off, those neural pathways weaken. The behavior does not disappear entirely, but it gets fuzzy around the edges."
+        },
+        {
+          "type": "h3",
+          "text": "Distractions Have Increased"
+        },
+        {
+          "type": "p",
+          "text": "A command your dog nails in the living room can completely fall apart at the park. This is not your dog being stubborn. It is a generalization problem. They learned the command in a low-distraction environment, and nobody practiced it with squirrels, other dogs, and interesting smells in the picture."
+        },
+        {
+          "type": "h3",
+          "text": "Stress, Anxiety, or a Life Change"
+        },
+        {
+          "type": "p",
+          "text": "Dogs are sensitive to change. A new baby, a move, a shift in your schedule, a new pet in the house, even a change in your own stress level can throw them off."
+        },
+        {
+          "type": "blockquote",
+          "text": "Anxiety and environmental stress are among the leading behavioral triggers in dogs, affecting an estimated 50% of dogs at some point in their lives.",
+          "linkText": "PetMD on dog behavior",
+          "linkHref": "https://www.petmd.com/dog/behavior"
+        },
+        {
+          "type": "h3",
+          "text": "A Medical Issue You Have Not Noticed Yet"
+        },
+        {
+          "type": "p",
+          "text": "This one is worth taking seriously. If your dog's command regression came on suddenly and seems out of character, pain or illness could be the reason. Ear infections affect hearing. Joint pain makes sitting or lying down uncomfortable. Cognitive decline in older dogs can cause genuine confusion."
+        },
+        {
+          "type": "blockquote",
+          "label": "Important:",
+          "text": "If your dog is older or the change was sudden and dramatic, a quick vet visit is a smart first step before anything else."
+        },
+        {
+          "type": "h3",
+          "text": "They Were Never Fully Proofed"
+        },
+        {
+          "type": "p",
+          "text": "Sometimes what looks like regression is actually a gap that was always there. The dog learned the command, but only in specific conditions. When those conditions change, the behavior breaks down. This is very common with rescue dogs or dogs who took a single training class and then practiced mostly at home."
+        },
+        {
+          "type": "h2",
+          "text": "How to Reset Your Dog's Training at Home"
+        },
+        {
+          "type": "p",
+          "text": "The good news is that most dogs respond really well to a calm, consistent reset. You do not need to start from scratch. You just need to rebuild the foundation with a little more intention."
+        },
+        {
+          "type": "h3",
+          "text": "Step 1: Go Back to Basics in a Low-Distraction Space"
+        },
+        {
+          "type": "p",
+          "text": "Pick one command. Start inside, with no distractions, and treat it like day one. Short sessions (5 minutes max), high-value rewards, and lots of praise when they get it right. The goal is to remind your dog that responding to you feels good."
+        },
+        {
+          "type": "h3",
+          "text": "Step 2: Reward Every Single Time"
+        },
+        {
+          "type": "p",
+          "text": "For at least a week or two, go back to rewarding every correct response. No more \"they should know this by now.\" Rebuild the habit before you start fading treats."
+        },
+        {
+          "type": "blockquote",
+          "text": "Reward-based training is the most effective and least stressful approach for dogs of any age.",
+          "linkText": "American Veterinary Society of Animal Behavior",
+          "linkHref": "https://avsab.org"
+        },
+        {
+          "type": "img",
+          "src": "/blog/images/dog-wont-listen-consistency.png",
+          "alt": "Dog responding to a sit command during a short home training session",
+          "caption": "Short, consistent sessions with immediate rewards rebuild habits faster than long, frustrated drills."
+        },
+        {
+          "type": "h3",
+          "text": "Step 3: Practice in New Places"
+        },
+        {
+          "type": "p",
+          "text": "Once your dog is responding reliably at home again, take it on the road. Practice in the backyard. Then on the sidewalk. Then at the park. Each new environment is a new lesson. This is called proofing, and it is what turns a \"sometimes\" command into an \"always\" command."
+        },
+        {
+          "type": "h3",
+          "text": "Step 4: Be Consistent Across the Whole Household"
+        },
+        {
+          "type": "p",
+          "text": "If one person lets the dog jump on the couch and another corrects it, the dog is not confused about the rule. They are just learning which human enforces it. Everyone in the home needs to use the same commands, the same rewards, and the same expectations."
+        },
+        {
+          "type": "p",
+          "text": "Here is a quick cheat sheet to keep everyone on the same page:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            {
+              "label": "Dog ignores command:",
+              "text": "Ask once, then guide them gently into position and reward"
+            },
+            {
+              "label": "Dog responds correctly:",
+              "text": "Reward immediately, every time during reset phase"
+            },
+            {
+              "label": "Dog gets distracted:",
+              "text": "Move to a quieter spot and try again"
+            },
+            {
+              "label": "Dog seems stressed or fearful:",
+              "text": "End the session, try again later"
+            },
+            {
+              "label": "Dog is not improving after 2 weeks:",
+              "text": "Time to call a professional"
+            }
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "When to Call a Professional Dog Trainer"
+        },
+        {
+          "type": "p",
+          "text": "Home resets work for most cases of training regression. But sometimes the situation calls for a professional, and there is absolutely no shame in that. A good trainer is not a last resort. They are a shortcut to results."
+        },
+        {
+          "type": "p",
+          "text": "Consider reaching out to a local trainer if:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Your dog's behavior changed suddenly with no obvious cause (rule out medical first)",
+            "The regression involves aggression, fear, or anxiety, not just ignoring commands",
+            "You have tried a consistent home reset for two or more weeks with no improvement",
+            "You have a new puppy and want to build strong habits from the start",
+            "You just adopted a rescue dog and are starting from scratch"
+          ]
+        },
+        {
+          "type": "img",
+          "src": "/blog/images/dog-wont-listen-trainer.png",
+          "alt": "Dog trainer working with a dog owner during a positive reinforcement session",
+          "caption": "A good local trainer helps you build habits that stick at home — not just perform in class."
+        },
+        {
+          "type": "p",
+          "text": "If you are in the Darlington, Florence, or Hartsville area, start with our guide to choosing a trainer, then browse the Pee Dee Pet Care training directory to compare professionals near you."
+        },
+        {
+          "type": "blockquote",
+          "text": "Every trainer listed serves the Pee Dee region, so you are not sorting through results from three states away.",
+          "linkText": "Find a Dog Trainer in the Pee Dee Area",
+          "linkHref": "/blog/finding-local-dog-trainer-pee-dee"
+        },
+        {
+          "type": "h2",
+          "text": "Frequently Asked Questions"
+        },
+        {
+          "type": "h3",
+          "text": "Why does my dog listen sometimes but not always?"
+        },
+        {
+          "type": "p",
+          "text": "Selective listening usually means the command was not fully proofed across different environments or distraction levels. Your dog knows the command, but only reliably in familiar, low-distraction settings. Practice in more places and the consistency will improve."
+        },
+        {
+          "type": "h3",
+          "text": "Can a dog forget commands they already learned?"
+        },
+        {
+          "type": "p",
+          "text": "Dogs do not forget commands the way we forget a phone number. What happens is the behavior weakens when it stops being reinforced. Think of it like a muscle that has not been exercised. The knowledge is still there, but it needs to be strengthened again with consistent practice and rewards."
+        },
+        {
+          "type": "h3",
+          "text": "Is my dog being stubborn or ignoring me on purpose?"
+        },
+        {
+          "type": "p",
+          "text": "Dogs do not ignore commands out of defiance. If your dog is not responding, something else is going on: distraction, stress, inconsistent reinforcement, a training gap, or occasionally a health issue. Approaching it as a puzzle to solve rather than a battle of wills makes the whole process a lot smoother for both of you."
+        },
+        {
+          "type": "h3",
+          "text": "My dog suddenly stopped listening after we moved. Is that normal?"
+        },
+        {
+          "type": "p",
+          "text": "Yes, completely. A new home is a major environmental change, and it can temporarily disrupt a dog's behavior even if their training was solid. Give them time to settle in, keep routines as consistent as possible, and run a short training reset in the new space. Most dogs bounce back within a few weeks."
+        },
+        {
+          "type": "h3",
+          "text": "At what age do dogs have the most trouble listening?"
+        },
+        {
+          "type": "p",
+          "text": "The adolescent phase, roughly 6 months to 2 years depending on the breed, is when most owners notice the biggest dip in obedience. Larger breeds tend to go through this phase longer than smaller ones. It passes with patience and consistent training, though some dogs benefit from a refresher class during this window."
+        },
+        {
+          "type": "h2",
+          "text": "Your Dog Is Not Broken"
+        },
+        {
+          "type": "p",
+          "text": "Training regression is frustrating, but it is also one of the most solvable problems in pet ownership. The fact that you noticed it and went looking for answers says a lot about how much you care."
+        },
+        {
+          "type": "p",
+          "text": "Start with the basics: rule out health issues, identify what changed, and run a calm reset with consistent rewards. Most dogs come back around faster than you would expect."
+        },
+        {
+          "type": "p",
+          "text": "And if you hit a wall, a local trainer is a great next step. Check out the trainer guide first, then browse the training directory to find a professional near you in Florence, Darlington, or Hartsville. You and your dog have got this."
+        },
+        {
+          "type": "cta",
+          "heading": "Need a Dog Trainer in the Pee Dee Area?",
+          "paragraphs": [
+            "Browse training professionals serving Florence, Darlington, Hartsville, and the surrounding Pee Dee region — then contact providers directly to ask about their approach before you book.",
+            "Pee Dee Pet Care is a free local directory. We do not provide training services ourselves."
+          ],
+          "buttonText": "Browse local dog trainers on Pee Dee Pet Care",
+          "navigate": "training"
+        }
+      ]
+    },
+    {
       "slug": "cat-grooming-guide",
       "title": "Does Your Cat Need a Professional Groomer?",
       "seoTitle": "Cat Grooming Guide: Signs, Costs, and What to Know",

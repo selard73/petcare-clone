@@ -41,20 +41,14 @@
       }
       figure.blog-magazine-figure-left {
         float: left;
-        width: 44%;
-        max-width: 300px;
         margin: 0.15rem 1.25rem 0.5rem 0;
       }
       figure.blog-magazine-figure-right {
         float: right;
-        width: 44%;
-        max-width: 300px;
         margin: 0.15rem 0 0.5rem 1.25rem;
       }
       img.blog-magazine-image {
         width: 100% !important;
-        height: 210px !important;
-        max-height: 210px !important;
         object-fit: cover !important;
         object-position: center 30% !important;
         display: block !important;
@@ -93,12 +87,18 @@
       }
       @media (min-width: 768px) {
         img.blog-hero-image {
-          height: 230px !important;
-          max-height: 230px !important;
+          height: 460px !important;
+          max-height: 460px !important;
+        }
+        figure.blog-magazine-figure-left,
+        figure.blog-magazine-figure-right {
+          width: 33.333%;
+          max-width: none;
         }
         img.blog-magazine-image {
-          height: 230px !important;
-          max-height: 230px !important;
+          aspect-ratio: 4 / 3;
+          height: auto !important;
+          max-height: none !important;
         }
       }
       @media (max-width: 767px) {

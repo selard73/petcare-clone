@@ -132,6 +132,28 @@ const BLOG_POST_FAQS = {
       a: "Use Pee Dee Pet Care to browse local kennels and daycare facilities, read reviews, and contact a shortlist before you travel.",
     },
   ],
+  "dog-wont-listen-basic-commands": [
+    {
+      q: "Why is my dog suddenly not listening to commands?",
+      a: "Sudden command regression usually comes from a change in routine, more distractions, inconsistent reinforcement, stress, adolescence, or a medical issue. Start by checking what changed at home, then reset training in a quiet space with simple repetitions and high-value rewards.",
+    },
+    {
+      q: "Can dogs forget basic commands they already knew?",
+      a: "Dogs usually do not forget commands the way people forget facts. More often, the behavior weakens because it has not been reinforced enough or the dog has not practiced it in harder situations. A short, consistent refresher usually brings the skill back.",
+    },
+    {
+      q: "Is my dog being stubborn when they ignore me?",
+      a: "Not usually. Ignoring a cue is more often a sign of distraction, confusion, stress, or discomfort than defiance. If the behavior is sudden or paired with pain, limping, or withdrawal, check with a vet before treating it like a training problem.",
+    },
+    {
+      q: "How long does it take to retrain a dog to listen again?",
+      a: "Most dogs improve within days to a few weeks if the issue is regression, not a deeper behavior problem. The fastest progress usually comes from short sessions, one cue at a time, and practicing first in low-distraction settings before adding more challenge.",
+    },
+    {
+      q: "Should I repeat the command over and over?",
+      a: "No. Repeating a cue usually teaches your dog that the first few times do not matter. Say it once, give the dog a moment to respond, and then guide them or reset the exercise if needed. Clarity works better than volume.",
+    },
+  ],
 };
 
 function getBlogPostFaqs(post) {
@@ -423,9 +445,10 @@ function getBlogPostExternalLinks(slug) {
       { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
     ];
   }
-  if (slug.includes("trainer")) {
+  if (slug.includes("trainer") || slug.includes("listen") || slug.includes("commands")) {
     return [
       { href: "https://www.akc.org/expert-advice/training/", label: "AKC training resources" },
+      { href: "https://avsab.org", label: "American Veterinary Society of Animal Behavior" },
       { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
     ];
   }
