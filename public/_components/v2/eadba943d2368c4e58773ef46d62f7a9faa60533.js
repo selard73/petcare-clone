@@ -20546,6 +20546,13 @@ function oy() {
   }), [i, o] = E(!1), [a, l] = E(!1), [c, u] = E("guest"), [h, p] = E("signup"), [m, f] = E(null), [v, g] = E(null), [b, w] = E(!1), [x, T] = E(0), [Pv, Nv] = E(null), [Iv, zv] = E(null), { user: P, login: N, logout: S } = vi(), C = (k) => {
     n((I) => [...I, k]), e(k);
   }, R = () => {
+    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+    if (window.innerWidth < 768 && t === "blog" && pathname.startsWith("/blog/") && pathname.length > 6) {
+      window.history.pushState({}, "", "/blog");
+      window.dispatchEvent(new PopStateEvent("popstate"));
+      window.scrollTo(0, 0);
+      return;
+    }
     if (r.length > 1) {
       const k = [...r];
       k.pop(), n(k), e(k[k.length - 1]);
