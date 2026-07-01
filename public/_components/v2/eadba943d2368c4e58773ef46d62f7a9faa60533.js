@@ -14385,7 +14385,7 @@ function renderBlogBlock(block, slug, index, onNavigate) {
       return /* @__PURE__ */ s("ol", { className: "list-decimal pl-5 space-y-2 text-sm md:text-base leading-relaxed", style: bodyStyle, children: (block.items || []).map((item, i) => /* @__PURE__ */ s("li", { className: "pl-1", children: item }, `${key}-li-${i}`)) }, key);
     case "img":
       return /* @__PURE__ */ d("figure", { className: "my-6", children: [
-        /* @__PURE__ */ s("img", { src: block.src, alt: block.alt || "", className: "w-full rounded-xl object-cover", style: { maxHeight: "420px" } }),
+        /* @__PURE__ */ s("img", { src: block.src, alt: block.alt || "", className: "w-full h-auto rounded-xl", style: { maxWidth: "100%", display: "block" } }),
         block.caption && /* @__PURE__ */ s("figcaption", { className: "text-xs text-center mt-2", style: { color: "#8f5c5c" }, children: block.caption })
       ] }, key);
     case "blockquote":
