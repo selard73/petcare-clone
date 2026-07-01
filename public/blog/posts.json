@@ -8,7 +8,7 @@
       "tldr": "Most healthy short-haired cats groom themselves well, but long-haired, senior, overweight, or arthritic cats often need professional help. Cat grooming is a different skill from dog grooming — look for matting, coat changes, odor, or trouble reaching hindquarters, then choose a groomer with real feline experience in the Pee Dee area.",
       "excerpt": "Learn when cat grooming is needed, how it differs from dog grooming, and what to ask before booking a local cat groomer in the Pee Dee area.",
       "date": "2026-06-30",
-      "dateModified": "2026-06-30",
+      "dateModified": "2026-07-01",
       "readMinutes": 12,
       "coverImage": "/blog/images/cat-grooming-cover.png",
       "blocks": [
@@ -27,6 +27,12 @@
         {
           "type": "p",
           "text": "This guide will help you answer both of those questions, with a clear look at the warning signs to watch for, why cat grooming is a very different skill set from dog grooming, and what to look for when you're choosing a pro in the Pee Dee area."
+        },
+        {
+          "type": "img",
+          "src": "/blog/images/cat-grooming-glove.png",
+          "alt": "Orange tabby cat being gently groomed with a blue silicone grooming glove",
+          "caption": "Many cats enjoy light at-home brushing between professional visits — but mats, hygiene issues, and long coats often need a pro."
         },
         {
           "type": "h2",
@@ -163,6 +169,12 @@
         {
           "type": "p",
           "text": "Bringing your cat to a groomer who uses standard dog equipment without adjustment is a real risk. It's worth asking specifically about their cat setup before you book."
+        },
+        {
+          "type": "img",
+          "src": "/blog/images/cat-grooming-dry.png",
+          "alt": "Wet cat wrapped in a towel while being dried with a low-heat blow dryer during grooming",
+          "caption": "Towel-drying and low-heat blow dryers are standard in cat grooming — high heat and rough handling can stress cats quickly."
         },
         {
           "type": "h2",
@@ -365,7 +377,8 @@
           "type": "img",
           "src": "/blog/images/happy-groomed-dog.png",
           "alt": "Fluffy well-groomed dog with a healthy, full coat after grooming",
-          "caption": "The goal: a groom your dog (and you) feel great about."
+          "caption": "The goal: a groom your dog (and you) feel great about.",
+          "imageClass": "blog-legacy-cover-image--headroom"
         },
         {
           "type": "h2",

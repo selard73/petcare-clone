@@ -14387,7 +14387,7 @@ function renderBlogBlock(block, slug, index, onNavigate) {
       const legacyCoverImages = slug === "how-to-find-good-dog-groomer-pee-dee";
       if (legacyCoverImages)
         return /* @__PURE__ */ d("figure", { className: "my-6 blog-legacy-cover-figure", children: [
-          /* @__PURE__ */ s("img", { src: block.src, alt: block.alt || "", className: "blog-legacy-cover-image", loading: "eager", fetchPriority: "high", decoding: "async" }),
+          /* @__PURE__ */ s("img", { src: block.src, alt: block.alt || "", className: `blog-legacy-cover-image${block.imageClass ? ` ${block.imageClass}` : ""}`, loading: "eager", fetchPriority: "high", decoding: "async" }),
           block.caption && /* @__PURE__ */ s("figcaption", { className: "text-xs text-center mt-2", style: { color: "#8f5c5c" }, children: block.caption })
         ] }, key);
       return /* @__PURE__ */ d("figure", { className: "my-6 blog-article-figure", children: [
