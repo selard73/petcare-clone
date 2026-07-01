@@ -14481,7 +14481,12 @@ function dailyWag({ onNavigate: t }) {
     if (!version) return src;
     const joiner = src.includes("?") ? "&" : "?";
     return `${src}${joiner}v=${encodeURIComponent(version)}`;
-  }, [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => blogSlugFromLocation());
+  }, [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => blogSlugFromLocation()), [showDesktopBackLink, setShowDesktopBackLink] = E(() => typeof window < "u" && window.matchMedia("(min-width: 768px)").matches);
+  U(() => {
+    if (typeof window > "u") return;
+    const mq = window.matchMedia("(min-width: 768px)"), syncViewport = () => setShowDesktopBackLink(mq.matches);
+    return mq.addEventListener("change", syncViewport), () => mq.removeEventListener("change", syncViewport);
+  }, []);
   U(() => {
     (async () => {
       setLoading(!0), setError("");
@@ -14493,6 +14498,14 @@ function dailyWag({ onNavigate: t }) {
         setLoading(!1);
       }
     })();
+  }, []);
+  U(() => {
+    window.__peedeeBlogBackToList = () => {
+      setSelectedSlug(null), window.history.replaceState({}, "", "/blog"), window.scrollTo(0, 0);
+    };
+    return () => {
+      delete window.__peedeeBlogBackToList;
+    };
   }, []);
   U(() => {
     const sync = () => setSelectedSlug(blogSlugFromLocation());
@@ -14542,7 +14555,7 @@ function dailyWag({ onNavigate: t }) {
         ]
       }
     ) }) }),
-    !loading && selected && /* @__PURE__ */ s("aside", { className: "blog-article-aside", children: /* @__PURE__ */ s(
+    !loading && selected && showDesktopBackLink && /* @__PURE__ */ s("aside", { className: "blog-article-aside", children: /* @__PURE__ */ s(
       "button",
       {
         type: "button",
@@ -14564,7 +14577,8 @@ function dailyWag({ onNavigate: t }) {
         ] }),
         /* @__PURE__ */ s("div", { className: "space-y-4 blog-magazine-article", children: renderMagazineArticleBody(articleBodyBlocks, selected.slug, t) })
       ] }),
-      !loading && !selected && /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 w-full", children: [
+      !loading && selectedSlug && !selected && !error && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: "That article could not be found." }),
+      !loading && !selectedSlug && /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 w-full", children: [
         posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12 col-span-1 md:col-span-2", style: { color: "#8f5c5c" }, children: "New articles coming soon." }),
         posts.map((g, b) => /* @__PURE__ */ s(
           D.a,
@@ -20548,9 +20562,7 @@ function oy() {
   }, R = () => {
     const pathname = window.location.pathname.replace(/\/$/, "") || "/";
     if (window.innerWidth < 768 && t === "blog" && pathname.startsWith("/blog/") && pathname.length > 6) {
-      window.history.pushState({}, "", "/blog");
-      window.dispatchEvent(new PopStateEvent("popstate"));
-      window.scrollTo(0, 0);
+      typeof window.__peedeeBlogBackToList == "function" ? window.__peedeeBlogBackToList() : (window.history.replaceState({}, "", "/blog"), window.scrollTo(0, 0));
       return;
     }
     if (r.length > 1) {
