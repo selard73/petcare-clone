@@ -125,6 +125,42 @@
           object-position: center !important;
         }
       }
+      .blog-article-layout {
+        width: 100%;
+      }
+      .blog-article-aside {
+        margin-bottom: 1rem;
+      }
+      .blog-article-back-link {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        text-align: left;
+        font: inherit;
+      }
+      @media (min-width: 768px) {
+        .blog-article-layout {
+          display: flex;
+          align-items: flex-start;
+          gap: 1.5rem;
+        }
+        .blog-article-aside {
+          flex: 0 0 11rem;
+          width: 11rem;
+          margin-bottom: 0;
+          position: sticky;
+          top: 1.25rem;
+          align-self: flex-start;
+        }
+        .blog-article-card {
+          flex: 1 1 auto;
+          min-width: 0;
+        }
+        .blog-article-back-link {
+          line-height: 1.4;
+        }
+      }
     </style>
 
     <!-- Open Graph -->

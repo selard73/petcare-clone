@@ -14545,17 +14545,18 @@ function dailyWag({ onNavigate: t }) {
     /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12", style: { backgroundColor: "#f9ecea", width: "100%" }, children: [
       error && /* @__PURE__ */ s("div", { className: "mb-6 p-4 rounded-lg border", style: { backgroundColor: "#fef2f2", color: "#b91c1c", borderColor: "#fecaca" }, children: error }),
       loading && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: "Loading articles…" }),
-      !loading && selected && /* @__PURE__ */ d("article", { className: "rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 4px 6px -1px rgba(110,26,40,0.14)" }, children: [
-        /* @__PURE__ */ s(
+      !loading && selected && /* @__PURE__ */ d("div", { className: "blog-article-layout", children: [
+        /* @__PURE__ */ s("aside", { className: "blog-article-aside", children: /* @__PURE__ */ s(
           "button",
           {
             type: "button",
             onClick: backToList,
-            className: "text-sm font-medium mb-6 flex items-center gap-1 hover:underline",
+            className: "blog-article-back-link text-sm font-medium flex items-center gap-1 hover:underline",
             style: { color: "#8e2c32" },
             children: "← Back to The Daily Wag"
           }
-        ),
+        ) }),
+        /* @__PURE__ */ d("article", { className: "blog-article-card rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 4px 6px -1px rgba(110,26,40,0.14)" }, children: [
         firstImageBlock && renderBlogBlock(firstImageBlock, selected.slug, firstImageIndex, t, "hero"),
         /* @__PURE__ */ s("h2", { className: "text-2xl md:text-3xl font-semibold leading-snug mb-3", style: { color: "#6b1e2a" }, children: selected.title }),
         /* @__PURE__ */ d("p", { className: "text-sm mb-6", style: { color: "#8f5c5c" }, children: [
@@ -14563,6 +14564,7 @@ function dailyWag({ onNavigate: t }) {
           selected.readMinutes ? ` · ${selected.readMinutes} min read` : ""
         ] }),
         /* @__PURE__ */ s("div", { className: "space-y-4 blog-magazine-article", children: renderMagazineArticleBody(articleBodyBlocks, selected.slug, t) })
+      ] })
       ] }),
       !loading && !selected && /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 w-full", children: [
         posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12 col-span-1 md:col-span-2", style: { color: "#8f5c5c" }, children: "New articles coming soon." }),
