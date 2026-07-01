@@ -14469,8 +14469,10 @@ function dailyWag({ onNavigate: t }) {
     } catch {
       return value;
     }
-  }, blogSlugFromLocation = () => {
-    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+  }, blogPathname = () => window.location.pathname.replace(/\/$/, "") || "/", isBlogIndexPath = (pathname) => pathname === "/blog", blogSlugFromLocation = () => {
+    const pathname = blogPathname();
+    if (isBlogIndexPath(pathname))
+      return null;
     if (pathname.startsWith("/blog/") && pathname.length > 6)
       return decodeBlogSlug(pathname.slice(6));
     const hash = window.location.hash.slice(1);
@@ -14487,11 +14489,14 @@ function dailyWag({ onNavigate: t }) {
     if (!version) return src;
     const joiner = src.includes("?") ? "&" : "?";
     return `${src}${joiner}v=${encodeURIComponent(version)}`;
-  }, [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => blogSlugFromLocation()), [showDesktopBackLink, setShowDesktopBackLink] = E(() => typeof window < "u" && window.matchMedia("(min-width: 768px)").matches);
+  }, [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => blogSlugFromLocation()), [showDesktopBackLink, setShowDesktopBackLink] = E(() => typeof window < "u" && typeof window.matchMedia == "function" && window.matchMedia("(min-width: 768px)").matches);
   U(() => {
-    if (typeof window > "u") return;
+    if (typeof window > "u" || typeof window.matchMedia != "function") return;
     const mq = window.matchMedia("(min-width: 768px)"), syncViewport = () => setShowDesktopBackLink(mq.matches);
-    return mq.addEventListener("change", syncViewport), () => mq.removeEventListener("change", syncViewport);
+    syncViewport();
+    if (typeof mq.addEventListener == "function")
+      return mq.addEventListener("change", syncViewport), () => mq.removeEventListener("change", syncViewport);
+    return mq.addListener(syncViewport), () => mq.removeListener(syncViewport);
   }, []);
   U(() => {
     (async () => {
@@ -14515,7 +14520,7 @@ function dailyWag({ onNavigate: t }) {
   }, []);
   U(() => {
     const sync = () => setSelectedSlug(blogSlugFromLocation());
-    return window.addEventListener("popstate", sync), window.addEventListener("hashchange", sync), () => {
+    return sync(), window.addEventListener("popstate", sync), window.addEventListener("hashchange", sync), () => {
       window.removeEventListener("popstate", sync), window.removeEventListener("hashchange", sync);
     };
   }, []);
@@ -14530,6 +14535,7 @@ function dailyWag({ onNavigate: t }) {
       return g;
     }
   }, selected = posts.find((g) => g.slug === selectedSlug);
+  const onBlogIndex = isBlogIndexPath(blogPathname());
   const selectedBlocks = selected ? selected.blocks || selected.body || [] : [];
   const firstImageIndex = selectedBlocks.findIndex((block) => typeof block == "object" && block?.type === "img");
   const firstImageBlock = firstImageIndex >= 0 ? selectedBlocks[firstImageIndex] : null;
@@ -14574,7 +14580,7 @@ function dailyWag({ onNavigate: t }) {
     /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12", style: { backgroundColor: "#f9ecea", width: "100%" }, children: [
       error && /* @__PURE__ */ s("div", { className: "mb-6 p-4 rounded-lg border", style: { backgroundColor: "#fef2f2", color: "#b91c1c", borderColor: "#fecaca" }, children: error }),
       loading && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: "Loading articles…" }),
-      !loading && selected && /* @__PURE__ */ s("article", { className: "blog-article-card rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 4px 6px -1px rgba(110,26,40,0.14)" }, children: [
+      !loading && selected && !onBlogIndex && /* @__PURE__ */ s("article", { className: "blog-article-card rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 4px 6px -1px rgba(110,26,40,0.14)" }, children: [
         firstImageBlock && renderBlogBlock(firstImageBlock, selected.slug, firstImageIndex, t, "hero"),
         /* @__PURE__ */ s("h2", { className: "text-2xl md:text-3xl font-semibold leading-snug mb-3", style: { color: "#6b1e2a" }, children: selected.title }),
         /* @__PURE__ */ d("p", { className: "text-sm mb-6", style: { color: "#8f5c5c" }, children: [
@@ -14583,8 +14589,8 @@ function dailyWag({ onNavigate: t }) {
         ] }),
         /* @__PURE__ */ s("div", { className: "space-y-4 blog-magazine-article", children: renderMagazineArticleBody(articleBodyBlocks, selected.slug, t) })
       ] }),
-      !loading && selectedSlug && !selected && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: error || "That article could not be found." }),
-      !loading && !selectedSlug && /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 w-full", children: [
+      !loading && selectedSlug && !selected && !onBlogIndex && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: error || "That article could not be found." }),
+      !loading && (onBlogIndex || !selectedSlug) && /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 w-full", children: [
         posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12 col-span-1 md:col-span-2", style: { color: "#8f5c5c" }, children: "New articles coming soon." }),
         posts.map((g, b) => /* @__PURE__ */ s(
           D.a,
@@ -20598,6 +20604,11 @@ function oy() {
     const k = new URLSearchParams(window.location.search).get("reset");
     k && (zv(k), o(!0), window.history.replaceState({}, "", window.location.pathname + window.location.hash));
   }, []), U(() => {
+    const syncBlogPage = () => {
+      isBlogPathname(blogPathname()) && t !== "blog" && e("blog");
+    };
+    return syncBlogPage(), window.addEventListener("popstate", syncBlogPage), () => window.removeEventListener("popstate", syncBlogPage);
+  }, [t]), U(() => {
     const pathname = blogPathname();
     if (isBlogPathname(pathname) && t !== "blog") {
       e("blog");
