@@ -165,35 +165,9 @@ function serveSitemap(req, res) {
   }
 }
 
-let indexHtmlCache = { cacheKey: "", body: "" };
-
-function getSeoCacheKey(indexMtimeMs) {
-  const fragmentFiles = ["head-inject.html", "seo-content.html", "body-scripts-extra.html", "figma-runtime.html"];
-  const parts = [String(indexMtimeMs), process.env.RENDER_GIT_COMMIT || "local"];
-  for (const file of fragmentFiles) {
-    try {
-      parts.push(String(fs.statSync(path.join(__dirname, "seo", "fragments", file)).mtimeMs));
-    } catch {
-      parts.push("0");
-    }
-  }
-  try {
-    parts.push(String(fs.statSync(path.join(__dirname, "seo", "category-seo.js")).mtimeMs));
-  } catch {
-    parts.push("0");
-  }
-  try {
-    parts.push(String(fs.statSync(path.join(PUBLIC_DIR, "_components", "v2", "eadba943d2368c4e58773ef46d62f7a9faa60533.js")).mtimeMs));
-  } catch {
-    parts.push("0");
-  }
-  return parts.join(":");
-}
+let indexHtmlCache = { mtimeMs: 0, body: "" };
 
 function getStaticCacheControl(pathname) {
-  if (pathname.startsWith("/_components/") || pathname.startsWith("/_runtimes/")) {
-    return "no-cache, must-revalidate";
-  }
   if (pathname.startsWith("/blog/images/") || /\.(?:png|jpe?g|webp|gif|svg)$/i.test(pathname)) {
     return "public, max-age=86400, must-revalidate";
   }
@@ -216,10 +190,9 @@ function serveIndexHtml(req, res, pathname = "/") {
         return;
       }
       let body = indexHtmlCache.body;
-      const cacheKey = getSeoCacheKey(stat.mtimeMs);
-      if (cacheKey !== indexHtmlCache.cacheKey) {
+      if (stat.mtimeMs !== indexHtmlCache.mtimeMs) {
         body = applySeoToIndexHtml(data.toString("utf8"));
-        indexHtmlCache = { cacheKey, body };
+        indexHtmlCache = { mtimeMs: stat.mtimeMs, body };
       }
       const listings = getListingsForPathname(pathname);
       const pageSeo =
@@ -236,7 +209,6 @@ function serveIndexHtml(req, res, pathname = "/") {
       res.writeHead(200, {
         "Content-Type": "text/html; charset=utf-8",
         "Content-Length": payload.length,
-        "Cache-Control": "no-cache, must-revalidate",
       });
       if (req.method === "HEAD") {
         res.end();

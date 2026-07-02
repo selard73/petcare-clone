@@ -13,6 +13,9 @@ const MARKER_SCRIPTS_END = "<!-- peedee-seo-scripts:end -->";
 let fragmentCache = null;
 
 function loadFragments() {
+  if (fragmentCache) {
+    return fragmentCache;
+  }
   fragmentCache = {
     headInject: fs.readFileSync(path.join(FRAGMENTS_DIR, "head-inject.html"), "utf8").trim(),
     seoContent: fs.readFileSync(path.join(FRAGMENTS_DIR, "seo-content.html"), "utf8").trim(),
@@ -95,31 +98,10 @@ function minifyJsonLd(html) {
   });
 }
 
-function getComponentBundleVersion() {
-  try {
-    const jsPath = path.join(__dirname, "..", "public", "_components", "v2", "eadba943d2368c4e58773ef46d62f7a9faa60533.js");
-    return String(Math.floor(fs.statSync(jsPath).mtimeMs));
-  } catch {
-    return "1";
-  }
-}
-
-function appendComponentCacheBust(html) {
-  const version = getComponentBundleVersion();
-  return html.replace(/(\/_components\/v2\/eadba943[^"?]+\.(?:js|css))(\?[^"']*)?(?=["'])/g, (match, assetPath, query) => {
-    if (query && /[?&]v=/.test(query)) {
-      return assetPath + query;
-    }
-    return `${assetPath}?v=${version}`;
-  });
-}
-
 function fixComponentsStylesheet(html) {
   const cssMatch = html.match(/href="(\/_components\/v2\/[^"]+\.css)"/i);
   const cssHref = cssMatch ? cssMatch[1] : "/_components/v2/eadba943d2368c4e58773ef46d62f7a9faa60533.css";
-  const version = getComponentBundleVersion();
-  const cssWithVersion = cssHref.includes("?") ? cssHref : `${cssHref}?v=${version}`;
-  const asyncCss = `<link rel="preload" href="${cssWithVersion}" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin />\n    <noscript><link rel="stylesheet" href="${cssWithVersion}" /></noscript>`;
+  const asyncCss = `<link rel="preload" href="${cssHref}" as="style" onload="this.onload=null;this.rel='stylesheet'" crossorigin />\n    <noscript><link rel="stylesheet" href="${cssHref}" /></noscript>`;
   let result = html.replace(/<link[^>]*href="\/_components\/v2\/[^"]+\.css"[^>]*>\s*/gi, "");
   result = result.replace(
     /<noscript>\s*<link rel="stylesheet" href="\/_components\/v2\/[^"]+\.css"\s*\/>\s*<\/noscript>\s*/gi,
@@ -147,23 +129,12 @@ function orderScripts(figmaScripts) {
   const isCountry = (script) => /data-template-id=["']country-code["']/i.test(script.attrs);
   const isClassNames = (script) => script.body.includes("__serverRenderedCSSClassNames");
   const isCategory = (script) => script.body.includes("categoryPaths");
-  const isLegacyHashRedirect = (script) =>
-    script.body.includes("categoryPaths") && script.body.includes('location.replace("/#"');
   const isFetch = (script) => script.body.includes("api.airtable.com");
   const isGtag = (script) => script.body.includes("dataLayer") || script.body.includes("gtag(");
   const isSeoTitle = (script) => script.body.includes("applySeoTitle");
 
   for (const script of figmaScripts) {
-    if (
-      !isModule(script) &&
-      !isCountry(script) &&
-      !isClassNames(script) &&
-      !isCategory(script) &&
-      !isLegacyHashRedirect(script) &&
-      !isFetch(script) &&
-      !isGtag(script) &&
-      !isSeoTitle(script)
-    ) {
+    if (!isModule(script) && !isCountry(script) && !isClassNames(script) && !isCategory(script) && !isFetch(script) && !isGtag(script) && !isSeoTitle(script)) {
       pushUnique(script);
     }
   }
@@ -179,7 +150,7 @@ function orderScripts(figmaScripts) {
 
 function applySeoToIndexHtml(html) {
   if (html.includes(MARKER_SCRIPTS_END) && html.includes("new SitesRuntime")) {
-    return minifyJsonLd(appendComponentCacheBust(html));
+    return minifyJsonLd(html);
   }
 
   const fragments = loadFragments();
@@ -224,7 +195,7 @@ function applySeoToIndexHtml(html) {
 
   result = result.replace(/<\/body>/i, `    ${scriptBlock}\n  </body>`);
 
-  return minifyJsonLd(appendComponentCacheBust(result));
+  return minifyJsonLd(result);
 }
 
 module.exports = {

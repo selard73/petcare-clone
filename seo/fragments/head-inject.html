@@ -1,51 +1,4 @@
 <title>Pet Services in Darlington & Florence SC | Pee Dee Pet Care</title>
-    <script>
-      (function () {
-        function normalizePathname() {
-          return window.location.pathname.replace(/\/+$/, "") || "/";
-        }
-        function decodeSlug(value) {
-          try {
-            return decodeURIComponent(value);
-          } catch (e) {
-            return value;
-          }
-        }
-        function applyBlogBoot() {
-          var pathname = normalizePathname();
-          var onBlogPath = pathname === "/blog" || (pathname.indexOf("/blog/") === 0 && pathname.length > 6);
-          var hash = window.location.hash.replace(/^#/, "");
-          if (!onBlogPath && (hash === "blog" || hash.indexOf("blog/") === 0)) {
-            var hashSlug = hash.indexOf("blog/") === 0 ? decodeSlug(hash.slice(5)) : "";
-            window.history.replaceState({}, "", hashSlug ? "/blog/" + hashSlug : "/blog");
-            pathname = normalizePathname();
-            onBlogPath = true;
-          }
-          if (!onBlogPath) return false;
-          var slug = pathname === "/blog" ? "" : decodeSlug(pathname.slice(6));
-          if (window.location.hash) {
-            window.history.replaceState({}, "", slug ? "/blog/" + slug : "/blog");
-          }
-          window.__PEEDEE_BOOT = { page: "blog", slug: slug };
-          try {
-            sessionStorage.setItem("pawsitively_current_page", "blog");
-          } catch (e) {}
-          if (document.documentElement) {
-            document.documentElement.style.backgroundColor = "#f9ecea";
-          }
-          if (document.body) {
-            document.body.style.backgroundColor = "#f9ecea";
-          }
-          return true;
-        }
-        applyBlogBoot();
-        window.addEventListener("pageshow", function (event) {
-          if (event.persisted) {
-            applyBlogBoot();
-          }
-        });
-      })();
-    </script>
     <meta
       name="description"
       content="Free pet services directory for Darlington &amp; Florence, SC. Browse grooming, training, boarding, sitters and vet listings with reviews. Not a service provider."
@@ -54,7 +7,7 @@
     <link rel="icon" href="/logo.png" type="image/png" />
     <meta name="robots" content="index, follow" />
     <meta name="title" content="Pet Services in Darlington & Florence SC | Pee Dee Pet Care" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
 
     <style id="blog-article-images">
       article figure,
@@ -79,20 +32,12 @@
       }
       .blog-magazine-section {
         margin: 1.75rem 0;
+        overflow: hidden;
       }
       .blog-magazine-section::after {
         content: "";
         display: table;
         clear: both;
-      }
-      .blog-magazine-section > h2,
-      .blog-magazine-section > h3,
-      .blog-magazine-section > p,
-      .blog-magazine-section > ul,
-      .blog-magazine-section > ol,
-      .blog-magazine-section > blockquote,
-      .blog-magazine-section > div {
-        overflow: visible;
       }
       figure.blog-magazine-figure-left {
         float: left;
@@ -121,6 +66,13 @@
         text-align: center;
         margin-top: 0.5rem;
         color: #8f5c5c;
+      }
+      .blog-magazine-copy {
+        overflow: hidden;
+      }
+      .blog-magazine-copy > h2:first-child,
+      .blog-magazine-copy > h3:first-child {
+        margin-top: 0;
       }
       article figure img:not(.blog-hero-image):not(.blog-magazine-image),
       figure.blog-article-figure img,
@@ -153,9 +105,6 @@
         figure.blog-hero-figure {
           margin: 0 0 1.5rem;
         }
-        .blog-article-aside {
-          display: none !important;
-        }
         img.blog-hero-image {
           height: auto !important;
           max-height: none !important;
@@ -174,41 +123,6 @@
           max-height: none !important;
           object-fit: unset !important;
           object-position: center !important;
-        }
-      }
-      .blog-article-aside {
-        margin-bottom: 1rem;
-        padding: 0 0.25rem;
-      }
-      .blog-article-back-link {
-        background: none;
-        border: none;
-        padding: 0;
-        cursor: pointer;
-        text-align: left;
-        font: inherit;
-        line-height: 1.4;
-        white-space: nowrap;
-      }
-      @media (min-width: 768px) {
-        .blog-article-aside {
-          position: fixed;
-          top: 50vh;
-          left: max(0.35rem, calc((100vw - min(100vw - 3rem, 80rem)) / 2 - 14rem));
-          width: auto;
-          max-width: none;
-          margin: 0;
-          z-index: 60;
-          pointer-events: auto;
-        }
-        .blog-article-back-link {
-          max-width: none;
-          font-size: 0.8125rem;
-        }
-      }
-      @media (min-width: 1280px) {
-        .blog-article-aside {
-          left: calc((100vw - 80rem) / 2 - 14rem);
         }
       }
     </style>

@@ -14449,7 +14449,7 @@ function renderMagazineArticleBody(blocks, slug, onNavigate) {
         }
         elements.push(/* @__PURE__ */ d("div", { className: "blog-magazine-section", children: [
           renderBlogBlock(block, slug, imgIndex, onNavigate, side),
-          ...sectionBlocks.map(({ block: sectionBlock, index: sectionIndex }) => renderBlogBlock(sectionBlock, slug, sectionIndex, onNavigate))
+          /* @__PURE__ */ s("div", { className: "blog-magazine-copy", children: sectionBlocks.map(({ block: sectionBlock, index: sectionIndex }) => renderBlogBlock(sectionBlock, slug, sectionIndex, onNavigate)) })
         ] }, `${slug}-magazine-${bodyImageCount}`));
         continue;
       }
@@ -14463,24 +14463,12 @@ function renderMagazineArticleBody(blocks, slug, onNavigate) {
   return elements;
 }
 function dailyWag({ onNavigate: t }) {
-  const decodeBlogSlug = (value) => {
-    try {
-      return decodeURIComponent(value);
-    } catch {
-      return value;
-    }
-  }, blogPathname = () => window.location.pathname.replace(/\/+$/, "") || "/", isBlogIndexPath = (pathname) => pathname === "/blog", blogSlugFromLocation = () => {
-    const pathname = blogPathname();
-    if (isBlogIndexPath(pathname))
-      return null;
+  const blogSlugFromLocation = () => {
+    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
     if (pathname.startsWith("/blog/") && pathname.length > 6)
-      return decodeBlogSlug(pathname.slice(6));
+      return decodeURIComponent(pathname.slice(6));
     const hash = window.location.hash.slice(1);
-    return hash.startsWith("blog/") ? decodeBlogSlug(hash.slice(5)) : null;
-  }, resolveSelectedSlug = () => {
-    if (typeof window < "u" && window.__PEEDEE_BOOT?.page === "blog")
-      return isBlogIndexPath(blogPathname()) ? null : window.__PEEDEE_BOOT.slug || null;
-    return blogSlugFromLocation();
+    return hash.startsWith("blog/") ? hash.slice(5) : null;
   }, loadBlogPosts = async () => {
     if (typeof window < "u" && typeof window.__peedeeLoadBlogPosts == "function")
       return window.__peedeeLoadBlogPosts();
@@ -14493,15 +14481,7 @@ function dailyWag({ onNavigate: t }) {
     if (!version) return src;
     const joiner = src.includes("?") ? "&" : "?";
     return `${src}${joiner}v=${encodeURIComponent(version)}`;
-  }, [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => resolveSelectedSlug()), [showDesktopBackLink, setShowDesktopBackLink] = E(() => typeof window < "u" && typeof window.matchMedia == "function" && window.matchMedia("(min-width: 768px)").matches);
-  U(() => {
-    if (typeof window > "u" || typeof window.matchMedia != "function") return;
-    const mq = window.matchMedia("(min-width: 768px)"), syncViewport = () => setShowDesktopBackLink(mq.matches);
-    syncViewport();
-    if (typeof mq.addEventListener == "function")
-      return mq.addEventListener("change", syncViewport), () => mq.removeEventListener("change", syncViewport);
-    return mq.addListener(syncViewport), () => mq.removeListener(syncViewport);
-  }, []);
+  }, [posts, setPosts] = E([]), [loading, setLoading] = E(!0), [error, setError] = E(""), [selectedSlug, setSelectedSlug] = E(() => blogSlugFromLocation());
   U(() => {
     (async () => {
       setLoading(!0), setError("");
@@ -14515,17 +14495,9 @@ function dailyWag({ onNavigate: t }) {
     })();
   }, []);
   U(() => {
-    window.__peedeeBlogBackToList = () => {
-      setSelectedSlug(null), window.history.replaceState({}, "", "/blog"), window.scrollTo(0, 0);
-    };
-    return () => {
-      delete window.__peedeeBlogBackToList;
-    };
-  }, []);
-  U(() => {
-    const sync = () => setSelectedSlug(resolveSelectedSlug());
-    return sync(), window.addEventListener("popstate", sync), window.addEventListener("hashchange", sync), window.addEventListener("pageshow", sync), () => {
-      window.removeEventListener("popstate", sync), window.removeEventListener("hashchange", sync), window.removeEventListener("pageshow", sync);
+    const sync = () => setSelectedSlug(blogSlugFromLocation());
+    return window.addEventListener("popstate", sync), window.addEventListener("hashchange", sync), () => {
+      window.removeEventListener("popstate", sync), window.removeEventListener("hashchange", sync);
     };
   }, []);
   const openPost = (g) => {
@@ -14539,7 +14511,6 @@ function dailyWag({ onNavigate: t }) {
       return g;
     }
   }, selected = posts.find((g) => g.slug === selectedSlug);
-  const onBlogIndex = isBlogIndexPath(blogPathname());
   const selectedBlocks = selected ? selected.blocks || selected.body || [] : [];
   const firstImageIndex = selectedBlocks.findIndex((block) => typeof block == "object" && block?.type === "img");
   const firstImageBlock = firstImageIndex >= 0 ? selectedBlocks[firstImageIndex] : null;
@@ -14551,7 +14522,7 @@ function dailyWag({ onNavigate: t }) {
     /* @__PURE__ */ s("section", { className: "h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", style: { background: "linear-gradient(135deg, #dea5a0 0%, #b84a48 20%, #8e2c32 48%, #6b1e2a 75%, #461018 100%)", color: "#fff8f5" }, children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[10px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
       {
-        initial: !1,
+        initial: { opacity: 0, y: 30 },
         animate: { opacity: 1, y: 0 },
         className: "text-center",
         children: [
@@ -14571,20 +14542,20 @@ function dailyWag({ onNavigate: t }) {
         ]
       }
     ) }) }),
-    !loading && selected && showDesktopBackLink && /* @__PURE__ */ s("aside", { className: "blog-article-aside", children: /* @__PURE__ */ s(
-      "button",
-      {
-        type: "button",
-        onClick: backToList,
-        className: "blog-article-back-link font-medium hover:underline",
-        style: { color: "#8e2c32" },
-        children: "← Back to The Daily Wag"
-      }
-    ) }),
     /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12", style: { backgroundColor: "#f9ecea", width: "100%" }, children: [
       error && /* @__PURE__ */ s("div", { className: "mb-6 p-4 rounded-lg border", style: { backgroundColor: "#fef2f2", color: "#b91c1c", borderColor: "#fecaca" }, children: error }),
       loading && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: "Loading articles…" }),
-      !loading && selectedSlug && selected && /* @__PURE__ */ s("article", { className: "blog-article-card rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 4px 6px -1px rgba(110,26,40,0.14)" }, children: [
+      !loading && selected && /* @__PURE__ */ d("article", { className: "rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 4px 6px -1px rgba(110,26,40,0.14)" }, children: [
+        /* @__PURE__ */ s(
+          "button",
+          {
+            type: "button",
+            onClick: backToList,
+            className: "text-sm font-medium mb-6 flex items-center gap-1 hover:underline",
+            style: { color: "#8e2c32" },
+            children: "← Back to The Daily Wag"
+          }
+        ),
         firstImageBlock && renderBlogBlock(firstImageBlock, selected.slug, firstImageIndex, t, "hero"),
         /* @__PURE__ */ s("h2", { className: "text-2xl md:text-3xl font-semibold leading-snug mb-3", style: { color: "#6b1e2a" }, children: selected.title }),
         /* @__PURE__ */ d("p", { className: "text-sm mb-6", style: { color: "#8f5c5c" }, children: [
@@ -14593,8 +14564,7 @@ function dailyWag({ onNavigate: t }) {
         ] }),
         /* @__PURE__ */ s("div", { className: "space-y-4 blog-magazine-article", children: renderMagazineArticleBody(articleBodyBlocks, selected.slug, t) })
       ] }),
-      !loading && selectedSlug && !selected && !onBlogIndex && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: error || "That article could not be found." }),
-      !loading && (onBlogIndex || !selectedSlug || !selected) && /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 w-full", children: [
+      !loading && !selected && /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 w-full", children: [
         posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12 col-span-1 md:col-span-2", style: { color: "#8f5c5c" }, children: "New articles coming soon." }),
         posts.map((g, b) => /* @__PURE__ */ s(
           D.a,
@@ -20557,18 +20527,9 @@ function sy() {
   }), console.log(`✅ Successfully seeded ${e.length} businesses (skipped claimed/edited ones)!`);
 }
 function oy() {
-  const decodeBlogSlug = (value) => {
-    try {
-      return decodeURIComponent(value);
-    } catch {
-      return value;
-    }
-  }, blogPathname = () => window.location.pathname.replace(/\/+$/, "") || "/", isBlogPathname = (pathname) => pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6;
   const [t, e] = E(() => {
-    if (typeof window < "u" && window.__PEEDEE_BOOT?.page === "blog")
-      return "blog";
-    const pathname = blogPathname();
-    if (isBlogPathname(pathname))
+    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+    if (pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6)
       return console.log("✅ Using pathname for blog:", pathname), "blog";
     const k = window.location.hash.slice(1);
     console.log("🎬 Initializing - URL hash:", k);
@@ -20577,21 +20538,14 @@ function oy() {
     const z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "shortlist", "blog"], A0 = (k) => k && (k === "blog" || k.startsWith("blog/")) ? "blog" : k && z.includes(k) && !(k === "about" && window.innerWidth >= 768) ? k : null;
     return A0(k) ? (console.log("✅ Using hash:", k), A0(k)) : A0(I) ? (console.log("✅ Using sessionStorage:", I), A0(I)) : (console.log("📍 No valid page found, defaulting to home"), "home");
   }), [r, n] = E(() => {
-    if (typeof window < "u" && window.__PEEDEE_BOOT?.page === "blog")
-      return [window.__PEEDEE_BOOT.slug ? "blog/" + window.__PEEDEE_BOOT.slug : "blog"];
-    const pathname = blogPathname();
-    if (isBlogPathname(pathname))
-      return [pathname.startsWith("/blog/") && pathname.length > 6 ? "blog/" + decodeBlogSlug(pathname.slice(6)) : "blog"];
+    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+    if (pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6)
+      return [pathname.startsWith("/blog/") && pathname.length > 6 ? "blog/" + decodeURIComponent(pathname.slice(6)) : "blog"];
     const k = window.location.hash.slice(1), I = sessionStorage.getItem("pawsitively_current_page"), z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "shortlist", "blog"], A0 = (G) => G && (G === "blog" || G.startsWith("blog/")) ? "blog" : G && z.includes(G) && !(G === "about" && window.innerWidth >= 768) ? G : null;
     return A0(k) ? [k] : A0(I) ? [I] : ["home"];
   }), [i, o] = E(!1), [a, l] = E(!1), [c, u] = E("guest"), [h, p] = E("signup"), [m, f] = E(null), [v, g] = E(null), [b, w] = E(!1), [x, T] = E(0), [Pv, Nv] = E(null), [Iv, zv] = E(null), { user: P, login: N, logout: S } = vi(), C = (k) => {
     n((I) => [...I, k]), e(k);
   }, R = () => {
-    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
-    if (window.innerWidth < 768 && t === "blog" && pathname.startsWith("/blog/") && pathname.length > 6) {
-      typeof window.__peedeeBlogBackToList == "function" ? window.__peedeeBlogBackToList() : (window.history.replaceState({}, "", "/blog"), window.scrollTo(0, 0));
-      return;
-    }
     if (r.length > 1) {
       const k = [...r];
       k.pop(), n(k), e(k[k.length - 1]);
@@ -20611,39 +20565,26 @@ function oy() {
   }, []), U(() => {
     const k = new URLSearchParams(window.location.search).get("reset");
     k && (zv(k), o(!0), window.history.replaceState({}, "", window.location.pathname + window.location.hash));
-  }, []), Mo(() => {
-    const pathname = blogPathname();
-    if (typeof window < "u" && (window.__PEEDEE_BOOT?.page === "blog" || isBlogPathname(pathname))) {
-      sessionStorage.setItem("pawsitively_current_page", "blog");
-      e("blog");
-      delete window.__PEEDEE_BOOT;
-    }
   }, []), U(() => {
-    const pathname = blogPathname();
-    if (isBlogPathname(pathname)) {
-      sessionStorage.setItem("pawsitively_current_page", "blog");
-      t !== "blog" && e("blog");
-      return;
-    }
     if (t === "blog") {
       sessionStorage.setItem("pawsitively_current_page", "blog");
+      const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+      if (pathname === "/blog" || pathname.startsWith("/blog/"))
+        return;
       const k = window.location.hash.slice(1);
       if (k === "blog" || k.startsWith("blog/")) {
-        window.history.replaceState({}, "", k.startsWith("blog/") ? "/blog/" + decodeBlogSlug(k.slice(5)) : "/blog");
+        window.history.replaceState({}, "", k.startsWith("blog/") ? "/blog/" + k.slice(5) : "/blog");
         return;
       }
       window.history.replaceState({}, "", "/blog");
       return;
     }
     console.log("📝 Updating hash to:", t), window.location.hash = t, sessionStorage.setItem("pawsitively_current_page", t), console.log("💾 Saved to sessionStorage:", t);
+    const leavePathname = window.location.pathname.replace(/\/$/, "") || "/";
+    if (leavePathname === "/blog" || leavePathname.startsWith("/blog/")) {
+      window.history.replaceState({}, "", t === "home" ? "/" : "/#" + t);
+    }
     typeof window.__peedeeRefreshRouteSeo == "function" ? window.__peedeeRefreshRouteSeo(t) : typeof window.__peedeeRestoreDefaultSeo == "function" && window.__peedeeRestoreDefaultSeo();
-  }, [t]), U(() => {
-    const syncBlogFromPath = () => {
-      isBlogPathname(blogPathname()) && t !== "blog" && e("blog");
-    };
-    return syncBlogFromPath(), window.addEventListener("popstate", syncBlogFromPath), window.addEventListener("pageshow", syncBlogFromPath), () => {
-      window.removeEventListener("popstate", syncBlogFromPath), window.removeEventListener("pageshow", syncBlogFromPath);
-    };
   }, [t]), U(() => {
     console.log("🔍 Checking if we need to seed data...");
     const k = ["grooming", "training", "boarding", "sitters", "vet"];
