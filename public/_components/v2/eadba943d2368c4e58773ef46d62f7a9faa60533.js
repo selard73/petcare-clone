@@ -14449,7 +14449,7 @@ function renderMagazineArticleBody(blocks, slug, onNavigate) {
         }
         elements.push(/* @__PURE__ */ d("div", { className: "blog-magazine-section", children: [
           renderBlogBlock(block, slug, imgIndex, onNavigate, side),
-          /* @__PURE__ */ s("div", { className: "blog-magazine-copy", children: sectionBlocks.map(({ block: sectionBlock, index: sectionIndex }) => renderBlogBlock(sectionBlock, slug, sectionIndex, onNavigate)) })
+          ...sectionBlocks.map(({ block: sectionBlock, index: sectionIndex }) => renderBlogBlock(sectionBlock, slug, sectionIndex, onNavigate))
         ] }, `${slug}-magazine-${bodyImageCount}`));
         continue;
       }
@@ -14567,20 +14567,20 @@ function dailyWag({ onNavigate: t }) {
         ]
       }
     ) }) }),
+    !loading && selected && /* @__PURE__ */ s("aside", { className: "blog-article-aside", children: /* @__PURE__ */ s(
+      "button",
+      {
+        type: "button",
+        onClick: backToList,
+        className: "blog-article-back-link font-medium hover:underline",
+        style: { color: "#8e2c32" },
+        children: "← Back to The Daily Wag"
+      }
+    ) }),
     /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12", style: { backgroundColor: "#f9ecea", width: "100%" }, children: [
       error && /* @__PURE__ */ s("div", { className: "mb-6 p-4 rounded-lg border", style: { backgroundColor: "#fef2f2", color: "#b91c1c", borderColor: "#fecaca" }, children: error }),
       loading && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: "Loading articles…" }),
-      !loading && selectedSlug && selected && /* @__PURE__ */ d("article", { className: "rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 4px 6px -1px rgba(110,26,40,0.14)" }, children: [
-        /* @__PURE__ */ s(
-          "button",
-          {
-            type: "button",
-            onClick: backToList,
-            className: "text-sm font-medium mb-6 flex items-center gap-1 hover:underline",
-            style: { color: "#8e2c32" },
-            children: "← Back to The Daily Wag"
-          }
-        ),
+      !loading && selectedSlug && selected && /* @__PURE__ */ d("article", { className: "blog-article-card rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 4px 6px -1px rgba(110,26,40,0.14)" }, children: [
         firstImageBlock && renderBlogBlock(firstImageBlock, selected.slug, firstImageIndex, t, "hero"),
         /* @__PURE__ */ s("h2", { className: "text-2xl md:text-3xl font-semibold leading-snug mb-3", style: { color: "#6b1e2a" }, children: selected.title }),
         /* @__PURE__ */ d("p", { className: "text-sm mb-6", style: { color: "#8f5c5c" }, children: [
@@ -20579,6 +20579,16 @@ function oy() {
   }), [i, o] = E(!1), [a, l] = E(!1), [c, u] = E("guest"), [h, p] = E("signup"), [m, f] = E(null), [v, g] = E(null), [b, w] = E(!1), [x, T] = E(0), [Pv, Nv] = E(null), [Iv, zv] = E(null), { user: P, login: N, logout: S } = vi(), C = (k) => {
     n((I) => [...I, k]), e(k);
   }, R = () => {
+    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+    if (window.innerWidth < 768 && t === "blog" && pathname.startsWith("/blog/") && pathname.length > 6) {
+      try {
+        sessionStorage.removeItem("pawsitively_blog_slug");
+      } catch {}
+      window.history.pushState({}, "", "/blog");
+      window.dispatchEvent(new Event("popstate"));
+      window.scrollTo(0, 0);
+      return;
+    }
     if (r.length > 1) {
       const k = [...r];
       k.pop(), n(k), e(k[k.length - 1]);

@@ -11,9 +11,23 @@ const MARKER_SCRIPTS_START = "<!-- peedee-seo-scripts:start -->";
 const MARKER_SCRIPTS_END = "<!-- peedee-seo-scripts:end -->";
 
 let fragmentCache = null;
+let fragmentCacheKey = "";
+
+const FRAGMENT_FILES = ["head-inject.html", "seo-content.html", "body-scripts-extra.html", "figma-runtime.html"];
+
+function getFragmentCacheKey() {
+  return FRAGMENT_FILES.map((file) => {
+    try {
+      return String(fs.statSync(path.join(FRAGMENTS_DIR, file)).mtimeMs);
+    } catch {
+      return "0";
+    }
+  }).join(":");
+}
 
 function loadFragments() {
-  if (fragmentCache) {
+  const cacheKey = getFragmentCacheKey();
+  if (fragmentCache && cacheKey === fragmentCacheKey) {
     return fragmentCache;
   }
   fragmentCache = {
@@ -22,6 +36,7 @@ function loadFragments() {
     bodyScriptsExtra: fs.readFileSync(path.join(FRAGMENTS_DIR, "body-scripts-extra.html"), "utf8").trim(),
     figmaRuntime: fs.readFileSync(path.join(FRAGMENTS_DIR, "figma-runtime.html"), "utf8").trim(),
   };
+  fragmentCacheKey = cacheKey;
   return fragmentCache;
 }
 

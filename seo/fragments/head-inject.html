@@ -48,12 +48,20 @@
       }
       .blog-magazine-section {
         margin: 1.75rem 0;
-        overflow: hidden;
       }
       .blog-magazine-section::after {
         content: "";
         display: table;
         clear: both;
+      }
+      .blog-magazine-section > h2,
+      .blog-magazine-section > h3,
+      .blog-magazine-section > p,
+      .blog-magazine-section > ul,
+      .blog-magazine-section > ol,
+      .blog-magazine-section > blockquote,
+      .blog-magazine-section > div {
+        overflow: visible;
       }
       figure.blog-magazine-figure-left {
         float: left;
@@ -82,13 +90,6 @@
         text-align: center;
         margin-top: 0.5rem;
         color: #8f5c5c;
-      }
-      .blog-magazine-copy {
-        overflow: hidden;
-      }
-      .blog-magazine-copy > h2:first-child,
-      .blog-magazine-copy > h3:first-child {
-        margin-top: 0;
       }
       article figure img:not(.blog-hero-image):not(.blog-magazine-image),
       figure.blog-article-figure img,
@@ -121,6 +122,9 @@
         figure.blog-hero-figure {
           margin: 0 0 1.5rem;
         }
+        .blog-article-aside {
+          display: none !important;
+        }
         img.blog-hero-image {
           height: auto !important;
           max-height: none !important;
@@ -139,6 +143,41 @@
           max-height: none !important;
           object-fit: unset !important;
           object-position: center !important;
+        }
+      }
+      .blog-article-aside {
+        margin-bottom: 1rem;
+        padding: 0 0.25rem;
+      }
+      .blog-article-back-link {
+        background: none;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        text-align: left;
+        font: inherit;
+        line-height: 1.4;
+        white-space: nowrap;
+      }
+      @media (min-width: 768px) {
+        .blog-article-aside {
+          position: fixed;
+          top: 50vh;
+          left: max(0.35rem, calc((100vw - min(100vw - 3rem, 80rem)) / 2 - 14rem));
+          width: auto;
+          max-width: none;
+          margin: 0;
+          z-index: 60;
+          pointer-events: auto;
+        }
+        .blog-article-back-link {
+          max-width: none;
+          font-size: 0.8125rem;
+        }
+      }
+      @media (min-width: 1280px) {
+        .blog-article-aside {
+          left: max(0.35rem, calc((100vw - 80rem) / 2 - 14rem));
         }
       }
     </style>
