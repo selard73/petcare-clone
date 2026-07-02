@@ -79,6 +79,113 @@
         };
       })();
     </script>
+    <script>
+      // Track business contact clicks (call, website, Facebook) in both
+      // Searchable Analytics and Google Analytics.
+      (function () {
+        function findBusinessName(el) {
+          // Business detail cards title the business in an <h2>; list cards
+          // use an <h3>. Prefer the nearest ancestor's h2 so section headings
+          // like "Payment Methods" (h3) are not mistaken for the name.
+          var selectors = ["h2", "h3", "h1"];
+          for (var sIdx = 0; sIdx < selectors.length; sIdx++) {
+            var node = el;
+            for (var i = 0; node && node !== document.body && i < 14; i++) {
+              if (node.querySelector) {
+                var heading = node.querySelector(selectors[sIdx]);
+                if (heading && heading.textContent && heading.textContent.trim()) {
+                  return heading.textContent.trim().slice(0, 100);
+                }
+              }
+              node = node.parentElement;
+            }
+          }
+          return "unknown";
+        }
+
+        function isBlogContext() {
+          return (
+            window.location.pathname.indexOf("/blog") === 0 ||
+            (window.location.hash || "").indexOf("#blog") === 0
+          );
+        }
+
+        function currentPage() {
+          return (window.location.pathname + window.location.hash).slice(0, 150);
+        }
+
+        function trackEvent(name, props) {
+          try {
+            if (typeof window.sa === "function") window.sa("event", name, props);
+          } catch (e) {}
+          try {
+            if (typeof window.gtag === "function") window.gtag("event", name, props);
+          } catch (e) {}
+        }
+
+        document.addEventListener(
+          "click",
+          function (event) {
+            var target = event.target;
+            var anchor = target && target.closest ? target.closest("a[href]") : null;
+            if (!anchor) return;
+            var href = anchor.getAttribute("href") || "";
+
+            if (href.indexOf("tel:") === 0) {
+              trackEvent("business_call_click", {
+                business_name: findBusinessName(anchor),
+                phone: href.slice(4).slice(0, 30),
+                page: currentPage(),
+              });
+              return;
+            }
+
+            if (!/^https?:\/\//i.test(href)) return;
+            var host = "";
+            try {
+              host = new URL(href).hostname.toLowerCase();
+            } catch (e) {
+              return;
+            }
+            if (/(^|\.)peedeepetcare\.com$/.test(host)) return;
+            // Directions links (Google Maps) are not business website clicks.
+            if (/(^|\.)google\.com$/.test(host) || /(^|\.)goo\.gl$/.test(host)) return;
+
+            if (/(^|\.)(facebook|fb)\.com$/.test(host)) {
+              // Ignore the site's own Facebook page link in the footer.
+              if (href.toLowerCase().indexOf("peedeepetcare") !== -1) return;
+              trackEvent("business_facebook_click", {
+                business_name: findBusinessName(anchor),
+                link_url: href.slice(0, 200),
+                page: currentPage(),
+              });
+              return;
+            }
+
+            if (isBlogContext()) return;
+
+            // Business website links live inside a card that also contains
+            // the business's tel: link; other external links are ignored.
+            var node = anchor.parentElement;
+            var inBusinessCard = false;
+            for (var i = 0; node && node !== document.body && i < 12; i++) {
+              if (node.querySelector && node.querySelector('a[href^="tel:"]')) {
+                inBusinessCard = true;
+                break;
+              }
+              node = node.parentElement;
+            }
+            if (!inBusinessCard) return;
+            trackEvent("business_website_click", {
+              business_name: findBusinessName(anchor),
+              link_url: href.slice(0, 200),
+              page: currentPage(),
+            });
+          },
+          true
+        );
+      })();
+    </script>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-5LESZ1G423"></script>
     <script>
