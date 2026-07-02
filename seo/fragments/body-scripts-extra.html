@@ -121,6 +121,24 @@
           try {
             if (typeof window.gtag === "function") window.gtag("event", name, props);
           } catch (e) {}
+          try {
+            var payload = JSON.stringify({
+              event_type: name,
+              business_name: props.business_name || "unknown",
+              detail: props.phone || props.link_url || "",
+              page: props.page || "",
+            });
+            if (navigator.sendBeacon) {
+              navigator.sendBeacon("/api/track/business-click", new Blob([payload], { type: "application/json" }));
+            } else {
+              fetch("/api/track/business-click", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: payload,
+                keepalive: true,
+              });
+            }
+          } catch (e) {}
         }
 
         document.addEventListener(

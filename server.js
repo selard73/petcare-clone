@@ -435,6 +435,16 @@ function initSqlite() {
     CREATE INDEX IF NOT EXISTS idx_claim_requests_status ON business_claim_requests(status, created_at DESC);
     CREATE INDEX IF NOT EXISTS idx_claim_requests_business ON business_claim_requests(business_id, status);
     CREATE INDEX IF NOT EXISTS idx_claim_requests_user ON business_claim_requests(user_id, status);
+    CREATE TABLE IF NOT EXISTS business_click_events (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      event_type TEXT NOT NULL,
+      business_name TEXT NOT NULL,
+      detail TEXT,
+      page TEXT,
+      et_date TEXT NOT NULL,
+      created_at TEXT NOT NULL
+    );
+    CREATE INDEX IF NOT EXISTS idx_click_events_et_date ON business_click_events(et_date, event_type);
     `,
   );
   const visitRow = sqlite.prepare("SELECT value FROM site_stats WHERE key = ?").get(VISIT_COUNT_KEY);
@@ -1623,6 +1633,171 @@ async function handleVisitStatsApi(req, res) {
   return true;
 }
 
+const CLICK_EVENT_TYPES = ["business_call_click", "business_website_click", "business_facebook_click"];
+const CLICK_REPORT_HOUR_ET = 7;
+const CLICK_REPORT_LAST_SENT_KEY = "daily_click_report_last_sent";
+
+function getEasternDateString(date = new Date()) {
+  return new Intl.DateTimeFormat("en-CA", {
+    timeZone: "America/New_York",
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+  }).format(date);
+}
+
+function getEasternHour(date = new Date()) {
+  return Number(
+    new Intl.DateTimeFormat("en-US", {
+      timeZone: "America/New_York",
+      hour: "numeric",
+      hour12: false,
+    }).format(date),
+  );
+}
+
+async function handleBusinessClickApi(req, res) {
+  if (req.method !== "POST") {
+    sendJson(res, 405, { error: "Method not allowed" });
+    return true;
+  }
+  if (!usingSqlite) {
+    sendJson(res, 200, { ok: false });
+    return true;
+  }
+  let body;
+  try {
+    body = await parseBody(req);
+  } catch {
+    sendJson(res, 400, { error: "Invalid body" });
+    return true;
+  }
+  const eventType = String(body.event_type || "").trim();
+  const businessName = String(body.business_name || "").trim().slice(0, 120);
+  if (!CLICK_EVENT_TYPES.includes(eventType) || !businessName) {
+    sendJson(res, 400, { error: "Invalid event" });
+    return true;
+  }
+  const now = new Date();
+  sqlite
+    .prepare(
+      "INSERT INTO business_click_events (event_type, business_name, detail, page, et_date, created_at) VALUES (?, ?, ?, ?, ?, ?)",
+    )
+    .run(
+      eventType,
+      businessName,
+      String(body.detail || "").slice(0, 250),
+      String(body.page || "").slice(0, 200),
+      getEasternDateString(now),
+      now.toISOString(),
+    );
+  sendJson(res, 200, { ok: true });
+  return true;
+}
+
+function buildClickReportEmail(reportDate) {
+  const rows = sqlite
+    .prepare(
+      "SELECT event_type, business_name, COUNT(*) AS clicks FROM business_click_events WHERE et_date = ? GROUP BY event_type, business_name ORDER BY event_type, clicks DESC",
+    )
+    .all(reportDate);
+  const totalRows = sqlite
+    .prepare(
+      "SELECT event_type, business_name, COUNT(*) AS clicks FROM business_click_events WHERE et_date >= ? GROUP BY event_type, business_name ORDER BY event_type, clicks DESC",
+    )
+    .all(getEasternDateString(new Date(Date.now() - 30 * 86400000)));
+
+  const typeLabels = {
+    business_call_click: "📞 Call button clicks",
+    business_website_click: "🌐 Website link clicks",
+    business_facebook_click: "📘 Facebook link clicks",
+  };
+
+  function formatSection(sectionRows) {
+    if (!sectionRows.length) {
+      return ["  (no clicks recorded)"];
+    }
+    const lines = [];
+    for (const type of CLICK_EVENT_TYPES) {
+      const typeRows = sectionRows.filter((row) => row.event_type === type);
+      if (!typeRows.length) continue;
+      const total = typeRows.reduce((sum, row) => sum + row.clicks, 0);
+      lines.push("", `${typeLabels[type]} — ${total} total`);
+      for (const row of typeRows) {
+        lines.push(`  ${row.clicks} × ${row.business_name}`);
+      }
+    }
+    return lines.length ? lines : ["  (no clicks recorded)"];
+  }
+
+  const text = [
+    `Business contact clicks for ${reportDate} (Eastern time)`,
+    "",
+    "=== Yesterday ===",
+    ...formatSection(rows),
+    "",
+    "=== Last 30 days ===",
+    ...formatSection(totalRows),
+    "",
+    "— Pee Dee Pet Care automated report",
+  ].join("\n");
+
+  return {
+    subject: `Pee Dee Pet Care clicks — ${reportDate}`,
+    text,
+  };
+}
+
+async function sendClickReportEmail(reportDate) {
+  const payload = buildClickReportEmail(reportDate);
+  if (RESEND_API_KEY) {
+    await sendViaResendEmail(payload);
+    return;
+  }
+  if (SMTP_HOST && SMTP_USER && SMTP_PASS) {
+    await sendViaSmtpEmail(payload);
+    return;
+  }
+  throw new Error("Email is not configured on the server.");
+}
+
+function getClickReportLastSent() {
+  const row = sqlite
+    .prepare("SELECT value FROM site_stats WHERE key = ?")
+    .get(CLICK_REPORT_LAST_SENT_KEY);
+  return row ? String(row.value) : "";
+}
+
+function setClickReportLastSent(dateString) {
+  const numeric = Number(dateString.replace(/-/g, ""));
+  sqlite
+    .prepare(
+      "INSERT INTO site_stats (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+    )
+    .run(CLICK_REPORT_LAST_SENT_KEY, numeric);
+}
+
+async function maybeSendDailyClickReport() {
+  if (!usingSqlite) return;
+  const now = new Date();
+  if (getEasternHour(now) < CLICK_REPORT_HOUR_ET) return;
+  const today = getEasternDateString(now);
+  const todayNumeric = String(Number(today.replace(/-/g, "")));
+  if (getClickReportLastSent() === todayNumeric) return;
+  const yesterday = getEasternDateString(new Date(now.getTime() - 86400000));
+  try {
+    await sendClickReportEmail(yesterday);
+    setClickReportLastSent(today);
+    console.log(`Daily click report for ${yesterday} sent to ${REVIEW_NOTIFY_TO}`);
+  } catch (error) {
+    console.error("Daily click report failed:", error.message);
+    // Mark as sent anyway so a misconfigured mailer doesn't retry every minute.
+    if (String(error.message || "").includes("not configured")) {
+      setClickReportLastSent(today);
+    }
+  }
+}
+
 function isReviewRecord(fields = {}) {
   return String(fields.price || "").startsWith("REVIEW:");
 }
@@ -2038,6 +2213,22 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
+    if (url.pathname === "/api/track/business-click") {
+      await handleBusinessClickApi(req, res);
+      return;
+    }
+
+    if (url.pathname === "/api/click-report-test" && req.method.toUpperCase() === "GET") {
+      try {
+        const today = getEasternDateString(new Date());
+        await sendClickReportEmail(today);
+        sendJson(res, 200, { ok: true, message: `Click report for ${today} sent to ${REVIEW_NOTIFY_TO}` });
+      } catch (error) {
+        sendJson(res, 500, { ok: false, error: error.message || "Failed to send click report" });
+      }
+      return;
+    }
+
     if ((req.method === "GET" || req.method === "HEAD") && (pathname === "/" || pathname === "/index.html")) {
       serveIndexHtml(req, res, pathname);
       return;
@@ -2118,4 +2309,6 @@ server.listen(PORT, async () => {
   } else {
     console.log("Review notification email: not configured (set RESEND_API_KEY or SMTP env vars)");
   }
+  maybeSendDailyClickReport();
+  setInterval(maybeSendDailyClickReport, 60 * 1000);
 });
