@@ -14473,8 +14473,20 @@ function dailyWag({ onNavigate: t }) {
     const pathname = window.location.pathname.replace(/\/$/, "") || "/";
     if (pathname.startsWith("/blog/") && pathname.length > 6)
       return decodeBlogSlug(pathname.slice(6));
+    if (pathname === "/blog")
+      return null;
     const hash = window.location.hash.slice(1);
-    return hash.startsWith("blog/") ? decodeBlogSlug(hash.slice(5)) : null;
+    if (hash.startsWith("blog/") && hash.length > 5)
+      return decodeBlogSlug(hash.slice(5));
+    if (hash === "blog")
+      return null;
+    // Figma runtime strips pathname/hash on boot; sessionStorage is set by the
+    // pre-runtime boot script so a refreshed article can be restored.
+    try {
+      return sessionStorage.getItem("pawsitively_blog_slug") || null;
+    } catch {
+      return null;
+    }
   }, loadBlogPosts = async () => {
     if (typeof window < "u" && typeof window.__peedeeLoadBlogPosts == "function")
       return window.__peedeeLoadBlogPosts();
@@ -14508,8 +14520,14 @@ function dailyWag({ onNavigate: t }) {
     };
   }, []);
   const openPost = (g) => {
+    try {
+      sessionStorage.setItem("pawsitively_blog_slug", g);
+    } catch {}
     setSelectedSlug(g), window.history.pushState({ blogSlug: g }, "", "/blog/" + g), window.scrollTo(0, 0);
   }, backToList = () => {
+    try {
+      sessionStorage.removeItem("pawsitively_blog_slug");
+    } catch {}
     setSelectedSlug(null), window.history.pushState({}, "", "/blog"), window.scrollTo(0, 0);
   }, formatDate = (g) => {
     try {
@@ -20592,10 +20610,19 @@ function oy() {
       if (isBlogPathname(pathname))
         return;
       const k = window.location.hash.slice(1);
-      window.history.replaceState({}, "", k.startsWith("blog/") && k.length > 5 ? "/blog/" + decodeBlogSlug(k.slice(5)) : "/blog");
+      let restoredSlug = k.startsWith("blog/") && k.length > 5 ? decodeBlogSlug(k.slice(5)) : "";
+      if (!restoredSlug) {
+        try {
+          restoredSlug = sessionStorage.getItem("pawsitively_blog_slug") || "";
+        } catch {}
+      }
+      window.history.replaceState({}, "", restoredSlug ? "/blog/" + restoredSlug : "/blog");
       window.dispatchEvent(new Event("popstate"));
       return;
     }
+    try {
+      sessionStorage.removeItem("pawsitively_blog_slug");
+    } catch {}
     if (isBlogPathname(pathname)) {
       window.history.replaceState({}, "", t === "home" ? "/" : "/#" + t);
     }

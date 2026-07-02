@@ -5,6 +5,11 @@
         if (pathname === "/blog" || pathname.indexOf("/blog/") === 0) {
           try {
             sessionStorage.setItem("pawsitively_current_page", "blog");
+            if (pathname.indexOf("/blog/") === 0 && pathname.length > 6) {
+              sessionStorage.setItem("pawsitively_blog_slug", decodeURIComponent(pathname.slice(6)));
+            } else {
+              sessionStorage.removeItem("pawsitively_blog_slug");
+            }
           } catch (e) {}
           document.documentElement.style.backgroundColor = "#f9ecea";
         }

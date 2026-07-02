@@ -127,10 +127,24 @@
     <!-- SEO/perf: scripts moved out of head. Re-apply after Figma Make re-export. -->
     <script>
       (function () {
+        // The Figma runtime can only boot from "/" (only _index.json exists),
+        // so every category/blog pathname must be converted to a hash route
+        // before the runtime module loads. The app restores pretty URLs after mount.
         var pathname = window.location.pathname.replace(/\/$/, "") || "/";
-        var hash = window.location.hash.replace(/^#/, "");
+        if (pathname === "/") return;
         if (pathname.indexOf("/blog/") === 0 && pathname.length > 6) {
+          try {
+            sessionStorage.setItem("pawsitively_current_page", "blog");
+            sessionStorage.setItem("pawsitively_blog_slug", decodeURIComponent(pathname.slice(6)));
+          } catch (e) {}
+          window.location.replace("/#blog/" + pathname.slice(6));
           return;
+        }
+        if (pathname === "/blog") {
+          try {
+            sessionStorage.setItem("pawsitively_current_page", "blog");
+            sessionStorage.removeItem("pawsitively_blog_slug");
+          } catch (e) {}
         }
         var categoryPaths = {
           "/products": "products",
@@ -146,8 +160,8 @@
           "/contact": "about",
         };
         var page = categoryPaths[pathname];
-        if (page && !hash) {
-          window.location.replace(pathname + "#" + page);
+        if (page) {
+          window.location.replace("/#" + page);
         }
       })();
     </script>
