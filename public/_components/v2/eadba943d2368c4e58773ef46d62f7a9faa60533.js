@@ -14503,8 +14503,8 @@ function dailyWag({ onNavigate: t }) {
   U(() => {
     const sync = () => setSelectedSlug(blogSlugFromLocation());
     sync();
-    return window.addEventListener("popstate", sync), window.addEventListener("hashchange", sync), () => {
-      window.removeEventListener("popstate", sync), window.removeEventListener("hashchange", sync);
+    return window.addEventListener("popstate", sync), window.addEventListener("hashchange", sync), window.addEventListener("pageshow", sync), () => {
+      window.removeEventListener("popstate", sync), window.removeEventListener("hashchange", sync), window.removeEventListener("pageshow", sync);
     };
   }, []);
   const openPost = (g) => {
@@ -20535,9 +20535,16 @@ function sy() {
   }), console.log(`✅ Successfully seeded ${e.length} businesses (skipped claimed/edited ones)!`);
 }
 function oy() {
+  const decodeBlogSlug = (value) => {
+    try {
+      return decodeURIComponent(value);
+    } catch {
+      return value;
+    }
+  }, blogPathname = () => window.location.pathname.replace(/\/$/, "") || "/", isBlogPathname = (pathname) => pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6;
   const [t, e] = E(() => {
-    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
-    if (pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6)
+    const pathname = blogPathname();
+    if (isBlogPathname(pathname))
       return console.log("✅ Using pathname for blog:", pathname), "blog";
     const k = window.location.hash.slice(1);
     console.log("🎬 Initializing - URL hash:", k);
@@ -20546,9 +20553,9 @@ function oy() {
     const z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "shortlist", "blog"], A0 = (k) => k && (k === "blog" || k.startsWith("blog/")) ? "blog" : k && z.includes(k) && !(k === "about" && window.innerWidth >= 768) ? k : null;
     return A0(k) ? (console.log("✅ Using hash:", k), A0(k)) : A0(I) ? (console.log("✅ Using sessionStorage:", I), A0(I)) : (console.log("📍 No valid page found, defaulting to home"), "home");
   }), [r, n] = E(() => {
-    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
-    if (pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6)
-      return [pathname.startsWith("/blog/") && pathname.length > 6 ? "blog/" + decodeURIComponent(pathname.slice(6)) : "blog"];
+    const pathname = blogPathname();
+    if (isBlogPathname(pathname))
+      return [pathname.startsWith("/blog/") && pathname.length > 6 ? "blog/" + decodeBlogSlug(pathname.slice(6)) : "blog"];
     const k = window.location.hash.slice(1), I = sessionStorage.getItem("pawsitively_current_page"), z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "shortlist", "blog"], A0 = (G) => G && (G === "blog" || G.startsWith("blog/")) ? "blog" : G && z.includes(G) && !(G === "about" && window.innerWidth >= 768) ? G : null;
     return A0(k) ? [k] : A0(I) ? [I] : ["home"];
   }), [i, o] = E(!1), [a, l] = E(!1), [c, u] = E("guest"), [h, p] = E("signup"), [m, f] = E(null), [v, g] = E(null), [b, w] = E(!1), [x, T] = E(0), [Pv, Nv] = E(null), [Iv, zv] = E(null), { user: P, login: N, logout: S } = vi(), C = (k) => {
@@ -20573,33 +20580,33 @@ function oy() {
   }, []), U(() => {
     const k = new URLSearchParams(window.location.search).get("reset");
     k && (zv(k), o(!0), window.history.replaceState({}, "", window.location.pathname + window.location.hash));
-  }, []), U(() => {
-    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
-    const onBlogPath = pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6;
-    if (onBlogPath && t !== "blog") {
+  }, []), Mo(() => {
+    if (isBlogPathname(blogPathname())) {
+      sessionStorage.setItem("pawsitively_current_page", "blog");
       e("blog");
+    }
+  }, []), U(() => {
+    const pathname = blogPathname();
+    if (isBlogPathname(pathname)) {
+      sessionStorage.setItem("pawsitively_current_page", "blog");
+      t !== "blog" && e("blog");
       return;
     }
     if (t === "blog") {
       sessionStorage.setItem("pawsitively_current_page", "blog");
-      if (onBlogPath)
-        return;
       const k = window.location.hash.slice(1);
       if (k.startsWith("blog/") && k.length > 5) {
-        window.history.replaceState({}, "", "/blog/" + decodeURIComponent(k.slice(5)));
+        window.history.replaceState({}, "", "/blog/" + decodeBlogSlug(k.slice(5)));
         return;
       }
       if (k === "blog") {
         window.history.replaceState({}, "", "/blog");
         return;
       }
+      window.history.replaceState({}, "", "/blog");
       return;
     }
     console.log("📝 Updating hash to:", t), window.location.hash = t, sessionStorage.setItem("pawsitively_current_page", t), console.log("💾 Saved to sessionStorage:", t);
-    const leavePathname = window.location.pathname.replace(/\/$/, "") || "/";
-    if (leavePathname === "/blog" || leavePathname.startsWith("/blog/")) {
-      window.history.replaceState({}, "", t === "home" ? "/" : "/#" + t);
-    }
     typeof window.__peedeeRefreshRouteSeo == "function" ? window.__peedeeRefreshRouteSeo(t) : typeof window.__peedeeRestoreDefaultSeo == "function" && window.__peedeeRestoreDefaultSeo();
   }, [t]), U(() => {
     console.log("🔍 Checking if we need to seed data...");
