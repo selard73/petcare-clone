@@ -19,10 +19,12 @@
           pathname = normalizePathname();
           onBlogPath = true;
         }
-        if (onBlogPath && window.location.hash) {
-          window.history.replaceState({}, "", pathname);
-        }
         if (!onBlogPath) return;
+        var slug = pathname === "/blog" ? "" : decodeSlug(pathname.slice(6));
+        if (window.location.hash) {
+          window.history.replaceState({}, "", slug ? "/blog/" + slug : "/blog");
+        }
+        window.__PEEDEE_BOOT = { page: "blog", slug: slug };
         try {
           sessionStorage.setItem("pawsitively_current_page", "blog");
         } catch (e) {}
@@ -272,9 +274,16 @@
         }
 
         function blogSlugFromPath() {
-          var pathname = window.location.pathname.replace(/\/$/, "") || "/";
+          var pathname = window.location.pathname.replace(/\/+$/, "") || "/";
+          if (pathname === "/blog") {
+            return null;
+          }
           if (pathname.indexOf("/blog/") === 0 && pathname.length > 6) {
-            return decodeURIComponent(pathname.slice(6));
+            try {
+              return decodeURIComponent(pathname.slice(6));
+            } catch (e) {
+              return pathname.slice(6);
+            }
           }
           return null;
         }

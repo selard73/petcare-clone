@@ -106,7 +106,12 @@ function getComponentBundleVersion() {
 
 function appendComponentCacheBust(html) {
   const version = getComponentBundleVersion();
-  return html.replace(/(\/_components\/v2\/eadba943[^"?]+\.(?:js|css))(?=["?])/g, `$1?v=${version}`);
+  return html.replace(/(\/_components\/v2\/eadba943[^"?]+\.(?:js|css))(\?[^"']*)?(?=["'])/g, (match, assetPath, query) => {
+    if (query && /[?&]v=/.test(query)) {
+      return assetPath + query;
+    }
+    return `${assetPath}?v=${version}`;
+  });
 }
 
 function fixComponentsStylesheet(html) {

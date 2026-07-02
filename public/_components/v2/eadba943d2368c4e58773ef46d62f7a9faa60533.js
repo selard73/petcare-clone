@@ -14551,7 +14551,7 @@ function dailyWag({ onNavigate: t }) {
     /* @__PURE__ */ s("section", { className: "h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", style: { background: "linear-gradient(135deg, #dea5a0 0%, #b84a48 20%, #8e2c32 48%, #6b1e2a 75%, #461018 100%)", color: "#fff8f5" }, children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[10px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
       {
-        initial: { opacity: 0, y: 30 },
+        initial: !1,
         animate: { opacity: 1, y: 0 },
         className: "text-center",
         children: [
@@ -20620,15 +20620,13 @@ function oy() {
     }
   }, []), U(() => {
     const pathname = blogPathname();
-    const onBlog = typeof window < "u" && window.__PEEDEE_BOOT?.page === "blog" || isBlogPathname(pathname);
-    if (onBlog) {
+    if (isBlogPathname(pathname)) {
       sessionStorage.setItem("pawsitively_current_page", "blog");
-      if (t !== "blog") {
-        e("blog");
-        return;
-      }
-      if (isBlogPathname(pathname))
-        return;
+      t !== "blog" && e("blog");
+      return;
+    }
+    if (t === "blog") {
+      sessionStorage.setItem("pawsitively_current_page", "blog");
       const k = window.location.hash.slice(1);
       if (k === "blog" || k.startsWith("blog/")) {
         window.history.replaceState({}, "", k.startsWith("blog/") ? "/blog/" + decodeBlogSlug(k.slice(5)) : "/blog");
@@ -20637,14 +20635,15 @@ function oy() {
       window.history.replaceState({}, "", "/blog");
       return;
     }
-    if (isBlogPathname(pathname))
-      return;
     console.log("📝 Updating hash to:", t), window.location.hash = t, sessionStorage.setItem("pawsitively_current_page", t), console.log("💾 Saved to sessionStorage:", t);
-    const leavePathname = blogPathname();
-    if (isBlogPathname(leavePathname)) {
-      window.history.replaceState({}, "", t === "home" ? "/" : "/#" + t);
-    }
     typeof window.__peedeeRefreshRouteSeo == "function" ? window.__peedeeRefreshRouteSeo(t) : typeof window.__peedeeRestoreDefaultSeo == "function" && window.__peedeeRestoreDefaultSeo();
+  }, [t]), U(() => {
+    const syncBlogFromPath = () => {
+      isBlogPathname(blogPathname()) && t !== "blog" && e("blog");
+    };
+    return syncBlogFromPath(), window.addEventListener("popstate", syncBlogFromPath), window.addEventListener("pageshow", syncBlogFromPath), () => {
+      window.removeEventListener("popstate", syncBlogFromPath), window.removeEventListener("pageshow", syncBlogFromPath);
+    };
   }, [t]), U(() => {
     console.log("🔍 Checking if we need to seed data...");
     const k = ["grooming", "training", "boarding", "sitters", "vet"];
