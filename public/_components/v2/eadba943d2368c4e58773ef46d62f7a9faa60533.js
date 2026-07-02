@@ -20585,11 +20585,14 @@ function oy() {
       if (onBlogPath)
         return;
       const k = window.location.hash.slice(1);
-      if (k === "blog" || k.startsWith("blog/")) {
-        window.history.replaceState({}, "", k.startsWith("blog/") ? "/blog/" + k.slice(5) : "/blog");
+      if (k.startsWith("blog/") && k.length > 5) {
+        window.history.replaceState({}, "", "/blog/" + decodeURIComponent(k.slice(5)));
         return;
       }
-      window.history.replaceState({}, "", "/blog");
+      if (k === "blog") {
+        window.history.replaceState({}, "", "/blog");
+        return;
+      }
       return;
     }
     console.log("📝 Updating hash to:", t), window.location.hash = t, sessionStorage.setItem("pawsitively_current_page", t), console.log("💾 Saved to sessionStorage:", t);

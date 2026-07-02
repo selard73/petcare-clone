@@ -128,11 +128,13 @@
     <script>
       (function () {
         var pathname = window.location.pathname.replace(/\/$/, "") || "/";
-        if (!window.location.hash) {
-          if (pathname.indexOf("/blog/") === 0 && pathname.length > 6) {
-            window.location.replace("/#blog/" + pathname.slice(6));
-            return;
+        var hash = window.location.hash.replace(/^#/, "");
+        if (pathname.indexOf("/blog/") === 0 && pathname.length > 6) {
+          var slug = pathname.slice(6);
+          if (hash !== "blog/" + slug) {
+            window.location.replace(pathname + "#blog/" + slug);
           }
+          return;
         }
         var categoryPaths = {
           "/products": "products",
@@ -148,8 +150,8 @@
           "/contact": "about",
         };
         var page = categoryPaths[pathname];
-        if (page && !window.location.hash) {
-          window.location.replace("/#" + page);
+        if (page && !hash) {
+          window.location.replace(pathname + "#" + page);
         }
       })();
     </script>
