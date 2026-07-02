@@ -20587,24 +20587,17 @@ function oy() {
     }
   }, []), U(() => {
     const pathname = blogPathname();
-    if (isBlogPathname(pathname)) {
-      sessionStorage.setItem("pawsitively_current_page", "blog");
-      t !== "blog" && e("blog");
-      return;
-    }
     if (t === "blog") {
       sessionStorage.setItem("pawsitively_current_page", "blog");
+      if (isBlogPathname(pathname))
+        return;
       const k = window.location.hash.slice(1);
-      if (k.startsWith("blog/") && k.length > 5) {
-        window.history.replaceState({}, "", "/blog/" + decodeBlogSlug(k.slice(5)));
-        return;
-      }
-      if (k === "blog") {
-        window.history.replaceState({}, "", "/blog");
-        return;
-      }
-      window.history.replaceState({}, "", "/blog");
+      window.history.replaceState({}, "", k.startsWith("blog/") && k.length > 5 ? "/blog/" + decodeBlogSlug(k.slice(5)) : "/blog");
+      window.dispatchEvent(new Event("popstate"));
       return;
+    }
+    if (isBlogPathname(pathname)) {
+      window.history.replaceState({}, "", t === "home" ? "/" : "/#" + t);
     }
     console.log("📝 Updating hash to:", t), window.location.hash = t, sessionStorage.setItem("pawsitively_current_page", t), console.log("💾 Saved to sessionStorage:", t);
     typeof window.__peedeeRefreshRouteSeo == "function" ? window.__peedeeRefreshRouteSeo(t) : typeof window.__peedeeRestoreDefaultSeo == "function" && window.__peedeeRestoreDefaultSeo();

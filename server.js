@@ -165,9 +165,26 @@ function serveSitemap(req, res) {
   }
 }
 
-let indexHtmlCache = { mtimeMs: 0, body: "" };
+let indexHtmlCache = { cacheKey: "", body: "" };
+
+function getSeoCacheKey(indexMtimeMs) {
+  // Fragment edits must bust the cache too, not just index.html changes.
+  const fragmentFiles = ["head-inject.html", "seo-content.html", "body-scripts-extra.html", "figma-runtime.html"];
+  const parts = [String(indexMtimeMs), process.env.RENDER_GIT_COMMIT || "local"];
+  for (const file of fragmentFiles) {
+    try {
+      parts.push(String(fs.statSync(path.join(__dirname, "seo", "fragments", file)).mtimeMs));
+    } catch {
+      parts.push("0");
+    }
+  }
+  return parts.join(":");
+}
 
 function getStaticCacheControl(pathname) {
+  if (pathname.startsWith("/_components/") || pathname.startsWith("/_runtimes/")) {
+    return "no-cache, must-revalidate";
+  }
   if (pathname.startsWith("/blog/images/") || /\.(?:png|jpe?g|webp|gif|svg)$/i.test(pathname)) {
     return "public, max-age=86400, must-revalidate";
   }
@@ -190,9 +207,10 @@ function serveIndexHtml(req, res, pathname = "/") {
         return;
       }
       let body = indexHtmlCache.body;
-      if (stat.mtimeMs !== indexHtmlCache.mtimeMs) {
+      const cacheKey = getSeoCacheKey(stat.mtimeMs);
+      if (cacheKey !== indexHtmlCache.cacheKey) {
         body = applySeoToIndexHtml(data.toString("utf8"));
-        indexHtmlCache = { mtimeMs: stat.mtimeMs, body };
+        indexHtmlCache = { cacheKey, body };
       }
       const listings = getListingsForPathname(pathname);
       const pageSeo =
@@ -209,6 +227,7 @@ function serveIndexHtml(req, res, pathname = "/") {
       res.writeHead(200, {
         "Content-Type": "text/html; charset=utf-8",
         "Content-Length": payload.length,
+        "Cache-Control": "no-cache, must-revalidate",
       });
       if (req.method === "HEAD") {
         res.end();
