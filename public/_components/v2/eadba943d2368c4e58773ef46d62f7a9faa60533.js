@@ -14463,12 +14463,18 @@ function renderMagazineArticleBody(blocks, slug, onNavigate) {
   return elements;
 }
 function dailyWag({ onNavigate: t }) {
-  const blogSlugFromLocation = () => {
+  const decodeBlogSlug = (value) => {
+    try {
+      return decodeURIComponent(value);
+    } catch {
+      return value;
+    }
+  }, blogSlugFromLocation = () => {
     const pathname = window.location.pathname.replace(/\/$/, "") || "/";
     if (pathname.startsWith("/blog/") && pathname.length > 6)
-      return decodeURIComponent(pathname.slice(6));
+      return decodeBlogSlug(pathname.slice(6));
     const hash = window.location.hash.slice(1);
-    return hash.startsWith("blog/") ? hash.slice(5) : null;
+    return hash.startsWith("blog/") ? decodeBlogSlug(hash.slice(5)) : null;
   }, loadBlogPosts = async () => {
     if (typeof window < "u" && typeof window.__peedeeLoadBlogPosts == "function")
       return window.__peedeeLoadBlogPosts();
@@ -14496,6 +14502,7 @@ function dailyWag({ onNavigate: t }) {
   }, []);
   U(() => {
     const sync = () => setSelectedSlug(blogSlugFromLocation());
+    sync();
     return window.addEventListener("popstate", sync), window.addEventListener("hashchange", sync), () => {
       window.removeEventListener("popstate", sync), window.removeEventListener("hashchange", sync);
     };
@@ -14522,7 +14529,7 @@ function dailyWag({ onNavigate: t }) {
     /* @__PURE__ */ s("section", { className: "h-auto md:py-10 py-1.5 px-4 sm:px-6 lg:px-8", style: { background: "linear-gradient(135deg, #dea5a0 0%, #b84a48 20%, #8e2c32 48%, #6b1e2a 75%, #461018 100%)", color: "#fff8f5" }, children: /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto pt-[18px] pb-[10px] md:pt-0 md:pb-0", children: /* @__PURE__ */ d(
       D.div,
       {
-        initial: { opacity: 0, y: 30 },
+        initial: !1,
         animate: { opacity: 1, y: 0 },
         className: "text-center",
         children: [
@@ -14545,7 +14552,7 @@ function dailyWag({ onNavigate: t }) {
     /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12", style: { backgroundColor: "#f9ecea", width: "100%" }, children: [
       error && /* @__PURE__ */ s("div", { className: "mb-6 p-4 rounded-lg border", style: { backgroundColor: "#fef2f2", color: "#b91c1c", borderColor: "#fecaca" }, children: error }),
       loading && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: "Loading articles…" }),
-      !loading && selected && /* @__PURE__ */ d("article", { className: "rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 4px 6px -1px rgba(110,26,40,0.14)" }, children: [
+      !loading && selectedSlug && selected && /* @__PURE__ */ d("article", { className: "rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 4px 6px -1px rgba(110,26,40,0.14)" }, children: [
         /* @__PURE__ */ s(
           "button",
           {
@@ -14564,7 +14571,8 @@ function dailyWag({ onNavigate: t }) {
         ] }),
         /* @__PURE__ */ s("div", { className: "space-y-4 blog-magazine-article", children: renderMagazineArticleBody(articleBodyBlocks, selected.slug, t) })
       ] }),
-      !loading && !selected && /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 w-full", children: [
+      !loading && selectedSlug && !selected && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: error || "That article could not be found." }),
+      !loading && !selectedSlug && /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 w-full", children: [
         posts.length === 0 && !error && /* @__PURE__ */ s("p", { className: "text-center py-12 col-span-1 md:col-span-2", style: { color: "#8f5c5c" }, children: "New articles coming soon." }),
         posts.map((g, b) => /* @__PURE__ */ s(
           D.a,
@@ -20566,10 +20574,15 @@ function oy() {
     const k = new URLSearchParams(window.location.search).get("reset");
     k && (zv(k), o(!0), window.history.replaceState({}, "", window.location.pathname + window.location.hash));
   }, []), U(() => {
+    const pathname = window.location.pathname.replace(/\/$/, "") || "/";
+    const onBlogPath = pathname === "/blog" || pathname.startsWith("/blog/") && pathname.length > 6;
+    if (onBlogPath && t !== "blog") {
+      e("blog");
+      return;
+    }
     if (t === "blog") {
       sessionStorage.setItem("pawsitively_current_page", "blog");
-      const pathname = window.location.pathname.replace(/\/$/, "") || "/";
-      if (pathname === "/blog" || pathname.startsWith("/blog/"))
+      if (onBlogPath)
         return;
       const k = window.location.hash.slice(1);
       if (k === "blog" || k.startsWith("blog/")) {
