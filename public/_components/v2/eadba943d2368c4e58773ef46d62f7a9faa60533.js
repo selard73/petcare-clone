@@ -6032,7 +6032,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                     /* @__PURE__ */ s("img", { src: "/images/home/brice.png", alt: "Brice — adoptable dog at the Darlington County Humane Society", style: { height: "13rem", width: "100%", objectFit: "cover", objectPosition: "center 30%", display: "block" } }),
                     /* @__PURE__ */ d("div", { className: "flex flex-col items-center text-center flex-1", style: { padding: "1.25rem 2rem 1.5rem" }, children: [
                       /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "🐾 Fur-ever Friend of the Month" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-5", children: "Meet Brice — a sweet pup at the Darlington County Humane Society who's ready for his fur-ever home." }),
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-5", children: "Meet Brice — an 8-month-old hound/lab mix at the Darlington County Humane Society. This affectionate cuddle bug loves play groups, kiddie pools, and climbing into laps for hugs. After losing his first home, he's ready for a family who will show him what forever means." }),
                       /* @__PURE__ */ s("a", { href: "https://www.darlingtonhumane.org/adoptablepets", target: "_blank", rel: "noopener noreferrer", className: "mt-auto inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg !text-white !font-semibold no-underline hover:opacity-90 transition-opacity", children: "Meet Brice →" })
                     ] })
                   ] }),
