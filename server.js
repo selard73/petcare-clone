@@ -1799,6 +1799,84 @@ async function maybeSendDailyClickReport() {
   }
 }
 
+// --- Pet of the month link: live redirect + adoption alert ---
+
+const PET_OF_MONTH = {
+  name: "Brice",
+  url: "https://us07d.sheltermanager.com/service?account=ch1194&method=animal_view&animalid=24737&template=animalview",
+  fallbackUrl: "https://www.darlingtonhumane.org/adoptablepets",
+};
+const PET_LINK_CACHE_MS = 60 * 60 * 1000;
+const PET_LINK_ALERT_KEY = "pet_of_month_alert_sent";
+
+let petLinkCache = { checkedAt: 0, alive: true };
+
+async function isPetOfMonthLinkAlive() {
+  const now = Date.now();
+  if (now - petLinkCache.checkedAt < PET_LINK_CACHE_MS) {
+    return petLinkCache.alive;
+  }
+  try {
+    const response = await fetch(PET_OF_MONTH.url, { signal: AbortSignal.timeout(8000) });
+    const body = response.ok ? await response.text() : "";
+    // ShelterManager returns 200 with an error/empty template once the animal
+    // is adopted or removed, so require the pet's name in the page body.
+    petLinkCache = { checkedAt: now, alive: response.ok && body.includes(PET_OF_MONTH.name) };
+  } catch {
+    petLinkCache = { checkedAt: now, alive: false };
+  }
+  return petLinkCache.alive;
+}
+
+function getPetLinkAlertSent() {
+  if (!usingSqlite) return "";
+  const row = sqlite.prepare("SELECT value FROM site_stats WHERE key = ?").get(PET_LINK_ALERT_KEY);
+  return row ? String(row.value) : "";
+}
+
+function setPetLinkAlertSent(petName) {
+  if (!usingSqlite) return;
+  sqlite
+    .prepare(
+      "INSERT INTO site_stats (key, value) VALUES (?, ?) ON CONFLICT(key) DO UPDATE SET value = excluded.value",
+    )
+    .run(PET_LINK_ALERT_KEY, petName);
+}
+
+async function maybeSendPetLinkAlert() {
+  if (getPetLinkAlertSent() === PET_OF_MONTH.name) return;
+  const alive = await isPetOfMonthLinkAlive();
+  if (alive) return;
+  const payload = {
+    subject: `🐾 ${PET_OF_MONTH.name}'s shelter page is gone — time to feature a new pet!`,
+    text: [
+      `Good news (probably): ${PET_OF_MONTH.name}'s page on the shelter site is no longer available, which usually means adoption!`,
+      "",
+      `Checked URL: ${PET_OF_MONTH.url}`,
+      "",
+      "The 'Meet " + PET_OF_MONTH.name + "' button on the homepage is automatically redirecting visitors to the shelter's main adoptable pets page in the meantime:",
+      PET_OF_MONTH.fallbackUrl,
+      "",
+      "Next step: pick a new Fur-ever Friend of the Month and update the homepage card.",
+      "",
+      "— Pee Dee Pet Care automated monitor",
+    ].join("\n"),
+  };
+  try {
+    if (RESEND_API_KEY) {
+      await sendViaResendEmail(payload);
+    } else if (SMTP_HOST && SMTP_USER && SMTP_PASS) {
+      await sendViaSmtpEmail(payload);
+    } else {
+      return;
+    }
+    setPetLinkAlertSent(PET_OF_MONTH.name);
+    console.log(`Pet-of-month adoption alert sent to ${REVIEW_NOTIFY_TO}`);
+  } catch (error) {
+    console.error("Pet-of-month alert failed:", error.message);
+  }
+}
+
 function isReviewRecord(fields = {}) {
   return String(fields.price || "").startsWith("REVIEW:");
 }
@@ -2219,6 +2297,16 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
+    if (url.pathname === "/pet-of-month") {
+      const alive = await isPetOfMonthLinkAlive();
+      res.writeHead(302, {
+        Location: alive ? PET_OF_MONTH.url : PET_OF_MONTH.fallbackUrl,
+        "Cache-Control": "no-store",
+      });
+      res.end();
+      return;
+    }
+
     if (url.pathname === "/api/click-report-test" && req.method.toUpperCase() === "GET") {
       try {
         const today = getEasternDateString(new Date());
@@ -2312,4 +2400,6 @@ server.listen(PORT, async () => {
   }
   maybeSendDailyClickReport();
   setInterval(maybeSendDailyClickReport, 60 * 1000);
+  maybeSendPetLinkAlert().catch(() => {});
+  setInterval(() => maybeSendPetLinkAlert().catch(() => {}), 6 * 60 * 60 * 1000);
 });
