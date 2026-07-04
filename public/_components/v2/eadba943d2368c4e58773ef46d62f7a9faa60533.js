@@ -6029,19 +6029,19 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                 /* @__PURE__ */ s("h2", { className: "text-purple-600 text-4xl text-center", style: { marginBottom: "2.5rem" }, children: "💜 This Week on Pee Dee Pet Care" }),
                 /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem" }, children: [
                   /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
-                    /* @__PURE__ */ s("div", { style: { height: "9rem", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #EDE9FE 0%, #FCE7F3 100%)" }, children: /* @__PURE__ */ s("div", { className: "bg-white rounded-full flex items-center justify-center shadow-lg", style: { width: "6rem", height: "6rem", fontSize: "3rem", lineHeight: 1 }, children: "🐶" }) }),
+                    /* @__PURE__ */ s("img", { src: "/images/home/brice.png", alt: "Brice — adoptable dog at the Darlington County Humane Society", style: { height: "13rem", width: "100%", objectFit: "cover", objectPosition: "center 30%", display: "block" } }),
                     /* @__PURE__ */ d("div", { className: "flex flex-col items-center text-center flex-1", style: { padding: "1.25rem 2rem 1.5rem" }, children: [
                       /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "🐾 Fur-ever Friend of the Month" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-5", children: "Meet Biscuit — a 3-year-old hound mix at the Darlington County Humane Society who's ready for his forever home." }),
-                      /* @__PURE__ */ s("a", { href: "https://www.darlingtonhumane.org/adoptablepets", target: "_blank", rel: "noopener noreferrer", className: "mt-auto inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg !text-white !font-semibold no-underline hover:opacity-90 transition-opacity", children: "Meet Biscuit →" })
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-5", children: "Meet Brice — a sweet pup at the Darlington County Humane Society who's ready for his fur-ever home." }),
+                      /* @__PURE__ */ s("a", { href: "https://www.darlingtonhumane.org/adoptablepets", target: "_blank", rel: "noopener noreferrer", className: "mt-auto inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg !text-white !font-semibold no-underline hover:opacity-90 transition-opacity", children: "Meet Brice →" })
                     ] })
                   ] }),
                   /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
-                    /* @__PURE__ */ s("div", { style: { height: "9rem", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #FCE7F3 0%, #EDE9FE 100%)" }, children: /* @__PURE__ */ s("div", { className: "bg-white rounded-full flex items-center justify-center shadow-lg", style: { width: "6rem", height: "6rem", fontSize: "3rem", lineHeight: 1 }, children: "⭐" }) }),
+                    /* @__PURE__ */ s("div", { style: { height: "13rem", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #FCE7F3 0%, #EDE9FE 100%)" }, children: /* @__PURE__ */ s("div", { className: "bg-white rounded-full flex items-center justify-center shadow-lg", style: { width: "6rem", height: "6rem", fontSize: "3rem", lineHeight: 1 }, children: "⭐" }) }),
                     /* @__PURE__ */ d("div", { className: "flex flex-col items-center text-center flex-1", style: { padding: "1.25rem 2rem 1.5rem" }, children: [
                       /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "🌟 Featured Business of the Week" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-5", children: "Groomingdale's Pet Salon in Florence — a local favorite known for gentle handling and breed-perfect cuts." }),
-                      /* @__PURE__ */ s("a", { href: "/grooming/florence", className: "mt-auto inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg !text-white !font-semibold no-underline hover:opacity-90 transition-opacity", children: "See Listing →" })
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-5", children: "Coming soon — we'll shine a spotlight on a standout local pet business right here." }),
+                      /* @__PURE__ */ s("span", { className: "mt-auto inline-block px-5 py-2 bg-purple-100 text-purple-500 rounded-full font-semibold", children: "Coming Soon ✨" })
                     ] })
                   ] })
                 ] })
