@@ -70,9 +70,7 @@
         display: block !important;
         border-radius: 0.75rem !important;
       }
-      /* ── Magazine layout: CSS Grid (replaces float) ── */
-      /* Float caused content to spill below the image at an awkward full-width.
-         Grid keeps all content cleanly in one column beside the image. */
+      /* ── Magazine float layout ── */
       .blog-magazine-section {
         margin: 1.75rem 0;
       }
@@ -81,6 +79,16 @@
         display: table;
         clear: both;
       }
+      figure.blog-magazine-figure-left {
+        float: left;
+        margin: 0 1.5rem 1rem 0;
+      }
+      figure.blog-magazine-figure-right {
+        float: right;
+        margin: 0 0 1rem 1.5rem;
+      }
+      /* BFC wrapper: each non-figure sibling creates its own block formatting
+         context so it sits cleanly beside the float instead of flowing under it */
       .blog-magazine-section > h2,
       .blog-magazine-section > h3,
       .blog-magazine-section > p,
@@ -88,51 +96,7 @@
       .blog-magazine-section > ol,
       .blog-magazine-section > blockquote,
       .blog-magazine-section > div {
-        overflow: visible;
-      }
-      figure.blog-magazine-figure-left {
-        float: left;
-        margin: 0.15rem 1.25rem 0.5rem 0;
-      }
-      figure.blog-magazine-figure-right {
-        float: right;
-        margin: 0.15rem 0 0.5rem 1.25rem;
-      }
-      @media (min-width: 768px) {
-        /* magazine-left: image in left column, text in right column */
-        .blog-magazine-section:has(> figure.blog-magazine-figure-left) {
-          display: grid;
-          grid-template-columns: 38% 1fr;
-          column-gap: 1.25rem;
-          align-items: start;
-        }
-        .blog-magazine-section:has(> figure.blog-magazine-figure-left) > figure.blog-magazine-figure-left {
-          grid-column: 1;
-          grid-row: 1;
-          float: none !important;
-          width: 100% !important;
-          margin: 0 !important;
-        }
-        .blog-magazine-section:has(> figure.blog-magazine-figure-left) > *:not(figure.blog-magazine-figure-left) {
-          grid-column: 2;
-        }
-        /* magazine-right: text in left column, image in right column */
-        .blog-magazine-section:has(> figure.blog-magazine-figure-right) {
-          display: grid;
-          grid-template-columns: 1fr 38%;
-          column-gap: 1.25rem;
-          align-items: start;
-        }
-        .blog-magazine-section:has(> figure.blog-magazine-figure-right) > figure.blog-magazine-figure-right {
-          grid-column: 2;
-          grid-row: 1;
-          float: none !important;
-          width: 100% !important;
-          margin: 0 !important;
-        }
-        .blog-magazine-section:has(> figure.blog-magazine-figure-right) > *:not(figure.blog-magazine-figure-right) {
-          grid-column: 1;
-        }
+        overflow: hidden;
       }
       img.blog-magazine-image {
         width: 100% !important;
