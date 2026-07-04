@@ -134,21 +134,21 @@ Items can be plain strings or `{ label, text }` objects:
 }
 ```
 
-**Every post must have exactly 3 `img` blocks.** This fills the three layout slots the renderer provides. Fewer than 3 leaves content with no base spacing (elements inside `.blog-magazine-section` do not inherit the body's `space-y-4` gap — they only get spacing from their own element-level margins and from the 3rd image splitting the section).
+**Every post must have exactly 3 `img` blocks** (a hero plus two body images).
 
-**Image layout rules — position in the `blocks` array matters:**
+**Image layout rules:**
 
 | Position of `img` in `blocks` | How it renders |
 |---|---|
 | **First** `img` encountered | **Hero image** at the very top of the article card, cropped to a fixed height, full width. |
-| **Second** `img` (first body image) | Magazine-left float: image floats left, following non-image blocks wrap right until the next `img`. |
-| **Third** `img` (second body image) | Magazine-right float: image floats right, following non-image blocks wrap left until end. |
-| **Fourth+ `img`** | Plain centered figure, full width, natural height. |
+| **All other `img` blocks** | Full-width figure in the article flow, max-height 420 px, cover-cropped, rounded corners, optional caption below. |
+
+All body images render full width in a single column — text never wraps around them (standard editorial convention; the CSS in `head-inject.html` overrides the renderer's magazine float classes).
 
 **Placement guidance:**
 - Put image 1 (hero) after 1–3 opening paragraphs.
-- Put image 2 (magazine-left) to introduce a mid-article section (e.g. vetting checklist, how-to steps). Blocks from here until image 3 float beside it.
-- Put image 3 (magazine-right) to introduce the final stretch (e.g. setup tips, FAQ, closing). Blocks from here to the end float beside it.
+- Put image 2 mid-article, ideally right before a major `h2` section.
+- Put image 3 in the final third, ideally before the how-to/setup or closing section.
 
 The `coverImage` top-level field is for OG/SEO metadata only — it does not control which block is the hero.
 
