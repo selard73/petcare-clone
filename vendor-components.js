@@ -5864,13 +5864,13 @@ function Qs({ onNavigate: t }) {
                         "all in one place!"
                       ] }),
                       /* @__PURE__ */ d("p", { className: "leading-loose text-base md:text-lg hidden md:block", children: [
-                        "Browse local professionals",
+                        "A free directory of trusted",
                         /* @__PURE__ */ s("br", {}),
-                        "for grooming, training,",
+                        "groomers, trainers, boarders,",
                         /* @__PURE__ */ s("br", {}),
-                        "boarding, and veterinary care",
+                        "sitters, and vets serving",
                         /* @__PURE__ */ s("br", {}),
-                        "all in one convenient place."
+                        "the Pee Dee region."
                       ] })
                     ] }) })
                   ] }),
@@ -15350,7 +15350,7 @@ function oy() {
       ] }),
       /* @__PURE__ */ d("div", { className: "hidden md:block", children: [
         /* @__PURE__ */ s("p", { className: "text-2xl mb-2", children: "🐾 Pawsitively Fabulous 🐾" }),
-        /* @__PURE__ */ s("p", { children: "Pet Services Directory - One Stop Shop" }),
+        /* @__PURE__ */ s("p", { children: "Free Local Pet Services Directory" }),
         /* @__PURE__ */ s("p", { className: "text-purple-600 mt-4", children: "All Your Pet Needs in Darlington/Florence Area" })
       ] })
     ] }) })
