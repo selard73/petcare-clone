@@ -5894,9 +5894,9 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                     ),
                     /* @__PURE__ */ s("div", { className: "flex-1 px-6 md:px-12 pt-6 md:pt-8 pb-7 md:pb-8 flex items-center justify-center", children: /* @__PURE__ */ d("div", { className: "text-purple-600 leading-loose text-center", children: [
                       /* @__PURE__ */ d("h2", { className: "mb-3 md:mb-6 text-2xl md:text-4xl font-bold", children: [
-                        "One Stop Shop",
+                        "Find local pet care providers",
                         /* @__PURE__ */ s("br", {}),
-                        "for all your pet needs"
+                        "all in one place!"
                       ] }),
                       /* @__PURE__ */ d("p", { className: "leading-loose text-base md:text-lg hidden md:block", children: [
                         "Browse local professionals",
