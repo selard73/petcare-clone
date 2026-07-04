@@ -6023,11 +6023,11 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
               initial: { opacity: 0 },
               whileInView: { opacity: 1 },
               viewport: { once: !0 },
-              className: "hidden md:block max-w-4xl mx-auto",
+              className: "hidden md:block max-w-5xl mx-auto",
               style: { marginTop: "-1.5rem", marginBottom: "6rem" },
               children: [
                 /* @__PURE__ */ s("h2", { className: "text-purple-600 text-4xl text-center", style: { marginBottom: "2.5rem" }, children: "💜 This Week on Pee Dee Pet Care" }),
-                /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4rem" }, children: [
+                /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8rem" }, children: [
                   /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
                     /* @__PURE__ */ s("div", { style: { height: "8.5rem", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #EDE9FE 0%, #FCE7F3 100%)" }, children: /* @__PURE__ */ s("div", { className: "bg-white rounded-full flex items-center justify-center shadow-lg", style: { width: "5.5rem", height: "5.5rem", fontSize: "2.75rem", lineHeight: 1 }, children: "🐶" }) }),
                     /* @__PURE__ */ d("div", { className: "p-6 flex flex-col items-center text-center flex-1", children: [
