@@ -15279,18 +15279,7 @@ function Nf({
                 className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 ${r === "products" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                 children: [
                   /* @__PURE__ */ s("span", { className: "text-xl", children: "🛍️" }),
-                  /* @__PURE__ */ s("span", { children: "Pet Products" })
-                ]
-              }
-            ),
-            /* @__PURE__ */ d(
-              "button",
-              {
-                onClick: () => g("shortlist"),
-                className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 ${r === "shortlist" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
-                children: [
-                  /* @__PURE__ */ s("span", { className: "text-xl", children: "❤️" }),
-                  /* @__PURE__ */ s("span", { children: "Shortlist" })
+                  /* @__PURE__ */ s("span", { children: "Retail Therapy" })
                 ]
               }
             ),
@@ -15313,6 +15302,17 @@ function Nf({
                 children: [
                   /* @__PURE__ */ s("span", { className: "text-xl", children: "ℹ️" }),
                   /* @__PURE__ */ s("span", { children: "About" })
+                ]
+              }
+            ),
+            /* @__PURE__ */ d(
+              "button",
+              {
+                onClick: () => g("shortlist"),
+                className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 ${r === "shortlist" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
+                children: [
+                  /* @__PURE__ */ s("span", { className: "text-xl", children: "❤️" }),
+                  /* @__PURE__ */ s("span", { children: "Shortlist" })
                 ]
               }
             )
