@@ -15115,7 +15115,7 @@ function Nf({
   onLogout: a,
   onAddBusiness: l
 }) {
-  const [c, u] = E(null), [h, p] = E(null), m = (b) => {
+  const isServicePage = ["grooming", "training", "boarding", "sitters", "vet"].includes(r), [svcOpen, setSvcOpen] = E(isServicePage), [c, u] = E(null), [h, p] = E(null), m = (b) => {
     p(null), u(b.targetTouches[0].clientX);
   }, f = (b) => {
     p(b.targetTouches[0].clientX);
@@ -15188,75 +15188,90 @@ function Nf({
           ] }),
           /* @__PURE__ */ d("div", { className: "p-4 space-y-2", children: [
             /* @__PURE__ */ d(
-              "a",
+              "button",
               {
-                href: "/grooming",
-                onClick: (b) => {
-                  b.preventDefault(), g("grooming");
-                },
-                className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "grooming" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
+                onClick: () => setSvcOpen(!svcOpen),
+                "aria-expanded": svcOpen,
+                className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 ${isServicePage ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                 children: [
-                  /* @__PURE__ */ s("span", { className: "text-xl", children: "✂️" }),
-                  /* @__PURE__ */ s("span", { children: "Grooming" })
+                  /* @__PURE__ */ s("span", { className: "text-xl", children: "🐾" }),
+                  /* @__PURE__ */ s("span", { children: "Pet Services" }),
+                  /* @__PURE__ */ s("span", { className: "ml-auto text-xs", children: svcOpen ? "▲" : "▼" })
                 ]
               }
             ),
-            /* @__PURE__ */ d(
-              "a",
-              {
-                href: "/training",
-                onClick: (b) => {
-                  b.preventDefault(), g("training");
-                },
-                className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "training" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
-                children: [
-                  /* @__PURE__ */ s("span", { className: "text-xl", children: "🎓" }),
-                  /* @__PURE__ */ s("span", { children: "Training" })
-                ]
-              }
-            ),
-            /* @__PURE__ */ d(
-              "a",
-              {
-                href: "/boarding",
-                onClick: (b) => {
-                  b.preventDefault(), g("boarding");
-                },
-                className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "boarding" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
-                children: [
-                  /* @__PURE__ */ s("span", { className: "text-xl", children: "🏠" }),
-                  /* @__PURE__ */ s("span", { children: "Boarding & Daycare" })
-                ]
-              }
-            ),
-            /* @__PURE__ */ d(
-              "a",
-              {
-                href: "/sitters",
-                onClick: (b) => {
-                  b.preventDefault(), g("sitters");
-                },
-                className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "sitters" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
-                children: [
-                  /* @__PURE__ */ s("span", { className: "text-xl", children: "🦮" }),
-                  /* @__PURE__ */ s("span", { children: "Sitters & Walkers" })
-                ]
-              }
-            ),
-            /* @__PURE__ */ d(
-              "a",
-              {
-                href: "/vet-care",
-                onClick: (b) => {
-                  b.preventDefault(), g("vet");
-                },
-                className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "vet" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
-                children: [
-                  /* @__PURE__ */ s("span", { className: "text-xl", children: "⚕️" }),
-                  /* @__PURE__ */ s("span", { children: "Vet Care" })
-                ]
-              }
-            ),
+            svcOpen && /* @__PURE__ */ d("div", { className: "ml-4 pl-2 border-l-2 border-purple-100 space-y-1", children: [
+              /* @__PURE__ */ d(
+                "a",
+                {
+                  href: "/grooming",
+                  onClick: (b) => {
+                    b.preventDefault(), g("grooming");
+                  },
+                  className: `w-full text-left px-4 py-2 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "grooming" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
+                  children: [
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "✂️" }),
+                    /* @__PURE__ */ s("span", { children: "Grooming" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ d(
+                "a",
+                {
+                  href: "/training",
+                  onClick: (b) => {
+                    b.preventDefault(), g("training");
+                  },
+                  className: `w-full text-left px-4 py-2 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "training" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
+                  children: [
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🎓" }),
+                    /* @__PURE__ */ s("span", { children: "Training" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ d(
+                "a",
+                {
+                  href: "/boarding",
+                  onClick: (b) => {
+                    b.preventDefault(), g("boarding");
+                  },
+                  className: `w-full text-left px-4 py-2 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "boarding" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
+                  children: [
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🏠" }),
+                    /* @__PURE__ */ s("span", { children: "Boarding & Daycare" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ d(
+                "a",
+                {
+                  href: "/sitters",
+                  onClick: (b) => {
+                    b.preventDefault(), g("sitters");
+                  },
+                  className: `w-full text-left px-4 py-2 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "sitters" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
+                  children: [
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🦮" }),
+                    /* @__PURE__ */ s("span", { children: "Sitters & Walkers" })
+                  ]
+                }
+              ),
+              /* @__PURE__ */ d(
+                "a",
+                {
+                  href: "/vet-care",
+                  onClick: (b) => {
+                    b.preventDefault(), g("vet");
+                  },
+                  className: `w-full text-left px-4 py-2 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "vet" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
+                  children: [
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "⚕️" }),
+                    /* @__PURE__ */ s("span", { children: "Vet Care" })
+                  ]
+                }
+              )
+            ] }),
             /* @__PURE__ */ d(
               "button",
               {
