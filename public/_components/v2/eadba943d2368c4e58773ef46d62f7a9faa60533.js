@@ -6044,7 +6044,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                           children: "🔊 Click for Brice's Song"
                         }
                       ),
-                      /* @__PURE__ */ s("a", { href: "https://www.darlingtonhumane.org/adoptablepets", target: "_blank", rel: "noopener noreferrer", className: "mt-auto inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg !text-white !font-semibold no-underline hover:opacity-90 transition-opacity", children: "Meet Brice →" })
+                      /* @__PURE__ */ s("a", { href: "https://us07d.sheltermanager.com/service?account=ch1194&method=animal_view&animalid=24737&template=animalview", target: "_blank", rel: "noopener noreferrer", className: "mt-auto inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg !text-white !font-semibold no-underline hover:opacity-90 transition-opacity", children: "Meet Brice →" })
                     ] })
                   ] }),
                   /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
