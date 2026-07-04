@@ -6023,11 +6023,11 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
               initial: { opacity: 0 },
               whileInView: { opacity: 1 },
               viewport: { once: !0 },
-              className: "hidden md:block max-w-6xl mx-auto",
-              style: { marginTop: "-1.5rem", marginBottom: "6rem" },
+              className: "max-w-6xl mx-auto",
+              style: window.innerWidth < 768 ? { marginTop: "0.5rem", marginBottom: "3rem" } : { marginTop: "-1.5rem", marginBottom: "6rem" },
               children: [
-                /* @__PURE__ */ s("h2", { className: "text-purple-600 text-4xl text-center", style: { marginBottom: "2.5rem" }, children: "💜 This Week on Pee Dee Pet Care" }),
-                /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem" }, children: [
+                /* @__PURE__ */ s("h2", { className: "text-purple-600 text-2xl md:text-4xl text-center", style: { marginBottom: window.innerWidth < 768 ? "1.5rem" : "2.5rem" }, children: "💜 This Week on Pee Dee Pet Care" }),
+                /* @__PURE__ */ d("div", { style: window.innerWidth < 768 ? { display: "grid", gridTemplateColumns: "1fr", gap: "1.75rem" } : { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem" }, children: [
                   /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
                     /* @__PURE__ */ s("img", { src: "/images/home/brice.png", alt: "Brice — adoptable dog at the Darlington County Humane Society", style: { height: "13rem", width: "100%", objectFit: "cover", objectPosition: "center 30%", display: "block" } }),
                     /* @__PURE__ */ d("div", { className: "flex flex-col items-center text-center flex-1", style: { padding: "1.25rem 2rem 1.5rem" }, children: [
