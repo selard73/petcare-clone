@@ -5899,13 +5899,13 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                         "all in one place!"
                       ] }),
                       /* @__PURE__ */ d("p", { className: "leading-loose text-base md:text-lg hidden md:block", children: [
-                        "A free directory of trusted",
+                        "A free directory for",
                         /* @__PURE__ */ s("br", {}),
-                        "groomers, trainers, boarders,",
+                        "dog grooming, training,",
                         /* @__PURE__ */ s("br", {}),
-                        "sitters, and vets serving",
+                        "boarding, pet sitting, and vet",
                         /* @__PURE__ */ s("br", {}),
-                        "the Pee Dee region."
+                        "care in the Pee Dee region."
                       ] })
                     ] }) })
                   ] }),
