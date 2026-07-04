@@ -77,6 +77,7 @@ const mimeTypes = {
   ".ico": "image/x-icon",
   ".txt": "text/plain; charset=utf-8",
   ".xml": "text/xml; charset=utf-8",
+  ".mp3": "audio/mpeg",
 };
 
 let writeQueue = Promise.resolve();
