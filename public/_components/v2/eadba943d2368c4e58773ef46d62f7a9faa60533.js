@@ -6004,7 +6004,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
       {
         className: "pt-6 pb-4 md:py-16 rounded-t-[32px] rounded-b-[32px] md:rounded-none overflow-hidden md:overflow-visible",
         style: {
-          background: window.innerWidth < 768 ? "linear-gradient(to bottom, rgba(239, 246, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)" : "linear-gradient(to bottom, #F3FAFF 0%, #FAF5FF 100%)"
+          background: window.innerWidth < 768 ? "linear-gradient(to bottom, rgba(239, 246, 255, 0.5) 0%, rgba(255, 255, 255, 0) 100%)" : "linear-gradient(to bottom, #FFFFFF 0%, #F3FAFF 22%, #FAF5FF 100%)"
         },
         children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto px-4 md:px-0", children: [
           /* @__PURE__ */ s(
@@ -6024,10 +6024,10 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
               whileInView: { opacity: 1 },
               viewport: { once: !0 },
               className: "hidden md:block max-w-5xl mx-auto",
-              style: { paddingTop: "1.5rem", marginBottom: "6rem" },
+              style: { marginTop: "-1.5rem", marginBottom: "6rem" },
               children: [
                 /* @__PURE__ */ s("h2", { className: "text-purple-600 text-4xl text-center", style: { marginBottom: "2.5rem" }, children: "💜 This Week on Pee Dee Pet Care" }),
-                /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "5rem" }, children: [
+                /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "7rem" }, children: [
                   /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden border border-purple-100 shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
                     /* @__PURE__ */ s("div", { className: "h-48 flex items-center justify-center text-7xl", style: { background: "linear-gradient(135deg, #F3FAFF 0%, #FAF5FF 100%)" }, children: "🐶" }),
                     /* @__PURE__ */ d("div", { className: "p-6 flex flex-col flex-1", children: [
