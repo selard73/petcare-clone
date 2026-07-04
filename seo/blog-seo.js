@@ -68,6 +68,28 @@ function buildBlogPostSeo(post) {
 const BLOG_AUTHOR_NAME = "Pee Dee Pet Care Team";
 
 const BLOG_POST_FAQS = {
+  "finding-pet-sitter-dog-walker-pee-dee": [
+    {
+      q: "How do I find a reliable pet sitter in Florence or Darlington SC?",
+      a: "Browse the Pee Dee Pet Care sitter and walker directory, read reviews from local pet owners, and contact a few providers directly. Always schedule a meet-and-greet before your first booking.",
+    },
+    {
+      q: "What questions should I ask a pet sitter before hiring them?",
+      a: "Ask what they do if your pet refuses to eat or seems unwell, whether they have experience with your pet's breed or temperament, what a typical visit looks like, and whether they send updates or photos.",
+    },
+    {
+      q: "Is a pet sitter or boarding facility better for an anxious dog?",
+      a: "Anxious dogs usually do better staying in their own home with a sitter. Boarding facilities work well for socialized dogs that enjoy other dogs, but the noise and new environment can increase stress for anxious pets.",
+    },
+    {
+      q: "How much does a pet sitter cost in the Pee Dee area?",
+      a: "Rates vary by service type and provider. Drop-in visits typically cost less than overnight house sitting, and dog walking rates depend on walk length and format. Contact local providers directly for current pricing.",
+    },
+    {
+      q: "Does Pee Dee Pet Care provide pet sitting services?",
+      a: "No. Pee Dee Pet Care is a free local directory that lists independent pet sitters and dog walkers in the Pee Dee region. We do not provide sitting, walking, or any pet care services ourselves.",
+    },
+  ],
   "how-to-find-good-dog-groomer-pee-dee": [
     {
       q: "What should I ask a dog groomer before booking?",
