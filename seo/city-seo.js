@@ -18,26 +18,36 @@ const CITY_LABELS = {
     singular: "dog groomer",
     plural: "dog groomers",
     directory: "Dog Groomers",
+    service: "dog grooming",
+    providerLabel: "Grooming",
   },
   "/training": {
     singular: "dog trainer",
     plural: "dog trainers",
     directory: "Dog Trainers",
+    service: "dog training",
+    providerLabel: "Training",
   },
   "/boarding": {
     singular: "pet boarding facility",
     plural: "pet boarding facilities",
     directory: "Pet Boarding",
+    service: "pet boarding",
+    providerLabel: "Boarding",
   },
   "/sitters": {
     singular: "pet sitter",
     plural: "pet sitters and dog walkers",
     directory: "Pet Sitters",
+    service: "pet sitting",
+    providerLabel: "Pet Sitting",
   },
   "/vet-care": {
     singular: "veterinarian",
     plural: "veterinarians",
     directory: "Veterinarians",
+    service: "veterinary care",
+    providerLabel: "Veterinary",
   },
 };
 
@@ -75,11 +85,11 @@ function isCityCategoryPath(pathname) {
 }
 
 function buildCityTitle(parsed) {
-  return `${parsed.labels.directory} in ${parsed.cityName} SC | Pee Dee Pet Care`;
+  return `${parsed.labels.directory} in ${parsed.cityName}, SC — Compare Local ${parsed.labels.providerLabel} Providers`;
 }
 
 function buildCityDescription(parsed) {
-  return `${parsed.labels.directory} directory for ${parsed.cityName}, SC. Compare local listings and reviews. Free directory — not a service provider.`;
+  return `Find ${parsed.labels.plural} in ${parsed.cityName}, SC. Compare local ${parsed.labels.service} providers, reviews, service areas, and contact details in one free Pee Dee Pet Care directory.`;
 }
 
 function resolveCitySeoForPathname(pathname) {
@@ -119,7 +129,10 @@ function buildListingsSectionHtml(listings, parsed) {
 
 function buildCitySeoContentHtml(parsed, listings) {
   const base = getCategoryConfig(parsed.categoryPath);
-  const intro = `Pee Dee Pet Care is a free online directory of local ${parsed.labels.plural} in ${parsed.cityName}, South Carolina. We do not provide ${parsed.labels.singular} services ourselves — we help pet owners compare independent local listings and read reviews.`;
+  const providerNames = listings.slice(0, 6).map((listing) => escapeHtml(listing.name));
+  const intro = providerNames.length
+    ? `Looking for ${parsed.labels.service} in ${parsed.cityName}, SC? Compare local ${parsed.labels.service} providers such as ${providerNames.join(", ")}, and other nearby options. Pee Dee Pet Care is a free directory only and does not provide ${parsed.labels.service} services directly.`
+    : `Pee Dee Pet Care is a free online directory of local ${parsed.labels.plural} in ${parsed.cityName}, South Carolina. We do not provide ${parsed.labels.singular} services ourselves — we help pet owners compare independent local listings and read reviews.`;
   return `<div id="seo-content" class="seo-content">
   <h1>${escapeHtml(parsed.labels.directory)} in ${escapeHtml(parsed.cityName)}, SC</h1>
   <p>${intro}</p>

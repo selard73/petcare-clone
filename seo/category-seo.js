@@ -759,6 +759,48 @@ function buildCategoryGuideHtml(config) {
   return parts.join("\n  ");
 }
 
+const CITY_LINK_CITIES = { florence: "Florence", darlington: "Darlington", hartsville: "Hartsville" };
+
+const CITY_LINK_ANCHORS = {
+  "/grooming": {
+    florence: "compare local dog groomers in Florence SC",
+    darlington: "dog groomers in Darlington SC",
+    hartsville: "dog groomers in Hartsville SC",
+  },
+  "/training": {
+    florence: "dog trainers in Florence SC",
+    darlington: "dog trainers in Darlington SC",
+    hartsville: "dog trainers in Hartsville SC",
+  },
+  "/boarding": {
+    florence: "pet boarding in Florence SC",
+    darlington: "pet boarding in Darlington SC",
+    hartsville: "pet boarding in Hartsville SC",
+  },
+  "/sitters": {
+    florence: "pet sitters in Florence SC",
+    darlington: "pet sitters in Darlington SC",
+    hartsville: "pet sitters in Hartsville SC",
+  },
+  "/vet-care": {
+    florence: "veterinarians in Florence SC",
+    darlington: "veterinarians in Darlington SC",
+    hartsville: "veterinarians in Hartsville SC",
+  },
+};
+
+function buildCityLinksHtml(pathname) {
+  const anchors = CITY_LINK_ANCHORS[pathname];
+  if (!anchors) {
+    return "";
+  }
+  const links = Object.keys(CITY_LINK_CITIES)
+    .map((slug) => `<a href="${escapeHtml(`${pathname}/${slug}`)}">${escapeHtml(anchors[slug])}</a>`)
+    .join(", ");
+  return `<h2>Browse by city</h2>
+  <p>Find providers near you: ${links}.</p>`;
+}
+
 function buildCategorySeoContentHtml(config, listings = []) {
   const faqs = (config.faqs || [])
     .map((faq) => `<p><strong>${escapeHtml(faq.q)}</strong> ${escapeHtml(faq.a)}</p>`)
@@ -776,6 +818,7 @@ function buildCategorySeoContentHtml(config, listings = []) {
   <p>${escapeHtml(config.intro)}</p>
   <p>Directory questions or listing requests: <a href="mailto:${escapeHtml(DIRECTORY_CONTACT_EMAIL)}">${escapeHtml(DIRECTORY_CONTACT_EMAIL)}</a>.</p>
   ${buildListingsSectionHtml(listings)}
+  ${buildCityLinksHtml(config.pathname)}
   ${buildCategoryGuideHtml(config)}
   ${appendRelatedBlogExcerpt(config)}
   <h2>Frequently asked questions</h2>
