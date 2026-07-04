@@ -130,14 +130,24 @@
           "text": "Ask These Questions Directly"
         },
         {
-          "type": "ul",
-          "items": [
-            "\"What do you do if my pet refuses to eat or seems unwell?\" — You want to hear: contact the owner immediately, and follow any care instructions left.",
-            "\"Have you worked with a dog or cat like mine before?\" — Breed-specific experience or experience with anxious/reactive animals matters.",
-            "\"What does a typical visit look like?\" — They should describe a specific routine, not a vague \"we'll hang out.\"",
-            "\"What happens if there's a household emergency while you're here?\" — A good sitter has thought about this.",
-            "\"Do you send photos or updates during visits?\" — Not every owner needs this, but knowing their default helps."
-          ]
+          "type": "p",
+          "text": "\"What do you do if my pet refuses to eat or seems unwell?\" You want to hear: contact the owner immediately, and follow any care instructions left."
+        },
+        {
+          "type": "p",
+          "text": "\"Have you worked with a dog or cat like mine before?\" Breed-specific experience, or experience with anxious and reactive animals, matters more than years in business."
+        },
+        {
+          "type": "p",
+          "text": "\"What does a typical visit look like?\" They should describe a specific routine — arrival, feeding, play, cleanup — not a vague \"we'll hang out.\""
+        },
+        {
+          "type": "p",
+          "text": "\"What happens if there's a household emergency while you're here?\" A good sitter has thought about this before you asked."
+        },
+        {
+          "type": "p",
+          "text": "\"Do you send photos or updates during visits?\" Not every owner needs this, but knowing their default helps you set expectations."
         },
         {
           "type": "h3",
@@ -173,12 +183,6 @@
           "text": "If your pet has a history of anxiety, aggression, or medical needs, mention all of it upfront. A sitter who's uncomfortable with those details is not the right fit, and it's better to know that before the first booking."
         },
         {
-          "type": "img",
-          "src": "/blog/images/pet-sitter-trust.png",
-          "alt": "Happy dog greeting a familiar pet sitter at the front door",
-          "caption": "A little upfront effort — a good meet-and-greet, clear instructions, and a trial visit — makes every stay after that easier."
-        },
-        {
           "type": "h2",
           "text": "Setting Up a Successful First Visit"
         },
@@ -195,6 +199,12 @@
             "Make sure they know where the leash, food, crate (if used), and any medications are before you leave.",
             "Check in after the first visit. Ask how it went and whether they noticed anything."
           ]
+        },
+        {
+          "type": "img",
+          "src": "/blog/images/pet-sitter-trust.png",
+          "alt": "Happy dog greeting a familiar pet sitter at the front door",
+          "caption": "A little upfront effort — a good meet-and-greet, clear instructions, and a trial visit — makes every stay after that easier."
         },
         {
           "type": "h2",

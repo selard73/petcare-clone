@@ -136,19 +136,35 @@ Items can be plain strings or `{ label, text }` objects:
 
 **Every post must have exactly 3 `img` blocks** (a hero plus two body images).
 
-**Image layout rules:**
+**Image layout rules — position in the `blocks` array matters:**
 
 | Position of `img` in `blocks` | How it renders |
 |---|---|
 | **First** `img` encountered | **Hero image** at the very top of the article card, cropped to a fixed height, full width. |
-| **All other `img` blocks** | Full-width figure in the article flow, max-height 420 px, cover-cropped, rounded corners, optional caption below. |
+| **Second** `img` (first body image) | Magazine-left: image floats left at 38% width (desktop), paragraphs and headings wrap on the right. |
+| **Third** `img` (second body image) | Magazine-right: image floats right at 38% width, text wraps on the left. |
+| **Fourth+ `img`** | Plain centered figure, full width. |
 
-All body images render full width in a single column — text never wraps around them (standard editorial convention; the CSS in `head-inject.html` overrides the renderer's magazine float classes).
+On mobile (<768 px) magazine images become full-width (no float).
+
+**CRITICAL — content authoring rules for magazine images:**
+
+Lists (`ul`/`ol`), `blockquote`, and `cta` blocks do NOT wrap around floats (they get their own block formatting context via CSS because markers and backgrounds break when straddling a float). Only `p`, `h2`, and `h3` wrap gracefully.
+
+Therefore, immediately after each magazine `img` block, you MUST place **paragraph-heavy content** — enough headings + paragraphs to fill the image height (roughly one `h2` plus 3–4 paragraphs, or an FAQ-style run of `h3` + `p` pairs) — **before any `ul`, `ol`, `blockquote`, or `cta` block**. If a long list starts beside the image, it stays narrow for its whole height and leaves white space under the image.
+
+Good patterns to put after a magazine image:
+- `h2` + `p` + `h3` + `p` + `h3` + `p` (section with subsections)
+- `h2` + FAQ-style `h3`/`p` pairs
+
+Bad patterns (never do this):
+- `img` followed shortly by a long `ul`/`ol`
+- `img` immediately followed by `blockquote` or `cta`
 
 **Placement guidance:**
 - Put image 1 (hero) after 1–3 opening paragraphs.
-- Put image 2 mid-article, ideally right before a major `h2` section.
-- Put image 3 in the final third, ideally before the how-to/setup or closing section.
+- Put image 2 (magazine-left) right before a paragraph-heavy `h2` section mid-article.
+- Put image 3 (magazine-right) right before the FAQ section or another paragraph-heavy closing section.
 
 The `coverImage` top-level field is for OG/SEO metadata only — it does not control which block is the hero.
 

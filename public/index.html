@@ -70,24 +70,39 @@
         display: block !important;
         border-radius: 0.75rem !important;
       }
-      /* ── Body images: full-width figures (standard blog convention) ──
-         Float/magazine layouts caused text-wrap and whitespace artifacts.
-         Full-width single-column flow is the established pattern used by
-         Medium, Substack, and most editorial sites. */
+      /* ── Magazine float layout ──
+         Paragraphs and headings wrap naturally around the floated image
+         (the classic magazine look). Lists, blockquotes, and CTA boxes get
+         their own block formatting context (overflow:hidden) because those
+         box types break visually when straddling a float:
+         - list markers get clipped under the image
+         - blockquote backgrounds/borders extend beneath the image
+         Content should be authored so paragraph-heavy blocks sit beside
+         images and lists start below them (see AGENTS.md). */
       .blog-magazine-section {
-        margin: 0;
+        margin: 1.75rem 0;
       }
-      figure.blog-magazine-figure-left,
+      .blog-magazine-section::after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      figure.blog-magazine-figure-left {
+        float: left;
+        margin: 0.35rem 1.5rem 0.75rem 0;
+      }
       figure.blog-magazine-figure-right {
-        float: none !important;
-        width: 100% !important;
-        max-width: none !important;
-        margin: 2rem 0 !important;
+        float: right;
+        margin: 0.35rem 0 0.75rem 1.5rem;
+      }
+      .blog-magazine-section ul,
+      .blog-magazine-section ol,
+      .blog-magazine-section blockquote,
+      .blog-magazine-section > div {
+        overflow: hidden;
       }
       img.blog-magazine-image {
         width: 100% !important;
-        height: auto !important;
-        max-height: 420px !important;
         object-fit: cover !important;
         object-position: center 30% !important;
         display: block !important;
@@ -122,6 +137,16 @@
           height: 460px !important;
           max-height: 460px !important;
         }
+        figure.blog-magazine-figure-left,
+        figure.blog-magazine-figure-right {
+          width: 38%;
+          max-width: none;
+        }
+        img.blog-magazine-image {
+          aspect-ratio: 4 / 3;
+          height: auto !important;
+          max-height: none !important;
+        }
       }
       @media (max-width: 767px) {
         figure.blog-hero-figure {
@@ -136,7 +161,15 @@
           object-fit: unset !important;
           object-position: center !important;
         }
+        figure.blog-magazine-figure-left,
+        figure.blog-magazine-figure-right {
+          float: none;
+          width: 100%;
+          max-width: none;
+          margin: 0 0 1.5rem;
+        }
         img.blog-magazine-image {
+          height: auto !important;
           max-height: none !important;
           object-fit: unset !important;
           object-position: center !important;
