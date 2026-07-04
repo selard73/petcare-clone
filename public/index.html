@@ -175,6 +175,50 @@
       .blog-magazine-article ol {
         list-style-type: decimal !important;
       }
+
+      /* ── Article body: standard spacing conventions ── */
+
+      /* Magazine float sections have no inherited space-y gap — add one */
+      .blog-magazine-section > * + * {
+        margin-top: 1rem;
+      }
+
+      /* Section headings — generous breathing room */
+      .blog-magazine-article h2,
+      .blog-magazine-section h2 {
+        margin-top: 2.25rem;
+        margin-bottom: 0.875rem;
+      }
+      .blog-magazine-article h3,
+      .blog-magazine-section h3 {
+        margin-top: 1.75rem;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Blockquotes — more padding inside and more margin outside */
+      .blog-magazine-article blockquote,
+      .blog-magazine-section blockquote {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+      }
+
+      /* Lists — space before the list block */
+      .blog-magazine-article ul,
+      .blog-magazine-article ol,
+      .blog-magazine-section ul,
+      .blog-magazine-section ol {
+        margin-top: 0.875rem;
+      }
+
+      /* List items — 12px gap (standard readable spacing; was 8px) */
+      .blog-magazine-article ul > li + li,
+      .blog-magazine-article ol > li + li,
+      .blog-magazine-section ul > li + li,
+      .blog-magazine-section ol > li + li {
+        margin-top: 0.75rem !important;
+      }
       .blog-article-aside {
         margin-bottom: 1rem;
         padding: 0 0.25rem;

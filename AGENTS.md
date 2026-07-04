@@ -134,16 +134,23 @@ Items can be plain strings or `{ label, text }` objects:
 }
 ```
 
+**Every post must have exactly 3 `img` blocks.** This fills the three layout slots the renderer provides. Fewer than 3 leaves content with no base spacing (elements inside `.blog-magazine-section` do not inherit the body's `space-y-4` gap — they only get spacing from their own element-level margins and from the 3rd image splitting the section).
+
 **Image layout rules — position in the `blocks` array matters:**
 
 | Position of `img` in `blocks` | How it renders |
 |---|---|
-| **First** `img` encountered | **Hero image** at the very top of the article card, cropped to a fixed height, full width. Do not put it first in the array on purpose just to make it the hero — the renderer always pulls whichever `img` comes first regardless of position. |
-| **Second** `img` (first body image) | Magazine-left float: image floats left, following text wraps right. |
-| **Third** `img` (second body image) | Magazine-right float: image floats right, following text wraps left. |
+| **First** `img` encountered | **Hero image** at the very top of the article card, cropped to a fixed height, full width. |
+| **Second** `img` (first body image) | Magazine-left float: image floats left, following non-image blocks wrap right until the next `img`. |
+| **Third** `img` (second body image) | Magazine-right float: image floats right, following non-image blocks wrap left until end. |
 | **Fourth+ `img`** | Plain centered figure, full width, natural height. |
 
-**Rule:** Put the intended cover/hero image near the top of `blocks` (e.g. after 1–3 opening paragraphs) so the renderer picks it as the hero. The `coverImage` top-level field is used for OG/SEO metadata only — it does not affect which block is displayed as the hero.
+**Placement guidance:**
+- Put image 1 (hero) after 1–3 opening paragraphs.
+- Put image 2 (magazine-left) to introduce a mid-article section (e.g. vetting checklist, how-to steps). Blocks from here until image 3 float beside it.
+- Put image 3 (magazine-right) to introduce the final stretch (e.g. setup tips, FAQ, closing). Blocks from here to the end float beside it.
+
+The `coverImage` top-level field is for OG/SEO metadata only — it does not control which block is the hero.
 
 **`imageClass` values:**
 
@@ -176,11 +183,22 @@ Items can be plain strings or `{ label, text }` objects:
 | Rule | Reason |
 |---|---|
 | Never use `{ "type": "p", "text": "" }` | Renders as invisible gap; creates unwanted whitespace |
-| Never put a `p` immediately before an `h2` just to add space | `h2` already has 32 px top margin |
-| Never put a `p` immediately before an `h3` just to add space | `h3` already has 24 px top margin |
-| Never add a `p` right after a `blockquote` just to add space | `blockquote` already has 24 px bottom margin |
+| Never put a `p` immediately before an `h2` just to add space | `h2` already has ~36 px top margin from CSS |
+| Never put a `p` immediately before an `h3` just to add space | `h3` already has ~28 px top margin |
+| Never add a `p` right after a `blockquote` just to add space | `blockquote` already has 32 px bottom margin |
 | Never add a `p` right before a `cta` just to add space | `cta` already has 40 px top margin |
 | Do include a `p` before a `ul` when it naturally introduces the list | This is content, not decorative spacing |
+
+**CSS-applied spacing (current stylesheet):**
+- Body block gap: 16 px (`space-y-4` on the outer container)
+- `h2` top: 36 px, bottom: 14 px
+- `h3` top: 28 px, bottom: 8 px
+- `blockquote` top and bottom: 32 px; internal padding: 16 px top/bottom
+- `ul` / `ol` top margin: 14 px
+- `li + li` gap: 12 px
+- `cta` top: 40 px
+
+These values are enforced by `head-inject.html`. Do not try to replicate them with extra `p` blocks.
 
 ---
 
