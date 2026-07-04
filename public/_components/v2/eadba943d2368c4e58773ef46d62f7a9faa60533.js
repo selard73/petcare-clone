@@ -5999,6 +5999,36 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
         ]
       }
     ),
+    /* @__PURE__ */ s("div", { className: "hidden md:block px-4 sm:px-6 lg:px-8 pt-12", children: /* @__PURE__ */ d(
+      D.div,
+      {
+        initial: { opacity: 0 },
+        whileInView: { opacity: 1 },
+        viewport: { once: !0 },
+        className: "max-w-5xl mx-auto",
+        children: [
+          /* @__PURE__ */ s("h2", { className: "text-purple-600 text-4xl text-center mb-10", children: "💜 This Week on Pee Dee Pet Care" }),
+          /* @__PURE__ */ d("div", { className: "grid grid-cols-2 gap-8", children: [
+            /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden border border-purple-100 shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
+              /* @__PURE__ */ s("div", { className: "h-48 flex items-center justify-center text-7xl", style: { background: "linear-gradient(135deg, #F3FAFF 0%, #FAF5FF 100%)" }, children: "🐶" }),
+              /* @__PURE__ */ d("div", { className: "p-6 flex flex-col flex-1", children: [
+                /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "🐾 Pet Angel of the Week" }),
+                /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-4", children: "Meet Biscuit — a 3-year-old hound mix at the Darlington County Humane Society who's ready for his forever home." }),
+                /* @__PURE__ */ s("a", { href: "https://www.darlingtonhumane.org/adoptablepets", target: "_blank", rel: "noopener noreferrer", className: "mt-auto text-purple-600 hover:text-purple-800 font-medium no-underline", children: "Meet Biscuit →" })
+              ] })
+            ] }),
+            /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden border border-purple-100 shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
+              /* @__PURE__ */ s("div", { className: "h-48 flex items-center justify-center text-7xl", style: { background: "linear-gradient(135deg, #FAF5FF 0%, #F3FAFF 100%)" }, children: "⭐" }),
+              /* @__PURE__ */ d("div", { className: "p-6 flex flex-col flex-1", children: [
+                /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "🌟 Featured Business of the Week" }),
+                /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-4", children: "Groomingdale's Pet Salon in Florence — a local favorite known for gentle handling and breed-perfect cuts." }),
+                /* @__PURE__ */ s("a", { href: "/grooming/florence", className: "mt-auto text-purple-600 hover:text-purple-800 font-medium no-underline", children: "See Listing →" })
+              ] })
+            ] })
+          ] })
+        ]
+      }
+    ) }),
     /* @__PURE__ */ s("div", { className: "px-4 md:px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s(
       "section",
       {
