@@ -68,6 +68,28 @@ function buildBlogPostSeo(post) {
 const BLOG_AUTHOR_NAME = "Pee Dee Pet Care Team";
 
 const BLOG_POST_FAQS = {
+  "affordable-dog-training-classes-florence-darlington-pee-dee": [
+    {
+      q: "How much do dog training classes cost in Florence and Darlington SC?",
+      a: "Group classes typically run $25 to $50 per session, with six-week beginner packages in the $150 to $250 range. Private lessons cost $75 to $130+ per hour depending on trainer experience and travel.",
+    },
+    {
+      q: "Are group classes or private lessons a better value?",
+      a: "For puppies and basic obedience, group classes are the most affordable starting point. For dogs with reactivity, anxiety, or other specific behavior challenges, a targeted private lesson or two can cost less overall than repeating group classes that miss the root issue.",
+    },
+    {
+      q: "How do I know if a cheap dog training class is any good?",
+      a: "Look for reward-based training methods, small class sizes (around five dogs), a clear session-by-session structure, and a written fee breakdown. Be cautious of trainers who guarantee specific results without meeting your dog.",
+    },
+    {
+      q: "What questions should I ask a dog trainer before booking?",
+      a: "Ask what methods they use and why, whether you can get a written fee breakdown, what the class is designed for, the class size limit, and what success should look like at the end of the program.",
+    },
+    {
+      q: "How do I find affordable dog trainers near me in the Pee Dee?",
+      a: "Browse the free Pee Dee Pet Care trainer directory to compare local options in Florence, Darlington, Hartsville, and surrounding communities, then contact trainers directly about pricing and format.",
+    },
+  ],
   "finding-pet-sitter-dog-walker-pee-dee": [
     {
       q: "How do I find a reliable pet sitter in Florence or Darlington SC?",
