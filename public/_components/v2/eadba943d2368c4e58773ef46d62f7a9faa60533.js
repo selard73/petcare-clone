@@ -21256,17 +21256,14 @@ function oy() {
           ] })
         ] }),
         /* @__PURE__ */ s("p", { className: "text-purple-600 text-center absolute left-0 right-0 top-1/2", style: { transform: "translateY(-50%)", margin: 0 }, children: "All Your Pet Needs in Darlington/Florence Area" }),
-        /* @__PURE__ */ d("div", { className: "absolute top-1/2 -translate-y-1/2 text-right", style: { right: "1.75rem" }, children: [
-          /* @__PURE__ */ d("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0 }, children: [
-            /* @__PURE__ */ s("a", { href: "/about", onClick: (k) => {
-              k.preventDefault(), C("about");
-            }, className: "hover:text-purple-900 underline underline-offset-2", children: "About Us" }),
-            /* @__PURE__ */ s("span", { className: "mx-2 text-purple-400 font-normal", children: "•" }),
-            /* @__PURE__ */ s("a", { href: "/privacy", onClick: (k) => {
-              k.preventDefault(), C("privacy");
-            }, className: "hover:text-purple-900 underline underline-offset-2", children: "Privacy Policy" })
-          ] }),
-          t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "text-xs text-purple-500/70 tracking-wide pointer-events-none whitespace-nowrap", style: { margin: 0, marginTop: "2px" }, children: `${Pv.toLocaleString()} visits and counting` })
+        /* @__PURE__ */ d("div", { className: "absolute top-1/2 -translate-y-1/2 text-left", style: { right: "1.75rem" }, children: [
+          /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0 }, children: /* @__PURE__ */ s("a", { href: "/about", onClick: (k) => {
+            k.preventDefault(), C("about");
+          }, className: "hover:text-purple-900 underline underline-offset-2", children: "About Us" }) }),
+          /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0, marginTop: "2px" }, children: /* @__PURE__ */ s("a", { href: "/privacy", onClick: (k) => {
+            k.preventDefault(), C("privacy");
+          }, className: "hover:text-purple-900 underline underline-offset-2", children: "Privacy Policy" }) }),
+          t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "text-xs text-purple-500/70 tracking-wide pointer-events-none whitespace-nowrap", style: { margin: 0, marginTop: "4px" }, children: `${Pv.toLocaleString()} visits and counting` })
         ] })
       ] })
     ] })
