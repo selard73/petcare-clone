@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "node server.js",
-    "apply-seo": "node scripts/apply-seo.js"
+    "apply-seo": "node scripts/apply-seo.js",
+    "verify-seo": "node scripts/verify-seo.js"
   },
   "dependencies": {
     "nodemailer": "^6.10.1"

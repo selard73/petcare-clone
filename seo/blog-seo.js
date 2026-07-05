@@ -311,6 +311,14 @@ function injectSeoIntoHtml(html, seo) {
 const SEO_CONTENT_START = "<!-- peedee-seo-content:start -->";
 const SEO_CONTENT_END = "<!-- peedee-seo-content:end -->";
 
+// Real social profiles only (Instagram/TikTok are placeholder "#" links in the UI, so they are omitted).
+const ORGANIZATION_SAME_AS = [
+  "https://www.facebook.com/peedeepetcare/",
+  "https://www.youtube.com/@peedeepetcare",
+];
+
+const SERVICE_AREA_CITIES = ["Florence", "Hartsville", "Darlington", "Lamar", "Society Hill"];
+
 function buildOrganizationNode() {
   return {
     "@type": "Organization",
@@ -326,17 +334,31 @@ function buildOrganizationNode() {
       url: `${CANONICAL_ORIGIN}/logo.png`,
       contentUrl: `${CANONICAL_ORIGIN}/logo.png`,
     },
+    image: `${CANONICAL_ORIGIN}/share-card.jpg`,
+    sameAs: ORGANIZATION_SAME_AS,
+    knowsAbout: [
+      "pet grooming",
+      "dog training",
+      "pet boarding",
+      "doggy daycare",
+      "pet sitting",
+      "dog walking",
+      "veterinary care",
+      "Darlington County South Carolina",
+      "Florence South Carolina",
+      "Pee Dee region pet care",
+    ],
     areaServed: [
       {
         "@type": "AdministrativeArea",
         name: "Darlington County",
         containedInPlace: { "@type": "State", name: "South Carolina" },
       },
-      {
+      ...SERVICE_AREA_CITIES.map((city) => ({
         "@type": "City",
-        name: "Florence",
+        name: city,
         containedInPlace: { "@type": "State", name: "South Carolina" },
-      },
+      })),
     ],
     contactPoint: {
       "@type": "ContactPoint",
@@ -345,6 +367,19 @@ function buildOrganizationNode() {
       areaServed: "US-SC",
       availableLanguage: "English",
     },
+  };
+}
+
+function buildWebSiteNode() {
+  return {
+    "@type": "WebSite",
+    "@id": `${CANONICAL_ORIGIN}/#website`,
+    url: `${CANONICAL_ORIGIN}/`,
+    name: "Pee Dee Pet Care",
+    description: SITE_DESCRIPTION,
+    publisher: { "@id": `${CANONICAL_ORIGIN}/#organization` },
+    isAccessibleForFree: true,
+    inLanguage: "en-US",
   };
 }
 
@@ -524,6 +559,7 @@ function buildBlogIndexJsonLd() {
     "@context": "https://schema.org",
     "@graph": [
       buildOrganizationNode(),
+      buildWebSiteNode(),
       {
         "@type": "Blog",
         "@id": `${CANONICAL_ORIGIN}/blog#blog`,
@@ -659,6 +695,7 @@ function buildBlogPostJsonLd(post) {
 
   const graph = [
     buildOrganizationNode(),
+    buildWebSiteNode(),
     buildAuthorPersonNode(),
     blogPostNode,
     {
@@ -843,4 +880,6 @@ module.exports = {
   injectSeoIntoHtml,
   injectBlogEnhancements,
   generateSitemapXml,
+  buildOrganizationNode,
+  buildWebSiteNode,
 };

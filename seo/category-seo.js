@@ -1,4 +1,10 @@
-const { CANONICAL_ORIGIN, getBlogPostBySlug } = require("./blog-seo");
+const {
+  CANONICAL_ORIGIN,
+  getBlogPostBySlug,
+  buildOrganizationNode,
+  buildWebSiteNode,
+} = require("./blog-seo");
+const { buildProviderItemList } = require("./provider-schema");
 
 const SEO_CONTENT_START = "<!-- peedee-seo-content:start -->";
 const SEO_CONTENT_END = "<!-- peedee-seo-content:end -->";
@@ -554,24 +560,6 @@ function escapeHtml(value) {
     .replace(/"/g, "&quot;");
 }
 
-function buildOrganizationNode() {
-  return {
-    "@type": "Organization",
-    "@id": `${CANONICAL_ORIGIN}/#organization`,
-    name: "Pee Dee Pet Care",
-    url: `${CANONICAL_ORIGIN}/`,
-    description:
-      "Pee Dee Pet Care is a free online directory of local pet grooming, training, boarding, daycare, sitters, and veterinary businesses in Darlington County and Florence, SC. Not a service provider.",
-    contactPoint: {
-      "@type": "ContactPoint",
-      contactType: "customer support",
-      email: DIRECTORY_CONTACT_EMAIL,
-      areaServed: "US-SC",
-      availableLanguage: "English",
-    },
-  };
-}
-
 function normalizeCategoryPath(pathname) {
   const normalized = pathname.replace(/\/+$/, "") || "/";
   return PATH_ALIASES[normalized] || normalized;
@@ -623,6 +611,7 @@ function buildCategoryJsonLd(config, listings = []) {
 
   const graph = [
     buildOrganizationNode(),
+    buildWebSiteNode(),
     {
       "@type": "CollectionPage",
       "@id": `${CANONICAL_ORIGIN}${config.pathname}#collection`,
@@ -662,34 +651,12 @@ function buildCategoryJsonLd(config, listings = []) {
     });
   }
 
-  const itemListElement = listings.slice(0, 25).map((listing, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
-    item: {
-      "@type": "LocalBusiness",
-      name: listing.name,
-      description: listing.description || undefined,
-      telephone: listing.phone || undefined,
-      address: listing.city
-        ? {
-            "@type": "PostalAddress",
-            streetAddress: listing.address || undefined,
-            addressLocality: listing.city,
-            addressRegion: "SC",
-            addressCountry: "US",
-          }
-        : undefined,
-    },
-  }));
-
-  if (itemListElement.length) {
-    graph.push({
-      "@type": "ItemList",
-      "@id": `${CANONICAL_ORIGIN}${config.pathname}#listings`,
-      name: config.schemaName || config.title,
-      numberOfItems: itemListElement.length,
-      itemListElement,
-    });
+  const providerItemList = buildProviderItemList(listings, {
+    id: `${CANONICAL_ORIGIN}${config.pathname}#listings`,
+    name: config.schemaName || config.title,
+  });
+  if (providerItemList) {
+    graph.push(providerItemList);
   }
 
   return { "@context": "https://schema.org", "@graph": graph };

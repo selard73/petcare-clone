@@ -1,6 +1,7 @@
-const { CANONICAL_ORIGIN } = require("./blog-seo");
+const { CANONICAL_ORIGIN, buildOrganizationNode, buildWebSiteNode } = require("./blog-seo");
 const { getCategoryConfig, buildCategoryGuideHtml } = require("./category-seo");
 const { getListingsForPathname } = require("./listings-loader");
+const { buildProviderItemList } = require("./provider-schema");
 
 const SEO_CONTENT_START = "<!-- peedee-seo-content:start -->";
 const SEO_CONTENT_END = "<!-- peedee-seo-content:end -->";
@@ -157,27 +158,9 @@ function buildCitySeoContentHtml(parsed, listings) {
 }
 
 function buildCityJsonLd(parsed, listings) {
-  const itemListElement = listings.slice(0, 20).map((listing, index) => ({
-    "@type": "ListItem",
-    position: index + 1,
-    item: {
-      "@type": "LocalBusiness",
-      name: listing.name,
-      description: listing.description || undefined,
-      telephone: listing.phone || undefined,
-      address: listing.city
-        ? {
-            "@type": "PostalAddress",
-            streetAddress: listing.address || undefined,
-            addressLocality: listing.city,
-            addressRegion: "SC",
-            addressCountry: "US",
-          }
-        : undefined,
-    },
-  }));
-
   const graph = [
+    buildOrganizationNode(),
+    buildWebSiteNode(),
     {
       "@type": "CollectionPage",
       "@id": `${CANONICAL_ORIGIN}${parsed.pathname}#collection`,
@@ -210,14 +193,12 @@ function buildCityJsonLd(parsed, listings) {
     },
   ];
 
-  if (itemListElement.length) {
-    graph.push({
-      "@type": "ItemList",
-      "@id": `${CANONICAL_ORIGIN}${parsed.pathname}#listings`,
-      name: `${parsed.labels.directory} in ${parsed.cityName}, SC`,
-      numberOfItems: itemListElement.length,
-      itemListElement,
-    });
+  const providerItemList = buildProviderItemList(listings, {
+    id: `${CANONICAL_ORIGIN}${parsed.pathname}#listings`,
+    name: `${parsed.labels.directory} in ${parsed.cityName}, SC`,
+  });
+  if (providerItemList) {
+    graph.push(providerItemList);
   }
 
   return { "@context": "https://schema.org", "@graph": graph };
