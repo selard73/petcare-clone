@@ -6032,7 +6032,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                     /* @__PURE__ */ s("img", { src: "/images/home/bilbo-wagz.png", alt: "Bilbo Wagz — adoptable dog at the Darlington County Humane Society", style: { height: "13rem", width: "100%", objectFit: "cover", objectPosition: "center 25%", display: "block" } }),
                     /* @__PURE__ */ d("div", { className: "flex flex-col items-center text-center flex-1", style: { padding: "1.25rem 2rem 1.5rem" }, children: [
                       /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "🐾 Fur-ever Friend of the Month" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-3", children: "Meet Bilbo Wagz — a year-and-a-half-old pup at the Darlington County Humane Society. He arrived as a stray with wounds around his neck, but stayed incredibly friendly and loving. He's a play group favorite who gets along with everyone he meets, and volunteers call him handsome, well-mannered, and sweet. Bilbo is ready to leave shelter life behind." }),
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-3", children: "Meet Bilbo Wagz — a year-and-a-half-old pup at the Darlington County Humane Society. He arrived in rough shape, but stayed incredibly friendly and loving. He's a play group favorite who gets along with everyone he meets, and volunteers call him handsome, well-mannered, and sweet. Bilbo is ready to leave shelter life behind." }),
                       /* @__PURE__ */ s(
                         "button",
                         {
