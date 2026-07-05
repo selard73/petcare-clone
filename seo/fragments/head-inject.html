@@ -62,6 +62,15 @@
         display: block !important;
         border-radius: 0.75rem !important;
       }
+      /* ── Magazine float layout ──
+         Paragraphs and headings wrap naturally around the floated image
+         (the classic magazine look). Lists, blockquotes, and CTA boxes get
+         their own block formatting context (overflow:hidden) because those
+         box types break visually when straddling a float:
+         - list markers get clipped under the image
+         - blockquote backgrounds/borders extend beneath the image
+         Content should be authored so paragraph-heavy blocks sit beside
+         images and lists start below them (see AGENTS.md). */
       .blog-magazine-section {
         margin: 1.75rem 0;
       }
@@ -70,22 +79,24 @@
         display: table;
         clear: both;
       }
-      .blog-magazine-section > h2,
-      .blog-magazine-section > h3,
-      .blog-magazine-section > p,
-      .blog-magazine-section > ul,
-      .blog-magazine-section > ol,
-      .blog-magazine-section > blockquote,
-      .blog-magazine-section > div {
-        overflow: visible;
-      }
       figure.blog-magazine-figure-left {
         float: left;
-        margin: 0.15rem 1.25rem 0.5rem 0;
+        margin: 0.35rem 1.5rem 0.75rem 0;
       }
       figure.blog-magazine-figure-right {
         float: right;
-        margin: 0.15rem 0 0.5rem 1.25rem;
+        margin: 0.35rem 0 0.75rem 1.5rem;
+      }
+      .blog-magazine-section ul,
+      .blog-magazine-section ol,
+      .blog-magazine-section blockquote {
+        overflow: hidden;
+      }
+      /* CTA boxes: never sit beside or under a floated image — always
+         drop to full width below it */
+      .blog-magazine-section > div {
+        overflow: hidden;
+        clear: both;
       }
       img.blog-magazine-image {
         width: 100% !important;
@@ -125,7 +136,7 @@
         }
         figure.blog-magazine-figure-left,
         figure.blog-magazine-figure-right {
-          width: 40%;
+          width: 38%;
           max-width: none;
         }
         img.blog-magazine-image {
@@ -160,6 +171,57 @@
           object-fit: unset !important;
           object-position: center !important;
         }
+      }
+      .blog-magazine-article ul {
+        list-style-type: disc !important;
+      }
+      .blog-magazine-article ol {
+        list-style-type: decimal !important;
+      }
+
+      /* ── Article body: standard spacing conventions ── */
+
+      /* Magazine float sections have no inherited space-y gap — add one */
+      .blog-magazine-section > * + * {
+        margin-top: 1rem;
+      }
+
+      /* Section headings — generous breathing room */
+      .blog-magazine-article h2,
+      .blog-magazine-section h2 {
+        margin-top: 2.25rem;
+        margin-bottom: 0.875rem;
+      }
+      .blog-magazine-article h3,
+      .blog-magazine-section h3 {
+        margin-top: 1.75rem;
+        margin-bottom: 0.5rem;
+      }
+
+      /* Blockquotes — more padding inside and more margin outside */
+      .blog-magazine-article blockquote,
+      .blog-magazine-section blockquote {
+        padding-top: 1rem !important;
+        padding-bottom: 1rem !important;
+        margin-top: 2rem !important;
+        margin-bottom: 2rem !important;
+      }
+
+      /* Lists — indent further from edge and add space before the block */
+      .blog-magazine-article ul,
+      .blog-magazine-article ol,
+      .blog-magazine-section ul,
+      .blog-magazine-section ol {
+        margin-top: 0.875rem;
+        padding-left: 1.75rem; /* was 1.25rem (pl-5); bullets were hugging the card edge */
+      }
+
+      /* List items — 12px gap (standard readable spacing; was 8px) */
+      .blog-magazine-article ul > li + li,
+      .blog-magazine-article ol > li + li,
+      .blog-magazine-section ul > li + li,
+      .blog-magazine-section ol > li + li {
+        margin-top: 0.75rem !important;
       }
       .blog-article-aside {
         margin-bottom: 1rem;
