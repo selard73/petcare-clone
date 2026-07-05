@@ -13278,7 +13278,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
     i && (e?.(i), n(!1));
   };
   return /* @__PURE__ */ d("div", { className: "min-h-screen bg-gradient-to-b from-blue-50 to-purple-50", children: [
-    /* @__PURE__ */ s("div", { className: "mx-auto px-4 py-4 md:py-8", style: { maxWidth: "56rem" }, children: /* @__PURE__ */ d(
+    /* @__PURE__ */ s("div", { className: "mx-auto px-4 py-4 md:py-8", style: { maxWidth: "72rem" }, children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0, y: 20 },
