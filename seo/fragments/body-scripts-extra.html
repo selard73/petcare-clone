@@ -31,9 +31,15 @@
           "/vet": "vet",
           "/about": "about",
           "/contact": "about",
+          "/privacy": "privacy",
         };
         var page = categoryPaths[pathname];
         if (page) {
+          try {
+            // The runtime can strip the hash before the app mounts, so
+            // persist the target page the same way the blog path does.
+            sessionStorage.setItem("pawsitively_current_page", page);
+          } catch (e) {}
           window.location.replace("/#" + page);
         }
       })();
@@ -260,6 +266,8 @@
           sitters: "/sitters",
           vet: "/vet-care",
           products: "/products",
+          about: "/about",
+          privacy: "/privacy",
         };
 
         function categorySeoFromPathname() {

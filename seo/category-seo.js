@@ -553,6 +553,34 @@ const CATEGORY_PAGES = {
   "/products": PRODUCTS_SEO,
 };
 
+// Simple informational pages: meta tags only, no injected listings/guide content.
+const SIMPLE_PAGE_SEO = {
+  "/about": {
+    title: "About Us | Pee Dee Pet Care",
+    description:
+      "The story behind Pee Dee Pet Care — a free local pet services directory for Darlington County & Florence, SC, built by a Hartsville local.",
+  },
+  "/privacy": {
+    title: "Privacy Policy | Pee Dee Pet Care",
+    description:
+      "How Pee Dee Pet Care handles your information: what we collect, what we use it for, and what we never do. We never sell or share your info.",
+  },
+};
+
+function resolveSimplePageSeo(pathname) {
+  const config = SIMPLE_PAGE_SEO[normalizeCategoryPath(pathname)];
+  if (!config) {
+    return null;
+  }
+  return {
+    title: config.title,
+    description: config.description,
+    canonical: `${CANONICAL_ORIGIN}${normalizeCategoryPath(pathname)}`,
+    ogImage: `${CANONICAL_ORIGIN}/share-card.jpg`,
+    ogType: "website",
+  };
+}
+
 function escapeHtml(value) {
   return String(value || "")
     .replace(/&/g, "&amp;")
@@ -573,7 +601,7 @@ function getCategoryConfig(pathname) {
 function resolveCategorySeoForPathname(pathname) {
   const config = getCategoryConfig(pathname);
   if (!config) {
-    return null;
+    return resolveSimplePageSeo(pathname);
   }
   return {
     title: config.title,
@@ -834,6 +862,15 @@ function buildCategorySeoClientScript() {
       title: config.title,
       description: config.description,
       canonical: `${CANONICAL_ORIGIN}${config.pathname}`,
+      ogImage: `${CANONICAL_ORIGIN}/share-card.jpg`,
+      ogType: "website",
+    };
+  }
+  for (const [pathname, config] of Object.entries(SIMPLE_PAGE_SEO)) {
+    payload[pathname] = {
+      title: config.title,
+      description: config.description,
+      canonical: `${CANONICAL_ORIGIN}${pathname}`,
       ogImage: `${CANONICAL_ORIGIN}/share-card.jpg`,
       ogType: "website",
     };

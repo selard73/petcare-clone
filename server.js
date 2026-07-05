@@ -26,6 +26,7 @@ const CATEGORY_PAGE_PATHS = {
   "/vet": "vet",
   "/about": "about",
   "/contact": "about",
+  "/privacy": "privacy",
 };
 const SITEMAP_FILE = path.join(PUBLIC_DIR, "sitemap.xml");
 const { applySeoToIndexHtml } = require("./seo/apply-seo-html");

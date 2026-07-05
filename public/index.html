@@ -445,11 +445,12 @@
   <p>
     Main pages: <a href="/">Home</a>, <a href="/products">Products</a>, <a href="/blog">Blog</a>,
     <a href="/grooming">Grooming</a>, <a href="/training">Training</a>, <a href="/boarding">Boarding</a>,
-    <a href="/sitters">Sitters</a>, <a href="/vet-care">Vet Care</a>.
+    <a href="/sitters">Sitters</a>, <a href="/vet-care">Vet Care</a>, <a href="/about">About Us</a>,
+    <a href="/privacy">Privacy Policy</a>.
   </p>
 </div>
     <!-- peedee-seo-content:end -->
-    <script>window.__peedeeCategorySeo={"/grooming":{"title":"Dog Groomers Directory | Darlington SC | Pee Dee Pet Care","description":"Free directory of dog and cat groomers in Darlington & Florence, SC. Compare listings and reviews. We do not provide grooming.","canonical":"https://www.peedeepetcare.com/grooming","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"},"/training":{"title":"Dog Trainers Directory | Darlington SC | Pee Dee Pet Care","description":"Free directory of dog trainers in Darlington & Florence, SC. Compare listings and reviews. We do not provide training.","canonical":"https://www.peedeepetcare.com/training","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"},"/boarding":{"title":"Pet Boarding Directory | Darlington SC | Pee Dee Pet Care","description":"Free directory of pet boarding and daycare in Darlington & Florence, SC. Compare listings and reviews. We do not provide boarding.","canonical":"https://www.peedeepetcare.com/boarding","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"},"/sitters":{"title":"Pet Sitters Directory | Darlington SC | Pee Dee Pet Care","description":"Free directory of pet sitters and dog walkers in Darlington & Florence, SC. Compare listings and reviews. We do not provide sitting.","canonical":"https://www.peedeepetcare.com/sitters","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"},"/vet-care":{"title":"Veterinarians in Darlington & Florence SC | Pee Dee Pet Care","description":"Vet directory for Darlington & Florence, SC. Compare independent clinics. Pee Dee Pet Care does not provide grooming, training, boarding, or veterinary care.","canonical":"https://www.peedeepetcare.com/vet-care","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"},"/products":{"title":"Pet Products Directory | Darlington SC | Pee Dee Pet Care","description":"Free directory of pet supply stores in Darlington & Florence, SC. Compare listings and reviews. We do not sell products.","canonical":"https://www.peedeepetcare.com/products","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"}};</script>
+    <script>window.__peedeeCategorySeo={"/grooming":{"title":"Dog Groomers Directory | Darlington SC | Pee Dee Pet Care","description":"Free directory of dog and cat groomers in Darlington & Florence, SC. Compare listings and reviews. We do not provide grooming.","canonical":"https://www.peedeepetcare.com/grooming","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"},"/training":{"title":"Dog Trainers Directory | Darlington SC | Pee Dee Pet Care","description":"Free directory of dog trainers in Darlington & Florence, SC. Compare listings and reviews. We do not provide training.","canonical":"https://www.peedeepetcare.com/training","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"},"/boarding":{"title":"Pet Boarding Directory | Darlington SC | Pee Dee Pet Care","description":"Free directory of pet boarding and daycare in Darlington & Florence, SC. Compare listings and reviews. We do not provide boarding.","canonical":"https://www.peedeepetcare.com/boarding","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"},"/sitters":{"title":"Pet Sitters Directory | Darlington SC | Pee Dee Pet Care","description":"Free directory of pet sitters and dog walkers in Darlington & Florence, SC. Compare listings and reviews. We do not provide sitting.","canonical":"https://www.peedeepetcare.com/sitters","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"},"/vet-care":{"title":"Veterinarians in Darlington & Florence SC | Pee Dee Pet Care","description":"Vet directory for Darlington & Florence, SC. Compare independent clinics. Pee Dee Pet Care does not provide grooming, training, boarding, or veterinary care.","canonical":"https://www.peedeepetcare.com/vet-care","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"},"/products":{"title":"Pet Products Directory | Darlington SC | Pee Dee Pet Care","description":"Free directory of pet supply stores in Darlington & Florence, SC. Compare listings and reviews. We do not sell products.","canonical":"https://www.peedeepetcare.com/products","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"},"/about":{"title":"About Us | Pee Dee Pet Care","description":"The story behind Pee Dee Pet Care — a free local pet services directory for Darlington County & Florence, SC, built by a Hartsville local.","canonical":"https://www.peedeepetcare.com/about","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"},"/privacy":{"title":"Privacy Policy | Pee Dee Pet Care","description":"How Pee Dee Pet Care handles your information: what we collect, what we use it for, and what we never do. We never sell or share your info.","canonical":"https://www.peedeepetcare.com/privacy","ogImage":"https://www.peedeepetcare.com/share-card.jpg","ogType":"website"}};</script>
     <script>
       (function () {
         // The Figma runtime can only boot from "/" (only _index.json exists),
@@ -483,9 +484,15 @@
           "/vet": "vet",
           "/about": "about",
           "/contact": "about",
+          "/privacy": "privacy",
         };
         var page = categoryPaths[pathname];
         if (page) {
+          try {
+            // The runtime can strip the hash before the app mounts, so
+            // persist the target page the same way the blog path does.
+            sessionStorage.setItem("pawsitively_current_page", page);
+          } catch (e) {}
           window.location.replace("/#" + page);
         }
       })();
@@ -712,6 +719,8 @@
           sitters: "/sitters",
           vet: "/vet-care",
           products: "/products",
+          about: "/about",
+          privacy: "/privacy",
         };
 
         function categorySeoFromPathname() {

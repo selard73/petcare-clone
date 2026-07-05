@@ -13277,8 +13277,8 @@ function df({ onOpenSignup: t, onNavigate: e }) {
   const [r, n] = E(!1), [i, o] = E(""), [a, l] = E(""), c = () => {
     i && (e?.(i), n(!1));
   };
-  return /* @__PURE__ */ d("div", { className: "min-h-screen bg-gradient-to-b from-blue-50 to-purple-50 md:hidden", children: [
-    /* @__PURE__ */ s("div", { className: "max-w-[1200px] mx-auto px-4 py-4", children: /* @__PURE__ */ d(
+  return /* @__PURE__ */ d("div", { className: "min-h-screen bg-gradient-to-b from-blue-50 to-purple-50", children: [
+    /* @__PURE__ */ s("div", { className: "max-w-[820px] mx-auto px-4 py-4 md:py-8", children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0, y: 20 },
@@ -13574,6 +13574,79 @@ function df({ onOpenSignup: t, onNavigate: e }) {
       }
     ) })
   ] });
+}
+function privacyPage({ onNavigate: t }) {
+  const e = (r, n) => /* @__PURE__ */ d("div", { className: "mb-6", children: [
+    /* @__PURE__ */ s("h2", { className: "text-purple-600 text-lg md:text-xl font-semibold leading-tight mb-2", children: r }),
+    n
+  ] });
+  return /* @__PURE__ */ s("div", { className: "min-h-screen bg-gradient-to-b from-blue-50 to-purple-50", children: /* @__PURE__ */ s("div", { className: "max-w-[820px] mx-auto px-4 py-4 md:py-8", children: /* @__PURE__ */ d(
+    D.div,
+    {
+      initial: { opacity: 0, y: 20 },
+      animate: { opacity: 1, y: 0 },
+      transition: { duration: 0.6 },
+      children: [
+        /* @__PURE__ */ d("div", { className: "bg-white rounded-[20px] p-5 md:p-8 border border-purple-100 shadow-sm mx-2 mt-6 mb-8", children: [
+          /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl md:text-2xl font-semibold leading-tight mb-1", children: "Privacy Policy 🔒" }),
+          /* @__PURE__ */ s("p", { className: "text-xs text-gray-400 mb-5", children: "Last updated: July 5, 2026" }),
+          /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed mb-6", children: "Pee Dee Pet Care is a free local directory run by one person (hi, I'm Shannon!) — not a big company collecting data to sell ads. Here's the plain-language version of what we collect and what we do with it." }),
+          e("What we collect", /* @__PURE__ */ d("ul", { className: "text-gray-700 text-sm md:text-base leading-relaxed", style: { listStyleType: "disc", paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }, children: [
+            /* @__PURE__ */ d("li", { children: [
+              /* @__PURE__ */ s("strong", { children: "Account info: " }),
+              "if you create an account, we store your name, email address, and account type (pet owner or business owner). Your password is never stored as-is — only a securely encrypted version we can't read."
+            ] }),
+            /* @__PURE__ */ d("li", { children: [
+              /* @__PURE__ */ s("strong", { children: "Your shortlist: " }),
+              "the businesses you save to your shortlist, so it's there when you come back."
+            ] }),
+            /* @__PURE__ */ d("li", { children: [
+              /* @__PURE__ */ s("strong", { children: "Reviews: " }),
+              "if you post a review, the review and the name on it are shown publicly on the listing."
+            ] }),
+            /* @__PURE__ */ d("li", { children: [
+              /* @__PURE__ */ s("strong", { children: "Anonymous usage stats: " }),
+              "basic counts like page visits and which listings get clicked, so we know what's useful. These aren't tied to your identity."
+            ] })
+          ] })),
+          e("What we use it for", /* @__PURE__ */ d("ul", { className: "text-gray-700 text-sm md:text-base leading-relaxed", style: { listStyleType: "disc", paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }, children: [
+            /* @__PURE__ */ s("li", { children: "Signing you in and keeping your shortlist saved." }),
+            /* @__PURE__ */ s("li", { children: "Sending you a password reset link if you ask for one." }),
+            /* @__PURE__ */ s("li", { children: "Replying if you email us." }),
+            /* @__PURE__ */ s("li", { children: "Understanding which pages and listings help people, so we can make the directory better." })
+          ] })),
+          e("What we never do", /* @__PURE__ */ d("ul", { className: "text-gray-700 text-sm md:text-base leading-relaxed", style: { listStyleType: "disc", paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }, children: [
+            /* @__PURE__ */ s("li", { children: "We never sell your information. Full stop." }),
+            /* @__PURE__ */ s("li", { children: "We never share your email or personal details with the businesses listed here or with advertisers." }),
+            /* @__PURE__ */ s("li", { children: "We don't send marketing spam. Emails from us are account-related (like password resets) or replies to you." })
+          ] })),
+          e("Cookies & analytics", /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed", children: "We use your browser's local storage to keep you logged in and remember simple preferences. We use Google Analytics to see anonymous, aggregate traffic (like how many people visited the grooming page) — not to identify you." })),
+          e("Your choices", /* @__PURE__ */ d("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed", children: [
+            "You can browse the whole directory without an account. If you have one and want it (and everything tied to it) deleted, just email ",
+            /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com?subject=Delete%20my%20account", className: "text-purple-600 font-semibold hover:underline break-all", children: "hello@peedeepetcare.com" }),
+            " and we'll take care of it."
+          ] })),
+          e("Kids", /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed", children: "This site isn't directed at children under 13, and we don't knowingly collect information from them." })),
+          e("Changes to this policy", /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed", children: "If we ever change how we handle your info, we'll update this page and the date at the top." })),
+          /* @__PURE__ */ d("div", { className: "mt-6 pt-5 border-t border-purple-300/30 text-gray-700 text-sm md:text-base leading-relaxed", children: [
+            /* @__PURE__ */ s("p", { className: "mb-2", children: "Questions about any of this?" }),
+            /* @__PURE__ */ d("p", { children: [
+              "📧 ",
+              /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "text-purple-600 font-semibold hover:underline break-all", children: "hello@peedeepetcare.com" })
+            ] })
+          ] })
+        ] }),
+        /* @__PURE__ */ s("div", { className: "text-center mb-10", children: /* @__PURE__ */ s(
+          "button",
+          {
+            onClick: () => t?.("home"),
+            className: "bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 h-11 rounded-[14px] transition-colors",
+            children: "← Back to Home"
+          }
+        ) })
+      ]
+    }
+  ) }) });
 }
 const uf = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzLjciPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiByeD0iNiIvPjxwYXRoIGQ9Im0xNiA1OCAxNi0xOCAzMiAzMiIvPjxjaXJjbGUgY3g9IjUzIiBjeT0iMzUiIHI9IjciLz48L3N2Zz4KCg==";
 function hf(t) {
@@ -15085,6 +15158,10 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
                     }
                   )
                 ] })
+              ] }),
+              view === "signup" && /* @__PURE__ */ d("p", { className: "text-xs text-gray-500 mt-1 leading-relaxed text-center", children: [
+                "🔒 We only use your info to run your account — never sold, never shared. ",
+                /* @__PURE__ */ s("a", { href: "/privacy", target: "_blank", rel: "noopener noreferrer", className: "text-purple-600 hover:text-purple-700 underline underline-offset-2", children: "Privacy Policy" })
               ] }),
               successMsg && /* @__PURE__ */ s("div", { className: "bg-green-50 text-green-700 px-4 py-2 rounded-lg text-sm mt-3", children: successMsg }),
               g && /* @__PURE__ */ s("div", { className: "bg-red-50 text-red-600 px-4 py-2 rounded-lg text-sm mt-3", children: g }),
@@ -20625,13 +20702,13 @@ function oy() {
     console.log("🎬 Initializing - URL hash:", k);
     const I = sessionStorage.getItem("pawsitively_current_page");
     console.log("🎬 Initializing - sessionStorage:", I);
-    const z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "shortlist", "blog"], A0 = (k) => k && (k === "blog" || k.startsWith("blog/")) ? "blog" : k && z.includes(k) && !(k === "about" && window.innerWidth >= 768) ? k : null;
+    const z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "privacy", "shortlist", "blog"], A0 = (k) => k && (k === "blog" || k.startsWith("blog/")) ? "blog" : k && z.includes(k) ? k : null;
     return A0(k) ? (console.log("✅ Using hash:", k), A0(k)) : A0(I) ? (console.log("✅ Using sessionStorage:", I), A0(I)) : (console.log("📍 No valid page found, defaulting to home"), "home");
   }), [r, n] = E(() => {
     const pathname = blogPathname();
     if (isBlogPathname(pathname))
       return [pathname.startsWith("/blog/") && pathname.length > 6 ? "blog/" + decodeBlogSlug(pathname.slice(6)) : "blog"];
-    const k = window.location.hash.slice(1), I = sessionStorage.getItem("pawsitively_current_page"), z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "shortlist", "blog"], A0 = (G) => G && (G === "blog" || G.startsWith("blog/")) ? "blog" : G && z.includes(G) && !(G === "about" && window.innerWidth >= 768) ? G : null;
+    const k = window.location.hash.slice(1), I = sessionStorage.getItem("pawsitively_current_page"), z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "privacy", "shortlist", "blog"], A0 = (G) => G && (G === "blog" || G.startsWith("blog/")) ? "blog" : G && z.includes(G) ? G : null;
     return A0(k) ? [k] : A0(I) ? [I] : ["home"];
   }), [i, o] = E(!1), [a, l] = E(!1), [c, u] = E("guest"), [h, p] = E("signup"), [m, f] = E(null), [v, g] = E(null), [b, w] = E(!1), [x, T] = E(0), [Pv, Nv] = E(null), [Iv, zv] = E(null), { user: P, login: N, logout: S } = vi(), C = (k) => {
     n((I) => [...I, k]), e(k);
@@ -20709,8 +20786,6 @@ function oy() {
     I ? console.log(z ? "🔒 USER EDITS DETECTED - Seed blocked to preserve edits!" : "✅ Found existing data - not re-seeding") : (console.log("🌱 COMPLETELY EMPTY - First time ever, loading initial data..."), sy(), console.log("✅ Initial data loaded!"));
   }, []), U(() => {
     window.scrollTo(0, 0);
-  }, [t]), U(() => {
-    t === "about" && window.innerWidth >= 768 && e("home");
   }, [t]), U(() => {
     t === "home" && (async () => {
       try {
@@ -20809,6 +20884,8 @@ function oy() {
             }
           }
         );
+      case "privacy":
+        return /* @__PURE__ */ s(privacyPage, { onNavigate: C });
       case "shortlist":
         return /* @__PURE__ */ s(bf, { onNavigate: C, user: P });
       case "blog":
@@ -20843,7 +20920,7 @@ function oy() {
     /* @__PURE__ */ d("div", { className: "sticky top-0 z-50", children: [
     /* @__PURE__ */ s("nav", { className: "bg-[#fce5c1]", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 md:sm:px-6 md:lg:px-8", children: [
       /* @__PURE__ */ d("div", { className: "md:hidden flex justify-between items-center h-[56px] px-4", children: [
-        ["grooming", "training", "boarding", "sitters", "vet", "about", "products", "shortlist", "blog"].includes(t) ? /* @__PURE__ */ s(
+        ["grooming", "training", "boarding", "sitters", "vet", "about", "privacy", "products", "shortlist", "blog"].includes(t) ? /* @__PURE__ */ s(
           "button",
           {
             className: "text-gray-700 hover:text-purple-600",
@@ -21079,7 +21156,17 @@ function oy() {
           (/* @__PURE__ */ new Date()).getFullYear(),
           " Pawsitively Fabulous. All rights reserved."
         ] }),
-        /* @__PURE__ */ s("p", { className: "text-xs text-purple-500/70", children: "Privacy • Terms • Contact" })
+        /* @__PURE__ */ d("p", { className: "text-xs text-purple-500/70 flex items-center gap-2", children: [
+          /* @__PURE__ */ s("a", { href: "/about", onClick: (k) => {
+            k.preventDefault(), C("about");
+          }, className: "underline underline-offset-2 hover:text-purple-700", children: "About" }),
+          "•",
+          /* @__PURE__ */ s("a", { href: "/privacy", onClick: (k) => {
+            k.preventDefault(), C("privacy");
+          }, className: "underline underline-offset-2 hover:text-purple-700", children: "Privacy" }),
+          "•",
+          /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "underline underline-offset-2 hover:text-purple-700", children: "Contact" })
+        ] })
       ] })
     ] }),
       /* @__PURE__ */ d("div", { className: "hidden md:block relative w-full", children: [
@@ -21169,7 +21256,18 @@ function oy() {
           ] })
         ] }),
         /* @__PURE__ */ s("p", { className: "text-purple-600 text-center absolute left-0 right-0 top-1/2", style: { transform: "translateY(-50%)", margin: 0 }, children: "All Your Pet Needs in Darlington/Florence Area" }),
-        t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "absolute top-1/2 -translate-y-1/2 text-xs text-purple-500/70 tracking-wide pointer-events-none whitespace-nowrap", style: { right: "1.75rem" }, children: `${Pv.toLocaleString()} visits and counting` })
+        /* @__PURE__ */ d("div", { className: "absolute top-1/2 -translate-y-1/2 text-right", style: { right: "1.75rem" }, children: [
+          /* @__PURE__ */ d("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0 }, children: [
+            /* @__PURE__ */ s("a", { href: "/about", onClick: (k) => {
+              k.preventDefault(), C("about");
+            }, className: "hover:text-purple-900 underline underline-offset-2", children: "About Us" }),
+            /* @__PURE__ */ s("span", { className: "mx-2 text-purple-400 font-normal", children: "•" }),
+            /* @__PURE__ */ s("a", { href: "/privacy", onClick: (k) => {
+              k.preventDefault(), C("privacy");
+            }, className: "hover:text-purple-900 underline underline-offset-2", children: "Privacy Policy" })
+          ] }),
+          t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "text-xs text-purple-500/70 tracking-wide pointer-events-none whitespace-nowrap", style: { margin: 0, marginTop: "2px" }, children: `${Pv.toLocaleString()} visits and counting` })
+        ] })
       ] })
     ] })
   ] });
