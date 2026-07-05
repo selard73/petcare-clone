@@ -274,7 +274,7 @@
       "tldr": "Dogs don't unlearn commands out of spite. When a dog stops responding to basic commands, something in their environment, body, or routine has shifted. Once you figure out what that is, you can reset.",
       "excerpt": "Learn why dogs stop listening to basic commands and how to reset training at home. Get practical fixes, red flags, and local help if needed.",
       "date": "2026-07-01",
-      "dateModified": "2026-07-02",
+      "dateModified": "2026-07-05",
       "readMinutes": 11,
       "coverImage": "/blog/images/dog-wont-listen-cover-v2.png",
       "blocks": [
@@ -482,12 +482,6 @@
           ]
         },
         {
-          "type": "img",
-          "src": "/blog/images/dog-wont-listen-trainer-v2.png",
-          "alt": "Man in a park holding a leash while a golden retriever pulls away and ignores a stay command",
-          "caption": "When home resets stall or distractions win every time, a local trainer can help you proof commands in real-world settings."
-        },
-        {
           "type": "p",
           "text": "If you are in the Darlington, Florence, or Hartsville area, start with our guide to choosing a trainer, then browse the Pee Dee Pet Care training directory to compare professionals near you."
         },
@@ -496,6 +490,12 @@
           "text": "Every trainer listed serves the Pee Dee region, so you are not sorting through results from three states away.",
           "linkText": "Find a Dog Trainer in the Pee Dee Area",
           "linkHref": "/blog/finding-local-dog-trainer-pee-dee"
+        },
+        {
+          "type": "img",
+          "src": "/blog/images/dog-wont-listen-trainer-v2.png",
+          "alt": "Man in a park holding a leash while a golden retriever pulls away and ignores a stay command",
+          "caption": "When home resets stall or distractions win every time, a local trainer can help you proof commands in real-world settings."
         },
         {
           "type": "h2",
@@ -577,7 +577,7 @@
       "tldr": "Most healthy short-haired cats groom themselves well, but long-haired, senior, overweight, or arthritic cats often need professional help. Cat grooming is a different skill from dog grooming — look for matting, coat changes, odor, or trouble reaching hindquarters, then choose a groomer with real feline experience in the Pee Dee area.",
       "excerpt": "Learn when cat grooming is needed, how it differs from dog grooming, and what to ask before booking a local cat groomer in the Pee Dee area.",
       "date": "2026-06-30",
-      "dateModified": "2026-07-02",
+      "dateModified": "2026-07-05",
       "readMinutes": 12,
       "coverImage": "/blog/images/cat-grooming-cover-v2.png",
       "blocks": [
@@ -759,13 +759,20 @@
           "text": "Ask These Questions Before You Book"
         },
         {
-          "type": "ul",
-          "items": [
-            "Do you have experience specifically with cats, or primarily dogs? There's no shame in asking. A groomer who works mostly with dogs may be perfectly capable, but you want to know upfront.",
-            "How do you handle a cat that becomes stressed during the session? The answer should involve slowing down, taking breaks, or ending the session early, not pushing through. Forcing a stressed cat is dangerous for everyone involved.",
-            "Do you offer cat-only appointment times or a separate space? Cats do better when they're not surrounded by the sounds and smells of dogs. Some salons offer dedicated cat hours or a quieter room.",
-            "Are you certified or trained in feline grooming? The National Cat Groomers Institute offers certification specifically for cat groomers. It's not required, but it's a meaningful signal of commitment."
-          ]
+          "type": "p",
+          "text": "\"Do you have experience specifically with cats, or primarily dogs?\" There's no shame in asking. A groomer who works mostly with dogs may be perfectly capable, but you want to know upfront."
+        },
+        {
+          "type": "p",
+          "text": "\"How do you handle a cat that becomes stressed during the session?\" The answer should involve slowing down, taking breaks, or ending the session early, not pushing through. Forcing a stressed cat is dangerous for everyone involved."
+        },
+        {
+          "type": "p",
+          "text": "\"Do you offer cat-only appointment times or a separate space?\" Cats do better when they're not surrounded by the sounds and smells of dogs. Some salons offer dedicated cat hours or a quieter room."
+        },
+        {
+          "type": "p",
+          "text": "\"Are you certified or trained in feline grooming?\" The National Cat Groomers Institute offers certification specifically for cat groomers. It's not required, but it's a meaningful signal of commitment."
         },
         {
           "type": "h3",
@@ -787,11 +794,6 @@
         {
           "type": "p",
           "text": "If your cat is older, has mobility issues, or is managing a health condition, mention it explicitly when you call. A good groomer will adjust their approach. According to grooming specialists, senior cats with arthritis or fragile skin benefit from even shorter sessions, more frequent breaks, and extra care around joints and pressure points. Shaving is generally avoided for elderly cats because thinner skin means a much higher risk of injury."
-        },
-        {
-          "type": "img",
-          "src": "/blog/images/cat-grooming-petmd.png",
-          "alt": "A fluffy long-haired cat being gently dried with a low-heat professional dryer during grooming"
         },
         {
           "type": "blockquote",
@@ -821,32 +823,53 @@
           "navigate": "grooming"
         },
         {
-          "type": "h2",
-          "text": "FAQs"
+          "type": "img",
+          "src": "/blog/images/cat-grooming-petmd.png",
+          "alt": "A fluffy long-haired cat being gently dried with a low-heat professional dryer during grooming",
+          "caption": "Low-heat drying and patient handling are hallmarks of a groomer with real feline experience."
         },
         {
-          "type": "blockquote",
-          "label": "How do I know if my cat needs professional grooming?",
+          "type": "h2",
+          "text": "Frequently Asked Questions"
+        },
+        {
+          "type": "h3",
+          "text": "How do I know if my cat needs professional grooming?"
+        },
+        {
+          "type": "p",
           "text": "Look for matting, a greasy or dull coat, odor, dirt around the hindquarters, or trouble reaching certain areas while grooming. Long-haired, overweight, senior, or arthritic cats are the most common candidates for professional grooming."
         },
         {
-          "type": "blockquote",
-          "label": "How is cat grooming different from dog grooming?",
+          "type": "h3",
+          "text": "How is cat grooming different from dog grooming?"
+        },
+        {
+          "type": "p",
           "text": "Cat grooming requires a lighter touch, more attention to stress signals, and tools that work on thinner, more delicate skin. Cats usually need quieter environments, shorter sessions, and handling that prioritizes safety over speed."
         },
         {
-          "type": "blockquote",
-          "label": "How often should long-haired cats be groomed?",
+          "type": "h3",
+          "text": "How often should long-haired cats be groomed?"
+        },
+        {
+          "type": "p",
           "text": "Many long-haired cats do best with professional grooming every 4 to 6 weeks, especially if they are seniors or prone to tangles. Regular at-home brushing between visits helps reduce matting and keeps appointments easier."
         },
         {
-          "type": "blockquote",
-          "label": "Can a dog groomer groom cats too?",
+          "type": "h3",
+          "text": "Can a dog groomer groom cats too?"
+        },
+        {
+          "type": "p",
           "text": "Sometimes, but only if they have specific cat experience and a setup designed for feline grooming. A groomer who mainly works with dogs may not have the handling skills, tools, or environment cats need to stay calm and safe."
         },
         {
-          "type": "blockquote",
-          "label": "What should I ask before booking a cat groomer?",
+          "type": "h3",
+          "text": "What should I ask before booking a cat groomer?"
+        },
+        {
+          "type": "p",
           "text": "Ask about cat-specific experience, how they handle stressed cats, whether they offer quiet or cat-only appointment times, and what happens if your cat becomes too anxious during the session. Those answers tell you a lot."
         }
       ]
@@ -857,7 +880,7 @@
       "seoTitle": "Guide to Finding a Dog Groomer in the Pee Dee Area",
       "excerpt": "Find the right dog groomer in the Pee Dee: breed fit, anxious-dog handling, pricing, and a checklist for Florence, Darlington, and Hartsville.",
       "date": "2026-06-24",
-      "dateModified": "2026-06-25",
+      "dateModified": "2026-07-05",
       "readMinutes": 8,
       "coverImage": "/blog/images/groomer-face-trim.png",
       "blocks": [
@@ -935,14 +958,24 @@
           "text": "Good groomers love these questions. Here are the ones that actually tell you something useful:"
         },
         {
-          "type": "ul",
-          "items": [
-            "\"Do you have experience with [your dog's breed]?\" Not all coats are created equal. This one question tells you a lot.",
-            "\"How do you handle anxious or sensitive dogs?\" Listen for specifics — go-slow techniques, low-stress handling, shorter sessions. \"We manage it\" is not an answer from any dog groomer worth booking.",
-            "\"Do you have experience with skin allergies or sensitivities?\" If your dog has a history of reactions, you want a groomer who knows which products to avoid and will actually ask.",
-            "\"What's included in the price?\" Bath, dry, trim, nail grind, ear cleaning — not always bundled. Worth knowing upfront.",
-            "\"How long does a typical appointment run?\" A full groom for a medium dog is usually 2 to 3 hours. Knowing the timeline helps you plan and sets expectations on both sides."
-          ]
+          "type": "p",
+          "text": "\"Do you have experience with [your dog's breed]?\" Not all coats are created equal. This one question tells you a lot."
+        },
+        {
+          "type": "p",
+          "text": "\"How do you handle anxious or sensitive dogs?\" Listen for specifics — go-slow techniques, low-stress handling, shorter sessions. \"We manage it\" is not an answer from any dog groomer worth booking."
+        },
+        {
+          "type": "p",
+          "text": "\"Do you have experience with skin allergies or sensitivities?\" If your dog has a history of reactions, you want a groomer who knows which products to avoid and will actually ask."
+        },
+        {
+          "type": "p",
+          "text": "\"What's included in the price?\" Bath, dry, trim, nail grind, ear cleaning — not always bundled. Worth knowing upfront."
+        },
+        {
+          "type": "p",
+          "text": "\"How long does a typical appointment run?\" A full groom for a medium dog is usually 2 to 3 hours. Knowing the timeline helps you plan and sets expectations on both sides."
         },
         {
           "type": "img",
@@ -960,13 +993,20 @@
           "text": "Not every mismatch is obvious upfront. Here's what to watch for:"
         },
         {
-          "type": "ul",
-          "items": [
-            "They don't ask about your dog at intake. A dog groomer who doesn't ask about health issues, anxiety, or past experiences before getting started is skipping steps that matter.",
-            "Vague answers to specific questions. If you ask how a dog groomer handles sensitive skin or a nervous dog and the answer is a shrug, that's useful information.",
-            "The price changes significantly at pickup with no explanation. Coat condition can affect pricing — but you should hear about that before, not after.",
-            "Your dog seems off afterward. Tired after a groom is completely normal. Unusually withdrawn, flinchy, or hiding for days is worth paying attention to. Your dog's reaction is feedback."
-          ]
+          "type": "p",
+          "text": "They don't ask about your dog at intake. A dog groomer who doesn't ask about health issues, anxiety, or past experiences before getting started is skipping steps that matter."
+        },
+        {
+          "type": "p",
+          "text": "Vague answers to specific questions. If you ask how a dog groomer handles sensitive skin or a nervous dog and the answer is a shrug, that's useful information."
+        },
+        {
+          "type": "p",
+          "text": "The price changes significantly at pickup with no explanation. Coat condition can affect pricing — but you should hear about that before, not after."
+        },
+        {
+          "type": "p",
+          "text": "Your dog seems off afterward. Tired after a groom is completely normal. Unusually withdrawn, flinchy, or hiding for days is worth paying attention to. Your dog's reaction is feedback."
         },
         {
           "type": "h2",
