@@ -515,6 +515,13 @@ function getBlogPostExternalLinks(slug) {
       { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
     ];
   }
+  if (slug.includes("sitter") || slug.includes("walker")) {
+    return [
+      { href: "https://www.petsit.com/", label: "Pet Sitters International" },
+      { href: "https://www.petsitters.org/", label: "National Association of Professional Pet Sitters" },
+      { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
+    ];
+  }
   return [
     { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
     { href: "https://www.akc.org/", label: "American Kennel Club" },

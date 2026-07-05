@@ -10,7 +10,7 @@
       "date": "2026-07-04",
       "dateModified": "2026-07-05",
       "readMinutes": 9,
-      "coverImage": "/blog/images/pet-sitter-cover.png",
+      "coverImage": "/blog/images/sitter-walker-cover.png",
       "blocks": [
         {
           "type": "p",
@@ -27,9 +27,9 @@
         },
         {
           "type": "img",
-          "src": "/blog/images/pet-sitter-cover.png",
-          "alt": "Dog walker leading two happy dogs on leashes through a neighborhood park",
-          "caption": "A good dog walker keeps a consistent routine, communicates after every visit, and genuinely enjoys the work."
+          "src": "/blog/images/sitter-walker-hero.png",
+          "alt": "Pet sitter in a green shirt playing with a golden retriever and a tabby cat in a bright living room",
+          "caption": "In-home sitters keep pets in familiar surroundings — often the least stressful option for cats, seniors, and anxious dogs."
         },
         {
           "type": "h2",
@@ -104,10 +104,9 @@
         },
         {
           "type": "img",
-          "src": "/blog/images/pet-sitter-meetgreet.png",
-          "alt": "Pet sitter kneeling on a living room floor while a cautious dog approaches to sniff",
-          "caption": "A calm, patient meet-and-greet tells you a lot about how a sitter reads animal body language.",
-          "imageClass": "blog-magazine-image--headroom"
+          "src": "/blog/images/sitter-walker-meet-greet.png",
+          "alt": "Pet sitter taking notes while meeting a doodle dog and its owner during a meet-and-greet",
+          "caption": "A calm, patient meet-and-greet tells you a lot about how a sitter reads animal body language."
         },
         {
           "type": "h2",
@@ -202,9 +201,9 @@
         },
         {
           "type": "img",
-          "src": "/blog/images/pet-sitter-trust.png",
-          "alt": "Happy dog greeting a familiar pet sitter at the front door",
-          "caption": "A little upfront effort — a good meet-and-greet, clear instructions, and a trial visit — makes every stay after that easier."
+          "src": "/blog/images/sitter-walker-agreement.png",
+          "alt": "Pet owner shaking hands with a pet sitter holding a pet sitting agreement on a clipboard",
+          "caption": "A little upfront effort — a good meet-and-greet, clear instructions, and a written agreement — makes every stay after that easier."
         },
         {
           "type": "h2",
