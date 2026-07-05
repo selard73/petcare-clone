@@ -97,9 +97,14 @@
       }
       .blog-magazine-section ul,
       .blog-magazine-section ol,
-      .blog-magazine-section blockquote,
+      .blog-magazine-section blockquote {
+        overflow: hidden;
+      }
+      /* CTA boxes: never sit beside or under a floated image — always
+         drop to full width below it */
       .blog-magazine-section > div {
         overflow: hidden;
+        clear: both;
       }
       img.blog-magazine-image {
         width: 100% !important;
