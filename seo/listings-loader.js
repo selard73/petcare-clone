@@ -52,6 +52,11 @@ function parseBusinessFromFields(fields) {
     description: about.description || "",
     address: about.address || "",
     phone: about.phone || "",
+    zipCode: about.zipCode || "",
+    priceRange: about.priceRange || "",
+    // Hours map keyed by weekday name (e.g. { monday: "7:30 AM - 5:30 PM" }).
+    // Omitted when the business asked users to call for hours.
+    hours: !about.callForHours && about.hours && typeof about.hours === "object" ? about.hours : null,
   };
 }
 
