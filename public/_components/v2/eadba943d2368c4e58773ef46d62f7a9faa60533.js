@@ -13302,7 +13302,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                       /* @__PURE__ */ s("p", { className: "text-justify", children: "I thought: why isn't there just ONE place for all of this?" }),
                       /* @__PURE__ */ s("p", { className: "text-justify mt-3", children: "So, I built it. 💜" })
                     ] }),
-                    /* @__PURE__ */ d("ul", { className: "text-gray-700 space-y-2.5 md:space-y-3 w-full mt-3 mb-2", children: [
+                    /* @__PURE__ */ d("ul", { className: "text-gray-700 grid grid-cols-1 md:grid-cols-2 w-full mt-4 mb-2", style: { rowGap: "1rem", columnGap: "2.5rem" }, children: [
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3 w-full", children: [
                         /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🔎" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5 flex-1 min-w-0", children: [
