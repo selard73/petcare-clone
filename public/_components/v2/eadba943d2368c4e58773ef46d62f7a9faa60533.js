@@ -13278,15 +13278,15 @@ function df({ onOpenSignup: t, onNavigate: e }) {
     i && (e?.(i), n(!1));
   };
   return /* @__PURE__ */ d("div", { className: "min-h-screen bg-gradient-to-b from-blue-50 to-purple-50", children: [
-    /* @__PURE__ */ s("div", { className: "max-w-[820px] mx-auto px-4 py-4 md:py-8", children: /* @__PURE__ */ d(
+    /* @__PURE__ */ s("div", { className: "mx-auto px-4 py-4 md:py-8", style: { maxWidth: "56rem" }, children: /* @__PURE__ */ d(
       D.div,
       {
         initial: { opacity: 0, y: 20 },
         animate: { opacity: 1, y: 0 },
         transition: { duration: 0.6 },
         children: [
-          /* @__PURE__ */ d("div", { className: "mx-2 mb-8 mt-6", children: [
-            /* @__PURE__ */ s("div", { className: "bg-white rounded-[20px] p-5 border border-purple-100 shadow-sm relative mx-2", children: /* @__PURE__ */ d(
+          /* @__PURE__ */ d("div", { className: "mx-2 md:mx-0 mb-8 mt-6", children: [
+            /* @__PURE__ */ s("div", { className: "bg-white rounded-[20px] md:rounded-2xl p-5 md:p-8 border border-purple-100 md:border-purple-200 shadow-sm md:shadow-md relative mx-2 md:mx-0", children: /* @__PURE__ */ d(
               D.div,
               {
                 initial: { opacity: 0, y: 16 },
@@ -13334,7 +13334,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                     ] })
                   ] }),
                   /* @__PURE__ */ d("div", { className: "mt-4 md:mt-[30px]", children: [
-                    /* @__PURE__ */ s("div", { className: "hidden md:block w-[58%] mx-auto border-t border-purple-300/30 mb-6" }),
+                    /* @__PURE__ */ s("div", { className: "hidden md:block mx-auto border-t border-purple-300/30 mb-6", style: { width: "58%" } }),
                     /* @__PURE__ */ d("div", { className: "text-gray-700 text-sm md:text-base leading-relaxed text-justify", children: [
                       /* @__PURE__ */ s("p", { className: "mb-2", children: "Spotted a business I missed? Want to say hi?" }),
                       /* @__PURE__ */ d("p", { className: "mb-2 mt-3", children: [
@@ -13355,10 +13355,10 @@ function df({ onOpenSignup: t, onNavigate: e }) {
               }
             ) })
           ] }),
-          /* @__PURE__ */ d("div", { className: "mt-8 mx-2", children: [
-            /* @__PURE__ */ s("h2", { className: "text-purple-600 text-xl font-semibold leading-tight mb-4 px-1", children: "How it works" }),
-            /* @__PURE__ */ d("div", { className: "grid grid-cols-1 gap-8 mb-8", children: [
-            /* @__PURE__ */ s("div", { className: "bg-white rounded-[20px] p-5 border border-purple-100 shadow-sm relative mx-2", children: /* @__PURE__ */ d(
+          /* @__PURE__ */ d("div", { className: "mt-8 mx-2 md:mx-0", children: [
+            /* @__PURE__ */ s("h2", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight mb-4 px-1 md:px-0", children: "How it works" }),
+            /* @__PURE__ */ d("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-8 mb-8", children: [
+            /* @__PURE__ */ s("div", { className: "bg-white rounded-[20px] md:rounded-2xl p-5 md:p-8 border border-purple-100 md:border-purple-200 shadow-sm md:shadow-md relative mx-2 md:mx-0", children: /* @__PURE__ */ d(
               D.div,
               {
                 initial: { opacity: 0 },
@@ -13414,7 +13414,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                     ] })
                   ] }),
                   /* @__PURE__ */ d("div", { className: "mt-5 md:mt-[30px]", children: [
-                    /* @__PURE__ */ s("div", { className: "hidden md:block w-[58%] mx-auto border-t border-purple-300/30 mb-6" }),
+                    /* @__PURE__ */ s("div", { className: "hidden md:block mx-auto border-t border-purple-300/30 mb-6", style: { width: "58%" } }),
                     /* @__PURE__ */ s(
                       "button",
                       {
@@ -13486,7 +13486,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                     ] })
                   ] }),
                   /* @__PURE__ */ d("div", { className: "mt-5 md:mt-[30px]", children: [
-                    /* @__PURE__ */ s("div", { className: "hidden md:block w-[58%] mx-auto border-t border-purple-300/30 mb-6" }),
+                    /* @__PURE__ */ s("div", { className: "hidden md:block mx-auto border-t border-purple-300/30 mb-6", style: { width: "58%" } }),
                     /* @__PURE__ */ s(
                       "a",
                       {
@@ -13580,15 +13580,15 @@ function privacyPage({ onNavigate: t }) {
     /* @__PURE__ */ s("h2", { className: "text-purple-600 text-lg md:text-xl font-semibold leading-tight mb-2", children: r }),
     n
   ] });
-  return /* @__PURE__ */ s("div", { className: "min-h-screen bg-gradient-to-b from-blue-50 to-purple-50", children: /* @__PURE__ */ s("div", { className: "max-w-[820px] mx-auto px-4 py-4 md:py-8", children: /* @__PURE__ */ d(
+  return /* @__PURE__ */ s("div", { className: "min-h-screen bg-gradient-to-b from-blue-50 to-purple-50", children: /* @__PURE__ */ s("div", { className: "mx-auto px-4 py-4 md:py-8", style: { maxWidth: "52rem" }, children: /* @__PURE__ */ d(
     D.div,
     {
       initial: { opacity: 0, y: 20 },
       animate: { opacity: 1, y: 0 },
       transition: { duration: 0.6 },
       children: [
-        /* @__PURE__ */ d("div", { className: "bg-white rounded-[20px] p-5 md:p-8 border border-purple-100 shadow-sm mx-2 mt-6 mb-8", children: [
-          /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl md:text-2xl font-semibold leading-tight mb-1", children: "Privacy Policy 🔒" }),
+        /* @__PURE__ */ d("div", { className: "bg-white rounded-[20px] md:rounded-2xl p-5 md:p-8 border border-purple-100 md:border-purple-200 shadow-sm md:shadow-md mx-2 md:mx-0 mt-6 mb-8", children: [
+          /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight mb-1", children: "Privacy Policy 🔒" }),
           /* @__PURE__ */ s("p", { className: "text-xs text-gray-400 mb-5", children: "Last updated: July 5, 2026" }),
           /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed mb-6", children: "Pee Dee Pet Care is a free local directory run by one person (hi, I'm Shannon!) — not a big company collecting data to sell ads. Here's the plain-language version of what we collect and what we do with it." }),
           e("What we collect", /* @__PURE__ */ d("ul", { className: "text-gray-700 text-sm md:text-base leading-relaxed", style: { listStyleType: "disc", paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }, children: [
