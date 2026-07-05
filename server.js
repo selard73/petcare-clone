@@ -1803,8 +1803,8 @@ async function maybeSendDailyClickReport() {
 // --- Pet of the month link: live redirect + adoption alert ---
 
 const PET_OF_MONTH = {
-  name: "Brice",
-  url: "https://us07d.sheltermanager.com/service?account=ch1194&method=animal_view&animalid=24737&template=animalview",
+  name: "Bilbo Wagz",
+  url: "https://us07d.sheltermanager.com/service?account=ch1194&method=animal_view&animalid=25124&template=animalview",
   fallbackUrl: "https://www.darlingtonhumane.org/adoptablepets",
 };
 const PET_LINK_CACHE_MS = 60 * 60 * 1000;

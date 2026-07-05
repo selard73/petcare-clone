@@ -6029,22 +6029,22 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                 /* @__PURE__ */ s("h2", { className: "text-purple-600 text-2xl md:text-4xl text-center", style: { marginBottom: window.innerWidth < 768 ? "1.5rem" : "2.5rem" }, children: "💜 This Week on Pee Dee Pet Care" }),
                 /* @__PURE__ */ d("div", { style: window.innerWidth < 768 ? { display: "grid", gridTemplateColumns: "1fr", gap: "1.75rem" } : { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem" }, children: [
                   /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
-                    /* @__PURE__ */ s("img", { src: "/images/home/brice.png", alt: "Brice — adoptable dog at the Darlington County Humane Society", style: { height: "13rem", width: "100%", objectFit: "cover", objectPosition: "center 30%", display: "block" } }),
+                    /* @__PURE__ */ s("img", { src: "/images/home/bilbo-wagz.png", alt: "Bilbo Wagz — adoptable dog at the Darlington County Humane Society", style: { height: "13rem", width: "100%", objectFit: "cover", objectPosition: "center 25%", display: "block" } }),
                     /* @__PURE__ */ d("div", { className: "flex flex-col items-center text-center flex-1", style: { padding: "1.25rem 2rem 1.5rem" }, children: [
                       /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "🐾 Fur-ever Friend of the Month" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-3", children: "Meet Brice — an 8-month-old hound/lab mix at the Darlington County Humane Society. This affectionate cuddle bug loves play groups, kiddie pools, and climbing into laps for hugs. After losing his first home, he's ready for a family who will show him what forever means." }),
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-3", children: "Meet Bilbo Wagz — a year-and-a-half-old pup at the Darlington County Humane Society. He arrived as a stray with wounds around his neck, but stayed incredibly friendly and loving. He's a play group favorite who gets along with everyone he meets, and volunteers call him handsome, well-mannered, and sweet. Bilbo is ready to leave shelter life behind." }),
                       /* @__PURE__ */ s(
                         "button",
                         {
                           onClick: () => {
-                            let ba = window.__briceSong;
-                            ba || (ba = window.__briceSong = new Audio("/audio/brices-forever-home.mp3")), ba.paused ? ba.play().catch(() => {}) : (ba.pause(), ba.currentTime = 0);
+                            let ba = window.__petOfMonthSong;
+                            ba || (ba = window.__petOfMonthSong = new Audio("/audio/bilbo-wagz-song.mp3")), ba.paused ? ba.play().catch(() => {}) : (ba.pause(), ba.currentTime = 0);
                           },
                           className: "text-purple-600 hover:text-purple-800 font-medium mb-4 transition-colors",
-                          children: "🔊 Click for Brice's Song"
+                          children: "🔊 Click for Bilbo's Song"
                         }
                       ),
-                      /* @__PURE__ */ s("a", { href: "/pet-of-month", target: "_blank", rel: "noopener noreferrer", className: "mt-auto inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg !text-white !font-semibold no-underline hover:opacity-90 transition-opacity", children: "Meet Brice →" })
+                      /* @__PURE__ */ s("a", { href: "/pet-of-month", target: "_blank", rel: "noopener noreferrer", className: "mt-auto inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg !text-white !font-semibold no-underline hover:opacity-90 transition-opacity", children: "Meet Bilbo →" })
                     ] })
                   ] }),
                   /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
