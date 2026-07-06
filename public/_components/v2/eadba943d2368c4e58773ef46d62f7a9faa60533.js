@@ -13626,7 +13626,6 @@ function privacyPage({ onNavigate: t }) {
             /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com?subject=Delete%20my%20account", className: "text-purple-600 font-semibold hover:underline break-all", children: "hello@peedeepetcare.com" }),
             " and we'll take care of it."
           ] })),
-          e("Kids", /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed", children: "This site isn't directed at children under 13, and we don't knowingly collect information from them." })),
           e("Changes to this policy", /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed", children: "If we ever change how we handle your info, we'll update this page and the date at the top." })),
           /* @__PURE__ */ d("div", { className: "mt-6 pt-5 border-t border-purple-300/30 text-gray-700 text-sm md:text-base leading-relaxed", children: [
             /* @__PURE__ */ s("p", { className: "mb-2", children: "Questions about any of this?" }),
