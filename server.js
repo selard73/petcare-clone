@@ -27,6 +27,7 @@ const CATEGORY_PAGE_PATHS = {
   "/about": "about",
   "/contact": "about",
   "/privacy": "privacy",
+  "/review": "review",
 };
 const SITEMAP_FILE = path.join(PUBLIC_DIR, "sitemap.xml");
 const { applySeoToIndexHtml } = require("./seo/apply-seo-html");
@@ -50,6 +51,9 @@ const AUTH_SESSION_DAYS = Number(process.env.AUTH_SESSION_DAYS || 30);
 const APP_BASE_URL = (process.env.APP_BASE_URL || "https://petcare-clone.onrender.com").replace(/\/$/, "");
 const PASSWORD_RESET_HOURS = Number(process.env.PASSWORD_RESET_HOURS || 1);
 const REVIEW_NOTIFY_TO = process.env.REVIEW_NOTIFY_EMAIL || "selard73@gmail.com";
+const REVIEW_FORM_TO = process.env.REVIEW_FORM_EMAIL || "hello@peedeepetcare.com";
+const REVIEW_FORM_TOKEN_DAYS = Number(process.env.REVIEW_FORM_TOKEN_DAYS || 7);
+const PENDING_REVIEWS_FILE = path.join(ROOT, "data", "pending-reviews.json");
 const REVIEW_NOTIFY_FROM =
   process.env.REVIEW_NOTIFY_FROM || "Pawsitively Fabulous <selard73@gmail.com>";
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
@@ -437,6 +441,13 @@ function initSqlite() {
     CREATE INDEX IF NOT EXISTS idx_claim_requests_status ON business_claim_requests(status, created_at DESC);
     CREATE INDEX IF NOT EXISTS idx_claim_requests_business ON business_claim_requests(business_id, status);
     CREATE INDEX IF NOT EXISTS idx_claim_requests_user ON business_claim_requests(user_id, status);
+    CREATE TABLE IF NOT EXISTS pending_reviews (
+      token TEXT PRIMARY KEY,
+      payload_json TEXT NOT NULL,
+      created_at TEXT NOT NULL,
+      expires_at TEXT NOT NULL,
+      confirmed_at TEXT
+    );
     CREATE TABLE IF NOT EXISTS business_click_events (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       event_type TEXT NOT NULL,
@@ -1359,7 +1370,7 @@ async function markPasswordResetTokenUsed(token) {
   await writeUsersDb(db);
 }
 
-async function sendAccountEmail({ to, subject, text }) {
+async function sendAccountEmail({ to, subject, text, html }) {
   if (RESEND_API_KEY) {
     const response = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -1372,6 +1383,7 @@ async function sendAccountEmail({ to, subject, text }) {
         to: [to],
         subject,
         text,
+        ...(html ? { html } : {}),
       }),
     });
     if (!response.ok) {
@@ -1400,7 +1412,285 @@ async function sendAccountEmail({ to, subject, text }) {
     to,
     subject,
     text,
+    ...(html ? { html } : {}),
   });
+}
+
+// ---------------------------------------------------------------------------
+// "Share Your Experience" review form (double opt-in via email confirmation)
+// ---------------------------------------------------------------------------
+
+const REVIEW_FORM_SERVICES = {
+  grooming: "Grooming",
+  training: "Training",
+  boarding: "Boarding & Daycare",
+  sitters: "Sitters & Walkers",
+  vet: "Vet Care",
+};
+
+async function readPendingReviewsFile() {
+  try {
+    const raw = await fsp.readFile(PENDING_REVIEWS_FILE, "utf8");
+    const parsed = JSON.parse(raw);
+    return Array.isArray(parsed?.reviews) ? parsed : { reviews: [] };
+  } catch {
+    return { reviews: [] };
+  }
+}
+
+async function writePendingReviewsFile(db) {
+  await fsp.mkdir(path.dirname(PENDING_REVIEWS_FILE), { recursive: true });
+  await fsp.writeFile(PENDING_REVIEWS_FILE, JSON.stringify(db, null, 2));
+}
+
+async function createPendingReview(payload) {
+  const token = crypto.randomBytes(24).toString("hex");
+  const createdAt = new Date().toISOString();
+  const expiresAt = new Date(Date.now() + REVIEW_FORM_TOKEN_DAYS * 24 * 60 * 60 * 1000).toISOString();
+
+  if (usingSqlite) {
+    sqlite
+      .prepare(
+        "INSERT INTO pending_reviews (token, payload_json, created_at, expires_at, confirmed_at) VALUES (?, ?, ?, ?, NULL)",
+      )
+      .run(token, JSON.stringify(payload), createdAt, expiresAt);
+    return token;
+  }
+
+  const db = await readPendingReviewsFile();
+  db.reviews.push({ token, payload, created_at: createdAt, expires_at: expiresAt, confirmed_at: null });
+  await writePendingReviewsFile(db);
+  return token;
+}
+
+async function getPendingReview(token) {
+  if (!token || !/^[a-f0-9]{48}$/.test(token)) return null;
+  if (usingSqlite) {
+    const row = sqlite
+      .prepare("SELECT token, payload_json, created_at, expires_at, confirmed_at FROM pending_reviews WHERE token = ?")
+      .get(token);
+    if (!row) return null;
+    let payload = null;
+    try {
+      payload = JSON.parse(row.payload_json);
+    } catch {
+      return null;
+    }
+    return { token: row.token, payload, createdAt: row.created_at, expiresAt: row.expires_at, confirmedAt: row.confirmed_at };
+  }
+  const db = await readPendingReviewsFile();
+  const row = db.reviews.find((item) => item.token === token);
+  if (!row) return null;
+  return { token: row.token, payload: row.payload, createdAt: row.created_at, expiresAt: row.expires_at, confirmedAt: row.confirmed_at };
+}
+
+async function markPendingReviewConfirmed(token) {
+  const confirmedAt = new Date().toISOString();
+  if (usingSqlite) {
+    sqlite.prepare("UPDATE pending_reviews SET confirmed_at = ? WHERE token = ?").run(confirmedAt, token);
+    return confirmedAt;
+  }
+  const db = await readPendingReviewsFile();
+  const row = db.reviews.find((item) => item.token === token);
+  if (row) row.confirmed_at = confirmedAt;
+  await writePendingReviewsFile(db);
+  return confirmedAt;
+}
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+async function handleReviewFormSubmit(req, res) {
+  const body = await parseBody(req);
+
+  // Honeypot: real visitors never fill this hidden field. Pretend success for bots.
+  if (String(body.website || "").trim()) {
+    sendJson(res, 200, { ok: true });
+    return true;
+  }
+
+  const serviceType = String(body.serviceType || "").trim().toLowerCase();
+  const businessName = String(body.businessName || "").trim().slice(0, 120);
+  const reviewerName = String(body.name || "").trim().slice(0, 80);
+  const email = normalizeEmail(body.email);
+  const rating = Number(body.rating);
+  const comment = String(body.comment || "").trim().slice(0, 4000);
+
+  if (!REVIEW_FORM_SERVICES[serviceType]) {
+    sendJson(res, 400, { error: "Please choose a service type." });
+    return true;
+  }
+  if (!businessName) {
+    sendJson(res, 400, { error: "Please enter the business name." });
+    return true;
+  }
+  if (!reviewerName) {
+    sendJson(res, 400, { error: "Please enter your name." });
+    return true;
+  }
+  if (!email || !email.includes("@") || !email.includes(".")) {
+    sendJson(res, 400, { error: "Please enter a valid email address." });
+    return true;
+  }
+  if (!Number.isInteger(rating) || rating < 1 || rating > 5) {
+    sendJson(res, 400, { error: "Please choose a star rating." });
+    return true;
+  }
+  if (!comment) {
+    sendJson(res, 400, { error: "Please write a short review." });
+    return true;
+  }
+
+  const payload = {
+    serviceType,
+    serviceLabel: REVIEW_FORM_SERVICES[serviceType],
+    businessId: String(body.businessId || "").trim().slice(0, 80),
+    businessName,
+    name: reviewerName,
+    email,
+    rating,
+    comment,
+    submittedAt: new Date().toISOString(),
+  };
+
+  const token = await createPendingReview(payload);
+  const confirmUrl = `${APP_BASE_URL}/review/confirm?token=${token}`;
+
+  const text = [
+    `Thank you for your review of ${businessName}!`,
+    "",
+    "Please click the link below to finalize your review:",
+    confirmUrl,
+    "",
+    "Once confirmed, please allow up to 24 hours for our team to add it to the site.",
+    "",
+    "If you didn't submit this review, you can safely ignore this email.",
+    "— Pawsitively Fabulous / Pee Dee Pet Care",
+  ].join("\n");
+
+  const html = `
+<div style="font-family:Arial,Helvetica,sans-serif;max-width:520px;margin:0 auto;padding:24px;color:#374151;">
+  <h2 style="color:#9333ea;margin:0 0 16px;">🐾 Pawsitively Fabulous</h2>
+  <p style="font-size:16px;line-height:1.6;">Thank you for your review of <strong>${escapeHtml(businessName)}</strong>!</p>
+  <p style="font-size:16px;line-height:1.6;">Please click the button below to finalize your review.</p>
+  <p style="text-align:center;margin:28px 0;">
+    <a href="${confirmUrl}" style="background:#9333ea;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:12px;font-size:16px;font-weight:bold;display:inline-block;">Finalize My Review</a>
+  </p>
+  <p style="font-size:14px;line-height:1.6;color:#6b7280;">Once confirmed, please allow up to 24 hours for our team to add it to the site.</p>
+  <p style="font-size:12px;line-height:1.6;color:#9ca3af;">If you didn't submit this review, you can safely ignore this email.</p>
+</div>`;
+
+  try {
+    await sendAccountEmail({
+      to: email,
+      subject: `Confirm your review of ${businessName}`,
+      text,
+      html,
+    });
+  } catch (error) {
+    console.error("Review confirmation email failed:", error.message);
+    sendJson(res, 502, {
+      error: "We couldn't send the confirmation email right now. Please try again in a few minutes.",
+    });
+    return true;
+  }
+
+  sendJson(res, 200, { ok: true });
+  return true;
+}
+
+function sendReviewConfirmPage(res, { heading, message, emoji = "🐾" }) {
+  const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>${escapeHtml(heading)} — Pawsitively Fabulous</title>
+</head>
+<body style="margin:0;font-family:Arial,Helvetica,sans-serif;background:linear-gradient(to bottom,#eff6ff,#faf5ff);min-height:100vh;">
+  <div style="max-width:480px;margin:0 auto;padding:48px 20px;text-align:center;">
+    <div style="background:#ffffff;border:1px solid #e9d5ff;border-radius:20px;padding:40px 28px;box-shadow:0 4px 14px rgba(147,51,234,0.12);">
+      <div style="font-size:44px;margin-bottom:12px;">${emoji}</div>
+      <h1 style="color:#9333ea;font-size:22px;margin:0 0 14px;">${escapeHtml(heading)}</h1>
+      <p style="color:#374151;font-size:15px;line-height:1.65;margin:0 0 24px;">${escapeHtml(message)}</p>
+      <a href="/" style="background:#9333ea;color:#ffffff;text-decoration:none;padding:12px 28px;border-radius:12px;font-size:15px;font-weight:bold;display:inline-block;">Back to Pawsitively Fabulous</a>
+    </div>
+  </div>
+</body>
+</html>`;
+  res.writeHead(200, { "Content-Type": "text/html; charset=utf-8", "Cache-Control": "no-store" });
+  res.end(html);
+}
+
+async function handleReviewConfirmPage(req, res, url) {
+  const token = String(url.searchParams.get("token") || "");
+  const row = await getPendingReview(token);
+
+  if (!row) {
+    sendReviewConfirmPage(res, {
+      emoji: "🤔",
+      heading: "This link isn't valid",
+      message: "We couldn't find a review for this link. It may have expired. Feel free to submit your review again.",
+    });
+    return true;
+  }
+
+  if (row.confirmedAt) {
+    sendReviewConfirmPage(res, {
+      emoji: "✅",
+      heading: "Already confirmed!",
+      message: `Your review of ${row.payload.businessName} is confirmed. Please give our team up to 24 hours to add it to the site.`,
+    });
+    return true;
+  }
+
+  if (new Date(row.expiresAt).getTime() < Date.now()) {
+    sendReviewConfirmPage(res, {
+      emoji: "⏰",
+      heading: "This link has expired",
+      message: "Confirmation links are valid for a limited time. Please submit your review again and confirm it from the new email.",
+    });
+    return true;
+  }
+
+  const confirmedAt = await markPendingReviewConfirmed(token);
+  const p = row.payload;
+  const ownerText = [
+    "A review was confirmed via the Share Your Experience form.",
+    "",
+    `Service type: ${p.serviceLabel || p.serviceType}`,
+    `Business: ${p.businessName}${p.businessId ? ` (id: ${p.businessId})` : ""}`,
+    `Reviewer: ${p.name}`,
+    `Reviewer email: ${p.email}`,
+    `Rating: ${p.rating}/5`,
+    `Submitted: ${p.submittedAt}`,
+    `Confirmed: ${confirmedAt}`,
+    "",
+    "Review:",
+    p.comment,
+  ].join("\n");
+
+  sendAccountEmail({
+    to: REVIEW_FORM_TO,
+    subject: `New review: ${p.businessName} — ${p.rating}/5 from ${p.name}`,
+    text: ownerText,
+  }).catch((error) => {
+    console.error("Review form owner email failed:", error.message);
+  });
+
+  sendReviewConfirmPage(res, {
+    emoji: "💜",
+    heading: "Thank you! Your review is confirmed",
+    message: `Your review of ${p.businessName} has been sent to our team. Please give us up to 24 hours to add it to the site.`,
+  });
+  return true;
 }
 
 async function handleAuthForgotPassword(req, res) {
@@ -2286,6 +2576,16 @@ const server = http.createServer(async (req, res) => {
     if (url.pathname.startsWith("/api/airtable")) {
       const handled = await handleAirtableApi(req, res, url);
       if (handled) return;
+    }
+
+    if (url.pathname === "/api/review-request" && req.method.toUpperCase() === "POST") {
+      await handleReviewFormSubmit(req, res);
+      return;
+    }
+
+    if (url.pathname === "/review/confirm" && (req.method === "GET" || req.method === "HEAD")) {
+      await handleReviewConfirmPage(req, res, url);
+      return;
     }
 
     if (url.pathname === "/api/stats/visits") {

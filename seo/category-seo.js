@@ -565,6 +565,11 @@ const SIMPLE_PAGE_SEO = {
     description:
       "How Pee Dee Pet Care handles your information: what we collect, what we use it for, and what we never do. We never sell or share your info.",
   },
+  "/review": {
+    title: "Share Your Experience | Pee Dee Pet Care",
+    description:
+      "Leave a review for a local pet business in Darlington County or Florence, SC. Your experience helps other pet parents across the Pee Dee.",
+  },
 };
 
 function resolveSimplePageSeo(pathname) {

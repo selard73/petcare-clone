@@ -13651,6 +13651,200 @@ function privacyPage({ onNavigate: t }) {
     }
   ) }) });
 }
+function reviewPage({ onNavigate: t }) {
+  const services = [["grooming", "Grooming"], ["training", "Training"], ["boarding", "Boarding & Daycare"], ["sitters", "Sitters & Walkers"], ["vet", "Vet Care"]];
+  const [svc, setSvc] = E(""), [bizList, setBizList] = E([]), [bizQuery, setBizQuery] = E(""), [bizId, setBizId] = E(""), [showSug, setShowSug] = E(!1), [nm, setNm] = E(""), [em, setEm] = E(""), [rating, setRating] = E(0), [hoverStar, setHoverStar] = E(0), [comment, setComment] = E(""), [hp, setHp] = E(""), [sending, setSending] = E(!1), [done, setDone] = E(!1), [err, setErr] = E(""), [locked, setLocked] = E(!1);
+  U(() => {
+    try {
+      const q = sessionStorage.getItem("pawsitively_review_prefill");
+      if (q) {
+        sessionStorage.removeItem("pawsitively_review_prefill");
+        const p = new URLSearchParams(q), id = p.get("b") || "";
+        let bn = p.get("n") || "", sk = (p.get("s") || "").toLowerCase();
+        if (id && (!bn || !sk)) {
+          const found = ce.getBusiness(id);
+          found && (bn = bn || found.name, sk = sk || found.category);
+        }
+        bn && services.some((x) => x[0] === sk) && (setSvc(sk), setBizQuery(bn), setBizId(id), setLocked(!0));
+      }
+    } catch {}
+  }, []);
+  U(() => {
+    let alive = !0;
+    if (!svc) {
+      setBizList([]);
+      return;
+    }
+    return (async () => {
+      try {
+        const r = await Oe.getBusinesses(svc);
+        alive && setBizList((r?.businesses || []).map((b) => ({ id: b.id, name: b.name || "", city: b.city || "" })).filter((b) => b.name).sort((a, b) => a.name.localeCompare(b.name)));
+      } catch {
+        alive && setBizList([]);
+      }
+    })(), () => {
+      alive = !1;
+    };
+  }, [svc]);
+  const matches = (() => {
+    const q = bizQuery.trim().toLowerCase();
+    return q ? bizList.filter((b) => b.name.toLowerCase().includes(q)) : bizList;
+  })();
+  const inputCls = "w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-purple-600 focus:border-transparent";
+  const labelCls = "block text-gray-700 mb-2";
+  const pickBiz = (b) => {
+    setBizQuery(b.name), setBizId(b.id), setShowSug(!1);
+  };
+  const submit = async (ev) => {
+    ev.preventDefault();
+    if (setErr(""), !svc) return setErr("Please choose a service type.");
+    if (!bizQuery.trim()) return setErr("Please enter the business name.");
+    if (!nm.trim()) return setErr("Please enter your name.");
+    if (!em.trim() || !em.includes("@")) return setErr("Please enter a valid email address.");
+    if (!rating) return setErr("Please choose a star rating.");
+    if (!comment.trim()) return setErr("Please write a short review.");
+    setSending(!0);
+    try {
+      const r = await fetch("/api/review-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ serviceType: svc, businessId: bizId, businessName: bizQuery.trim(), name: nm.trim(), email: em.trim(), rating, comment: comment.trim(), website: hp })
+      });
+      const j = await r.json().catch(() => ({}));
+      if (!r.ok) {
+        setErr(j.error || "Something went wrong. Please try again.");
+        return;
+      }
+      setDone(!0), window.scrollTo(0, 0);
+    } catch {
+      setErr("Something went wrong. Please try again.");
+    } finally {
+      setSending(!1);
+    }
+  };
+  return /* @__PURE__ */ s("div", { className: "min-h-screen bg-gradient-to-b from-blue-50 to-purple-50", children: /* @__PURE__ */ s("div", { className: "mx-auto px-4 py-4 md:py-8", style: { maxWidth: "40rem" }, children: /* @__PURE__ */ s(
+    D.div,
+    {
+      initial: { opacity: 0, y: 20 },
+      animate: { opacity: 1, y: 0 },
+      transition: { duration: 0.6 },
+      children: done ? /* @__PURE__ */ d("div", { className: "bg-white rounded-[20px] md:rounded-2xl p-5 md:p-8 border border-purple-100 md:border-purple-200 shadow-sm md:shadow-md mx-2 md:mx-0 mt-6 mb-8 text-center", children: [
+        /* @__PURE__ */ s("div", { style: { fontSize: "44px", marginBottom: "10px" }, children: "📬" }),
+        /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight mb-3", children: "Thank you for your review!" }),
+        /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed mb-2", children: "Please check your email to finalize and confirm your review." }),
+        /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs md:text-sm leading-relaxed mb-6", children: "Don't see it? Check your spam or promotions folder." }),
+        /* @__PURE__ */ s(
+          "button",
+          {
+            onClick: () => t?.("home"),
+            className: "bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 h-11 rounded-[14px] transition-colors",
+            children: "← Back to Home"
+          }
+        )
+      ] }) : /* @__PURE__ */ d("div", { className: "bg-white rounded-[20px] md:rounded-2xl p-5 md:p-8 border border-purple-100 md:border-purple-200 shadow-sm md:shadow-md mx-2 md:mx-0 mt-6 mb-8", children: [
+        /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight mb-1", children: "Share Your Experience ⭐" }),
+        /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed mb-6", children: "Tell us about a local pet business you've used — your review helps other pet parents across the Pee Dee." }),
+        /* @__PURE__ */ d("form", { onSubmit: submit, noValidate: !0, children: [
+          /* @__PURE__ */ s("input", { type: "text", name: "website", value: hp, onChange: (ev) => setHp(ev.target.value), tabIndex: -1, autoComplete: "off", "aria-hidden": "true", style: { position: "absolute", left: "-9999px", width: "1px", height: "1px", opacity: 0 } }),
+          /* @__PURE__ */ d("div", { className: "mb-5", children: [
+            /* @__PURE__ */ s("label", { className: labelCls, children: "Service Type" }),
+            /* @__PURE__ */ d(
+              "select",
+              {
+                value: svc,
+                disabled: locked,
+                onChange: (ev) => {
+                  setSvc(ev.target.value), setBizQuery(""), setBizId("");
+                },
+                className: inputCls,
+                style: locked ? { backgroundColor: "#f9fafb", color: "#6b7280" } : void 0,
+                children: [
+                  /* @__PURE__ */ s("option", { value: "", children: "Select a service..." }),
+                  services.map(([v, l]) => /* @__PURE__ */ s("option", { value: v, children: l }, v))
+                ]
+              }
+            )
+          ] }),
+          /* @__PURE__ */ d("div", { className: "mb-5", style: { position: "relative" }, children: [
+            /* @__PURE__ */ s("label", { className: labelCls, children: "Business Name" }),
+            /* @__PURE__ */ s(
+              "input",
+              {
+                type: "text",
+                value: bizQuery,
+                disabled: locked || !svc,
+                placeholder: svc ? "Start typing the business name..." : "Choose a service type first",
+                onChange: (ev) => {
+                  setBizQuery(ev.target.value), setBizId(""), setShowSug(!0);
+                },
+                onFocus: () => setShowSug(!0),
+                onBlur: () => setTimeout(() => setShowSug(!1), 200),
+                className: inputCls,
+                style: locked || !svc ? { backgroundColor: "#f9fafb", color: "#6b7280" } : void 0,
+                autoComplete: "off"
+              }
+            ),
+            !locked && showSug && svc && matches.length > 0 && /* @__PURE__ */ s("div", { style: { position: "absolute", top: "100%", left: 0, right: 0, zIndex: 30, background: "#ffffff", border: "1px solid #e5e7eb", borderRadius: "12px", marginTop: "4px", maxHeight: "240px", overflowY: "auto", boxShadow: "0 8px 20px rgba(0,0,0,0.10)" }, children: matches.slice(0, 50).map((b) => /* @__PURE__ */ d(
+              "button",
+              {
+                type: "button",
+                onMouseDown: (ev) => {
+                  ev.preventDefault(), pickBiz(b);
+                },
+                style: { display: "block", width: "100%", textAlign: "left", padding: "10px 14px", background: "transparent", border: "none", cursor: "pointer" },
+                children: [
+                  /* @__PURE__ */ s("span", { className: "text-gray-800 text-sm", children: b.name }),
+                  b.city && /* @__PURE__ */ s("span", { className: "text-gray-400 text-xs", style: { marginLeft: "8px" }, children: b.city })
+                ]
+              },
+              b.id
+            )) })
+          ] }),
+          /* @__PURE__ */ d("div", { className: "mb-5", children: [
+            /* @__PURE__ */ s("label", { className: labelCls, children: "Your Name" }),
+            /* @__PURE__ */ s("input", { type: "text", value: nm, onChange: (ev) => setNm(ev.target.value), placeholder: "First name (and last, if you like)", className: inputCls })
+          ] }),
+          /* @__PURE__ */ d("div", { className: "mb-5", children: [
+            /* @__PURE__ */ s("label", { className: labelCls, children: "Email Address" }),
+            /* @__PURE__ */ s("input", { type: "email", value: em, onChange: (ev) => setEm(ev.target.value), placeholder: "you@example.com", className: inputCls }),
+            /* @__PURE__ */ s("p", { className: "text-gray-400 text-xs mt-1", children: "Only used to confirm your review is from a real person — never shared, never spam." })
+          ] }),
+          /* @__PURE__ */ d("div", { className: "mb-5", children: [
+            /* @__PURE__ */ s("label", { className: labelCls, children: "Star Rating" }),
+            /* @__PURE__ */ s("div", { onMouseLeave: () => setHoverStar(0), children: [1, 2, 3, 4, 5].map((i) => /* @__PURE__ */ s(
+              "button",
+              {
+                type: "button",
+                "aria-label": `${i} star${i > 1 ? "s" : ""}`,
+                onClick: () => setRating(i),
+                onMouseEnter: () => setHoverStar(i),
+                style: { background: "none", border: "none", cursor: "pointer", padding: "0 6px 0 0", fontSize: "32px", lineHeight: 1, color: (hoverStar || rating) >= i ? "#f59e0b" : "#d1d5db", transition: "color 0.1s" },
+                children: "★"
+              },
+              i
+            )) })
+          ] }),
+          /* @__PURE__ */ d("div", { className: "mb-6", children: [
+            /* @__PURE__ */ s("label", { className: labelCls, children: "Your Review" }),
+            /* @__PURE__ */ s("textarea", { value: comment, onChange: (ev) => setComment(ev.target.value), rows: 5, placeholder: "What was your experience like?", className: inputCls, style: { resize: "vertical", minHeight: "120px" } })
+          ] }),
+          err && /* @__PURE__ */ s("p", { className: "text-sm mb-4", style: { color: "#dc2626" }, children: err }),
+          /* @__PURE__ */ s(
+            "button",
+            {
+              type: "submit",
+              disabled: sending,
+              className: "w-full bg-purple-600 hover:bg-purple-700 text-white font-medium h-11 rounded-[14px] transition-colors",
+              style: sending ? { opacity: 0.6, cursor: "wait" } : void 0,
+              children: sending ? "Sending..." : "Submit Review"
+            }
+          ),
+          /* @__PURE__ */ s("p", { className: "text-center text-xs text-gray-400 mt-3", children: "We'll email you a link to confirm your review before it goes to our team." })
+        ] })
+      ] })
+    }
+  ) }) });
+}
 const uf = "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODgiIGhlaWdodD0iODgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgc3Ryb2tlPSIjMDAwIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBvcGFjaXR5PSIuMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLXdpZHRoPSIzLjciPjxyZWN0IHg9IjE2IiB5PSIxNiIgd2lkdGg9IjU2IiBoZWlnaHQ9IjU2IiByeD0iNiIvPjxwYXRoIGQ9Im0xNiA1OCAxNi0xOCAzMiAzMiIvPjxjaXJjbGUgY3g9IjUzIiBjeT0iMzUiIHI9IjciLz48L3N2Zz4KCg==";
 function hf(t) {
   const [e, r] = E(!1), n = () => {
@@ -20705,13 +20899,13 @@ function oy() {
     console.log("🎬 Initializing - URL hash:", k);
     const I = sessionStorage.getItem("pawsitively_current_page");
     console.log("🎬 Initializing - sessionStorage:", I);
-    const z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "privacy", "shortlist", "blog"], A0 = (k) => k && (k === "blog" || k.startsWith("blog/")) ? "blog" : k && z.includes(k) ? k : null;
+    const z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "privacy", "review", "shortlist", "blog"], A0 = (k) => k && (k === "blog" || k.startsWith("blog/")) ? "blog" : k && z.includes(k) ? k : null;
     return A0(k) ? (console.log("✅ Using hash:", k), A0(k)) : A0(I) ? (console.log("✅ Using sessionStorage:", I), A0(I)) : (console.log("📍 No valid page found, defaulting to home"), "home");
   }), [r, n] = E(() => {
     const pathname = blogPathname();
     if (isBlogPathname(pathname))
       return [pathname.startsWith("/blog/") && pathname.length > 6 ? "blog/" + decodeBlogSlug(pathname.slice(6)) : "blog"];
-    const k = window.location.hash.slice(1), I = sessionStorage.getItem("pawsitively_current_page"), z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "privacy", "shortlist", "blog"], A0 = (G) => G && (G === "blog" || G.startsWith("blog/")) ? "blog" : G && z.includes(G) ? G : null;
+    const k = window.location.hash.slice(1), I = sessionStorage.getItem("pawsitively_current_page"), z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "privacy", "review", "shortlist", "blog"], A0 = (G) => G && (G === "blog" || G.startsWith("blog/")) ? "blog" : G && z.includes(G) ? G : null;
     return A0(k) ? [k] : A0(I) ? [I] : ["home"];
   }), [i, o] = E(!1), [a, l] = E(!1), [c, u] = E("guest"), [h, p] = E("signup"), [m, f] = E(null), [v, g] = E(null), [b, w] = E(!1), [x, T] = E(0), [Pv, Nv] = E(null), [Iv, zv] = E(null), { user: P, login: N, logout: S } = vi(), C = (k) => {
     n((I) => [...I, k]), e(k);
@@ -20889,6 +21083,8 @@ function oy() {
         );
       case "privacy":
         return /* @__PURE__ */ s(privacyPage, { onNavigate: C });
+      case "review":
+        return /* @__PURE__ */ s(reviewPage, { onNavigate: C });
       case "shortlist":
         return /* @__PURE__ */ s(bf, { onNavigate: C, user: P });
       case "blog":
@@ -20923,7 +21119,7 @@ function oy() {
     /* @__PURE__ */ d("div", { className: "sticky top-0 z-50", children: [
     /* @__PURE__ */ s("nav", { className: "bg-[#fce5c1]", children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 md:sm:px-6 md:lg:px-8", children: [
       /* @__PURE__ */ d("div", { className: "md:hidden flex justify-between items-center h-[56px] px-4", children: [
-        ["grooming", "training", "boarding", "sitters", "vet", "about", "privacy", "products", "shortlist", "blog"].includes(t) ? /* @__PURE__ */ s(
+        ["grooming", "training", "boarding", "sitters", "vet", "about", "privacy", "review", "products", "shortlist", "blog"].includes(t) ? /* @__PURE__ */ s(
           "button",
           {
             className: "text-gray-700 hover:text-purple-600",
@@ -21168,6 +21364,10 @@ function oy() {
             k.preventDefault(), C("privacy");
           }, className: "underline underline-offset-2 hover:text-purple-700", children: "Privacy" }),
           "•",
+          /* @__PURE__ */ s("a", { href: "/review", onClick: (k) => {
+            k.preventDefault(), C("review");
+          }, className: "underline underline-offset-2 hover:text-purple-700", children: "Leave a Review" }),
+          "•",
           /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "underline underline-offset-2 hover:text-purple-700", children: "Contact" })
         ] })
       ] })
@@ -21270,6 +21470,9 @@ function oy() {
           /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0, marginTop: "2px" }, children: /* @__PURE__ */ s("a", { href: "/privacy", onClick: (k) => {
             k.preventDefault(), C("privacy");
           }, className: "hover:text-purple-900 underline underline-offset-2", children: "Privacy Policy" }) }),
+          /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0, marginTop: "2px" }, children: /* @__PURE__ */ s("a", { href: "/review", onClick: (k) => {
+            k.preventDefault(), C("review");
+          }, className: "hover:text-purple-900 underline underline-offset-2", children: "Leave a Review" }) }),
           t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "text-xs text-purple-500/70 tracking-wide pointer-events-none whitespace-nowrap", style: { margin: 0, marginTop: "4px" }, children: `${Pv.toLocaleString()} visits and counting` })
         ] })
       ] })
