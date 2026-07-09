@@ -6215,7 +6215,9 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
         /* @__PURE__ */ s(
           "a",
           {
-            href: "#",
+            href: "https://www.instagram.com/peedeepetcare/",
+            target: "_blank",
+            rel: "noopener noreferrer",
             "aria-label": "Instagram",
             className: "inline-flex items-center justify-center rounded-full text-white transition-transform active:scale-95",
             style: {
@@ -21209,7 +21211,9 @@ function oy() {
           /* @__PURE__ */ s(
             "a",
             {
-              href: "#",
+              href: "https://www.instagram.com/peedeepetcare/",
+              target: "_blank",
+              rel: "noopener noreferrer",
               "aria-label": "Instagram",
               className: "inline-flex items-center justify-center rounded-full text-white transition-transform hover:scale-110",
               style: {
