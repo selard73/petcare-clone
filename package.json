@@ -8,6 +8,8 @@
     "verify-seo": "node scripts/verify-seo.js"
   },
   "dependencies": {
-    "nodemailer": "^6.10.1"
+    "nodemailer": "^6.10.1",
+    "playwright": "^1.61.1",
+    "qrcode": "^1.5.4"
   }
 }
