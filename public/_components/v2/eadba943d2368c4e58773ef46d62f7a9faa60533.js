@@ -21463,8 +21463,8 @@ function oy() {
           ] })
         ] }),
         /* @__PURE__ */ s("p", { className: "text-purple-600 text-center absolute left-0 right-0 top-1/2", style: { transform: "translateY(-50%)", margin: 0 }, children: "All Your Pet Needs in Darlington/Florence Area" }),
-        /* @__PURE__ */ d("div", { className: "absolute top-1/2 -translate-y-1/2 text-left", style: { right: "1.75rem" }, children: [
-          /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0 }, children: /* @__PURE__ */ s("a", { href: "/about", onClick: (k) => {
+      /* @__PURE__ */ d("div", { className: "absolute text-left", style: { right: "1.75rem", top: "50%", transform: "translateY(calc(-100% + 0.75rem))" }, children: [
+        /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0 }, children: /* @__PURE__ */ s("a", { href: "/about", onClick: (k) => {
             k.preventDefault(), C("about");
           }, className: "hover:text-purple-900 underline underline-offset-2", children: "About Us" }) }),
           /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0, marginTop: "2px" }, children: /* @__PURE__ */ s("a", { href: "/privacy", onClick: (k) => {
