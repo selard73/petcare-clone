@@ -29,6 +29,11 @@ const CATEGORY_PAGE_PATHS = {
   "/privacy": "privacy",
   "/review": "review",
 };
+// Deleted blog posts — send old URLs to the closest replacement article
+const REMOVED_BLOG_POST_REDIRECTS = {
+  "/blog/pet-boarding-questions-darlington-florence": "/blog/finding-pet-sitter-dog-walker-pee-dee",
+  "/blog/finding-local-dog-trainer-pee-dee": "/blog/affordable-dog-training-classes-florence-darlington-pee-dee",
+};
 const SITEMAP_FILE = path.join(PUBLIC_DIR, "sitemap.xml");
 const { applySeoToIndexHtml } = require("./seo/apply-seo-html");
 const { resolveSeoForPathname, injectSeoIntoHtml, injectBlogEnhancements, generateSitemapXml } = require("./seo/blog-seo");
@@ -2517,6 +2522,15 @@ const server = http.createServer(async (req, res) => {
 
     if ((req.method === "GET" || req.method === "HEAD") && pathname === "/sitemap.xml") {
       serveSitemap(req, res);
+      return;
+    }
+
+    if (REMOVED_BLOG_POST_REDIRECTS[pathname]) {
+      res.writeHead(301, {
+        Location: REMOVED_BLOG_POST_REDIRECTS[pathname],
+        "Cache-Control": "public, max-age=86400",
+      });
+      res.end();
       return;
     }
 
