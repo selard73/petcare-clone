@@ -68,6 +68,28 @@ function buildBlogPostSeo(post) {
 const BLOG_AUTHOR_NAME = "Pee Dee Pet Care Team";
 
 const BLOG_POST_FAQS = {
+  "pet-insurance-florence-sc-worth-it": [
+    {
+      q: "How much does pet insurance cost in Florence, SC?",
+      a: "In 2026, a comprehensive plan with a $500 deductible and 80% reimbursement averages about $43 per month for a medium 3-year-old dog and $23 per month for an indoor cat in the Florence and Darlington area. Senior dogs can run $85 or more per month.",
+    },
+    {
+      q: "Do veterinarians in Florence, SC accept pet insurance?",
+      a: "Not the way human doctors do. You pay the clinic at the time of service and the insurance company reimburses you afterward. Local clinics like Palmetto Animal Hospital can help you submit records and invoices quickly so your reimbursement isn't delayed.",
+    },
+    {
+      q: "Does pet insurance cover heartworm medicine?",
+      a: "Only if you pay extra for a wellness or preventative rider. Standard accident-and-illness policies do not cover routine medications.",
+    },
+    {
+      q: "When should I sign up for pet insurance?",
+      a: "Ideally the day you bring your pet home. Insurers do not cover pre-existing conditions, so any illness diagnosed before your policy starts will likely never be covered.",
+    },
+    {
+      q: "What are the alternatives to pet insurance?",
+      a: "A dedicated pet savings account, CareCredit (a healthcare credit card most Florence vets accept), discount programs like Pet Assure, and digital emergency funds like Pawp are the most common alternatives.",
+    },
+  ],
   "how-to-choose-veterinarian-florence-sc": [
     {
       q: "What is the average cost of a vet visit in Florence, SC?",
@@ -529,6 +551,13 @@ function getBlogPostExternalLinks(slug) {
     return [
       { href: "https://www.akc.org/expert-advice/training/how-to-prepare-your-dog-for-boarding/", label: "AKC boarding prep" },
       { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
+    ];
+  }
+  if (slug.includes("insurance")) {
+    return [
+      { href: "https://naphia.org/industry-data/", label: "NAPHIA pet insurance industry data" },
+      { href: "https://www.aspcapetinsurance.com/research-and-compare/pet-insurance-basics/how-does-pet-insurance-work/", label: "ASPCA: how pet insurance works" },
+      { href: "https://www.nerdwallet.com/insurance/pet/learn/cost-of-pet-insurance", label: "NerdWallet: cost of pet insurance" },
     ];
   }
   if (slug.includes("vet") || slug.includes("veterinarian")) {
