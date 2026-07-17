@@ -68,6 +68,28 @@ function buildBlogPostSeo(post) {
 const BLOG_AUTHOR_NAME = "Pee Dee Pet Care Team";
 
 const BLOG_POST_FAQS = {
+  "manage-fleas-south-carolina": [
+    {
+      q: "Can I get rid of fleas at home?",
+      a: "Yes, if you catch the problem early and stay consistent. Wash bedding, vacuum often, and use a vet-recommended flea product for every pet in the household. If fleas keep coming back after two to three weeks, it is time to call a vet.",
+    },
+    {
+      q: "When should I call a vet for fleas?",
+      a: "Call a vet if your pet is scratching constantly, has skin irritation, seems lethargic, or if you are unsure a product is safe. Kittens, puppies, senior pets, and cats need extra caution because some flea products are not safe for every animal.",
+    },
+    {
+      q: "Why are fleas such a problem in South Carolina?",
+      a: "South Carolina's warm, humid climate gives fleas a longer active season than many other places. In the Pee Dee region, they can stay active for much of the year, so prevention usually needs to be continuous instead of seasonal.",
+    },
+    {
+      q: "Do over-the-counter flea products always work?",
+      a: "Not always. Many OTC products only kill adult fleas, which can leave eggs and larvae behind. Products with an insect growth regulator can help interrupt the life cycle, but it is still best to check with a vet before treating your pet.",
+    },
+    {
+      q: "Should I treat the home too?",
+      a: "Yes. Fleas spend most of their life cycle in the environment, not on your pet. Vacuuming, washing bedding, and cleaning soft surfaces are important parts of stopping the cycle, especially when you are dealing with more than a mild infestation.",
+    },
+  ],
   "pet-insurance-florence-sc-worth-it": [
     {
       q: "How much does pet insurance cost in Florence, SC?",
@@ -551,6 +573,13 @@ function getBlogPostExternalLinks(slug) {
     return [
       { href: "https://www.akc.org/expert-advice/training/how-to-prepare-your-dog-for-boarding/", label: "AKC boarding prep" },
       { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
+    ];
+  }
+  if (slug.includes("flea")) {
+    return [
+      { href: "https://www.epa.gov/pets/controlling-fleas-and-ticks-around-your-home", label: "EPA: controlling fleas and ticks around your home" },
+      { href: "https://hgic.clemson.edu/factsheet/flea-control/", label: "Clemson HGIC flea control factsheet" },
+      { href: "https://www.avma.org/resources-tools/pet-owners/petcare/external-parasites", label: "AVMA: external parasites" },
     ];
   }
   if (slug.includes("insurance")) {
