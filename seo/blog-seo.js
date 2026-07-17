@@ -68,6 +68,28 @@ function buildBlogPostSeo(post) {
 const BLOG_AUTHOR_NAME = "Pee Dee Pet Care Team";
 
 const BLOG_POST_FAQS = {
+  "how-to-choose-veterinarian-florence-sc": [
+    {
+      q: "What is the average cost of a vet visit in Florence, SC?",
+      a: "A standard wellness exam usually ranges from $50 to $85, not including vaccines, heartworm tests, or medications. For a full annual visit including preventatives, expect to spend between $200 and $400 depending on the size of your pet.",
+    },
+    {
+      q: "Do Florence vets offer payment plans?",
+      a: "Most local clinics do not offer in-house financing, but many accept CareCredit or Scratchpay. It is always best to ask about these options before an emergency happens.",
+    },
+    {
+      q: "Can I tour a veterinary facility before my appointment?",
+      a: "Most reputable clinics will allow a brief tour of the public and exam areas if they aren't in the middle of a surgical rush. If a clinic flatly refuses to let you see the exam rooms, consider it a red flag.",
+    },
+    {
+      q: "What should I ask a veterinarian before becoming a client?",
+      a: "Ask how they handle after-hours emergencies, whether they are accepting new patients for your species, how they communicate test results, whether they provide written estimates before major procedures, and what their philosophy is on preventive versus reactive care.",
+    },
+    {
+      q: "Why do some vets in Florence have a split lunch hour?",
+      a: "It is very common for clinics in the Pee Dee to close between 12:00 PM and 2:00 PM. This is typically when they perform surgeries or catch up on charts, so plan your phone calls accordingly.",
+    },
+  ],
   "affordable-dog-training-classes-florence-darlington-pee-dee": [
     {
       q: "How much do dog training classes cost in Florence and Darlington SC?",
@@ -534,6 +556,13 @@ function getBlogPostExternalLinks(slug) {
   if (slug.includes("boarding")) {
     return [
       { href: "https://www.akc.org/expert-advice/training/how-to-prepare-your-dog-for-boarding/", label: "AKC boarding prep" },
+      { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
+    ];
+  }
+  if (slug.includes("vet") || slug.includes("veterinarian")) {
+    return [
+      { href: "https://www.avma.org/resources/pet-owners/yourvet/finding-veterinarian", label: "AVMA: finding a veterinarian" },
+      { href: "https://www.carecredit.com/vetmed/", label: "CareCredit veterinary financing" },
       { href: "https://www.avma.org/resources-tools/pet-owners/petcare", label: "AVMA pet care" },
     ];
   }
