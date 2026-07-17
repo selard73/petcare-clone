@@ -148,20 +148,6 @@ const BLOG_POST_FAQS = {
       a: "No. Pee Dee Pet Care is a free directory that lists independent local groomers.",
     },
   ],
-  "finding-local-dog-trainer-pee-dee": [
-    {
-      q: "What should I look for in a dog trainer?",
-      a: "Look for experience with your dog's age and issues, a training approach you are comfortable with, realistic expectations, and clear homework between sessions.",
-    },
-    {
-      q: "How do I know if a trainer is right for my dog?",
-      a: "Ask about class size or private-lesson format, how they handle reactive or fearful dogs, and whether they have worked with your breed before.",
-    },
-    {
-      q: "Are group classes or private lessons better?",
-      a: "Puppy socialization often works well in groups. Specific behavior issues like reactivity or recall problems may need private or in-home training.",
-    },
-  ],
   "cat-grooming-guide": [
     {
       q: "How do I know if my cat needs professional grooming?",
@@ -182,20 +168,6 @@ const BLOG_POST_FAQS = {
     {
       q: "What should I ask before booking a cat groomer?",
       a: "Ask about cat-specific experience, how they handle stressed cats, whether they offer quiet or cat-only appointment times, and what happens if your cat becomes too anxious during the session. Those answers tell you a lot.",
-    },
-  ],
-  "pet-boarding-questions-darlington-florence": [
-    {
-      q: "What should I ask before booking pet boarding?",
-      a: "Ask about daily routines, staff supervision, vaccination requirements, medication handling, emergency vet plans, and how they communicate with owners.",
-    },
-    {
-      q: "Should I tour a boarding facility first?",
-      a: "Yes, when possible. Cleanliness, fresh water, and clear supervision are good signs. Ask how they handle anxious pets or pets that do not do well in groups.",
-    },
-    {
-      q: "How do I compare boarding near Florence SC?",
-      a: "Use Pee Dee Pet Care to browse local kennels and daycare facilities, read reviews, and contact a shortlist before you travel.",
     },
   ],
   "dog-wont-listen-basic-commands": [
