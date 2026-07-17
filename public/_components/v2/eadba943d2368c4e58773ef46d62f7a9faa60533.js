@@ -21364,10 +21364,6 @@ function oy() {
             k.preventDefault(), C("privacy");
           }, className: "underline underline-offset-2 hover:text-purple-700", children: "Privacy" }),
           "•",
-          /* @__PURE__ */ s("a", { href: "/review", onClick: (k) => {
-            k.preventDefault(), C("review");
-          }, className: "underline underline-offset-2 hover:text-purple-700", children: "Leave a Review" }),
-          "•",
           /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "underline underline-offset-2 hover:text-purple-700", children: "Contact" })
         ] })
       ] })
@@ -21470,9 +21466,6 @@ function oy() {
           /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0, marginTop: "2px" }, children: /* @__PURE__ */ s("a", { href: "/privacy", onClick: (k) => {
             k.preventDefault(), C("privacy");
           }, className: "hover:text-purple-900 underline underline-offset-2", children: "Privacy Policy" }) }),
-          /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0, marginTop: "2px" }, children: /* @__PURE__ */ s("a", { href: "/review", onClick: (k) => {
-            k.preventDefault(), C("review");
-          }, className: "hover:text-purple-900 underline underline-offset-2", children: "Leave a Review" }) }),
           t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "text-xs text-purple-500/70 tracking-wide pointer-events-none whitespace-nowrap", style: { margin: 0, marginTop: "4px" }, children: `${Pv.toLocaleString()} visits and counting` })
         ] })
       ] })
