@@ -68,6 +68,24 @@ function buildBlogPostSeo(post) {
 const BLOG_AUTHOR_NAME = "Pee Dee Pet Care Team";
 
 const BLOG_POST_FAQS = {
+  "veterinary-grooming-medical-boarding-exotic-pets": [
+    {
+      q: "Can I find veterinary-supervised grooming under Grooming?",
+      a: "Yes, sometimes. If a veterinary office offers grooming, it may appear under Grooming and Vet Care. Check both listings so you can confirm whether the service is standard grooming or tied to veterinary supervision.",
+    },
+    {
+      q: "Where should I look for medical boarding?",
+      a: "Start with Boarding & Daycare, then check Vet Care for the same provider. Medical boarding is usually tied to veterinary offices, so the Vet Care listing is often where you'll find the clearest details about supervision.",
+    },
+    {
+      q: "How do I spot an exotic pet specialist?",
+      a: "Look for the exotic pet specialist badge on vet listings. It signals that the clinic sees non-traditional pets like birds, reptiles, or small mammals. Open the listing to confirm which species they handle.",
+    },
+    {
+      q: "What if I do not see the service in my town?",
+      a: "Try the nearest Pee Dee city using the Location filter, then search again under Vet Care and the matching service category. A broader local search often surfaces more options without leaving the directory.",
+    },
+  ],
   "manage-fleas-south-carolina": [
     {
       q: "Can I get rid of fleas at home?",
