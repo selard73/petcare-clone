@@ -6430,7 +6430,9 @@ const PDPC_CAPACITY_PILLS = {
 // Verification badges for listing cards and detail views. Renders nothing when
 // the listing has no verification data. The Verified badge is always dated and
 // always links to /how-we-verify; badges never affect sort order or ranking.
-function pdpcVerificationBadges(t) {
+// Pass { capacityOnly: true } on cards, where Verified/Claimed render as an
+// image overlay via pdpcVerificationOverlay instead.
+function pdpcVerificationBadges(t, o) {
   const e = pdpcNormalizeVerification(t || {}), r = [], n = {
     display: "inline-flex",
     alignItems: "center",
@@ -6442,8 +6444,8 @@ function pdpcVerificationBadges(t) {
     borderRadius: "999px",
     textDecoration: "none",
     lineHeight: 1
-  };
-  if (e.lastVerified && r.push(/* @__PURE__ */ d(
+  }, c = o && o.capacityOnly === !0;
+  if (!c && e.lastVerified && r.push(/* @__PURE__ */ d(
     "a",
     {
       href: "/how-we-verify",
@@ -6455,7 +6457,7 @@ function pdpcVerificationBadges(t) {
       ]
     },
     "pdpc-verified"
-  )), e.claimed && r.push(/* @__PURE__ */ s(
+  )), !c && e.claimed && r.push(/* @__PURE__ */ s(
     "a",
     {
       href: "/how-we-verify#verified-vs-claimed",
@@ -6491,6 +6493,48 @@ function pdpcVerificationBadges(t) {
     ));
   }
   return r.length === 0 ? null : /* @__PURE__ */ s("span", { style: { display: "inline-flex", flexWrap: "wrap", gap: "8px", alignItems: "center" }, children: r });
+}
+// Verified/Claimed badges as an overlay pinned to the top-right corner of the
+// card image. Claimed gets a solid white background so it stays legible over
+// photos. Renders nothing when the listing has no verification data.
+function pdpcVerificationOverlay(t) {
+  const e = pdpcNormalizeVerification(t || {}), r = [], n = {
+    display: "inline-flex",
+    alignItems: "center",
+    gap: "5px",
+    fontFamily: "'Quicksand', system-ui, sans-serif",
+    fontWeight: 700,
+    fontSize: "0.74rem",
+    padding: "4px 10px",
+    borderRadius: "999px",
+    textDecoration: "none",
+    lineHeight: 1,
+    boxShadow: "0 1px 4px rgba(46,36,64,.35)"
+  };
+  return e.lastVerified && r.push(/* @__PURE__ */ d(
+    "a",
+    {
+      href: "/how-we-verify",
+      title: "Verified by phone — see how we verify listings",
+      onClick: (i) => i.stopPropagation(),
+      style: { ...n, background: "#C4308A", color: "#fff" },
+      children: [
+        "✓ Verified ",
+        /* @__PURE__ */ s("span", { style: { fontWeight: 600, opacity: 0.85, fontSize: "0.68rem" }, children: `· ${pdpcFormatVerifiedMonth(e.lastVerified)}` })
+      ]
+    },
+    "pdpc-verified"
+  )), e.claimed && r.push(/* @__PURE__ */ s(
+    "a",
+    {
+      href: "/how-we-verify#verified-vs-claimed",
+      title: "Claimed by the owner — see Verified vs. Claimed",
+      onClick: (i) => i.stopPropagation(),
+      style: { ...n, background: "#fff", color: "#7C5FA8", border: "2px solid #7C5FA8", padding: "2px 8px" },
+      children: "☆ Claimed"
+    },
+    "pdpc-claimed"
+  )), r.length === 0 ? null : /* @__PURE__ */ s("div", { style: { position: "absolute", top: "8px", right: "8px", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "6px" }, children: r });
 }
 const ce = new qm(), Km = "REDACTED_AIRTABLE_TOKEN", Ym = "app0120M8RAwOR635", Xm = "tblM97NVRfmIPsxTh", st = `https://api.airtable.com/v0/${Ym}/${Xm}`, ot = {
   Authorization: `Bearer ${Km}`,
@@ -7566,18 +7610,18 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             onClick: () => window.innerWidth < 768 && i(y),
             className: "bg-white rounded-xl shadow-md border border-gray-100 md:border-0 p-4 md:p-6 hover:shadow-xl transition-all md:cursor-default cursor-pointer flex flex-col active:shadow-2xl md:active:shadow-xl",
             children: [
-              /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ s("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: /* @__PURE__ */ s(
+              /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ d("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: [/* @__PURE__ */ s(
                 "img",
                 {
                   src: y.photos && y.photos.length > 0 ? y.photos[y.cardPhotoIndex || 0] : Wr,
                   alt: y.name,
                   className: `absolute inset-0 w-full h-full rounded-t-xl ${y.photos && y.photos.length > 0 ? "object-cover" : "object-contain bg-gradient-to-br from-pink-100 to-purple-100"}`
                 }
-              ) }) }),
+              ), pdpcVerificationOverlay(y)] }) }),
               /* @__PURE__ */ d("div", { className: "flex justify-between items-start mb-3", children: [
                 /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                   /* @__PURE__ */ s("h3", { className: "text-gray-800", children: y.name }),
-                  pdpcVerificationBadges(y) && /* @__PURE__ */ s("div", { className: "mt-1", onClick: (B) => B.stopPropagation(), children: pdpcVerificationBadges(y) })
+                  pdpcVerificationBadges(y, { capacityOnly: !0 }) && /* @__PURE__ */ s("div", { className: "mt-1", onClick: (B) => B.stopPropagation(), children: pdpcVerificationBadges(y, { capacityOnly: !0 }) })
                 ] }),
                 /* @__PURE__ */ d("div", { className: "flex items-center gap-3 md:gap-2", children: [
                   /* @__PURE__ */ s(
@@ -9711,18 +9755,18 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             onClick: () => window.innerWidth < 768 && i(y),
             className: "bg-white rounded-xl shadow-md border border-gray-100 md:border-0 p-4 md:p-6 hover:shadow-xl transition-all md:cursor-default cursor-pointer flex flex-col active:shadow-2xl md:active:shadow-xl",
             children: [
-              /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ s("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: /* @__PURE__ */ s(
+              /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ d("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: [/* @__PURE__ */ s(
                 "img",
                 {
                   src: y.photos && y.photos.length > 0 ? y.photos[y.cardPhotoIndex || 0] : Wr,
                   alt: y.name,
                   className: `absolute inset-0 w-full h-full rounded-t-xl ${y.photos && y.photos.length > 0 ? "object-cover" : "object-contain bg-gradient-to-br from-green-100 to-emerald-100"}`
                 }
-              ) }) }),
+              ), pdpcVerificationOverlay(y)] }) }),
               /* @__PURE__ */ d("div", { className: "flex justify-between items-start mb-3", children: [
                 /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                   /* @__PURE__ */ s("h3", { className: "text-gray-800", children: y.name }),
-                  pdpcVerificationBadges(y) && /* @__PURE__ */ s("div", { className: "mt-1", onClick: (B) => B.stopPropagation(), children: pdpcVerificationBadges(y) })
+                  pdpcVerificationBadges(y, { capacityOnly: !0 }) && /* @__PURE__ */ s("div", { className: "mt-1", onClick: (B) => B.stopPropagation(), children: pdpcVerificationBadges(y, { capacityOnly: !0 }) })
                 ] }),
                 /* @__PURE__ */ d("div", { className: "flex items-center gap-3 md:gap-2", children: [
                   /* @__PURE__ */ s(
@@ -11130,18 +11174,18 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             onClick: () => window.innerWidth < 768 && i(y),
             className: "bg-white rounded-xl shadow-md border border-gray-100 md:border-0 p-4 md:p-6 hover:shadow-xl transition-all md:cursor-default cursor-pointer flex flex-col active:shadow-2xl md:active:shadow-xl",
             children: [
-              /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ s("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: /* @__PURE__ */ s(
+              /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ d("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: [/* @__PURE__ */ s(
                 "img",
                 {
                   src: y.photos && y.photos.length > 0 ? y.photos[y.cardPhotoIndex || 0] : Wr,
                   alt: y.name,
                   className: `absolute inset-0 w-full h-full rounded-t-xl ${y.photos && y.photos.length > 0 ? "object-cover" : "object-contain bg-gradient-to-br from-pink-100 to-rose-100"}`
                 }
-              ) }) }),
+              ), pdpcVerificationOverlay(y)] }) }),
               /* @__PURE__ */ d("div", { className: "flex justify-between items-start mb-3", children: [
                 /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                   /* @__PURE__ */ s("h3", { className: "text-gray-800", children: y.name }),
-                  pdpcVerificationBadges(y) && /* @__PURE__ */ s("div", { className: "mt-1", onClick: (B) => B.stopPropagation(), children: pdpcVerificationBadges(y) })
+                  pdpcVerificationBadges(y, { capacityOnly: !0 }) && /* @__PURE__ */ s("div", { className: "mt-1", onClick: (B) => B.stopPropagation(), children: pdpcVerificationBadges(y, { capacityOnly: !0 }) })
                 ] }),
                 /* @__PURE__ */ d("div", { className: "flex items-center gap-3 md:gap-2", children: [
                   /* @__PURE__ */ s(
@@ -12488,18 +12532,18 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             onClick: () => window.innerWidth < 768 && i(y),
             className: "bg-white rounded-xl shadow-md border border-gray-100 md:border-0 p-4 md:p-6 hover:shadow-xl transition-all md:cursor-default cursor-pointer flex flex-col active:shadow-2xl md:active:shadow-xl",
             children: [
-              /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ s("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: /* @__PURE__ */ s(
+              /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ d("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: [/* @__PURE__ */ s(
                 "img",
                 {
                   src: y.photos && y.photos.length > 0 ? y.photos[y.cardPhotoIndex || 0] : Wr,
                   alt: y.name,
                   className: `absolute inset-0 w-full h-full rounded-t-xl ${y.photos && y.photos.length > 0 ? "object-cover" : "object-contain bg-gradient-to-br from-orange-100 to-red-100"}`
                 }
-              ) }) }),
+              ), pdpcVerificationOverlay(y)] }) }),
               /* @__PURE__ */ d("div", { className: "flex justify-between items-start mb-3", children: [
                 /* @__PURE__ */ d("div", { className: "min-w-0", children: [
                   /* @__PURE__ */ s("h3", { className: "text-gray-800", children: y.name }),
-                  pdpcVerificationBadges(y) && /* @__PURE__ */ s("div", { className: "mt-1", onClick: (B) => B.stopPropagation(), children: pdpcVerificationBadges(y) })
+                  pdpcVerificationBadges(y, { capacityOnly: !0 }) && /* @__PURE__ */ s("div", { className: "mt-1", onClick: (B) => B.stopPropagation(), children: pdpcVerificationBadges(y, { capacityOnly: !0 }) })
                 ] }),
                 /* @__PURE__ */ d("div", { className: "flex items-center gap-3 md:gap-2", children: [
                   /* @__PURE__ */ s(
@@ -19846,6 +19890,54 @@ function iy({ editBusiness: t, onClose: e }) {
                 /* @__PURE__ */ s("option", { value: "$$", children: "$$ - Moderate" }),
                 /* @__PURE__ */ s("option", { value: "$$$", children: "$$$ - Premium" }),
                 /* @__PURE__ */ s("option", { value: "$$$$", children: "$$$$ - Luxury" })
+              ]
+            }
+          )
+        ] })
+      ] }),
+      /* @__PURE__ */ d("div", { className: "space-y-4", children: [
+        /* @__PURE__ */ s("h2", { className: "text-purple-600 border-b-2 border-purple-200 pb-2", children: "Verification" }),
+        /* @__PURE__ */ d("div", { children: [
+          /* @__PURE__ */ s("label", { className: "block text-gray-700 mb-2", children: "✓ Last verified by phone (month)" }),
+          /* @__PURE__ */ s(
+            "input",
+            {
+              type: "month",
+              value: i.lastVerified || "",
+              onChange: (A) => G("lastVerified", A.target.value || null),
+              className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
+            }
+          ),
+          /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Set only after confirming the listing on a phone call. Leave blank if not verified — the Verified badge only appears when this is set." })
+        ] }),
+        /* @__PURE__ */ d("label", { className: "flex items-center gap-3 p-4 bg-purple-50 border-2 border-purple-200 rounded-lg cursor-pointer hover:bg-purple-100 transition-colors", children: [
+          /* @__PURE__ */ s(
+            "input",
+            {
+              type: "checkbox",
+              checked: i.claimed,
+              onChange: (A) => G("claimed", A.target.checked),
+              className: "w-5 h-5 text-purple-600 border-gray-300 rounded focus:ring-purple-500"
+            }
+          ),
+          /* @__PURE__ */ d("div", { children: [
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "☆ Claimed by owner" }),
+            /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check after the owner has contacted us to confirm their details. Shows the Claimed badge next to Verified." })
+          ] })
+        ] }),
+        /* @__PURE__ */ d("div", { children: [
+          /* @__PURE__ */ s("label", { className: "block text-gray-700 mb-2", children: "Capacity status (only when shared on a call)" }),
+          /* @__PURE__ */ d(
+            "select",
+            {
+              value: i.capacityStatus || "",
+              onChange: (A) => G("capacityStatus", A.target.value || null),
+              className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent",
+              children: [
+                /* @__PURE__ */ s("option", { value: "", children: "Not shared / unknown" }),
+                /* @__PURE__ */ s("option", { value: "accepting", children: "Accepting new clients" }),
+                /* @__PURE__ */ s("option", { value: "waitlist", children: "Waitlist" }),
+                /* @__PURE__ */ s("option", { value: "full", children: "Not accepting new clients" })
               ]
             }
           )
