@@ -573,7 +573,7 @@ const SIMPLE_PAGE_SEO = {
   "/how-we-verify": {
     title: "How We Verify Listings | Pee Dee Pet Care",
     description:
-      "Every listing on Pee Dee Pet Care is checked by a real person over the phone. Here is exactly what we confirm, how often, and what the Verified badge does and does not mean.",
+      "We try to reach every business on Pee Dee Pet Care by phone to confirm its information. Verified listings carry a dated badge. Here is what we confirm and what Verified does and does not mean.",
   },
 };
 

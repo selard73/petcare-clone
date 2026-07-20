@@ -60,13 +60,13 @@ function extractJsonLd(html) {
     const question = q.name;
     const answer = q.acceptedAnswer.text;
     // The FAQ answer for claiming contains an inline contact link in HTML, so
-    // match it in two halves around the link.
+    // match it in pieces around the linked "Email us" text.
     const htmlHasAnswer =
       html.includes(answer) ||
-      (answer.includes("our contact options") &&
+      (answer.includes("Email us") &&
         answer
-          .split("our contact options")
-          .every((part) => html.includes(part.trim())));
+          .split("Email us")
+          .every((part) => !part.trim() || html.includes(part.trim())));
     report(html.includes(question), `FAQ question in HTML: "${question.slice(0, 40)}..."`);
     report(htmlHasAnswer, `FAQ answer in HTML: "${answer.slice(0, 40)}..."`);
   }

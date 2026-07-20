@@ -13781,7 +13781,7 @@ const PDPC_HWV_CSS = `
 .pdpc-hwv .hwv-hero h1{font-size:clamp(2rem,5vw,2.9rem);font-weight:700;margin-bottom:18px}
 .pdpc-hwv .hwv-lede{font-size:1.1rem;color:var(--ink-soft)}
 .pdpc-hwv .hwv-lede strong{color:var(--ink)}
-.pdpc-hwv .hwv-call-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:0 10px 30px rgba(46,36,64,.08);transform:rotate(1.2deg)}
+.pdpc-hwv .hwv-call-card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:22px 24px;box-shadow:0 10px 30px rgba(46,36,64,.08)}
 .pdpc-hwv .hwv-call-card h3{font-size:1rem;font-weight:700;display:flex;align-items:center;gap:8px;margin-bottom:6px}
 .pdpc-hwv .hwv-phone-dot{width:10px;height:10px;border-radius:50%;background:var(--meadow);box-shadow:0 0 0 4px var(--meadow-soft)}
 .pdpc-hwv .hwv-sub{font-size:.82rem;color:var(--ink-soft);margin-bottom:14px}
@@ -13828,7 +13828,6 @@ const PDPC_HWV_CSS = `
 .pdpc-hwv .hwv-machine-note{margin-top:44px;font-size:.85rem;color:var(--ink-soft);border-top:1px solid var(--line);padding-top:18px}
 @media (max-width:760px){
   .pdpc-hwv .hwv-hero{grid-template-columns:1fr;padding-top:36px}
-  .pdpc-hwv .hwv-call-card{transform:none}
   .pdpc-hwv .hwv-tiers{grid-template-columns:1fr}
   .pdpc-hwv .hwv-callline{padding-left:26px}
   .pdpc-hwv .hwv-stop::before{left:-24px}
@@ -13848,11 +13847,11 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
       /* @__PURE__ */ d("section", { className: "hwv-hero", children: [
         /* @__PURE__ */ d("div", { children: [
           /* @__PURE__ */ s("p", { className: "hwv-eyebrow", children: "Our verification policy" }),
-          /* @__PURE__ */ s("h1", { children: "Every listing starts with a phone call." }),
+          /* @__PURE__ */ s("h1", { children: "Verified means we called." }),
           /* @__PURE__ */ d("p", { className: "hwv-lede", children: [
             "Pee Dee Pet Care is a human-checked directory, not a scraped one. ",
-            /* @__PURE__ */ s("strong", { children: "Before a business appears here, a real person from Pee Dee Pet Care speaks with it by phone" }),
-            " and confirms it is open, reachable, and offering the services shown. Each listing displays the month it was last verified. Verification is free and cannot be bought."
+            /* @__PURE__ */ s("strong", { children: "We try to reach every listed business by phone" }),
+            " to confirm it is open, reachable, and offering the services shown. When a business has been verified by phone, its listing carries a Verified badge showing the month its information was last confirmed. Verification is free and cannot be bought."
           ] })
         ] }),
         /* @__PURE__ */ d("aside", { className: "hwv-call-card", "aria-label": "What a verification call covers", children: [
@@ -13874,7 +13873,7 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
       /* @__PURE__ */ d("div", { className: "hwv-callline", children: [
         /* @__PURE__ */ d("section", { className: "hwv-stop", id: "what-we-confirm", children: [
           /* @__PURE__ */ s("h2", { children: "What a verification call confirms" }),
-          /* @__PURE__ */ s("p", { children: "We call each business and talk to a person there. On that call we confirm the facts a pet owner actually needs before reaching out:" }),
+          /* @__PURE__ */ s("p", { children: "When we verify a listing, we call the business and talk to a person there. On that call we confirm the facts a pet owner actually needs before reaching out:" }),
           /* @__PURE__ */ d("div", { className: "hwv-confirm-grid", children: [
             /* @__PURE__ */ d("div", { className: "hwv-confirm", children: [
               /* @__PURE__ */ d("h3", { children: [pdpcHwvCheck(), " Open & operating"] }),
@@ -13901,8 +13900,8 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
         /* @__PURE__ */ d("section", { className: "hwv-stop", id: "freshness", children: [
           /* @__PURE__ */ s("h2", { children: "How we keep listings current" }),
           /* @__PURE__ */ d("p", { children: [
-            /* @__PURE__ */ s("strong", { children: "Every listing shows the month it was last verified" }),
-            ", so you can judge freshness for yourself instead of taking our word for it. Listings are re-checked on a rolling basis, and any time a reader or an owner tells us something changed — hours, services, a closure — we confirm it by phone and update both the listing and its verified date."
+            /* @__PURE__ */ s("strong", { children: "Every verified listing shows the month it was last confirmed" }),
+            ", so you can judge freshness for yourself instead of taking our word for it. Verified listings are re-checked on a rolling basis, and any time a reader or an owner tells us something changed — hours, services, a closure — we confirm it by phone and update both the listing and its verified date."
           ] }),
           /* @__PURE__ */ d("p", { children: [
             "Spotted something out of date? ",
@@ -13936,14 +13935,14 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
               /* @__PURE__ */ s("span", { className: "hwv-badge hwv-badge--verified", children: "✓ Verified" }),
               /* @__PURE__ */ d("p", { children: [
                 /* @__PURE__ */ s("strong", { children: "Our work." }),
-                " A person from Pee Dee Pet Care confirmed this listing by phone. Every listing must earn this the same way — owner participation is welcome but never required, and it cannot be purchased."
+                " A person from Pee Dee Pet Care confirmed this listing by phone. Every listing earns the badge the same way — owner participation is welcome but never required, and it cannot be purchased."
               ] })
             ] }),
             /* @__PURE__ */ d("div", { className: "hwv-tier", children: [
               /* @__PURE__ */ s("span", { className: "hwv-badge hwv-badge--claimed", children: "☆ Claimed" }),
               /* @__PURE__ */ d("p", { children: [
                 /* @__PURE__ */ s("strong", { children: "The owner's participation." }),
-                " The business owner has confirmed their own details with us and keeps things like hours and availability current."
+                " The business owner has contacted us to confirm their listing's details and sends us updates — like changed hours or availability — which we verify and post for them. Owners do not edit listings directly."
               ] }),
               /* @__PURE__ */ s("p", { children: "A claimed listing is still verified — claiming adds to our phone check, it never replaces it." })
             ] })
@@ -13962,11 +13961,11 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
             ] }),
             /* @__PURE__ */ d("details", { children: [
               /* @__PURE__ */ s("summary", { children: "How often are listings re-verified?" }),
-              /* @__PURE__ */ s("p", { children: "Listings are re-checked on a rolling basis, and every listing displays the month it was last verified so you can judge freshness for yourself. When a reader or owner reports a change, we confirm it by phone and update the listing and its date." })
+              /* @__PURE__ */ s("p", { children: "Verified listings are re-checked on a rolling basis, and each one displays the month it was last confirmed so you can judge freshness for yourself. When a reader or owner reports a change, we confirm it by phone and update the listing and its date." })
             ] }),
             /* @__PURE__ */ d("details", { children: [
               /* @__PURE__ */ s("summary", { children: "What is the difference between Verified and Claimed?" }),
-              /* @__PURE__ */ s("p", { children: "Verified is our work: we confirmed the facts of the listing by phone. Claimed means the owner has also taken an active role, confirming their own details and keeping things like hours and availability current. A claimed listing is still verified; claiming never replaces our phone check." })
+              /* @__PURE__ */ s("p", { children: "Verified is our work: we confirmed the facts of the listing by phone. Claimed means the owner has also taken an active role: they contacted us to confirm their own details, and they send us updates — which we verify and post for them — to keep things like hours and availability current. A claimed listing is still verified; claiming never replaces our phone check." })
             ] }),
             /* @__PURE__ */ d("details", { children: [
               /* @__PURE__ */ s("summary", { children: "Does Verified mean Pee Dee Pet Care recommends the business?" }),
@@ -13975,9 +13974,8 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
             /* @__PURE__ */ d("details", { children: [
               /* @__PURE__ */ s("summary", { children: "I own a listed business. How do I claim or correct my listing?" }),
               /* @__PURE__ */ d("p", { children: [
-                "Reach out through ",
-                /* @__PURE__ */ s("a", { href: PDPC_CONTACT_LINK, children: "our contact options" }),
-                " and tell us what needs updating. We will confirm the change by phone and refresh your listing and its verified date. There is no charge to be listed, claim a listing, or correct one."
+                /* @__PURE__ */ s("a", { href: PDPC_CONTACT_LINK, children: "Email us" }),
+                " and tell us what needs updating — owners do not edit listings directly; we make the changes for you. We will confirm the change by phone and refresh your listing and its verified date. There is no charge to be listed, claim a listing, or correct one."
               ] })
             ] })
           ] })
@@ -13986,7 +13984,7 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
       /* @__PURE__ */ d("section", { className: "hwv-owner-cta", children: [
         /* @__PURE__ */ d("div", { children: [
           /* @__PURE__ */ s("h2", { children: "Own a pet business in the Pee Dee?" }),
-          /* @__PURE__ */ s("p", { children: "Claim your listing to confirm your details and keep your availability current. Listing, verification, and claiming are all free." })
+          /* @__PURE__ */ s("p", { children: "Claim your listing: email us to confirm your details, and send updates anytime — we make the changes for you. Listing, verification, and claiming are all free." })
         ] }),
         /* @__PURE__ */ s("a", { className: "hwv-btn", href: PDPC_CONTACT_LINK, children: "Claim your listing" })
       ] }),
