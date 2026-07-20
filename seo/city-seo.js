@@ -1,7 +1,7 @@
 const { CANONICAL_ORIGIN, buildOrganizationNode, buildWebSiteNode } = require("./blog-seo");
 const { getCategoryConfig, buildCategoryGuideHtml } = require("./category-seo");
 const { getListingsForPathname } = require("./listings-loader");
-const { buildProviderItemList } = require("./provider-schema");
+const { buildProviderItemList, getMostRecentLastVerified } = require("./provider-schema");
 
 const SEO_CONTENT_START = "<!-- peedee-seo-content:start -->";
 const SEO_CONTENT_END = "<!-- peedee-seo-content:end -->";
@@ -159,6 +159,7 @@ function buildCitySeoContentHtml(parsed, listings) {
 }
 
 function buildCityJsonLd(parsed, listings) {
+  const pageDateModified = getMostRecentLastVerified(listings);
   const graph = [
     buildOrganizationNode(),
     buildWebSiteNode(),
@@ -172,6 +173,7 @@ function buildCityJsonLd(parsed, listings) {
       inLanguage: "en-US",
       isPartOf: { "@id": `${CANONICAL_ORIGIN}/#website` },
       publisher: { "@id": `${CANONICAL_ORIGIN}/#organization` },
+      ...(pageDateModified ? { dateModified: pageDateModified } : {}),
     },
     {
       "@type": "BreadcrumbList",

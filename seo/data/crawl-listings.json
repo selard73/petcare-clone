@@ -7,7 +7,10 @@
       "city": "Darlington",
       "description": "Professional pet grooming services for all breeds in Darlington, SC.",
       "address": "221 Ash St",
-      "phone": "(843) 621-0086"
+      "phone": "(843) 621-0086",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "business-002",
@@ -16,7 +19,10 @@
       "city": "Darlington",
       "description": "Mobile grooming service serving the Darlington area.",
       "address": "Mobile Service",
-      "phone": "(843) 495-8769"
+      "phone": "(843) 495-8769",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "business-003",
@@ -25,7 +31,10 @@
       "city": "Darlington",
       "description": "Quality pet grooming with personalized attention. Family-owned and operated.",
       "address": "1016 Riverview Rd",
-      "phone": "(843) 393-7280"
+      "phone": "(843) 393-7280",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "business-017",
@@ -34,7 +43,10 @@
       "city": "Florence",
       "description": "Certified groomers with full grooming services on David H. McLeod Blvd in Florence.",
       "address": "2701 David H. McLeod Blvd",
-      "phone": "(843) 667-9916"
+      "phone": "(843) 667-9916",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "business-019",
@@ -43,7 +55,10 @@
       "city": "Florence",
       "description": "Boutique pet salon offering personalized grooming on W. Palmetto St in Florence.",
       "address": "3440 W. Palmetto St",
-      "phone": "(843) 292-2293"
+      "phone": "(843) 292-2293",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "business-020",
@@ -52,7 +67,10 @@
       "city": "Florence",
       "description": "Show cuts and breed-standard grooming on TV Rd in Florence.",
       "address": "2122 TV Rd",
-      "phone": "(843) 662-6959"
+      "phone": "(843) 662-6959",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "business-021",
@@ -61,7 +79,10 @@
       "city": "Florence",
       "description": "Friendly full-service grooming salon on W. Palmetto St in Florence.",
       "address": "2945 W. Palmetto St",
-      "phone": "(843) 669-4368"
+      "phone": "(843) 669-4368",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "business-022",
@@ -70,7 +91,10 @@
       "city": "Florence",
       "description": "Dog and cat grooming on E. Cheves St in Florence.",
       "address": "630 E. Cheves St",
-      "phone": "(843) 667-5155"
+      "phone": "(843) 667-5155",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "business-hartsville-1",
@@ -79,7 +103,10 @@
       "city": "Hartsville",
       "description": "Grooming services alongside veterinary care in Hartsville.",
       "address": "Hartsville, SC",
-      "phone": ""
+      "phone": "",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "training-1",
@@ -88,7 +115,10 @@
       "city": "Darlington",
       "description": "Obedience and puppy training classes in Darlington County.",
       "address": "Darlington, SC",
-      "phone": "(843) 555-0112"
+      "phone": "(843) 555-0112",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "training-2",
@@ -97,7 +127,10 @@
       "city": "Florence",
       "description": "Group and private dog training in Florence, SC.",
       "address": "Florence, SC",
-      "phone": "(843) 555-0144"
+      "phone": "(843) 555-0144",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "training-3",
@@ -106,7 +139,10 @@
       "city": "Hartsville",
       "description": "In-home and private coaching for reactive dogs in Hartsville.",
       "address": "88 Pack Leader Ln",
-      "phone": "(843) 555-0193"
+      "phone": "(843) 555-0193",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "boarding-1",
@@ -115,7 +151,10 @@
       "city": "Darlington",
       "description": "Overnight boarding and daycare with monitored play yards in Darlington.",
       "address": "1406 Paws Lane",
-      "phone": "(843) 555-0114"
+      "phone": "(843) 555-0114",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "boarding-3",
@@ -124,7 +163,10 @@
       "city": "Florence",
       "description": "Premium boarding and daycare on Riverbend Rd in Florence.",
       "address": "900 Riverbend Rd",
-      "phone": "(843) 555-0168"
+      "phone": "(843) 555-0168",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "boarding-5",
@@ -133,7 +175,10 @@
       "city": "Hartsville",
       "description": "Play-based boarding and daycare campus in Hartsville.",
       "address": "411 Meadow Run",
-      "phone": "(843) 555-0172"
+      "phone": "(843) 555-0172",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "sitters-1",
@@ -142,7 +187,10 @@
       "city": "Florence",
       "description": "In-home pet sitting and dog walks with photo updates in Florence.",
       "address": "215 Oak Meadow Ln",
-      "phone": "(843) 555-0191"
+      "phone": "(843) 555-0191",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "sitters-2",
@@ -151,7 +199,10 @@
       "city": "Darlington",
       "description": "Midday and after-work dog walks in Darlington.",
       "address": "88 Maple Creek Rd",
-      "phone": "(843) 555-0188"
+      "phone": "(843) 555-0188",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "sitters-3",
@@ -160,7 +211,10 @@
       "city": "Hartsville",
       "description": "Overnight in-home pet sitting in Hartsville.",
       "address": "412 Pineview Dr",
-      "phone": "(843) 555-0179"
+      "phone": "(843) 555-0179",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "vet-1",
@@ -169,7 +223,10 @@
       "city": "Darlington",
       "description": "Full-service veterinary hospital with preventive and emergency care.",
       "address": "1201 Vet Center Dr",
-      "phone": "(843) 555-0147"
+      "phone": "(843) 555-0147",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "vet-2",
@@ -178,7 +235,10 @@
       "city": "Florence",
       "description": "Routine and urgent veterinary care on Palmetto Rd in Florence.",
       "address": "402 Palmetto Rd",
-      "phone": "(843) 555-0121"
+      "phone": "(843) 555-0121",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "vet-3",
@@ -187,7 +247,10 @@
       "city": "Hartsville",
       "description": "Surgical and preventive veterinary care in Hartsville.",
       "address": "811 Care Lane",
-      "phone": "(843) 555-0184"
+      "phone": "(843) 555-0184",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     },
     {
       "id": "vet-4",
@@ -196,7 +259,10 @@
       "city": "Florence",
       "description": "24/7 emergency veterinary care in Florence, SC.",
       "address": "99 Urgent Care Way",
-      "phone": "(843) 555-0100"
+      "phone": "(843) 555-0100",
+      "lastVerified": null,
+      "claimed": false,
+      "capacityStatus": null
     }
   ]
 }

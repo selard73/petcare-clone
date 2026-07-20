@@ -96,7 +96,27 @@ function buildProviderNode(listing) {
   if (listing.city) {
     node.areaServed = { "@type": "City", name: listing.city };
   }
+  if (listing.lastVerified) {
+    node.additionalProperty = {
+      "@type": "PropertyValue",
+      name: "Last verified by phone",
+      value: listing.lastVerified,
+    };
+  }
   return node;
+}
+
+// Most recent "YYYY-MM" lastVerified among a page's listings, or null.
+// Used as the page-level dateModified on category/city pages.
+function getMostRecentLastVerified(listings = []) {
+  let latest = null;
+  for (const listing of listings) {
+    const value = listing && listing.lastVerified;
+    if (typeof value === "string" && /^\d{4}-\d{2}$/.test(value) && (!latest || value > latest)) {
+      latest = value;
+    }
+  }
+  return latest;
 }
 
 function buildProviderItemList(listings, { id, name }) {
@@ -119,4 +139,5 @@ function buildProviderItemList(listings, { id, name }) {
 module.exports = {
   buildProviderNode,
   buildProviderItemList,
+  getMostRecentLastVerified,
 };

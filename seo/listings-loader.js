@@ -14,9 +14,30 @@ const PATH_TO_LISTING_CATEGORY = {
   "/vet-care": "vet",
 };
 
+const CAPACITY_STATUSES = ["accepting", "waitlist", "full"];
+
+// Verification fields. lastVerified is set from Shannon's phone-call notes only.
+// Never backfill programmatically. A listing without lastVerified renders no
+// Verified badge anywhere.
+function normalizeVerificationFields(source = {}) {
+  return {
+    // "YYYY-MM" month of the last verification phone call, or null.
+    lastVerified:
+      typeof source.lastVerified === "string" && /^\d{4}-\d{2}$/.test(source.lastVerified)
+        ? source.lastVerified
+        : null,
+    // Owner has confirmed their own details with us.
+    claimed: source.claimed === true,
+    // "accepting" | "waitlist" | "full" — only when shared on a call; else null.
+    capacityStatus: CAPACITY_STATUSES.includes(source.capacityStatus) ? source.capacityStatus : null,
+  };
+}
+
 let fallbackListings = [];
 try {
-  fallbackListings = JSON.parse(fs.readFileSync(FALLBACK_FILE, "utf8")).listings || [];
+  fallbackListings = (JSON.parse(fs.readFileSync(FALLBACK_FILE, "utf8")).listings || []).map(
+    (listing) => ({ ...listing, ...normalizeVerificationFields(listing) }),
+  );
 } catch {
   fallbackListings = [];
 }
@@ -57,6 +78,7 @@ function parseBusinessFromFields(fields) {
     // Hours map keyed by weekday name (e.g. { monday: "7:30 AM - 5:30 PM" }).
     // Omitted when the business asked users to call for hours.
     hours: !about.callForHours && about.hours && typeof about.hours === "object" ? about.hours : null,
+    ...normalizeVerificationFields(about),
   };
 }
 

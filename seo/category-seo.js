@@ -4,7 +4,7 @@ const {
   buildOrganizationNode,
   buildWebSiteNode,
 } = require("./blog-seo");
-const { buildProviderItemList } = require("./provider-schema");
+const { buildProviderItemList, getMostRecentLastVerified } = require("./provider-schema");
 
 const SEO_CONTENT_START = "<!-- peedee-seo-content:start -->";
 const SEO_CONTENT_END = "<!-- peedee-seo-content:end -->";
@@ -570,6 +570,11 @@ const SIMPLE_PAGE_SEO = {
     description:
       "Leave a review for a local pet business in Darlington County or Florence, SC. Your experience helps other pet parents across the Pee Dee.",
   },
+  "/how-we-verify": {
+    title: "How We Verify Listings | Pee Dee Pet Care",
+    description:
+      "Every listing on Pee Dee Pet Care is checked by a real person over the phone. Here is exactly what we confirm, how often, and what the Verified badge does and does not mean.",
+  },
 };
 
 function resolveSimplePageSeo(pathname) {
@@ -644,6 +649,7 @@ function buildCategoryJsonLd(config, listings = []) {
     acceptedAnswer: { "@type": "Answer", text: faq.a },
   }));
 
+  const pageDateModified = getMostRecentLastVerified(listings);
   const graph = [
     buildOrganizationNode(),
     buildWebSiteNode(),
@@ -657,6 +663,7 @@ function buildCategoryJsonLd(config, listings = []) {
       inLanguage: "en-US",
       isPartOf: { "@id": `${CANONICAL_ORIGIN}/#website` },
       publisher: { "@id": `${CANONICAL_ORIGIN}/#organization` },
+      ...(pageDateModified ? { dateModified: pageDateModified } : {}),
     },
     {
       "@type": "WebPage",
@@ -667,6 +674,7 @@ function buildCategoryJsonLd(config, listings = []) {
       isPartOf: { "@id": `${CANONICAL_ORIGIN}${config.pathname}#collection` },
       about: { "@type": "Thing", name: config.schemaAbout },
       inLanguage: "en-US",
+      ...(pageDateModified ? { dateModified: pageDateModified } : {}),
     },
     {
       "@type": "BreadcrumbList",

@@ -28,6 +28,7 @@ const CATEGORY_PAGE_PATHS = {
   "/contact": "about",
   "/privacy": "privacy",
   "/review": "review",
+  "/how-we-verify": "how-we-verify",
 };
 // Deleted blog posts — send old URLs to the closest replacement article
 const REMOVED_BLOG_POST_REDIRECTS = {
@@ -39,6 +40,7 @@ const { applySeoToIndexHtml } = require("./seo/apply-seo-html");
 const { resolveSeoForPathname, injectSeoIntoHtml, injectBlogEnhancements, generateSitemapXml } = require("./seo/blog-seo");
 const { resolveCategorySeoForPathname, injectCategoryEnhancements } = require("./seo/category-seo");
 const { resolveCitySeoForPathname, injectCityEnhancements, isCityCategoryPath } = require("./seo/city-seo");
+const { injectHowWeVerifyEnhancements } = require("./seo/how-we-verify-seo");
 const { getListingsForPathname } = require("./seo/listings-loader");
 const CANONICAL_ORIGIN = (process.env.CANONICAL_ORIGIN || "https://www.peedeepetcare.com").replace(/\/$/, "");
 const CANONICAL_HOST = new URL(CANONICAL_ORIGIN).hostname.toLowerCase();
@@ -234,6 +236,7 @@ function serveIndexHtml(req, res, pathname = "/") {
       body = injectBlogEnhancements(body, pathname);
       body = injectCityEnhancements(body, pathname, listings);
       body = injectCategoryEnhancements(body, pathname, listings);
+      body = injectHowWeVerifyEnhancements(body, pathname);
       const payload = Buffer.from(body, "utf8");
       res.writeHead(200, {
         "Content-Type": "text/html; charset=utf-8",

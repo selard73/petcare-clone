@@ -41,6 +41,11 @@
     <priority>0.5</priority>
   </url>
   <url>
+    <loc>https://www.peedeepetcare.com/how-we-verify</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
     <loc>https://www.peedeepetcare.com/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>

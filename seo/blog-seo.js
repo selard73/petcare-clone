@@ -417,6 +417,7 @@ function buildOrganizationNode() {
       contentUrl: `${CANONICAL_ORIGIN}/logo.png`,
     },
     image: `${CANONICAL_ORIGIN}/share-card.jpg`,
+    publishingPrinciples: `${CANONICAL_ORIGIN}/how-we-verify`,
     sameAs: ORGANIZATION_SAME_AS,
     knowsAbout: [
       "pet grooming",
@@ -942,6 +943,7 @@ const STATIC_SITEMAP_PATHS = [
   { loc: "/boarding", changefreq: "weekly", priority: "0.8" },
   { loc: "/vet-care", changefreq: "weekly", priority: "0.8" },
   { loc: "/about", changefreq: "monthly", priority: "0.5" },
+  { loc: "/how-we-verify", changefreq: "monthly", priority: "0.5" },
   { loc: "/privacy", changefreq: "yearly", priority: "0.3" },
   { loc: "/review", changefreq: "monthly", priority: "0.4" },
 ];
