@@ -8904,9 +8904,12 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No matches found" })
       ] }) : /* @__PURE__ */ d(ie, { children: [
         W.map((K) => /* @__PURE__ */ d(D.div, { className: "bg-white rounded-xl shadow-md border border-gray-100 md:border-0 p-4 md:p-6 hover:shadow-xl transition-all flex flex-col", children: [
-          /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ s("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: /* @__PURE__ */ s("img", { src: K.photos && K.photos.length > 0 ? K.photos[0] : Wr, alt: K.name, className: "absolute inset-0 w-full h-full object-cover rounded-t-xl" }) }) }),
+          /* @__PURE__ */ s("div", { className: "mb-3 -mx-4 -mt-4 md:-mx-6 md:-mt-6 rounded-t-xl bg-white overflow-hidden", children: /* @__PURE__ */ d("div", { className: "relative w-full", style: { paddingBottom: "56.25%" }, children: [/* @__PURE__ */ s("img", { src: K.photos && K.photos.length > 0 ? K.photos[0] : Wr, alt: K.name, className: "absolute inset-0 w-full h-full object-cover rounded-t-xl" }), pdpcVerificationOverlay(K)] }) }),
           /* @__PURE__ */ d("div", { className: "flex justify-between items-start mb-3", children: [
-            /* @__PURE__ */ s("h3", { className: "text-gray-800", children: K.name }),
+            /* @__PURE__ */ d("div", { className: "min-w-0", children: [
+              /* @__PURE__ */ s("h3", { className: "text-gray-800", children: K.name }),
+              pdpcVerificationBadges(K, { capacityOnly: !0 }) && /* @__PURE__ */ s("div", { className: "mt-1", children: pdpcVerificationBadges(K, { capacityOnly: !0 }) })
+            ] }),
             K.priceRange && /* @__PURE__ */ s("div", { className: "text-green-600", children: K.priceRange })
           ] }),
           /* @__PURE__ */ d("div", { className: "flex items-start justify-between mb-3", children: [
@@ -8974,7 +8977,8 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
           /* @__PURE__ */ d("div", { className: "flex items-center gap-2 text-gray-600", children: [
             /* @__PURE__ */ s("span", { children: "📍" }),
             /* @__PURE__ */ s("span", { children: [r.city, ", SC"] })
-          ] })
+          ] }),
+          pdpcVerificationBadges(r) && /* @__PURE__ */ s("div", { className: "mt-3", children: pdpcVerificationBadges(r) })
         ] }),
         /* @__PURE__ */ d("div", { className: "mb-2", children: [
           /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Description" }),
