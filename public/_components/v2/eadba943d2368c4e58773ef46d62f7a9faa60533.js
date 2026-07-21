@@ -6252,7 +6252,9 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
       /* @__PURE__ */ d("div", { className: "md:hidden text-center px-4", style: { marginBottom: "0.875rem" }, children: [
         /* @__PURE__ */ d("p", { className: "text-xs text-purple-600/90", children: [
           "Questions? Email us at ",
-          /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "hello@peedeepetcare.com" })
+          /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "hello@peedeepetcare.com" }),
+          " or give us a call at ",
+          /* @__PURE__ */ s("a", { href: "tel:+18438838772", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2 whitespace-nowrap", children: "(843) 883-8772" })
         ] })
       ] })
     ] })
@@ -13502,6 +13504,17 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                           }
                         )
                       ] }),
+                      /* @__PURE__ */ d("p", { className: "mb-2", children: [
+                        "📞 ",
+                        /* @__PURE__ */ s(
+                          "a",
+                          {
+                            href: "tel:+18438838772",
+                            className: "text-purple-600 font-semibold hover:underline whitespace-nowrap",
+                            children: "(843) 883-8772"
+                          }
+                        )
+                      ] }),
                       /* @__PURE__ */ s("p", { className: "text-gray-600", children: "— Shannon 🐾" })
                     ] })
                   ] })
@@ -14023,6 +14036,8 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
               /* @__PURE__ */ s("summary", { children: "I own a listed business. How do I claim or correct my listing?" }),
               /* @__PURE__ */ d("p", { children: [
                 /* @__PURE__ */ s("a", { href: PDPC_CONTACT_LINK, children: "Email us" }),
+                " or give us a call at ",
+                /* @__PURE__ */ s("a", { href: "tel:+18438838772", children: "(843) 883-8772" }),
                 " and tell us what needs updating — owners do not edit listings directly; we make the changes for you. We will confirm the change by phone and refresh your listing and its verified date. There is no charge to be listed, claim a listing, or correct one."
               ] })
             ] })
@@ -14032,7 +14047,11 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
       /* @__PURE__ */ d("section", { className: "hwv-owner-cta", children: [
         /* @__PURE__ */ d("div", { children: [
           /* @__PURE__ */ s("h2", { children: "Own a pet business in the Pee Dee?" }),
-          /* @__PURE__ */ s("p", { children: "Claim your listing: email us to confirm your details, and send updates anytime — we make the changes for you. Listing, verification, and claiming are all free." })
+          /* @__PURE__ */ d("p", { children: [
+            "Claim your listing: email us or give us a call at ",
+            /* @__PURE__ */ s("a", { href: "tel:+18438838772", children: "(843) 883-8772" }),
+            " to confirm your details, and send updates anytime — we make the changes for you. Listing, verification, and claiming are all free."
+          ] })
         ] }),
         /* @__PURE__ */ s("a", { className: "hwv-btn", href: PDPC_CONTACT_LINK, children: "Claim your listing" })
       ] }),
@@ -21904,7 +21923,10 @@ function oy() {
         /* @__PURE__ */ d("div", { style: { position: "absolute", left: "2.5rem", top: "calc(50% - 6px)" }, children: [
           /* @__PURE__ */ d("p", { className: "text-xs text-purple-600/90 leading-snug", style: { margin: 0, transform: "translateY(-50%)" }, children: [
             "Email us at ",
-            /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "hello@peedeepetcare.com" })
+            /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "hello@peedeepetcare.com" }),
+            /* @__PURE__ */ s("br", {}),
+            "or give us a call at ",
+            /* @__PURE__ */ s("a", { href: "tel:+18438838772", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2 whitespace-nowrap", children: "(843) 883-8772" })
           ] }),
           /* @__PURE__ */ d("div", { style: { position: "absolute", bottom: "100%", left: 0, paddingBottom: "8px" }, children: [
             /* @__PURE__ */ s("p", { className: "text-xs text-purple-600/90 leading-snug", style: { margin: 0, marginBottom: "2px" }, children: "Questions?" })

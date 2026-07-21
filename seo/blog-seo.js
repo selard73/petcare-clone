@@ -461,10 +461,12 @@ function buildOrganizationNode() {
         containedInPlace: { "@type": "State", name: "South Carolina" },
       })),
     ],
+    telephone: "+1-843-883-8772",
     contactPoint: {
       "@type": "ContactPoint",
       contactType: "customer support",
       email: "hello@peedeepetcare.com",
+      telephone: "+1-843-883-8772",
       areaServed: "US-SC",
       availableLanguage: "English",
     },
