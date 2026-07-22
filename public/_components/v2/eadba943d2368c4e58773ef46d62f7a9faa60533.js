@@ -21920,16 +21920,14 @@ function oy() {
         ] })
       ] }),
       /* @__PURE__ */ d("div", { className: "hidden md:block relative w-full mt-4", style: { minHeight: "3.25rem" }, children: [
-        /* @__PURE__ */ d("div", { style: { position: "absolute", left: "2.5rem", top: "calc(50% - 6px)" }, children: [
-          /* @__PURE__ */ d("p", { className: "text-xs text-purple-600/90 leading-snug", style: { margin: 0, transform: "translateY(-50%)" }, children: [
+        /* @__PURE__ */ d("div", { style: { position: "absolute", left: "2.5rem", top: "50%", transform: "translateY(-50%)" }, children: [
+          /* @__PURE__ */ s("p", { className: "text-xs text-purple-600/90 leading-snug", style: { margin: 0, marginBottom: "2px" }, children: "Questions?" }),
+          /* @__PURE__ */ d("p", { className: "text-xs text-purple-600/90 leading-snug", style: { margin: 0 }, children: [
             "Email us at ",
             /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2", children: "hello@peedeepetcare.com" }),
             /* @__PURE__ */ s("br", {}),
             "or give us a call at ",
             /* @__PURE__ */ s("a", { href: "tel:+18438838772", className: "text-purple-700 hover:text-purple-900 underline underline-offset-2 whitespace-nowrap", children: "(843) 883-8772" })
-          ] }),
-          /* @__PURE__ */ d("div", { style: { position: "absolute", bottom: "100%", left: 0, paddingBottom: "8px" }, children: [
-            /* @__PURE__ */ s("p", { className: "text-xs text-purple-600/90 leading-snug", style: { margin: 0, marginBottom: "2px" }, children: "Questions?" })
           ] })
         ] }),
         /* @__PURE__ */ s("p", { className: "text-purple-600 text-center absolute left-0 right-0 top-1/2", style: { transform: "translateY(-50%)", margin: 0 }, children: "All Your Pet Needs in Darlington/Florence Area" }),
