@@ -5999,7 +5999,6 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
         ]
       }
     ),
-    /* @__PURE__ */ s(PdpcTrustSection, {}),
     /* @__PURE__ */ s("div", { className: "px-4 md:px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s(
       "section",
       {
@@ -22055,7 +22054,6 @@ function oy() {
           /* @__PURE__ */ s("span", { className: "text-base", children: "🐾" }),
           " Pawsitively Fabulous"
         ] }),
-        /* @__PURE__ */ s("p", { className: "text-[10px] text-purple-500/70 px-6 text-center", children: "Pee Dee Pet Care is a free local directory for pet services in Florence, Darlington, Hartsville, and the Pee Dee region of South Carolina." }),
         /* @__PURE__ */ d("p", { className: "text-xs text-purple-500/70", children: [
           "© ",
           (/* @__PURE__ */ new Date()).getFullYear(),
@@ -22155,8 +22153,7 @@ function oy() {
         ] }),
         /* @__PURE__ */ d("div", { className: "text-center max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8", children: [
           /* @__PURE__ */ s("p", { className: "text-2xl mb-2", children: "🐾 Pawsitively Fabulous 🐾" }),
-          /* @__PURE__ */ s("p", { children: "Free Local Pet Services Directory" }),
-          /* @__PURE__ */ s("p", { className: "text-xs text-purple-600/90 mt-2", children: "Pee Dee Pet Care is a free local directory for pet services in Florence, Darlington, Hartsville, and the Pee Dee region of South Carolina." })
+          /* @__PURE__ */ s("p", { children: "Free Local Pet Services Directory" })
         ] })
       ] }),
       /* @__PURE__ */ d("div", { className: "hidden md:block relative w-full mt-4", style: { minHeight: "3.25rem" }, children: [
