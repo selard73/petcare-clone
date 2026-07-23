@@ -7,6 +7,18 @@ const PROVIDER_SCHEMA_TYPES = {
   vet: "VeterinaryCare",
 };
 
+// Proof fields stated on a verification call, emitted as PropertyValue nodes.
+// A null field means "not stated" and is never emitted.
+const PROOF_PROPERTY_NAMES = {
+  catFriendly: "Cat-friendly",
+  largeDogFriendly: "Large-dog friendly",
+  anxiousPetFriendly: "Anxious-pet friendly",
+  mobileService: "Mobile service",
+  weekendHours: "Weekend hours",
+  emergencyAvailability: "Emergency availability",
+  pricingPublished: "Pricing published",
+};
+
 const SCHEMA_DAYS = {
   monday: "Monday",
   tuesday: "Tuesday",
@@ -96,12 +108,26 @@ function buildProviderNode(listing) {
   if (listing.city) {
     node.areaServed = { "@type": "City", name: listing.city };
   }
+  if (listing.website) {
+    node.url = listing.website;
+  }
+  const additionalProperties = [];
   if (listing.lastVerified) {
-    node.additionalProperty = {
+    additionalProperties.push({
       "@type": "PropertyValue",
       name: "Last verified by phone",
       value: listing.lastVerified,
-    };
+    });
+  }
+  for (const [field, name] of Object.entries(PROOF_PROPERTY_NAMES)) {
+    if (typeof listing[field] === "boolean") {
+      additionalProperties.push({ "@type": "PropertyValue", name, value: listing[field] });
+    }
+  }
+  if (additionalProperties.length === 1) {
+    node.additionalProperty = additionalProperties[0];
+  } else if (additionalProperties.length > 1) {
+    node.additionalProperty = additionalProperties;
   }
   return node;
 }

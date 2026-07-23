@@ -1,0 +1,69 @@
+<!--
+  PDPC HOMEPAGE TRUST SECTION
+  Insert on the homepage between the hero and category browsing.
+  Tokens the Cursor agent must wire:
+    {{LISTING_COUNT}}  -> computed live from listing records (never hardcoded)
+    {{CONTACT_LINK}}   -> site's real contact mechanism
+  The "recently verified" strip renders ONLY when at least one listing
+  has a lastVerified date; otherwise the whole strip is omitted.
+  Uses the same CSS variables as how-we-verify.html.
+-->
+<section class="trust-section" aria-labelledby="trust-heading">
+  <style>
+    .trust-section{background:var(--lavender);border-radius:var(--radius,14px);padding:34px 30px;margin:40px 0}
+    .trust-section h2{font-family:'Quicksand',system-ui,sans-serif;font-size:1.5rem;margin:0 0 6px}
+    .trust-section .sub{color:var(--ink-soft);margin:0 0 22px;max-width:60ch}
+    .trust-stats{display:flex;gap:26px;flex-wrap:wrap;margin-bottom:22px}
+    .trust-stat b{display:block;font-family:'Quicksand',system-ui,sans-serif;font-size:1.5rem;color:var(--magenta)}
+    .trust-stat span{font-size:.85rem;color:var(--ink-soft)}
+    .trust-points{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+    .trust-point{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px}
+    .trust-point h3{font-family:'Quicksand',system-ui,sans-serif;font-size:.98rem;margin:0 0 5px;display:flex;gap:8px;align-items:center}
+    .trust-point p{font-size:.88rem;color:var(--ink-soft);margin:0}
+    .trust-point .check{flex:none;width:19px;height:19px;border-radius:50%;background:var(--magenta);color:#fff;display:grid;place-items:center;font-size:.65rem;font-weight:700}
+    .recently-verified{margin-top:20px;font-size:.9rem}
+    .recently-verified b{font-family:'Quicksand',system-ui,sans-serif}
+    .recently-verified ul{list-style:none;display:flex;gap:8px 14px;flex-wrap:wrap;padding:0;margin:8px 0 0}
+    .recently-verified a{color:var(--lavender-deep)}
+    .trust-correct{margin-top:16px;font-size:.85rem;color:var(--ink-soft)}
+  </style>
+
+  <h2 id="trust-heading">A directory you can check up on</h2>
+  <p class="sub">
+    Pee Dee Pet Care is a free local directory for pet services in Florence, Darlington, Hartsville,
+    and the Pee Dee region of South Carolina. Every listing is checked by phone by a real person —
+    here is the proof, in the open.
+  </p>
+
+  <div class="trust-stats">
+    <div class="trust-stat"><b>{{LISTING_COUNT}}</b><span>local providers listed</span></div>
+    <div class="trust-stat"><b>3+</b><span>towns across the Pee Dee</span></div>
+    <div class="trust-stat"><b>$0</b><span>to be listed or verified</span></div>
+  </div>
+
+  <div class="trust-points">
+    <div class="trust-point">
+      <h3><span class="check" aria-hidden="true">✓</span> Verified by phone</h3>
+      <p>We call each business and confirm it is open, reachable, and offering the services shown. <a href="/how-we-verify">How we verify</a>.</p>
+    </div>
+    <div class="trust-point">
+      <h3><span class="check" aria-hidden="true">✓</span> Dated, not stale</h3>
+      <p>Listings display the month they were last verified, so you can judge freshness yourself.</p>
+    </div>
+    <div class="trust-point">
+      <h3><span class="check" aria-hidden="true">✓</span> Never pay-to-play</h3>
+      <p>Verification cannot be bought, and payment never affects how a business appears in results.</p>
+    </div>
+  </div>
+
+  <!-- Render only when >=1 listing has lastVerified set -->
+  <div class="recently-verified">
+    <b>Recently verified:</b>
+    <ul>
+      <!-- agent: most recent 5 by lastVerified, linking to each listing,
+           formatted "Business Name · Mon YYYY" -->
+    </ul>
+  </div>
+
+  <p class="trust-correct">Spotted something out of date? <a href="{{CONTACT_LINK}}">Tell us</a> and we will re-check it by phone.</p>
+</section>

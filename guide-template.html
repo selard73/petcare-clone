@@ -1,0 +1,105 @@
+<!--
+  PDPC LOCAL GUIDE TEMPLATE
+  One template for all comparison guides ("Best X in Y" style pages).
+
+  SOURCING RULES (non-negotiable, enforced at build time):
+  1. Every factual claim about a provider must trace to that provider's
+     listing record or Shannon's verification-call notes. Nothing else.
+  2. No superlative without a stated criterion. "Best for small dogs"
+     is allowed ONLY when tied to a stated fact ("specializes in dogs
+     under 20 lbs"). Free-floating "best" is not.
+  3. Gaps stay visible as [FILL] until Shannon supplies the fact, and a
+     guide with unresolved [FILL] markers must not be published.
+  4. Every guide carries the methodology box and a dated "last reviewed".
+  5. Inclusion is not ranking. Providers appear alphabetically or by
+     situation-fit, never in a quality order.
+
+  Tokens: {{GUIDE_TITLE}} {{CITY_OR_REGION}} {{CATEGORY}} {{INTRO_ANSWER}}
+          {{LAST_REVIEWED}} {{CONTACT_LINK}}
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{GUIDE_TITLE}} | Pee Dee Pet Care</title>
+<meta name="description" content="{{INTRO_ANSWER}}">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Article",
+      "headline": "{{GUIDE_TITLE}}",
+      "dateModified": "{{LAST_REVIEWED}}",
+      "author": { "@type": "Organization", "name": "Pee Dee Pet Care" },
+      "publisher": { "@type": "Organization", "name": "Pee Dee Pet Care", "url": "https://www.peedeepetcare.com/" },
+      "about": "{{CATEGORY}} in {{CITY_OR_REGION}}"
+    },
+    {
+      "@type": "ItemList",
+      "name": "{{GUIDE_TITLE}}",
+      "itemListOrder": "https://schema.org/ItemListUnordered",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "PROVIDER_NAME", "url": "PROVIDER_LISTING_URL" }
+      ]
+    }
+  ]
+}
+</script>
+</head>
+<body>
+<main class="guide">
+
+  <p class="eyebrow">Local guide · {{CITY_OR_REGION}}</p>
+  <h1>{{GUIDE_TITLE}}</h1>
+
+  <!-- Answer-first: 2-4 sentences that fully answer the query on their own. -->
+  <p class="lede">{{INTRO_ANSWER}}</p>
+
+  <!-- Methodology box: the trust signal. Appears on every guide. -->
+  <aside class="method-box">
+    <h2>How this guide was made</h2>
+    <p>
+      Every provider below comes from the Pee Dee Pet Care directory, where listings are
+      confirmed by phone by a real person (<a href="/how-we-verify">how we verify</a>).
+      Facts here come from those calls and from each provider's listing — not from
+      advertising. No business paid to appear, and inclusion is not a ranking.
+      Last reviewed: {{LAST_REVIEWED}}.
+    </p>
+  </aside>
+
+  <!-- Situation-fit map: the decision-support layer AI engines quote. -->
+  <section class="fit-map">
+    <h2>Match your situation</h2>
+    <ul>
+      <li><b>SITUATION (e.g. "You have a cat"):</b> PROVIDER — the stated fact that makes it the fit.</li>
+    </ul>
+  </section>
+
+  <!-- One block per provider, alphabetical. -->
+  <section class="providers">
+    <h2>The providers</h2>
+
+    <article class="provider">
+      <h3>PROVIDER_NAME</h3>
+      <p class="meta">TOWN · ADDRESS · PHONE · <a href="PROVIDER_LISTING_URL">Full listing</a></p>
+      <p class="facts">What they offer and any specialty, in the business's own words from the listing/call.</p>
+      <p class="fit"><b>A good fit when:</b> the situations their stated facts support.</p>
+      <p class="limits"><b>Worth knowing:</b> honest constraints (size limits, waitlist, mobile-only, hours) — stated facts only.</p>
+    </article>
+  </section>
+
+  <!-- FAQ: 3-4 of the exact decision questions owners ask; mirror in FAQPage schema when populated. -->
+  <section class="guide-faq">
+    <h2>Common questions</h2>
+  </section>
+
+  <p class="guide-footer">
+    Something changed — a closure, new hours, a waitlist? <a href="{{CONTACT_LINK}}">Tell us</a> and
+    we will re-verify by phone and update this guide.
+  </p>
+
+</main>
+</body>
+</html>

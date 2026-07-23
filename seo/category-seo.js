@@ -811,6 +811,21 @@ function buildCityLinksHtml(pathname) {
   <p>Find providers near you: ${links}.</p>`;
 }
 
+// "Local guide: …" links for published guides only; drafts render nothing.
+function buildLocalGuideLinksHtml(categoryPath, citySlug = null) {
+  const { getPublishedGuidesForCategory } = require("./guides");
+  const guides = getPublishedGuidesForCategory(categoryPath, citySlug);
+  if (!guides.length) {
+    return "";
+  }
+  return guides
+    .map(
+      (guide) =>
+        `<p>Local guide: <a href="/guides/${escapeHtml(guide.slug)}">${escapeHtml(guide.title)}</a></p>`,
+    )
+    .join("\n  ");
+}
+
 function buildCategorySeoContentHtml(config, listings = []) {
   const faqs = (config.faqs || [])
     .map((faq) => `<p><strong>${escapeHtml(faq.q)}</strong> ${escapeHtml(faq.a)}</p>`)
@@ -828,6 +843,7 @@ function buildCategorySeoContentHtml(config, listings = []) {
   <p>${escapeHtml(config.intro)}</p>
   <p>Directory questions or listing requests: <a href="mailto:${escapeHtml(DIRECTORY_CONTACT_EMAIL)}">${escapeHtml(DIRECTORY_CONTACT_EMAIL)}</a>.</p>
   ${buildListingsSectionHtml(listings)}
+  ${buildLocalGuideLinksHtml(config.pathname)}
   ${buildCityLinksHtml(config.pathname)}
   ${buildCategoryGuideHtml(config)}
   ${appendRelatedBlogExcerpt(config)}
@@ -896,5 +912,6 @@ module.exports = {
   injectCategoryEnhancements,
   getCategoryConfig,
   buildCategoryGuideHtml,
+  buildLocalGuideLinksHtml,
   buildCategorySeoClientScript,
 };

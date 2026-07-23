@@ -1,5 +1,5 @@
 const { CANONICAL_ORIGIN, buildOrganizationNode, buildWebSiteNode } = require("./blog-seo");
-const { getCategoryConfig, buildCategoryGuideHtml } = require("./category-seo");
+const { getCategoryConfig, buildCategoryGuideHtml, buildLocalGuideLinksHtml } = require("./category-seo");
 const { getListingsForPathname } = require("./listings-loader");
 const { buildProviderItemList, getMostRecentLastVerified } = require("./provider-schema");
 
@@ -140,6 +140,7 @@ function buildCitySeoContentHtml(parsed, listings) {
   <p>${intro}</p>
   <p>${escapeHtml(base.intro)}</p>
   ${buildListingsSectionHtml(listings, parsed)}
+  ${buildLocalGuideLinksHtml(parsed.categoryPath, parsed.citySlug)}
   ${base ? buildCategoryGuideHtml(base) : ""}
   <h2>Nearby Pee Dee communities</h2>
   <p>

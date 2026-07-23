@@ -425,8 +425,10 @@ function buildOrganizationNode() {
     "@id": `${CANONICAL_ORIGIN}/#organization`,
     name: "Pee Dee Pet Care",
     url: `${CANONICAL_ORIGIN}/`,
+    // Canonical brand one-liner — must match the About page opening and the
+    // site footer verbatim.
     description:
-      "Pee Dee Pet Care is a free online directory of local pet grooming, training, boarding, daycare, sitters, and veterinary businesses in Darlington County and Florence, SC. Not a service provider.",
+      "Pee Dee Pet Care is a free local directory for pet services in Florence, Darlington, Hartsville, and the Pee Dee region of South Carolina.",
     disambiguatingDescription:
       "Pee Dee Pet Care is a local business directory for the Pee Dee region of South Carolina. It is not a veterinary clinic, groomer, boarding kennel, or pet sitting company.",
     logo: {
@@ -970,10 +972,14 @@ const STATIC_SITEMAP_PATHS = [
 
 function generateSitemapXml() {
   const { getCitySitemapEntries } = require("./city-seo");
+  // Required lazily to avoid a circular dependency; only published guides are
+  // ever listed — drafts stay out of the sitemap.
+  const { getGuideSitemapEntries } = require("./guides");
   const posts = loadBlogPosts();
   const urls = [
     ...STATIC_SITEMAP_PATHS.map((entry) => ({ ...entry, loc: `${CANONICAL_ORIGIN}${entry.loc}` })),
     ...getCitySitemapEntries().map((entry) => ({ ...entry, loc: `${CANONICAL_ORIGIN}${entry.loc}` })),
+    ...getGuideSitemapEntries().map((entry) => ({ ...entry, loc: `${CANONICAL_ORIGIN}${entry.loc}` })),
     ...posts.map((post) => ({
       loc: `${CANONICAL_ORIGIN}/blog/${encodeURIComponent(post.slug)}`,
       changefreq: "monthly",

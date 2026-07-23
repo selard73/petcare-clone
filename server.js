@@ -41,6 +41,8 @@ const { resolveSeoForPathname, injectSeoIntoHtml, injectBlogEnhancements, genera
 const { resolveCategorySeoForPathname, injectCategoryEnhancements } = require("./seo/category-seo");
 const { resolveCitySeoForPathname, injectCityEnhancements, isCityCategoryPath } = require("./seo/city-seo");
 const { injectHowWeVerifyEnhancements } = require("./seo/how-we-verify-seo");
+const { getGuideBySlug, getPublishedGuides, renderGuidePage, renderGuidesIndex } = require("./seo/guides");
+const { getTrustStats, injectHomeTrustEnhancements } = require("./seo/trust-section");
 const { getListingsForPathname } = require("./seo/listings-loader");
 const CANONICAL_ORIGIN = (process.env.CANONICAL_ORIGIN || "https://www.peedeepetcare.com").replace(/\/$/, "");
 const CANONICAL_HOST = new URL(CANONICAL_ORIGIN).hostname.toLowerCase();
@@ -178,6 +180,37 @@ function serveSitemap(req, res) {
   }
 }
 
+// Local guides are server-rendered standalone pages. Drafts (published: false)
+// stay reachable for review but are noindexed and excluded from the sitemap
+// and the /guides index.
+function serveGuides(req, res, pathname) {
+  let body = null;
+  if (pathname === "/guides") {
+    body = renderGuidesIndex();
+  } else {
+    const slug = pathname.slice("/guides/".length);
+    const guide = getGuideBySlug(slug);
+    if (guide) {
+      body = renderGuidePage(guide);
+    }
+  }
+  if (body === null) {
+    sendText(res, 404, "Not found");
+    return;
+  }
+  const payload = Buffer.from(body, "utf8");
+  res.writeHead(200, {
+    "Content-Type": "text/html; charset=utf-8",
+    "Content-Length": payload.length,
+    "Cache-Control": "no-cache, must-revalidate",
+  });
+  if (req.method === "HEAD") {
+    res.end();
+    return;
+  }
+  res.end(payload);
+}
+
 let indexHtmlCache = { cacheKey: "", body: "" };
 
 function getSeoCacheKey(indexMtimeMs) {
@@ -237,6 +270,7 @@ function serveIndexHtml(req, res, pathname = "/") {
       body = injectCityEnhancements(body, pathname, listings);
       body = injectCategoryEnhancements(body, pathname, listings);
       body = injectHowWeVerifyEnhancements(body, pathname);
+      body = injectHomeTrustEnhancements(body, pathname);
       const payload = Buffer.from(body, "utf8");
       res.writeHead(200, {
         "Content-Type": "text/html; charset=utf-8",
@@ -2643,6 +2677,31 @@ const server = http.createServer(async (req, res) => {
 
     if ((req.method === "GET" || req.method === "HEAD") && CATEGORY_PAGE_PATHS[pathname]) {
       serveIndexHtml(req, res, pathname);
+      return;
+    }
+
+    if (
+      (req.method === "GET" || req.method === "HEAD") &&
+      (pathname === "/guides" || pathname.startsWith("/guides/"))
+    ) {
+      serveGuides(req, res, pathname);
+      return;
+    }
+
+    if ((req.method === "GET" || req.method === "HEAD") && pathname === "/api/guides") {
+      sendJson(res, 200, {
+        guides: getPublishedGuides().map((guide) => ({
+          slug: guide.slug,
+          title: guide.title,
+          categoryPath: guide.categoryPath,
+          citySlug: guide.citySlug,
+        })),
+      });
+      return;
+    }
+
+    if ((req.method === "GET" || req.method === "HEAD") && pathname === "/api/trust-stats") {
+      sendJson(res, 200, getTrustStats());
       return;
     }
 

@@ -16,10 +16,26 @@ const PATH_TO_LISTING_CATEGORY = {
 
 const CAPACITY_STATUSES = ["accepting", "waitlist", "full"];
 
+// Optional tri-state proof booleans on every listing record.
+// Populate from verification-call notes only. null means "not stated", never "no".
+const PROOF_BOOLEAN_FIELDS = [
+  "emergencyAvailability",
+  "catFriendly",
+  "largeDogFriendly",
+  "anxiousPetFriendly",
+  "mobileService",
+  "weekendHours",
+  "pricingPublished",
+];
+
 // Verification fields. lastVerified is set from Shannon's phone-call notes only.
 // Never backfill programmatically. A listing without lastVerified renders no
 // Verified badge anywhere.
 function normalizeVerificationFields(source = {}) {
+  const proof = {};
+  for (const field of PROOF_BOOLEAN_FIELDS) {
+    proof[field] = typeof source[field] === "boolean" ? source[field] : null;
+  }
   return {
     // "YYYY-MM" month of the last verification phone call, or null.
     lastVerified:
@@ -30,6 +46,22 @@ function normalizeVerificationFields(source = {}) {
     claimed: source.claimed === true,
     // "accepting" | "waitlist" | "full" — only when shared on a call; else null.
     capacityStatus: CAPACITY_STATUSES.includes(source.capacityStatus) ? source.capacityStatus : null,
+    // Populate from verification-call notes only. null means "not stated", never "no".
+    ...proof,
+    // Business website URL, when the business has one on record.
+    website:
+      typeof source.website === "string" && source.website.trim() ? source.website.trim() : null,
+    // Plain-text review mention with a named source (e.g. "98% recommend, 66+
+    // reviews (listing)"). Entered manually — never scraped or aggregated.
+    reviewSignal:
+      typeof source.reviewSignal === "string" && source.reviewSignal.trim()
+        ? source.reviewSignal.trim()
+        : null,
+    // One sentence: why this listing is included in the directory.
+    editorialNote:
+      typeof source.editorialNote === "string" && source.editorialNote.trim()
+        ? source.editorialNote.trim()
+        : null,
   };
 }
 
@@ -169,6 +201,7 @@ function getListingsForPathname(pathname, options = {}) {
 }
 
 module.exports = {
+  PROOF_BOOLEAN_FIELDS,
   PATH_TO_LISTING_CATEGORY,
   normalizeCity,
   getListingCategoryForPath,
