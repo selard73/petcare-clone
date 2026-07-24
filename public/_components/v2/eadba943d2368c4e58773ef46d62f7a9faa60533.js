@@ -14362,6 +14362,8 @@ function reviewPage({ onNavigate: t }) {
         (/* @__PURE__ */ new Date()).getTime() < new Date("2026-08-15T04:00:00Z").getTime() && /* @__PURE__ */ d("div", { style: { background: "linear-gradient(135deg, #9333EA 0%, #DB2777 100%)", borderRadius: "14px", padding: "16px 18px", marginBottom: "1.25rem", color: "#fff" }, children: [
           /* @__PURE__ */ s("p", { style: { margin: 0, fontWeight: 700, fontSize: "1.05rem", lineHeight: 1.35 }, children: "🎉 Review & Win — 3 winners!" }),
           /* @__PURE__ */ s("p", { style: { margin: "6px 0 0", fontSize: "0.9rem", lineHeight: 1.5 }, children: "Leave an honest review by Thursday, August 14th and you're automatically entered to win a $50 gift certificate — or one of two $25 certificates — to the listed local pet business of your choice. Free to enter." }),
+          /* @__PURE__ */ s("p", { style: { margin: "8px 0 0", fontSize: "0.9rem", lineHeight: 1.5, fontWeight: 600 }, children: "📬 Don't forget the last step: after you submit, we'll email you a \"Finalize My Review\" link — your entry counts once you click it. (Check your spam folder if you don't see it!)" }),
+          /* @__PURE__ */ s("p", { style: { margin: "8px 0 0", fontSize: "0.8rem", lineHeight: 1.5, opacity: 0.95 }, children: "Your email is used only to confirm your review and to contact winners — never sold, never shared, no spam." }),
           /* @__PURE__ */ s("p", { style: { margin: "8px 0 0", fontSize: "0.72rem", lineHeight: 1.45, opacity: 0.85 }, children: "One entry per review; any honest review qualifies — entry never depends on what you write. Winners drawn at random and announced on our Facebook page August 15th. Not sponsored, endorsed, or administered by Facebook." })
         ] }),
         /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight mb-1", children: "Share Your Experience ⭐" }),
@@ -14429,7 +14431,7 @@ function reviewPage({ onNavigate: t }) {
           /* @__PURE__ */ d("div", { className: "mb-5", children: [
             /* @__PURE__ */ s("label", { className: labelCls, children: "Email Address" }),
             /* @__PURE__ */ s("input", { type: "email", value: em, onChange: (ev) => setEm(ev.target.value), placeholder: "you@example.com", className: inputCls }),
-            /* @__PURE__ */ s("p", { className: "text-gray-400 text-xs mt-1", children: "Only used to confirm your review is from a real person — never shared, never spam." })
+            /* @__PURE__ */ s("p", { className: "text-gray-400 text-xs mt-1", children: "Only used to confirm your review is from a real person and to contact giveaway winners — never sold, never shared, no spam. Ever." })
           ] }),
           /* @__PURE__ */ d("div", { className: "mb-5", children: [
             /* @__PURE__ */ s("label", { className: labelCls, children: "Star Rating" }),
