@@ -65,6 +65,12 @@ const REVIEW_FORM_TOKEN_DAYS = Number(process.env.REVIEW_FORM_TOKEN_DAYS || 7);
 const PENDING_REVIEWS_FILE = path.join(ROOT, "data", "pending-reviews.json");
 const REVIEW_NOTIFY_FROM =
   process.env.REVIEW_NOTIFY_FROM || "Pawsitively Fabulous <selard73@gmail.com>";
+// Review & Win giveaway runs through Aug 14, 2026 (midnight ET). Reviewer
+// emails mention the drawing only while it is active.
+const REVIEW_GIVEAWAY_ENDS_MS = new Date("2026-08-15T04:00:00Z").getTime();
+function reviewGiveawayActive() {
+  return Date.now() < REVIEW_GIVEAWAY_ENDS_MS;
+}
 const RESEND_API_KEY = process.env.RESEND_API_KEY || "";
 const SMTP_HOST = process.env.SMTP_HOST || "";
 const SMTP_PORT = Number(process.env.SMTP_PORT || 587);
@@ -502,6 +508,11 @@ function initSqlite() {
     CREATE INDEX IF NOT EXISTS idx_click_events_et_date ON business_click_events(et_date, event_type);
     `,
   );
+  try {
+    sqlite.exec("ALTER TABLE pending_reviews ADD COLUMN live_notified_at TEXT");
+  } catch {
+    // column already exists
+  }
   const visitRow = sqlite.prepare("SELECT value FROM site_stats WHERE key = ?").get(VISIT_COUNT_KEY);
   if (!visitRow) {
     sqlite.prepare("INSERT INTO site_stats (key, value) VALUES (?, 0)").run(VISIT_COUNT_KEY);
@@ -1526,6 +1537,41 @@ async function getPendingReview(token) {
   return { token: row.token, payload: row.payload, createdAt: row.created_at, expiresAt: row.expires_at, confirmedAt: row.confirmed_at };
 }
 
+async function listConfirmedUnnotifiedPendingReviews() {
+  if (usingSqlite) {
+    const rows = sqlite
+      .prepare(
+        "SELECT token, payload_json FROM pending_reviews WHERE confirmed_at IS NOT NULL AND live_notified_at IS NULL",
+      )
+      .all();
+    return rows
+      .map((row) => {
+        try {
+          return { token: row.token, payload: JSON.parse(row.payload_json) };
+        } catch {
+          return null;
+        }
+      })
+      .filter(Boolean);
+  }
+  const db = await readPendingReviewsFile();
+  return (db.reviews || [])
+    .filter((row) => row.confirmed_at && !row.live_notified_at)
+    .map((row) => ({ token: row.token, payload: row.payload }));
+}
+
+async function markPendingReviewLiveNotified(token) {
+  const notifiedAt = new Date().toISOString();
+  if (usingSqlite) {
+    sqlite.prepare("UPDATE pending_reviews SET live_notified_at = ? WHERE token = ?").run(notifiedAt, token);
+    return;
+  }
+  const db = await readPendingReviewsFile();
+  const row = (db.reviews || []).find((entry) => entry.token === token);
+  if (row) row.live_notified_at = notifiedAt;
+  await writePendingReviewsFile(db);
+}
+
 async function markPendingReviewConfirmed(token) {
   const confirmedAt = new Date().toISOString();
   if (usingSqlite) {
@@ -1727,10 +1773,35 @@ async function handleReviewConfirmPage(req, res, url) {
     console.error("Review form owner email failed:", error.message);
   });
 
+  const giveawayActive = reviewGiveawayActive();
+  sendAccountEmail({
+    to: p.email,
+    subject: giveawayActive
+      ? `You're entered! Your review of ${p.businessName} is confirmed 🎉`
+      : `Your review of ${p.businessName} is confirmed`,
+    text: [
+      `Hi ${p.name},`,
+      "",
+      `Your review of ${p.businessName} is confirmed — thank you for helping pet parents across the Pee Dee!`,
+      "",
+      ...(giveawayActive
+        ? [
+            "🎉 You're officially entered in our Review & Win drawing. Winners are drawn at random and announced on our Facebook page on August 15th — good luck!",
+            "",
+          ]
+        : []),
+      "Our team adds each review by hand, so please allow up to 24 hours for yours to appear on the site. We'll email you again once it's live.",
+      "",
+      "— Pee Dee Pet Care (Pawsitively Fabulous)",
+    ].join("\n"),
+  }).catch((error) => {
+    console.error("Reviewer entered email failed:", error.message);
+  });
+
   sendReviewConfirmPage(res, {
     emoji: "💜",
-    heading: "Thank you! Your review is confirmed",
-    message: `Your review of ${p.businessName} has been sent to our team. Please give us up to 24 hours to add it to the site.`,
+    heading: giveawayActive ? "You're entered! Review confirmed" : "Thank you! Your review is confirmed",
+    message: `Your review of ${p.businessName} has been sent to our team. Please give us up to 24 hours to add it to the site — we'll email you when it's live.`,
   });
   return true;
 }
@@ -2306,10 +2377,56 @@ async function sendReviewNotificationEmail(action, fields = {}) {
   );
 }
 
+// When a review record goes live on a listing, email the reviewer who submitted
+// it through the Share Your Experience form. Matching is conservative: the
+// reviewer name must match, and the business id must match whenever the form
+// captured one; if the match is ambiguous, no email is sent.
+async function notifyReviewerReviewLive(fields) {
+  const review = parseReviewFromFields(fields);
+  if (!review) return;
+  const reviewerName = String(review.userName || "").trim().toLowerCase();
+  if (!reviewerName) return;
+  const businessId = String(review.businessId || fields.name || "").trim();
+  const candidates = (await listConfirmedUnnotifiedPendingReviews()).filter((row) => {
+    if (String(row.payload.name || "").trim().toLowerCase() !== reviewerName) return false;
+    if (row.payload.businessId && businessId && row.payload.businessId !== businessId) return false;
+    return true;
+  });
+  if (candidates.length !== 1) return;
+  const match = candidates[0];
+  const p = match.payload;
+  await markPendingReviewLiveNotified(match.token);
+  const giveawayActive = reviewGiveawayActive();
+  await sendAccountEmail({
+    to: p.email,
+    subject: `Your review of ${p.businessName} is now live! 🐾`,
+    text: [
+      `Hi ${p.name},`,
+      "",
+      `Good news — your review of ${p.businessName} has been added to peedeepetcare.com and is now helping other pet parents across the Pee Dee.`,
+      "",
+      ...(giveawayActive
+        ? [
+            "🎉 Reminder: you're entered in our Review & Win drawing — winners are announced on our Facebook page on August 15th. Good luck!",
+            "",
+          ]
+        : []),
+      "Thank you for supporting local pet businesses!",
+      "",
+      "— Pee Dee Pet Care (Pawsitively Fabulous)",
+    ].join("\n"),
+  });
+}
+
 function queueReviewNotification(action, fields = {}) {
   sendReviewNotificationEmail(action, fields).catch((error) => {
     console.error("Review notification email failed:", error.message);
   });
+  if (action === "added" && isReviewRecord(fields)) {
+    notifyReviewerReviewLive(fields).catch((error) => {
+      console.error("Reviewer live-notification email failed:", error.message);
+    });
+  }
 }
 
 async function listAllRecords() {
