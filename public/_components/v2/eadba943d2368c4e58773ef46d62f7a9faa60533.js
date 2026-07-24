@@ -6048,13 +6048,13 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                     "aria-label": `Browse ${p.label} providers`,
                     className: "cursor-pointer",
                     style: {
-                      padding: "2.5px",
+                      padding: window.innerWidth < 768 ? "0" : "1.5px",
                       borderRadius: "1.2rem",
-                      background: "linear-gradient(135deg, #C084FC 0%, #E879F9 50%, #F472B6 100%)",
-                      boxShadow: "0 12px 40px -12px rgba(147,51,234,0.5), 0 6px 28px -8px rgba(244,114,182,0.4), 0 0 1px 1px rgba(192,132,252,0.25)",
+                      background: window.innerWidth < 768 ? "#fff" : "linear-gradient(135deg, #D8B4FE 0%, #F0ABFC 50%, #F9A8D4 100%)",
+                      boxShadow: window.innerWidth < 768 ? "0 4px 14px -4px rgba(0,0,0,0.12)" : "0 10px 30px -14px rgba(147,51,234,0.35), 0 4px 18px -10px rgba(244,114,182,0.25)",
                       ...window.innerWidth < 768 ? {} : { width: "23.5rem" }
                     },
-                    children: /* @__PURE__ */ d("div", { style: { background: "#fff", borderRadius: "1.05rem", overflow: "hidden" }, children: [
+                    children: /* @__PURE__ */ d("div", { style: { background: "#fff", borderRadius: window.innerWidth < 768 ? "1.2rem" : "1.1rem", overflow: "hidden" }, children: [
                       /* @__PURE__ */ s("img", { src: p.img, alt: `${p.label} in the Pee Dee area`, loading: "lazy", style: { width: "100%", height: window.innerWidth < 768 ? "11rem" : "15rem", objectFit: "cover", objectPosition: p.pos, display: "block" } }),
                       /* @__PURE__ */ d("div", { className: "text-center", style: { padding: window.innerWidth < 768 ? "0.85rem 0.5rem 0.95rem" : "1rem 0.5rem 1.1rem", whiteSpace: "nowrap", background: "linear-gradient(180deg, #FFFFFF 0%, #FAF5FF 100%)" }, children: [
                         /* @__PURE__ */ s("span", { "aria-hidden": "true", style: { fontSize: window.innerWidth < 768 ? "1.15rem" : "1.3rem", marginRight: window.innerWidth < 768 ? "6px" : "8px" }, children: p.emoji }),
