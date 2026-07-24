@@ -5714,7 +5714,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                 animate: { scale: 1, rotate: 0 },
                 transition: { duration: 0.8, type: "spring" },
                 className: "inline-block mb-2 md:mb-3",
-                children: /* @__PURE__ */ s("span", { className: "text-6xl md:text-8xl", children: "ðŸ¾" })
+                children: /* @__PURE__ */ s("span", { className: "text-6xl md:text-8xl", children: "🐾" })
               }
             ),
             /* @__PURE__ */ d("div", { className: "max-w-xs mx-auto mb-4 md:mb-5", children: [
@@ -5766,7 +5766,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                     /* @__PURE__ */ s("span", { className: "text-purple-700 font-medium", children: "Pee Dee Pet Care" }),
                     " is a free local directory for pet grooming, training, boarding, and vet care in Darlington, Hartsville and Florence, SC."
                   ] }),
-                  /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs md:text-sm leading-relaxed", children: "Browse verified providers, read reviews, shortlist your favorites, and compare options â€” no fees for pet owners or businesses." })
+                  /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs md:text-sm leading-relaxed", children: "Browse verified providers, read reviews, shortlist your favorites, and compare options — no fees for pet owners or businesses." })
                 ] })
               }
             ),
@@ -5788,7 +5788,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                   fontWeight: "600",
                   WebkitTextFillColor: "white",
                   display: "block"
-                }, children: "Serving Darlington + Florence â–¸" })
+                }, children: "Serving Darlington + Florence ▸" })
               }
             ) }),
             /* @__PURE__ */ s("div", { className: "md:hidden text-center mb-5", children: /* @__PURE__ */ s("p", { style: {
@@ -6026,14 +6026,14 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
               className: "max-w-7xl mx-auto",
               style: window.innerWidth < 768 ? { marginTop: "0.5rem", marginBottom: "3rem" } : { marginTop: "-1rem", marginBottom: "5.5rem" },
               children: [
-                /* @__PURE__ */ s("h2", { className: "text-purple-600 text-2xl md:text-4xl text-center", style: { marginBottom: "0.75rem" }, children: "ðŸ¾ Browse by Service" }),
+                /* @__PURE__ */ s("h2", { className: "text-purple-600 text-2xl md:text-4xl text-center", style: { marginBottom: "0.75rem" }, children: "🐾 Browse by Service" }),
                 /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base text-center leading-relaxed", style: { marginBottom: window.innerWidth < 768 ? "1.25rem" : "3rem" }, children: "Pick a service to see verified local providers." }),
                 /* @__PURE__ */ s("div", { style: window.innerWidth < 768 ? { display: "grid", gridTemplateColumns: "1fr", gap: "1.4rem" } : { display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "3rem 2.5rem" }, children: [
-                  { page: "grooming", label: "Grooming", emoji: "âœ‚ï¸", img: "/images/home/grooming-card-v2.jpg", pos: "center 40%" },
-                  { page: "training", label: "Training", emoji: "ðŸŽ“", img: "/images/home/training-card-v2.jpg", pos: "center 45%" },
-                  { page: "boarding", label: "Boarding & Daycare", emoji: "ðŸ ", img: "/images/home/boarding-card-v2.jpg", pos: "center 35%" },
-                  { page: "sitters", label: "Sitters & Walkers", emoji: "ðŸš¶", img: "/images/home/sitters-card-v2.jpg", pos: "center 35%" },
-                  { page: "vet", label: "Vet Care", emoji: "ðŸ©º", img: "/images/home/vet-card-v2.jpg", pos: "center 30%" }
+                  { page: "grooming", label: "Grooming", emoji: "✂️", img: "/images/home/grooming-card-v2.jpg", pos: "center 40%" },
+                  { page: "training", label: "Training", emoji: "🎓", img: "/images/home/training-card-v2.jpg", pos: "center 45%" },
+                  { page: "boarding", label: "Boarding & Daycare", emoji: "🏠", img: "/images/home/boarding-card-v2.jpg", pos: "center 35%" },
+                  { page: "sitters", label: "Sitters & Walkers", emoji: "🚶", img: "/images/home/sitters-card-v2.jpg", pos: "center 35%" },
+                  { page: "vet", label: "Vet Care", emoji: "🩺", img: "/images/home/vet-card-v2.jpg", pos: "center 30%" }
                 ].map((p, m) => /* @__PURE__ */ s(
                   D.div,
                   {
@@ -6076,13 +6076,13 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
               className: "max-w-6xl mx-auto",
               style: window.innerWidth < 768 ? { marginTop: "0.5rem", marginBottom: "3rem" } : { marginTop: "-1.5rem", marginBottom: "6rem" },
               children: [
-                /* @__PURE__ */ s("h2", { className: "text-purple-600 text-2xl md:text-4xl text-center", style: { marginBottom: window.innerWidth < 768 ? "1.5rem" : "2.5rem" }, children: "ðŸ’œ This Week on Pee Dee Pet Care" }),
+                /* @__PURE__ */ s("h2", { className: "text-purple-600 text-2xl md:text-4xl text-center", style: { marginBottom: window.innerWidth < 768 ? "1.5rem" : "2.5rem" }, children: "💜 This Week on Pee Dee Pet Care" }),
                 /* @__PURE__ */ d("div", { style: window.innerWidth < 768 ? { display: "grid", gridTemplateColumns: "1fr", gap: "1.75rem" } : { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem" }, children: [
                   /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
-                    /* @__PURE__ */ s("img", { src: "/images/home/bilbo-wagz.png", alt: "Bilbo Wagz â€” adoptable dog at the Darlington County Humane Society", style: { height: "13rem", width: "100%", objectFit: "cover", objectPosition: "center 25%", display: "block" } }),
+                    /* @__PURE__ */ s("img", { src: "/images/home/bilbo-wagz.png", alt: "Bilbo Wagz — adoptable dog at the Darlington County Humane Society", style: { height: "13rem", width: "100%", objectFit: "cover", objectPosition: "center 25%", display: "block" } }),
                     /* @__PURE__ */ d("div", { className: "flex flex-col items-center text-center flex-1", style: { padding: "1.25rem 2rem 1.5rem" }, children: [
-                      /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "ðŸ¾ Fur-ever Friend of the Month" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-3", children: "Meet Bilbo Wagz â€” a year-and-a-half-old pup at the Darlington County Humane Society. He arrived in rough shape, but stayed incredibly friendly and loving. He's a play group favorite who gets along with everyone he meets, and volunteers call him handsome, well-mannered, and sweet. Bilbo is ready to leave shelter life behind." }),
+                      /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "🐾 Fur-ever Friend of the Month" }),
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-3", children: "Meet Bilbo Wagz — a year-and-a-half-old pup at the Darlington County Humane Society. He arrived in rough shape, but stayed incredibly friendly and loving. He's a play group favorite who gets along with everyone he meets, and volunteers call him handsome, well-mannered, and sweet. Bilbo is ready to leave shelter life behind." }),
                       /* @__PURE__ */ s(
                         "button",
                         {
@@ -6091,18 +6091,18 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                             ba || (ba = window.__petOfMonthSong = new Audio("/audio/bilbo-wagz-song.mp3")), ba.paused ? ba.play().catch(() => {}) : (ba.pause(), ba.currentTime = 0);
                           },
                           className: "text-purple-600 hover:text-purple-800 font-medium mb-4 transition-colors",
-                          children: "ðŸ”Š Click for Bilbo's Song"
+                          children: "🔊 Click for Bilbo's Song"
                         }
                       ),
-                      /* @__PURE__ */ s("a", { href: "/pet-of-month", target: "_blank", rel: "noopener noreferrer", className: "mt-auto inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg !text-white !font-semibold no-underline hover:opacity-90 transition-opacity", children: "Meet Bilbo â†’" })
+                      /* @__PURE__ */ s("a", { href: "/pet-of-month", target: "_blank", rel: "noopener noreferrer", className: "mt-auto inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg !text-white !font-semibold no-underline hover:opacity-90 transition-opacity", children: "Meet Bilbo →" })
                     ] })
                   ] }),
                   /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
-                    /* @__PURE__ */ s("div", { style: { height: "13rem", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #FCE7F3 0%, #EDE9FE 100%)" }, children: /* @__PURE__ */ s("div", { className: "bg-white rounded-full flex items-center justify-center shadow-lg", style: { width: "6rem", height: "6rem", fontSize: "3rem", lineHeight: 1 }, children: "â­" }) }),
+                    /* @__PURE__ */ s("div", { style: { height: "13rem", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #FCE7F3 0%, #EDE9FE 100%)" }, children: /* @__PURE__ */ s("div", { className: "bg-white rounded-full flex items-center justify-center shadow-lg", style: { width: "6rem", height: "6rem", fontSize: "3rem", lineHeight: 1 }, children: "⭐" }) }),
                     /* @__PURE__ */ d("div", { className: "flex flex-col items-center text-center flex-1", style: { padding: "1.25rem 2rem 1.5rem" }, children: [
-                      /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "ðŸŒŸ Featured Business of the Week" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-5", children: "Coming soon â€” we'll shine a spotlight on a standout local pet business right here." }),
-                      /* @__PURE__ */ s("span", { className: "mt-auto inline-block px-5 py-2 bg-purple-100 text-purple-500 rounded-full font-semibold", children: "Coming Soon âœ¨" })
+                      /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "🌟 Featured Business of the Week" }),
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-5", children: "Coming soon — we'll shine a spotlight on a standout local pet business right here." }),
+                      /* @__PURE__ */ s("span", { className: "mt-auto inline-block px-5 py-2 bg-purple-100 text-purple-500 rounded-full font-semibold", children: "Coming Soon ✨" })
                     ] })
                   ] })
                 ] })
@@ -6130,14 +6130,14 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                   }
                 ),
                 /* @__PURE__ */ s("h2", { className: "text-purple-600 mb-3 md:mb-4 text-2xl md:text-4xl relative", children: "Why Use Our Directory?" }),
-                /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed relative", children: "Compare local providers side by side â€” without jumping between a dozen websites." })
+                /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base max-w-xl mx-auto leading-relaxed relative", children: "Compare local providers side by side — without jumping between a dozen websites." })
               ]
             }
           ),
           /* @__PURE__ */ s("div", { className: "flex flex-col items-center gap-3 md:grid md:grid-cols-3 md:gap-8", children: [
-            { icon: "ðŸ”", title: "Easy to Find", description: "Every category in one place â€” filter by service type or town" },
-            { icon: "â­", title: "Trusted Reviews", description: "Real feedback from pet owners who've used these providers" },
-            { icon: "ðŸ“", title: "Local Focus", description: "Independent Pee Dee businesses, not a national chain directory" }
+            { icon: "🔍", title: "Easy to Find", description: "Every category in one place — filter by service type or town" },
+            { icon: "⭐", title: "Trusted Reviews", description: "Real feedback from pet owners who've used these providers" },
+            { icon: "📍", title: "Local Focus", description: "Independent Pee Dee businesses, not a national chain directory" }
           ].map((p, m) => /* @__PURE__ */ s(
             D.div,
             {
@@ -6177,7 +6177,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
               className: "max-w-3xl mx-auto mt-10 md:mt-14 px-2 text-center",
               children: /* @__PURE__ */ d("div", { className: "space-y-4", children: [
                 /* @__PURE__ */ s("h3", { className: "text-purple-700 text-lg md:text-xl font-semibold leading-snug", children: "Built for pet owners in the Pee Dee" }),
-                /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed", children: "Need a dog groomer in Florence, a trainer in Hartsville, or boarding while you're away? We list local providers across Darlington County and the greater Florence area â€” so you can see who's nearby, what they offer, and what other owners have to say." }),
+                /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed", children: "Need a dog groomer in Florence, a trainer in Hartsville, or boarding while you're away? We list local providers across Darlington County and the greater Florence area — so you can see who's nearby, what they offer, and what other owners have to say." }),
                 /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs md:text-sm leading-relaxed", children: "From routine wellness to a last-minute sitter, start here. Free to browse, free to list." })
               ] })
             }
@@ -6340,10 +6340,10 @@ class qm {
     return i.filter((a) => !o.has(a.id)).map(pdpcNormalizeVerification);
   }
   saveBusiness(e) {
-    console.log("ðŸ’¾ saveBusiness called for:", e.name), console.log("   - Has userEdited flag:", e.userEdited);
+    console.log("💾 saveBusiness called for:", e.name), console.log("   - Has userEdited flag:", e.userEdited);
     const rDeleted = this.getDeletedBusinessIds(e.category);
     if (rDeleted.has(e.id) && !e.userEdited) {
-      console.log("ðŸ›‘ BLOCKING seed restore for deleted business:", e.name);
+      console.log("🛑 BLOCKING seed restore for deleted business:", e.name);
       return;
     }
     e.userEdited && rDeleted.has(e.id) && this.unmarkBusinessDeleted(e.id, e.category);
@@ -6351,20 +6351,20 @@ class qm {
     if (n >= 0) {
       const a = r[n];
       if (console.log("   - Found existing business. existing.userEdited:", a.userEdited), console.log("   - Incoming business.userEdited:", e.userEdited), a.userEdited && !e.userEdited) {
-        console.log("ðŸ”’ PRESERVING user-edited business (BLOCKING seed overwrite):", e.name);
+        console.log("🔒 PRESERVING user-edited business (BLOCKING seed overwrite):", e.name);
         return;
       }
-      r[n] = e, console.log("ðŸ“ UPDATING existing business:", e.name);
+      r[n] = e, console.log("📝 UPDATING existing business:", e.name);
     } else
-      r.push(e), console.log("âž• ADDING new business:", e.name);
+      r.push(e), console.log("➕ ADDING new business:", e.name);
     const i = `${this.prefix}businesses_${e.category}`;
-    localStorage.setItem(i, JSON.stringify(r)), console.log("âœ… Business saved to localStorage. Total in category:", r.length);
+    localStorage.setItem(i, JSON.stringify(r)), console.log("✅ Business saved to localStorage. Total in category:", r.length);
     const o = localStorage.getItem(i);
     if (!o)
-      console.error("âŒ FAILED to save business to localStorage!");
+      console.error("❌ FAILED to save business to localStorage!");
     else {
       const a = JSON.parse(o).find((l) => l.id === e.id);
-      console.log("âœ… Verification - business in localStorage with userEdited:", a?.userEdited);
+      console.log("✅ Verification - business in localStorage with userEdited:", a?.userEdited);
     }
   }
   deleteBusiness(e, r) {
@@ -6463,7 +6463,7 @@ class qm {
 //   lastVerified: "YYYY-MM" string (e.g. "2026-06") or null. Default null.
 //   claimed: boolean. Default false.
 //   capacityStatus: "accepting" | "waitlist" | "full" | null. Default null.
-// A listing with no lastVerified renders no Verified badge â€” anywhere.
+// A listing with no lastVerified renders no Verified badge — anywhere.
 // Optional proof fields (tri-state booleans plus text fields, all default null).
 // Populate from verification-call notes only. null means "not stated", never "no".
 const PDPC_PROOF_BOOLEAN_FIELDS = [
@@ -6482,7 +6482,7 @@ function pdpcNormalizeProofFields(t) {
   return {
     ...e,
     website: typeof t.website == "string" && t.website.trim() ? t.website.trim() : null,
-    // Plain-text review mention with a named source â€” entered manually, never scraped.
+    // Plain-text review mention with a named source — entered manually, never scraped.
     reviewSignal: typeof t.reviewSignal == "string" && t.reviewSignal.trim() ? t.reviewSignal.trim() : null,
     // One sentence: why this listing is included in the directory.
     editorialNote: typeof t.editorialNote == "string" && t.editorialNote.trim() ? t.editorialNote.trim() : null
@@ -6525,11 +6525,11 @@ function pdpcVerificationBadges(t, o) {
     "a",
     {
       href: "/how-we-verify",
-      title: "Verified by phone â€” see how we verify listings",
+      title: "Verified by phone — see how we verify listings",
       style: { ...n, background: "#C4308A", color: "#fff" },
       children: [
-        "âœ“ Verified ",
-        /* @__PURE__ */ s("span", { style: { fontWeight: 600, opacity: 0.85, fontSize: "0.72rem" }, children: `Â· ${pdpcFormatVerifiedMonth(e.lastVerified)}` })
+        "✓ Verified ",
+        /* @__PURE__ */ s("span", { style: { fontWeight: 600, opacity: 0.85, fontSize: "0.72rem" }, children: `· ${pdpcFormatVerifiedMonth(e.lastVerified)}` })
       ]
     },
     "pdpc-verified"
@@ -6537,9 +6537,9 @@ function pdpcVerificationBadges(t, o) {
     "a",
     {
       href: "/how-we-verify#verified-vs-claimed",
-      title: "Claimed by the owner â€” see Verified vs. Claimed",
+      title: "Claimed by the owner — see Verified vs. Claimed",
       style: { ...n, background: "transparent", color: "#7C5FA8", border: "2px solid #7C5FA8" },
-      children: "â˜† Claimed"
+      children: "☆ Claimed"
     },
     "pdpc-claimed"
   )), e.capacityStatus && PDPC_CAPACITY_PILLS[e.capacityStatus]) {
@@ -6591,12 +6591,12 @@ function pdpcVerificationOverlay(t) {
     "a",
     {
       href: "/how-we-verify",
-      title: "Verified by phone â€” see how we verify listings",
+      title: "Verified by phone — see how we verify listings",
       onClick: (i) => i.stopPropagation(),
       style: { ...n, background: "#C4308A", color: "#fff" },
       children: [
-        "âœ“ Verified ",
-        /* @__PURE__ */ s("span", { style: { fontWeight: 600, opacity: 0.85, fontSize: "0.68rem" }, children: `Â· ${pdpcFormatVerifiedMonth(e.lastVerified)}` })
+        "✓ Verified ",
+        /* @__PURE__ */ s("span", { style: { fontWeight: 600, opacity: 0.85, fontSize: "0.68rem" }, children: `· ${pdpcFormatVerifiedMonth(e.lastVerified)}` })
       ]
     },
     "pdpc-verified"
@@ -6604,10 +6604,10 @@ function pdpcVerificationOverlay(t) {
     "a",
     {
       href: "/how-we-verify#verified-vs-claimed",
-      title: "Claimed by the owner â€” see Verified vs. Claimed",
+      title: "Claimed by the owner — see Verified vs. Claimed",
       onClick: (i) => i.stopPropagation(),
       style: { ...n, background: "#fff", color: "#7C5FA8", border: "2px solid #7C5FA8", padding: "2px 8px" },
-      children: "â˜† Claimed"
+      children: "☆ Claimed"
     },
     "pdpc-claimed"
   )), r.length === 0 ? null : /* @__PURE__ */ s("div", { style: { position: "absolute", top: "8px", right: "8px", zIndex: 10, display: "flex", flexDirection: "column", alignItems: "flex-end", gap: "6px" }, children: r });
@@ -6649,7 +6649,7 @@ function pdpcProofChips(t) {
   )) });
 }
 // "Why it's listed:" one-liner plus the plain-text review signal for listing
-// detail views. reviewSignal is rendered as text with its named source â€” never
+// detail views. reviewSignal is rendered as text with its named source — never
 // as stars or a rating widget.
 function pdpcProofNotes(t) {
   const e = pdpcNormalizeVerification(t || {}), r = [];
@@ -6665,7 +6665,7 @@ function pdpcProofDetails(t) {
   const e = pdpcProofChips(t), r = pdpcProofNotes(t);
   return !e && !r ? null : /* @__PURE__ */ d("div", { style: { display: "flex", flexDirection: "column", gap: "8px" }, children: [e, r] });
 }
-// "Local guide: â€¦" links on category pages. Fetches published guides from the
+// "Local guide: …" links on category pages. Fetches published guides from the
 // server; drafts are never returned by /api/guides, so this renders nothing
 // until a guide is published.
 function PdpcGuideLinks({ categoryPath: t }) {
@@ -6684,7 +6684,7 @@ function PdpcGuideLinks({ categoryPath: t }) {
 }
 // Homepage trust section ("A directory you can check up on"). Stats come from
 // the server (window.__PDPC_TRUST__ injected at serve time, /api/trust-stats
-// as fallback) so the listing count is always computed from listing records â€”
+// as fallback) so the listing count is always computed from listing records —
 // never hardcoded. The "Recently verified" strip renders only when at least
 // one listing has a lastVerified date.
 const PDPC_TRUST_CONTACT_LINK = "mailto:hello@peedeepetcare.com";
@@ -6700,7 +6700,7 @@ function PdpcTrustSection() {
     };
   }, []), t === null ? null : /* @__PURE__ */ s("div", { className: "px-4 md:px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ s("section", { "aria-labelledby": "trust-heading", className: "max-w-6xl mx-auto my-6 md:my-10 rounded-[24px] bg-purple-50 border border-purple-100 px-6 py-8 md:px-10 md:py-10", children: /* @__PURE__ */ d("div", { children: [
     /* @__PURE__ */ s("h2", { id: "trust-heading", className: "text-purple-600 text-2xl md:text-3xl mb-2", children: "A directory you can check up on" }),
-    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed mb-6 max-w-2xl", children: "Pee Dee Pet Care is a free local directory for pet services in Florence, Darlington, Hartsville, and the Pee Dee region of South Carolina. Every listing is checked by phone by a real person â€” here is the proof, in the open." }),
+    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed mb-6 max-w-2xl", children: "Pee Dee Pet Care is a free local directory for pet services in Florence, Darlington, Hartsville, and the Pee Dee region of South Carolina. Every listing is checked by phone by a real person — here is the proof, in the open." }),
     /* @__PURE__ */ s("div", { className: "mb-6", style: { display: "flex", flexWrap: "wrap", gap: "16px 40px" }, children: [
       [String(t.listingCount), "local providers listed"],
       ["3+", "towns across the Pee Dee"],
@@ -6719,14 +6719,14 @@ function PdpcTrustSection() {
       ["Never pay-to-play", "Verification cannot be bought, and payment never affects how a business appears in results."]
     ].map(([r, n]) => /* @__PURE__ */ d("div", { className: "bg-white border border-purple-100 rounded-xl p-4", children: [
       /* @__PURE__ */ d("h3", { className: "text-gray-800 font-semibold text-sm md:text-base mb-1 flex items-center gap-2", children: [
-        /* @__PURE__ */ s("span", { "aria-hidden": "true", className: "flex-none w-5 h-5 rounded-full bg-pink-600 text-white flex items-center justify-center text-[10px] font-bold", children: "âœ“" }),
+        /* @__PURE__ */ s("span", { "aria-hidden": "true", className: "flex-none w-5 h-5 rounded-full bg-pink-600 text-white flex items-center justify-center text-[10px] font-bold", children: "✓" }),
         r
       ] }),
       /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-relaxed m-0", children: n })
     ] }, r)) }),
     t.recentlyVerified.length > 0 && /* @__PURE__ */ d("div", { className: "mt-5 text-sm", children: [
       /* @__PURE__ */ s("b", { className: "text-gray-800", children: "Recently verified:" }),
-      /* @__PURE__ */ s("ul", { style: { listStyle: "none", padding: 0, margin: "8px 0 0", display: "flex", flexWrap: "wrap", gap: "8px 18px" }, children: t.recentlyVerified.map((r) => /* @__PURE__ */ s("li", { children: /* @__PURE__ */ s("a", { href: r.href, className: "text-purple-700 underline underline-offset-2", children: `${r.name} Â· ${r.label}` }) }, `${r.name}-${r.lastVerified}`)) })
+      /* @__PURE__ */ s("ul", { style: { listStyle: "none", padding: 0, margin: "8px 0 0", display: "flex", flexWrap: "wrap", gap: "8px 18px" }, children: t.recentlyVerified.map((r) => /* @__PURE__ */ s("li", { children: /* @__PURE__ */ s("a", { href: r.href, className: "text-purple-700 underline underline-offset-2", children: `${r.name} · ${r.label}` }) }, `${r.name}-${r.lastVerified}`)) })
     ] }),
     /* @__PURE__ */ d("p", { className: "mt-4 text-xs md:text-sm text-gray-500", children: [
       "Spotted something out of date? ",
@@ -7035,7 +7035,7 @@ const Oe = {
     }
     ce.saveBusiness(r);
     const i = await ef(r);
-    return i.success ? { success: !0, business: r } : i.error && i.error.includes("Permission denied") ? (console.warn("Cloud save denied:", i.error), { success: !1, error: i.error, business: r }) : (console.warn("Airtable sync failed â€” saved locally only:", i.error), { success: !0, business: r, cloudWarning: "Saved locally, but could not sync to shared storage. Other browsers may not see this yet." });
+    return i.success ? { success: !0, business: r } : i.error && i.error.includes("Permission denied") ? (console.warn("Cloud save denied:", i.error), { success: !1, error: i.error, business: r }) : (console.warn("Airtable sync failed — saved locally only:", i.error), { success: !0, business: r, cloudWarning: "Saved locally, but could not sync to shared storage. Other browsers may not see this yet." });
   },
   async deleteBusiness(t, e) {
     const r = await tf(t), n = await markCloudBusinessDeleted(t, e);
@@ -7151,28 +7151,28 @@ const Oe = {
 function rf({ children: t }) {
   const [e, r] = E(null), [n, i] = E(null);
   U(() => {
-    console.log("ðŸ” AuthProvider: Loading user from localStorage..."), console.log("   - All localStorage keys:", Object.keys(localStorage));
+    console.log("🔐 AuthProvider: Loading user from localStorage..."), console.log("   - All localStorage keys:", Object.keys(localStorage));
     const l = localStorage.getItem("user"), c = localStorage.getItem("accessToken");
     if (console.log("   - storedUser raw:", l), console.log("   - storedToken present:", !!c), c) {
       fetch("/api/auth/me", { headers: { Authorization: `Bearer ${c}` } }).then((u) => u.ok ? u.json() : Promise.reject(new Error("Session expired"))).then((u) => {
-        u?.user && (console.log("âœ… Restored cloud session:", u.user.email), r(u.user), i(c), localStorage.setItem("user", JSON.stringify(u.user)), syncAccountShortlist(u.user, u.shortlist));
+        u?.user && (console.log("✅ Restored cloud session:", u.user.email), r(u.user), i(c), localStorage.setItem("user", JSON.stringify(u.user)), syncAccountShortlist(u.user, u.shortlist));
       }).catch((u) => {
-        console.warn("âŒ Cloud session restore failed:", u), localStorage.removeItem("user"), localStorage.removeItem("accessToken"), localStorage.removeItem("refreshToken");
+        console.warn("❌ Cloud session restore failed:", u), localStorage.removeItem("user"), localStorage.removeItem("accessToken"), localStorage.removeItem("refreshToken");
       });
       return;
     }
     if (l)
       try {
         const u = JSON.parse(l);
-        console.log("âŒ Found stored user without session token; clearing stale login:", u.email), localStorage.removeItem("user");
+        console.log("❌ Found stored user without session token; clearing stale login:", u.email), localStorage.removeItem("user");
       } catch (u) {
-        console.error("âŒ Error parsing stored user:", u), localStorage.removeItem("user");
+        console.error("❌ Error parsing stored user:", u), localStorage.removeItem("user");
       }
     else
-      console.log("âŒ No stored user found");
+      console.log("❌ No stored user found");
   }, []);
   const o = (l, c, u, h) => {
-    console.log("ðŸ”‘ LOGIN CALLED:"), console.log("   - User:", l.email, "isAdmin:", l.isAdmin), console.log("   - Access token:", c.substring(0, 20) + "..."), r(l), i(c), localStorage.setItem("user", JSON.stringify(l)), localStorage.setItem("accessToken", c), u && localStorage.setItem("refreshToken", u), syncAccountShortlist(l, h), console.log("âœ… Login complete - data saved to localStorage");
+    console.log("🔑 LOGIN CALLED:"), console.log("   - User:", l.email, "isAdmin:", l.isAdmin), console.log("   - Access token:", c.substring(0, 20) + "..."), r(l), i(c), localStorage.setItem("user", JSON.stringify(l)), localStorage.setItem("accessToken", c), u && localStorage.setItem("refreshToken", u), syncAccountShortlist(l, h), console.log("✅ Login complete - data saved to localStorage");
   }, a = () => {
     const l = localStorage.getItem("accessToken");
     l && fetch("/api/auth/logout", { method: "POST", headers: { Authorization: `Bearer ${l}` } }).catch(() => {
@@ -7219,14 +7219,14 @@ function yl({ isVisible: t, message: e, actionText: r, onAction: n, onClose: i }
 const xi = (t) => t ? `pawsitively_shortlist_${t.id}` : "pawsitively_shortlist_guest", fr = (t) => {
   try {
     const e = xi(t), r = localStorage.getItem(e), n = r ? JSON.parse(r) : [];
-    return console.log(`ðŸ“– Loaded ${n.length} shortlist items for key: ${e}`), n;
+    return console.log(`📖 Loaded ${n.length} shortlist items for key: ${e}`), n;
   } catch (e) {
     return console.error("Error loading shortlist:", e), [];
   }
 }, vl = (t, e) => {
   try {
     const r = xi(t);
-    localStorage.setItem(r, JSON.stringify(e)), console.log(`ðŸ’¾ Saved ${e.length} shortlist items to key: ${r}`);
+    localStorage.setItem(r, JSON.stringify(e)), console.log(`💾 Saved ${e.length} shortlist items to key: ${r}`);
     if (t?.id && !t.isAdmin) {
       const n = localStorage.getItem("accessToken");
       n && fetch("/api/auth/shortlist", {
@@ -7258,16 +7258,16 @@ const xi = (t) => t ? `pawsitively_shortlist_${t.id}` : "pawsitively_shortlist_g
   try {
     const e = t ? `pawsitively_favorites_${t.id}` : "pawsitively_favorites_guest", r = localStorage.getItem(e);
     if (r) {
-      console.log("ðŸ”„ Found old favorites, migrating to shortlist...");
+      console.log("🔄 Found old favorites, migrating to shortlist...");
       const n = xi(t);
       if (localStorage.getItem(n))
-        console.log("â„¹ï¸ Shortlist already exists, skipping migration");
+        console.log("ℹ️ Shortlist already exists, skipping migration");
       else {
         localStorage.setItem(n, r);
         const o = JSON.parse(r).length;
-        console.log(`âœ… Migrated ${o} favorites to shortlist`);
+        console.log(`✅ Migrated ${o} favorites to shortlist`);
       }
-      localStorage.removeItem(e), console.log("ðŸ—‘ï¸ Removed old favorites key");
+      localStorage.removeItem(e), console.log("🗑️ Removed old favorites key");
     }
   } catch (e) {
     console.error("Error migrating favorites to shortlist:", e);
@@ -7295,7 +7295,7 @@ function BusinessLinkRequestBox({ business: t, user: e, onLinked: r }) {
     }
   };
   return n === "pending" ? /* @__PURE__ */ d("div", { className: "mt-4 p-4 bg-amber-50 border-2 border-amber-200 rounded-xl text-center", children: [
-    /* @__PURE__ */ s("div", { className: "text-2xl mb-2", children: "â³" }),
+    /* @__PURE__ */ s("div", { className: "text-2xl mb-2", children: "⏳" }),
     /* @__PURE__ */ s("p", { className: "text-gray-800 font-medium", children: "Link request pending" }),
     /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mt-1", children: "An admin will review your request to manage this listing." })
   ] }) : /* @__PURE__ */ d("div", { className: "mt-4 p-4 bg-green-50 border-2 border-green-200 rounded-xl", children: [
@@ -7412,7 +7412,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       else {
         const _ = o.find((Y) => Y.id === y);
         if (_) {
-          console.log("ðŸ” Found business to add to shortlist:", _), console.log("ðŸ” Business rating:", w[_.id]);
+          console.log("🔍 Found business to add to shortlist:", _), console.log("🔍 Business rating:", w[_.id]);
           const Y = {
             id: _.id,
             name: _.name,
@@ -7424,11 +7424,11 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             address: _.address,
             zipCode: _.zipCode
           };
-          console.log("ðŸ’¾ Shortlist item to save:", Y), nf(I, Y), mt([...Be, y]), gt("Saved to Shortlist"), Ei(() => () => {
+          console.log("💾 Shortlist item to save:", Y), nf(I, Y), mt([...Be, y]), gt("Saved to Shortlist"), Ei(() => () => {
             e && e("shortlist");
           }), $e(!0);
         } else
-          console.error("âŒ Business not found in providers list:", y);
+          console.error("❌ Business not found in providers list:", y);
       }
     } catch (_) {
       console.error("Error updating shortlist:", _);
@@ -7568,7 +7568,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         children: [
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
             /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Dog Groomers Directory" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory â€” compare local groomers." }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory — compare local groomers." }),
             /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Independent groomers in Darlington, Hartsville & Florence." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
@@ -7578,13 +7578,13 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 animate: { rotate: [0, 5, -5, 0] },
                 transition: { duration: 2, repeat: 1 / 0 },
                 className: "md:text-4xl",
-                children: "âœ‚ï¸"
+                children: "✂️"
               }
             ),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Dog Groomers Directory" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
-            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory â€” compare trusted groomers in Darlington, Hartsville and Florence." }),
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory — compare trusted groomers in Darlington, Hartsville and Florence." }),
             /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Read reviews and find the right groomer for your pet." })
           ] })
         ]
@@ -7702,7 +7702,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => Ee(!pe),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸš" }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🚐" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Mobile Service" })
                   ] }),
                   /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${pe ? "bg-purple-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
@@ -7716,7 +7716,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => te(!W),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ“…" }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Open Weekends" })
                   ] }),
                   /* @__PURE__ */ s(
@@ -7738,7 +7738,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => ue(!ae),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸš«" }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🚫" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Not Accepting New Clients" })
                   ] }),
                   /* @__PURE__ */ s(
@@ -7779,10 +7779,10 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       ),
       /* @__PURE__ */ s(PdpcGuideLinks, { categoryPath: "/grooming" }),
       /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mt-6 md:mt-0 px-4 md:px-0", children: l ? /* @__PURE__ */ d("div", { className: "col-span-1 md:col-span-2 text-center py-12", children: [
-        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "ðŸ¾" }),
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "🐾" }),
         /* @__PURE__ */ s("p", { className: "text-gray-600", children: "Loading grooming businesses..." })
       ] }) : yt.length === 0 ? /* @__PURE__ */ d("div", { className: "col-span-1 md:col-span-2 text-center py-6 md:py-12", children: [
-        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "ðŸ”" }),
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "🔍" }),
         /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No matches found" }),
         /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm mt-2 md:hidden", children: "Try a different city, adjust filters, or clear your search." }),
         /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm mt-2 hidden md:block", children: "Try adjusting your search criteria." }),
@@ -7851,12 +7851,12 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               ] }),
               /* @__PURE__ */ d("div", { className: "flex items-start justify-between mb-3", children: [
                 /* @__PURE__ */ d("p", { className: "text-gray-600", children: [
-                  "ðŸ“ ",
+                  "📍 ",
                   y.city
                 ] }),
                 window.innerWidth < 768 && /* @__PURE__ */ d("div", { className: "flex flex-col gap-1 items-end ml-2", children: [
-                  y.mobileService && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full", children: "ðŸš Mobile Service" }),
-                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-end text-right text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "ðŸš« Not Accepting New Clients" })
+                  y.mobileService && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full", children: "🚐 Mobile Service" }),
+                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-end text-right text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "🚫 Not Accepting New Clients" })
                 ] })
               ] }),
               /* @__PURE__ */ d("div", { className: "flex items-center justify-between mb-3", children: [
@@ -7872,8 +7872,8 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] }) : /* @__PURE__ */ s("span", { className: "text-sm text-gray-500", children: "No reviews yet" }) }),
                 window.innerWidth >= 768 && /* @__PURE__ */ d("div", { className: "flex flex-col gap-1 items-end", children: [
-                  y.mobileService && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full", children: "ðŸš Mobile Service" }),
-                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-end text-right text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "ðŸš« Not Accepting New Clients" })
+                  y.mobileService && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full", children: "🚐 Mobile Service" }),
+                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-end text-right text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "🚫 Not Accepting New Clients" })
                 ] })
               ] }),
               /* @__PURE__ */ s(
@@ -8059,7 +8059,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s(im, { className: "w-5 h-5 text-purple-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "flex-1 min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
-                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-purple-600", children: "ðŸ“ž Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm md:text-base", children: [
+                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-purple-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm md:text-base", children: [
                         /* @__PURE__ */ s("div", { className: "md:hidden space-y-3", children: [["monday", "tuesday"], ["wednesday", "thursday"], ["friday", "saturday"], ["sunday"]].map((y, F) => /* @__PURE__ */ s("div", { className: "grid grid-cols-2 gap-x-3", children: y.map((B) => {
                           const _ = n.hours[B], Y = _?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col gap-0.5", children: [
@@ -8114,7 +8114,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   )) })
                 ] }),
                 n.mobileService && /* @__PURE__ */ s("div", { className: "mb-6", children: /* @__PURE__ */ d("div", { className: "inline-flex items-center gap-2 px-4 py-3 bg-green-50 border-2 border-green-200 text-green-700 rounded-lg", children: [
-                  /* @__PURE__ */ s("span", { className: "text-2xl", children: "ðŸš" }),
+                  /* @__PURE__ */ s("span", { className: "text-2xl", children: "🚐" }),
                   /* @__PURE__ */ d("div", { children: [
                     /* @__PURE__ */ s("p", { className: "text-gray-800", children: "Mobile Service Available" }),
                     /* @__PURE__ */ s("p", { className: "text-sm text-gray-600", children: "This business comes to your location" })
@@ -8127,7 +8127,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     {
                       className: "bg-purple-50 text-purple-600 px-4 py-2 rounded-lg whitespace-normal break-all max-w-full",
                       children: [
-                        "âœ¨ ",
+                        "✨ ",
                         y
                       ]
                     },
@@ -8185,7 +8185,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     whileTap: { scale: 0.98 },
                     className: "hidden md:block w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-4 rounded-xl hover:from-pink-600 hover:to-purple-700 transition-colors text-center",
                     children: [
-                      "ðŸ“ž Call ",
+                      "📞 Call ",
                       n.name
                     ]
                   }
@@ -8215,7 +8215,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       className: "flex items-center justify-center gap-2 w-full bg-red-600 text-white py-4 rounded-xl hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                       disabled: M,
                       children: M ? /* @__PURE__ */ d(ie, { children: [
-                        /* @__PURE__ */ s("span", { className: "animate-spin", children: "â³" }),
+                        /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                         "Deleting..."
                       ] }) : /* @__PURE__ */ d(ie, { children: [
                         /* @__PURE__ */ s(Lt, { className: "w-5 h-5" }),
@@ -8291,7 +8291,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     },
                     y.id
                   )) }) : /* @__PURE__ */ d("div", { className: "text-center py-8 bg-gray-50 rounded-xl mb-6", children: [
-                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "â­" }),
+                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "⭐" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No reviews yet" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm", children: "Be the first to leave a review!" })
                   ] }),
@@ -8305,7 +8305,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           children: [
                             /* @__PURE__ */ d("div", { children: [
                               /* @__PURE__ */ d("div", { className: "flex items-center gap-2 mb-1", children: [
-                                /* @__PURE__ */ s("span", { className: "text-2xl", children: "ðŸ‘¨â€ðŸ’¼" }),
+                                /* @__PURE__ */ s("span", { className: "text-2xl", children: "👨‍💼" }),
                                 /* @__PURE__ */ s("h4", { className: "text-gray-800", children: "Admin: Add Customer Review" })
                               ] }),
                               /* @__PURE__ */ s("p", { className: "text-sm text-gray-600", children: "Transfer existing online reviews to your listing" })
@@ -8385,7 +8385,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                                 className: "w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl hover:from-blue-600 hover:to-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                                 disabled: C || !N.reviewerName.trim() || !N.comment.trim(),
                                 children: C ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
-                                  /* @__PURE__ */ s("span", { className: "animate-spin", children: "â³" }),
+                                  /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                                   "Adding Review..."
                                 ] }) : "Add Review"
                               }
@@ -8395,12 +8395,12 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       ) })
                     ] })
                   ] }) : I && n.ownerId === I.id ? /* @__PURE__ */ d("div", { className: "text-center py-8 bg-purple-50 rounded-xl border-2 border-purple-200", children: [
-                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "ðŸª" }),
+                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "You can respond to customer reviews below" })
                   ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-purple-200 rounded-xl p-5", children: [
                     /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
-                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed â€” just enter your name and review." }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
                     /* @__PURE__ */ d("div", { className: "mb-4", children: [
                       /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Name *" }),
                       /* @__PURE__ */ s(
@@ -8456,7 +8456,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         className: "w-full bg-gradient-to-r from-pink-500 to-purple-600 text-white py-3 rounded-xl hover:from-pink-600 hover:to-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                         disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
                         children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
-                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "â³" }),
+                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                           "Submitting..."
                         ] }) : "Submit Review"
                       }
@@ -8511,9 +8511,9 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         children: [
           /* @__PURE__ */ s("h2", { className: "mb-8", children: "Grooming Tips" }),
           /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [
-            { icon: "ðŸ“…", title: "Regular Visits", text: "Schedule grooming every 4-8 weeks" },
-            { icon: "ðŸ§´", title: "Quality Products", text: "Ask about pet-safe products used" },
-            { icon: "ðŸ’–", title: "Stress-Free", text: "Gentle handling for anxious pets" }
+            { icon: "📅", title: "Regular Visits", text: "Schedule grooming every 4-8 weeks" },
+            { icon: "🧴", title: "Quality Products", text: "Ask about pet-safe products used" },
+            { icon: "💖", title: "Stress-Free", text: "Gentle handling for anxious pets" }
           ].map((y, F) => /* @__PURE__ */ d(
             D.div,
             {
@@ -8549,7 +8549,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               whileTap: { scale: 0.98 },
               onClick: () => e?.("products"),
               className: "w-full px-6 py-3 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition-colors",
-              children: "Browse Pet Products â†’"
+              children: "Browse Pet Products →"
             }
           )
         ]
@@ -8604,7 +8604,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: () => Ee(!pe),
                   children: [
                     /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                      /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸš" }),
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🚐" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Mobile Service" })
                     ] }),
                     /* @__PURE__ */ s("div", { className: `relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${pe ? "bg-purple-600" : "bg-gray-300"}`, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
@@ -8618,7 +8618,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: () => te(!W),
                   children: [
                     /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                      /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ“…" }),
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Open Weekends" })
                     ] }),
                     /* @__PURE__ */ s(
@@ -8640,7 +8640,7 @@ function of({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: () => ue(!ae),
                   children: [
                     /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                      /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸš«" }),
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🚫" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Not Accepting New Clients" })
                     ] }),
                     /* @__PURE__ */ s(
@@ -8967,8 +8967,8 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         children: [
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
             /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Dog Trainers Directory" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory â€” compare local trainers." }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "We do not provide training â€” independent trainers in Darlington, Hartsville & Florence." })
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory — compare local trainers." }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "We do not provide training — independent trainers in Darlington, Hartsville & Florence." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(
@@ -8977,14 +8977,14 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
                 animate: { rotate: [0, 5, -5, 0] },
                 transition: { duration: 2, repeat: 1 / 0 },
                 className: "md:text-4xl",
-                children: "ðŸŽ“"
+                children: "🎓"
               }
             ),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Dog Trainers Directory" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
-            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory â€” find dog trainers in Darlington, Hartsville and Florence for puppy socialization, obedience, and behavior help." }),
-            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "We do not provide training â€” compare listings and contact providers directly." })
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory — find dog trainers in Darlington, Hartsville and Florence for puppy socialization, obedience, and behavior help." }),
+            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "We do not provide training — compare listings and contact providers directly." })
           ] })
         ]
       }
@@ -9054,21 +9054,21 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             ) }),
             /* @__PURE__ */ d("div", { className: "flex items-center justify-between gap-3 px-4 py-3 bg-white border-2 border-blue-200 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors", onClick: () => f(!m), children: [
               /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ " }),
+                /* @__PURE__ */ s("span", { className: "text-xl", children: "🏠" }),
                 /* @__PURE__ */ s("span", { className: "text-gray-700", children: "In-Home Training" })
               ] }),
               /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: m ? "#2563eb" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${m ? "translate-x-6" : "translate-x-1"}` }) })
             ] }),
             /* @__PURE__ */ d("div", { className: "flex items-center justify-between gap-3 px-4 py-3 bg-white border-2 border-blue-200 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors", onClick: () => g(!v), children: [
               /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ‘¥" }),
+                /* @__PURE__ */ s("span", { className: "text-xl", children: "👥" }),
                 /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Group Classes Available" })
               ] }),
               /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: v ? "#2563eb" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${v ? "translate-x-6" : "translate-x-1"}` }) })
             ] }),
             /* @__PURE__ */ d("div", { className: "flex items-center gap-3 px-4 py-3 bg-white border-2 border-blue-200 rounded-lg cursor-pointer hover:bg-blue-50 transition-colors", onClick: () => w(!b), children: [
               /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸŒŸ" }),
+                /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
                 /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
               ] }),
               /* @__PURE__ */ s("input", { type: "checkbox", checked: b, onChange: (K) => w(K.target.checked), className: "w-5 h-5 text-blue-600 rounded cursor-pointer ml-auto" })
@@ -9099,10 +9099,10 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
       ),
       /* @__PURE__ */ s(PdpcGuideLinks, { categoryPath: "/training" }),
       /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mt-6 md:mt-0 px-4 md:px-0", children: a ? /* @__PURE__ */ d("div", { className: "col-span-1 md:col-span-2 text-center py-12", children: [
-        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "ðŸŽ“" }),
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "🎓" }),
         /* @__PURE__ */ s("p", { className: "text-gray-600", children: "Loading training businesses..." })
       ] }) : pe.length === 0 ? /* @__PURE__ */ d("div", { className: "col-span-1 md:col-span-2 text-center py-6 md:py-12", children: [
-        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "ðŸ”" }),
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "🔍" }),
         /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No matches found" })
       ] }) : /* @__PURE__ */ d(ie, { children: [
         W.map((K) => /* @__PURE__ */ d(D.div, { className: "bg-white rounded-xl shadow-md border border-gray-100 md:border-0 p-4 md:p-6 hover:shadow-xl transition-all flex flex-col", children: [
@@ -9115,14 +9115,14 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             K.priceRange && /* @__PURE__ */ s("div", { className: "text-green-600", children: K.priceRange })
           ] }),
           /* @__PURE__ */ d("div", { className: "flex items-start justify-between mb-3", children: [
-            /* @__PURE__ */ d("p", { className: "text-gray-600", children: ["ðŸ“ ", K.city] }),
+            /* @__PURE__ */ d("p", { className: "text-gray-600", children: ["📍 ", K.city] }),
             /* @__PURE__ */ d("div", { className: "flex flex-col gap-1 items-end ml-2", children: [
-              K.inHomeTraining && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full", children: "ðŸ  In-Home" }),
-              K.groupClassesAvailable && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-cyan-100 text-cyan-700 text-xs rounded-full", children: "ðŸ‘¥ Group Classes" })
+              K.inHomeTraining && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-blue-100 text-blue-700 text-xs rounded-full", children: "🏠 In-Home" }),
+              K.groupClassesAvailable && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-cyan-100 text-cyan-700 text-xs rounded-full", children: "👥 Group Classes" })
             ] })
           ] }),
           /* @__PURE__ */ s("div", { className: "flex items-center gap-2 text-sm mb-3", children: sn[K.id] || Number(K.reviewCount || 0) > 0 && Number.isFinite(Number(K.rating)) ? /* @__PURE__ */ d(ie, { children: [
-            /* @__PURE__ */ s("span", { className: "text-yellow-500", children: "â­â­â­â­â­" }),
+            /* @__PURE__ */ s("span", { className: "text-yellow-500", children: "⭐⭐⭐⭐⭐" }),
             /* @__PURE__ */ d("span", { className: "text-gray-700", children: [
               Number(sn[K.id]?.average ?? K.rating).toFixed(1),
               " (",
@@ -9177,7 +9177,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         /* @__PURE__ */ d("div", { className: "border-b pb-4", children: [
           /* @__PURE__ */ s("h2", { className: "text-gray-900 mb-2", children: r.name }),
           /* @__PURE__ */ d("div", { className: "flex items-center gap-2 text-gray-600", children: [
-            /* @__PURE__ */ s("span", { children: "ðŸ“" }),
+            /* @__PURE__ */ s("span", { children: "📍" }),
             /* @__PURE__ */ s("span", { children: [r.city, ", SC"] })
           ] }),
           pdpcVerificationBadges(r) && /* @__PURE__ */ s("div", { className: "mt-3", children: pdpcVerificationBadges(r) }),
@@ -9262,7 +9262,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         Array.isArray(r.specialFeatures) && r.specialFeatures.length > 0 && /* @__PURE__ */ d("div", { className: "mb-2", children: [
           /* @__PURE__ */ s("h3", { className: "text-gray-700 mb-2", children: "Special Features" }),
           /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: r.specialFeatures.map((L) => /* @__PURE__ */ d("span", { className: "bg-blue-50 border border-blue-200 text-blue-700 px-3 py-1 rounded-full text-sm", children: [
-            "âœ¨ ",
+            "✨ ",
             L
           ] }, L)) })
         ] }),
@@ -9302,7 +9302,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             ] })
           ] })
         ] }),
-        /* @__PURE__ */ s(D.a, { href: `tel:${r.phone}`, className: "hidden md:block w-full text-center text-white py-4 rounded-xl", style: { backgroundColor: "#2563eb" }, children: ["ðŸ“ž Call ", r.name] }),
+        /* @__PURE__ */ s(D.a, { href: `tel:${r.phone}`, className: "hidden md:block w-full text-center text-white py-4 rounded-xl", style: { backgroundColor: "#2563eb" }, children: ["📞 Call ", r.name] }),
         Lr && (r.ownerId === Lr.id || Lr.isAdmin) && t && /* @__PURE__ */ d("div", { className: "space-y-3 mt-3", children: [
           /* @__PURE__ */ d(D.button, { onClick: () => {
             n(null), t(r);
@@ -9311,18 +9311,18 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             "Edit Business Listing"
           ] }),
           /* @__PURE__ */ s(D.button, { onClick: Ql, whileHover: { scale: 1.02 }, whileTap: { scale: 0.98 }, className: "flex items-center justify-center gap-2 w-full bg-red-600 text-white py-4 rounded-xl hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed", disabled: an, children: [
-            an ? /* @__PURE__ */ s("span", { className: "animate-spin", children: "â³" }) : /* @__PURE__ */ s(Km, { className: "w-5 h-5" }),
+            an ? /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }) : /* @__PURE__ */ s(Km, { className: "w-5 h-5" }),
             an ? "Deleting..." : "Delete Business Listing"
           ] })
         ] }),
         /* @__PURE__ */ s(BusinessLinkRequestBox, { business: r, user: Lr, onLinked: () => n({ ...r, ownerId: Lr?.id }) }),
         !(Lr && r.ownerId === Lr.id) && !Lr?.isAdmin && /* @__PURE__ */ d("div", { className: "bg-white border-2 border-blue-200 rounded-xl p-5 mt-4", children: [
           /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
-          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed â€” just enter your name and review." }),
+          /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
           /* @__PURE__ */ d("div", { className: "space-y-3", children: [
             /* @__PURE__ */ s("input", { type: "text", placeholder: Lr?.name || "Your name", value: Qr.userName, onChange: (K) => dn({ ...Qr, userName: K.target.value }), className: "w-full px-4 py-2 border-2 border-blue-200 rounded-lg focus:outline-none focus:border-blue-400" }),
             /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-              [1, 2, 3, 4, 5].map((K) => /* @__PURE__ */ s("button", { type: "button", onClick: () => dn({ ...Qr, rating: K }), className: `text-2xl transition-transform hover:scale-110 ${K <= Qr.rating ? "opacity-100" : "opacity-30"}`, children: "â­" }, K)),
+              [1, 2, 3, 4, 5].map((K) => /* @__PURE__ */ s("button", { type: "button", onClick: () => dn({ ...Qr, rating: K }), className: `text-2xl transition-transform hover:scale-110 ${K <= Qr.rating ? "opacity-100" : "opacity-30"}`, children: "⭐" }, K)),
               /* @__PURE__ */ d("span", { className: "ml-2 text-sm text-gray-600", children: ["(", Qr.rating, " ", Qr.rating === 1 ? "star" : "stars", ")"] })
             ] }),
             /* @__PURE__ */ s("textarea", { placeholder: "Share your experience with this trainer...", value: Qr.comment, onChange: (K) => dn({ ...Qr, comment: K.target.value }), rows: 4, className: "w-full px-4 py-2 border-2 border-blue-200 rounded-lg focus:outline-none focus:border-blue-400 resize-none" }),
@@ -9330,7 +9330,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
           ] })
         ] }),
         Lr && r.ownerId === Lr.id && !Lr?.isAdmin && /* @__PURE__ */ d("div", { className: "text-center py-6 bg-blue-50 rounded-xl border-2 border-blue-200 mt-4", children: [
-          /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "ðŸª" }),
+          /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
           /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
           /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "You can respond to customer reviews below" })
         ] }),
@@ -9356,7 +9356,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
             /* @__PURE__ */ d("div", { className: "flex items-center justify-between mb-1", children: [
               /* @__PURE__ */ d("div", { children: [
                 /* @__PURE__ */ s("p", { className: "text-gray-800 text-sm", children: K.userName || K.reviewerName || "Customer" }),
-                /* @__PURE__ */ s("p", { className: "text-yellow-500 text-sm", children: `${"â­".repeat(Math.max(1, Math.min(5, K.rating || 5)))}` })
+                /* @__PURE__ */ s("p", { className: "text-yellow-500 text-sm", children: `${"⭐".repeat(Math.max(1, Math.min(5, K.rating || 5)))}` })
               ] }),
               Lr?.isAdmin && /* @__PURE__ */ s(
                 "button",
@@ -9411,7 +9411,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
     ] }),
     /* @__PURE__ */ s("section", { className: "hidden md:block py-16 px-4 sm:px-6 lg:px-8 bg-blue-600 text-white", children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto", children: /* @__PURE__ */ d(D.div, { className: "text-center", children: [
       /* @__PURE__ */ s("h2", { className: "mb-8", children: "Training Tips" }),
-      /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [{ icon: "ðŸ“…", title: "Stay Consistent", text: "Short daily reps beat long inconsistent sessions." }, { icon: "ðŸ¦´", title: "Reward Good Choices", text: "Mark and reward what you want repeated." }, { icon: "ðŸ¤", title: "Practice Everywhere", text: "Generalize cues at home, outside, and in public." }].map((K) => /* @__PURE__ */ d("div", { className: "bg-white/15 rounded-xl p-6 border border-white/30", children: [
+      /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [{ icon: "📅", title: "Stay Consistent", text: "Short daily reps beat long inconsistent sessions." }, { icon: "🦴", title: "Reward Good Choices", text: "Mark and reward what you want repeated." }, { icon: "🤝", title: "Practice Everywhere", text: "Generalize cues at home, outside, and in public." }].map((K) => /* @__PURE__ */ d("div", { className: "bg-white/15 rounded-xl p-6 border border-white/30", children: [
         /* @__PURE__ */ s("div", { className: "text-4xl mb-3", children: K.icon }),
         /* @__PURE__ */ s("h3", { className: "mb-2", children: K.title }),
         /* @__PURE__ */ s("p", { className: "text-white/90", children: K.text })
@@ -9420,7 +9420,7 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
     /* @__PURE__ */ s("section", { className: "md:hidden pt-13 pb-8 px-4 bg-white", children: /* @__PURE__ */ d(D.div, { className: "bg-blue-50 rounded-xl p-6 shadow-md border border-blue-200", children: [
       /* @__PURE__ */ s("h2", { className: "mb-3 text-left", children: "Pet Products We Recommend" }),
       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-6 text-left", children: "Training treats, clickers, and enrichment tools we trust and love." }),
-      /* @__PURE__ */ s(D.button, { whileTap: { scale: 0.98 }, onClick: () => e?.("products"), className: "w-full px-6 py-3 text-white rounded-lg transition-colors", style: { backgroundColor: "#2563eb", border: "1px solid #1d4ed8" }, children: "Browse Pet Products â†’" })
+      /* @__PURE__ */ s(D.button, { whileTap: { scale: 0.98 }, onClick: () => e?.("products"), className: "w-full px-6 py-3 text-white rounded-lg transition-colors", style: { backgroundColor: "#2563eb", border: "1px solid #1d4ed8" }, children: "Browse Pet Products →" })
     ] }) }),
     /* @__PURE__ */ s(Pt, { children: P && /* @__PURE__ */ d(ie, { children: [
       /* @__PURE__ */ s(D.div, { initial: { opacity: 0 }, animate: { opacity: 1 }, exit: { opacity: 0 }, onClick: () => N(!1), className: "md:hidden fixed inset-0 bg-black/50 z-50" }),
@@ -9435,21 +9435,21 @@ function af({ onEditBusiness: t, onNavigate: e } = {}) {
         /* @__PURE__ */ d("div", { className: "p-4 space-y-4", children: [
           /* @__PURE__ */ d("div", { className: "flex items-center justify-between cursor-pointer px-4 py-3 bg-white border-2 border-blue-200 rounded-lg", onClick: () => f(!m), children: [
             /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-              /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ " }),
+              /* @__PURE__ */ s("span", { className: "text-xl", children: "🏠" }),
               /* @__PURE__ */ s("span", { className: "text-gray-700", children: "In-Home Training" })
             ] }),
             /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: m ? "#2563eb" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${m ? "translate-x-6" : "translate-x-1"}` }) })
           ] }),
           /* @__PURE__ */ d("div", { className: "flex items-center justify-between cursor-pointer px-4 py-3 bg-white border-2 border-blue-200 rounded-lg", onClick: () => g(!v), children: [
             /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-              /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ‘¥" }),
+              /* @__PURE__ */ s("span", { className: "text-xl", children: "👥" }),
               /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Group Classes Available" })
             ] }),
             /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: v ? "#2563eb" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${v ? "translate-x-6" : "translate-x-1"}` }) })
           ] }),
           /* @__PURE__ */ d("div", { className: "flex items-center justify-between cursor-pointer px-4 py-3 bg-white border-2 border-blue-200 rounded-lg", onClick: () => w(!b), children: [
             /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-              /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸŒŸ" }),
+              /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
               /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
             ] }),
             /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: b ? "#2563eb" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${b ? "translate-x-6" : "translate-x-1"}` }) })
@@ -9571,7 +9571,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       else {
         const _ = o.find((Y) => Y.id === y);
         if (_) {
-          console.log("ðŸ” Found business to add to shortlist:", _), console.log("ðŸ” Business rating:", w[_.id]);
+          console.log("🔍 Found business to add to shortlist:", _), console.log("🔍 Business rating:", w[_.id]);
           const Y = {
             id: _.id,
             name: _.name,
@@ -9583,11 +9583,11 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             address: _.address,
             zipCode: _.zipCode
           };
-          console.log("ðŸ’¾ Shortlist item to save:", Y), nf(I, Y), mt([...Be, y]), gt("Saved to Shortlist"), Ei(() => () => {
+          console.log("💾 Shortlist item to save:", Y), nf(I, Y), mt([...Be, y]), gt("Saved to Shortlist"), Ei(() => () => {
             e && e("shortlist");
           }), $e(!0);
         } else
-          console.error("âŒ Business not found in providers list:", y);
+          console.error("❌ Business not found in providers list:", y);
       }
     } catch (_) {
       console.error("Error updating shortlist:", _);
@@ -9727,7 +9727,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         children: [
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
             /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Pet Boarding Directory" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory â€” compare local kennels." }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory — compare local kennels." }),
             /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Independent boarding and daycare in Darlington, Hartsville & Florence." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
@@ -9737,13 +9737,13 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 animate: { rotate: [0, 5, -5, 0] },
                 transition: { duration: 2, repeat: 1 / 0 },
                 className: "md:text-4xl",
-                children: "ðŸ "
+                children: "🏠"
               }
             ),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Pet Boarding Directory" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
-            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory â€” boarding and daycare in Darlington, Hartsville and Florence for vacations, workdays, and extended trips." }),
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory — boarding and daycare in Darlington, Hartsville and Florence for vacations, workdays, and extended trips." }),
             /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "Compare independent facilities and contact providers directly." })
           ] })
         ]
@@ -9863,7 +9863,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => Ee(!pe),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ " }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🏠" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Daycare Available" })
                   ] }),
                   /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: pe ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
@@ -9877,7 +9877,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => te(!W),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ“…" }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Open Weekends" })
                   ] }),
                   /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: W ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
@@ -9891,7 +9891,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => ue(!ae),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸŒŸ" }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
                   ] }),
                   /* @__PURE__ */ s(
@@ -9932,10 +9932,10 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       ),
       /* @__PURE__ */ s(PdpcGuideLinks, { categoryPath: "/boarding" }),
       /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mt-6 md:mt-0 px-4 md:px-0", children: l ? /* @__PURE__ */ d("div", { className: "col-span-1 md:col-span-2 text-center py-12", children: [
-        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "ðŸ¾" }),
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "🐾" }),
         /* @__PURE__ */ s("p", { className: "text-gray-600", children: "Loading boarding businesses..." })
       ] }) : yt.length === 0 ? /* @__PURE__ */ d("div", { className: "col-span-1 md:col-span-2 text-center py-6 md:py-12", children: [
-        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "ðŸ”" }),
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "🔍" }),
         /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No matches found" }),
         /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm mt-2 md:hidden", children: "Try a different city, adjust filters, or clear your search." }),
         /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm mt-2 hidden md:block", children: "Try adjusting your search criteria." }),
@@ -10004,12 +10004,12 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               ] }),
               /* @__PURE__ */ d("div", { className: "flex items-start justify-between mb-3", children: [
                 /* @__PURE__ */ d("p", { className: "text-gray-600", children: [
-                  "ðŸ“ ",
+                  "📍 ",
                   y.city
                 ] }),
                 window.innerWidth < 768 && /* @__PURE__ */ d("div", { className: "flex flex-col gap-1 items-end ml-2", children: [
-                  y.daycareAvailable && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full", children: "ðŸ  Daycare Available" }),
-                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-end text-right text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "ðŸš« Not Accepting New Clients" })
+                  y.daycareAvailable && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full", children: "🏠 Daycare Available" }),
+                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-end text-right text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "🚫 Not Accepting New Clients" })
                 ] })
               ] }),
               /* @__PURE__ */ d("div", { className: "flex items-center justify-between mb-3", children: [
@@ -10025,8 +10025,8 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] }) : /* @__PURE__ */ s("span", { className: "text-sm text-gray-500", children: "No reviews yet" }) }),
                 window.innerWidth >= 768 && /* @__PURE__ */ d("div", { className: "flex flex-col gap-1 items-end", children: [
-                  y.daycareAvailable && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full", children: "ðŸ  Daycare Available" }),
-                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-end text-right text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "ðŸš« Not Accepting New Clients" })
+                  y.daycareAvailable && /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-green-100 text-green-700 text-sm rounded-full", children: "🏠 Daycare Available" }),
+                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-end text-right text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "🚫 Not Accepting New Clients" })
                 ] })
               ] }),
               /* @__PURE__ */ s(
@@ -10217,7 +10217,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s(im, { className: "w-5 h-5 text-green-600 mt-1 flex-shrink-0" }),
                     /* @__PURE__ */ d("div", { className: "flex-1 min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
-                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-green-600", children: "ðŸ“ž Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm md:text-base", children: [
+                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-green-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm md:text-base", children: [
                         /* @__PURE__ */ s("div", { className: "md:hidden space-y-3", children: [["monday", "tuesday"], ["wednesday", "thursday"], ["friday", "saturday"], ["sunday"]].map((y, F) => /* @__PURE__ */ s("div", { className: "grid grid-cols-2 gap-x-3", children: y.map((B) => {
                           const _ = n.hours[B], Y = _?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col gap-0.5", children: [
@@ -10278,7 +10278,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     {
                       className: "bg-green-50 text-green-600 px-4 py-2 rounded-lg",
                       children: [
-                        "ðŸ  ",
+                        "🏠 ",
                         y
                       ]
                     },
@@ -10286,7 +10286,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   )) })
                 ] }),
                 n.daycareAvailable && /* @__PURE__ */ s("div", { className: "mb-6", children: /* @__PURE__ */ d("div", { className: "inline-flex items-center gap-2 px-4 py-3 bg-green-50 border-2 border-green-200 text-green-700 rounded-lg", children: [
-                  /* @__PURE__ */ s("span", { className: "text-2xl", children: "ðŸ " }),
+                  /* @__PURE__ */ s("span", { className: "text-2xl", children: "🏠" }),
                   /* @__PURE__ */ d("div", { children: [
                     /* @__PURE__ */ s("p", { className: "text-gray-800", children: "Daycare Available" }),
                     /* @__PURE__ */ s("p", { className: "text-sm text-gray-600", children: "Daytime care is available at this facility" })
@@ -10299,7 +10299,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     {
                       className: "bg-green-50 text-green-600 px-4 py-2 rounded-lg",
                       children: [
-                        "âœ¨ ",
+                        "✨ ",
                         y
                       ]
                     },
@@ -10357,7 +10357,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     whileTap: { scale: 0.98 },
                     className: "hidden md:block w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-4 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-colors text-center",
                     children: [
-                      "ðŸ“ž Call ",
+                      "📞 Call ",
                       n.name
                     ]
                   }
@@ -10387,7 +10387,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       className: "flex items-center justify-center gap-2 w-full bg-red-600 text-white py-4 rounded-xl hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                       disabled: M,
                       children: M ? /* @__PURE__ */ d(ie, { children: [
-                        /* @__PURE__ */ s("span", { className: "animate-spin", children: "â³" }),
+                        /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                         "Deleting..."
                       ] }) : /* @__PURE__ */ d(ie, { children: [
                         /* @__PURE__ */ s(Lt, { className: "w-5 h-5" }),
@@ -10463,7 +10463,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     },
                     y.id
                   )) }) : /* @__PURE__ */ d("div", { className: "text-center py-8 bg-gray-50 rounded-xl mb-6", children: [
-                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "â­" }),
+                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "⭐" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No reviews yet" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm", children: "Be the first to leave a review!" })
                   ] }),
@@ -10477,7 +10477,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           children: [
                             /* @__PURE__ */ d("div", { children: [
                               /* @__PURE__ */ d("div", { className: "flex items-center gap-2 mb-1", children: [
-                                /* @__PURE__ */ s("span", { className: "text-2xl", children: "ðŸ‘¨â€ðŸ’¼" }),
+                                /* @__PURE__ */ s("span", { className: "text-2xl", children: "👨‍💼" }),
                                 /* @__PURE__ */ s("h4", { className: "text-gray-800", children: "Admin: Add Customer Review" })
                               ] }),
                               /* @__PURE__ */ s("p", { className: "text-sm text-gray-600", children: "Transfer existing online reviews to your listing" })
@@ -10557,7 +10557,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                                 className: "w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl hover:from-blue-600 hover:to-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                                 disabled: C || !N.reviewerName.trim() || !N.comment.trim(),
                                 children: C ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
-                                  /* @__PURE__ */ s("span", { className: "animate-spin", children: "â³" }),
+                                  /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                                   "Adding Review..."
                                 ] }) : "Add Review"
                               }
@@ -10567,12 +10567,12 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       ) })
                     ] })
                   ] }) : I && n.ownerId === I.id ? /* @__PURE__ */ d("div", { className: "text-center py-8 bg-green-50 rounded-xl border-2 border-green-200", children: [
-                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "ðŸª" }),
+                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "You can respond to customer reviews below" })
                   ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-green-200 rounded-xl p-5", children: [
                     /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
-                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed â€” just enter your name and review." }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
                     /* @__PURE__ */ d("div", { className: "mb-4", children: [
                       /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Name *" }),
                       /* @__PURE__ */ s(
@@ -10628,7 +10628,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         className: "w-full bg-gradient-to-r from-green-600 to-emerald-600 text-white py-3 rounded-xl hover:from-green-700 hover:to-emerald-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                         disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
                         children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
-                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "â³" }),
+                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                           "Submitting..."
                         ] }) : "Submit Review"
                       }
@@ -10683,7 +10683,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         children: [
           /* @__PURE__ */ s("h2", { className: "mb-8", style: { color: "#ffffff" }, children: "Boarding Tips" }),
           /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [
-            { icon: "ðŸ“…", title: "Book Early", text: "Book boarding early during holidays" }, { icon: "ðŸ’‰", title: "Vaccinations", text: "Ask about vaccination requirements" }, { icon: "ðŸ ", title: "Tour First", text: "Tour the facility before your first stay" }
+            { icon: "📅", title: "Book Early", text: "Book boarding early during holidays" }, { icon: "💉", title: "Vaccinations", text: "Ask about vaccination requirements" }, { icon: "🏠", title: "Tour First", text: "Tour the facility before your first stay" }
           ].map((y, F) => /* @__PURE__ */ d(
             D.div,
             {
@@ -10721,7 +10721,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               onClick: () => e?.("products"),
               className: "w-full px-6 py-3 text-white rounded-lg transition-colors",
               style: { backgroundColor: "#15803d", border: "1px solid #166534" },
-              children: "Browse Pet Products â†’"
+              children: "Browse Pet Products →"
             }
           )
         ]
@@ -10776,7 +10776,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: () => Ee(!pe),
                   children: [
                     /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                      /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ " }),
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🏠" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Daycare Available" })
                     ] }),
                     /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: pe ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
@@ -10790,7 +10790,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: () => te(!W),
                   children: [
                     /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                      /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ“…" }),
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "📅" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Open Weekends" })
                     ] }),
                     /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: W ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
@@ -10804,7 +10804,7 @@ function lf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: () => ue(!ae),
                   children: [
                     /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                      /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸŒŸ" }),
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
                     ] }),
                     /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: ae ? "#15803d" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${ae ? "translate-x-6" : "translate-x-1"}` }) })
@@ -10982,7 +10982,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       else {
         const _ = o.find((Y) => Y.id === y);
         if (_) {
-          console.log("ðŸ” Found business to add to shortlist:", _), console.log("ðŸ” Business rating:", w[_.id]);
+          console.log("🔍 Found business to add to shortlist:", _), console.log("🔍 Business rating:", w[_.id]);
           const Y = {
             id: _.id,
             name: _.name,
@@ -10994,11 +10994,11 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             address: _.address,
             zipCode: _.zipCode
           };
-          console.log("ðŸ’¾ Shortlist item to save:", Y), nf(I, Y), mt([...Be, y]), gt("Saved to Shortlist"), Ei(() => () => {
+          console.log("💾 Shortlist item to save:", Y), nf(I, Y), mt([...Be, y]), gt("Saved to Shortlist"), Ei(() => () => {
             e && e("shortlist");
           }), $e(!0);
         } else
-          console.error("âŒ Business not found in providers list:", y);
+          console.error("❌ Business not found in providers list:", y);
       }
     } catch (_) {
       console.error("Error updating shortlist:", _);
@@ -11138,8 +11138,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         children: [
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
             /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Pet Sitters Directory" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory â€” compare local sitters." }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "We do not provide sitting â€” independent sitters in Darlington, Hartsville & Florence." })
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Free directory — compare local sitters." }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "We do not provide sitting — independent sitters in Darlington, Hartsville & Florence." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
             /* @__PURE__ */ s(
@@ -11148,14 +11148,14 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 animate: { rotate: [0, 5, -5, 0] },
                 transition: { duration: 2, repeat: 1 / 0 },
                 className: "md:text-4xl",
-                children: "ðŸ¦®"
+                children: "🦮"
               }
             ),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Pet Sitters Directory" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
-            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory â€” pet sitting and dog walking in Darlington, Hartsville and Florence for vacations, workdays, and extended trips." }),
-            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "We do not provide sitting â€” compare listings and contact providers directly." })
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", children: "Free directory — pet sitting and dog walking in Darlington, Hartsville and Florence for vacations, workdays, and extended trips." }),
+            /* @__PURE__ */ s("p", { className: "text-sm opacity-80 leading-relaxed mt-2", children: "We do not provide sitting — compare listings and contact providers directly." })
           ] })
         ]
       }
@@ -11284,7 +11284,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => setSbIns(!sbIns),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-1.5 shrink-0", children: [
-                    /* @__PURE__ */ s("span", { className: "text-lg leading-none", children: "ðŸ›¡ï¸" }),
+                    /* @__PURE__ */ s("span", { className: "text-lg leading-none", children: "🛡️" }),
                     /* @__PURE__ */ s("span", { className: "text-sm text-gray-700 whitespace-nowrap", children: "Insured & Bonded" })
                   ] }),
                   /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors", style: { backgroundColor: sbIns ? "#db2777" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${sbIns ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
@@ -11298,7 +11298,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => setSbCpr(!sbCpr),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-1.5 shrink-0", children: [
-                    /* @__PURE__ */ s("span", { className: "text-lg leading-none", children: "â¤ï¸" }),
+                    /* @__PURE__ */ s("span", { className: "text-lg leading-none", children: "❤️" }),
                     /* @__PURE__ */ s("span", { className: "text-sm text-gray-700 whitespace-nowrap", children: "CPR / First Aid" })
                   ] }),
                   /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 shrink-0 items-center rounded-full transition-colors", style: { backgroundColor: sbCpr ? "#db2777" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${sbCpr ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
@@ -11312,7 +11312,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => ue(!ae),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-1.5 shrink-0", children: [
-                    /* @__PURE__ */ s("span", { className: "text-lg leading-none", children: "ðŸŒŸ" }),
+                    /* @__PURE__ */ s("span", { className: "text-lg leading-none", children: "🌟" }),
                     /* @__PURE__ */ s("span", { className: "text-sm text-gray-700 whitespace-nowrap", children: ">4 Stars" })
                   ] }),
                   /* @__PURE__ */ s(
@@ -11353,10 +11353,10 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       ),
       /* @__PURE__ */ s(PdpcGuideLinks, { categoryPath: "/sitters" }),
       /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mt-6 md:mt-0 px-4 md:px-0", children: l ? /* @__PURE__ */ d("div", { className: "col-span-1 md:col-span-2 text-center py-12", children: [
-        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "ðŸ¾" }),
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "🐾" }),
         /* @__PURE__ */ s("p", { className: "text-gray-600", children: "Loading sitters and walkers..." })
       ] }) : yt.length === 0 ? /* @__PURE__ */ d("div", { className: "col-span-1 md:col-span-2 text-center py-6 md:py-12", children: [
-        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "ðŸ”" }),
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "🔍" }),
         /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No matches found" }),
         /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm mt-2 md:hidden", children: "Try a different city, adjust filters, or clear your search." }),
         /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm mt-2 hidden md:block", children: "Try adjusting your search criteria." }),
@@ -11425,12 +11425,12 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               ] }),
               /* @__PURE__ */ d("div", { className: "flex items-start justify-between mb-3", children: [
                 /* @__PURE__ */ d("p", { className: "text-gray-600", children: [
-                  "ðŸ“ ",
+                  "📍 ",
                   y.city
                 ] }),
                 window.innerWidth < 768 && /* @__PURE__ */ d("div", { className: "flex flex-col gap-1 items-end ml-2", children: [
-                  (y.servicesOffered && y.servicesOffered[0] ? /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full", children: y.servicesOffered[0] }) : y.insuredBonded || sittersMatchFlag(y, "insuredBonded", ["insured", "bonded"]) ? /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full", children: "ðŸ›¡ï¸ Insured" }) : null),
-                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-end text-right text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "ðŸš« Not Accepting New Clients" })
+                  (y.servicesOffered && y.servicesOffered[0] ? /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full", children: y.servicesOffered[0] }) : y.insuredBonded || sittersMatchFlag(y, "insuredBonded", ["insured", "bonded"]) ? /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full", children: "🛡️ Insured" }) : null),
+                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-end text-right text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "🚫 Not Accepting New Clients" })
                 ] })
               ] }),
               /* @__PURE__ */ d("div", { className: "flex items-center justify-between mb-3", children: [
@@ -11446,8 +11446,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] }) : /* @__PURE__ */ s("span", { className: "text-sm text-gray-500", children: "No reviews yet" }) }),
                 window.innerWidth >= 768 && /* @__PURE__ */ d("div", { className: "flex flex-col gap-1 items-end", children: [
-                  (y.servicesOffered && y.servicesOffered[0] ? /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full", children: y.servicesOffered[0] }) : y.insuredBonded || sittersMatchFlag(y, "insuredBonded", ["insured", "bonded"]) ? /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full", children: "ðŸ›¡ï¸ Insured" }) : null),
-                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-end text-right text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "ðŸš« Not Accepting New Clients" })
+                  (y.servicesOffered && y.servicesOffered[0] ? /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full", children: y.servicesOffered[0] }) : y.insuredBonded || sittersMatchFlag(y, "insuredBonded", ["insured", "bonded"]) ? /* @__PURE__ */ s("span", { className: "inline-flex items-center gap-1 px-3 py-1 bg-pink-100 text-pink-700 text-sm rounded-full", children: "🛡️ Insured" }) : null),
+                  y.notAcceptingClients && /* @__PURE__ */ s("span", { className: `inline-flex items-center gap-1 text-red-700 ${window.innerWidth < 768 ? "justify-end text-right text-xs py-1" : "px-3 py-1 bg-red-100 text-sm rounded-full"}`, children: "🚫 Not Accepting New Clients" })
                 ] })
               ] }),
               /* @__PURE__ */ s(
@@ -11640,7 +11640,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s(im, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#db2777" } }),
                     /* @__PURE__ */ d("div", { className: "flex-1 min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
-                      n.callForHours ? /* @__PURE__ */ s("p", { style: { color: "#db2777" }, children: "ðŸ“ž Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm md:text-base", children: [
+                      n.callForHours ? /* @__PURE__ */ s("p", { style: { color: "#db2777" }, children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm md:text-base", children: [
                         /* @__PURE__ */ s("div", { className: "md:hidden space-y-3", children: [["monday", "tuesday"], ["wednesday", "thursday"], ["friday", "saturday"], ["sunday"]].map((y, F) => /* @__PURE__ */ s("div", { className: "grid grid-cols-2 gap-x-3", children: y.map((B) => {
                           const _ = n.hours[B], Y = _?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col gap-0.5", children: [
@@ -11698,13 +11698,13 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 (n.insuredBonded || n.petCprCertified || n.backgroundChecked || n.professionalMember || n.medicationAdmin || n.photoUpdates || n.mobileService || sittersMatchFlag(n, "insuredBonded", ["insured", "bonded"]) || sittersMatchFlag(n, "petCprCertified", ["cpr", "first aid"]) || sittersMatchFlag(n, "backgroundChecked", ["background"]) || sittersMatchFlag(n, "professionalMember", ["napps", "psi"]) || sittersMatchFlag(n, "medicationAdmin", ["medication"]) || sittersMatchFlag(n, "photoUpdates", ["photo update", "gps route"])) && /* @__PURE__ */ d("div", { className: "mb-6", children: [
                   /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-3", children: "Credentials & Care" }),
                   /* @__PURE__ */ s("div", { className: "flex flex-wrap gap-2", children: [
-                    (n.insuredBonded || sittersMatchFlag(n, "insuredBonded", ["insured", "bonded"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "ðŸ›¡ï¸ Insured & Bonded" }),
-                    (n.petCprCertified || sittersMatchFlag(n, "petCprCertified", ["cpr", "first aid"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "â¤ï¸ CPR / First Aid" }),
-                    (n.backgroundChecked || sittersMatchFlag(n, "backgroundChecked", ["background"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "âœ… Background Checked" }),
-                    (n.professionalMember || sittersMatchFlag(n, "professionalMember", ["napps", "psi"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "ðŸ… Pro Association" }),
-                    (n.medicationAdmin || sittersMatchFlag(n, "medicationAdmin", ["medication"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "ðŸ’Š Medication OK" }),
-                    (n.photoUpdates || sittersMatchFlag(n, "photoUpdates", ["photo update", "gps route"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "ðŸ“¸ Photo Updates" }),
-                    n.mobileService && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "ðŸš— Comes to You" })
+                    (n.insuredBonded || sittersMatchFlag(n, "insuredBonded", ["insured", "bonded"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "🛡️ Insured & Bonded" }),
+                    (n.petCprCertified || sittersMatchFlag(n, "petCprCertified", ["cpr", "first aid"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "❤️ CPR / First Aid" }),
+                    (n.backgroundChecked || sittersMatchFlag(n, "backgroundChecked", ["background"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "✅ Background Checked" }),
+                    (n.professionalMember || sittersMatchFlag(n, "professionalMember", ["napps", "psi"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "🏅 Pro Association" }),
+                    (n.medicationAdmin || sittersMatchFlag(n, "medicationAdmin", ["medication"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "💊 Medication OK" }),
+                    (n.photoUpdates || sittersMatchFlag(n, "photoUpdates", ["photo update", "gps route"])) && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "📸 Photo Updates" }),
+                    n.mobileService && /* @__PURE__ */ s("span", { className: "px-3 py-1 rounded-full text-sm", style: { backgroundColor: "#fdf2f8", color: "#be185d" }, children: "🚗 Comes to You" })
                   ].filter(Boolean) })
                 ] }),
                 n.boardingStyles && n.boardingStyles.length > 0 && /* @__PURE__ */ d("div", { className: "mb-6", children: [
@@ -11715,7 +11715,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       className: "px-4 py-2 rounded-lg",
                       style: { backgroundColor: "#fdf2f8", color: "#db2777" },
                       children: [
-                        "ðŸ  ",
+                        "🏠 ",
                         y
                       ]
                     },
@@ -11730,7 +11730,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       className: "px-4 py-2 rounded-lg",
                       style: { backgroundColor: "#fdf2f8", color: "#db2777" },
                       children: [
-                        "âœ¨ ",
+                        "✨ ",
                         y
                       ]
                     },
@@ -11791,7 +11791,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     className: "hidden md:block w-full text-white py-4 rounded-xl transition-colors text-center",
                     style: { backgroundColor: "#db2777", border: "1px solid #be185d", color: "#ffffff" },
                     children: [
-                      "ðŸ“ž Call ",
+                      "📞 Call ",
                       n.name
                     ]
                   }
@@ -11821,7 +11821,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       className: "flex items-center justify-center gap-2 w-full bg-red-600 text-white py-4 rounded-xl hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                       disabled: M,
                       children: M ? /* @__PURE__ */ d(ie, { children: [
-                        /* @__PURE__ */ s("span", { className: "animate-spin", children: "â³" }),
+                        /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                         "Deleting..."
                       ] }) : /* @__PURE__ */ d(ie, { children: [
                         /* @__PURE__ */ s(Lt, { className: "w-5 h-5" }),
@@ -11897,7 +11897,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     },
                     y.id
                   )) }) : /* @__PURE__ */ d("div", { className: "text-center py-8 bg-gray-50 rounded-xl mb-6", children: [
-                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "â­" }),
+                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "⭐" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No reviews yet" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm", children: "Be the first to leave a review!" })
                   ] }),
@@ -11911,7 +11911,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           children: [
                             /* @__PURE__ */ d("div", { children: [
                               /* @__PURE__ */ d("div", { className: "flex items-center gap-2 mb-1", children: [
-                                /* @__PURE__ */ s("span", { className: "text-2xl", children: "ðŸ‘¨â€ðŸ’¼" }),
+                                /* @__PURE__ */ s("span", { className: "text-2xl", children: "👨‍💼" }),
                                 /* @__PURE__ */ s("h4", { className: "text-gray-800", children: "Admin: Add Customer Review" })
                               ] }),
                               /* @__PURE__ */ s("p", { className: "text-sm text-gray-600", children: "Transfer existing online reviews to your listing" })
@@ -11991,7 +11991,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                                 className: "w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl hover:from-blue-600 hover:to-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                                 disabled: C || !N.reviewerName.trim() || !N.comment.trim(),
                                 children: C ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
-                                  /* @__PURE__ */ s("span", { className: "animate-spin", children: "â³" }),
+                                  /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                                   "Adding Review..."
                                 ] }) : "Add Review"
                               }
@@ -12001,12 +12001,12 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       ) })
                     ] })
                   ] }) : I && n.ownerId === I.id ? /* @__PURE__ */ d("div", { className: "text-center py-8 bg-pink-50 rounded-xl border-2 border-pink-200", children: [
-                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "ðŸª" }),
+                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "You can respond to customer reviews below" })
                   ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-pink-200 rounded-xl p-5", children: [
                     /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
-                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed â€” just enter your name and review." }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
                     /* @__PURE__ */ d("div", { className: "mb-4", children: [
                       /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Name *" }),
                       /* @__PURE__ */ s(
@@ -12062,7 +12062,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         className: "w-full bg-gradient-to-r from-pink-600 to-rose-600 text-white py-3 rounded-xl hover:from-pink-700 hover:to-rose-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                         disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
                         children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
-                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "â³" }),
+                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                           "Submitting..."
                         ] }) : "Submit Review"
                       }
@@ -12119,7 +12119,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         children: [
           /* @__PURE__ */ s("h2", { className: "mb-8", style: { color: "#ffffff" }, children: "Sitter Tips" }),
           /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [
-            { icon: "ðŸ¤", title: "Meet & Greet", text: "Schedule a meet and greet before your first booking" }, { icon: "ðŸ›¡ï¸", title: "Verify Insurance", text: "Ask for proof of insurance and bonding" }, { icon: "ðŸ”‘", title: "Share Details", text: "Leave clear feeding, meds, and emergency contacts" }
+            { icon: "🤝", title: "Meet & Greet", text: "Schedule a meet and greet before your first booking" }, { icon: "🛡️", title: "Verify Insurance", text: "Ask for proof of insurance and bonding" }, { icon: "🔑", title: "Share Details", text: "Leave clear feeding, meds, and emergency contacts" }
           ].map((y, F) => /* @__PURE__ */ d(
             D.div,
             {
@@ -12157,7 +12157,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               onClick: () => e?.("products"),
               className: "w-full px-6 py-3 text-white rounded-lg transition-colors",
               style: { backgroundColor: "#db2777", border: "1px solid #be185d" },
-              children: "Browse Pet Products â†’"
+              children: "Browse Pet Products →"
             }
           )
         ]
@@ -12204,8 +12204,8 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             ] }) }),
             /* @__PURE__ */ d("div", { className: "p-4 space-y-4", children: [
               /* @__PURE__ */ d("div", { children: [/* @__PURE__ */ s("label", { className: "text-sm font-semibold text-gray-700 mb-2 block", children: "Service Type" }), /* @__PURE__ */ d("select", { value: pe, onChange: (y) => Ee(y.target.value), className: "w-full px-4 py-3 bg-pink-50 border-2 border-pink-200 rounded-lg focus:outline-none focus:border-pink-400 cursor-pointer", children: sittersServiceOptions() })] }),
-              sittersMobileToggle(sbIns, setSbIns, "ðŸ›¡ï¸", "Insured & Bonded"),
-              sittersMobileToggle(sbCpr, setSbCpr, "â¤ï¸", "CPR / First Aid"),
+              sittersMobileToggle(sbIns, setSbIns, "🛡️", "Insured & Bonded"),
+              sittersMobileToggle(sbCpr, setSbCpr, "❤️", "CPR / First Aid"),
               /* @__PURE__ */ d(
                 "div",
                 {
@@ -12213,7 +12213,7 @@ function sittersCat({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: () => ue(!ae),
                   children: [
                     /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                      /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸŒŸ" }),
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
                     ] }),
                     /* @__PURE__ */ s(
@@ -12352,7 +12352,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       else {
         const _ = o.find((Y) => Y.id === y);
         if (_) {
-          console.log("ðŸ” Found business to add to shortlist:", _), console.log("ðŸ” Business rating:", w[_.id]);
+          console.log("🔍 Found business to add to shortlist:", _), console.log("🔍 Business rating:", w[_.id]);
           const Y = {
             id: _.id,
             name: _.name,
@@ -12364,11 +12364,11 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
             address: _.address,
             zipCode: _.zipCode
           };
-          console.log("ðŸ’¾ Shortlist item to save:", Y), nf(I, Y), mt([...Be, y]), gt("Saved to Shortlist"), Ei(() => () => {
+          console.log("💾 Shortlist item to save:", Y), nf(I, Y), mt([...Be, y]), gt("Saved to Shortlist"), Ei(() => () => {
             e && e("shortlist");
           }), $e(!0);
         } else
-          console.error("âŒ Business not found in providers list:", y);
+          console.error("❌ Business not found in providers list:", y);
       }
     } catch (_) {
       console.error("Error updating shortlist:", _);
@@ -12508,7 +12508,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         children: [
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
             /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", children: "Vet Care" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Care, cure, comfort â€” locally." }),
+            /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-90 leading-tight mt-0.5", children: "Care, cure, comfort — locally." }),
             /* @__PURE__ */ s("p", { className: "text-xs text-center opacity-75 leading-snug mt-1.5", children: "Routine wellness to urgent care, close to home." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
@@ -12518,7 +12518,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 animate: { rotate: [0, 5, -5, 0] },
                 transition: { duration: 2, repeat: 1 / 0 },
                 className: "md:text-4xl",
-                children: "âš•ï¸"
+                children: "⚕️"
               }
             ),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Vet Care" })
@@ -12644,7 +12644,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => Ee(!pe),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸš¨" }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🚨" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "24/7 Emergency" })
                   ] }),
                   /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: pe ? "#ea580c" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
@@ -12658,7 +12658,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => te(!W),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸš¶" }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🚶" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Accepts Walk-Ins" })
                   ] }),
                   /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: W ? "#ea580c" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}`, style: { boxShadow: "0 1px 2px rgba(0,0,0,0.25)" } }) })
@@ -12672,7 +12672,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                 onClick: () => ue(!ae),
                 children: [
                   /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸŒŸ" }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
                     /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
                   ] }),
                   /* @__PURE__ */ s(
@@ -12713,10 +12713,10 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
       ),
       /* @__PURE__ */ s(PdpcGuideLinks, { categoryPath: "/vet-care" }),
       /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mt-6 md:mt-0 px-4 md:px-0", children: l ? /* @__PURE__ */ d("div", { className: "col-span-1 md:col-span-2 text-center py-12", children: [
-        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "ðŸ¾" }),
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "🐾" }),
         /* @__PURE__ */ s("p", { className: "text-gray-600", children: "Loading vet care businesses..." })
       ] }) : yt.length === 0 ? /* @__PURE__ */ d("div", { className: "col-span-1 md:col-span-2 text-center py-6 md:py-12", children: [
-        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "ðŸ”" }),
+        /* @__PURE__ */ s("div", { className: "text-4xl mb-4", children: "🔍" }),
         /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No matches found" }),
         /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm mt-2 md:hidden", children: "Try a different city, adjust filters, or clear your search." }),
         /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm mt-2 hidden md:block", children: "Try adjusting your search criteria." }),
@@ -12785,10 +12785,10 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               ] }),
               /* @__PURE__ */ d("div", { className: "flex items-start justify-between mb-3", children: [
                 /* @__PURE__ */ d("p", { className: "text-gray-600", children: [
-                  "ðŸ“ ",
+                  "📍 ",
                   y.city
                 ] }),
-                (y.acceptsWalkins || y.acceptingNewPatients) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-gradient-to-r from-emerald-100 to-teal-100 border border-emerald-300 text-emerald-800 text-xs md:text-sm leading-tight rounded-full shadow-sm ml-2", children: "ðŸš¶ Accepts Walk-Ins" })
+                (y.acceptsWalkins || y.acceptingNewPatients) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-gradient-to-r from-emerald-100 to-teal-100 border border-emerald-300 text-emerald-800 text-xs md:text-sm leading-tight rounded-full shadow-sm ml-2", children: "🚶 Accepts Walk-Ins" })
               ] }),
               /* @__PURE__ */ d("div", { className: "flex flex-col gap-2 mb-3 md:flex-row md:items-center md:justify-between", children: [
                 /* @__PURE__ */ s("div", { className: "flex items-center gap-3 md:gap-2", children: w[y.id] ? /* @__PURE__ */ d(ie, { children: [
@@ -12803,15 +12803,15 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   ] })
                 ] }) : /* @__PURE__ */ s("span", { className: "text-sm text-gray-500", children: "No reviews yet" }) }),
                 /* @__PURE__ */ d("div", { className: "flex flex-wrap gap-1 md:flex-col md:gap-1 md:items-end", children: [
-                  (y.notAcceptingClients || y.acceptingNewPatients === !1) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-red-100 text-red-700 text-xs md:text-sm leading-tight rounded-full", children: "ðŸš« Not Accepting New Patients" })
+                  (y.notAcceptingClients || y.acceptingNewPatients === !1) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1.5 px-3 py-1 bg-red-100 text-red-700 text-xs md:text-sm leading-tight rounded-full", children: "🚫 Not Accepting New Patients" })
                 ] })
               ] }),
               y.hours && /* @__PURE__ */ d("div", { className: "flex items-center justify-between mb-3 gap-2", children: [
                 /* @__PURE__ */ d("p", { className: "text-orange-700 text-[11px] md:text-sm whitespace-nowrap", children: [
-                  "ðŸ•’ ",
+                  "🕒 ",
                   y.hours.monday || "See hours in details"
                 ] }),
-                (y.emergency24x7 || y.emergency) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1 px-2 py-0.5 md:px-3 md:py-1 bg-red-100 text-red-700 text-[10px] md:text-sm leading-tight rounded-full shrink-0 whitespace-nowrap ml-auto md:ml-0 translate-x-1 md:translate-x-0", children: window.innerWidth < 768 ? "ðŸš¨ 24/7" : "ðŸš¨ 24/7 Emergency" })
+                (y.emergency24x7 || y.emergency) && /* @__PURE__ */ s("span", { className: "inline-flex items-center justify-center gap-1 px-2 py-0.5 md:px-3 md:py-1 bg-red-100 text-red-700 text-[10px] md:text-sm leading-tight rounded-full shrink-0 whitespace-nowrap ml-auto md:ml-0 translate-x-1 md:translate-x-0", children: window.innerWidth < 768 ? "🚨 24/7" : "🚨 24/7 Emergency" })
               ] }),
               /* @__PURE__ */ s(
                 D.button,
@@ -13002,7 +13002,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     /* @__PURE__ */ s(im, { className: "w-5 h-5 mt-1 flex-shrink-0", style: { color: "#ea580c" } }),
                     /* @__PURE__ */ d("div", { className: "flex-1 min-w-0", children: [
                       /* @__PURE__ */ s("p", { className: "text-gray-600 mb-2", children: "Hours of Operation" }),
-                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-orange-600", children: "ðŸ“ž Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm md:text-base", children: [
+                      n.callForHours ? /* @__PURE__ */ s("p", { className: "text-orange-600", children: "📞 Please Call for Hours of Operation" }) : /* @__PURE__ */ d("div", { className: "space-y-3 text-xs sm:text-sm md:text-base", children: [
                         /* @__PURE__ */ s("div", { className: "md:hidden space-y-3", children: [["monday", "tuesday"], ["wednesday", "thursday"], ["friday", "saturday"], ["sunday"]].map((y, F) => /* @__PURE__ */ s("div", { className: "grid grid-cols-2 gap-x-3", children: y.map((B) => {
                           const _ = n.hours[B], Y = _?.toLowerCase().includes("closed");
                           return /* @__PURE__ */ d("div", { className: "flex flex-col gap-0.5", children: [
@@ -13057,7 +13057,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   )) })
                 ] }),
                 n.emergency24x7 && /* @__PURE__ */ s("div", { className: "mb-6", children: /* @__PURE__ */ d("div", { className: "inline-flex items-center gap-2 px-4 py-3 bg-red-50 border-2 border-red-200 text-red-700 rounded-lg", children: [
-                  /* @__PURE__ */ s("span", { className: "text-2xl", children: "ðŸš¨" }),
+                  /* @__PURE__ */ s("span", { className: "text-2xl", children: "🚨" }),
                   /* @__PURE__ */ d("div", { children: [
                     /* @__PURE__ */ s("p", { className: "text-gray-800", children: "24/7 Emergency Services" }),
                     /* @__PURE__ */ s("p", { className: "text-sm text-gray-600", children: "Immediate care available day and night" })
@@ -13070,7 +13070,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     {
                       className: "bg-orange-50 text-orange-600 px-4 py-2 rounded-lg",
                       children: [
-                        "âœ¨ ",
+                        "✨ ",
                         y
                       ]
                     },
@@ -13131,7 +13131,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     className: "hidden md:block w-full bg-gradient-to-r from-orange-600 to-red-500 text-white py-4 rounded-xl hover:from-orange-700 hover:to-red-600 transition-colors text-center",
                     style: { backgroundColor: "#ea580c", border: "1px solid #c2410c", color: "#ffffff" },
                     children: [
-                      "ðŸ“ž Call ",
+                      "📞 Call ",
                       n.name
                     ]
                   }
@@ -13161,7 +13161,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       className: "flex items-center justify-center gap-2 w-full bg-red-600 text-white py-4 rounded-xl hover:bg-red-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                       disabled: M,
                       children: M ? /* @__PURE__ */ d(ie, { children: [
-                        /* @__PURE__ */ s("span", { className: "animate-spin", children: "â³" }),
+                        /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                         "Deleting..."
                       ] }) : /* @__PURE__ */ d(ie, { children: [
                         /* @__PURE__ */ s(Lt, { className: "w-5 h-5" }),
@@ -13237,7 +13237,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                     },
                     y.id
                   )) }) : /* @__PURE__ */ d("div", { className: "text-center py-8 bg-gray-50 rounded-xl mb-6", children: [
-                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "â­" }),
+                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "⭐" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-600", children: "No reviews yet" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-500 text-sm", children: "Be the first to leave a review!" })
                   ] }),
@@ -13251,7 +13251,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                           children: [
                             /* @__PURE__ */ d("div", { children: [
                               /* @__PURE__ */ d("div", { className: "flex items-center gap-2 mb-1", children: [
-                                /* @__PURE__ */ s("span", { className: "text-2xl", children: "ðŸ‘¨â€ðŸ’¼" }),
+                                /* @__PURE__ */ s("span", { className: "text-2xl", children: "👨‍💼" }),
                                 /* @__PURE__ */ s("h4", { className: "text-gray-800", children: "Admin: Add Customer Review" })
                               ] }),
                               /* @__PURE__ */ s("p", { className: "text-sm text-gray-600", children: "Transfer existing online reviews to your listing" })
@@ -13331,7 +13331,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                                 className: "w-full bg-gradient-to-r from-blue-500 to-blue-600 text-white py-3 rounded-xl hover:from-blue-600 hover:to-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                                 disabled: C || !N.reviewerName.trim() || !N.comment.trim(),
                                 children: C ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
-                                  /* @__PURE__ */ s("span", { className: "animate-spin", children: "â³" }),
+                                  /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                                   "Adding Review..."
                                 ] }) : "Add Review"
                               }
@@ -13341,12 +13341,12 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                       ) })
                     ] })
                   ] }) : I && n.ownerId === I.id ? /* @__PURE__ */ d("div", { className: "text-center py-8 bg-orange-50 rounded-xl border-2 border-orange-200", children: [
-                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "ðŸª" }),
+                    /* @__PURE__ */ s("div", { className: "text-4xl mb-2", children: "🏪" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-700 mb-2", children: "You own this business" }),
                     /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "You can respond to customer reviews below" })
                   ] }) : /* @__PURE__ */ d("div", { className: "bg-white border-2 border-orange-200 rounded-xl p-5", children: [
                     /* @__PURE__ */ s("h4", { className: "text-gray-800 mb-3", children: "Share Your Experience" }),
-                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed â€” just enter your name and review." }),
+                    /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4", children: "No account needed — just enter your name and review." }),
                     /* @__PURE__ */ d("div", { className: "mb-4", children: [
                       /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-2", children: "Your Name *" }),
                       /* @__PURE__ */ s(
@@ -13402,7 +13402,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                         className: "w-full bg-gradient-to-r from-orange-600 to-red-500 text-white py-3 rounded-xl hover:from-orange-700 hover:to-red-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed",
                         disabled: g || !f.comment.trim() || !f.userName.trim() && !I?.name,
                         children: g ? /* @__PURE__ */ d("span", { className: "flex items-center justify-center gap-2", children: [
-                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "â³" }),
+                          /* @__PURE__ */ s("span", { className: "animate-spin", children: "⏳" }),
                           "Submitting..."
                         ] }) : "Submit Review"
                       }
@@ -13458,7 +13458,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
         children: [
           /* @__PURE__ */ s("h2", { className: "mb-8", style: { color: "#ffffff" }, children: "Vet Care Tips" }),
           /* @__PURE__ */ s("div", { className: "grid md:grid-cols-3 gap-6", children: [
-            { icon: "ðŸ“…", title: "Book Early", text: "Schedule routine wellness exams" }, { icon: "ðŸ’‰", title: "Vaccinations", text: "Keep vaccines and prevention current" }, { icon: "ðŸ ", title: "Tour First", text: "Do not delay care for emergency symptoms" }
+            { icon: "📅", title: "Book Early", text: "Schedule routine wellness exams" }, { icon: "💉", title: "Vaccinations", text: "Keep vaccines and prevention current" }, { icon: "🏠", title: "Tour First", text: "Do not delay care for emergency symptoms" }
           ].map((y, F) => /* @__PURE__ */ d(
             D.div,
             {
@@ -13497,7 +13497,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
               onClick: () => e?.("products"),
               className: "w-full px-6 py-3 text-white rounded-lg transition-colors",
               style: { backgroundColor: "#ea580c", border: "1px solid #c2410c" },
-              children: "Browse Pet Products â†’"
+              children: "Browse Pet Products →"
             }
           )
         ]
@@ -13552,7 +13552,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: () => Ee(!pe),
                   children: [
                     /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                      /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸš¨" }),
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🚨" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "24/7 Emergency" })
                     ] }),
                     /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: pe ? "#ea580c" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${pe ? "translate-x-6" : "translate-x-1"}` }) })
@@ -13566,7 +13566,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: () => te(!W),
                   children: [
                     /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                      /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸš¶" }),
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🚶" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: "Accepts Walk-Ins" })
                     ] }),
                     /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: W ? "#ea580c" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${W ? "translate-x-6" : "translate-x-1"}` }) })
@@ -13580,7 +13580,7 @@ function cf({ onEditBusiness: t, onNavigate: e, onOpenLogin: r } = {}) {
                   onClick: () => ue(!ae),
                   children: [
                     /* @__PURE__ */ d("div", { className: "flex items-center gap-2", children: [
-                      /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸŒŸ" }),
+                      /* @__PURE__ */ s("span", { className: "text-xl", children: "🌟" }),
                       /* @__PURE__ */ s("span", { className: "text-gray-700", children: ">4 Stars" })
                     ] }),
                     /* @__PURE__ */ s("div", { className: "relative inline-flex h-6 w-11 items-center rounded-full transition-colors", style: { backgroundColor: ae ? "#ea580c" : "#d1d5db" }, children: /* @__PURE__ */ s("span", { className: `inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${ae ? "translate-x-6" : "translate-x-1"}` }) })
@@ -13658,39 +13658,39 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                 className: "h-full flex flex-col",
                 children: [
                   /* @__PURE__ */ d("div", { className: "w-full flex flex-col flex-1", children: [
-                    /* @__PURE__ */ s("div", { className: "mb-3 md:mb-4", children: /* @__PURE__ */ s("h2", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight text-left", children: "About Pee Dee Pet Care ðŸ¾" }) }),
+                    /* @__PURE__ */ s("div", { className: "mb-3 md:mb-4", children: /* @__PURE__ */ s("h2", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight text-left", children: "About Pee Dee Pet Care 🐾" }) }),
                     /* @__PURE__ */ d("div", { className: "text-gray-700 mb-3 md:mb-4 text-sm md:text-base leading-relaxed space-y-3 text-justify", children: [
                       /* @__PURE__ */ s("p", { className: "text-justify", children: "Pee Dee Pet Care is a free local directory for pet services in Florence, Darlington, Hartsville, and the Pee Dee region of South Carolina." }),
-                      /* @__PURE__ */ s("p", { className: "text-justify", children: "Hi! I'm Shannon â€” and this all started because of my cat, Percy." }),
-                      /* @__PURE__ */ s("p", { className: "text-justify", children: "Percy had an emergency. I was in a panic, frantically searching the internet for a vet â€” hours, services, contacts â€” one page at a time." }),
+                      /* @__PURE__ */ s("p", { className: "text-justify", children: "Hi! I'm Shannon — and this all started because of my cat, Percy." }),
+                      /* @__PURE__ */ s("p", { className: "text-justify", children: "Percy had an emergency. I was in a panic, frantically searching the internet for a vet — hours, services, contacts — one page at a time." }),
                       /* @__PURE__ */ s("p", { className: "text-justify", children: "I thought: why isn't there just ONE place for all of this?" }),
-                      /* @__PURE__ */ s("p", { className: "text-justify mt-3", children: "So, I built it. ðŸ’œ" }),
-                      /* @__PURE__ */ s("p", { className: "text-justify text-gray-600", children: "Pee Dee Pet Care is an independent directory and is not affiliated with other Pee Deeâ€“named organizations, such as cremation services, animal hospitals, or senior-living providers." })
+                      /* @__PURE__ */ s("p", { className: "text-justify mt-3", children: "So, I built it. 💜" }),
+                      /* @__PURE__ */ s("p", { className: "text-justify text-gray-600", children: "Pee Dee Pet Care is an independent directory and is not affiliated with other Pee Dee–named organizations, such as cremation services, animal hospitals, or senior-living providers." })
                     ] }),
                     /* @__PURE__ */ d("ul", { className: "text-gray-700 grid grid-cols-1 md:grid-cols-2 w-full mt-4 mb-2", style: { rowGap: "1rem", columnGap: "2.5rem" }, children: [
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3 w-full", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "ðŸ”Ž" }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🔎" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5 flex-1 min-w-0", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "One place for everything" }),
-                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug text-justify", children: "Grooming, training, boarding, vet care & more â€” across Florence, Darlington, Hartsville & the Pee Dee. Hours, services, and contact info, all in one spot." })
+                          /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug text-justify", children: "Grooming, training, boarding, vet care & more — across Florence, Darlington, Hartsville & the Pee Dee. Hours, services, and contact info, all in one spot." })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3 w-full", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "ðŸ“±" }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "📱" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5 flex-1 min-w-0", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Better than scrolling Facebook" }),
                           /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug text-justify", children: "Most local pet pros live on Facebook, scattered and hard to compare. I gathered them here so you don't have to hunt." })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3 w-full", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "ðŸ’›" }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "💛" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5 flex-1 min-w-0", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "100% free" }),
                           /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug text-justify", children: "Free to browse. Free for local businesses to be listed. Always." })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3 w-full", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "ðŸ¶" }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🐶" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5 flex-1 min-w-0", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Meet the crew" }),
                           /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug text-justify", children: "A Hartsville local + my three supervisors: Aggy (Chiweenie), Sierra Sunshine (pit bull mix), and Percy, the tabby who started it all." })
@@ -13703,7 +13703,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                     /* @__PURE__ */ d("div", { className: "text-gray-700 text-sm md:text-base leading-relaxed text-justify", children: [
                       /* @__PURE__ */ s("p", { className: "mb-2", children: "Spotted a business I missed? Want to say hi?" }),
                       /* @__PURE__ */ d("p", { className: "mb-2 mt-3", children: [
-                        "ðŸ“§ ",
+                        "📧 ",
                         /* @__PURE__ */ s(
                           "a",
                           {
@@ -13714,7 +13714,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                         )
                       ] }),
                       /* @__PURE__ */ d("p", { className: "mb-2", children: [
-                        "ðŸ“ž ",
+                        "📞 ",
                         /* @__PURE__ */ s(
                           "a",
                           {
@@ -13724,7 +13724,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                           }
                         )
                       ] }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600", children: "â€” Shannon ðŸ¾" })
+                      /* @__PURE__ */ s("p", { className: "text-gray-600", children: "— Shannon 🐾" })
                     ] })
                   ] })
                 ]
@@ -13760,28 +13760,28 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                     ] }),
                     /* @__PURE__ */ d("ul", { className: "text-gray-700 space-y-2.5 md:space-y-3 flex-1", children: [
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "âœ‚ï¸" }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "✂️" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Grooming" }),
                           /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Baths, haircuts, nail trims, de-shedding" })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "ðŸŽ“" }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🎓" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Training" }),
                           /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Puppies, obedience, behavior support" })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "ðŸ " }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🏠" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Boarding & Daycare" }),
                           /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Overnights, day play, safe stays" })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "ðŸ©º" }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🩺" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Vet Care" }),
                           /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs md:text-sm leading-snug", children: "Clinics, wellness, vaccines & more" })
@@ -13796,7 +13796,7 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                       {
                         onClick: () => n(!0),
                         className: "w-full md:max-w-[240px] md:mx-auto block bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-0 h-11 md:h-auto md:py-3 rounded-[14px] md:rounded-xl transition-colors",
-                        children: "Browse Services â†’"
+                        children: "Browse Services →"
                       }
                     ),
                     /* @__PURE__ */ s("p", { className: "text-center text-xs text-gray-400 mt-2", children: "Browse by city + service" })
@@ -13832,28 +13832,28 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                     ] }),
                     /* @__PURE__ */ d("ul", { className: "text-gray-700 space-y-3 md:space-y-3 flex-1", children: [
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "âœ‰ï¸" }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "✉️" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Request a listing" }),
                           /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-snug", children: "Email us to add your business." })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "ðŸ“¸" }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "📸" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Share your details" }),
                           /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-snug", children: "Send us your business updates" })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "â­" }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "⭐" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Reach local pet owners" }),
                           /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-snug", children: "Get discovered by new customers" })
                         ] })
                       ] }),
                       /* @__PURE__ */ d("li", { className: "flex items-start gap-3", children: [
-                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "ðŸŒ" }),
+                        /* @__PURE__ */ s("span", { className: "text-lg leading-6 w-6 flex items-center justify-center flex-shrink-0", children: "🌐" }),
                         /* @__PURE__ */ d("div", { className: "space-y-0.5", children: [
                           /* @__PURE__ */ s("strong", { className: "text-sm md:text-base block", children: "Let us build your website" }),
                           /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-snug", children: "Reach out for more info." })
@@ -13868,10 +13868,10 @@ function df({ onOpenSignup: t, onNavigate: e }) {
                       {
                         href: "mailto:hello@peedeepetcare.com?subject=Pawsitively%20Business%20Listing%20Request",
                         className: "w-full md:max-w-[240px] md:mx-auto flex items-center justify-center bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 py-0 h-11 md:h-auto md:py-3 rounded-[14px] md:rounded-xl transition-colors",
-                        children: "Email Us â†’"
+                        children: "Email Us →"
                       }
                     ),
-                    /* @__PURE__ */ s("p", { className: "text-center text-xs text-gray-400 mt-2", children: "Free to join â€¢ we handle setup & updates" })
+                    /* @__PURE__ */ s("p", { className: "text-center text-xs text-gray-400 mt-2", children: "Free to join • we handle setup & updates" })
                   ] })
                 ] })
               }
@@ -13964,13 +13964,13 @@ function privacyPage({ onNavigate: t }) {
       transition: { duration: 0.6 },
       children: [
         /* @__PURE__ */ d("div", { className: "bg-white rounded-[20px] md:rounded-2xl p-5 md:p-8 border border-purple-100 md:border-purple-200 shadow-sm md:shadow-md mx-2 md:mx-0 mt-6 mb-8", children: [
-          /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight mb-1", children: "Privacy Policy ðŸ”’" }),
+          /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight mb-1", children: "Privacy Policy 🔒" }),
           /* @__PURE__ */ s("p", { className: "text-xs text-gray-400 mb-5", children: "Last updated: July 5, 2026" }),
-          /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed mb-6", children: "Pee Dee Pet Care is a free local directory run by one person (hi, I'm Shannon!) â€” not a big company collecting data to sell ads. Here's the plain-language version of what we collect and what we do with it." }),
+          /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed mb-6", children: "Pee Dee Pet Care is a free local directory run by one person (hi, I'm Shannon!) — not a big company collecting data to sell ads. Here's the plain-language version of what we collect and what we do with it." }),
           e("What we collect", /* @__PURE__ */ d("ul", { className: "text-gray-700 text-sm md:text-base leading-relaxed", style: { listStyleType: "disc", paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "0.5rem" }, children: [
             /* @__PURE__ */ d("li", { children: [
               /* @__PURE__ */ s("strong", { children: "Account info: " }),
-              "if you create an account, we store your name, email address, and account type (pet owner or business owner). Your password is never stored as-is â€” only a securely encrypted version we can't read."
+              "if you create an account, we store your name, email address, and account type (pet owner or business owner). Your password is never stored as-is — only a securely encrypted version we can't read."
             ] }),
             /* @__PURE__ */ d("li", { children: [
               /* @__PURE__ */ s("strong", { children: "Your shortlist: " }),
@@ -13996,7 +13996,7 @@ function privacyPage({ onNavigate: t }) {
             /* @__PURE__ */ s("li", { children: "We never share your email or personal details with the businesses listed here or with advertisers." }),
             /* @__PURE__ */ s("li", { children: "We don't send marketing spam. Emails from us are account-related (like password resets) or replies to you." })
           ] })),
-          e("Cookies & analytics", /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed", children: "We use your browser's local storage to keep you logged in and remember simple preferences. We use Google Analytics to see anonymous, aggregate traffic (like how many people visited the grooming page) â€” not to identify you." })),
+          e("Cookies & analytics", /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed", children: "We use your browser's local storage to keep you logged in and remember simple preferences. We use Google Analytics to see anonymous, aggregate traffic (like how many people visited the grooming page) — not to identify you." })),
           e("Your choices", /* @__PURE__ */ d("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed", children: [
             "You can browse the whole directory without an account. If you have one and want it (and everything tied to it) deleted, just email ",
             /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com?subject=Delete%20my%20account", className: "text-purple-600 font-semibold hover:underline break-all", children: "hello@peedeepetcare.com" }),
@@ -14006,7 +14006,7 @@ function privacyPage({ onNavigate: t }) {
           /* @__PURE__ */ d("div", { className: "mt-6 pt-5 border-t border-purple-300/30 text-gray-700 text-sm md:text-base leading-relaxed", children: [
             /* @__PURE__ */ s("p", { className: "mb-2", children: "Questions about any of this?" }),
             /* @__PURE__ */ d("p", { children: [
-              "ðŸ“§ ",
+              "📧 ",
               /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "text-purple-600 font-semibold hover:underline break-all", children: "hello@peedeepetcare.com" })
             ] })
           ] })
@@ -14016,7 +14016,7 @@ function privacyPage({ onNavigate: t }) {
           {
             onClick: () => t?.("home"),
             className: "bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 h-11 rounded-[14px] transition-colors",
-            children: "â† Back to Home"
+            children: "← Back to Home"
           }
         ) })
       ]
@@ -14105,7 +14105,7 @@ const PDPC_HWV_CSS = `
 `;
 const PDPC_CONTACT_LINK = "mailto:hello@peedeepetcare.com";
 function pdpcHwvCheck() {
-  return /* @__PURE__ */ s("span", { className: "hwv-check", "aria-hidden": "true", children: "âœ“" });
+  return /* @__PURE__ */ s("span", { className: "hwv-check", "aria-hidden": "true", children: "✓" });
 }
 // "How We Verify" policy page. Copy ported verbatim from the reference
 // how-we-verify.html; app shell provides header/nav/footer. The route's
@@ -14129,15 +14129,15 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
             /* @__PURE__ */ s("span", { className: "hwv-phone-dot", "aria-hidden": "true" }),
             " Verification call"
           ] }),
-          /* @__PURE__ */ s("p", { className: "hwv-sub", children: "Florence Â· Darlington Â· Hartsville & surrounding Pee Dee communities" }),
+          /* @__PURE__ */ s("p", { className: "hwv-sub", children: "Florence · Darlington · Hartsville & surrounding Pee Dee communities" }),
           /* @__PURE__ */ d("ul", { children: [
             /* @__PURE__ */ d("li", { children: [pdpcHwvCheck(), " Business is open and operating"] }),
             /* @__PURE__ */ d("li", { children: [pdpcHwvCheck(), " Listed phone number reaches them"] }),
             /* @__PURE__ */ d("li", { children: [pdpcHwvCheck(), " Services offered, in their words"] }),
             /* @__PURE__ */ d("li", { children: [pdpcHwvCheck(), " Hours and service area"] }),
-            /* @__PURE__ */ d("li", { children: [pdpcHwvCheck(), " Accepting new clients â€” when shared"] })
+            /* @__PURE__ */ d("li", { children: [pdpcHwvCheck(), " Accepting new clients — when shared"] })
           ] }),
-          /* @__PURE__ */ s("span", { className: "hwv-stamp", children: "âœ“ Verified by phone" })
+          /* @__PURE__ */ s("span", { className: "hwv-stamp", children: "✓ Verified by phone" })
         ] })
       ] }),
       /* @__PURE__ */ d("div", { className: "hwv-callline", children: [
@@ -14147,7 +14147,7 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
           /* @__PURE__ */ d("div", { className: "hwv-confirm-grid", children: [
             /* @__PURE__ */ d("div", { className: "hwv-confirm", children: [
               /* @__PURE__ */ d("h3", { children: [pdpcHwvCheck(), " Open & operating"] }),
-              /* @__PURE__ */ s("p", { children: "The business is active â€” not closed, moved without notice, or a listing left over from years ago." })
+              /* @__PURE__ */ s("p", { children: "The business is active — not closed, moved without notice, or a listing left over from years ago." })
             ] }),
             /* @__PURE__ */ d("div", { className: "hwv-confirm", children: [
               /* @__PURE__ */ d("h3", { children: [pdpcHwvCheck(), " Reachable"] }),
@@ -14155,7 +14155,7 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
             ] }),
             /* @__PURE__ */ d("div", { className: "hwv-confirm", children: [
               /* @__PURE__ */ d("h3", { children: [pdpcHwvCheck(), " Services"] }),
-              /* @__PURE__ */ s("p", { children: "What they offer â€” grooming, training, boarding and daycare, sitting and walking, or veterinary care â€” described the way they describe it." })
+              /* @__PURE__ */ s("p", { children: "What they offer — grooming, training, boarding and daycare, sitting and walking, or veterinary care — described the way they describe it." })
             ] }),
             /* @__PURE__ */ d("div", { className: "hwv-confirm", children: [
               /* @__PURE__ */ d("h3", { children: [pdpcHwvCheck(), " Hours & area"] }),
@@ -14163,7 +14163,7 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
             ] }),
             /* @__PURE__ */ d("div", { className: "hwv-confirm", children: [
               /* @__PURE__ */ d("h3", { children: [pdpcHwvCheck(), " Availability"] }),
-              /* @__PURE__ */ s("p", { children: "When a business shares it, we note whether they are accepting new clients or running a waitlist â€” information that is often not published anywhere else." })
+              /* @__PURE__ */ s("p", { children: "When a business shares it, we note whether they are accepting new clients or running a waitlist — information that is often not published anywhere else." })
             ] })
           ] })
         ] }),
@@ -14171,7 +14171,7 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
           /* @__PURE__ */ s("h2", { children: "How we keep listings current" }),
           /* @__PURE__ */ d("p", { children: [
             /* @__PURE__ */ s("strong", { children: "Every verified listing shows the month it was last confirmed" }),
-            ", so you can judge freshness for yourself instead of taking our word for it. Verified listings are re-checked on a rolling basis, and any time a reader or an owner tells us something changed â€” hours, services, a closure â€” we confirm it by phone and update both the listing and its verified date."
+            ", so you can judge freshness for yourself instead of taking our word for it. Verified listings are re-checked on a rolling basis, and any time a reader or an owner tells us something changed — hours, services, a closure — we confirm it by phone and update both the listing and its verified date."
           ] }),
           /* @__PURE__ */ d("p", { children: [
             "Spotted something out of date? ",
@@ -14202,19 +14202,19 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
           /* @__PURE__ */ s("p", { children: "You may see two different marks on listings. They mean different things, on purpose:" }),
           /* @__PURE__ */ d("div", { className: "hwv-tiers", children: [
             /* @__PURE__ */ d("div", { className: "hwv-tier", children: [
-              /* @__PURE__ */ s("span", { className: "hwv-badge hwv-badge--verified", children: "âœ“ Verified" }),
+              /* @__PURE__ */ s("span", { className: "hwv-badge hwv-badge--verified", children: "✓ Verified" }),
               /* @__PURE__ */ d("p", { children: [
                 /* @__PURE__ */ s("strong", { children: "Our work." }),
-                " A person from Pee Dee Pet Care confirmed this listing by phone. Every listing earns the badge the same way â€” owner participation is welcome but never required, and it cannot be purchased."
+                " A person from Pee Dee Pet Care confirmed this listing by phone. Every listing earns the badge the same way — owner participation is welcome but never required, and it cannot be purchased."
               ] })
             ] }),
             /* @__PURE__ */ d("div", { className: "hwv-tier", children: [
-              /* @__PURE__ */ s("span", { className: "hwv-badge hwv-badge--claimed", children: "â˜† Claimed" }),
+              /* @__PURE__ */ s("span", { className: "hwv-badge hwv-badge--claimed", children: "☆ Claimed" }),
               /* @__PURE__ */ d("p", { children: [
                 /* @__PURE__ */ s("strong", { children: "The owner's participation." }),
-                " The business owner has contacted us to confirm their listing's details and sends us updates â€” like changed hours or availability â€” which we verify and post for them. Owners do not edit listings directly."
+                " The business owner has contacted us to confirm their listing's details and sends us updates — like changed hours or availability — which we verify and post for them. Owners do not edit listings directly."
               ] }),
-              /* @__PURE__ */ s("p", { children: "A claimed listing is still verified â€” claiming adds to our phone check, it never replaces it." })
+              /* @__PURE__ */ s("p", { children: "A claimed listing is still verified — claiming adds to our phone check, it never replaces it." })
             ] })
           ] })
         ] }),
@@ -14235,7 +14235,7 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
             ] }),
             /* @__PURE__ */ d("details", { children: [
               /* @__PURE__ */ s("summary", { children: "What is the difference between Verified and Claimed?" }),
-              /* @__PURE__ */ s("p", { children: "Verified is our work: we confirmed the facts of the listing by phone. Claimed means the owner has also taken an active role: they contacted us to confirm their own details, and they send us updates â€” which we verify and post for them â€” to keep things like hours and availability current. A claimed listing is still verified; claiming never replaces our phone check." })
+              /* @__PURE__ */ s("p", { children: "Verified is our work: we confirmed the facts of the listing by phone. Claimed means the owner has also taken an active role: they contacted us to confirm their own details, and they send us updates — which we verify and post for them — to keep things like hours and availability current. A claimed listing is still verified; claiming never replaces our phone check." })
             ] }),
             /* @__PURE__ */ d("details", { children: [
               /* @__PURE__ */ s("summary", { children: "Does Verified mean Pee Dee Pet Care recommends the business?" }),
@@ -14247,7 +14247,7 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
                 /* @__PURE__ */ s("a", { href: PDPC_CONTACT_LINK, children: "Email us" }),
                 " or give us a call at ",
                 /* @__PURE__ */ s("a", { href: "tel:+18438838772", children: "(843) 883-8772" }),
-                " and tell us what needs updating â€” owners do not edit listings directly; we make the changes for you. We will confirm the change by phone and refresh your listing and its verified date. There is no charge to be listed, claim a listing, or correct one."
+                " and tell us what needs updating — owners do not edit listings directly; we make the changes for you. We will confirm the change by phone and refresh your listing and its verified date. There is no charge to be listed, claim a listing, or correct one."
               ] })
             ] })
           ] })
@@ -14259,7 +14259,7 @@ function pdpcHowWeVerifyPage({ onNavigate: t }) {
           /* @__PURE__ */ d("p", { children: [
             "Claim your listing: email us or give us a call at ",
             /* @__PURE__ */ s("a", { href: "tel:+18438838772", children: "(843) 883-8772" }),
-            " to confirm your details, and send updates anytime â€” we make the changes for you. Listing, verification, and claiming are all free."
+            " to confirm your details, and send updates anytime — we make the changes for you. Listing, verification, and claiming are all free."
           ] })
         ] }),
         /* @__PURE__ */ s("a", { className: "hwv-btn", href: PDPC_CONTACT_LINK, children: "Claim your listing" })
@@ -14346,7 +14346,7 @@ function reviewPage({ onNavigate: t }) {
       animate: { opacity: 1, y: 0 },
       transition: { duration: 0.6 },
       children: done ? /* @__PURE__ */ d("div", { className: "bg-white rounded-[20px] md:rounded-2xl p-5 md:p-8 border border-purple-100 md:border-purple-200 shadow-sm md:shadow-md mx-2 md:mx-0 mt-6 mb-8 text-center", children: [
-        /* @__PURE__ */ s("div", { style: { fontSize: "44px", marginBottom: "10px" }, children: "ðŸ“¬" }),
+        /* @__PURE__ */ s("div", { style: { fontSize: "44px", marginBottom: "10px" }, children: "📬" }),
         /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight mb-3", children: "Thank you for your review!" }),
         /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm md:text-base leading-relaxed mb-2", children: "Please check your email to finalize and confirm your review." }),
         /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs md:text-sm leading-relaxed mb-6", children: "Don't see it? Check your spam or promotions folder." }),
@@ -14355,12 +14355,12 @@ function reviewPage({ onNavigate: t }) {
           {
             onClick: () => t?.("home"),
             className: "bg-purple-600 hover:bg-purple-700 text-white font-medium px-6 h-11 rounded-[14px] transition-colors",
-            children: "â† Back to Home"
+            children: "← Back to Home"
           }
         )
       ] }) : /* @__PURE__ */ d("div", { className: "bg-white rounded-[20px] md:rounded-2xl p-5 md:p-8 border border-purple-100 md:border-purple-200 shadow-sm md:shadow-md mx-2 md:mx-0 mt-6 mb-8", children: [
-        /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight mb-1", children: "Share Your Experience â­" }),
-        /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed mb-6", children: "Tell us about a local pet business you've used â€” your review helps other pet parents across the Pee Dee." }),
+        /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight mb-1", children: "Share Your Experience ⭐" }),
+        /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed mb-6", children: "Tell us about a local pet business you've used — your review helps other pet parents across the Pee Dee." }),
         /* @__PURE__ */ d("form", { onSubmit: submit, noValidate: !0, children: [
           /* @__PURE__ */ s("input", { type: "text", name: "website", value: hp, onChange: (ev) => setHp(ev.target.value), tabIndex: -1, autoComplete: "off", "aria-hidden": "true", style: { position: "absolute", left: "-9999px", width: "1px", height: "1px", opacity: 0 } }),
           /* @__PURE__ */ d("div", { className: "mb-5", children: [
@@ -14424,7 +14424,7 @@ function reviewPage({ onNavigate: t }) {
           /* @__PURE__ */ d("div", { className: "mb-5", children: [
             /* @__PURE__ */ s("label", { className: labelCls, children: "Email Address" }),
             /* @__PURE__ */ s("input", { type: "email", value: em, onChange: (ev) => setEm(ev.target.value), placeholder: "you@example.com", className: inputCls }),
-            /* @__PURE__ */ s("p", { className: "text-gray-400 text-xs mt-1", children: "Only used to confirm your review is from a real person â€” never shared, never spam." })
+            /* @__PURE__ */ s("p", { className: "text-gray-400 text-xs mt-1", children: "Only used to confirm your review is from a real person — never shared, never spam." })
           ] }),
           /* @__PURE__ */ d("div", { className: "mb-5", children: [
             /* @__PURE__ */ s("label", { className: labelCls, children: "Star Rating" }),
@@ -14436,7 +14436,7 @@ function reviewPage({ onNavigate: t }) {
                 onClick: () => setRating(i),
                 onMouseEnter: () => setHoverStar(i),
                 style: { background: "none", border: "none", cursor: "pointer", padding: "0 6px 0 0", fontSize: "32px", lineHeight: 1, color: (hoverStar || rating) >= i ? "#f59e0b" : "#d1d5db", transition: "color 0.1s" },
-                children: "â˜…"
+                children: "★"
               },
               i
             )) })
@@ -14501,28 +14501,28 @@ function Ni(t) {
 function parseWhyWeLoveItBullets(t) {
   if (!t?.trim())
     return [];
-  const e = String(t).trim(), r = e.includes("\n") ? e.split(/\r?\n/) : e.split(/\s*â€¢\s*/);
-  return r.map((n) => n.trim().replace(/^[-*â€¢]\s*/, "")).filter(Boolean);
+  const e = String(t).trim(), r = e.includes("\n") ? e.split(/\r?\n/) : e.split(/\s*•\s*/);
+  return r.map((n) => n.trim().replace(/^[-*•]\s*/, "")).filter(Boolean);
 }
 async function ff() {
   try {
-    console.log("ðŸ“¦ Fetching products from Airtable...");
+    console.log("📦 Fetching products from Airtable...");
     const t = await fetch(wi, {
       headers: cloudWriteHeaders()
     });
     if (!t.ok) {
       const n = await t.text();
-      throw console.error("âŒ Airtable error:", n), new Error(`HTTP error! status: ${t.status}`);
+      throw console.error("❌ Airtable error:", n), new Error(`HTTP error! status: ${t.status}`);
     }
     const e = await t.json();
-    return console.log("âœ… Loaded products from Airtable:", e.records), (e.records || []).map(Ni).filter(Boolean);
+    return console.log("✅ Loaded products from Airtable:", e.records), (e.records || []).map(Ni).filter(Boolean);
   } catch (t) {
-    throw console.error("âŒ Error fetching products from Airtable:", t), t;
+    throw console.error("❌ Error fetching products from Airtable:", t), t;
   }
 }
 async function gf(t) {
   try {
-    console.log("ðŸ“ Creating product in Airtable:", t);
+    console.log("📝 Creating product in Airtable:", t);
     const e = await fetch(wi, {
       method: "POST",
       headers: cloudWriteHeaders(),
@@ -14541,17 +14541,17 @@ async function gf(t) {
     });
     if (!e.ok) {
       const n = await e.text();
-      throw console.error("âŒ Airtable error:", n), new Error(`HTTP error! status: ${e.status}`);
+      throw console.error("❌ Airtable error:", n), new Error(`HTTP error! status: ${e.status}`);
     }
     const r = await e.json();
-    return console.log("âœ… Created product in Airtable:", r), Ni(r);
+    return console.log("✅ Created product in Airtable:", r), Ni(r);
   } catch (e) {
-    throw console.error("âŒ Error creating product in Airtable:", e), e;
+    throw console.error("❌ Error creating product in Airtable:", e), e;
   }
 }
 async function yf(t, e) {
   try {
-    console.log("âœï¸ Updating product in Airtable:", t, e);
+    console.log("✏️ Updating product in Airtable:", t, e);
     const r = { ...e };
     e.photos && (r.photos = e.photos.join(","));
     const n = await fetch(`${wi}/${t}`, {
@@ -14563,17 +14563,17 @@ async function yf(t, e) {
     });
     if (!n.ok) {
       const o = await n.text();
-      throw console.error("âŒ Airtable error:", o), new Error(`HTTP error! status: ${n.status}`);
+      throw console.error("❌ Airtable error:", o), new Error(`HTTP error! status: ${n.status}`);
     }
     const i = await n.json();
-    return console.log("âœ… Updated product in Airtable:", i), Ni(i);
+    return console.log("✅ Updated product in Airtable:", i), Ni(i);
   } catch (r) {
-    throw console.error("âŒ Error updating product in Airtable:", r), r;
+    throw console.error("❌ Error updating product in Airtable:", r), r;
   }
 }
 async function deleteProductAirtableRecord(t) {
   try {
-    console.log("ðŸ—‘ï¸ Deleting product from Airtable:", t);
+    console.log("🗑️ Deleting product from Airtable:", t);
     const e = await fetch(`${wi}/${t}`, {
       method: "DELETE",
       headers: {
@@ -14583,11 +14583,11 @@ async function deleteProductAirtableRecord(t) {
     });
     if (!e.ok) {
       const r = await e.text();
-      throw console.error("âŒ Airtable delete error:", r), new Error(`HTTP error! status: ${e.status}`);
+      throw console.error("❌ Airtable delete error:", r), new Error(`HTTP error! status: ${e.status}`);
     }
-    return console.log("âœ… Deleted product from Airtable:", t), !0;
+    return console.log("✅ Deleted product from Airtable:", t), !0;
   } catch (e) {
-    throw console.error("âŒ Error deleting product from Airtable:", e), e;
+    throw console.error("❌ Error deleting product from Airtable:", e), e;
   }
 }
 function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refreshKey: i }) {
@@ -14599,19 +14599,19 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
         const b = await ff();
         c(b);
       } catch (b) {
-        console.error("âŒ Error fetching products:", b), m("Failed to load products from Airtable");
+        console.error("❌ Error fetching products:", b), m("Failed to load products from Airtable");
       } finally {
         h(!1);
       }
     })();
   }, [i]);
   const f = [
-    { id: "all", label: "All Products", icon: "ðŸŽ" },
-    { id: "treats", label: "Treats & Food", icon: "ðŸ¦´" },
-    { id: "toys", label: "Toys", icon: "ðŸŽ¾" },
-    { id: "beds", label: "Beds & Comfort", icon: "ðŸ›ï¸" },
-    { id: "grooming", label: "Grooming", icon: "âœ‚ï¸" },
-    { id: "walking", label: "Walking & Travel", icon: "ðŸ¦®" }
+    { id: "all", label: "All Products", icon: "🎁" },
+    { id: "treats", label: "Treats & Food", icon: "🦴" },
+    { id: "toys", label: "Toys", icon: "🎾" },
+    { id: "beds", label: "Beds & Comfort", icon: "🛏️" },
+    { id: "grooming", label: "Grooming", icon: "✂️" },
+    { id: "walking", label: "Walking & Travel", icon: "🦮" }
   ], v = o === "all" ? l : l.filter((g) => g.category === o), b0 = async (g) => {
     if (!e?.isAdmin || !g?.id || !window.confirm(`Delete "${g.name}" from Pet Products? This cannot be undone.`))
       return;
@@ -14619,7 +14619,7 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
     try {
       await deleteProductAirtableRecord(g.id), c((b) => b.filter((w) => w.id !== g.id));
     } catch (b) {
-      console.error("âŒ Error deleting product:", b), m(b instanceof Error ? b.message : "Failed to delete product");
+      console.error("❌ Error deleting product:", b), m(b instanceof Error ? b.message : "Failed to delete product");
     } finally {
       y0(null);
     }
@@ -14629,7 +14629,7 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
       /* @__PURE__ */ d("div", { className: "flex-1 text-center", children: [
         /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl sm:text-2xl", children: "Curated Pet Products" }),
         /* @__PURE__ */ s("p", { className: "text-gray-600 text-xs sm:text-sm mt-0.5 leading-snug", children: "Hand-picked treats, toys, and gear we recommend." }),
-        /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs hidden sm:block mt-1 leading-relaxed", children: "We do not sell products â€” purchases are through retailer links." })
+        /* @__PURE__ */ s("p", { className: "text-gray-500 text-xs hidden sm:block mt-1 leading-relaxed", children: "We do not sell products — purchases are through retailer links." })
       ] }),
       e?.isAdmin && /* @__PURE__ */ d(
         D.button,
@@ -14702,8 +14702,8 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
                 /* @__PURE__ */ s("p", { className: "text-gray-700 text-sm leading-relaxed", children: g.about })
               ] }),
               g.whyWeLoveIt && /* @__PURE__ */ d("div", { className: "mb-4 p-3 bg-purple-50 rounded-lg", children: [
-                /* @__PURE__ */ s("p", { className: "text-xs text-purple-600 uppercase tracking-wide mb-1", children: "ðŸ’œ Why We Love It" }),
-                /* @__PURE__ */ s("ul", { className: "space-y-1 overflow-x-auto", children: parseWhyWeLoveItBullets(g.whyWeLoveIt).map((w0, x0) => /* @__PURE__ */ s("li", { className: "text-gray-700 text-sm whitespace-nowrap", children: ["â€¢ ", w0] }, `${g.id}-why-${x0}`)) })
+                /* @__PURE__ */ s("p", { className: "text-xs text-purple-600 uppercase tracking-wide mb-1", children: "💜 Why We Love It" }),
+                /* @__PURE__ */ s("ul", { className: "space-y-1 overflow-x-auto", children: parseWhyWeLoveItBullets(g.whyWeLoveIt).map((w0, x0) => /* @__PURE__ */ s("li", { className: "text-gray-700 text-sm whitespace-nowrap", children: ["• ", w0] }, `${g.id}-why-${x0}`)) })
               ] }),
               !g.about && g.description && /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm mb-4 leading-relaxed", children: g.description }),
               /* @__PURE__ */ d(
@@ -14767,7 +14767,7 @@ function vf({ onNavigate: t, user: e, onEditProduct: r, onAddProduct: n, refresh
           transition: { delay: 0.5 },
           className: "mt-12 p-6 bg-white rounded-2xl shadow-md text-center",
           children: /* @__PURE__ */ d("p", { className: "text-gray-600 text-sm", children: [
-            "ðŸ¾ ",
+            "🐾 ",
             /* @__PURE__ */ s("strong", { children: "Note:" }),
             " These are curated recommendations to help you find great products for your pet. We may earn a small commission from purchases made through these links, which helps support our directory at no extra cost to you."
           ] })
@@ -14901,7 +14901,7 @@ function xf({ imageUrl: t, onSave: e, onClose: r, isOpen: n }) {
         ] }),
         /* @__PURE__ */ s("div", { className: "p-6", children: a && c ? /* @__PURE__ */ d(ie, { children: [
           /* @__PURE__ */ d("div", { className: "mb-4 text-center", children: [
-            /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "ðŸ‘† Click and drag the purple box to adjust your crop area" }),
+            /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm", children: "👆 Click and drag the purple box to adjust your crop area" }),
             /* @__PURE__ */ s("p", { className: "text-purple-600 text-xs mt-1", children: "Crop maintains product card aspect ratio (400:256)" })
           ] }),
           /* @__PURE__ */ s("div", { className: "mb-6 flex justify-center", children: /* @__PURE__ */ s(
@@ -15098,9 +15098,9 @@ function eo({ editProduct: t, onClose: e }) {
     }
     o(!0), l("");
     try {
-      console.log("ðŸ›ï¸ Saving product to Airtable:", r), t ? (await yf(t.id, r), console.log("âœ… Product updated successfully")) : (await gf(r), console.log("âœ… Product created successfully")), e();
+      console.log("🛍️ Saving product to Airtable:", r), t ? (await yf(t.id, r), console.log("✅ Product updated successfully")) : (await gf(r), console.log("✅ Product created successfully")), e();
     } catch (N) {
-      console.error("âŒ Error saving product:", N), l(N instanceof Error ? N.message : "Failed to save product");
+      console.error("❌ Error saving product:", N), l(N instanceof Error ? N.message : "Failed to save product");
     } finally {
       o(!1);
     }
@@ -15483,15 +15483,15 @@ function dailyWag({ onNavigate: t }) {
           /* @__PURE__ */ d("div", { className: "md:hidden max-w-[320px] mx-auto px-1", children: [
             /* @__PURE__ */ s("h1", { className: "mb-0.5 text-2xl leading-[1.15] text-center", style: { color: "#fffaf5" }, children: "The Daily Wag" }),
             /* @__PURE__ */ s("p", { className: "text-xs text-center leading-tight mt-0.5", style: { color: "rgba(255,250,245,0.92)" }, children: "Pee Dee Pet Tips" }),
-            /* @__PURE__ */ s("p", { className: "text-xs text-center leading-snug mt-1.5", style: { color: "rgba(255,250,245,0.78)" }, children: "Guides from Pee Dee Pet Care â€” a free directory, not a service provider." })
+            /* @__PURE__ */ s("p", { className: "text-xs text-center leading-snug mt-1.5", style: { color: "rgba(255,250,245,0.78)" }, children: "Guides from Pee Dee Pet Care — a free directory, not a service provider." })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:flex items-center justify-center gap-4 md:mb-2", children: [
-            /* @__PURE__ */ s(D.div, { animate: { rotate: [0, 8, -8, 0] }, transition: { duration: 2, repeat: 1 / 0 }, className: "md:text-4xl", children: "ðŸ“°" }),
+            /* @__PURE__ */ s(D.div, { animate: { rotate: [0, 8, -8, 0] }, transition: { duration: 2, repeat: 1 / 0 }, className: "md:text-4xl", children: "📰" }),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", style: { color: "#fffaf5" }, children: "The Daily Wag" })
           ] }),
           /* @__PURE__ */ d("div", { className: "hidden md:block max-w-2xl mx-auto mt-1", children: [
-            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", style: { color: "#fffaf5" }, children: "Pee Dee Pet Tips â€” helpful articles on grooming, training, boarding, and everyday pet care in Darlington, Hartsville, and Florence." }),
-            /* @__PURE__ */ s("p", { className: "text-sm leading-relaxed mt-2", style: { color: "rgba(255,250,245,0.88)" }, children: "Published by Pee Dee Pet Care, a free local directory â€” we do not provide grooming, training, boarding, or sitting services." })
+            /* @__PURE__ */ s("p", { className: "md:text-base leading-relaxed", style: { color: "#fffaf5" }, children: "Pee Dee Pet Tips — helpful articles on grooming, training, boarding, and everyday pet care in Darlington, Hartsville, and Florence." }),
+            /* @__PURE__ */ s("p", { className: "text-sm leading-relaxed mt-2", style: { color: "rgba(255,250,245,0.88)" }, children: "Published by Pee Dee Pet Care, a free local directory — we do not provide grooming, training, boarding, or sitting services." })
           ] })
         ]
       }
@@ -15503,18 +15503,18 @@ function dailyWag({ onNavigate: t }) {
         onClick: backToList,
         className: "blog-article-back-link font-medium hover:underline",
         style: { color: "#8e2c32" },
-        children: "â† Back to The Daily Wag"
+        children: "← Back to The Daily Wag"
       }
     ) }),
     /* @__PURE__ */ s("div", { className: "max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 md:py-12", style: { backgroundColor: "#f9ecea", width: "100%" }, children: [
       error && /* @__PURE__ */ s("div", { className: "mb-6 p-4 rounded-lg border", style: { backgroundColor: "#fef2f2", color: "#b91c1c", borderColor: "#fecaca" }, children: error }),
-      loading && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: "Loading articlesâ€¦" }),
+      loading && /* @__PURE__ */ s("p", { className: "text-center py-12", style: { color: "#8f5c5c" }, children: "Loading articles…" }),
       !loading && selectedSlug && selected && /* @__PURE__ */ d("article", { className: "blog-article-card rounded-2xl p-6 md:p-8", style: { backgroundColor: "#ffffff", border: "1px solid #d4938e", boxShadow: "0 4px 6px -1px rgba(110,26,40,0.14)" }, children: [
         firstImageBlock && renderBlogBlock(firstImageBlock, selected.slug, firstImageIndex, t, "hero"),
         /* @__PURE__ */ s("h2", { className: "text-2xl md:text-3xl font-semibold leading-snug mb-3", style: { color: "#6b1e2a" }, children: selected.title }),
         /* @__PURE__ */ d("p", { className: "text-sm mb-6", style: { color: "#8f5c5c" }, children: [
           formatDate(selected.date),
-          selected.readMinutes ? ` Â· ${selected.readMinutes} min read` : ""
+          selected.readMinutes ? ` · ${selected.readMinutes} min read` : ""
         ] }),
         /* @__PURE__ */ s("div", { className: "space-y-4 blog-magazine-article", children: renderMagazineArticleBody(articleBodyBlocks, selected.slug, t) })
       ] }),
@@ -15546,8 +15546,8 @@ function dailyWag({ onNavigate: t }) {
               /* @__PURE__ */ s("h3", { className: "text-gray-900 mb-2", style: { color: "#111827", fontSize: "1rem", fontWeight: 500, lineHeight: "1.5", margin: 0, marginBottom: "8px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }, children: g.title }),
               /* @__PURE__ */ s("p", { className: "text-gray-500", style: { color: "#6b7280", fontSize: "0.875rem", fontWeight: 400, lineHeight: "1.5", margin: 0 }, children: [
                 formatDate(g.date),
-                g.readMinutes ? ` Â· ${g.readMinutes} min read` : "",
-                " Â· Read more â†’"
+                g.readMinutes ? ` · ${g.readMinutes} min read` : "",
+                " · Read more →"
               ].join("") })
             ]
           },
@@ -15565,23 +15565,23 @@ function bf({ onNavigate: t, user: e }) {
   const v = () => {
     bl(e);
     const x = fr(e);
-    console.log("ðŸ“– Loaded shortlist in Shortlist page:", x), console.log("ðŸ“Š Shortlist count:", x.length), x.length > 0 && console.log("ðŸ” First item:", x[0]), n(x);
+    console.log("📖 Loaded shortlist in Shortlist page:", x), console.log("📊 Shortlist count:", x.length), x.length > 0 && console.log("🔍 First item:", x[0]), n(x);
   }, g = (x) => {
     xl(e, x), n(r.filter((T) => T.id !== x)), f("Removed from Shortlist"), p(!0);
   }, b = (x) => {
     switch (x) {
       case "grooming":
-        return "âœ‚ï¸";
+        return "✂️";
       case "training":
-        return "ðŸŽ“";
+        return "🎓";
       case "boarding":
-        return "ðŸ ";
+        return "🏠";
       case "sitters":
-        return "ðŸ¦®";
+        return "🦮";
       case "vet":
-        return "âš•ï¸";
+        return "⚕️";
       default:
-        return "ðŸ¾";
+        return "🐾";
     }
   }, w = () => {
     a && (t(a), o(!1));
@@ -15607,7 +15607,7 @@ function bf({ onNavigate: t, user: e }) {
                 },
                 transition: { duration: 2, repeat: 1 / 0 },
                 className: "md:text-4xl",
-                children: "â¤ï¸"
+                children: "❤️"
               }
             ),
             /* @__PURE__ */ s("h1", { className: "mb-0 md:text-5xl md:leading-normal", children: "Your Shortlist" })
@@ -15623,7 +15623,7 @@ function bf({ onNavigate: t, user: e }) {
         animate: { opacity: 1, y: 0 },
         className: "text-center py-16",
         children: [
-          /* @__PURE__ */ s("div", { className: "mb-6 text-6xl", children: "ðŸ’¼" }),
+          /* @__PURE__ */ s("div", { className: "mb-6 text-6xl", children: "💼" }),
           /* @__PURE__ */ s("h2", { className: "text-2xl text-gray-800 mb-4", children: "Your shortlist is empty" }),
           /* @__PURE__ */ s("p", { className: "text-gray-600 mb-8", children: "Start exploring our pet services and save your favorites!" }),
           /* @__PURE__ */ d(
@@ -15749,11 +15749,11 @@ function bf({ onNavigate: t, user: e }) {
                   className: "w-full px-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-purple-500",
                   children: [
                     /* @__PURE__ */ s("option", { value: "", children: "Select a service..." }),
-                    /* @__PURE__ */ s("option", { value: "grooming", children: "âœ‚ï¸ Grooming" }),
-                    /* @__PURE__ */ s("option", { value: "training", children: "ðŸŽ“ Training" }),
-                    /* @__PURE__ */ s("option", { value: "boarding", children: "ðŸ  Boarding & Daycare" }),
-                    /* @__PURE__ */ s("option", { value: "sitters", children: "ðŸ¦® Sitters & Walkers" }),
-                    /* @__PURE__ */ s("option", { value: "vet", children: "âš•ï¸ Veterinary" })
+                    /* @__PURE__ */ s("option", { value: "grooming", children: "✂️ Grooming" }),
+                    /* @__PURE__ */ s("option", { value: "training", children: "🎓 Training" }),
+                    /* @__PURE__ */ s("option", { value: "boarding", children: "🏠 Boarding & Daycare" }),
+                    /* @__PURE__ */ s("option", { value: "sitters", children: "🦮 Sitters & Walkers" }),
+                    /* @__PURE__ */ s("option", { value: "vet", children: "⚕️ Veterinary" })
                   ]
                 }
               )
@@ -15974,7 +15974,7 @@ function wf({ isOpen: t, onClose: e, onSuccess: r, defaultRole: n = "guest", def
                 ] })
               ] }),
               view === "signup" && /* @__PURE__ */ d("p", { className: "text-xs text-gray-500 mt-1 leading-relaxed text-center", children: [
-                "ðŸ”’ We only use your info to run your account â€” never sold, never shared. ",
+                "🔒 We only use your info to run your account — never sold, never shared. ",
                 /* @__PURE__ */ s("a", { href: "/privacy", target: "_blank", rel: "noopener noreferrer", className: "text-purple-600 hover:text-purple-700 underline underline-offset-2", children: "Privacy Policy" })
               ] }),
               successMsg && /* @__PURE__ */ s("div", { className: "bg-green-50 text-green-700 px-4 py-2 rounded-lg text-sm mt-3", children: successMsg }),
@@ -16088,7 +16088,7 @@ function Nf({
                 {
                   onClick: () => g("home"),
                   className: "text-3xl hover:scale-110 transition-transform active:scale-95",
-                  children: "ðŸ¾"
+                  children: "🐾"
                 }
               ),
               /* @__PURE__ */ s("div", { children: /* @__PURE__ */ s(
@@ -16115,7 +16115,7 @@ function Nf({
               /* @__PURE__ */ s("span", { className: "text-gray-700 font-medium", children: i.name })
             ] }),
             /* @__PURE__ */ d("div", { className: "flex gap-2", children: [
-              i.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-red-600 text-white px-2 py-1 rounded-full", children: "ðŸ‘‘ Admin" }),
+              i.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-red-600 text-white px-2 py-1 rounded-full", children: "👑 Admin" }),
               i.role === "business" && !i.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-purple-600 text-white px-2 py-1 rounded-full", children: "Business" })
             ] })
           ] }),
@@ -16127,9 +16127,9 @@ function Nf({
                 "aria-expanded": svcOpen,
                 className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 ${isServicePage ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                 children: [
-                  /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ¾" }),
+                  /* @__PURE__ */ s("span", { className: "text-xl", children: "🐾" }),
                   /* @__PURE__ */ s("span", { children: "Pet Services" }),
-                  /* @__PURE__ */ s("span", { className: "ml-auto text-xs", children: svcOpen ? "â–²" : "â–¼" })
+                  /* @__PURE__ */ s("span", { className: "ml-auto text-xs", children: svcOpen ? "▲" : "▼" })
                 ]
               }
             ),
@@ -16143,7 +16143,7 @@ function Nf({
                   },
                   className: `w-full text-left px-4 py-2 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "grooming" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                   children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "âœ‚ï¸" }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "✂️" }),
                     /* @__PURE__ */ s("span", { children: "Grooming" })
                   ]
                 }
@@ -16157,7 +16157,7 @@ function Nf({
                   },
                   className: `w-full text-left px-4 py-2 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "training" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                   children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸŽ“" }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🎓" }),
                     /* @__PURE__ */ s("span", { children: "Training" })
                   ]
                 }
@@ -16171,7 +16171,7 @@ function Nf({
                   },
                   className: `w-full text-left px-4 py-2 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "boarding" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                   children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ " }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🏠" }),
                     /* @__PURE__ */ s("span", { children: "Boarding & Daycare" })
                   ]
                 }
@@ -16185,7 +16185,7 @@ function Nf({
                   },
                   className: `w-full text-left px-4 py-2 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "sitters" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                   children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ¦®" }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "🦮" }),
                     /* @__PURE__ */ s("span", { children: "Sitters & Walkers" })
                   ]
                 }
@@ -16199,7 +16199,7 @@ function Nf({
                   },
                   className: `w-full text-left px-4 py-2 rounded-lg transition-all flex items-center gap-3 no-underline ${r === "vet" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                   children: [
-                    /* @__PURE__ */ s("span", { className: "text-xl", children: "âš•ï¸" }),
+                    /* @__PURE__ */ s("span", { className: "text-xl", children: "⚕️" }),
                     /* @__PURE__ */ s("span", { children: "Vet Care" })
                   ]
                 }
@@ -16211,7 +16211,7 @@ function Nf({
                 onClick: () => g("products"),
                 className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 ${r === "products" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                 children: [
-                  /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ›ï¸" }),
+                  /* @__PURE__ */ s("span", { className: "text-xl", children: "🛍️" }),
                   /* @__PURE__ */ s("span", { children: "Retail Therapy" })
                 ]
               }
@@ -16222,7 +16222,7 @@ function Nf({
                 onClick: () => g("blog"),
                 className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 ${r === "blog" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                 children: [
-                  /* @__PURE__ */ s("span", { className: "text-xl", children: "ðŸ“°" }),
+                  /* @__PURE__ */ s("span", { className: "text-xl", children: "📰" }),
                   /* @__PURE__ */ s("span", { children: "The Daily Wag" })
                 ]
               }
@@ -16233,7 +16233,7 @@ function Nf({
                 onClick: () => g("about"),
                 className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 ${r === "about" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                 children: [
-                  /* @__PURE__ */ s("span", { className: "text-xl", children: "â„¹ï¸" }),
+                  /* @__PURE__ */ s("span", { className: "text-xl", children: "ℹ️" }),
                   /* @__PURE__ */ s("span", { children: "About" })
                 ]
               }
@@ -16244,7 +16244,7 @@ function Nf({
                 onClick: () => g("shortlist"),
                 className: `w-full text-left px-4 py-3 rounded-lg transition-all flex items-center gap-3 ${r === "shortlist" ? "bg-purple-600 text-white" : "hover:bg-purple-50 text-gray-700"}`,
                 children: [
-                  /* @__PURE__ */ s("span", { className: "text-xl", children: "â¤ï¸" }),
+                  /* @__PURE__ */ s("span", { className: "text-xl", children: "❤️" }),
                   /* @__PURE__ */ s("span", { children: "Shortlist" })
                 ]
               }
@@ -19482,7 +19482,7 @@ function To({ src: t, alt: e, index: r, onMove: n, onRemove: i, badge: o, badgeC
             children: /* @__PURE__ */ s(we, { className: "w-4 h-4" })
           }
         ),
-        u0 && (l ? /* @__PURE__ */ s("div", { className: "absolute bottom-2 left-2 px-2 py-1 bg-yellow-500 text-white text-xs rounded flex items-center gap-1", children: "â­ Card Photo" }) : /* @__PURE__ */ s(
+        u0 && (l ? /* @__PURE__ */ s("div", { className: "absolute bottom-2 left-2 px-2 py-1 bg-yellow-500 text-white text-xs rounded flex items-center gap-1", children: "⭐ Card Photo" }) : /* @__PURE__ */ s(
           "button",
           {
             type: "button",
@@ -19744,7 +19744,7 @@ function iy({ editBusiness: t, onClose: e }) {
       return H.splice(O, 0, se), H;
     });
   }, ft = async (A) => {
-    A.preventDefault(), console.log("ðŸš€ FORM SUBMIT STARTED"), console.log("   - Edit mode:", !!t), console.log("   - Business ID:", t?.id), console.log("   - Form data:", i), g(!0), w("");
+    A.preventDefault(), console.log("🚀 FORM SUBMIT STARTED"), console.log("   - Edit mode:", !!t), console.log("   - Business ID:", t?.id), console.log("   - Form data:", i), g(!0), w("");
     try {
       if (!n) {
         w("Error: Your session expired. Please log out and log in again.");
@@ -19755,10 +19755,10 @@ function iy({ editBusiness: t, onClose: e }) {
         return;
       }
       const O = [], V = [];
-      console.log("ðŸ“¸ Starting photo upload. Number of new photos:", a.length);
+      console.log("📸 Starting photo upload. Number of new photos:", a.length);
       for (const se of a) {
         const Ze = new FormData();
-        Ze.append("file", se), Ze.append("upload_preset", "pet-services-photos"), Ze.append("folder", "pet-directory-photos"), console.log("ðŸ“¸ Uploading photo to Cloudinary...");
+        Ze.append("file", se), Ze.append("upload_preset", "pet-services-photos"), Ze.append("folder", "pet-directory-photos"), console.log("📸 Uploading photo to Cloudinary...");
         const $e = await fetch(
           "https://api.cloudinary.com/v1_1/da3pbhktf/image/upload",
           {
@@ -19771,12 +19771,12 @@ function iy({ editBusiness: t, onClose: e }) {
           throw console.error("Photo upload failed:", gt), new Error(`Failed to upload photo: ${gt.error?.message || "Unknown error"}`);
         }
         const zt = await $e.json();
-        console.log("âœ… Photo uploaded:", zt.secure_url), O.push(zt.secure_url);
+        console.log("✅ Photo uploaded:", zt.secure_url), O.push(zt.secure_url);
       }
-      console.log("ðŸ“± Starting mobile photo upload. Number of new photos:", L.length);
+      console.log("📱 Starting mobile photo upload. Number of new photos:", L.length);
       for (const se of L) {
         const Ze = new FormData();
-        Ze.append("file", se), Ze.append("upload_preset", "pet-services-photos"), Ze.append("folder", "pet-directory-mobile-photos"), console.log("ðŸ“± Uploading mobile photo to Cloudinary...");
+        Ze.append("file", se), Ze.append("upload_preset", "pet-services-photos"), Ze.append("folder", "pet-directory-mobile-photos"), console.log("📱 Uploading mobile photo to Cloudinary...");
         const $e = await fetch(
           "https://api.cloudinary.com/v1_1/da3pbhktf/image/upload",
           {
@@ -19789,7 +19789,7 @@ function iy({ editBusiness: t, onClose: e }) {
           throw console.error("Mobile photo upload failed:", gt), new Error(`Failed to upload mobile photo: ${gt.error?.message || "Unknown error"}`);
         }
         const zt = await $e.json();
-        console.log("âœ… Mobile photo uploaded:", zt.secure_url), V.push(zt.secure_url);
+        console.log("✅ Mobile photo uploaded:", zt.secure_url), V.push(zt.secure_url);
       }
       const H = {
         ...i,
@@ -19801,11 +19801,11 @@ function iy({ editBusiness: t, onClose: e }) {
         id: t?.id
         // Include ID if editing
       };
-      w("ðŸ’¾ Saving...");
+      w("💾 Saving...");
       const se = await Oe.saveBusiness(H, n || void 0);
-      console.log("âœ… api.saveBusiness returned:", se), se.error ? (w(`Error: ${se.error}`), g(!1)) : t ? (w(se.cloudWarning ? `âš ï¸ ${se.cloudWarning}` : "Business listing updated successfully! ðŸŽ‰"), setTimeout(() => {
+      console.log("✅ api.saveBusiness returned:", se), se.error ? (w(`Error: ${se.error}`), g(!1)) : t ? (w(se.cloudWarning ? `⚠️ ${se.cloudWarning}` : "Business listing updated successfully! 🎉"), setTimeout(() => {
         e && e();
-      }, 1500)) : (w(se.cloudWarning ? `âš ï¸ ${se.cloudWarning}` : "Business listing created successfully! ðŸŽ‰"), o({
+      }, 1500)) : (w(se.cloudWarning ? `⚠️ ${se.cloudWarning}` : "Business listing created successfully! 🎉"), o({
         name: "",
         description: "",
         address: "",
@@ -19895,7 +19895,7 @@ function iy({ editBusiness: t, onClose: e }) {
         /* @__PURE__ */ s("p", { className: "text-3xl font-semibold text-purple-600", children: accountStats.totalAccounts }),
         /* @__PURE__ */ d("p", { className: "text-xs text-gray-600 mt-2", children: [
           accountStats.guestAccounts,
-          " guest Â· ",
+          " guest · ",
           accountStats.businessAccounts,
           " business"
         ] })
@@ -19944,14 +19944,14 @@ function iy({ editBusiness: t, onClose: e }) {
         ] }),
         /* @__PURE__ */ d("p", { className: "text-xs text-gray-400 mt-1", children: [
           A.businessCategory || "listing",
-          " Â· ",
+          " · ",
           A.createdAt ? new Date(A.createdAt).toLocaleString() : ""
         ] })
       ] }, `${A.createdAt}-${A.businessId}-${A.action}`)) })
     ] }),
     /* @__PURE__ */ s("h1", { className: "text-purple-600 text-center mb-2", children: t ? "Edit Business Listing" : "Add New Business Listing" }),
     /* @__PURE__ */ s("p", { className: "text-gray-600 text-center mb-8", children: t ? "Update your business information below" : "Fill in the details below to add a business to the directory" }),
-    b && /* @__PURE__ */ s("div", { className: `mb-6 p-4 rounded-lg text-sm font-medium ${b.startsWith("Error") || b.startsWith("âŒ") ? "bg-red-50 text-red-700 border border-red-200" : b.startsWith("âš ï¸") ? "bg-yellow-50 text-yellow-800 border border-yellow-200" : "bg-green-50 text-green-700 border border-green-200"}`, children: b }),
+    b && /* @__PURE__ */ s("div", { className: `mb-6 p-4 rounded-lg text-sm font-medium ${b.startsWith("Error") || b.startsWith("❌") ? "bg-red-50 text-red-700 border border-red-200" : b.startsWith("⚠️") ? "bg-yellow-50 text-yellow-800 border border-yellow-200" : "bg-green-50 text-green-700 border border-green-200"}`, children: b }),
     /* @__PURE__ */ d("form", { onSubmit: ft, className: "space-y-8", children: [
       /* @__PURE__ */ d("div", { children: [
         /* @__PURE__ */ s("label", { className: "block text-gray-700 mb-2", children: "Category *" }),
@@ -20154,7 +20154,7 @@ function iy({ editBusiness: t, onClose: e }) {
       /* @__PURE__ */ d("div", { className: "space-y-4", children: [
         /* @__PURE__ */ s("h2", { className: "text-purple-600 border-b-2 border-purple-200 pb-2", children: "Verification" }),
         /* @__PURE__ */ d("div", { children: [
-          /* @__PURE__ */ s("label", { className: "block text-gray-700 mb-2", children: "âœ“ Last verified by phone (month)" }),
+          /* @__PURE__ */ s("label", { className: "block text-gray-700 mb-2", children: "✓ Last verified by phone (month)" }),
           /* @__PURE__ */ s(
             "input",
             {
@@ -20164,7 +20164,7 @@ function iy({ editBusiness: t, onClose: e }) {
               className: "w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent"
             }
           ),
-          /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Set only after confirming the listing on a phone call. Leave blank if not verified â€” the Verified badge only appears when this is set." })
+          /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Set only after confirming the listing on a phone call. Leave blank if not verified — the Verified badge only appears when this is set." })
         ] }),
         /* @__PURE__ */ d("label", { className: "flex items-center gap-3 p-4 bg-purple-50 border-2 border-purple-200 rounded-lg cursor-pointer hover:bg-purple-100 transition-colors", children: [
           /* @__PURE__ */ s(
@@ -20177,7 +20177,7 @@ function iy({ editBusiness: t, onClose: e }) {
             }
           ),
           /* @__PURE__ */ d("div", { children: [
-            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "â˜† Claimed by owner" }),
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "☆ Claimed by owner" }),
             /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check after the owner has contacted us to confirm their details. Shows the Claimed badge next to Verified." })
           ] })
         ] }),
@@ -20200,7 +20200,7 @@ function iy({ editBusiness: t, onClose: e }) {
         ] }),
         /* @__PURE__ */ d("div", { children: [
           /* @__PURE__ */ s("h3", { className: "text-gray-800 mb-1", children: "Proof fields (from call notes only)" }),
-          /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-3", children: 'Set only what the business stated on a verification call. "Not stated" renders nothing â€” it never means "no".' }),
+          /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mb-3", children: 'Set only what the business stated on a verification call. "Not stated" renders nothing — it never means "no".' }),
           /* @__PURE__ */ s("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-4", children: [
             ["catFriendly", "Cats"],
             ["largeDogFriendly", "Large dogs OK"],
@@ -20266,7 +20266,7 @@ function iy({ editBusiness: t, onClose: e }) {
             }
           ),
           /* @__PURE__ */ d("div", { children: [
-            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "ðŸ“ž Please Call for Hours of Operation" }),
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "📞 Please Call for Hours of Operation" }),
             /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if you prefer customers to call for your hours instead of listing specific times" })
           ] })
         ] }),
@@ -20294,7 +20294,7 @@ function iy({ editBusiness: t, onClose: e }) {
             }
           ),
           /* @__PURE__ */ d("div", { children: [
-            /* @__PURE__ */ s("span", { className: "text-gray-800", children: i.category === "sitters" ? "ðŸš— Comes to You" : "ðŸš Mobile Service Available" }),
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: i.category === "sitters" ? "🚗 Comes to You" : "🚐 Mobile Service Available" }),
             /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: i.category === "sitters" ? "Travels to the client's home or neighborhood for visits and walks" : "Check this box if you offer mobile services that come to the customer's location" })
           ] })
         ] }),
@@ -20309,7 +20309,7 @@ function iy({ editBusiness: t, onClose: e }) {
             }
           ),
           /* @__PURE__ */ d("div", { children: [
-            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "ðŸš« Not Accepting New Clients" }),
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "🚫 Not Accepting New Clients" }),
             /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if you are not currently accepting new clients" })
           ] })
         ] }),
@@ -20324,7 +20324,7 @@ function iy({ editBusiness: t, onClose: e }) {
             }
           ),
           /* @__PURE__ */ d("div", { children: [
-            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "ðŸ  In-Home Training (Training)" }),
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "🏠 In-Home Training (Training)" }),
             /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if this trainer offers in-home training sessions" })
           ] })
         ] }),
@@ -20339,7 +20339,7 @@ function iy({ editBusiness: t, onClose: e }) {
             }
           ),
           /* @__PURE__ */ d("div", { children: [
-            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "ðŸ‘¥ Group Classes Available (Training)" }),
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "👥 Group Classes Available (Training)" }),
             /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if this trainer offers group class sessions" })
           ] })
         ] }),
@@ -20354,7 +20354,7 @@ function iy({ editBusiness: t, onClose: e }) {
             }
           ),
           /* @__PURE__ */ d("div", { children: [
-            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "ðŸ  Daycare Available (Boarding)" }),
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "🏠 Daycare Available (Boarding)" }),
             /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if this boarding listing offers daycare" })
           ] })
         ] }),
@@ -20369,7 +20369,7 @@ function iy({ editBusiness: t, onClose: e }) {
             }
           ),
           /* @__PURE__ */ d("div", { children: [
-            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "ðŸš¶ Accepts Walk-Ins (Vet Care)" }),
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "🚶 Accepts Walk-Ins (Vet Care)" }),
             /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if this vet clinic accepts walk-in visits" })
           ] })
         ] }),
@@ -20384,7 +20384,7 @@ function iy({ editBusiness: t, onClose: e }) {
             }
           ),
           /* @__PURE__ */ d("div", { children: [
-            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "ðŸš¨ 24/7 Emergency Services (Vet Care)" }),
+            /* @__PURE__ */ s("span", { className: "text-gray-800", children: "🚨 24/7 Emergency Services (Vet Care)" }),
             /* @__PURE__ */ s("p", { className: "text-sm text-gray-600 mt-1", children: "Check this box if this vet clinic provides 24/7 emergency care" })
           ] })
         ] })
@@ -20393,7 +20393,7 @@ function iy({ editBusiness: t, onClose: e }) {
         /* @__PURE__ */ s("h2", { className: "text-purple-600 border-b-2 border-purple-200 pb-2", children: "Sitter & Walker Credentials" }),
         /* @__PURE__ */ s("p", { className: "text-sm text-gray-600", children: "These power the Sitters & Walkers page filters. Check all that apply." }),
         /* @__PURE__ */ d("div", { className: "grid grid-cols-1 md:grid-cols-2 gap-3", children: [
-          [{ key: "insuredBonded", label: "ðŸ›¡ï¸ Insured & Bonded" }, { key: "petCprCertified", label: "â¤ï¸ Pet CPR / First Aid Certified" }, { key: "backgroundChecked", label: "âœ… Background Checked" }, { key: "professionalMember", label: "ðŸ… Professional Association Member" }, { key: "medicationAdmin", label: "ðŸ’Š Medication Administration" }, { key: "photoUpdates", label: "ðŸ“¸ Photo / GPS Updates" }].map((A) => /* @__PURE__ */ d("label", { className: "flex items-center gap-3 p-4 bg-pink-50 border-2 border-pink-200 rounded-lg cursor-pointer hover:bg-pink-100 transition-colors", children: [
+          [{ key: "insuredBonded", label: "🛡️ Insured & Bonded" }, { key: "petCprCertified", label: "❤️ Pet CPR / First Aid Certified" }, { key: "backgroundChecked", label: "✅ Background Checked" }, { key: "professionalMember", label: "🏅 Professional Association Member" }, { key: "medicationAdmin", label: "💊 Medication Administration" }, { key: "photoUpdates", label: "📸 Photo / GPS Updates" }].map((A) => /* @__PURE__ */ d("label", { className: "flex items-center gap-3 p-4 bg-pink-50 border-2 border-pink-200 rounded-lg cursor-pointer hover:bg-pink-100 transition-colors", children: [
             /* @__PURE__ */ s("input", { type: "checkbox", checked: !!i[A.key], onChange: (O) => G(A.key, O.target.checked), className: "w-5 h-5 text-pink-600 border-gray-300 rounded focus:ring-pink-500" }),
             /* @__PURE__ */ s("span", { className: "text-gray-800", children: A.label })
           ] }, A.key))
@@ -20453,7 +20453,7 @@ function iy({ editBusiness: t, onClose: e }) {
       /* @__PURE__ */ d("div", { className: "space-y-4", children: [
         /* @__PURE__ */ s("h2", { className: "text-purple-600 border-b-2 border-purple-200 pb-2", children: "Photos" }),
         /* @__PURE__ */ d("p", { className: "text-sm text-gray-600 bg-yellow-50 border border-yellow-200 rounded-lg p-3", children: [
-          "â­ ",
+          "⭐ ",
           /* @__PURE__ */ s("strong", { children: "Card Photo:" }),
           ' Designate one photo as your "Card Photo" - this will be the main photo displayed on your business listing card. Other photos will be shown when customers view your full details. Click "Set as Card Photo" on any image to change your selection.'
         ] }),
@@ -20584,7 +20584,7 @@ function iy({ editBusiness: t, onClose: e }) {
           type: "submit",
           disabled: v,
           className: "px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-full hover:shadow-lg transform hover:scale-105 transition-all disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none",
-          children: v ? t ? "Updating Listing..." : "Creating Listing..." : t ? "ðŸ¾ Update Business Listing" : "ðŸ¾ Create Business Listing"
+          children: v ? t ? "Updating Listing..." : "Creating Listing..." : t ? "🐾 Update Business Listing" : "🐾 Create Business Listing"
         }
       ) })
     ] }),
@@ -20652,7 +20652,7 @@ function iy({ editBusiness: t, onClose: e }) {
   ] }) }) });
 }
 function sy() {
-  console.log("ðŸŒ± Seeding real business data from spreadsheet..."), console.log("ðŸ” BEFORE SEEDING - Checking localStorage:");
+  console.log("🌱 Seeding real business data from spreadsheet..."), console.log("🔍 BEFORE SEEDING - Checking localStorage:");
   const t = localStorage.getItem("pawsitively_businesses_grooming");
   if (t) {
     const r = JSON.parse(t);
@@ -21629,11 +21629,11 @@ function sy() {
   e.forEach((r) => {
     const n = ce.getBusinessesByCategory(r.category).find((o) => o.id === r.id), i = n ? ce.getBusinessOwner(n.id) : null;
     if (n && (i || n.userEdited)) {
-      console.log(`â­ï¸  SKIPPING seed for "${r.name}" - already claimed/edited`);
+      console.log(`⏭️  SKIPPING seed for "${r.name}" - already claimed/edited`);
       return;
     }
     ce.saveBusiness(r);
-  }), console.log(`âœ… Successfully seeded ${e.length} businesses (skipped claimed/edited ones)!`);
+  }), console.log(`✅ Successfully seeded ${e.length} businesses (skipped claimed/edited ones)!`);
 }
 function oy() {
   const decodeBlogSlug = (value) => {
@@ -21646,13 +21646,13 @@ function oy() {
   const [t, e] = E(() => {
     const pathname = blogPathname();
     if (isBlogPathname(pathname))
-      return console.log("âœ… Using pathname for blog:", pathname), "blog";
+      return console.log("✅ Using pathname for blog:", pathname), "blog";
     const k = window.location.hash.slice(1);
-    console.log("ðŸŽ¬ Initializing - URL hash:", k);
+    console.log("🎬 Initializing - URL hash:", k);
     const I = sessionStorage.getItem("pawsitively_current_page");
-    console.log("ðŸŽ¬ Initializing - sessionStorage:", I);
+    console.log("🎬 Initializing - sessionStorage:", I);
     const z = ["home", "products", "grooming", "training", "boarding", "sitters", "vet", "about", "privacy", "review", "shortlist", "blog", "how-we-verify"], A0 = (k) => k && (k === "blog" || k.startsWith("blog/")) ? "blog" : k && z.includes(k) ? k : null;
-    return A0(k) ? (console.log("âœ… Using hash:", k), A0(k)) : A0(I) ? (console.log("âœ… Using sessionStorage:", I), A0(I)) : (console.log("ðŸ“ No valid page found, defaulting to home"), "home");
+    return A0(k) ? (console.log("✅ Using hash:", k), A0(k)) : A0(I) ? (console.log("✅ Using sessionStorage:", I), A0(I)) : (console.log("📍 No valid page found, defaulting to home"), "home");
   }), [r, n] = E(() => {
     const pathname = blogPathname();
     if (isBlogPathname(pathname))
@@ -21719,20 +21719,20 @@ function oy() {
     if (isBlogPathname(pathname)) {
       window.history.replaceState({}, "", t === "home" ? "/" : "/#" + t);
     }
-    console.log("ðŸ“ Updating hash to:", t), window.location.hash = t, sessionStorage.setItem("pawsitively_current_page", t), console.log("ðŸ’¾ Saved to sessionStorage:", t);
+    console.log("📝 Updating hash to:", t), window.location.hash = t, sessionStorage.setItem("pawsitively_current_page", t), console.log("💾 Saved to sessionStorage:", t);
     typeof window.__peedeeRefreshRouteSeo == "function" ? window.__peedeeRefreshRouteSeo(t) : typeof window.__peedeeRestoreDefaultSeo == "function" && window.__peedeeRestoreDefaultSeo();
   }, [t]), U(() => {
-    console.log("ðŸ” Checking if we need to seed data...");
+    console.log("🔍 Checking if we need to seed data...");
     const k = ["grooming", "training", "boarding", "sitters", "vet"];
     let I = !1, z = !1;
     for (const ee of k) {
       const G = localStorage.getItem(`pawsitively_businesses_${ee}`);
       if (G && (I = !0, JSON.parse(G).some((W) => W.userEdited || W.ownerId))) {
-        z = !0, console.log(`ðŸ”’ Found edited/claimed data in ${ee} - will NOT seed!`);
+        z = !0, console.log(`🔒 Found edited/claimed data in ${ee} - will NOT seed!`);
         break;
       }
     }
-    I ? console.log(z ? "ðŸ”’ USER EDITS DETECTED - Seed blocked to preserve edits!" : "âœ… Found existing data - not re-seeding") : (console.log("ðŸŒ± COMPLETELY EMPTY - First time ever, loading initial data..."), sy(), console.log("âœ… Initial data loaded!"));
+    I ? console.log(z ? "🔒 USER EDITS DETECTED - Seed blocked to preserve edits!" : "✅ Found existing data - not re-seeding") : (console.log("🌱 COMPLETELY EMPTY - First time ever, loading initial data..."), sy(), console.log("✅ Initial data loaded!"));
   }, []), U(() => {
     window.scrollTo(0, 0);
   }, [t]), U(() => {
@@ -21899,7 +21899,7 @@ function oy() {
               className: "flex items-center space-x-2 hover:opacity-80 transition-opacity shrink-0",
               style: { marginLeft: "-10px" },
               children: [
-                /* @__PURE__ */ s("span", { className: "text-4xl", children: "ðŸ¾" }),
+                /* @__PURE__ */ s("span", { className: "text-4xl", children: "🐾" }),
                 /* @__PURE__ */ d("div", { className: "whitespace-nowrap", children: [
                   /* @__PURE__ */ s("h1", { className: "text-purple-600 text-2xl", children: "Pawsitively Fabulous" }),
                   /* @__PURE__ */ s("p", { className: "text-xs text-gray-600 whitespace-nowrap", children: "Darlington/Florence Area" })
@@ -21916,7 +21916,7 @@ function oy() {
                 k.preventDefault(), C("grooming");
               },
               className: `px-4 py-2 rounded-full transition-all whitespace-nowrap no-underline ${t === "grooming" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-              children: "âœ‚ï¸ Grooming"
+              children: "✂️ Grooming"
             }
           ),
           /* @__PURE__ */ s(
@@ -21927,7 +21927,7 @@ function oy() {
                 k.preventDefault(), C("training");
               },
               className: `px-4 py-2 rounded-full transition-all whitespace-nowrap no-underline ${t === "training" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-              children: "ðŸŽ“ Training"
+              children: "🎓 Training"
             }
           ),
           /* @__PURE__ */ s(
@@ -21938,7 +21938,7 @@ function oy() {
                 k.preventDefault(), C("boarding");
               },
               className: `px-4 py-2 rounded-full transition-all whitespace-nowrap no-underline ${t === "boarding" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-              children: "ðŸ  Boarding & Daycare"
+              children: "🏠 Boarding & Daycare"
             }
           ),
           /* @__PURE__ */ s(
@@ -21949,7 +21949,7 @@ function oy() {
                 k.preventDefault(), C("sitters");
               },
               className: `px-4 py-2 rounded-full transition-all whitespace-nowrap no-underline ${t === "sitters" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-              children: "ðŸ¦® Sitters & Walkers"
+              children: "🦮 Sitters & Walkers"
             }
           ),
           /* @__PURE__ */ s(
@@ -21960,7 +21960,7 @@ function oy() {
                 k.preventDefault(), C("vet");
               },
               className: `px-4 py-2 rounded-full transition-all whitespace-nowrap no-underline ${t === "vet" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-              children: "âš•ï¸ Vet Care"
+              children: "⚕️ Vet Care"
             }
           ),
           /* @__PURE__ */ s(
@@ -21968,7 +21968,7 @@ function oy() {
             {
               onClick: () => C("products"),
               className: `px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "products" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-              children: "ðŸ›ï¸ Pet Products"
+              children: "🛍️ Pet Products"
             }
           ),
           /* @__PURE__ */ s(
@@ -21976,7 +21976,7 @@ function oy() {
             {
               onClick: () => C("blog"),
               className: `px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "blog" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-              children: "ðŸ“° The Daily Wag"
+              children: "📰 The Daily Wag"
             }
           )
         ] }) ] })
@@ -21984,32 +21984,32 @@ function oy() {
     ] }) }),
     /* @__PURE__ */ d("div", { className: "hidden md:block md:bg-white", style: { paddingTop: "6px" }, children: /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 md:sm:px-6 md:lg:px-8", children: /* @__PURE__ */ d("div", { className: "px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ d("div", { className: "flex items-center", children: [
           /* @__PURE__ */ d("div", { className: "flex items-center space-x-2 shrink-0 pointer-events-none select-none", style: { visibility: "hidden", marginLeft: "-10px" }, "aria-hidden": "true", children: [
-            /* @__PURE__ */ s("span", { className: "text-4xl", children: "ðŸ¾" }),
+            /* @__PURE__ */ s("span", { className: "text-4xl", children: "🐾" }),
             /* @__PURE__ */ d("div", { className: "whitespace-nowrap", children: [
               /* @__PURE__ */ s("h1", { className: "text-purple-600 text-2xl", children: "Pawsitively Fabulous" }),
               /* @__PURE__ */ s("p", { className: "text-xs text-gray-600 whitespace-nowrap", children: "Darlington/Florence Area" })
             ] })
           ] }),
           /* @__PURE__ */ d("div", { style: { display: "grid", gridTemplateColumns: "repeat(7, minmax(0, 1fr))", alignItems: "center", flex: 1, minWidth: 0, marginLeft: "2.25rem", paddingTop: "4px" }, children: [
-          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "âœ‚ï¸ Grooming" }),
-          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "ðŸŽ“ Training" }),
-          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "ðŸ  Boarding & Daycare" }),
-          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "ðŸ¦® Sitters & Walkers" }),
-          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "âš•ï¸ Vet Care" }),
+          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "✂️ Grooming" }),
+          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "🎓 Training" }),
+          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "🏠 Boarding & Daycare" }),
+          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "🦮 Sitters & Walkers" }),
+          /* @__PURE__ */ s("span", { style: { visibility: "hidden", padding: "8px 16px", whiteSpace: "nowrap", justifySelf: "center" }, "aria-hidden": "true", children: "⚕️ Vet Care" }),
           P ? /* @__PURE__ */ d("div", { style: { gridColumn: "6 / 8", display: "grid", gridTemplateColumns: "1fr 1fr", alignItems: "center", columnGap: "8px" }, children: [
             /* @__PURE__ */ d("div", { style: { display: "flex", justifyContent: "center", alignItems: "center" }, children: /* @__PURE__ */ s(
               "button",
               {
                 onClick: () => C("shortlist"),
                 className: `px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "shortlist" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-                children: "â¤ï¸ Shortlist"
+                children: "❤️ Shortlist"
               }
             ) }),
             /* @__PURE__ */ d("div", { style: { display: "flex", justifyContent: "flex-end", alignItems: "center", gap: "6px", whiteSpace: "nowrap" }, children: [
               /* @__PURE__ */ d("div", { className: "flex items-center gap-2 px-3 py-2 bg-purple-50 rounded-full", children: [
                 /* @__PURE__ */ s(fl, { className: "w-4 h-4 text-purple-600" }),
                 /* @__PURE__ */ s("span", { className: "text-gray-700 whitespace-nowrap", children: P.name }),
-                P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-red-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "ðŸ‘‘ Admin" }),
+                P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-red-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "👑 Admin" }),
                 P.role === "business" && !P.isAdmin && /* @__PURE__ */ s("span", { className: "text-xs bg-purple-600 text-white px-2 py-1 rounded-full whitespace-nowrap", children: "Business" })
               ] }),
               P.isAdmin && /* @__PURE__ */ s(
@@ -22040,7 +22040,7 @@ function oy() {
               {
                 onClick: () => C("shortlist"),
                 className: `px-4 py-2 rounded-full transition-all whitespace-nowrap ${t === "shortlist" ? "bg-purple-600 text-white" : "hover:bg-purple-100 text-gray-700"}`,
-                children: "â¤ï¸ Shortlist"
+                children: "❤️ Shortlist"
               }
             ) }),
             /* @__PURE__ */ d("div", { style: { display: "flex", justifyContent: "center", alignItems: "center" }, children: /* @__PURE__ */ d(
@@ -22091,7 +22091,7 @@ function oy() {
         },
         resetToken: Iv,
         onSuccess: (k, I, z, A) => {
-          console.log("ðŸŽ¯ AuthModal onSuccess called in App.tsx!"), console.log("   - userData:", k), console.log("   - token:", I.substring(0, 20) + "..."), console.log("   - About to call login()..."), N(k, I, z, A), console.log("   - login() called successfully!"), o(!1);
+          console.log("🎯 AuthModal onSuccess called in App.tsx!"), console.log("   - userData:", k), console.log("   - token:", I.substring(0, 20) + "..."), console.log("   - About to call login()..."), N(k, I, z, A), console.log("   - login() called successfully!"), o(!1);
         },
         defaultRole: c,
         defaultMode: h
@@ -22101,11 +22101,11 @@ function oy() {
       /* @__PURE__ */ d("div", { className: "max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8 text-center relative", children: [
       /* @__PURE__ */ d("div", { className: "md:hidden flex flex-col items-center gap-1", children: [
         /* @__PURE__ */ d("p", { className: "text-sm font-medium text-purple-900", children: [
-          /* @__PURE__ */ s("span", { className: "text-base", children: "ðŸ¾" }),
+          /* @__PURE__ */ s("span", { className: "text-base", children: "🐾" }),
           " Pawsitively Fabulous"
         ] }),
         /* @__PURE__ */ d("p", { className: "text-xs text-purple-500/70", children: [
-          "Â© ",
+          "© ",
           (/* @__PURE__ */ new Date()).getFullYear(),
           " Pawsitively Fabulous. All rights reserved."
         ] }),
@@ -22113,15 +22113,15 @@ function oy() {
           /* @__PURE__ */ s("a", { href: "/about", onClick: (k) => {
             k.preventDefault(), C("about");
           }, className: "underline underline-offset-2 hover:text-purple-700", children: "About" }),
-          "â€¢",
+          "•",
           /* @__PURE__ */ s("a", { href: "/privacy", onClick: (k) => {
             k.preventDefault(), C("privacy");
           }, className: "underline underline-offset-2 hover:text-purple-700", children: "Privacy" }),
-          "â€¢",
+          "•",
           /* @__PURE__ */ s("a", { href: "/how-we-verify", onClick: (k) => {
             k.preventDefault(), C("how-we-verify");
           }, className: "underline underline-offset-2 hover:text-purple-700", children: "How we verify" }),
-          "â€¢",
+          "•",
           /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "underline underline-offset-2 hover:text-purple-700", children: "Contact" })
         ] })
       ] })
@@ -22202,7 +22202,7 @@ function oy() {
           )
         ] }),
         /* @__PURE__ */ d("div", { className: "text-center max-w-7xl mx-auto md:px-4 sm:px-6 lg:px-8", children: [
-          /* @__PURE__ */ s("p", { className: "text-2xl mb-2", children: "ðŸ¾ Pawsitively Fabulous ðŸ¾" }),
+          /* @__PURE__ */ s("p", { className: "text-2xl mb-2", children: "🐾 Pawsitively Fabulous 🐾" }),
           /* @__PURE__ */ s("p", { children: "Free Local Pet Services Directory" })
         ] })
       ] }),
