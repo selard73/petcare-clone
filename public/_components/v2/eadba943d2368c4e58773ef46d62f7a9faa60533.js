@@ -14358,6 +14358,12 @@ function reviewPage({ onNavigate: t }) {
           }
         )
       ] }) : /* @__PURE__ */ d("div", { className: "bg-white rounded-[20px] md:rounded-2xl p-5 md:p-8 border border-purple-100 md:border-purple-200 shadow-sm md:shadow-md mx-2 md:mx-0 mt-6 mb-8", children: [
+        // Review & Win giveaway banner — auto-hides after the drawing closes Aug 14, 2026 (midnight ET).
+        (/* @__PURE__ */ new Date()).getTime() < new Date("2026-08-15T04:00:00Z").getTime() && /* @__PURE__ */ d("div", { style: { background: "linear-gradient(135deg, #9333EA 0%, #DB2777 100%)", borderRadius: "14px", padding: "16px 18px", marginBottom: "1.25rem", color: "#fff" }, children: [
+          /* @__PURE__ */ s("p", { style: { margin: 0, fontWeight: 700, fontSize: "1.05rem", lineHeight: 1.35 }, children: "🎉 Review & Win — 3 winners!" }),
+          /* @__PURE__ */ s("p", { style: { margin: "6px 0 0", fontSize: "0.9rem", lineHeight: 1.5 }, children: "Leave an honest review by Thursday, August 14th and you're automatically entered to win a $100 gift certificate — or one of two $50 certificates — to the listed local pet business of your choice. Free to enter." }),
+          /* @__PURE__ */ s("p", { style: { margin: "8px 0 0", fontSize: "0.72rem", lineHeight: 1.45, opacity: 0.85 }, children: "One entry per review; any honest review qualifies — entry never depends on what you write. Winners drawn at random and announced on our Facebook page August 15th. Not sponsored, endorsed, or administered by Facebook." })
+        ] }),
         /* @__PURE__ */ s("h1", { className: "text-purple-600 text-xl md:text-[22px] font-semibold leading-tight mb-1", children: "Share Your Experience ⭐" }),
         /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base leading-relaxed mb-6", children: "Tell us about a local pet business you've used — your review helps other pet parents across the Pee Dee." }),
         /* @__PURE__ */ d("form", { onSubmit: submit, noValidate: !0, children: [
