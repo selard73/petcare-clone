@@ -6224,8 +6224,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
         ]
       }
     ) }) }),
-      /* @__PURE__ */ s("div", { className: "md:hidden flex items-center justify-center text-[10px] text-purple-500/70 tracking-wide text-center", style: { marginTop: "1.5rem", marginBottom: "0.75rem" }, children: e0 != null ? `${e0.toLocaleString()} visits and counting` : "" }),
-      /* @__PURE__ */ s("div", { className: "md:hidden flex items-center justify-center", style: { gap: "18px", marginTop: "1rem", marginBottom: "0.875rem" }, children: [
+      /* @__PURE__ */ s("div", { className: "md:hidden flex items-center justify-center", style: { gap: "18px", marginTop: "1.5rem", marginBottom: "0.875rem" }, children: [
         /* @__PURE__ */ s(
           "a",
           {
@@ -22227,8 +22226,7 @@ function oy() {
           }, className: "hover:text-purple-900 underline underline-offset-2", children: "Privacy Policy" }) }),
           /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0, marginTop: "2px" }, children: /* @__PURE__ */ s("a", { href: "/how-we-verify", onClick: (k) => {
             k.preventDefault(), C("how-we-verify");
-          }, className: "hover:text-purple-900 underline underline-offset-2", children: "How we verify" }) }),
-          t === "home" && Pv != null && /* @__PURE__ */ s("p", { className: "text-xs text-purple-500/70 tracking-wide pointer-events-none whitespace-nowrap", style: { margin: 0, marginTop: "4px" }, children: `${Pv.toLocaleString()} visits and counting` })
+          }, className: "hover:text-purple-900 underline underline-offset-2", children: "How we verify" }) })
         ] })
       ] })
     ] })
