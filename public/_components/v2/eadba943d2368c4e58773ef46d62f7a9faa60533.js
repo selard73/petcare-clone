@@ -6028,7 +6028,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
               children: [
                 /* @__PURE__ */ s("h2", { className: "text-purple-600 text-2xl md:text-4xl text-center", style: { marginBottom: "0.75rem" }, children: "🐾 Browse by Service" }),
                 /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm md:text-base text-center leading-relaxed", style: { marginBottom: window.innerWidth < 768 ? "1.25rem" : "3rem" }, children: "Pick a service to see verified local providers." }),
-                /* @__PURE__ */ s("div", { style: window.innerWidth < 768 ? { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "0.9rem" } : { display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "3rem 2.75rem" }, children: [
+                /* @__PURE__ */ s("div", { style: window.innerWidth < 768 ? { display: "grid", gridTemplateColumns: "1fr", gap: "1.4rem" } : { display: "flex", flexWrap: "wrap", justifyContent: "center", gap: "3rem 2.75rem" }, children: [
                   { page: "grooming", label: "Grooming", emoji: "✂️", img: "/images/home/grooming-card.jpg", pos: "center 40%" },
                   { page: "training", label: "Training", emoji: "🎓", img: "/images/home/training-card.jpg", pos: "center 45%" },
                   { page: "boarding", label: "Boarding & Daycare", emoji: "🏠", img: "/images/home/boarding-card.jpg", pos: "center 35%" },
@@ -6052,13 +6052,13 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                       borderRadius: "1.2rem",
                       background: "linear-gradient(135deg, #C084FC 0%, #E879F9 50%, #F472B6 100%)",
                       boxShadow: "0 12px 40px -12px rgba(147,51,234,0.5), 0 6px 28px -8px rgba(244,114,182,0.4), 0 0 1px 1px rgba(192,132,252,0.25)",
-                      ...window.innerWidth < 768 ? m === 4 ? { gridColumn: "1 / -1" } : {} : { width: "21rem" }
+                      ...window.innerWidth < 768 ? {} : { width: "23.5rem" }
                     },
                     children: /* @__PURE__ */ d("div", { style: { background: "#fff", borderRadius: "1.05rem", overflow: "hidden" }, children: [
-                      /* @__PURE__ */ s("img", { src: p.img, alt: `${p.label} in the Pee Dee area`, loading: "lazy", style: { width: "100%", height: window.innerWidth < 768 ? "6.5rem" : "13.5rem", objectFit: "cover", objectPosition: p.pos, display: "block" } }),
-                      /* @__PURE__ */ d("div", { className: "text-center", style: { padding: window.innerWidth < 768 ? "0.6rem 0.4rem 0.7rem" : "1rem 0.5rem 1.1rem", whiteSpace: "nowrap", background: "linear-gradient(180deg, #FFFFFF 0%, #FAF5FF 100%)" }, children: [
-                        /* @__PURE__ */ s("span", { "aria-hidden": "true", style: { fontSize: window.innerWidth < 768 ? "0.95rem" : "1.3rem", marginRight: window.innerWidth < 768 ? "4px" : "8px" }, children: p.emoji }),
-                        /* @__PURE__ */ s("span", { className: "text-gray-800 font-semibold", style: { fontSize: window.innerWidth < 768 ? "0.8rem" : "1.05rem" }, children: p.label })
+                      /* @__PURE__ */ s("img", { src: p.img, alt: `${p.label} in the Pee Dee area`, loading: "lazy", style: { width: "100%", height: window.innerWidth < 768 ? "11rem" : "15rem", objectFit: "cover", objectPosition: p.pos, display: "block" } }),
+                      /* @__PURE__ */ d("div", { className: "text-center", style: { padding: window.innerWidth < 768 ? "0.85rem 0.5rem 0.95rem" : "1rem 0.5rem 1.1rem", whiteSpace: "nowrap", background: "linear-gradient(180deg, #FFFFFF 0%, #FAF5FF 100%)" }, children: [
+                        /* @__PURE__ */ s("span", { "aria-hidden": "true", style: { fontSize: window.innerWidth < 768 ? "1.15rem" : "1.3rem", marginRight: window.innerWidth < 768 ? "6px" : "8px" }, children: p.emoji }),
+                        /* @__PURE__ */ s("span", { className: "text-gray-800 font-semibold", style: { fontSize: window.innerWidth < 768 ? "0.98rem" : "1.05rem" }, children: p.label })
                       ] })
                     ] })
                   },
