@@ -4,6 +4,7 @@
 // "Recently verified" strip renders only when at least one listing has a
 // lastVerified date.
 const { loadAllListings, PATH_TO_LISTING_CATEGORY, normalizeCity } = require("./listings-loader");
+const { CITY_SLUGS } = require("./city-seo");
 
 // Same contact mechanism as CURSOR-BRIEF.md task 2: the site has no contact
 // form route; mailto is the site's contact mechanism.
@@ -39,7 +40,9 @@ function formatVerifiedMonth(yyyyMm) {
 function buildListingHref(listing) {
   const base = CATEGORY_TO_PATH[listing.category] || "/";
   const citySlug = normalizeCity(listing.city);
-  return citySlug ? `${base}/${citySlug}` : base;
+  // Only link to a city landing page when it actually exists; businesses in
+  // other towns (Effingham, Scranton, ...) link to the category page instead.
+  return citySlug && CITY_SLUGS[citySlug] ? `${base}/${citySlug}` : base;
 }
 
 function getTrustStats() {
