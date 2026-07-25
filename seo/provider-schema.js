@@ -162,8 +162,20 @@ function buildProviderItemList(listings, { id, name }) {
   };
 }
 
+const VERIFIED_MONTH_NAMES = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+// "2026-07" -> "Jul 2026" (null when the value is missing or malformed)
+function formatVerifiedMonth(yyyyMm) {
+  const match = /^(\d{4})-(\d{2})$/.exec(yyyyMm || "");
+  if (!match) return null;
+  const monthIndex = Number(match[2]) - 1;
+  if (monthIndex < 0 || monthIndex > 11) return null;
+  return `${VERIFIED_MONTH_NAMES[monthIndex]} ${match[1]}`;
+}
+
 module.exports = {
   buildProviderNode,
   buildProviderItemList,
   getMostRecentLastVerified,
+  formatVerifiedMonth,
 };

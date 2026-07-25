@@ -4,7 +4,7 @@ const {
   buildOrganizationNode,
   buildWebSiteNode,
 } = require("./blog-seo");
-const { buildProviderItemList, getMostRecentLastVerified } = require("./provider-schema");
+const { buildProviderItemList, getMostRecentLastVerified, formatVerifiedMonth } = require("./provider-schema");
 
 const SEO_CONTENT_START = "<!-- peedee-seo-content:start -->";
 const SEO_CONTENT_END = "<!-- peedee-seo-content:end -->";
@@ -610,11 +610,17 @@ function buildListingsSectionHtml(listings, heading = "Local listings on Pee Dee
       const location = [cityWithZip, listing.address].filter(Boolean).join(" — ");
       const phone = listing.phone ? ` Phone: ${escapeHtml(listing.phone)}.` : "";
       const desc = listing.description ? ` ${escapeHtml(listing.description)}` : "";
-      return `<li><strong>${escapeHtml(listing.name)}</strong>${location ? ` — ${escapeHtml(location)}` : ""}.${desc}${phone}</li>`;
+      const verifiedMonth = formatVerifiedMonth(listing.lastVerified);
+      const verifiedNote = verifiedMonth ? ` Verified by phone ${escapeHtml(verifiedMonth)}.` : "";
+      return `<li><strong>${escapeHtml(listing.name)}</strong>${location ? ` — ${escapeHtml(location)}` : ""}.${desc}${phone}${verifiedNote}</li>`;
     })
     .join("\n    ");
+  const latestVerified = formatVerifiedMonth(getMostRecentLastVerified(listings));
+  const freshnessHtml = latestVerified
+    ? `\n  <p>Listings on this page were most recently verified by phone in ${escapeHtml(latestVerified)}.</p>`
+    : "";
   return `<h2>${escapeHtml(heading)}</h2>
-  <p>Independent businesses listed on Pee Dee Pet Care. Contact providers directly for hours, pricing, and availability.</p>
+  <p>Independent businesses listed on Pee Dee Pet Care. Every listing is checked by phone by a real person before it appears — we confirm the business is open, reachable, and offering the services shown. Listing and verification are free and cannot be bought; read <a href="/how-we-verify">how we verify listings</a>. Contact providers directly for hours, pricing, and availability.</p>${freshnessHtml}
   <ul>
     ${items}
   </ul>`;
