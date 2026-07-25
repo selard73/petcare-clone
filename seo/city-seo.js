@@ -116,8 +116,8 @@ function buildListingsSectionHtml(listings, parsed) {
     .map((listing) => {
       const cityWithZip = listing.city ? `${listing.city}${listing.zipCode ? `, SC ${listing.zipCode}` : ""}` : "";
       const location = [cityWithZip, listing.address].filter(Boolean).join(" — ");
-      const phone = listing.phone ? ` Phone: ${listing.phone}.` : "";
-      const desc = listing.description ? ` ${listing.description}` : "";
+      const phone = listing.phone ? ` Phone: ${escapeHtml(listing.phone)}.` : "";
+      const desc = listing.description ? ` ${escapeHtml(listing.description)}` : "";
       return `<li><strong>${escapeHtml(listing.name)}</strong>${location ? ` — ${escapeHtml(location)}` : ""}.${desc}${phone}</li>`;
     })
     .join("\n    ");

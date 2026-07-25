@@ -19,7 +19,7 @@ const GROOMING_SEO = {
   pathname: "/grooming",
   title: "Dog Groomers Directory | Darlington SC | Pee Dee Pet Care",
   description:
-    "Free directory of dog and cat groomers in Darlington & Florence, SC. Compare listings and reviews. We do not provide grooming.",
+    "Free directory of dog and cat groomers in Darlington & Florence, SC. Compare phone-verified local listings. We do not provide grooming.",
   h1: "Dog & Cat Grooming Directory — Darlington County & Florence, SC",
   guideHeading: "How to find a dog groomer in the Pee Dee",
   guideIntro:
@@ -106,7 +106,7 @@ const TRAINING_SEO = {
   pathname: "/training",
   title: "Dog Trainers Directory | Darlington SC | Pee Dee Pet Care",
   description:
-    "Free directory of dog trainers in Darlington & Florence, SC. Compare listings and reviews. We do not provide training.",
+    "Free directory of dog trainers in Darlington & Florence, SC. Compare phone-verified local listings. We do not provide training.",
   h1: "Dog Trainers Directory — Darlington County & Florence, SC",
   guideHeading: "How to find a dog trainer in the Pee Dee",
   guideIntro:
@@ -193,7 +193,7 @@ const BOARDING_SEO = {
   pathname: "/boarding",
   title: "Pet Boarding Directory | Darlington SC | Pee Dee Pet Care",
   description:
-    "Free directory of pet boarding and daycare in Darlington & Florence, SC. Compare listings and reviews. We do not provide boarding.",
+    "Free directory of pet boarding and daycare in Darlington & Florence, SC. Compare phone-verified local listings. We do not provide boarding.",
   h1: "Pet Boarding & Daycare Directory — Darlington County & Florence, SC",
   guideHeading: "How to find pet boarding in the Pee Dee",
   guideIntro:
@@ -280,7 +280,7 @@ const SITTERS_SEO = {
   pathname: "/sitters",
   title: "Pet Sitters Directory | Darlington SC | Pee Dee Pet Care",
   description:
-    "Free directory of pet sitters and dog walkers in Darlington & Florence, SC. Compare listings and reviews. We do not provide sitting.",
+    "Free directory of pet sitters and dog walkers in Darlington & Florence, SC. Compare phone-verified local listings. We do not provide sitting.",
   h1: "Pet Sitters Directory — Darlington County & Florence, SC",
   guideHeading: "How to find a pet sitter in the Pee Dee",
   guideIntro:
@@ -457,69 +457,47 @@ const VET_CARE_SEO = {
 
 const PRODUCTS_SEO = {
   pathname: "/products",
-  title: "Pet Products Directory | Darlington SC | Pee Dee Pet Care",
+  title: "Recommended Pet Products | Pee Dee Pet Care",
   description:
-    "Free directory of pet supply stores in Darlington & Florence, SC. Compare listings and reviews. We do not sell products.",
-  h1: "Pet Products & Supplies Directory — Darlington County & Florence, SC",
-  guideHeading: "How to find local pet supplies in the Pee Dee",
+    "Hand-picked pet product recommendations from Pee Dee Pet Care — beds, toys, treats, and gear for Pee Dee pet parents. We may earn a commission; we do not sell products.",
+  h1: "Recommended Pet Products — Curated Picks for Pee Dee Pet Parents",
+  guideHeading: "How we choose these products",
   guideIntro:
-    "Use the listings above to compare independent pet stores and supply shops in Florence, Darlington, and Hartsville. Pee Dee Pet Care is a free directory — we do not sell products. Contact retailers directly for hours, brands, and inventory.",
+    "The products on this page are a small, curated set of recommendations — not a store directory. We feature items we think Pee Dee pet parents will genuinely find useful, link to where you can buy them online, and may earn a small commission on purchases at no extra cost to you.",
   intro:
-    "Pee Dee Pet Care lists independent pet supply stores, feed shops, and retailers serving the Pee Dee region. We are an online directory — not a pet store or veterinary clinic. Use this page to find local shops in Florence, Darlington, Hartsville, and nearby communities.",
+    "This page is a curated list of pet products recommended by Pee Dee Pet Care — beds, toys, treats, grooming gear, and travel accessories, organized by category. We are a free local pet services directory; we do not sell products ourselves, and purchases happen on the retailer's site.",
   sections: [
     {
-      heading: "Pet products you can find locally",
+      heading: "What you'll find on this page",
       paragraphs: [
-        "Listings may include pet food and treats, toys, leashes and collars, beds, grooming supplies, aquarium and small-animal products, and specialty diets. Local shops can often help you choose the right food or gear for your pet's age, breed, and health needs.",
-        "Supporting Pee Dee area retailers keeps shopping convenient when you need something today — not after shipping delays.",
+        "A short, hand-picked list of products for dogs and cats — everyday gear like beds, toys, and treats, plus seasonal and travel picks. Each product card describes what the item is, why we like it, and links to the retailer where you can buy it.",
       ],
     },
     {
-      heading: "How to use this products directory",
+      heading: "Affiliate disclosure",
       paragraphs: [
-        "Browse listings by location, read reviews from local pet owners, and contact stores directly for hours, brands carried, and special orders. For medical diets or health concerns, your veterinarian remains the best source of advice on nutrition and supplements.",
+        "Some product links are affiliate links, which means Pee Dee Pet Care may earn a small commission when you buy through them — at no extra cost to you. This helps support our free local directory. Products are chosen by us, not by advertisers, and payment never determines what we recommend.",
       ],
     },
     {
-      heading: "Service area",
+      heading: "Looking for local pet services instead?",
       paragraphs: [
-        "This directory focuses on Darlington County and the Florence, South Carolina area, including Hartsville, Lamar, Society Hill, and surrounding Pee Dee communities. Each retailer sets its own hours and inventory — contact them directly before visiting.",
-      ],
-    },
-    {
-      heading: "Shop local for everyday pet essentials",
-      paragraphs: [
-        "Local pet stores in the Pee Dee region often stock the foods and supplies you need same-day — useful when you run out of kibble, need a replacement leash before a walk, or want to read packaging before you buy. Independent shops may also carry regional brands and feed supplies that big-box chains skip.",
-      ],
-    },
-    {
-      heading: "Nutrition, treats, and health products",
-      paragraphs: [
-        "Browse listings for retailers that carry premium dog and cat food, training treats, flea prevention, shampoos, and grooming tools. For prescription diets or supplements tied to a medical condition, your veterinarian should guide what is safe — use this directory to find where to shop once you know what you need.",
-        "Comparing local stores by location and reviews helps you find a shop near Florence, Hartsville, or Darlington that keeps the brands your pet already eats — saving a drive and avoiding last-minute online shipping.",
+        "If you need grooming, training, boarding, pet sitters, or veterinary care in Florence, Darlington, or Hartsville, browse our local service directory — every listing is checked by phone. For prescription diets or health products, your veterinarian remains the best source of advice.",
       ],
     },
   ],
   faqs: [
     {
-      q: "Does Pee Dee Pet Care sell pet products?",
-      a: "No. Pee Dee Pet Care is a free directory that lists independent local pet supply stores. We do not sell products ourselves.",
+      q: "Does Pee Dee Pet Care sell these products?",
+      a: "No. We link to outside retailers and your purchase happens on their site. We may earn a small affiliate commission at no extra cost to you.",
     },
     {
-      q: "How do I find a pet store near Florence SC?",
-      a: "Browse the product and retail listings on this page, compare reviews, and contact stores directly. Listings include local pet supply shops serving the Pee Dee region.",
+      q: "Is this a directory of local pet stores?",
+      a: "No. This page is a curated set of product recommendations. Our directory covers local pet services — grooming, training, boarding, sitters, and vet care in the Pee Dee region.",
     },
     {
-      q: "Is it free to use this products directory?",
-      a: "Yes. Pet owners can search and read reviews at no charge. Businesses can list at no charge.",
-    },
-    {
-      q: "Can I find specialty pet food locally?",
-      a: "Many Pee Dee area pet stores carry premium, grain-free, and prescription-adjacent diets. Check individual listings or call ahead for specific brands.",
-    },
-    {
-      q: "Do local stores carry grooming and training supplies?",
-      a: "Yes. Many listed retailers stock shampoos, brushes, leashes, harnesses, crates, and training treats alongside food. Contact stores directly for current inventory.",
+      q: "How are the products chosen?",
+      a: "We pick items we think Pee Dee pet parents will genuinely find useful. Advertisers do not choose or rank the products.",
     },
   ],
   externalLinks: [
@@ -540,8 +518,8 @@ const PRODUCTS_SEO = {
     { href: "/", label: "Pee Dee Pet Care home" },
   ],
   resourcesHeading: "Trusted pet product resources",
-  schemaName: "Pet Products Directory — Florence SC",
-  schemaAbout: "Pet supplies and retail directory",
+  schemaName: "Recommended Pet Products — Pee Dee Pet Care",
+  schemaAbout: "Curated pet product recommendations",
 };
 
 const CATEGORY_PAGES = {
@@ -630,8 +608,8 @@ function buildListingsSectionHtml(listings, heading = "Local listings on Pee Dee
     .map((listing) => {
       const cityWithZip = listing.city ? `${listing.city}${listing.zipCode ? `, SC ${listing.zipCode}` : ""}` : "";
       const location = [cityWithZip, listing.address].filter(Boolean).join(" — ");
-      const phone = listing.phone ? ` Phone: ${listing.phone}.` : "";
-      const desc = listing.description ? ` ${listing.description}` : "";
+      const phone = listing.phone ? ` Phone: ${escapeHtml(listing.phone)}.` : "";
+      const desc = listing.description ? ` ${escapeHtml(listing.description)}` : "";
       return `<li><strong>${escapeHtml(listing.name)}</strong>${location ? ` — ${escapeHtml(location)}` : ""}.${desc}${phone}</li>`;
     })
     .join("\n    ");

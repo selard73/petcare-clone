@@ -7,7 +7,7 @@ const DEFAULT_OG_IMAGE = `${CANONICAL_ORIGIN}/share-card.jpg`;
 
 const SITE_TITLE = "Pet Services in Darlington & Florence SC | Pee Dee Pet Care";
 const SITE_DESCRIPTION =
-  "Free pet services directory for Darlington & Florence, SC. Browse grooming, training, boarding, sitters and vet listings with reviews. Not a service provider.";
+  "Free pet services directory for Darlington & Florence, SC. Browse phone-verified grooming, training, boarding, sitter and vet care listings. Not a service provider.";
 
 const BLOG_INDEX_TITLE = "The Daily Wag | Pee Dee Pet Tips | Pee Dee Pet Care";
 const BLOG_INDEX_DESCRIPTION =
