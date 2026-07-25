@@ -489,6 +489,17 @@
           "/how-we-verify": "how-we-verify",
         };
         var page = categoryPaths[pathname];
+        if (!page) {
+          // City landing URLs like /training/florence or /grooming/darlington:
+          // boot into the category page (the runtime can only boot from "/").
+          var segs = pathname.split("/").filter(Boolean);
+          if (segs.length === 2 && categoryPaths["/" + segs[0]]) {
+            page = categoryPaths["/" + segs[0]];
+            try {
+              sessionStorage.setItem("pawsitively_city_pref", decodeURIComponent(segs[1]));
+            } catch (e) {}
+          }
+        }
         if (page) {
           try {
             // The runtime can strip the hash before the app mounts, so
