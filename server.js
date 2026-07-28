@@ -2261,7 +2261,7 @@ async function maybeSendPetLinkAlert() {
       "The 'Meet " + PET_OF_MONTH.name + "' button on the homepage is automatically redirecting visitors to the shelter's main adoptable pets page in the meantime:",
       PET_OF_MONTH.fallbackUrl,
       "",
-      "Next step: pick a new Fur-ever Friend of the Month and update the homepage card.",
+      "Next step: pick a new Fairy Dog Child and update the homepage card.",
       "",
       "— Pee Dee Pet Care automated monitor",
     ].join("\n"),
