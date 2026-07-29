@@ -6185,6 +6185,40 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
         ] })
       }
     ) }),
+    /* @__PURE__ */ s("section", { className: "py-7 px-5 md:py-20 md:px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ d("div", { className: "max-w-4xl mx-auto text-center", children: [
+      /* @__PURE__ */ d(
+        D.div,
+        {
+          initial: { opacity: 0, y: 20 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: !0 },
+          children: [
+            /* @__PURE__ */ s("h2", { className: "text-purple-600 mb-3 md:mb-4 text-2xl md:text-4xl", children: "Free Resources for Pet Owners" }),
+            /* @__PURE__ */ s("p", { className: "text-gray-600 mb-8", children: "Practical local guides from Pee Dee Pet Care — free to read, free to share." })
+          ]
+        }
+      ),
+      /* @__PURE__ */ s(
+        D.div,
+        {
+          initial: { opacity: 0, y: 16 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: !0 },
+          transition: { delay: 0.1 },
+          whileHover: { scale: 1.02 },
+          className: "mx-auto",
+          style: { maxWidth: "640px" },
+          children: /* @__PURE__ */ s("a", { href: "/pet-friendly-housing", className: "block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow text-left", style: { textDecoration: "none", padding: "24px 28px", border: "1px solid #f3e8ff" }, children: /* @__PURE__ */ d("div", { style: { display: "flex", gap: "18px", alignItems: "flex-start" }, children: [
+            /* @__PURE__ */ s("div", { style: { fontSize: "38px", lineHeight: "1" }, children: "🏠" }),
+            /* @__PURE__ */ d("div", { children: [
+              /* @__PURE__ */ s("h3", { className: "text-purple-700 font-semibold", style: { marginBottom: "4px" }, children: "Pet-Friendly Housing Guide" }),
+              /* @__PURE__ */ s("p", { className: "text-gray-600 text-sm leading-relaxed", style: { margin: 0 }, children: "Apartments and rentals that welcome pets in Hartsville, Darlington & Florence — pet fees, weight limits, and who to call." }),
+              /* @__PURE__ */ s("span", { className: "text-purple-600 font-semibold text-sm", style: { display: "inline-block", marginTop: "10px" }, children: "Read the guide →" })
+            ] })
+          ] }) })
+        }
+      )
+    ] }) }),
     /* @__PURE__ */ d("div", { className: "px-4 md:px-0 md:pb-0 mt-10 md:mt-0", children: [
       /* @__PURE__ */ s("section", { className: "py-7 px-5 md:py-20 md:px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-3xl md:rounded-none", children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto text-center", children: /* @__PURE__ */ d(
       D.div,
@@ -22129,6 +22163,8 @@ function oy() {
             k.preventDefault(), C("how-we-verify");
           }, className: "underline underline-offset-2 hover:text-purple-700", children: "How we verify" }),
           "•",
+          /* @__PURE__ */ s("a", { href: "/pet-friendly-housing", className: "underline underline-offset-2 hover:text-purple-700", children: "Housing Guide" }),
+          "•",
           /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "underline underline-offset-2 hover:text-purple-700", children: "Contact" })
         ] })
       ] })
@@ -22234,7 +22270,8 @@ function oy() {
           }, className: "hover:text-purple-900 underline underline-offset-2", children: "Privacy Policy" }) }),
           /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0, marginTop: "2px" }, children: /* @__PURE__ */ s("a", { href: "/how-we-verify", onClick: (k) => {
             k.preventDefault(), C("how-we-verify");
-          }, className: "hover:text-purple-900 underline underline-offset-2", children: "How we verify" }) })
+          }, className: "hover:text-purple-900 underline underline-offset-2", children: "How we verify" }) }),
+          /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0, marginTop: "2px" }, children: /* @__PURE__ */ s("a", { href: "/pet-friendly-housing", className: "hover:text-purple-900 underline underline-offset-2", children: "Housing Guide" }) })
         ] })
       ] })
     ] })
