@@ -2837,7 +2837,7 @@ const server = http.createServer(async (req, res) => {
       return;
     }
 
-    const filePath = sanitizePath(pathname);
+    const filePath = sanitizePath(pathname === "/pet-friendly-housing" ? "/pet-friendly-housing.html" : pathname);
     if (!filePath) {
       sendText(res, 403, "Forbidden");
       return;

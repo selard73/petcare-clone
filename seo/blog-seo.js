@@ -966,6 +966,7 @@ const STATIC_SITEMAP_PATHS = [
   { loc: "/vet-care", changefreq: "weekly", priority: "0.8" },
   { loc: "/about", changefreq: "monthly", priority: "0.5" },
   { loc: "/how-we-verify", changefreq: "monthly", priority: "0.5" },
+  { loc: "/pet-friendly-housing", changefreq: "monthly", priority: "0.6" },
   { loc: "/privacy", changefreq: "yearly", priority: "0.3" },
   { loc: "/review", changefreq: "monthly", priority: "0.4" },
 ];
