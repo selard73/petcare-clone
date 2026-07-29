@@ -6185,7 +6185,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
         ] })
       }
     ) }),
-    /* @__PURE__ */ s("section", { className: "py-7 px-5 md:py-20 md:px-4 sm:px-6 lg:px-8", children: /* @__PURE__ */ d("div", { className: "max-w-4xl mx-auto text-center", children: [
+    /* @__PURE__ */ s("div", { className: "px-4 md:px-0 mt-10 md:mt-0", children: /* @__PURE__ */ s("section", { className: "py-7 px-5 md:py-16 md:px-4 sm:px-6 lg:px-8 rounded-3xl md:rounded-none", style: { background: "linear-gradient(180deg, #F8F3FD 0%, #F0E7F9 100%)" }, children: /* @__PURE__ */ d("div", { className: "max-w-4xl mx-auto text-center", children: [
       /* @__PURE__ */ d(
         D.div,
         {
@@ -6208,7 +6208,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
           whileHover: { scale: 1.02 },
           className: "mx-auto",
           style: { maxWidth: "640px" },
-          children: /* @__PURE__ */ s("a", { href: "/pet-friendly-housing", className: "block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow text-left", style: { textDecoration: "none", padding: "24px 28px", border: "1px solid #f3e8ff" }, children: /* @__PURE__ */ d("div", { style: { display: "flex", gap: "18px", alignItems: "flex-start" }, children: [
+          children: /* @__PURE__ */ s("a", { href: "/pet-friendly-housing", className: "block bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow text-left", style: { textDecoration: "none", padding: "24px 28px", border: "1px solid #E9DBF6" }, children: /* @__PURE__ */ d("div", { style: { display: "flex", gap: "18px", alignItems: "flex-start" }, children: [
             /* @__PURE__ */ s("div", { style: { fontSize: "38px", lineHeight: "1" }, children: "🏠" }),
             /* @__PURE__ */ d("div", { children: [
               /* @__PURE__ */ s("h3", { className: "text-purple-700 font-semibold", style: { marginBottom: "4px" }, children: "Pet-Friendly Housing Guide" }),
@@ -6218,7 +6218,7 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
           ] }) })
         }
       )
-    ] }) }),
+    ] }) }) }),
     /* @__PURE__ */ d("div", { className: "px-4 md:px-0 md:pb-0 mt-10 md:mt-0", children: [
       /* @__PURE__ */ s("section", { className: "py-7 px-5 md:py-20 md:px-4 sm:px-6 lg:px-8 bg-gradient-to-r from-purple-600 to-pink-600 text-white rounded-3xl md:rounded-none", children: /* @__PURE__ */ s("div", { className: "max-w-4xl mx-auto text-center", children: /* @__PURE__ */ d(
       D.div,
