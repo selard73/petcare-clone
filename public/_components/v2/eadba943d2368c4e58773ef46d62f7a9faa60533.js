@@ -22163,8 +22163,6 @@ function oy() {
             k.preventDefault(), C("how-we-verify");
           }, className: "underline underline-offset-2 hover:text-purple-700", children: "How we verify" }),
           "•",
-          /* @__PURE__ */ s("a", { href: "/pet-friendly-housing", className: "underline underline-offset-2 hover:text-purple-700", children: "Housing Guide" }),
-          "•",
           /* @__PURE__ */ s("a", { href: "mailto:hello@peedeepetcare.com", className: "underline underline-offset-2 hover:text-purple-700", children: "Contact" })
         ] })
       ] })
@@ -22270,8 +22268,7 @@ function oy() {
           }, className: "hover:text-purple-900 underline underline-offset-2", children: "Privacy Policy" }) }),
           /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0, marginTop: "2px" }, children: /* @__PURE__ */ s("a", { href: "/how-we-verify", onClick: (k) => {
             k.preventDefault(), C("how-we-verify");
-          }, className: "hover:text-purple-900 underline underline-offset-2", children: "How we verify" }) }),
-          /* @__PURE__ */ s("p", { className: "text-sm font-bold text-purple-700 whitespace-nowrap", style: { margin: 0, marginTop: "2px" }, children: /* @__PURE__ */ s("a", { href: "/pet-friendly-housing", className: "hover:text-purple-900 underline underline-offset-2", children: "Housing Guide" }) })
+          }, className: "hover:text-purple-900 underline underline-offset-2", children: "How we verify" }) })
         ] })
       ] })
     ] })
