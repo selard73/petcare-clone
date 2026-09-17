@@ -2206,9 +2206,9 @@ async function maybeSendDailyClickReport() {
 // --- Pet of the month link: live redirect + adoption alert ---
 
 const PET_OF_MONTH = {
-  name: "Bilbo Wagz",
-  url: "https://us07d.sheltermanager.com/service?account=ch1194&method=animal_view&animalid=25124&template=animalview",
-  fallbackUrl: "https://www.darlingtonhumane.org/adoptablepets",
+  name: "Leroy",
+  url: "https://lcr-animal-records.onrender.com/dogs/leroy",
+  fallbackUrl: "https://lastchanceranchsc.com/dogs/",
 };
 const PET_LINK_CACHE_MS = 60 * 60 * 1000;
 const PET_LINK_ALERT_KEY = "pet_of_month_alert_sent";
@@ -2223,8 +2223,8 @@ async function isPetOfMonthLinkAlive() {
   try {
     const response = await fetch(PET_OF_MONTH.url, { signal: AbortSignal.timeout(8000) });
     const body = response.ok ? await response.text() : "";
-    // ShelterManager returns 200 with an error/empty template once the animal
-    // is adopted or removed, so require the pet's name in the page body.
+    // The LCR records app 404s adopted/removed dogs, but keep requiring the
+    // pet's name in the body in case a future source serves a soft error page.
     petLinkCache = { checkedAt: now, alive: response.ok && body.includes(PET_OF_MONTH.name) };
   } catch {
     petLinkCache = { checkedAt: now, alive: false };
@@ -2261,7 +2261,7 @@ async function maybeSendPetLinkAlert() {
       "The 'Meet " + PET_OF_MONTH.name + "' button on the homepage is automatically redirecting visitors to the shelter's main adoptable pets page in the meantime:",
       PET_OF_MONTH.fallbackUrl,
       "",
-      "Next step: pick a new Fairy Dog Child and update the homepage card.",
+      "Next step: pick a new featured pet and update the homepage card.",
       "",
       "— Pee Dee Pet Care automated monitor",
     ].join("\n"),

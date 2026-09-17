@@ -6079,26 +6079,15 @@ function Qs({ onNavigate: t, visitCount: e0 }) {
                 /* @__PURE__ */ s("h2", { className: "text-purple-600 text-2xl md:text-4xl text-center", style: { marginBottom: window.innerWidth < 768 ? "1.5rem" : "2.5rem" }, children: "💜 This Week on Pee Dee Pet Care" }),
                 /* @__PURE__ */ d("div", { style: window.innerWidth < 768 ? { display: "grid", gridTemplateColumns: "1fr", gap: "1.75rem" } : { display: "grid", gridTemplateColumns: "1fr 1fr", gap: "6rem" }, children: [
                   /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
-                    /* @__PURE__ */ s("img", { src: "/images/home/bilbo-wagz.png", alt: "Bilbo Wagz — adoptable dog at the Darlington County Humane Society", style: { height: "13rem", width: "100%", objectFit: "cover", objectPosition: "center 25%", display: "block" } }),
+                    /* @__PURE__ */ s("img", { src: "/images/home/leroy.jpg", alt: "Leroy — adoptable dog at Last Chance Ranch of South Carolina in Aiken, SC", style: { height: window.innerWidth < 768 ? "13rem" : "21rem", width: "100%", objectFit: "cover", objectPosition: "center 30%", display: "block" } }),
                     /* @__PURE__ */ d("div", { className: "flex flex-col items-center text-center flex-1", style: { padding: "1.25rem 2rem 1.5rem" }, children: [
-                      /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "🐾 Fairy Dog Child… Until Adopted" }),
-                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-3", children: "Meet Bilbo Wagz — a year-and-a-half-old pup at the Darlington County Humane Society. He arrived in rough shape, but stayed incredibly friendly and loving. He's a play group favorite who gets along with everyone he meets, and volunteers call him handsome, well-mannered, and sweet. Bilbo is ready to leave shelter life behind." }),
-                      /* @__PURE__ */ s(
-                        "button",
-                        {
-                          onClick: () => {
-                            let ba = window.__petOfMonthSong;
-                            ba || (ba = window.__petOfMonthSong = new Audio("/audio/bilbo-wagz-song.mp3")), ba.paused ? ba.play().catch(() => {}) : (ba.pause(), ba.currentTime = 0);
-                          },
-                          className: "text-purple-600 hover:text-purple-800 font-medium mb-4 transition-colors",
-                          children: "🔊 Click for Bilbo's Song"
-                        }
-                      ),
-                      /* @__PURE__ */ s("a", { href: "/pet-of-month", target: "_blank", rel: "noopener noreferrer", className: "mt-auto inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg !text-white !font-semibold no-underline hover:opacity-90 transition-opacity", children: "Meet Bilbo →" })
+                      /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "🐾 Inmate Spotlight… Until Paroled" }),
+                      /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-4", children: "Meet Leroy — Inmate #51 at Last Chance Ranch of South Carolina, a no-kill sanctuary in Aiken. He's a Terrier/Pit Bull mix, almost five, serving time for circumstances beyond his control: smart, attentive, knows all his basic commands, and takes tug-of-war very seriously. His one condition of parole? He'd like to be your one and only — no other pets, just all the love for himself. A little past our usual Pee Dee territory, but some dogs are worth the drive." }),
+                      /* @__PURE__ */ s("a", { href: "/pet-of-month", target: "_blank", rel: "noopener noreferrer", className: "mt-auto inline-block px-5 py-2 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full shadow-lg !text-white !font-semibold no-underline hover:opacity-90 transition-opacity", children: "Meet Leroy →" })
                     ] })
                   ] }),
                   /* @__PURE__ */ d("div", { className: "bg-white rounded-2xl overflow-hidden shadow-[0_10px_40px_-12px_rgba(147,51,234,0.35)] flex flex-col", children: [
-                    /* @__PURE__ */ s("div", { style: { height: "13rem", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #FCE7F3 0%, #EDE9FE 100%)" }, children: /* @__PURE__ */ s("div", { className: "bg-white rounded-full flex items-center justify-center shadow-lg", style: { width: "6rem", height: "6rem", fontSize: "3rem", lineHeight: 1 }, children: "⭐" }) }),
+                    /* @__PURE__ */ s("div", { style: { height: window.innerWidth < 768 ? "13rem" : "21rem", display: "flex", alignItems: "center", justifyContent: "center", background: "linear-gradient(135deg, #FCE7F3 0%, #EDE9FE 100%)" }, children: /* @__PURE__ */ s("div", { className: "bg-white rounded-full flex items-center justify-center shadow-lg", style: { width: "6rem", height: "6rem", fontSize: "3rem", lineHeight: 1 }, children: "⭐" }) }),
                     /* @__PURE__ */ d("div", { className: "flex flex-col items-center text-center flex-1", style: { padding: "1.25rem 2rem 1.5rem" }, children: [
                       /* @__PURE__ */ s("h3", { className: "text-purple-600 text-xl font-semibold mb-2", children: "🌟 Featured Business of the Week" }),
                       /* @__PURE__ */ s("p", { className: "text-gray-600 leading-relaxed mb-5", children: "Coming soon — we'll shine a spotlight on a standout local pet business right here." }),
